@@ -1,6 +1,6 @@
 # CloudSigma Python Library
 
-Under construction. Not ready for public use.
+Work in Progress. Not ready for public use.
 
 ## Config file
 
