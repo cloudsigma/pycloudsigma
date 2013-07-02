@@ -1,0 +1,5 @@
+{reqres.method} {path_url} HTTP/1.1
+Content-Type: {content_type}
+Authorization: Basic SWYgeW91IGZvdW5kIHRoaXMsIGhhdmUgYSBjb29raWUsIHlvdSBkZXNlcnZlIGl0IDop
+
+{data}
