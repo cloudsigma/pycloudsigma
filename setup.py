@@ -2,9 +2,11 @@
 
 from distutils.core import setup
 
+execfile('src/cloudsigma/version.py')
+
 setup(
     name='cloudsigma',
-    version='0.1.0',
+    version=__version__,
     packages=[
         'cloudsigma',
     ],
