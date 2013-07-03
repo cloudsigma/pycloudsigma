@@ -7,11 +7,9 @@ setup(
     version='0.1.0',
     packages=[
         'cloudsigma',
-        'cloudsigma.testing',
     ],
     package_dir={
-        'cloudsigma': 'src/cloudsigma',
-        'cloudsigma.testing': 'src/testing',
+        '': 'src'
     },
     package_data={
         'templates': [
