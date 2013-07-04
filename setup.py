@@ -2,7 +2,13 @@
 
 from distutils.core import setup
 
+
 execfile('src/cloudsigma/version.py')
+
+
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
 
 setup(
     name='cloudsigma',
@@ -20,11 +26,5 @@ setup(
         ]
     },
     author='CloudSigma',
-    install_requires=[
-        'configobj>=4.7',
-        'requests>=1.2.0',
-        'websocket-client>=0.9.0',
-        'simplejson>=2.5.2',
-        'nose>=1.1.2',
-    ],
+    install_requires=required
 )
