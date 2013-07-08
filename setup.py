@@ -12,7 +12,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='cloudsigma',
-    version=__version__,
+    version=0.1,
     packages=[
         'cloudsigma',
     ],
@@ -25,6 +25,34 @@ setup(
             'response_template',
         ]
     },
-    author='CloudSigma',
-    install_requires=required
+    author='CloudSigma AG',
+    install_requires=required,
+    description="CloudSigma's official python library.",
+    keyword=[
+        'cloud',
+        'cloudsigma',
+        'api',
+        'cloud computing'
+    ],
+    classifiers=[
+        "Programming Language :: Python",
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: System Administrators",
+        "Intended Audience :: Developers",
+    ],
+    long_description="""\
+CloudSigma's official python library
+------------------------------------
+
+With this library, you can easily manage your entire infrastructure from within Python.
+
+
+More information:
+ * pycloudsigma documentation[1]
+ * CloudSigma API documentation[2]
+
+[1] https://github.com/cloudsigma/pycloudsigma/blob/master/README.md
+[2] https://zrh.cloudsigma.com/docs/
+
+    """
 )
