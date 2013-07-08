@@ -42,18 +42,26 @@ setup(
         "Intended Audience :: Developers",
     ],
     long_description="""\
+====================================
 CloudSigma's official python library
-------------------------------------
+====================================
 
-With this library, you can easily manage your entire infrastructure from within Python.
+pycloudsigma allows you to easily manage your entire infrastructure from within Python.
+
+Creating a server is a simple as:
+
+::
+
+    import cloudsigma
+    server = cloudsigma.resource.Server()
+    test_server = { 'name': 'My Test Server', 'cpu': 1000, 'mem': 512 * 1024 ** 2, 'vnc_password': 'test_server' }
+    my_test_server = server.create(test_server)
 
 
-More information:
- * pycloudsigma documentation[1]
- * CloudSigma API documentation[2]
+For more examples, please visit pycloudsigma_.
 
-[1] https://github.com/cloudsigma/pycloudsigma/blob/master/README.md
-[2] https://zrh.cloudsigma.com/docs/
+For more detailed information about CloudSigma's, please visit th `API documentation <https://zrh.cloudsigma.com/docs/>`_.
 
+.. _pycloudsigma: https://github.com/cloudsigma/pycloudsigma/blob/master/README.md
     """
 )
