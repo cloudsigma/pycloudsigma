@@ -1,7 +1,5 @@
 # CloudSigma Python Library
 
-Work in Progress. Not ready for public use.
-
 ## Config file
 
 In order for the CloudSigma library to be able to authenticate with the server, you need to provide your credentials. These are set in the file `~/.cloudsigma.conf`. Here's a sample version of the file that talks to the Las Vegas datacenter. If you instead want to use the Zürich datacenter, simply replace 'lvs' with 'zrh' in the api_endpoint and ws_endpoint.
