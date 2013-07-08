@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
-
+from setuptools import setup
 
 execfile('src/cloudsigma/version.py')
 
@@ -26,9 +25,11 @@ setup(
         ]
     },
     author='CloudSigma AG',
+    author_email='dev-support@cloudsigma.com',
+    url='https://github.com/cloudsigma/pycloudsigma',
     install_requires=required,
     description="CloudSigma's official python library.",
-    keyword=[
+    keywords=[
         'cloud',
         'cloudsigma',
         'api',
