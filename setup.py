@@ -2,16 +2,22 @@
 
 from distutils.core import setup
 
+
+execfile('src/cloudsigma/version.py')
+
+
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
+
 setup(
     name='cloudsigma',
-    version='0.1.0',
+    version=__version__,
     packages=[
         'cloudsigma',
-        'cloudsigma.testing',
     ],
     package_dir={
-        'cloudsigma': 'src/cloudsigma',
-        'cloudsigma.testing': 'src/testing',
+        '': 'src'
     },
     package_data={
         'templates': [
@@ -20,11 +26,5 @@ setup(
         ]
     },
     author='CloudSigma',
-    install_requires=[
-        'configobj>=4.7',
-        'requests>=1.2.0',
-        'websocket-client>=0.9.0',
-        'simplejson>=2.5.2',
-        'nose>=1.1.2',
-    ],
+    install_requires=required
 )
