@@ -55,3 +55,25 @@ We could of course have attached this above, but in order to keep things simple,
 ## Running the tests
 
 There must be a VM available by the name that matches `persistent_drive_name`. This VM should be a server with SSH installed, where one can be log in as `root` with the password set in `persistent_drive_ssh_password`.
+
+## Sample application: Monitor websocket activity
+
+Here's a sample application that listens to activity on the websocket. You can run this application to see activity from the web interface.
+
+    from cloudsigma.generic import GenericClient
+    from cloudsigma.resource import Websocket
+    from cloudsigma.errors import ClientError
+
+    ws = Websocket(timeout=None)
+    client = GenericClient()
+
+    print "Display Websocket activity.\nExit with ^C."
+
+    while True:
+        try:
+            get_action = ws.ws.recv()
+            action_uri = get_action['resource_uri']
+            print 'Received Action: %s' % get_action
+            print 'Result:\n%s' % client.get(action_uri)
+        except ClientError as e:
+            print 'Error retrieving: %s' % e
