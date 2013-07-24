@@ -9,6 +9,7 @@ In order for the CloudSigma library to be able to authenticate with the server, 
     username = user@domain.com
     password = secret
 
+    # Only needed for the integration/unit tests.
     persistent_drive_name=foobar
     persistent_drive_ssh_password=sshsecret
 
