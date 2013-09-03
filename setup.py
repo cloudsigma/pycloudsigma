@@ -11,7 +11,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='cloudsigma',
-    version=0.1,
+    version=0.2,
     packages=[
         'cloudsigma',
     ],
@@ -60,7 +60,7 @@ Creating a server is a simple as:
 
 For more examples, please visit pycloudsigma_.
 
-For more detailed information about CloudSigma's, please visit th `API documentation <https://zrh.cloudsigma.com/docs/>`_.
+For more detailed information about CloudSigma's, please visit the `API documentation <https://zrh.cloudsigma.com/docs/>`_.
 
 .. _pycloudsigma: https://github.com/cloudsigma/pycloudsigma/blob/master/README.md
     """

@@ -53,9 +53,60 @@ We could of course have attached this above, but in order to keep things simple,
 
     server.stop(my_test_server['uuid'])
 
-## Running the tests
+### Reading Meta Data
 
-There must be a VM available by the name that matches `persistent_drive_name`. This VM should be a server with SSH installed, where one can be log in as `root` with the password set in `persistent_drive_ssh_password`.
+CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need to provide any credentials (or information) in `~/.cloudsigma.com` in order to use this feature. This data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://lvs.cloudsigma.com/docs/server_context.html#setting-up-the-virtual-serial-port).
+
+By default, various system information is exposed, but it is also possible to push user-defined data, such as an SSH-key to the guest.
+
+Here's snippet that demonstrates how to read the meta meta data from a given server using the python library:
+
+    import cloudsigma
+    metadata = cloudsigma.metadata.GetServerMetadata().get()
+
+    from pprint import pprint
+    pprint(metadata)
+    {u'cpu': 1000,
+     u'cpus_instead_of_cores': False,
+     u'drives': [{u'boot_order': 1,
+                  u'dev_channel': u'0:0',
+                  u'device': u'virtio',
+                  u'drive': {u'affinities': [],
+                             u'allow_multimount': False,
+                             u'licenses': [],
+                             u'media': u'disk',
+                             u'meta': {u'description': u'This is my test disk.'},
+                             u'name': u'SomeName',
+                             u'size': 21474836480,
+                             u'tags': [],
+                             u'uuid': u'19757XXX-8173-46ba-8822-YYYYc6bZZZZ'}}],
+     u'enable_numa': False,
+     u'hv_relaxed': False,
+     u'hv_tsc': False,
+     u'mem': 536870912,
+     u'meta': {u'description': u'This is my test server.'},
+     u'name': u'vpn',
+     u'nics': [{u'boot_order': None,
+                u'ip_v4_conf': {u'conf': u'dhcp',
+                                u'ip': {u'gateway': u'123.123.123.123',
+                                        u'meta': {},
+                                        u'nameservers': [u'123.123.123.123',
+                                                         u'123.123.123.123',
+                                                         u'8.8.8.8'],
+                                        u'netmask': 24,
+                                        u'tags': [],
+                                        u'uuid': u'123.123.123.123'}},
+                u'ip_v6_conf': None,
+                u'mac': u'22:bd:c4:XX:XX:XX',
+                u'model': u'virtio',
+                u'vlan': None}],
+     u'requirements': [],
+     u'smp': 1,
+     u'tags': [],
+     u'uuid': u'6cc0XXX-d024-4ecf-b0de-83dbc29ZZZ',
+     u'vnc_password': u'NotMyPassword'}
+
+For more examples on how to read and write meta data, please visit our [API Documentation](https://autodetect.cloudsigma.com/docs/meta.html#examples).
 
 ## Sample application: Monitor websocket activity
 
@@ -78,3 +129,8 @@ Here's a sample application that listens to activity on the websocket. You can r
             print 'Result:\n%s' % client.get(action_uri)
         except ClientError as e:
             print 'Error retrieving: %s' % e
+
+## Running the tests
+
+There must be a VM available by the name that matches `persistent_drive_name`. This VM should be a server with SSH installed, where one can be log in as `root` with the password set in `persistent_drive_ssh_password`.
+
