@@ -55,7 +55,7 @@ We could of course have attached this above, but in order to keep things simple,
 
 ### Reading Meta Data
 
-CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need to provide any credentials (or information) in `~/.cloudsigma.com` in order to use this feature. This data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://lvs.cloudsigma.com/docs/server_context.html#setting-up-the-virtual-serial-port).
+CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need to provide any credentials (or information) in `~/.cloudsigma.conf` in order to use this feature. This data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://lvs.cloudsigma.com/docs/server_context.html#setting-up-the-virtual-serial-port).
 
 By default, various system information is exposed, but it is also possible to push user-defined data, such as an SSH-key to the guest.
 
