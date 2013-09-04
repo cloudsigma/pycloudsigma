@@ -75,7 +75,7 @@ test_server = { 'name': 'My Test Server', 'cpu': 1000, 'mem': 512 * 1024 ** 2, '
 my_test_server = server.create(test_server)
 ```
 
-Print back the result
+Print back the result:
 
 ```python
 pprint(my_test_server)
