@@ -205,7 +205,7 @@ For more examples on how to read and write meta data, please visit our [API docu
 
 In the example above, we pushed an SSH key as meta data to a server. That's great, but what if we want to put this to use? Don't worry, we got you covered.
 
-The code snippet below assumes that you have installed your SSH key into the server's meta data as with the key 'ssh_key'.
+The code snippet below assumes that you have installed your SSH key into the server's meta data with the key 'ssh_key'.
 
 ```python
 import cloudsigma
