@@ -157,7 +157,7 @@ server.stop(my_test_server['uuid'])
 
 ### Reading Meta Data
 
-CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need to provide any credentials (or information) in `~/.cloudsigma.conf` in order to use this feature. This data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://lvs.cloudsigma.com/docs/server_context.html#setting-up-the-virtual-serial-port).
+CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need `~/.cloudsigma.conf` in order to use this feature, as the data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://lvs.cloudsigma.com/docs/server_context.html#setting-up-the-virtual-serial-port).
 
 By default, various system information is exposed, but it is also possible to push user-defined data, such as an SSH-key to the guest.
 
@@ -188,7 +188,7 @@ pprint(metadata)
  u'hv_tsc': False,
  u'mem': 536870912,
  u'meta': {u'description': u'This is my test server.'},
- u'name': u'vpn',
+ u'name': u'MyTestServer',
  u'nics': [{u'boot_order': None,
             u'ip_v4_conf': {u'conf': u'dhcp',
                             u'ip': {u'gateway': u'123.123.123.123',
