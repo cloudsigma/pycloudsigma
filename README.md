@@ -20,18 +20,24 @@ Since this file includes credentials, it is highly recommended that you set the 
 
     pip install cloudsigma
 
+(You need 'pip' installed to run the above command. On Ubuntu, you can install this by running `sudo apt-get install -y python-pip`.)
+
 ## Using pycloudsigma
 
-#### Create a drive
+### Imports and definitions
 
     import cloudsigma
     from pprint import pprint
 
     drive = cloudsigma.resource.Drive()
+    server = cloudsigma.resource.Server()
+
+#### Create a drive
+
     test_disk = { 'name': 'test_drive', 'size': 1073741824 * 1, 'media': 'disk'}
     my_test_disk = drive.create(test_disk)
 
-Print the result:
+Print back the result:
 
     pprint(my_test_disk)
     {u'affinities': [],
@@ -53,7 +59,6 @@ Print the result:
 
 ### Create a server without a drive
 
-    server = cloudsigma.resource.Server()
     test_server = { 'name': 'My Test Server', 'cpu': 1000, 'mem': 512 * 1024 ** 2, 'vnc_password': 'test_server' }
     my_test_server = server.create(test_server)
 
@@ -86,15 +91,15 @@ Print back the result
 
 We could of course have attached this above, but in order to keep things simple, let's do this in to phases.
 
-Attach the drive
+Attach the drive:
 
     my_test_server['drives'] = [ { 'boot_order': 1, 'dev_channel': '0:0', 'device': 'virtio', 'drive': my_test_disk['uuid'] } ]
 
-Attach a NIC
+Attach a public network interface:
 
     my_test_server['nics']  = [ { 'ip_v4_conf': { 'conf': 'dhcp', 'ip': None }, 'model': 'virtio', 'vlan': None} ]
 
-**Optional**: Add an SSH key
+**Optional**: Add a user-defined SSH key:
 
     my_test_server['meta'] = { 'ssh_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoHuFV7Skbu9G1iVokXBdB+zN4wEbqGKijlExUPmxuB6MXDBWCmXUEmMRLerTm3a8QMA+8Vyech0/TWQscYvs8xzM/HkRAqKwhhjPMRlfHgy+QKjRD8P989AYMnNcSYe8DayElFXoLYKwsDmoUcsnbf5H+f6agiBkWqz5odb8fvc2rka0X7+p3tDyKFJRt2OugPqLR9fhWddie65DBxAcycnScoqLW0+YAxakfWlKDUqwerIjuRN2VJ7T7iHywcXhvAU060CEtpWW7bE9T/PIoj/N753QDLYrmqtvqAQqU0Ss5rIqS8bYJXyM0zTKwIuncek+k+b9ButBf/Nx5ehjN vagrant@precise64'}
 
@@ -163,7 +168,50 @@ Here's snippet that demonstrates how to read the meta meta data from a given ser
      u'uuid': u'6cc0XXX-d024-4ecf-b0de-83dbc29ZZZ',
      u'vnc_password': u'NotMyPassword'}
 
-For more examples on how to read and write meta data, please visit our [API Documentation](https://autodetect.cloudsigma.com/docs/meta.html#examples).
+If you get a permission error while running the above command, make sure you have access to read from `/dev/ttyS1`. For instance, on Ubuntu, the default owner is `root` and the group is set to `dialout`. Hence you need to either change the permission, or add your user to the group `sudo usermod -a -G dialout $(whoami)`. Please note that you will need to logout and log in again for the permission change to take effect.
+
+For more examples on how to read and write meta data, please visit our [API documentation](https://autodetect.cloudsigma.com/docs/meta.html#examples).
+
+## Sample application: Install SSH key from meta data
+
+In the example above, we pushed an SSH key as meta data to a server. That's great, but what if we want to put this to use? Don't worry, we got you covered.
+
+The code snippet below assumes that you have installed your SSH key into the server's meta data as with the key 'ssh_key'.
+
+    import cloudsigma
+    import os
+    import stat
+
+    metadata = cloudsigma.metadata.GetServerMetadata().get()
+    ssh_key = metadata['meta']['ssh_key']
+
+    # Define paths
+    home = os.path.expanduser("~")
+    ssh_path = os.path.join(home, '.ssh')
+    authorized_keys = os.path.join(ssh_path, 'authorized_keys')
+
+
+    def get_permission(path):
+        return oct(os.stat(ssh_path)[stat.ST_MODE])[-4:]
+
+    if not os.path.isdir(ssh_path):
+        print 'Creating folder %s' % ssh_path
+        os.makedirs(ssh_path)
+
+    if get_permission(ssh_path) != 0700:
+        print 'Setting permission for %s' % ssh_path
+        os.chmod(ssh_path, 0700)
+
+    # We'll have to assume that there might be other keys installed.
+    # We could do something fancy, like checking if the key is installed already,
+    # but in order to keep things simple, we'll simply append the key.
+    with open(authorized_keys, 'a') as auth_file:
+        auth_file.write(ssh_key)
+
+    if get_permission(authorized_keys) != 0600:
+        print 'Setting permission for %s' % authorized_keys
+        os.chmod(authorized_keys, 0600)
+
 
 ## Sample application: Monitor websocket activity
 
