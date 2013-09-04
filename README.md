@@ -25,25 +25,82 @@ Since this file includes credentials, it is highly recommended that you set the 
 #### Create a drive
 
     import cloudsigma
+    from pprint import pprint
+
     drive = cloudsigma.resource.Drive()
-    test_disk = { 'name': 'test_drive', 'size': 1024000000, 'media': 'disk'}
+    test_disk = { 'name': 'test_drive', 'size': 1073741824 * 1, 'media': 'disk'}
     my_test_disk = drive.create(test_disk)
-    print my_test_disk
+
+Print the result:
+
+    pprint(my_test_disk)
+    {u'affinities': [],
+     u'allow_multimount': False,
+     u'jobs': [],
+     u'licenses': [],
+     u'media': u'disk',
+     u'meta': {},
+     u'mounted_on': [],
+     u'name': u'test_drive',
+     u'owner': {u'resource_uri': u'/api/2.0/user/b4b9XXX-ba52-4ad0-9837-a2672652XXX/',
+                u'uuid': u'b4b9XXX-ba52-4ad0-9837-a2672652XXX'},
+     u'resource_uri': u'/api/2.0/drives/5c33e407-23b9-XXX-b007-3a302eXXXX/',
+     u'size': 1073741824,
+     u'status': u'creating',
+     u'storage_type': None,
+     u'tags': [],
+     u'uuid': u'5c33e407-23b9-XXX-b007-3a302eXXXX'}
 
 ### Create a server without a drive
 
     server = cloudsigma.resource.Server()
     test_server = { 'name': 'My Test Server', 'cpu': 1000, 'mem': 512 * 1024 ** 2, 'vnc_password': 'test_server' }
     my_test_server = server.create(test_server)
-    print my_test_server
 
+Print back the result
 
-### Attach a drive the drive to the server
+    pprint(my_test_server)
+    {u'context': True,
+     u'cpu': 1000,
+     u'cpus_instead_of_cores': False,
+     u'drives': [],
+     u'enable_numa': False,
+     u'hv_relaxed': False,
+     u'hv_tsc': False,
+     u'mem': 536870912,
+     u'meta': {},
+     u'name': u'My Test Server',
+     u'nics': [],
+     u'owner': {u'resource_uri': u'/api/2.0/user/b4b9XXX-ba52-4ad0-9837-a2672652XXX/',
+                u'uuid': u'b4b9XXX-ba52-4ad0-9837-a2672652XXX'},
+     u'requirements': [],
+     u'resource_uri': u'/api/2.0/servers/4d5bXXX-4da0-43cd-83aY-18b047014XXXX/',
+     u'runtime': None,
+     u'smp': 1,
+     u'status': u'stopped',
+     u'tags': [],
+     u'uuid': u'4d5bXXX-4da0-43cd-83aY-18b047014XXXX',
+     u'vnc_password': u'test_server'}
+
+### Attach a drive the drive and a NIC to the server
 
 We could of course have attached this above, but in order to keep things simple, let's do this in to phases.
 
-    test_server['drives'] = [ { 'boot_order': 1, 'dev_channel': '0:0', 'device': 'virtio', 'drive': my_test_disk['uuid'] } ]
-    server.update(my_test_server['uuid'], test_server)
+Attach the drive
+
+    my_test_server['drives'] = [ { 'boot_order': 1, 'dev_channel': '0:0', 'device': 'virtio', 'drive': my_test_disk['uuid'] } ]
+
+Attach a NIC
+
+    my_test_server['nics']  = [ { 'ip_v4_conf': { 'conf': 'dhcp', 'ip': None }, 'model': 'virtio', 'vlan': None} ]
+
+**Optional**: Add an SSH key
+
+    my_test_server['meta'] = { 'ssh_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoHuFV7Skbu9G1iVokXBdB+zN4wEbqGKijlExUPmxuB6MXDBWCmXUEmMRLerTm3a8QMA+8Vyech0/TWQscYvs8xzM/HkRAqKwhhjPMRlfHgy+QKjRD8P989AYMnNcSYe8DayElFXoLYKwsDmoUcsnbf5H+f6agiBkWqz5odb8fvc2rka0X7+p3tDyKFJRt2OugPqLR9fhWddie65DBxAcycnScoqLW0+YAxakfWlKDUqwerIjuRN2VJ7T7iHywcXhvAU060CEtpWW7bE9T/PIoj/N753QDLYrmqtvqAQqU0Ss5rIqS8bYJXyM0zTKwIuncek+k+b9ButBf/Nx5ehjN vagrant@precise64'}
+
+Push the settings:
+
+    server.update(my_test_server['uuid'], my_test_server)
 
 ### Start the server
 
