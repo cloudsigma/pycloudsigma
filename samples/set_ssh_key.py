@@ -26,7 +26,7 @@ if get_permission(ssh_path) != 0700:
 # We could do something fancy, like checking if the key is installed already,
 # but in order to keep things simple, we'll simply append the key.
 with open(authorized_keys, 'a') as auth_file:
-    auth_file.write(ssh_key)
+    auth_file.write(ssh_key + '\n')
 
 if get_permission(authorized_keys) != 0600:
     print 'Setting permission for %s' % authorized_keys
