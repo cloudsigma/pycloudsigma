@@ -172,7 +172,7 @@ If you get a permission error while running the above command, make sure you hav
 
 For more examples on how to read and write meta data, please visit our [API documentation](https://autodetect.cloudsigma.com/docs/meta.html#examples).
 
-## Sample application: Install SSH key from meta data
+## Sample: Install SSH key from meta data
 
 In the example above, we pushed an SSH key as meta data to a server. That's great, but what if we want to put this to use? Don't worry, we got you covered.
 
@@ -213,7 +213,9 @@ The code snippet below assumes that you have installed your SSH key into the ser
         os.chmod(authorized_keys, 0600)
 
 
-## Sample application: Monitor websocket activity
+[Download](https://raw.github.com/cloudsigma/pycloudsigma/master/samples/set_ssh_key.py)
+
+## Sample: Monitor websocket activity
 
 Here's a sample application that listens to activity on the websocket. You can run this application to see activity from the web interface.
 
@@ -234,6 +236,8 @@ Here's a sample application that listens to activity on the websocket. You can r
             print 'Result:\n%s' % client.get(action_uri)
         except ClientError as e:
             print 'Error retrieving: %s' % e
+
+[Download](https://raw.github.com/cloudsigma/pycloudsigma/master/samples/monitor_websocket_activity.py)
 
 ## Running the tests
 
