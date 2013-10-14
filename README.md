@@ -134,7 +134,7 @@ my_test_server['nics']  = [ { 'ip_v4_conf': { 'conf': 'dhcp', 'ip': None }, 'mod
 **Optional**: Add a user-defined SSH key:
 
 ```python
-my_test_server['meta'] = { 'ssh_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoHuFV7Skbu9G1iVokXBdB+zN4wEbqGKijlExUPmxuB6MXDBWCmXUEmMRLerTm3a8QMA+8Vyech0/TWQscYvs8xzM/HkRAqKwhhjPMRlfHgy+QKjRD8P989AYMnNcSYe8DayElFXoLYKwsDmoUcsnbf5H+f6agiBkWqz5odb8fvc2rka0X7+p3tDyKFJRt2OugPqLR9fhWddie65DBxAcycnScoqLW0+YAxakfWlKDUqwerIjuRN2VJ7T7iHywcXhvAU060CEtpWW7bE9T/PIoj/N753QDLYrmqtvqAQqU0Ss5rIqS8bYJXyM0zTKwIuncek+k+b9ButBf/Nx5ehjN vagrant@precise64'}
+my_test_server['meta'] = { 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoHuFV7Skbu9G1iVokXBdB+zN4wEbqGKijlExUPmxuB6MXDBWCmXUEmMRLerTm3a8QMA+8Vyech0/TWQscYvs8xzM/HkRAqKwhhjPMRlfHgy+QKjRD8P989AYMnNcSYe8DayElFXoLYKwsDmoUcsnbf5H+f6agiBkWqz5odb8fvc2rka0X7+p3tDyKFJRt2OugPqLR9fhWddie65DBxAcycnScoqLW0+YAxakfWlKDUqwerIjuRN2VJ7T7iHywcXhvAU060CEtpWW7bE9T/PIoj/N753QDLYrmqtvqAQqU0Ss5rIqS8bYJXyM0zTKwIuncek+k+b9ButBf/Nx5ehjN vagrant@precise64'}
 ```
 
 Push the settings:
@@ -218,7 +218,7 @@ For more examples on how to read and write meta data, please visit our [API docu
 
 In the example above, we pushed an SSH key as meta data to a server. That's great, but what if we want to put this to use? Don't worry, we got you covered.
 
-The code snippet below assumes that you have installed your SSH key into the server's meta data with the key 'ssh_key'.
+The code snippet below assumes that you have installed your SSH key into the server's meta data with the key 'ssh_public_key'.
 
 ```python
 import cloudsigma
@@ -226,7 +226,7 @@ import os
 import stat
 
 metadata = cloudsigma.metadata.GetServerMetadata().get()
-ssh_key = metadata['meta']['ssh_key']
+ssh_key = metadata['meta']['ssh_public_key']
 
 # Define paths
 home = os.path.expanduser("~")
