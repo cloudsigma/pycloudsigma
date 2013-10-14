@@ -3,7 +3,7 @@ import os
 import stat
 
 metadata = cloudsigma.metadata.GetServerMetadata().get()
-ssh_key = metadata['meta']['ssh_key']
+ssh_key = metadata['meta']['ssh_public_key']
 
 # Define paths
 home = os.path.expanduser("~")
