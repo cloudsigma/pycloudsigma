@@ -69,9 +69,9 @@ class ResourceBase(object):
         url = self._get_url() + uuid + '/'
         return self.c.put(url, data, return_list=False)
 
-    def delete(self, uuid):
+    def delete(self, uuid, query_params=None):
         url = self._get_url() + uuid
-        return self.c.delete(url)
+        return self.c.delete(url, query_params)
 
     def _action(self, uuid, action, data=None):
         if uuid is None:
