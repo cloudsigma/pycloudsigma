@@ -11,7 +11,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='cloudsigma',
-    version=0.2,
+    version=__version__,
     packages=[
         'cloudsigma',
     ],
