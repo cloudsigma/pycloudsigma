@@ -1,6 +1,5 @@
-__author__ = 'islavov'
 import cloudsigma.resource as cr
-import cloudsigma.errors as errors
+from cloudsigma import errors
 import unittest
 from nose.plugins.attrib import attr
 import time
@@ -13,6 +12,7 @@ LOG = logging.getLogger(__name__)
 
 @attr('acceptance_test')
 class StatefulResourceTestBase(unittest.TestCase):
+    TIMEOUT_DRIVE_CREATED = 2*60
     TIMEOUT_DRIVE_CLONING = 20*60
     TIMEOUT_DRIVE_DELETED = 3*60
 
@@ -34,35 +34,27 @@ class StatefulResourceTestBase(unittest.TestCase):
         if p_name is None:
             raise SkipTest('A persistent_drive_name must be stated in the client configuration to execute this test')
 
-        puuid = None
-        av_drives = cr.Drive().list_detail()
-        for drive in av_drives:
-            if p_name in drive['name']:
-                puuid = drive['uuid']
-                break
+        def _filter_drives(av_drives):
+            for drive in av_drives:
+                if p_name in drive['name'] and drive['status'] in ('mounted', 'unmounted', 'cloning_src', ):
+                    return drive['uuid']
+            return None
+
+        puuid = _filter_drives(cr.Drive().list_detail())
+        if puuid is None:
+            puuid = _filter_drives(cr.LibDrive().list_detail())
+            if puuid is not None:
+                client_drives = cr.Drive()
+                clone_drive_def = {
+                    'name':p_name,
+                }
+                cloned_drive = client_drives.clone(puuid, clone_drive_def)
+                self._wait_for_status(cloned_drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING, client=client_drives)
+                puuid = cloned_drive['uuid']
 
         if puuid is None:
             raise SkipTest("There is no drive matching {}".format(p_name))
-        return puuid, p_pass
 
-    def _get_persistent_image_uuid_and_pass(self):
-        # Get a good persistant test image
-        p_name = config.get('persistent_drive_name')
-        p_pass = config.get('persistent_drive_ssh_password')
-
-        if p_name is None:
-            raise SkipTest('A persistent_drive_name must be stated in the client configuration to execute this test')
-
-        puuid = None
-        av_drives = cr.Drive().list_detail()
-        for drive in av_drives:
-            if drive['name'].startswith(p_name) or p_name == drive['uuid']:
-                puuid = drive['uuid']
-                LOG.debug('Drive %r selected for persistent image', drive)
-                break
-
-        if puuid is None:
-            raise SkipTest("There is no drive matching {}".format(p_name))
         return puuid, p_pass
 
     def _verify_list(self, resource, should_be_found, client=None):
@@ -235,7 +227,7 @@ class StatefulResourceTestBase(unittest.TestCase):
                 status = drive['status']
                 if status == 'mounted':
                     mounted.append(drive['uuid'])
-                elif status == 'unmounted':
+                elif status in ('unmounted', 'uploading'):
                     drive_client.delete(drive['uuid'])
                     deleting.append(drive['uuid'])
                 else:
@@ -252,3 +244,4 @@ class StatefulResourceTestBase(unittest.TestCase):
 
         if inter:
             LOG.error('The drives {} are stuck in intermediate states and cannot be deleted.'.format(inter))
+

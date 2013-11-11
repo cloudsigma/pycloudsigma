@@ -9,6 +9,7 @@ class ResourceBase(object):
     def __init__(self, *args, **kwargs):
         self.c = GenericClient(*args, **kwargs)
 
+
     def attach_response_hook(self, func):
         self.c.response_hook = func
 
@@ -35,7 +36,7 @@ class ResourceBase(object):
     def list(self, query_params=None):
         url = self._get_url()
         _query_params = {
-            'limit': 0,  # get all results, do not use pagination
+            'limit': 0, # get all results, do not use pagination
         }
         if query_params:
             _query_params.update(query_params)
@@ -44,7 +45,7 @@ class ResourceBase(object):
     def list_detail(self, query_params=None):
         url = self._get_url() + 'detail/'
         _query_params = {
-            'limit': 0,  # get all results, do not use pagination
+            'limit': 0, # get all results, do not use pagination
         }
         if query_params:
             _query_params.update(query_params)
@@ -61,9 +62,10 @@ class ResourceBase(object):
             raise TypeError('%r is not should be of type list, tuple or dict' % data)
         return res_data
 
-    def create(self, data):
+    def create(self, data, query_params=None):
+        query_params = query_params or {}
         url = self._get_url()
-        return self.c.post(url, self._pepare_data(data), return_list=False)
+        return self.c.post(url, self._pepare_data(data), return_list=False, query_params=query_params)
 
     def update(self, uuid, data):
         url = self._get_url() + uuid + '/'
@@ -71,14 +73,22 @@ class ResourceBase(object):
 
     def delete(self, uuid, query_params=None):
         url = self._get_url() + uuid
-        return self.c.delete(url, query_params)
+        return self.c.delete(url, query_params=query_params)
 
-    def _action(self, uuid, action, data=None):
+    def _action(self, uuid, action, data=None, query_params=None):
+        query_params = query_params or {}
+        q_params = {'do': action}
+        q_params.update(query_params)
+
         if uuid is None:
             url = self._get_url() + 'action/'
         else:
             url = self._get_url() + uuid + '/action/'
-        return self.c.post(url, data, query_params={'do': action}, return_list=False)
+        return self.c.post(url,
+                           data,
+                           query_params=q_params,
+                           return_list=False
+        )
 
 
 class Profile(ResourceBase):
@@ -91,16 +101,104 @@ class Profile(ResourceBase):
         return self.c.put(self._get_url(), data, return_list=False)
 
 
-class LibDrive(ResourceBase):
+class GlobalContext(ResourceBase):
+    resource_name = 'global_context'
+
+    def get(self):
+        return self.c.get(self._get_url(), return_list=False)
+
+    def update(self, data):
+        return self.c.post(self._get_url(), data, return_list=False)
+
+
+
+class DriveBase(ResourceBase):
+    def clone_by_name(self, name, data=None, avoid=None):
+        """
+        Clone a drive by its name
+
+        :param name:
+            Source drive for the clone. This can match one and only one drive.
+        :param data:
+            Clone drive options. Refer to API docs for possible options.
+        :param avoid:
+            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the clone on a different
+            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
+            to the drives attached to the server.
+        :return:
+            Cloned drive definition.
+        """
+
+        drives = [d for d in self.list_detail() if d['name'] == name]
+        if not drives:
+            raise TypeError("There is no drive with name %s" % name)
+        if len(drives) > 1:
+            raise TypeError("There is more than one drive with name %s, please specify a UUID" % name)
+        return self.clone(drives[0]['uuid'], data=data, avoid=avoid)
+
+
+    def clone(self, uuid, data=None, avoid=None):
+        """
+        Clone a drive.
+
+        :param uuid:
+            Source drive for the clone.
+        :param data:
+            Clone drive options. Refer to API docs for possible options.
+        :param avoid:
+            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the clone on a different
+            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
+            to the drives attached to the server.
+        :return:
+            Cloned drive definition.
+        """
+        data = data or {}
+        query_params = {}
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] =  ','.join(avoid)
+
+        return self._action(uuid, 'clone', data, query_params=query_params)
+
+class LibDrive(DriveBase):
     resource_name = 'libdrives'
 
 
-class Drive(ResourceBase):
+class Drive(DriveBase):
     resource_name = 'drives'
 
-    def clone(self, uuid, data):
-        return self._action(uuid, 'clone', data)
+    def resize(self, uuid, data=None):
+        """
+        Resize a drive. Raises an error if drive is mounted on a running server or unavailable.
+        :param uuid:
+            UUID of the drive.
+        :param data:
+            Drive definition containing the new size.
+        :return:
+        """
+        data = data or {}
+        return self._action(uuid, 'resize', data)
 
+    def create(self, data, avoid=None):
+        """
+        Create a drive.
+
+        :param data:
+            Drive definition.
+        :param avoid:
+            A list of drive or server uuids to avoid for the new drive. Avoid attempts to put the drive on a different
+            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
+            to the drives attached to the server.
+        :return:
+            New drive definition.
+        """
+        query_params = {}
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] = ','.join(avoid)
+        return super(Drive, self).create(data, query_params=query_params)
 
 class Server(ResourceBase):
     resource_name = 'servers'
@@ -115,19 +213,19 @@ class Server(ResourceBase):
         return self._action(uuid,
                             'stop',
                             data={}     # Workaround API issue - see TUR-1346
-                            )
+        )
 
     def restart(self, uuid):
         return self._action(uuid,
                             'restart',
                             data={}     # Workaround API issue - see TUR-1346
-                            )
+        )
 
     def shutdown(self, uuid):
         return self._action(uuid,
                             'shutdown',
                             data={}     # Workaround API issue - see TUR-1346
-                            )
+        )
 
     def runtime(self, uuid):
         url = self._get_url() + uuid + '/runtime/'
@@ -139,10 +237,75 @@ class Server(ResourceBase):
     def close_vnc(self, uuid):
         return self._action(uuid, 'close_vnc', data={})
 
-    def clone(self, uuid, data=None):
-        data = data or {}
-        return self._action(uuid, 'clone', data=data)
+    def clone(self, uuid, data=None, avoid=None):
+        """
+        Clone a server. Attached disk drives get cloned and attached to the new server, and attached cdroms get
+        attached to the new server (without cloning).
 
+        :param uuid:
+            Source server for the clone.
+        :param data:
+            Clone server options. Refer to API docs for possible options.
+        :param avoid:
+            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the cloned drives on a
+            different physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally
+            expanded to the drives attached to the server.
+        :return:
+            Cloned server definition.
+        """
+        data = data or {}
+        query_params = {}
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] =  ','.join(avoid)
+
+        return self._action(uuid, 'clone', data=data, query_params=query_params)
+
+    def delete(self, uuid, recurse=None):
+        """
+        Deletes a server.
+
+        :param uuid:
+            uuid of the server to delete
+        :param recurse:
+            option to recursively delete attached drives. Possible values are 'all_drives', 'disks'. It is
+            possible to use one of the supplied convenience functions: delete_with_all_drives, delete_with_disks,
+            delete_with_cdroms
+
+        :return:
+        """
+        query_params = {}
+        if recurse is not None:
+            query_params.update(recurse=recurse)
+        if not query_params:
+            query_params = None
+
+        return super(Server, self).delete(uuid, query_params=query_params)
+
+    def delete_with_all_drives(self, uuid):
+        """
+        Deletes a server with all attached drives.
+        :param uuid: uuid of the server to delete
+        :return:
+        """
+        return self.delete(uuid, recurse='all_drives')
+
+    def delete_with_disks(self, uuid):
+        """
+        Deletes a server with all attached drives with media='disk'.
+        :param uuid: uuid of the server to delete
+        :return:
+        """
+        return self.delete(uuid, recurse='disks')
+
+    def delete_with_cdroms(self, uuid):
+        """
+        Deletes a server with all attached drives with media='cdrom'.
+        :param uuid: uuid of the server to delete
+        :return:
+        """
+        return self.delete(uuid, recurse='cdroms')
 
 class VLAN(ResourceBase):
     resource_name = 'vlans'
@@ -183,24 +346,48 @@ class AuditLog(ResourceBase):
 class Licenses(ResourceBase):
     resource_name = 'licenses'
 
-
 class Capabilites(ResourceBase):
     resource_name = 'capabilities'
-
 
 class Accounts(ResourceBase):
     resource_name = 'accounts'
 
     def authenticate_asynchronous(self):
-        return self._action(None, 'authenticate_asynchronous', data={})  # data empty see TUR-1346
+        return self._action(None, 'authenticate_asynchronous', data={}) # data empty see TUR-1346
 
 
 class CurrentUsage(ResourceBase):
     resource_name = 'currentusage'
 
 
-class Tags(ResourceBase):
+class Snapshot(ResourceBase):
+    resource_name = 'snapshots'
 
+    def clone(self, uuid, data=None, avoid=None):
+        """
+        Clone a drive.
+
+        :param uuid:
+            Source drive for the clone.
+        :param data:
+            Clone drive options. Refer to API docs for possible options.
+        :param avoid:
+            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the clone on a different
+            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
+            to the drives attached to the server.
+        :return:
+            Cloned drive definition.
+        """
+        data = data or {}
+        query_params = {}
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] = ','.join(avoid)
+
+        return self._action(uuid, 'clone', data, query_params=query_params)
+
+class Tags(ResourceBase):
     resource_name = 'tags'
 
     def list_resource(self, uuid, resource_name):
@@ -269,6 +456,20 @@ class Websocket(object):
         ret = self.wait({"resource_type": resource_type})[-1]
         return cls().get_from_url(ret['resource_uri'])
 
-    def wait_obj_type(self, resource_type, cls, timeout=None):
-        ret = self.wait({"resource_type": resource_type})[-1]
-        return cls().get_from_url(ret['resource_uri'])
+    def wait_obj_uri(self, resource_uri, cls, timeout=None):
+        ret = self.wait({"resource_uri": resource_uri})
+        return cls().get_from_url(resource_uri)
+
+    def wait_obj_wrapper(self, waiter, args, kwargs=None, timeout=None, extra_filter=lambda x: True):
+        if timeout is None:
+            timeout = self.timeout
+        if kwargs is None:
+            kwargs = {}
+        while timeout > 0:
+            start_t = time.time()
+            kwargs['timeout'] = timeout
+            frame = waiter(*args, **kwargs)
+            if extra_filter(frame):
+                return frame
+            timeout = timeout - (time.time() - start_t)
+        raise WebsocketTimeoutError('Timeout reached when waiting for events')

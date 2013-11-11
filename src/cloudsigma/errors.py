@@ -1,6 +1,3 @@
-__author__ = 'islavov'
-
-
 class ApiClientError(Exception):
     pass
 

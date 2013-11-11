@@ -4,14 +4,14 @@ import simplejson
 import logging
 
 from websocket import create_connection
-from cloudsigma.conf import config
-import cloudsigma.errors as errors
+from .conf import config
+from . import errors
 
 LOG = logging.getLogger(__name__)
 
 
 class GenericClient(object):
-    """Handles all low level HTTP, authentication, parsing and error handling.
+    """Handles all low level HTTP, authentication, parsing and error handling. 
     """
     LOGIN_METHOD_BASIC = 'basic'
     LOGIN_METHOD_SESSION = 'session'
@@ -19,7 +19,7 @@ class GenericClient(object):
         LOGIN_METHOD_BASIC,
         LOGIN_METHOD_SESSION,
     )
-
+    
     def __init__(self, api_endpoint=None, username=None, password=None, login_method=LOGIN_METHOD_BASIC):
         self.api_endpoint = api_endpoint if api_endpoint else config['api_endpoint']
         self.username = username if username else config['username']
@@ -30,7 +30,7 @@ class GenericClient(object):
         self._session = None
         self.resp = None
         self.response_hook = None
-
+        
     def _login_session(self):
         raise NotImplementedError()
 
@@ -66,23 +66,23 @@ class GenericClient(object):
             raise errors.ClientError(resp.status_code, resp.text)
         elif resp.status_code / 100 == 5:
             raise errors.ServerError(resp.status_code, resp.text)
-
+        
         return resp_data
 
     def _get_req_args(self, body=None, query_params=None):
         kwargs = {}
         if self.login_method == self.LOGIN_METHOD_BASIC:
             kwargs['auth'] = (self.username, self.password)
-
+            
         kwargs['headers'] = {
             'content-type': 'application/json',
             'user-agent': 'CloudSigma turlo client',
         }
-
+        
         if query_params:
             if 'params' not in kwargs:
                 kwargs['params'] = {}
-            kwargs['params'].update(query_params)
+            kwargs['params'].update(query_params)            
 
         if self.response_hook is not None:
             kwargs['hooks'] = {
@@ -98,10 +98,10 @@ class GenericClient(object):
         return requests
 
     def get(self, url, query_params=None, return_list=False):
-        kwargs = self._get_req_args(query_params=query_params)
+        kwargs = self._get_req_args(query_params=query_params)           
         self.resp = self.http.get(self._get_full_url(url), **kwargs)
         return self._process_response(self.resp, return_list)
-
+    
     def put(self, url, data, query_params=None, return_list=False):
         kwargs = self._get_req_args(body=data, query_params=query_params)
         self.resp = self.http.put(self._get_full_url(url), data=simplejson.dumps(data), **kwargs)
@@ -111,7 +111,7 @@ class GenericClient(object):
         kwargs = self._get_req_args(body=data, query_params=query_params)
         self.resp = self.http.post(self._get_full_url(url), data=simplejson.dumps(data), **kwargs)
         return self._process_response(self.resp, return_list)
-
+    
     def delete(self, url, query_params=None):
         self.resp = self.http.delete(self._get_full_url(url), **self._get_req_args(query_params=query_params))
         return self._process_response(self.resp)
