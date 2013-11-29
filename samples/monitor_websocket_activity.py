@@ -1,6 +1,6 @@
 from cloudsigma.generic import GenericClient
 from cloudsigma.resource import Websocket
-from cloudsigma.errors import ClientError
+from cloudsigma.errors import ClientError, PermissionError
 
 ws = Websocket(timeout=None)
 client = GenericClient()
@@ -14,4 +14,9 @@ while True:
         print 'Received Action: %s' % get_action
         print 'Result:\n%s' % client.get(action_uri)
     except ClientError as e:
-        print 'Error retrieving: %s' % e
+        if e.args[0] == 404:
+            print "Resource %s was deleted" % action_uri
+        else:
+            print 'Error retrieving: %s' % e
+    except PermissionError as e:
+        print "No permissions for resource %s" % action_uri
