@@ -111,31 +111,12 @@ class GlobalContext(ResourceBase):
         return self.c.post(self._get_url(), data, return_list=False)
 
 
+class LibDrive(ResourceBase):
+    resource_name = 'libdrives'
 
-class DriveBase(ResourceBase):
-    def clone_by_name(self, name, data=None, avoid=None):
-        """
-        Clone a drive by its name
 
-        :param name:
-            Source drive for the clone. This can match one and only one drive.
-        :param data:
-            Clone drive options. Refer to API docs for possible options.
-        :param avoid:
-            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the clone on a different
-            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
-            to the drives attached to the server.
-        :return:
-            Cloned drive definition.
-        """
-
-        drives = [d for d in self.list_detail() if d['name'] == name]
-        if not drives:
-            raise TypeError("There is no drive with name %s" % name)
-        if len(drives) > 1:
-            raise TypeError("There is more than one drive with name %s, please specify a UUID" % name)
-        return self.clone(drives[0]['uuid'], data=data, avoid=avoid)
-
+class Drive(ResourceBase):
+    resource_name = 'drives'
 
     def clone(self, uuid, data=None, avoid=None):
         """
@@ -160,13 +141,6 @@ class DriveBase(ResourceBase):
             query_params['avoid'] =  ','.join(avoid)
 
         return self._action(uuid, 'clone', data, query_params=query_params)
-
-class LibDrive(DriveBase):
-    resource_name = 'libdrives'
-
-
-class Drive(DriveBase):
-    resource_name = 'drives'
 
     def resize(self, uuid, data=None):
         """
@@ -322,6 +296,11 @@ class FirewallPolicy(ResourceBase):
 class Subscriptions(ResourceBase):
     resource_name = 'subscriptions'
 
+    def extend(self, uuid, data=None):
+        return self._action(uuid, 'extend', data or {})
+
+class SubscriptionCalculator(Subscriptions):
+    resource_name = 'subscriptioncalculator'
 
 class Ledger(ResourceBase):
     resource_name = 'ledger'
@@ -358,6 +337,34 @@ class Accounts(ResourceBase):
 
 class CurrentUsage(ResourceBase):
     resource_name = 'currentusage'
+
+
+class Snapshot(ResourceBase):
+    resource_name = 'snapshots'
+
+    def clone(self, uuid, data=None, avoid=None):
+        """
+        Clone a drive.
+
+        :param uuid:
+            Source drive for the clone.
+        :param data:
+            Clone drive options. Refer to API docs for possible options.
+        :param avoid:
+            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the clone on a different
+            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
+            to the drives attached to the server.
+        :return:
+            Cloned drive definition.
+        """
+        data = data or {}
+        query_params = {}
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] = ','.join(avoid)
+
+        return self._action(uuid, 'clone', data, query_params=query_params)
 
 
 class Snapshot(ResourceBase):
@@ -473,3 +480,7 @@ class Websocket(object):
                 return frame
             timeout = timeout - (time.time() - start_t)
         raise WebsocketTimeoutError('Timeout reached when waiting for events')
+
+    def wait_for_status(self, uri, resource, status, timeout=30):
+        return self.wait_obj_wrapper(self.wait_obj_uri, (uri, resource), timeout=timeout,
+                                     extra_filter=lambda x: x['status'] == status)
