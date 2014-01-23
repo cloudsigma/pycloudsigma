@@ -305,6 +305,9 @@ class SubscriptionCalculator(Subscriptions):
 class Ledger(ResourceBase):
     resource_name = 'ledger'
 
+class Usage(ResourceBase):
+    resource_name = 'usage'
+
 
 class Balance(ResourceBase):
     resource_name = 'balance'
