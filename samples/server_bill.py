@@ -45,7 +45,6 @@ def get_per_server_usage(start_time, end_time):
     usage_list = []
     i = 0
     for i in range(7, interval, 7):
-        print i
         usage_list.extend(usage_client.list(dict(poll_time__gt=end_time - timedelta(days=i),
                                                  poll_time__lt=end_time - timedelta(days=i - 7))))
     if interval % 7 != 0:
