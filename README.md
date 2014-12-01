@@ -289,6 +289,44 @@ while True:
 
 [Download](https://raw.github.com/cloudsigma/pycloudsigma/master/samples/monitor_websocket_activity.py)
 
+## Sample: A CLI for taking snapshots
+
+One handy functionality in our API is the ability to take snapshots of a drive. Since the drive can be running while you take the snapshot, combined with the fact that you only pay for the delta between the original disk and the snapshot, this becomes a very powerful backup tool.
+
+Using the snippet below, you can easily create automated backups. All you need to do is to run the snapshot blow in an automated fashion, such as using the crontab.
+
+
+```python
+import cloudsigma
+import sys
+from time import sleep
+
+snapshot = cloudsigma.resource.Snapshot()
+snapshot_done = False
+
+if len(sys.argv) < 3:
+    print '\nUsage: ./snapshot.py drive-uuid snapshot-name\n'
+    sys.exit(1)
+
+snapshot_data = {
+    'drive': sys.argv[1],
+    'name': sys.argv[2],
+}
+
+create_snapshot = snapshot.create(snapshot_data)
+
+while not snapshot_done:
+    snapshot_status = snapshot.get(create_snapshot['uuid'])
+
+    if snapshot_status['status'] == 'available':
+        snapshot_done = True
+        print '\nSnapshot successfully created\n'
+    else:
+        sleep(1)
+```
+
+[Download](https://raw.github.com/cloudsigma/pycloudsigma/master/samples/snapshot.py)
+
 ## Running the tests
 
 There must be a VM available by the name that matches `persistent_drive_name`. This VM should be a server with SSH installed, where one can be log in as `root` with the password set in `persistent_drive_ssh_password`.
