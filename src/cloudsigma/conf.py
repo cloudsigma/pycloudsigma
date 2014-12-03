@@ -6,4 +6,5 @@ CONFIG_LOCATION = os.getenv('CLOUDSIGMA_CONFIG',
                             )
 
 from configobj import ConfigObj
+
 config = ConfigObj(CONFIG_LOCATION)

@@ -1,14 +1,14 @@
 import socket
 import time
-from cloudsigma.generic import GenericClient, WebsocketClient
+
+from cloudsigma.generic import get_client, WebsocketClient, GenericClient
 
 
 class ResourceBase(object):
     resource_name = None
 
     def __init__(self, *args, **kwargs):
-        self.c = GenericClient(*args, **kwargs)
-
+        self.c = get_client()(*args, **kwargs)
 
     def attach_response_hook(self, func):
         self.c.response_hook = func
@@ -36,7 +36,7 @@ class ResourceBase(object):
     def list(self, query_params=None):
         url = self._get_url()
         _query_params = {
-            'limit': 0, # get all results, do not use pagination
+            'limit': 0,  # get all results, do not use pagination
         }
         if query_params:
             _query_params.update(query_params)
@@ -45,7 +45,7 @@ class ResourceBase(object):
     def list_detail(self, query_params=None):
         url = self._get_url() + 'detail/'
         _query_params = {
-            'limit': 0, # get all results, do not use pagination
+            'limit': 0,  # get all results, do not use pagination
         }
         if query_params:
             _query_params.update(query_params)
@@ -56,7 +56,7 @@ class ResourceBase(object):
         if isinstance(data, (list, tuple)):
             res_data = {'objects': data}
         elif isinstance(data, (dict,)):
-            if not data.has_key('objects'):
+            if 'objects' not in data:
                 res_data = {'objects': [data]}
         else:
             raise TypeError('%r is not should be of type list, tuple or dict' % data)
@@ -88,7 +88,7 @@ class ResourceBase(object):
                            data,
                            query_params=q_params,
                            return_list=False
-        )
+                           )
 
 
 class Profile(ResourceBase):
@@ -109,6 +109,17 @@ class GlobalContext(ResourceBase):
 
     def update(self, data):
         return self.c.post(self._get_url(), data, return_list=False)
+
+
+class NotificationContact(ResourceBase):
+    resource_name = 'notification_contacts'
+
+
+class NotificationPreference(ResourceBase):
+    resource_name = 'notification_preferences'
+
+    def update(self, data):
+        return self.c.put(self._get_url(), data, return_list=True)
 
 
 class LibDrive(ResourceBase):
@@ -138,7 +149,7 @@ class Drive(ResourceBase):
         if avoid:
             if isinstance(avoid, basestring):
                 avoid = [avoid]
-            query_params['avoid'] =  ','.join(avoid)
+            query_params['avoid'] = ','.join(avoid)
 
         return self._action(uuid, 'clone', data, query_params=query_params)
 
@@ -174,6 +185,7 @@ class Drive(ResourceBase):
             query_params['avoid'] = ','.join(avoid)
         return super(Drive, self).create(data, query_params=query_params)
 
+
 class Server(ResourceBase):
     resource_name = 'servers'
 
@@ -186,20 +198,20 @@ class Server(ResourceBase):
     def stop(self, uuid):
         return self._action(uuid,
                             'stop',
-                            data={}     # Workaround API issue - see TUR-1346
-        )
+                            data={}  # Workaround API issue - see TUR-1346
+                            )
 
     def restart(self, uuid):
         return self._action(uuid,
                             'restart',
-                            data={}     # Workaround API issue - see TUR-1346
-        )
+                            data={}  # Workaround API issue - see TUR-1346
+                            )
 
     def shutdown(self, uuid):
         return self._action(uuid,
                             'shutdown',
-                            data={}     # Workaround API issue - see TUR-1346
-        )
+                            data={}  # Workaround API issue - see TUR-1346
+                            )
 
     def runtime(self, uuid):
         url = self._get_url() + uuid + '/runtime/'
@@ -210,6 +222,12 @@ class Server(ResourceBase):
 
     def close_vnc(self, uuid):
         return self._action(uuid, 'close_vnc', data={})
+
+    def open_console(self, uuid):
+        return self._action(uuid, 'open_console', data={})
+
+    def close_console(self, uuid):
+        return self._action(uuid, 'close_console', data={})
 
     def clone(self, uuid, data=None, avoid=None):
         """
@@ -232,7 +250,7 @@ class Server(ResourceBase):
         if avoid:
             if isinstance(avoid, basestring):
                 avoid = [avoid]
-            query_params['avoid'] =  ','.join(avoid)
+            query_params['avoid'] = ','.join(avoid)
 
         return self._action(uuid, 'clone', data=data, query_params=query_params)
 
@@ -281,6 +299,12 @@ class Server(ResourceBase):
         """
         return self.delete(uuid, recurse='cdroms')
 
+class BServer(Server):
+    resource_name = 'bservers'
+
+class ServersAvailabilityGroups(ResourceBase):
+    resource_name = 'servers/availability_groups'
+
 class VLAN(ResourceBase):
     resource_name = 'vlans'
 
@@ -299,14 +323,22 @@ class Subscriptions(ResourceBase):
     def extend(self, uuid, data=None):
         return self._action(uuid, 'extend', data or {})
 
+
 class SubscriptionCalculator(Subscriptions):
     resource_name = 'subscriptioncalculator'
 
+    def get_price(self, amount, period, resource_type):
+        data = dict(
+            amount=amount,
+            period=period,
+            resource=resource_type
+        )
+        resp = self.create(data)
+        return resp['price']
+
+
 class Ledger(ResourceBase):
     resource_name = 'ledger'
-
-class Usage(ResourceBase):
-    resource_name = 'usage'
 
 
 class Balance(ResourceBase):
@@ -328,14 +360,21 @@ class AuditLog(ResourceBase):
 class Licenses(ResourceBase):
     resource_name = 'licenses'
 
+
 class Capabilites(ResourceBase):
     resource_name = 'capabilities'
+
 
 class Accounts(ResourceBase):
     resource_name = 'accounts'
 
     def authenticate_asynchronous(self):
-        return self._action(None, 'authenticate_asynchronous', data={}) # data empty see TUR-1346
+        return self._action(None, 'authenticate_asynchronous', data={})  # data empty see TUR-1346
+
+    def create(self, email, promo_code=None):
+        self.c._session = None
+        self.c.login_method = GenericClient.LOGIN_METHOD_NONE
+        return self._action(None, 'create', data={'email': email, 'promo': promo_code})
 
 
 class CurrentUsage(ResourceBase):
@@ -370,33 +409,6 @@ class Snapshot(ResourceBase):
         return self._action(uuid, 'clone', data, query_params=query_params)
 
 
-class Snapshot(ResourceBase):
-    resource_name = 'snapshots'
-
-    def clone(self, uuid, data=None, avoid=None):
-        """
-        Clone a drive.
-
-        :param uuid:
-            Source drive for the clone.
-        :param data:
-            Clone drive options. Refer to API docs for possible options.
-        :param avoid:
-            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the clone on a different
-            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
-            to the drives attached to the server.
-        :return:
-            Cloned drive definition.
-        """
-        data = data or {}
-        query_params = {}
-        if avoid:
-            if isinstance(avoid, basestring):
-                avoid = [avoid]
-            query_params['avoid'] = ','.join(avoid)
-
-        return self._action(uuid, 'clone', data, query_params=query_params)
-
 class Tags(ResourceBase):
     resource_name = 'tags'
 
@@ -417,11 +429,20 @@ class Tags(ResourceBase):
         return self.list_resource(uuid, 'vlans')
 
 
+class Acls(ResourceBase):
+    resource_name = 'acls'
+
+
+class Jobs(ResourceBase):
+    resource_name = 'jobs'
+
+
 class WebsocketTimeoutError(Exception):
     pass
 
 
 class Websocket(object):
+
     def __init__(self, timeout=10):
         self.timeout = timeout
         accounts = Accounts()
@@ -487,3 +508,11 @@ class Websocket(object):
     def wait_for_status(self, uri, resource, status, timeout=30):
         return self.wait_obj_wrapper(self.wait_obj_uri, (uri, resource), timeout=timeout,
                                      extra_filter=lambda x: x['status'] == status)
+
+
+class BurstUsage(ResourceBase):
+    resource_name = 'burstusage'
+
+
+class Locations(ResourceBase):
+    resource_name = 'locations'

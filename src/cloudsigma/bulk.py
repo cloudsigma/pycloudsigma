@@ -5,12 +5,16 @@ from .conf import config
 from .resource import Drive, Server, LibDrive
 from .generic import GenericClient
 
+
 LOG = logging.getLogger(__name__)
 
+
 class BulkBase(object):
+
     """
     Common base class for all stress operations.
     """
+
     def __init__(self, id_prefix):
         """
         @param id_prefix: a string prefix that is used in created artifacts names
@@ -29,24 +33,25 @@ class BulkBase(object):
         """
         self.id_counter += 1
         return "%s-%.5d" % (self.id_prefix, self.id_counter)
-    
-    def filter_by_name_uuid(self, resp, name_or_uuid):        
+
+    def filter_by_name_uuid(self, resp, name_or_uuid):
         def _filter(d):
             return (d['uuid'] == name_or_uuid) or (name_or_uuid in d['name'])
-        
+
         candidates = filter(_filter, resp)
         return candidates
 
+
 class DrivesBulk(BulkBase):
     CREATE_DRIVE_MEDIA = config.get('CREATE_DRIVE_MEDIA', 'disk')
-    CREATE_DRIVE_SIZE = config.get('CREATE_DRIVE_SIZE', 10*1024**3)
+    CREATE_DRIVE_SIZE = config.get('CREATE_DRIVE_SIZE', 10 * 1024 ** 3)
     CREATE_DRIVE_DESCRIPTION = config.get('CREATE_DRIVE_DESCRIPTION', 'some descr')
-    
+
     def __init__(self, media=CREATE_DRIVE_MEDIA, size=CREATE_DRIVE_SIZE,
-                description=CREATE_DRIVE_DESCRIPTION,
-                *args, **kwargs):
+                 description=CREATE_DRIVE_DESCRIPTION,
+                 *args, **kwargs):
         super(DrivesBulk, self).__init__(*args, **kwargs)
-        
+
         self.media = media
         self.size = size
         self.description = description
@@ -58,8 +63,8 @@ class DrivesBulk(BulkBase):
             "size": self.size,
             "meta": {
                 "description": self.description,
-                }
             }
+        }
 
     def create(self, count):
         """Creates a number of new drives
@@ -71,8 +76,8 @@ class DrivesBulk(BulkBase):
         for _ in range(count):
             d = self.generate_definition()
             req = {
-                    "objects": [d,],
-                }
+                "objects": [d, ],
+            }
             resp = self.c_drive.create(req)
             LOG.info('Created drive %r', resp['name'])
             drives.append(resp)
@@ -81,7 +86,7 @@ class DrivesBulk(BulkBase):
     def delete(self, uuid, name):
         self.c_drive.delete(uuid)
         LOG.info('Deleted drive %r', name)
-        
+
     def wipe(self):
         """Deletes all artifacts created by this identification prefix
         """
@@ -102,12 +107,12 @@ class DrivesBulk(BulkBase):
         drives = []
         for _ in range(count):
             d = {
-                    "media": source_drive['media'], 
-                    "name": self.get_name(), 
-                    "size": source_drive['size'],
-                    "meta": source_drive['meta'],
-                    "affinities": source_drive['affinities'],
-                }
+                "media": source_drive['media'],
+                "name": self.get_name(),
+                "size": source_drive['size'],
+                "meta": source_drive['meta'],
+                "affinities": source_drive['affinities'],
+            }
             resp = self.c_drive.clone(source_drive['uuid'], d)
             LOG.info('Cloned drive %r from %r', resp['name'], source_drive['name'])
             drives.append(resp)
@@ -126,15 +131,17 @@ class DrivesBulk(BulkBase):
         statuses = is_clonning_finished()
         while 'cloning_dst' in statuses:
             time.sleep(10)
-            drives_statuses_string = '\n'.join(['{}: {}'.format(uuid, status) for uuid, status in zip(drives_uuids, statuses)])
+            drives_statuses_string = '\n'.join(
+                ['{}: {}'.format(uuid, status) for uuid, status in zip(drives_uuids, statuses)])
             LOG.info('Waiting for all drives cloning from {} to finish cloning:\n{}'.format(source_drive['uuid'],
-                     drives_statuses_string))
+                                                                                            drives_statuses_string))
             statuses = is_clonning_finished()
 
         # All finished print final statuses
-        drives_statuses_string = '\n'.join(['{}: {}'.format(uuid, status) for uuid, status in zip(drives_uuids, statuses)])
+        drives_statuses_string = '\n'.join(
+            ['{}: {}'.format(uuid, status) for uuid, status in zip(drives_uuids, statuses)])
         LOG.info('Finished cloning {} to drives:\n{}'.format(source_drive['uuid'], drives_statuses_string))
-            
+
         return drives
 
     def clone_all(self, count=1):
@@ -145,12 +152,12 @@ class DrivesBulk(BulkBase):
                 continue
             for i in range(int(count)):
                 d = {
-                        "media": drv['media'], 
-                        "name": 'clone_%s_%i' % (drv['name'], i), 
-                        "size": drv['size'],
-                        "meta": drv['meta'],
-                        "affinities": drv['affinities'],
-                    }
+                    "media": drv['media'],
+                    "name": 'clone_%s_%i' % (drv['name'], i),
+                    "size": drv['size'],
+                    "meta": drv['meta'],
+                    "affinities": drv['affinities'],
+                }
                 resp = self.c_drive.clone(drv['uuid'], d)
                 LOG.info('Cloned drive %r from %r', resp['name'], drv['name'])
                 drives.append(resp)
@@ -159,7 +166,7 @@ class DrivesBulk(BulkBase):
     def get_list(self):
         """Queries the drives in this account with the given prefix
         """
-        resp = self.c_drive.list(query_params={"fields":'name,uuid'})
+        resp = self.c_drive.list(query_params={"fields": 'name,uuid'})
         resp = filter(lambda x: x['name'].startswith(self.id_prefix), resp)
         return resp
 
@@ -176,13 +183,12 @@ class DrivesBulk(BulkBase):
             candidates = self.filter_by_name_uuid(resp, name_or_uuid)
         if len(candidates) == 0:
             raise Exception("Could not find %s with lookup key %s" % (
-                    self.__class__.__name__, name_or_uuid))
+                self.__class__.__name__, name_or_uuid))
         return candidates[0]
 
     def get_by_uuids(self, uuids):
         """Queries the drives in this account with the given prefix
         """
-        resp = self.c_drive.list_detail(query_params={"fields":'name,uuid,status'})
+        resp = self.c_drive.list_detail(query_params={"fields": 'name,uuid,status'})
         resp = filter(lambda x: x['uuid'] in uuids, resp)
         return resp
-

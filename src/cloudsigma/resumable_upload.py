@@ -1,19 +1,22 @@
-import requests
-import os
 import datetime
 import Queue
 import threading
 import time
 from logging import getLogger
 
+import requests
+import os
+
 from .resource import Drive, ResourceBase
 
+
 LOG = getLogger(__name__)
+
 
 class Upload(ResourceBase):
     resource_name = 'initupload'
 
-    def __init__(self, image_path, drive_uuid=None, chunk_size=5*1024**2, n_threads=4,
+    def __init__(self, image_path, drive_uuid=None, chunk_size=5 * 1024 ** 2, n_threads=4,
                  drive_name=None, drive_media='disk', progress_callback=None, progress_report_interval=1,
                  generic_client_kwargs=None):
         """
@@ -59,7 +62,7 @@ class Upload(ResourceBase):
         self.progress_lock = threading.RLock()
         self.uploaded_size = 0
         self.progress_callback = progress_callback
-        self.progress_report_interval=progress_report_interval
+        self.progress_report_interval = progress_report_interval
 
     @property
     def remote_size(self):
@@ -114,13 +117,13 @@ class Upload(ResourceBase):
         if n_chunks > 0:
             for chunk in xrange(n_chunks - 1):  # excludes last chunk and starts from 1. last chunk is bigger
                 offset = chunk * self.chunk_size
-                yield chunk+1, offset, self.chunk_size
+                yield chunk + 1, offset, self.chunk_size
 
             last_chunk = n_chunks - 1
             last_offset = last_chunk * self.chunk_size
             last_chunk_size = self.file_size - last_offset
 
-            yield last_chunk+1, last_offset, last_chunk_size
+            yield last_chunk + 1, last_offset, last_chunk_size
         else:  # chunk size bigger than file size
             yield 1, 0, self.file_size
 
@@ -149,8 +152,6 @@ class Upload(ResourceBase):
                 # equal to task_done calls
                 self.queue.task_done()
 
-
-
     def upload_chunk(self, chunk_number, chunk_offset, real_chunk_size):
         upload_url = self.c._get_full_url('/{}/{}/upload/'.format('drives', self.drive_uuid))
         with open(self.image_path, 'r') as f:
@@ -171,14 +172,13 @@ class Upload(ResourceBase):
                 }
             }
 
-
             res = requests.get(upload_url, params=resumable_js_data, **kwargs)
 
             if 199 < res.status_code < 300:
                 LOG.debug('Chunk {}:{}:{} already uploaded'.format(chunk_number, chunk_offset, real_chunk_size))
                 return
 
-            resumable_js_data_multipart = resumable_js_data.items() +[('file', str(file_data))]
+            resumable_js_data_multipart = resumable_js_data.items() + [('file', str(file_data))]
 
             res = requests.post(upload_url, files=resumable_js_data_multipart, **kwargs)
             if 199 < res.status_code < 300:
@@ -188,7 +188,6 @@ class Upload(ResourceBase):
                 raise Exception('Wrong status {} returned for request '
                                 '{}:{}:{}. Response body is:'
                                 '\n{}'.format(res.status_code, chunk_number, chunk_offset, real_chunk_size, res.text))
-
 
     def update_progress(self, uploaded_size):
         self.progress_lock.acquire()
