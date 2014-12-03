@@ -21,6 +21,13 @@ Since this file includes credentials, it is highly recommended that you set the 
 
 ## Installation
 
+
+### Mac OS X
+
+```bash
+sudo pip install cloudsigma
+```
+
 ### Ubuntu
 
 ```bash
@@ -55,7 +62,11 @@ server = cloudsigma.resource.Server()
 #### Create a drive
 
 ```python
-test_disk = { 'name': 'test_drive', 'size': 1073741824 * 1, 'media': 'disk'}
+test_disk = {
+    'name': 'test_drive',
+    'size': 1073741824 * 1,
+    'media': 'disk'
+}
 my_test_disk = drive.create(test_disk)
 ```
 
@@ -84,7 +95,12 @@ pprint(my_test_disk)
 ### Create a server without a drive
 
 ```python
-test_server = { 'name': 'My Test Server', 'cpu': 1000, 'mem': 512 * 1024 ** 2, 'vnc_password': 'test_server' }
+test_server = {
+    'name': 'My Test Server',
+    'cpu': 1000,
+    'mem': 512 * 1024 ** 2,
+    'vnc_password': 'test_server'
+}
 my_test_server = server.create(test_server)
 ```
 
@@ -122,19 +138,31 @@ We could of course have attached this above, but in order to keep things simple,
 Attach the drive:
 
 ```python
-my_test_server['drives'] = [ { 'boot_order': 1, 'dev_channel': '0:0', 'device': 'virtio', 'drive': my_test_disk['uuid'] } ]
+my_test_server['drives'] = [{
+    'boot_order': 1,
+    'dev_channel': '0:0',
+    'device': 'virtio',
+    'drive': my_test_disk['uuid']
+}]
 ```
 
 Attach a public network interface:
 
 ```python
-my_test_server['nics']  = [ { 'ip_v4_conf': { 'conf': 'dhcp', 'ip': None }, 'model': 'virtio', 'vlan': None} ]
+my_test_server['nics']  = [{
+    'ip_v4_conf': {
+        'conf': 'dhcp',
+        'ip': None
+    },
+    'model': 'virtio',
+    'vlan': None
+}]
 ```
 
 **Optional**: Add a user-defined SSH key:
 
 ```python
-my_test_server['meta'] = { 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoHuFV7Skbu9G1iVokXBdB+zN4wEbqGKijlExUPmxuB6MXDBWCmXUEmMRLerTm3a8QMA+8Vyech0/TWQscYvs8xzM/HkRAqKwhhjPMRlfHgy+QKjRD8P989AYMnNcSYe8DayElFXoLYKwsDmoUcsnbf5H+f6agiBkWqz5odb8fvc2rka0X7+p3tDyKFJRt2OugPqLR9fhWddie65DBxAcycnScoqLW0+YAxakfWlKDUqwerIjuRN2VJ7T7iHywcXhvAU060CEtpWW7bE9T/PIoj/N753QDLYrmqtvqAQqU0Ss5rIqS8bYJXyM0zTKwIuncek+k+b9ButBf/Nx5ehjN vagrant@precise64'}
+my_test_server['meta'] = {'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoHuFV7Skbu9G1iVokXBdB+zN4wEbqGKijlExUPmxuB6MXDBWCmXUEmMRLerTm3a8QMA+8Vyech0/TWQscYvs8xzM/HkRAqKwhhjPMRlfHgy+QKjRD8P989AYMnNcSYe8DayElFXoLYKwsDmoUcsnbf5H+f6agiBkWqz5odb8fvc2rka0X7+p3tDyKFJRt2OugPqLR9fhWddie65DBxAcycnScoqLW0+YAxakfWlKDUqwerIjuRN2VJ7T7iHywcXhvAU060CEtpWW7bE9T/PIoj/N753QDLYrmqtvqAQqU0Ss5rIqS8bYJXyM0zTKwIuncek+k+b9ButBf/Nx5ehjN vagrant@precise64'}
 ```
 
 Push the settings:
@@ -326,6 +354,8 @@ while not snapshot_done:
 ```
 
 [Download](https://raw.github.com/cloudsigma/pycloudsigma/master/samples/snapshot.py)
+
+There's also another script named [snapshot_purge.py](https://raw.githubusercontent.com/cloudsigma/pycloudsigma/master/samples/snapshot_purge.py) that can used for automatically purging old snapshots.
 
 ## Running the tests
 
