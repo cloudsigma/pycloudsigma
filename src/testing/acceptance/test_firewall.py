@@ -89,7 +89,7 @@ class FirewallPolicyTest(unittest.TestCase):
             for key in rules:
                 match_a = str(full_policy['rules'][idx][key])
                 match_b = rules[key]
-                print match_a, match_b
+                print(match_a, match_b)
                 self.assertTrue(match_a.startswith(match_b))
 
         with self.dump_response('fwpolicy_list'):

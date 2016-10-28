@@ -258,5 +258,5 @@ if __name__ == '__main__':
 
     LOG.info('\nUpload finished successfully')
 
-    print res
+    print(res)
     sys.exit()

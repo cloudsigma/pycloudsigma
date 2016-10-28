@@ -266,11 +266,11 @@ def get_permission(path):
     return oct(os.stat(ssh_path)[stat.ST_MODE])[-4:]
 
 if not os.path.isdir(ssh_path):
-    print 'Creating folder %s' % ssh_path
+    print('Creating folder %s' % ssh_path)
     os.makedirs(ssh_path)
 
 if get_permission(ssh_path) != 0700:
-    print 'Setting permission for %s' % ssh_path
+    print('Setting permission for %s' % ssh_path)
     os.chmod(ssh_path, 0700)
 
 # We'll have to assume that there might be other keys installed.
@@ -280,7 +280,7 @@ with open(authorized_keys, 'a') as auth_file:
     auth_file.write(ssh_key + '\n')
 
 if get_permission(authorized_keys) != 0600:
-    print 'Setting permission for %s' % authorized_keys
+    print('Setting permission for %s' % authorized_keys)
     os.chmod(authorized_keys, 0600)
 ```
 
@@ -298,21 +298,21 @@ from cloudsigma.errors import ClientError, PermissionError
 ws = Websocket(timeout=None)
 client = GenericClient()
 
-print "Display Websocket activity.\nExit with ^C."
+print("Display Websocket activity.\nExit with ^C.")
 
 while True:
     try:
         get_action = ws.ws.recv()
         action_uri = get_action['resource_uri']
-        print 'Received Action: %s' % get_action
-        print 'Result:\n%s' % client.get(action_uri)
+        print('Received Action: %s' % get_action)
+        print('Result:\n%s' % client.get(action_uri))
     except ClientError as e:
         if e.args[0] == 404:
-            print "Resource %s was deleted" % action_uri
+            print("Resource %s was deleted" % action_uri)
         else:
-            print 'Error retrieving: %s' % e
+            print('Error retrieving: %s' % e)
     except PermissionError as e:
-        print "No permissions for resource %s" % action_uri
+        print("No permissions for resource %s" % action_uri)
 ```
 
 [Download](https://raw.github.com/cloudsigma/pycloudsigma/master/samples/monitor_websocket_activity.py)
@@ -333,7 +333,7 @@ snapshot = cloudsigma.resource.Snapshot()
 snapshot_done = False
 
 if len(sys.argv) < 3:
-    print '\nUsage: ./snapshot.py drive-uuid snapshot-name\n'
+    print('\nUsage: ./snapshot.py drive-uuid snapshot-name\n')
     sys.exit(1)
 
 snapshot_data = {
@@ -348,7 +348,7 @@ while not snapshot_done:
 
     if snapshot_status['status'] == 'available':
         snapshot_done = True
-        print '\nSnapshot successfully created\n'
+        print('\nSnapshot successfully created\n')
     else:
         sleep(1)
 ```
@@ -360,4 +360,3 @@ There's also another script named [snapshot_purge.py](https://raw.githubusercont
 ## Running the tests
 
 There must be a VM available by the name that matches `persistent_drive_name`. This VM should be a server with SSH installed, where one can be log in as `root` with the password set in `persistent_drive_ssh_password`.
-

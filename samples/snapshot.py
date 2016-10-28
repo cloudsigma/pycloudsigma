@@ -6,7 +6,7 @@ snapshot = cloudsigma.resource.Snapshot()
 snapshot_done = False
 
 if len(sys.argv) < 3:
-    print '\nUsage: ./snapshot.py drive-uuid snapshot-name\n'
+    print('\nUsage: ./snapshot.py drive-uuid snapshot-name\n')
     sys.exit(1)
 
 snapshot_data = {
@@ -21,6 +21,6 @@ while not snapshot_done:
 
     if snapshot_status['status'] == 'available':
         snapshot_done = True
-        print '\nSnapshot successfully created\n'
+        print('\nSnapshot successfully created\n')
     else:
         sleep(1)

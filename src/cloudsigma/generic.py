@@ -1,4 +1,9 @@
-import urlparse
+try:
+    import urlparse
+except ImportError:
+    # Python >= 3
+    import urllib.parse as urlparse
+
 import logging
 import copy
 

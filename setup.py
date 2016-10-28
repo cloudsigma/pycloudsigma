@@ -2,7 +2,8 @@
 
 from setuptools import setup
 
-execfile('src/cloudsigma/version.py')
+with open('src/cloudsigma/version.py') as version_file:
+	exec(version_file.read())
 
 
 with open('requirements.txt') as f:
