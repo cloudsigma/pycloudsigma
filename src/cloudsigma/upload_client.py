@@ -31,7 +31,7 @@ class UploadError(Exception):
 
 
 def console_progress():
-    spinner_pos = itertools.cycle(xrange(3))
+    spinner_pos = itertools.cycle(range(3))
 
     def output_progress(uploaded, total):
         pos_char = {0: '/', 1: '-', 2: '\\'}
@@ -129,7 +129,7 @@ class CSUploader(object):
         """
         n_chunks = self.size // self.chunk_size
         if n_chunks > 0:
-            for chunk in xrange(n_chunks - 1):  # excludes las chunk and starts from 1. last chunk is bigger
+            for chunk in range(n_chunks - 1):  # excludes las chunk and starts from 1. last chunk is bigger
                 offset = chunk * self.chunk_size
                 yield chunk, offset, self.chunk_size
 
@@ -151,7 +151,7 @@ class CSUploader(object):
         return int(json.loads(response.read())['size'])
 
     def start_threads(self):
-        for _ in xrange(self.n_threads):
+        for _ in range(self.n_threads):
             download_thread = threading.Thread(target=self.upload_enqueued)
             download_thread.setDaemon(True)
             download_thread.start()
