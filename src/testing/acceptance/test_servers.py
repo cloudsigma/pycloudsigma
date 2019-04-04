@@ -2,7 +2,7 @@ import unittest
 import time
 from nose.plugins.attrib import attr
 import socket
-import urlparse
+import urllib.parse as urlparse
 from testing.acceptance.common import StatefulResourceTestBase
 
 import cloudsigma.resource as cr
@@ -43,7 +43,7 @@ class ServerTest(ServerTestBase):
             'cpu': 1000,
             'mem': 512 * 1024 ** 2,
             'vnc_password': 'testserver',
-            }) for i in xrange(50)]
+            }) for i in range(50)]
         with DumpResponse(clients=[self.client])('server_list'):
             servers_list = self.client.list(query_params={'limit': 20})
             self.assertEqual(20, len(servers_list))
@@ -569,7 +569,7 @@ class ServerTest(ServerTestBase):
                 break
 
         #Checking if VNC initial handshake is sent
-        vnc_ver = vnc_sock.recv(16)
+        vnc_ver = vnc_sock.recv(16).decode()
         self.assertRegexpMatches(vnc_ver, 'RFB \d+\.\d+\\n')
         vnc_sock.close()
     
