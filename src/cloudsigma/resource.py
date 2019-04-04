@@ -3,6 +3,10 @@ import time
 
 from cloudsigma.generic import get_client, WebsocketClient, GenericClient
 
+try:
+  basestring
+except NameError:
+  basestring = str
 
 class ResourceBase(object):
     resource_name = None
