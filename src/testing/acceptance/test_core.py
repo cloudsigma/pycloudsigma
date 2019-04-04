@@ -156,7 +156,7 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         with fabric_settings(**fab_kwargs):
             # TODO: Remove this retry when proper guest context client is implemented
             res_string = None
-            for retry in xrange(5):
+            for retry in range(5):
                 if retry > 0:
                     LOG.warning('Retrying guest context single value execution {}'.format(retry))
                 ctx_val_res = tasks.execute(
@@ -175,7 +175,7 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
             res_string = ''
             # TODO: Remove this retry when proper guest context client is implemented
             ctx_res_json = {}
-            for retry in xrange(5):
+            for retry in range(5):
                 if retry > 0:
                     LOG.warning('Retrying guest context whole definition execution {}'.format(retry))
                 try:
