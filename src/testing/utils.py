@@ -3,7 +3,7 @@ from cloudsigma.conf import config
 import simplejson
 import logging
 import os
-import urlparse
+import urllib.parse as urlparse
 from testing.templates import get_template
 
 __author__ = 'islavov'
