@@ -98,7 +98,7 @@ class SnapshotsTest(StatefulResourceTestBase):
 
         # Create 3 drives
         drive_uuids = []
-        for _ in xrange(3):
+        for _ in range(3):
             d = self.drive_client.create(drive_def)
             drive_uuids.append(d['uuid'])
 
