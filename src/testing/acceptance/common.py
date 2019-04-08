@@ -104,8 +104,15 @@ class StatefulResourceTestBase(unittest.TestCase):
 
         count_waited = 0
         while True:
-            if client.get(uuid) is None:
-                break
+            try:
+                client.get(uuid)
+            except errors.ClientError as exc:
+                if exc[0] == 404:
+                    break
+                else:
+                    raise
+            #if client.get(uuid) is None:
+            #    break
             self.assertLessEqual(count_waited, timeout/WAIT_STEP, 'Resource did not delete %d seconds' % (timeout))
             time.sleep(WAIT_STEP)
             count_waited += 1
