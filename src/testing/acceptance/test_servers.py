@@ -681,6 +681,8 @@ class ServerTest(ServerTestBase):
 
     def test_bulk_start_stop_and_usage(self):
 
+        time.sleep(60)
+
         # Check if usage is correct
         usage_client = cr.CurrentUsage()
         curr_cpu_usage = usage_client.list()['usage']['cpu']['using']
@@ -690,17 +692,22 @@ class ServerTest(ServerTestBase):
                           'cpu': 500,
                           'mem': 512 * 1024 ** 2,
                           'vnc_password': 'testserver',
-                      } for i in range(40)]
+                      } for i in range(10)]
 
-        # Creating 40 servers
+        # Creating 10 servers
         servers = self.client.create(server_req)
         cpu_usage = sum(g['cpu'] for g in server_req) + curr_cpu_usage
+
+        # Subtract your own cpu usage from cpu_usage
+        # 1 vm (4000 MHz) - 1000 MHz free tier
+        #cpu_usage = cpu_usage - (4000 - 1000)
 
         # Starting the servers
         for server in servers:
             self.client.start(server['uuid'])
 
-        time.sleep(2)           # give a bit of time for usage to update
+        time.sleep(120)           # give a bit of time for usage to update
+
         self.assertEqual(cpu_usage, usage_client.list()['usage']['cpu']['using'])
 
         # Wait for status running
@@ -872,7 +879,7 @@ class ServerTest(ServerTestBase):
 
 @attr('stress_test')
 class ServerStressTest(StatefulResourceTestBase):
-    SERVER_COUNT = 60
+    SERVER_COUNT = 10
 
     def setUp(self):
         super(ServerStressTest, self).setUp()
@@ -928,9 +935,10 @@ class ServerStressTest(StatefulResourceTestBase):
             self._wait_for_status(server['uuid'], status='running', client=self.server_client)
 
         for server in self.server_client.list_detail():
-            sip_map[server['uuid']] = server['runtime']['nics'][0]['ip_v4']
+            try:
+                sip_map[server['uuid']] = server['nics'][0]['ip_v4_conf']['ip']['uuid']
+            except:
+                sip_map[server['uuid']] = server['nics'][0]['runtime']['ip_v4']
 
         for server in servers:
             self.server_client.stop(server['uuid'])
-
-
