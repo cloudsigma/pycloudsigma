@@ -52,7 +52,7 @@ class ResponseDumper(object):
                     "request_template",
                     resp.request,
                     data,
-                    path_url=urllib.unquote(resp.request.path_url)))
+                    path_url=urllib.parse.unquote(resp.request.path_url)))
 
         with open(os.path.join(self.dump_path, "response_{}".format(fname)), "w") as fl:
             LOG.info("Dumping response to {}".format(fl.name))
