@@ -7,3 +7,4 @@ requests==2.5.0
 simplejson==3.6.5
 six==1.8.0
 websocket-client==0.22.0
+fabric==2.4.0
