@@ -2,7 +2,7 @@ from nose.plugins.attrib import attr
 from testing.acceptance.common import StatefulResourceTestBase
 from testing.utils import DumpResponse
 import cloudsigma.resource as cr
-
+import time
 
 @attr('acceptance_test')
 class tagsTest(StatefulResourceTestBase):
@@ -58,6 +58,8 @@ class tagsTest(StatefulResourceTestBase):
         with self.dump_response('tags_list_resource'):
             self.client.servers(tag1['uuid'])
 
+        time.sleep(30)
+        
         dc.delete(drive['uuid'])
         sc.delete(server1['uuid'])
         sc.delete(server2['uuid'])
