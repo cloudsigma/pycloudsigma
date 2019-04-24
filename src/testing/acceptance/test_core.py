@@ -1,8 +1,9 @@
 import json
 import os
+import re
 from nose.plugins.attrib import attr
 from testing.utils import DumpResponse
-
+from invoke.exceptions import UnexpectedExit
 from . import common
 
 from cloudsigma import resource as cr
@@ -90,52 +91,50 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         ip1 = g1['nics'][0]['runtime']['ip_v4']["uuid"]
         ip2 = g2['nics'][0]['runtime']['ip_v4']["uuid"]
 
-        self._wait_for_open_socket(ip1, 22, timeout=60, close_on_success=True)
-        self._wait_for_open_socket(ip2, 22, timeout=40, close_on_success=True)
+        self._wait_for_open_socket(ip1, 22, timeout=300, close_on_success=True)
+        self._wait_for_open_socket(ip2, 22, timeout=300, close_on_success=True)
 
-        from fabric.api import settings as fabric_settings
-        from fabric import tasks, api
+        from fabric import Connection
 
-        fab_kwargs = {
-            "warn_only": True,
-            "abort_on_prompts": True,
-            "use_ssh_config": p_pass is None
-        }
-        LOG.debug('Using fabric config {}'.format(fab_kwargs))
-        if p_pass is not None:
-            fab_kwargs['password'] = p_pass
-            LOG.debug('Using a password to SSH to the servers ( not using ssh config )')
+        LOG.debug('Using a password to SSH to the servers ( not using ssh config )')
 
-        with fabric_settings(**fab_kwargs):
-            LOG.debug('Changing hostnames and restarting avahi on guest 1')
-            set_hostname = 'hostname {} && service avahi-daemon restart'
-            tasks.execute(
-                api.run,
-                set_hostname.format("atom1"),
-                hosts=["root@%s" % ip1]
-            )
+        self.ssh_host1 = "root@" + ip1
+        connection_host1 = Connection(host=self.ssh_host1,
+                                      connect_kwargs={"password": p_pass})
 
-            LOG.debug('Changing hostnames and restarting avahi on guest 2')
-            tasks.execute(
-                api.run,
-                set_hostname.format("atom2"),
-                hosts=["root@%s" % ip2]
-            )
+        self.ssh_host2 = "root@" + ip2
+        connection_host2 = Connection(host=self.ssh_host2,
+                                      connect_kwargs={"password": p_pass})
 
-            LOG.debug('Ping the two hosts via private network')
-            ping_res = tasks.execute(
-                api.run,
-                "ping atom2.local -c 1",
-                hosts=["root@%s" % ip1]
-            )
-            self.assertEqual(ping_res.values()[0].return_code, 0, 'Could not ping host atom2 from atom1')
+        LOG.debug('Changing hostnames and restarting avahi on guest 1')
 
-            LOG.debug('Halt both servers')
-            tasks.execute(
-                api.run,
-                "halt",
-                hosts=["root@%s" % ip1, "root@%s" % ip2]
-            )
+        self.run_command = 'hostname {} && service avahi-daemon restart'.format("atom1")
+        self.cmd_exec_res = connection_host1.run(self.run_command).stderr.replace('\n', '')
+        print(self.cmd_exec_res)
+
+        LOG.debug('Changing hostnames and restarting avahi on guest 2')
+
+        self.run_command = 'hostname {} && service avahi-daemon restart'.format("atom2")
+        self.cmd_exec_res = connection_host2.run(self.run_command).stderr.replace('\n', '')
+        print(self.cmd_exec_res)
+
+        #LOG.debug('Ping the two hosts via private network')
+
+        #self.run_command = 'ping atom2.local -c 1'
+        #cmd_exec_res = connection_host1.run(self.run_command).stdout.replace('\n', '')
+        #self.assertEqual(cmd_exec_res, 0, 'Could not ping host atom2 from atom1')
+
+        LOG.debug('poweroff both servers')
+
+        self.run_command = 'poweroff'
+        with self.assertRaises(UnexpectedExit):
+            self.cmd_exec_res = connection_host1.run(self.run_command)
+        print(self.cmd_exec_res)
+
+        self.run_command = 'poweroff'
+        with self.assertRaises(UnexpectedExit):
+            self.cmd_exec_res = connection_host2.run(self.run_command)
+        print(self.cmd_exec_res)
 
         LOG.debug('Wait for complete shutdown')
         self._wait_for_status(g1['uuid'], 'stopped', client=sc, timeout=40)
@@ -152,66 +151,61 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         self._wait_deleted(d1['uuid'], client=dc)
         self._wait_deleted(d2_uuid, client=dc)
 
-    def get_single_ctx_val(self, command, expected_val, fab_kwargs, ip1, fabric_settings, tasks, api):
-        with fabric_settings(**fab_kwargs):
-            # TODO: Remove this retry when proper guest context client is implemented
-            res_string = None
-            for retry in range(5):
-                if retry > 0:
-                    LOG.warning('Retrying guest context single value execution {}'.format(retry))
-                ctx_val_res = tasks.execute(
-                    api.run,
-                    command,
-                    hosts=["root@%s" % ip1]
-                )
-
-                res_string = ctx_val_res.values()[0]
-                if res_string == expected_val:
-                    break
+    def get_single_ctx_val(self, command, expected_val, connection):
+        # TODO: Remove this retry when proper guest context client is implemented
+        res_string = None
+        for retry in range(5):
+            if retry > 0:
+                LOG.warning('Retrying guest context single value execution {}'.format(retry))
+            ctx_val_res = connection.run(command)
+            res_string = ctx_val_res.stdout.replace('\n', '')
+            if res_string == expected_val:
+                break
         return res_string
 
-    def get_full_ctx(self, command, fab_kwargs, ip1, fabric_settings, tasks, api):
-        with fabric_settings(**fab_kwargs):
-            res_string = ''
-            # TODO: Remove this retry when proper guest context client is implemented
-            ctx_res_json = {}
-            for retry in range(5):
-                if retry > 0:
-                    LOG.warning('Retrying guest context whole definition execution {}'.format(retry))
-                try:
-                    ctx_res = tasks.execute(
-                        api.run,
-                        command,
-                        hosts=["root@%s" % ip1]
-                    )
-                    res_string = ctx_res.values()[0]
-                    ctx_res_json = json.loads(res_string)
-                except:
-                    continue
-                else:
-                    break
+    def get_full_ctx(self, command, connection):
+        #
+        res_string = ''
+        # TODO: Remove this retry when proper guest context client is implemented
+        ctx_res_json = {}
+        for retry in range(5):
+            if retry > 0:
+                LOG.warning('Retrying guest context whole definition execution {}'.format(retry))
+            try:
+                ctx_res = connection.run(command)
+                res_string = ctx_res.stdout.replace('\n', '')
+                res_string = re.sub('"{', "{", res_string)
+                res_string = re.sub('}"', "}", res_string)
+                ctx_res_json = json.loads(res_string)
+            except:
+                continue
+            else:
+                break
 
         return ctx_res_json, res_string
 
-    def dump_ctx_command(self, command, res_string, op_name, dump_path):
+    def dump_ctx_command(self, command, res_string, op_name,
+                         dump_path):
         with open(os.path.join(dump_path, 'request_' + op_name), 'w') as dump_file:
             dump_file.write(command)
         with open(os.path.join(dump_path, 'response_' + op_name), 'w') as dump_file:
             dump_file.write(res_string)
 
-    def check_key_retrieval(self, g_def, op_name, ctx_path, dump_path, fab_kwargs, ip1, fabric_settings, tasks, api):
+    def check_key_retrieval(self, g_def, op_name, ctx_path, dump_path,
+                            connection):
         command = self.command_template.format(ctx_path)
         expected_val = g_def
         for path_el in ctx_path.split('/'):
             if path_el:  # non-empty string
                 expected_val = expected_val.get(path_el)
-        res_string = self.get_single_ctx_val(command, expected_val, fab_kwargs, ip1, fabric_settings, tasks, api)
+        res_string = self.get_single_ctx_val(command, expected_val, connection)
         self.assertEqual(res_string, expected_val)
         self.dump_ctx_command(command, res_string, op_name, dump_path)
 
-    def check_all_retrieval(self, g_def, op_name, dump_path, fab_kwargs, ip1, fabric_settings, tasks, api):
+    def check_all_retrieval(self, g_def, op_name, dump_path, connection):
         command = self.command_template.format('')
-        ctx_res_json, res_string = self.get_full_ctx(command, fab_kwargs, ip1, fabric_settings, tasks, api)
+        ctx_res_json, res_string = self.get_full_ctx(command, connection)
+
         for k, v in g_def.items():
             if not isinstance(v, (list, dict)):
                 self.assertEqual(v, ctx_res_json[k])
@@ -273,24 +267,18 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
 
         g1 = sc.get(g1['uuid'])
 
-
         LOG.debug('Get the assigned ips')
         ip1 = g1['nics'][0]['runtime']['ip_v4']["uuid"]
 
-        self._wait_for_open_socket(ip1, 22, timeout=60, close_on_success=True)
+        self._wait_for_open_socket(ip1, 22, timeout=300, close_on_success=True)
 
-        from fabric.api import settings as fabric_settings
-        from fabric import tasks, api
+        from fabric import Connection
 
-        fab_kwargs = {
-            "warn_only": True,
-            "abort_on_prompts": True,
-            "use_ssh_config": p_pass is None
-        }
-        LOG.debug('Using fabric config {}'.format(fab_kwargs))
-        if p_pass is not None:
-            fab_kwargs['password'] = p_pass
-            LOG.debug('Using a password to SSH to the servers ( not using ssh config )')
+        self.ssh_host = "root@" + ip1
+        connection = Connection(host=self.ssh_host,
+                                connect_kwargs={"password": p_pass})
+
+        LOG.debug('Using a password to SSH to the servers ( not using ssh config )')
 
         dump_path = dump_response.response_dump.dump_path
 
@@ -301,23 +289,17 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         LOG.debug('Test the guest context')
 
         LOG.debug('Check single value retrieval')
-        self.check_key_retrieval(g_def, 'context_single_value', 'name', dump_path, fab_kwargs, ip1, fabric_settings,
-                                 tasks, api)
 
+        self.check_key_retrieval(g_def, 'context_single_value', 'name',
+                                 dump_path, connection)
 
-        ##########################################
         LOG.debug('Check key retrieval')
-        self.check_key_retrieval(g_def, 'context_single_value_ssh_key', '/meta/ssh_public_key', dump_path, fab_kwargs, ip1,
-                         fabric_settings, tasks, api)
+        self.check_key_retrieval(g_def, 'context_single_value_ssh_key',
+                                 '/meta/ssh_public_key', dump_path, connection)
 
-        ##########################################
         LOG.debug('Check complete context retrieval')
-        self.check_all_retrieval(g_def, 'context_all', dump_path, fab_kwargs, ip1, fabric_settings, tasks, api)
+        self.check_all_retrieval(g_def, 'context_all', dump_path, connection)
 
-        ##########################################
-        ##########################################
-        ##########################################
-        ##########################################
         LOG.debug('Check context dynamic update')
         g_def['name'] += '_renamed'
         g_def['meta']['another_key'] = 'a value or something'
@@ -327,35 +309,32 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
 
         LOG.debug('Check single value retrieval')
 
-        self.check_key_retrieval(g_def, 'context_single_value_dynamic', 'name', dump_path, fab_kwargs, ip1,
-                                fabric_settings, tasks, api)
+        self.check_key_retrieval(g_def, 'context_single_value_dynamic', 'name',
+                                 dump_path, connection)
 
-        ##########################################
         LOG.debug('Check key retrieval')
-        self.check_key_retrieval(g_def, 'context_single_value_another_key_dynamic', '/meta/another_key', dump_path,
-                                 fab_kwargs, ip1, fabric_settings, tasks, api)
+        self.check_key_retrieval(g_def,
+                                 'context_single_value_another_key_dynamic',
+                                 '/meta/another_key', dump_path, connection)
 
-        ##########################################
         LOG.debug('Check complete context retrieval')
-        self.check_all_retrieval(g_def, 'context_all_dynamic', dump_path, fab_kwargs, ip1, fabric_settings, tasks, api)
+        self.check_all_retrieval(g_def, 'context_all_dynamic',
+                                 dump_path, connection)
 
-        ###########################################
-        ###########################################
-        ###########################################
         with dump_response('update_global_context'):
             gcc.update({'new_global_key': 'new_global_val'})
 
         LOG.debug('Check global context retrieval')
-        command = self.command_template.format('/global_context/new_global_key')
+        command = self.command_template.format(
+            '/global_context/new_global_key')
         expected_val = 'new_global_val'
-        res_string = self.get_single_ctx_val(command, expected_val, fab_kwargs, ip1, fabric_settings, tasks, api)
+        res_string = self.get_single_ctx_val(command, expected_val, connection)
         self.assertEqual(res_string, expected_val)
-        self.dump_ctx_command(command, res_string, 'global_context_single_value', dump_path)
+        self.dump_ctx_command(command, res_string,
+                              'global_context_single_value', dump_path)
 
-        self.check_all_retrieval(g_def, 'global_context_all', dump_path, fab_kwargs, ip1, fabric_settings, tasks, api)
-
-
-
+        self.check_all_retrieval(g_def,
+                                 'global_context_all', dump_path, connection)
 
         LOG.debug('Stopping guest')
         sc.stop(g1['uuid'])
@@ -366,7 +345,7 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
 
         LOG.debug('Delete drive')
         dc.delete(d1['uuid'])
-        self._wait_deleted(d1['uuid'], client=dc)
 
+        self._wait_deleted(d1['uuid'], client=dc)
 
     # removed test_firewall because of flaky CloudSigma REST API.
