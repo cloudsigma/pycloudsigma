@@ -177,7 +177,7 @@ class GenericClient(object):
 
 class WebsocketClient(object):
 
-    def __init__(self, cookie, timeout=10):
+    def __init__(self, cookie, timeout=60):
         self.conn = create_connection(config['ws_endpoint'], timeout=timeout,
                                       header=['Cookie: async_auth=%s' % (cookie,)])
 
