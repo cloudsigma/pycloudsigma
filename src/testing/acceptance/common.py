@@ -14,7 +14,7 @@ LOG = logging.getLogger(__name__)
 class StatefulResourceTestBase(unittest.TestCase):
     TIMEOUT_DRIVE_CREATED = 2*60
     TIMEOUT_DRIVE_CLONING = 20*60
-    TIMEOUT_DRIVE_DELETED = 3*60
+    TIMEOUT_DRIVE_DELETED = 5*60
 
     def setUp(self):
         unittest.TestCase.setUp(self)
@@ -81,7 +81,7 @@ class StatefulResourceTestBase(unittest.TestCase):
             time.sleep(WAIT_STEP)
             count_waited += 1
 
-    def _wait_for_status(self, uuid, status, client=None, timeout=40):
+    def _wait_for_status(self, uuid, status, client=None, timeout=540):
         WAIT_STEP = 3
 
         if client is None:
@@ -111,13 +111,13 @@ class StatefulResourceTestBase(unittest.TestCase):
                     break
                 else:
                     raise
-            #if client.get(uuid) is None:
-            #    break
+            if client.get(uuid) is None:
+                break
             self.assertLessEqual(count_waited, timeout/WAIT_STEP, 'Resource did not delete %d seconds' % (timeout))
             time.sleep(WAIT_STEP)
             count_waited += 1
 
-    def _wait_for_open_socket(self, host, port, timeout=15, close_on_success=False):
+    def _wait_for_open_socket(self, host, port, timeout=300, close_on_success=False):
         import socket
         import time
 
@@ -147,7 +147,7 @@ class StatefulResourceTestBase(unittest.TestCase):
 
         return sock
 
-    def _wait_socket_close(self, host, port, timeout=15):
+    def _wait_socket_close(self, host, port, timeout=120):
         import socket
         import time
 
@@ -173,7 +173,8 @@ class StatefulResourceTestBase(unittest.TestCase):
 
     def _clean_servers(self):
         """
-        Removes all the servers in the acceptance test account ( containing 'test' keyword )
+        Removes all the servers in the acceptance test account
+        ( containing 'test' or 'stress_drive_iops' keyword )
 
         :return:
         """
@@ -183,7 +184,7 @@ class StatefulResourceTestBase(unittest.TestCase):
         deleting = []
         inter = []
         for server in server_client.list_detail():
-            if 'test' in server['name']:
+            if 'test' in server['name'] or 'stress_drive_iops' in server['name']:
                 status = server['status']
                 if status == 'running':
                     server_client.stop(server['uuid'])
@@ -215,7 +216,8 @@ class StatefulResourceTestBase(unittest.TestCase):
 
     def _clean_drives(self):
         """
-        Removes all the drives in the acceptance test account ( containing 'test' keyword )
+        Removes all the drives in the acceptance test account
+        ( containing 'test' or 'stress_atom_clone' keyword )
 
         :return:
         """
@@ -225,7 +227,7 @@ class StatefulResourceTestBase(unittest.TestCase):
         deleting = []
         inter = []
         for drive in drive_client.list_detail():
-            if 'test' in drive['name']:
+            if 'test' in drive['name'] or 'stress_atom_clone' in drive['name']:
                 status = drive['status']
                 if status == 'mounted':
                     mounted.append(drive['uuid'])
