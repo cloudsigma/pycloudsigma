@@ -66,15 +66,15 @@ class SnapshotsTest(StatefulResourceTestBase):
         with self.dump_response('drive_with_two_snapshots'):
             d = self.drive_client.get(drive_uuid)
 
-        self.assertItemsEqual([snap_uuid, another_snap_uuid], [s['uuid'] for s in d['snapshots']])
+        self.assertCountEqual([snap_uuid, another_snap_uuid], [s['uuid'] for s in d['snapshots']])
 
         with self.dump_response('snapshot_delete'):
             self.snap_client.delete(snap_uuid)
 
         self._wait_deleted(snap_uuid, client=self.snap_client)
-        with self.assertRaises(ClientError) as cm:
-            self.snap_client.get(snap_uuid)
-        self.assertEqual(cm.exception[0], 404)
+
+        # self.snap_client.get(snap_uuid) is None ?
+        self.assertIsNone(self.snap_client.get(snap_uuid))
 
         d = self.drive_client.get(drive_uuid)
         self.assertEqual(another_snap_uuid, d['snapshots'][0]['uuid'])
@@ -83,9 +83,8 @@ class SnapshotsTest(StatefulResourceTestBase):
 
         self._wait_deleted(drive_uuid, client=self.drive_client)
 
-        with self.assertRaises(ClientError) as cm:
-            self.snap_client.get(another_snap_uuid)
-        self.assertEqual(cm.exception[0], 404)
+        # self.snap_client.get(another_snap_uuid) is None ?
+        self.assertIsNone(self.snap_client.get(another_snap_uuid))
 
     @attr('docs_snippets')
     def test_snapshot_listing(self):
@@ -132,8 +131,8 @@ class SnapshotsTest(StatefulResourceTestBase):
         with self.dump_response('snapshots_in_drive_def'):
             snapshots_from_drive_def = self.drive_client.get(drive_uuids[0])['snapshots']
 
-        self.assertItemsEqual([s['uuid'] for s in drive_snapshots], [s['uuid'] for s in snapshots_from_drive_def])
-
+        self.assertCountEqual([s['uuid'] for s in drive_snapshots], [s['uuid'] for s in snapshots_from_drive_def])
+        
         for d_uuid in drive_uuids:
             self.drive_client.delete(d_uuid)
 
