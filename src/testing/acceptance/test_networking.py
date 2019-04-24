@@ -7,6 +7,8 @@ from testing.utils import DumpResponse
 
 @attr('acceptance_test')
 class VLANBasicTest(StatefulResourceTestBase):
+    """ Needs one VLAN in your subscription.
+    """
     def setUp(self):
         super(VLANBasicTest, self).setUp()
         self.client = cr.VLAN()
@@ -35,6 +37,8 @@ class VLANBasicTest(StatefulResourceTestBase):
 
 @attr('acceptance_test')
 class IPBasicTest(StatefulResourceTestBase):
+    """ Needs one IP address in your subscription.
+    """
     def setUp(self):
         super(IPBasicTest, self).setUp()
         self.client = cr.IP()
