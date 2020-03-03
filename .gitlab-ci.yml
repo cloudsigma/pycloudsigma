@@ -1,0 +1,12 @@
+image: python
+
+stages:
+  - test
+
+acceptance tests:
+  stage: test
+  before_script:
+    - pip install nose
+  script:
+    - nosetests -x
+
