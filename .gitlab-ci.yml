@@ -6,6 +6,7 @@ stages:
 acceptance tests:
   stage: test
   before_script:
+    - cp $CS_CONF $HOME/.cloudsigma.conf
     - python setup.py install
   script:
     - nosetests -x
