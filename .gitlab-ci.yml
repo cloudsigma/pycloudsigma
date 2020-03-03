@@ -9,5 +9,5 @@ acceptance tests:
     - cp $CS_CONF $HOME/.cloudsigma.conf
     - python setup.py install
   script:
-    - nosetests -x
+    - nosetests
 
