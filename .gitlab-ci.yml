@@ -6,6 +6,7 @@ stages:
 acceptance tests:
   stage: test
   before_script:
+    - pip install fabric
     - cp $CS_CONF $HOME/.cloudsigma.conf
     - grep -e api_endpoint -e username -e drive_name $HOME/.cloudsigma.conf
     - python setup.py install
