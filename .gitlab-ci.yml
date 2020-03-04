@@ -10,6 +10,7 @@ acceptance tests:
     - cp $CS_CONF $HOME/.cloudsigma.conf
     - grep -e api_endpoint -e username -e drive_name $HOME/.cloudsigma.conf
     - python setup.py install
+    - pip freeze
   script:
     - nosetests ./src/testing/acceptance/test_accounts.py
     - nosetests ./src/testing/acceptance/test_billing.py
