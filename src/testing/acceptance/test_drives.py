@@ -210,31 +210,6 @@ class DriveBasicTest(StatefulResourceTestBase):
         self._wait_deleted(cloned_drive['uuid'], timeout=60)
         self._wait_deleted(drive['uuid'], timeout=60)
 
-    def test_drive_clone_by_name(self):
-        drive_def = {
-            'name': 'test_drive_x_%s' % random.randint(0, 10000),
-            'size': '1024000000',
-            'media': 'disk',
-        }
-
-        drive = self.client.create(drive_def)
-        self._wait_for_status(drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
-
-        clone_drive_def = {
-            'name': 'test_drive_y',
-            'media': 'cdrom',
-            'affinities': [],
-        }
-        cloned_drive = self.client.clone_by_name(drive['name'], clone_drive_def)
-
-        self._wait_for_status(cloned_drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
-
-        self.client.delete(drive['uuid'])
-        self.client.delete(cloned_drive['uuid'])
-
-        self._wait_deleted(cloned_drive['uuid'], timeout=60)
-        self._wait_deleted(drive['uuid'], timeout=60)
-
     def test_drive_avoid(self):
         drive_def = {
             'name': 'test_drive_x',
