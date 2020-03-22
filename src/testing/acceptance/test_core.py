@@ -138,7 +138,9 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
             )
 
         LOG.debug('Wait for complete shutdown')
-        self._wait_for_status(g1['uuid'], 'stopped', client=sc, timeout=40)
+        sc.stop(g1['uuid'])
+        sc.stop(g2['uuid'])
+        self._wait_for_status(g1['uuid'], 'stopped', client=sc)
         self._wait_for_status(g2['uuid'], 'stopped', client=sc)
 
         LOG.debug('Deleting both guests')
