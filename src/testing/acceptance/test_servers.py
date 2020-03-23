@@ -701,7 +701,7 @@ class ServerTest(ServerTestBase):
             self.client.start(server['uuid'])
 
         time.sleep(2)           # give a bit of time for usage to update
-        self.assertEqual(cpu_usage, usage_client.list()['usage']['cpu']['using'])
+        self.assertEqual(cpu_usage, usage_client.list()['usage']['intel_cpu']['using'])
 
         # Wait for status running
         for server in servers:
