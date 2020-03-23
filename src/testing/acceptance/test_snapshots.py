@@ -74,7 +74,7 @@ class SnapshotsTest(StatefulResourceTestBase):
         self._wait_deleted(snap_uuid, client=self.snap_client)
         with self.assertRaises(ClientError) as cm:
             self.snap_client.get(snap_uuid)
-        self.assertEqual(cm.exception[0], 404)
+        self.assertEqual(cm.exception.status_code, 404)
 
         d = self.drive_client.get(drive_uuid)
         self.assertEqual(another_snap_uuid, d['snapshots'][0]['uuid'])
@@ -85,7 +85,7 @@ class SnapshotsTest(StatefulResourceTestBase):
 
         with self.assertRaises(ClientError) as cm:
             self.snap_client.get(another_snap_uuid)
-        self.assertEqual(cm.exception[0], 404)
+        self.assertEqual(cm.exception.status_code, 404)
 
     @attr('docs_snippets')
     def test_snapshot_listing(self):
