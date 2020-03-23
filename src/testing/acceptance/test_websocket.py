@@ -19,7 +19,7 @@ class WebsocketTest(unittest.TestCase):
             ret = ws.wait_obj_wrapper(ws.wait_obj_uri, (d['resource_uri'], resource.Drive), timeout=30,
                                       extra_filter=lambda x: False)
         except errors.ClientError as e:
-            if e.args[0] != 404:
+            if e.status_code != 404:
                 raise
 
     def test_guest(self):
@@ -38,7 +38,7 @@ class WebsocketTest(unittest.TestCase):
             g = ws.wait_obj_wrapper(ws.wait_obj_uri, (ret['resource_uri'], resource.Server), timeout=30,
                                     extra_filter=lambda x: False)
         except errors.ClientError as e:
-            if e.args[0] != 404:
+            if e.status_code != 404:
                 raise
 
     def test_guest_drive(self):
