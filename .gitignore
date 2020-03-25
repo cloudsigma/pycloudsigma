@@ -3,3 +3,8 @@
 build/
 dist/
 src/cloudsigma.egg-info
+.eggs/
+.idea/
+.noseids
+pycs_dumps/
+src/testing/acceptance/pycs_dumps/
