@@ -55,7 +55,7 @@ class ResourceBase(object):
         res_data = data
         if isinstance(data, (list, tuple)):
             res_data = {'objects': data}
-        elif isinstance(data, (dict,)):
+        elif isinstance(data, dict):
             if 'objects' not in data:
                 res_data = {'objects': [data]}
         else:

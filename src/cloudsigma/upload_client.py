@@ -38,7 +38,7 @@ def console_progress():
         progress = '{uploaded:0.1f} of {total:0.1f} MB ({percent:.0%})'.format(uploaded=uploaded / 1024.0 ** 2,
                                                                                total=total / 1024.0 ** 2,
                                                                                percent=1.0 * uploaded / total)
-        sys.stderr.write('\r{progress} {spinner}'.format(progress=progress, spinner=pos_char[spinner_pos.next() % 3]))
+        sys.stderr.write('\r{progress} {spinner}'.format(progress=progress, spinner=pos_char[next(spinner_pos) % 3]))
         sys.stderr.flush()
 
     return output_progress

@@ -18,9 +18,9 @@ if not os.path.isdir(ssh_path):
     print('Creating folder %s' % ssh_path)
     os.makedirs(ssh_path)
 
-if get_permission(ssh_path) != 0700:
+if get_permission(ssh_path) != 0o700:
     print('Setting permission for %s' % ssh_path)
-    os.chmod(ssh_path, 0700)
+    os.chmod(ssh_path, 0o700)
 
 # We'll have to assume that there might be other keys installed.
 # We could do something fancy, like checking if the key is installed already,
@@ -28,6 +28,6 @@ if get_permission(ssh_path) != 0700:
 with open(authorized_keys, 'a') as auth_file:
     auth_file.write(ssh_key + '\n')
 
-if get_permission(authorized_keys) != 0600:
+if get_permission(authorized_keys) != 0o600:
     print('Setting permission for %s' % authorized_keys)
-    os.chmod(authorized_keys, 0600)
+    os.chmod(authorized_keys, 0o600)

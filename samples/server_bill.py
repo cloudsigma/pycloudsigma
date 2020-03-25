@@ -7,8 +7,8 @@ import re
 
 import cloudsigma.resource as cr
 
-start_time = datetime(2014, 01, 1)
-end_time = datetime(2014, 02, 1)
+start_time = datetime(2014, 1, 1)
+end_time = datetime(2014, 2, 1)
 
 
 
