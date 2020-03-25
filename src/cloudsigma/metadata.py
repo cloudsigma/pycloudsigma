@@ -1,8 +1,9 @@
+from builtins import object
 import serial
 import json
 
 
-class GetServerMetadata:
+class GetServerMetadata(object):
     result = None
 
     def __init__(self):

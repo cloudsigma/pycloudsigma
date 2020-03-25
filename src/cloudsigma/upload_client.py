@@ -1,11 +1,19 @@
+from __future__ import division
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from builtins import next
+from builtins import range
+from builtins import object
+from past.utils import old_div
 import time
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import argparse
 import threading
-import Queue
+import queue
 import sys
 import datetime
-import urlparse
+import urllib.parse
 import logging
 import itertools
 import json
@@ -31,13 +39,13 @@ class UploadError(Exception):
 
 
 def console_progress():
-    spinner_pos = itertools.cycle(xrange(3))
+    spinner_pos = itertools.cycle(range(3))
 
     def output_progress(uploaded, total):
         pos_char = {0: '/', 1: '-', 2: '\\'}
-        progress = '{uploaded:0.1f} of {total:0.1f} MB ({percent:.0%})'.format(uploaded=uploaded / 1024.0 ** 2,
-                                                                               total=total / 1024.0 ** 2,
-                                                                               percent=1.0 * uploaded / total)
+        progress = '{uploaded:0.1f} of {total:0.1f} MB ({percent:.0%})'.format(uploaded=old_div(uploaded, 1024.0 ** 2),
+                                                                               total=old_div(total, 1024.0 ** 2),
+                                                                               percent=old_div(1.0 * uploaded, total))
         sys.stderr.write('\r{progress} {spinner}'.format(progress=progress, spinner=pos_char[next(spinner_pos) % 3]))
         sys.stderr.flush()
 
@@ -57,7 +65,7 @@ class CSUploader(object):
         self.drive_url = None
         self.n_threads = n_threads
         self.progress_callback = progress_callback
-        self.queue = Queue.Queue()
+        self.queue = queue.Queue()
         self.spinner_pos = 0
         self.opener = self.init_auth()
 
@@ -68,7 +76,7 @@ class CSUploader(object):
         self.init_drive_url_or_create_drive()
         LOG.info('Uploading {image_path} to {drive_url}'.format(drive_url=self.drive_url, image_path=self.image_path))
         LOG.info('Total size is {size:0.1f} MB. '
-                 'Number of chunks {n_chunks}.'.format(size=self.size / 1024.0 ** 2,
+                 'Number of chunks {n_chunks}.'.format(size=old_div(self.size, 1024.0 ** 2),
                                                        n_chunks=self.size // self.chunk_size))
 
         self.enqueue_chunks()
@@ -107,7 +115,7 @@ class CSUploader(object):
             'media': media
         }
         str_data = json.dumps(data)
-        req = urllib2.Request(url, data=str_data, headers=INIT_HEADERS)
+        req = urllib.request.Request(url, data=str_data, headers=INIT_HEADERS)
         response = self.opener.open(req)
         status = response.getcode()
         body = response.read()
@@ -129,7 +137,7 @@ class CSUploader(object):
         """
         n_chunks = self.size // self.chunk_size
         if n_chunks > 0:
-            for chunk in xrange(n_chunks - 1):  # excludes las chunk and starts from 1. last chunk is bigger
+            for chunk in range(n_chunks - 1):  # excludes las chunk and starts from 1. last chunk is bigger
                 offset = chunk * self.chunk_size
                 yield chunk, offset, self.chunk_size
 
@@ -146,12 +154,12 @@ class CSUploader(object):
             self.queue.put((chunk_number, chunk_offset, real_chunk_size))
 
     def get_drive_size(self):
-        req = urllib2.Request(self.drive_url, headers=INIT_HEADERS)
+        req = urllib.request.Request(self.drive_url, headers=INIT_HEADERS)
         response = self.opener.open(req)
         return int(json.loads(response.read())['size'])
 
     def start_threads(self):
-        for _ in xrange(self.n_threads):
+        for _ in range(self.n_threads):
             download_thread = threading.Thread(target=self.upload_enqueued)
             download_thread.setDaemon(True)
             download_thread.start()
@@ -172,18 +180,18 @@ class CSUploader(object):
     def upload_chunk(self, chunk_number, chunk_offset, real_chunk_size):
         try:
             rel_url = self.get_chunk_upload_link(chunk_number)
-        except urllib2.HTTPError as exc:
+        except urllib.error.HTTPError as exc:
             if exc.code != 416:
                 raise
             LOG.info('skipping chunk {} because it is already uploaded'.format(chunk_number))
             self.update_progress(real_chunk_size)
             return
-        parsed = urlparse.urlparse(self.drive_url)
+        parsed = urllib.parse.urlparse(self.drive_url)
         upload_url = '{}://{}/{}'.format(parsed.scheme, parsed.hostname, rel_url.lstrip('/'))
         with open(self.image_path, 'r') as f:
             f.seek(chunk_offset)
             data = f.read(real_chunk_size)
-            req = urllib2.Request(str(upload_url), str(data), headers=UPLOAD_HEADERS)
+            req = urllib.request.Request(str(upload_url), str(data), headers=UPLOAD_HEADERS)
             self.opener.open(req)
         self.update_progress(real_chunk_size)
 
@@ -199,7 +207,7 @@ class CSUploader(object):
     def get_chunk_upload_link(self, chunk_number):
         url = '{drive_url}/action/?do=upload_chunk'.format(drive_url=self.drive_url.rstrip('/'))
         data = json.dumps({'chunk_number': chunk_number, 'chunk_size': self.chunk_size})
-        req = urllib2.Request(url, data, headers=INIT_HEADERS)
+        req = urllib.request.Request(url, data, headers=INIT_HEADERS)
         self.opener = self.init_auth()
         response = self.opener.open(req)
         response_data = json.loads(response.read())
@@ -207,10 +215,10 @@ class CSUploader(object):
         return response_data['link']
 
     def init_auth(self):
-        password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
+        password_mgr = urllib.request.HTTPPasswordMgrWithDefaultRealm()
         password_mgr.add_password(None, self.api_url, self.username, self.password)
-        handler = urllib2.HTTPBasicAuthHandler(password_mgr)
-        return urllib2.build_opener(handler)
+        handler = urllib.request.HTTPBasicAuthHandler(password_mgr)
+        return urllib.request.build_opener(handler)
 
 
 if __name__ == '__main__':

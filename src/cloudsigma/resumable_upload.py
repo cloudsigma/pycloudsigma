@@ -1,5 +1,9 @@
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from builtins import range
 import datetime
-import Queue
+import queue
 import threading
 import time
 from logging import getLogger
@@ -57,7 +61,7 @@ class Upload(ResourceBase):
             'size': self.file_size
         }
         self.dc = Drive(**self.generic_client_kwargs)
-        self.queue = Queue.Queue()
+        self.queue = queue.Queue()
         self.finished = False
         self.progress_lock = threading.RLock()
         self.uploaded_size = 0
@@ -115,7 +119,7 @@ class Upload(ResourceBase):
         """
         n_chunks = self.file_size // self.chunk_size
         if n_chunks > 0:
-            for chunk in xrange(n_chunks - 1):  # excludes last chunk and starts from 1. last chunk is bigger
+            for chunk in range(n_chunks - 1):  # excludes last chunk and starts from 1. last chunk is bigger
                 offset = chunk * self.chunk_size
                 yield chunk + 1, offset, self.chunk_size
 
@@ -132,7 +136,7 @@ class Upload(ResourceBase):
             self.queue.put((chunk_number, chunk_offset, real_chunk_size))
 
     def start_threads(self):
-        for _ in xrange(self.n_threads):
+        for _ in range(self.n_threads):
             download_thread = threading.Thread(target=self.upload_enqueued)
             download_thread.setDaemon(True)
             download_thread.start()
@@ -178,7 +182,7 @@ class Upload(ResourceBase):
                 LOG.debug('Chunk {}:{}:{} already uploaded'.format(chunk_number, chunk_offset, real_chunk_size))
                 return
 
-            resumable_js_data_multipart = resumable_js_data.items() + [('file', str(file_data))]
+            resumable_js_data_multipart = list(resumable_js_data.items()) + [('file', str(file_data))]
 
             res = requests.post(upload_url, files=resumable_js_data_multipart, **kwargs)
             if 199 < res.status_code < 300:
