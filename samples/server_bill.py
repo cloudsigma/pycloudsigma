@@ -74,4 +74,4 @@ def get_per_server_usage(start_time, end_time):
 
 if __name__ == '__main__':
     for server, amount in get_per_server_usage(start_time, end_time).iteritems():
-        print "%s - %.2f" % (server, amount)
+        print("%s - %.2f" % (server, amount))
