@@ -101,7 +101,7 @@ class GenericClient(object):
         else:
             if url[0] == '/':
                 url = url[1:]
-            full_url = urllib.parse.urljoin(self.api_endpoint, url)
+            full_url = urllib.parse.urljoin(str(self.api_endpoint), str(url))
 
         if not full_url.endswith("/"):
             full_url += "/"
