@@ -887,11 +887,11 @@ class ServerStressTest(StatefulResourceTestBase):
 
         cloned = []
         for num in range(self.SERVER_COUNT):
-            cloned.append(self.drive_client.clone(puuid, {'name': "stress_atom_clone_{}".format(num)}))
+            cloned.append(self.drive_client.clone(puuid, {'name': "test_stress_server_{}".format(num)}))
 
         for i, drive in enumerate(cloned):
             server_req.append({
-                'name': 'stress_drive_iops_%i' % i,
+                'name': 'test_stress_drive_%i' % i,
                 'cpu': 500,
                 'mem': 512 * 1024 ** 2,
                 'vnc_password': 'testserver',
