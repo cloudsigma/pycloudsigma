@@ -97,6 +97,7 @@ class GenericClient(object):
         if url.startswith(api_endpoint.path):
             full_url = list(api_endpoint)
             full_url[2] = url
+            full_url = [str(x) for x in full_url]
             full_url = urllib.parse.urlunparse(full_url)
         else:
             if url[0] == '/':
