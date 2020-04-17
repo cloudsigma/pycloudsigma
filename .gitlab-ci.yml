@@ -1,4 +1,4 @@
-image: python:2
+image: registry.dev.cloudsigma.com/devs/pycloudsigma
 
 stages:
   - test
@@ -6,7 +6,6 @@ stages:
 acceptance tests:
   stage: test
   before_script:
-    - pip install fabric==1.14.1
     - mkdir $HOME/pycs_dumps
     - cp $CS_CONF $HOME/.cloudsigma.conf
     - grep -e api_endpoint -e username -e drive_name $HOME/.cloudsigma.conf
