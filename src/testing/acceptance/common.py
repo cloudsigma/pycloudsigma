@@ -81,7 +81,7 @@ class StatefulResourceTestBase(unittest.TestCase):
             time.sleep(WAIT_STEP)
             count_waited += 1
 
-    def _wait_for_status(self, uuid, status, client=None, timeout=50):
+    def _wait_for_status(self, uuid, status, client=None, timeout=60):
         WAIT_STEP = 3
 
         if client is None:
