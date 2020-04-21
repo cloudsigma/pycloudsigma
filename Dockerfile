@@ -2,9 +2,10 @@ FROM    python:2
 
 WORKDIR /usr/src/app
 
-RUN pip install fabric==1.14.1
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install poetry
+COPY poetry.lock pyproject.toml ./
+RUN poetry config virtualenvs.create false \
+  && poetry install --no-interaction --no-ansi
 
 COPY . .
-RUN python ./setup.py install
+RUN poetry install
