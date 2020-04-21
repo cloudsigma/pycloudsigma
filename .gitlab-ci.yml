@@ -8,7 +8,7 @@ acceptance tests:
     - mkdir $HOME/pycs_dumps
     - cp $CS_CONF $HOME/.cloudsigma.conf
     - grep -e api_endpoint -e username -e drive_name $HOME/.cloudsigma.conf
-    - python setup.py install
+    - poetry install
     - pip freeze
   script:
     - nosetests -x ./src/testing/acceptance/test_accounts.py
