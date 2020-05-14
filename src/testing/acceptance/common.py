@@ -107,7 +107,7 @@ class StatefulResourceTestBase(unittest.TestCase):
             try:
                 client.get(uuid)
             except errors.ClientError as exc:
-                if exc[0] == 404 or exc.status_code == 404:
+                if exc.status_code == 404:
                     break
                 else:
                     raise
