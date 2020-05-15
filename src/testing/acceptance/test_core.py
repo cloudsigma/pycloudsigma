@@ -16,7 +16,6 @@ LOG = logging.getLogger(__name__)
 class TestCoreFuncs(common.StatefulResourceTestBase):
 
     def test_servers_operations(self):
-
         dc = cr.Drive()
         sc = cr.Server()
         vc = cr.VLAN()
@@ -90,52 +89,29 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         ip1 = g1['nics'][0]['runtime']['ip_v4']["uuid"]
         ip2 = g2['nics'][0]['runtime']['ip_v4']["uuid"]
 
-        self._wait_for_open_socket(ip1, 22, timeout=60, close_on_success=True)
+        self._wait_for_open_socket(ip1, 22, timeout=90, close_on_success=True)
         self._wait_for_open_socket(ip2, 22, timeout=40, close_on_success=True)
 
-        from fabric.api import settings as fabric_settings
-        from fabric import tasks, api
+        from fabric import Connection
 
-        fab_kwargs = {
-            "warn_only": True,
-            "abort_on_prompts": True,
-            "use_ssh_config": p_pass is None
-        }
-        LOG.debug('Using fabric config {}'.format(fab_kwargs))
-        if p_pass is not None:
-            fab_kwargs['password'] = p_pass
-            LOG.debug('Using a password to SSH to the servers ( not using ssh config )')
+        set_hostname = 'hostname {} && service avahi-daemon restart'
+        fkwargs = {'password': p_pass}
 
-        with fabric_settings(**fab_kwargs):
-            LOG.debug('Changing hostnames and restarting avahi on guest 1')
-            set_hostname = 'hostname {} && service avahi-daemon restart'
-            tasks.execute(
-                api.run,
-                set_hostname.format("atom1"),
-                hosts=["root@%s" % ip1]
-            )
+        LOG.debug('Changing hostnames and restarting avahi on guest 1')
+        c1 = Connection(ip1, user='root', connect_kwargs=fkwargs)
+        c1.run(set_hostname.format('atom1'))
 
-            LOG.debug('Changing hostnames and restarting avahi on guest 2')
-            tasks.execute(
-                api.run,
-                set_hostname.format("atom2"),
-                hosts=["root@%s" % ip2]
-            )
+        LOG.debug('Changing hostnames and restarting avahi on guest 2')
+        c2 = Connection(ip2, user='root', connect_kwargs=fkwargs)
+        c2.run(set_hostname.format('atom2'))
 
-            LOG.debug('Ping the two hosts via private network')
-            ping_res = tasks.execute(
-                api.run,
-                "ping atom2.local -c 1",
-                hosts=["root@%s" % ip1]
-            )
-            self.assertEqual(ping_res.values()[0].return_code, 0, 'Could not ping host atom2 from atom1')
+        LOG.debug('Ping the two hosts via private network')
+        ping_res = c1.run("ping atom2.local -c 1")
+        self.assertEqual(ping_res.return_code, 0, 'Could not ping host atom2 from atom1')
 
-            LOG.debug('Halt both servers')
-            tasks.execute(
-                api.run,
-                "halt",
-                hosts=["root@%s" % ip1, "root@%s" % ip2]
-            )
+        LOG.debug('Halt both servers')
+        c1.run('poweroff')
+        c2.run('poweroff')
 
         LOG.debug('Wait for complete shutdown')
         sc.stop(g1['uuid'])
