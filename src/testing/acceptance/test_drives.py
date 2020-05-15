@@ -5,6 +5,7 @@ import tempfile
 import unittest
 import random
 from nose.plugins.attrib import attr
+from past.builtins import basestring
 
 import cloudsigma.resource as cr
 import cloudsigma.errors as errors
