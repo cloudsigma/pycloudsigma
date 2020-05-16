@@ -437,7 +437,7 @@ class TestUpload(StatefulResourceTestBase):
 
             # write 8 bit  random values until we reach required size
             while written < self.file_size:
-                f.write(chr(random.randrange(0, 2 ** 8)))
+                f.write(chr(random.randrange(0, 2 ** 8)).encode())
                 written += 1
 
         return path
