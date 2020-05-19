@@ -462,7 +462,7 @@ class TestUpload(StatefulResourceTestBase):
 
         uuid, uploaded_size = queue.get(block=False)
         LOG.debug('Finished uploading {}'.format(uuid))
-        self.assertEqual(uploaded_size, self.file_size)
+        self.assertEqual(uploaded_size, os.path.getsize(self.file_path))
 
         drive = self.dc.get(uuid)
         self.assertEqual(drive['status'], 'unmounted')

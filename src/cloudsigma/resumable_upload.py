@@ -157,7 +157,7 @@ class Upload(ResourceBase):
 
     def upload_chunk(self, chunk_number, chunk_offset, real_chunk_size):
         upload_url = self.c._get_full_url('/{}/{}/upload/'.format('drives', self.drive_uuid))
-        with open(self.image_path, 'r') as f:
+        with open(self.image_path, mode='rb') as f:
             f.seek(chunk_offset)
             file_data = f.read(real_chunk_size)
             # do str() on numbers because requests multipart encoding assumes integers are file descriptors
