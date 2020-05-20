@@ -2,8 +2,11 @@ import unittest
 import time
 from nose.plugins.attrib import attr
 import socket
-import urlparse
 from testing.acceptance.common import StatefulResourceTestBase
+
+from future.moves.urllib.parse import urlparse, urlencode
+from future.moves.urllib.request import urlopen, Request
+from future.moves.urllib.error import HTTPError
 
 import cloudsigma.resource as cr
 from testing.utils import DumpResponse
@@ -43,7 +46,7 @@ class ServerTest(ServerTestBase):
             'cpu': 1000,
             'mem': 512 * 1024 ** 2,
             'vnc_password': 'testserver',
-            }) for i in xrange(50)]
+            }) for i in range(50)]
         with DumpResponse(clients=[self.client])('server_list'):
             servers_list = self.client.list(query_params={'limit': 20})
             self.assertEqual(20, len(servers_list))
@@ -527,7 +530,7 @@ class ServerTest(ServerTestBase):
         self.assertDictContainsSubset({'result': 'success', 'uuid': server['uuid']}, open_vnc_resp)
 
         #Parsing vnc address and port from vnc_url
-        vnc_args = urlparse.urlparse(open_vnc_resp['vnc_url']).netloc.split(":")
+        vnc_args = urlparse(open_vnc_resp['vnc_url']).netloc.split(":")
         vnc_address = (str(vnc_args[0]), int(vnc_args[1]))
         
         return server, vnc_address
@@ -569,7 +572,7 @@ class ServerTest(ServerTestBase):
                 break
 
         #Checking if VNC initial handshake is sent
-        vnc_ver = vnc_sock.recv(16)
+        vnc_ver = vnc_sock.recv(16).decode()
         self.assertRegexpMatches(vnc_ver, 'RFB \d+\.\d+\\n')
         vnc_sock.close()
     
