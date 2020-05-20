@@ -66,7 +66,7 @@ class SnapshotsTest(StatefulResourceTestBase):
         with self.dump_response('drive_with_two_snapshots'):
             d = self.drive_client.get(drive_uuid)
 
-        self.assertItemsEqual([snap_uuid, another_snap_uuid], [s['uuid'] for s in d['snapshots']])
+        self.assertCountEqual([snap_uuid, another_snap_uuid], [s['uuid'] for s in d['snapshots']])
 
         with self.dump_response('snapshot_delete'):
             self.snap_client.delete(snap_uuid)
@@ -132,7 +132,7 @@ class SnapshotsTest(StatefulResourceTestBase):
         with self.dump_response('snapshots_in_drive_def'):
             snapshots_from_drive_def = self.drive_client.get(drive_uuids[0])['snapshots']
 
-        self.assertItemsEqual([s['uuid'] for s in drive_snapshots], [s['uuid'] for s in snapshots_from_drive_def])
+        self.assertCountEqual([s['uuid'] for s in drive_snapshots], [s['uuid'] for s in snapshots_from_drive_def])
 
         for d_uuid in drive_uuids:
             self.drive_client.delete(d_uuid)
