@@ -2,12 +2,12 @@
 
 ## Config file
 
-In order for the CloudSigma library to interact with the API, you need to provide your credentials. These are set in the file `~/.cloudsigma.conf`. Here's a sample version of the file that talks to the Las Vegas datacenter. If you instead want to use the Zürich datacenter, simply replace 'lvs' with 'zrh' in the api_endpoint and ws_endpoint. Please note that this is not required in order to read back meta data on the server.
+In order for the CloudSigma library to interact with the API, you need to provide your credentials. These are set in the file `~/.cloudsigma.conf`. Here's a sample version of the file that talks to the Zürich datacenter. If you instead want to use the Frankfurt datacenter, simply replace 'zrh' with 'fra' in the api_endpoint and ws_endpoint. Please note that this is not required in order to read back meta data on the server.
 
 
 ```python
-api_endpoint = https://lvs.cloudsigma.com/api/2.0/
-ws_endpoint = wss://direct.lvs.cloudsigma.com/websocket
+api_endpoint = https://zrh.cloudsigma.com/api/2.0/
+ws_endpoint = wss://direct.zrh.cloudsigma.com/websocket
 username = user@domain.com
 password = secret
 
@@ -185,7 +185,7 @@ server.stop(my_test_server['uuid'])
 
 ### Reading Meta Data
 
-CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need `~/.cloudsigma.conf` in order to use this feature, as the data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://lvs.cloudsigma.com/docs/server_context.html#setting-up-the-virtual-serial-port).
+CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need `~/.cloudsigma.conf` in order to use this feature, as the data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://cloudsigma-docs.readthedocs.io/en/2.14.1/server_context.html#setting-up-the-virtual-serial-port).
 
 By default, various system information is exposed, but it is also possible to push user-defined data, such as an SSH-key to the guest.
 
