@@ -2,12 +2,12 @@
 
 ## Config file
 
-In order for the CloudSigma library to interact with the API, you need to provide your credentials. These are set in the file `~/.cloudsigma.conf`. Here's a sample version of the file that talks to the Las Vegas datacenter. If you instead want to use the Zürich datacenter, simply replace 'lvs' with 'zrh' in the api_endpoint and ws_endpoint. Please note that this is not required in order to read back meta data on the server.
+In order for the CloudSigma library to interact with the API, you need to provide your credentials. These are set in the file `~/.cloudsigma.conf`. Here's a sample version of the file that talks to the Zürich datacenter. If you instead want to use the Frankfurt datacenter, simply replace 'zrh' with 'fra' in the api_endpoint and ws_endpoint. Please note that this is not required in order to read back meta data on the server.
 
 
 ```python
-api_endpoint = https://lvs.cloudsigma.com/api/2.0/
-ws_endpoint = wss://direct.lvs.cloudsigma.com/websocket
+api_endpoint = https://zrh.cloudsigma.com/api/2.0/
+ws_endpoint = wss://direct.zrh.cloudsigma.com/websocket
 username = user@domain.com
 password = secret
 
@@ -28,22 +28,17 @@ Since this file includes credentials, it is highly recommended that you set the 
 sudo pip install cloudsigma
 ```
 
-### Ubuntu
+### Ubuntu / Debian
 
 ```bash
-sudo apt-get -y install python-pip
+sudo apt -y install python-pip
 pip install cloudsigma
 ```
 
 ### CentOS / RHEL
 
-In order to install the CloudSigma module, you first need to install the [EPEL](https://fedoraproject.org/wiki/EPEL) repository, in order to install PIP. The below instructions are for RHEL 6.x / CentOS 6.x. Details for installing the repository, please visit the EPEL site.
-
 ```bash
-yum install -y wget
-wget http://mirrors.servercentral.net/fedora/epel/6/i386/epel-release-6-8.noarch.rpm
-rpm -Uvh epel-release-6-8.noarch.rpm
-yum install -y python-pip
+yum install -y python3-pip
 pip install cloudsigma
 ```
 
@@ -185,7 +180,7 @@ server.stop(my_test_server['uuid'])
 
 ### Reading Meta Data
 
-CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need `~/.cloudsigma.conf` in order to use this feature, as the data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://lvs.cloudsigma.com/docs/server_context.html#setting-up-the-virtual-serial-port).
+CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need `~/.cloudsigma.conf` in order to use this feature, as the data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://cloudsigma-docs.readthedocs.io/en/2.14.1/server_context.html#setting-up-the-virtual-serial-port).
 
 By default, various system information is exposed, but it is also possible to push user-defined data, such as an SSH-key to the guest.
 
@@ -266,11 +261,11 @@ def get_permission(path):
     return oct(os.stat(ssh_path)[stat.ST_MODE])[-4:]
 
 if not os.path.isdir(ssh_path):
-    print 'Creating folder %s' % ssh_path
+    print('Creating folder %s' % ssh_path)
     os.makedirs(ssh_path)
 
 if get_permission(ssh_path) != 0700:
-    print 'Setting permission for %s' % ssh_path
+    print('Setting permission for %s' % ssh_path)
     os.chmod(ssh_path, 0700)
 
 # We'll have to assume that there might be other keys installed.
@@ -280,7 +275,7 @@ with open(authorized_keys, 'a') as auth_file:
     auth_file.write(ssh_key + '\n')
 
 if get_permission(authorized_keys) != 0600:
-    print 'Setting permission for %s' % authorized_keys
+    print('Setting permission for %s' % authorized_keys)
     os.chmod(authorized_keys, 0600)
 ```
 
@@ -298,21 +293,21 @@ from cloudsigma.errors import ClientError, PermissionError
 ws = Websocket(timeout=None)
 client = GenericClient()
 
-print "Display Websocket activity.\nExit with ^C."
+print("Display Websocket activity.\nExit with ^C.")
 
 while True:
     try:
         get_action = ws.ws.recv()
         action_uri = get_action['resource_uri']
-        print 'Received Action: %s' % get_action
-        print 'Result:\n%s' % client.get(action_uri)
+        print('Received Action: %s' % get_action)
+        print('Result:\n%s' % client.get(action_uri))
     except ClientError as e:
         if e.args[0] == 404:
-            print "Resource %s was deleted" % action_uri
+            print("Resource %s was deleted" % action_uri)
         else:
-            print 'Error retrieving: %s' % e
+            print('Error retrieving: %s' % e)
     except PermissionError as e:
-        print "No permissions for resource %s" % action_uri
+        print("No permissions for resource %s" % action_uri)
 ```
 
 [Download](https://raw.github.com/cloudsigma/pycloudsigma/master/samples/monitor_websocket_activity.py)
@@ -333,7 +328,7 @@ snapshot = cloudsigma.resource.Snapshot()
 snapshot_done = False
 
 if len(sys.argv) < 3:
-    print '\nUsage: ./snapshot.py drive-uuid snapshot-name\n'
+    print('\nUsage: ./snapshot.py drive-uuid snapshot-name\n')
     sys.exit(1)
 
 snapshot_data = {
@@ -348,7 +343,7 @@ while not snapshot_done:
 
     if snapshot_status['status'] == 'available':
         snapshot_done = True
-        print '\nSnapshot successfully created\n'
+        print('\nSnapshot successfully created\n')
     else:
         sleep(1)
 ```

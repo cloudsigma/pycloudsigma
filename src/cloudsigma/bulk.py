@@ -1,3 +1,7 @@
+from builtins import filter
+from builtins import zip
+from builtins import range
+from builtins import object
 import logging
 import time
 
@@ -38,7 +42,7 @@ class BulkBase(object):
         def _filter(d):
             return (d['uuid'] == name_or_uuid) or (name_or_uuid in d['name'])
 
-        candidates = filter(_filter, resp)
+        candidates = list(filter(_filter, resp))
         return candidates
 
 
@@ -167,12 +171,12 @@ class DrivesBulk(BulkBase):
         """Queries the drives in this account with the given prefix
         """
         resp = self.c_drive.list(query_params={"fields": 'name,uuid'})
-        resp = filter(lambda x: x['name'].startswith(self.id_prefix), resp)
+        resp = [x for x in resp if x['name'].startswith(self.id_prefix)]
         return resp
 
     def get_detail(self):
         resp = self.c_drive.list_detail()
-        resp = filter(lambda x: x['name'].startswith(self.id_prefix), resp)
+        resp = [x for x in resp if x['name'].startswith(self.id_prefix)]
         return resp
 
     def lookup(self, name_or_uuid):
@@ -190,5 +194,5 @@ class DrivesBulk(BulkBase):
         """Queries the drives in this account with the given prefix
         """
         resp = self.c_drive.list_detail(query_params={"fields": 'name,uuid,status'})
-        resp = filter(lambda x: x['uuid'] in uuids, resp)
+        resp = [x for x in resp if x['uuid'] in uuids]
         return resp

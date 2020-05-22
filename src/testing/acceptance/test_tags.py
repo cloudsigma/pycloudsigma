@@ -41,9 +41,6 @@ class tagsTest(StatefulResourceTestBase):
         with self.dump_response('tags_list'):
             self.client.list()
 
-        with self.dump_response('tags_list_detail'):
-            self.client.list_detail()
-
         with self.dump_response('tags_get'):
             self.client.get(tag2['uuid'])
 

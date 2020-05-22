@@ -1,0 +1,27 @@
+stages:
+  - test
+
+acceptance tests:
+  image:  $PYCS_CONTAINER
+  stage: test
+  before_script:
+    - mkdir $HOME/pycs_dumps
+    - cp $CS_CONF $HOME/.cloudsigma.conf
+    - grep -e api_endpoint -e username -e drive_name $HOME/.cloudsigma.conf
+    - poetry install
+    - pip freeze
+  script:
+    - nosetests -x ./src/testing/acceptance/test_accounts.py
+    - nosetests -x ./src/testing/acceptance/test_billing.py
+    - nosetests -x ./src/testing/acceptance/test_capabilities.py
+    - nosetests -x ./src/testing/acceptance/test_core.py
+    - nosetests -x ./src/testing/acceptance/test_drives.py
+    - nosetests -x ./src/testing/acceptance/test_firewall.py
+    - nosetests -x ./src/testing/acceptance/test_networking.py
+    - nosetests -x ./src/testing/acceptance/test_profile.py
+    - nosetests -x ./src/testing/acceptance/test_servers.py
+    - nosetests -x ./src/testing/acceptance/test_snapshots.py
+    - nosetests -x ./src/testing/acceptance/test_subscriptions.py
+    - nosetests -x ./src/testing/acceptance/test_tags.py
+    - nosetests -x ./src/testing/acceptance/test_websocket.py
+

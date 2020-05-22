@@ -1,9 +1,12 @@
-import urllib
+from future import standard_library
+standard_library.install_aliases()
+from builtins import object
+import urllib.request, urllib.parse, urllib.error
 from cloudsigma.conf import config
 import simplejson
 import logging
 import os
-import urlparse
+import urllib.parse
 from testing.templates import get_template
 
 __author__ = 'islavov'
@@ -52,7 +55,7 @@ class ResponseDumper(object):
                     "request_template",
                     resp.request,
                     data,
-                    path_url=urllib.unquote(resp.request.path_url)))
+                    path_url=urllib.parse.unquote(resp.request.path_url)))
 
         with open(os.path.join(self.dump_path, "response_{}".format(fname)), "w") as fl:
             LOG.info("Dumping response to {}".format(fl.name))
@@ -66,7 +69,7 @@ class ResponseDumper(object):
         self.tmp_name = None
 
     def get_filename(self, resp):
-        url = urlparse.urlparse(resp.request.path_url)
+        url = urllib.parse.urlparse(resp.request.path_url)
         path_arr = [segment for segment in url.path.split('/') if segment]
 
         if self.tmp_name:
@@ -85,7 +88,7 @@ class ResponseDumper(object):
                         fname += "_" + "_".join(path_arr[4:])
 
             if url.query:
-                query_tuple = urlparse.parse_qsl(url.query)
+                query_tuple = urllib.parse.parse_qsl(url.query)
                 for key, val in sorted(query_tuple):
                     if key not in ['limit', 'format']:
                         fname += "_{}_{}".format(key, val)

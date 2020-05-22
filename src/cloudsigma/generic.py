@@ -1,4 +1,9 @@
-import urlparse
+from __future__ import division
+from future import standard_library
+standard_library.install_aliases()
+from builtins import object
+from past.utils import old_div
+import urllib.parse
 import logging
 import copy
 
@@ -31,14 +36,14 @@ def wrap_with_log_hook(log_level, next_hook=None):
                   '\n-----RECONSTRUCTED-REQUEST-END'.format(req=request,
                                                             headers='\r\n'.join('{}: {}'.format(k, v)
                                                                                 for k, v
-                                                                                in request.headers.items()),
+                                                                                in list(request.headers.items())),
                                                             body=request.body if request.body else '')
         resp_msg = '-----RECONSTRUCTED-RESPONSE:\n' \
                    'HTTP/1.1 {resp.status_code} {resp.reason}\r\n{headers}\r\n\r\n{body}' \
                    '\n-----RECONSTRUCTED-RESPONSE-END'.format(resp=response,
                                                               headers='\r\n'.join('{}: {}'.format(k, v)
                                                                                   for k, v
-                                                                                  in response.headers.items()),
+                                                                                  in list(response.headers.items())),
                                                               body=response.content if response.content else '')
         LOG.log(level, '{}\n\n{}'.format(req_msg, resp_msg))
 
@@ -88,15 +93,16 @@ class GenericClient(object):
         self._session.headers.update({'X-CSRFToken': csrf_token, 'Referer': self._get_full_url('/')})
 
     def _get_full_url(self, url):
-        api_endpoint = urlparse.urlparse(self.api_endpoint)
+        api_endpoint = urllib.parse.urlparse(self.api_endpoint)
         if url.startswith(api_endpoint.path):
             full_url = list(api_endpoint)
             full_url[2] = url
-            full_url = urlparse.urlunparse(full_url)
+            full_url = [str(x) for x in full_url]
+            full_url = urllib.parse.urlunparse(full_url)
         else:
             if url[0] == '/':
                 url = url[1:]
-            full_url = urlparse.urljoin(self.api_endpoint, url)
+            full_url = urllib.parse.urljoin(str(self.api_endpoint), str(url))
 
         if not full_url.endswith("/"):
             full_url += "/"
@@ -116,9 +122,9 @@ class GenericClient(object):
             raise errors.AuthError(request_id, status_code=resp.status_code)
         elif resp.status_code == 403:
             raise errors.PermissionError(resp.text, status_code=resp.status_code, request_id=request_id)
-        elif resp.status_code / 100 == 4:
+        elif old_div(resp.status_code, 100) == 4:
             raise errors.ClientError(resp.text, status_code=resp.status_code, request_id=request_id)
-        elif resp.status_code / 100 == 5:
+        elif old_div(resp.status_code, 100) == 5:
             raise errors.ServerError(resp.text, status_code=resp.status_code, request_id=request_id)
 
         return resp_data

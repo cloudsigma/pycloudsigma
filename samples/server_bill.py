@@ -1,3 +1,6 @@
+from __future__ import division
+from builtins import range
+from past.utils import old_div
 import bisect
 from collections import defaultdict
 from datetime import timedelta, datetime
@@ -7,8 +10,8 @@ import re
 
 import cloudsigma.resource as cr
 
-start_time = datetime(2014, 01, 1)
-end_time = datetime(2014, 02, 1)
+start_time = datetime(2014, 1, 1)
+end_time = datetime(2014, 2, 1)
 
 
 
@@ -68,10 +71,10 @@ def get_per_server_usage(start_time, end_time):
                 continue
             server = server_resources.get(usage['uuid'])
             if server:
-                server_billing[server] += Decimal(usage['amount']) / Decimal(ledger['resource_amount']) * Decimal(ledger['amount'])
+                server_billing[server] += old_div(Decimal(usage['amount']), Decimal(ledger['resource_amount'])) * Decimal(ledger['amount'])
 
     return server_billing
 
 if __name__ == '__main__':
-    for server, amount in get_per_server_usage(start_time, end_time).iteritems():
-        print "%s - %.2f" % (server, amount)
+    for server, amount in get_per_server_usage(start_time, end_time).items():
+        print("%s - %.2f" % (server, amount))

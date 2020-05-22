@@ -81,7 +81,7 @@ class StatefulResourceTestBase(unittest.TestCase):
             time.sleep(WAIT_STEP)
             count_waited += 1
 
-    def _wait_for_status(self, uuid, status, client=None, timeout=40):
+    def _wait_for_status(self, uuid, status, client=None, timeout=60):
         WAIT_STEP = 3
 
         if client is None:
@@ -107,7 +107,7 @@ class StatefulResourceTestBase(unittest.TestCase):
             try:
                 client.get(uuid)
             except errors.ClientError as exc:
-                if exc[0] == 404:
+                if exc.status_code == 404:
                     break
                 else:
                     raise

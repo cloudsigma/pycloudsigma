@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "cloudsigma"
+version = "0.5"
+description = "CloudSigma's official python library."
+authors = ["CloudSigma AG <dev-support@cloudsigma.com>"]
+keywords = ["cloud", "cloudsigma", "api", "cloud", "computing"]
+classifiers = ["Programming Language :: Python", "Development Status :: 4 - Beta", "Intended Audience :: System Administrators", "Intended Audience :: Developers"]
+homepage = "https://github.com/cloudsigma/pycloudsigma"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.5"
+"backports.ssl-match-hostname" = ">=3.4.0.2"
+configobj = ">=5.0.6"
+future = ">=0.18.2"
+iso8601 = ">=0.1.12"
+pyserial = ">=3.4"
+requests = ">=2.23"
+simplejson = ">=3.17.0"
+six = ">=1.14.0"
+websocket-client = ">=0.57.0"
+nose = ">=1.3.7"
+
+[tool.poetry.dev-dependencies]
+fabric = "^2"
+
+[build-system]
+requires = ["poetry^0.12"]
+build-backend = "poetry.masonry.api"

@@ -5,6 +5,7 @@ import tempfile
 import unittest
 import random
 from nose.plugins.attrib import attr
+from past.builtins import basestring
 
 import cloudsigma.resource as cr
 import cloudsigma.errors as errors
@@ -201,31 +202,6 @@ class DriveBasicTest(StatefulResourceTestBase):
 
         with self.dump_response('drive_clone'):
             cloned_drive = self.client.clone(drive['uuid'], clone_drive_def)
-
-        self._wait_for_status(cloned_drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
-
-        self.client.delete(drive['uuid'])
-        self.client.delete(cloned_drive['uuid'])
-
-        self._wait_deleted(cloned_drive['uuid'], timeout=60)
-        self._wait_deleted(drive['uuid'], timeout=60)
-
-    def test_drive_clone_by_name(self):
-        drive_def = {
-            'name': 'test_drive_x_%s' % random.randint(0, 10000),
-            'size': '1024000000',
-            'media': 'disk',
-        }
-
-        drive = self.client.create(drive_def)
-        self._wait_for_status(drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
-
-        clone_drive_def = {
-            'name': 'test_drive_y',
-            'media': 'cdrom',
-            'affinities': [],
-        }
-        cloned_drive = self.client.clone_by_name(drive['name'], clone_drive_def)
 
         self._wait_for_status(cloned_drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
 
@@ -461,7 +437,7 @@ class TestUpload(StatefulResourceTestBase):
 
             # write 8 bit  random values until we reach required size
             while written < self.file_size:
-                f.write(chr(random.randrange(0, 2 ** 8)))
+                f.write(chr(random.randrange(0, 2 ** 8)).encode())
                 written += 1
 
         return path
@@ -486,7 +462,7 @@ class TestUpload(StatefulResourceTestBase):
 
         uuid, uploaded_size = queue.get(block=False)
         LOG.debug('Finished uploading {}'.format(uuid))
-        self.assertEqual(uploaded_size, self.file_size)
+        self.assertEqual(uploaded_size, os.path.getsize(self.file_path))
 
         drive = self.dc.get(uuid)
         self.assertEqual(drive['status'], 'unmounted')
