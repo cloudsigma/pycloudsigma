@@ -2,7 +2,7 @@ stages:
   - test
 
 acceptance tests:
-  image:  registry.dev.cloudsigma.com/devs/pycloudsigma
+  image:  $CS_REGISTRY
   stage: test
   before_script:
     - mkdir $HOME/pycs_dumps
