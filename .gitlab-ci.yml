@@ -2,7 +2,7 @@ stages:
   - test
 
 acceptance tests:
-  image:  $PYCS_CONTAINER
+  image: $PYCS_CONTAINER
   stage: test
   before_script:
     - mkdir $HOME/pycs_dumps
