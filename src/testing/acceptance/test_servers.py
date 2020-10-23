@@ -48,18 +48,29 @@ class ServerTest(ServerTestBase):
 
     @attr('docs_snippets')
     def test_list_limit(self):
-        servers = [self._create_a_server(server_req={
-            'name': 'test server %d' % (i,),
-            'cpu': 1000,
-            'mem': 512 * 1024 ** 2,
-            'vnc_password': 'testserver',
-            }) for i in range(50)]
+        servers_to_create = 50
+
+        print(f'Creating {servers_to_create} servers ...')
+        servers = [
+            self._create_a_server(
+                server_req={
+                    'name': 'test server %d' % (i,),
+                    'cpu': 1000,
+                    'mem': 512 * 1024 ** 2,
+                    'vnc_password': 'testserver',
+                }
+            ) for i in range(servers_to_create)
+        ]
+
         with DumpResponse(clients=[self.client])('server_list'):
             servers_list = self.client.list(query_params={'limit': 20})
             self.assertEqual(20, len(servers_list))
+
         time.sleep(10)
-        for server in servers:
+
+        for i, server in enumerate(servers):
             self.client.delete(server['uuid'])
+            print(f'Deleting server {i + 1} of {servers_to_create} ...')
 
     @attr('docs_snippets')
     def test_server_state_cycle(self):
@@ -114,7 +125,7 @@ class ServerTest(ServerTestBase):
             "name": "test_acc_full_server",
             "cpus_instead_of_cores": False,
             "tags": [],
-            "mem": 256*1024**2,
+            "mem": 256 * 1024 ** 2,
             "nics": [
                 {
                     "ip_v4_conf": {
@@ -143,7 +154,6 @@ class ServerTest(ServerTestBase):
             "meta": {
                 "description": "A full server with description"
             },
-
             "vnc_password": "tester",
         }
 
@@ -198,7 +208,7 @@ class ServerTest(ServerTestBase):
             "name": "test_acc_full_server",
             "cpus_instead_of_cores": False,
             "tags": [],
-            "mem": 256*1024**2,
+            "mem": 256 * 1024 ** 2,
             "nics": [
                 {
                     "ip_v4_conf": {
@@ -280,7 +290,7 @@ class ServerTest(ServerTestBase):
             "name": "test_acc_full_server",
             "cpus_instead_of_cores": False,
             "tags": [],
-            "mem": 256*1024**2,
+            "mem": 256 * 1024 ** 2,
             "nics": [
                 {
                     "ip_v4_conf": {
@@ -501,7 +511,7 @@ class ServerTest(ServerTestBase):
         }
         drive1 = dv.create(drive_def_1)
         self._wait_for_status(drive1['uuid'], 'unmounted', client=dv)
-        
+
         server_def = {
             'name': 'testServerAcc',
             'cpu': 1000,
@@ -577,7 +587,7 @@ class ServerTest(ServerTestBase):
         # Parsing vnc address and port from vnc_url
         vnc_args = urlparse(open_vnc_resp['vnc_url']).netloc.split(":")
         vnc_address = (str(vnc_args[0]), int(vnc_args[1]))
-        
+
         return server, vnc_address
 
     def _close_vnc_tunnel(self, server):
@@ -598,16 +608,16 @@ class ServerTest(ServerTestBase):
 
         self.client.delete(server['uuid'])
         self._verify_list(server, False)
-        
+
     @attr('docs_snippets')
     def test_vnc_tunnel_open_close(self):
         server, _ = self._open_vnc_tunnel()
-        time.sleep(3)        
+        time.sleep(3)
         self._close_vnc_tunnel(server)
-    
+
     def test_vnc_tunnel(self):
         server, vnc_address = self._open_vnc_tunnel()
-       
+
         vnc_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         vnc_sock.settimeout(10)
 
@@ -624,9 +634,9 @@ class ServerTest(ServerTestBase):
 
         # Checking if VNC initial handshake is sent
         vnc_ver = vnc_sock.recv(16).decode()
-        self.assertRegexpMatches(vnc_ver, r'RFB \d+\.\d+\\n')
+        self.assertRegex(vnc_ver, 'RFB \d+\.\d+\\n')
         vnc_sock.close()
-    
+
         self._close_vnc_tunnel(server)
 
     @attr('docs_snippets')
@@ -734,18 +744,21 @@ class ServerTest(ServerTestBase):
         self._wait_deleted(drive['uuid'], client=dv)
 
     def test_bulk_start_stop_and_usage(self):
+        num_of_servers = 40
 
         # Check if usage is correct
         usage_client = cr.CurrentUsage()
-        curr_cpu_usage = usage_client.list()['usage']['cpu']['using']
+        print(usage_client.list())
+        curr_cpu_usage = usage_client.list()['usage']['intel_cpu']['using']
 
+        print(f'Creating {num_of_servers} servers ...')
         server_req = [
             {
                 'name': 'test_start_stop_server_%i' % i,
-                'cpu': 500,
+                'cpu': 1000,
                 'mem': 512 * 1024 ** 2,
                 'vnc_password': 'testserver',
-            } for i in range(40)
+            } for i in range(num_of_servers)
         ]
 
         # Creating 40 servers
@@ -753,11 +766,13 @@ class ServerTest(ServerTestBase):
         cpu_usage = sum(g['cpu'] for g in server_req) + curr_cpu_usage
 
         # Starting the servers
-        for server in servers:
+        for i, server in enumerate(servers):
+            print(f'Starting server {i + 1} of {num_of_servers} ...')
             self.client.start(server['uuid'])
 
         # give a bit of time for usage to update
         time.sleep(2)
+
         self.assertEqual(
             cpu_usage,
             usage_client.list()['usage']['intel_cpu']['using']
@@ -768,7 +783,8 @@ class ServerTest(ServerTestBase):
             self._wait_for_status(server['uuid'], 'running')
 
         # Stop the servers
-        for server in servers:
+        for i, server in enumerate(servers):
+            print(f'Stopping server {i + 1} of {num_of_servers} ...')
             self.client.stop(server['uuid'])
 
         # Wait for them to stop
@@ -776,7 +792,8 @@ class ServerTest(ServerTestBase):
             self._wait_for_status(server['uuid'], 'stopped', timeout=45)
 
         # Delete them
-        for server in servers:
+        for i, server in enumerate(servers):
+            print(f'Deleting server {i + 1} of {num_of_servers} ...')
             self.client.delete(server['uuid'])
 
     @attr('docs_snippets')
@@ -963,7 +980,7 @@ class ServerTest(ServerTestBase):
 
 @attr('stress_test')
 class ServerStressTest(StatefulResourceTestBase):
-    SERVER_COUNT = 60
+    SERVER_COUNT = 2
 
     def setUp(self):
         super(ServerStressTest, self).setUp()
@@ -977,6 +994,7 @@ class ServerStressTest(StatefulResourceTestBase):
         puuid, ppass = self._get_persistent_image_uuid_and_pass()
 
         cloned = []
+        print(f'Cloning Servers ({self.SERVER_COUNT})', end='', flush=True)
         for num in range(self.SERVER_COUNT):
             cloned.append(
                 self.drive_client.clone(
@@ -984,11 +1002,12 @@ class ServerStressTest(StatefulResourceTestBase):
                     {'name': "test_stress_server_{}".format(num)}
                 )
             )
+            print(f' {num + 1}', end='', flush=True)
 
         for i, drive in enumerate(cloned):
             server_req.append({
                 'name': 'test_stress_drive_%i' % i,
-                'cpu': 500,
+                'cpu': 1000,
                 'mem': 512 * 1024 ** 2,
                 'vnc_password': 'testserver',
                 'drives': [
@@ -1012,9 +1031,10 @@ class ServerStressTest(StatefulResourceTestBase):
             })
 
         servers = self.server_client.create(server_req)
-        sip_map = {}
 
-        for cloning_drive in cloned:
+        print('\nGetting Statuses', end='', flush=True)
+        for i, cloning_drive in enumerate(cloned):
+            print(f' {i + 1}', end='', flush=True)
             self._wait_for_status(
                 cloning_drive['uuid'],
                 status='mounted',
@@ -1022,8 +1042,10 @@ class ServerStressTest(StatefulResourceTestBase):
                 timeout=120 * 1000
             )
 
-        for server in servers:
+        print('\nStarting Servers', end='', flush=True)
+        for i, server in enumerate(servers):
             self.server_client.start(server['uuid'])
+            print(f' {i + 1}', end='')
 
         for server in servers:
             self._wait_for_status(
@@ -1032,10 +1054,9 @@ class ServerStressTest(StatefulResourceTestBase):
                 client=self.server_client
             )
 
-        for server in self.server_client.list_detail():
-            sip_map[server['uuid']] = server['runtime']['nics'][0]['ip_v4']
-
-        for server in servers:
+        print(f'\nStopping Servers', end='')
+        for i, server in enumerate(servers):
             self.server_client.stop(server['uuid'])
+            print(f' {i + 1}', end='', flush=True)
 
 

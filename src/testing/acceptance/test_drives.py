@@ -95,7 +95,7 @@ class DriveBasicTest(StatefulResourceTestBase):
         self.assertEqual(resizing_drive['status'], 'resizing')
         self._wait_for_status(resizing_drive['uuid'], 'unmounted')
 
-        ALLOWED_SIZE_ROUNDING = 64*1024
+        ALLOWED_SIZE_ROUNDING = 64 * 1024
         resized_drive = self.client.get(drive['uuid'])
         self.assertNotEqual(
             int(resized_drive['size']),
@@ -173,7 +173,7 @@ class DriveBasicTest(StatefulResourceTestBase):
             just_uuids = self.client.list(query_params={'fields':'uuid,status'})
 
         for el in just_uuids:
-            self.assertEqual(set(el.keys()), set(['uuid', 'status']))
+            self.assertEqual(set(el.keys()), {'uuid', 'status'})
 
         # Get detailed information on drives
         with self.dump_response('drive_list_detail'):
@@ -416,13 +416,13 @@ class DriveStressTest(StatefulResourceTestBase):
         self.client = cr.Drive()
 
     def _get_min_drive_size(self):
-        return 1*1000**3
+        return 1 * 1000 ** 3
 
     def test_create_delete(self):
-        """Creating MANY small drives via API, see if it works"""
+        """Creating MANY small drives via API to see if it works."""
 
         min_size = self._get_min_drive_size()
-        defin_list = [
+        define_list = [
             {
                 "name": "test_drive_{}".format(num),
                 "size": min_size,
@@ -431,8 +431,10 @@ class DriveStressTest(StatefulResourceTestBase):
         ]
         res = []
 
-        for drive_def in defin_list:
+        print(f'\nCreating Drives ({self.DRIVE_COUNT})', end='', flush=True)
+        for i, drive_def in enumerate(define_list):
             res.append(self.client.create(drive_def))
+            print(f' {i + 1}', end='', flush=True)
 
         for creating_drive in res:
             self._wait_for_status(
@@ -442,17 +444,20 @@ class DriveStressTest(StatefulResourceTestBase):
                 timeout=60
             )
 
-        for drive in res:
+        print('\nDeleting Drives', end='', flush=True)
+        for i, drive in enumerate(res):
             self.client.delete(drive['uuid'])
+            print(f' {i + 1}', end='', flush=True)
 
         for deleted_drive in res:
             self._wait_deleted(deleted_drive['uuid'], self.client, timeout=60)
 
     def test_clone(self):
-        """Clone SOME drives via API, see if it works"""
+        """Clone SOME drives via API to see if it works."""
         puuid, ppass = self._get_persistent_image_uuid_and_pass()
 
         cloned = []
+        print(f'\nCreating Clones ({self.CLONE_COUNT})', end='', flush=True)
         for num in range(self.CLONE_COUNT):
             cloned.append(
                 self.client.clone(
@@ -460,6 +465,7 @@ class DriveStressTest(StatefulResourceTestBase):
                     {'name': "test_atom_clone_{}".format(num)}
                 )
             )
+            print(f' {num + 1}', end='', flush=True)
 
         for cloning_drive in cloned:
             self._wait_for_status(
@@ -469,8 +475,10 @@ class DriveStressTest(StatefulResourceTestBase):
                 timeout=self.TIMEOUT_DRIVE_CLONING
             )
 
-        for drive in cloned:
+        print('\nDeleting Clones', end='', flush=True)
+        for i, drive in enumerate(cloned):
             self.client.delete(drive['uuid'])
+            print(f' {i + 1}', end='', flush=True)
 
         for deleted_drive in cloned:
             self._wait_deleted(deleted_drive['uuid'], self.client, timeout=60)
@@ -528,7 +536,7 @@ class TestUpload(StatefulResourceTestBase):
         proc = Process(target=do_upload, args=(queue,))
         proc.start()
 
-        proc.join(2*60)
+        proc.join(2 * 60)
         if proc.is_alive():
             proc.terminate()
             raise Exception('Upload did not finish in time')

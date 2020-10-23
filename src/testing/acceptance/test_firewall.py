@@ -96,7 +96,7 @@ class FirewallPolicyTest(unittest.TestCase):
                 self.assertTrue(match_a.startswith(match_b))
 
         with self.dump_response('fwpolicy_list'):
-            res = self.client.list()
+            self.client.list()
 
         with self.dump_response('fwpolicy_list_detail'):
             res = self.client.list_detail()

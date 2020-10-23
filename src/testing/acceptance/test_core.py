@@ -5,6 +5,7 @@ from unittest import SkipTest, skip
 
 from nose.plugins.attrib import attr
 from fabric import Connection
+from paramiko.config import invoke
 
 from testing.utils import DumpResponse
 from cloudsigma import resource as cr
@@ -118,8 +119,11 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         )
 
         LOG.debug('Halt both servers')
-        c1.run('poweroff')
-        c2.run('poweroff')
+        try:
+            c1.run('poweroff')
+            c2.run('poweroff')
+        except invoke.exceptions.UnexpectedExit:
+            pass
 
         LOG.debug('Wait for complete shutdown')
         sc.stop(g1['uuid'])
@@ -207,7 +211,7 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         sc = cr.Server()
         gcc = cr.GlobalContext()
         dump_response = DumpResponse(clients=[sc, dc, gcc])
-        # ensure empty global context
+        # Ensure empty global context
         gcc.update({})
 
         puuid, p_pass = self._get_persistent_image_uuid_and_pass()
@@ -271,8 +275,6 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
 
         self._wait_for_open_socket(ip1, 22, timeout=90, close_on_success=True)
 
-        from fabric import Connection
-
         fkwargs = {'password': p_pass}
         conn = Connection(ip1, user='root', connect_kwargs=fkwargs)
         dump_path = dump_response.response_dump.dump_path
@@ -281,7 +283,15 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
                                 r'"<\n{}\n>" > /dev/ttyS1; wait %1); echo $v'
 
         LOG.debug('Test the guest context')
-        self.check_key_retrieval(g_def, 'context_single_value', 'name', dump_path, conn)
+
+        self.check_key_retrieval(
+            g_def,
+            'context_single_value',
+            'name',
+            dump_path,
+            conn
+        )
+
         self.check_key_retrieval(
             g_def,
             'context_single_value_ssh_key',
@@ -295,7 +305,15 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         g_def['meta']['another_key'] = 'a value or something'
         upd_res = sc.update(g1['uuid'], g_def)
         self.assertEqual(g_def['name'], upd_res['name'])
-        self.check_key_retrieval(g_def, 'context_single_value_dynamic', 'name', dump_path, conn)
+
+        self.check_key_retrieval(
+            g_def,
+            'context_single_value_dynamic',
+            'name',
+            dump_path,
+            conn
+        )
+
         self.check_key_retrieval(
             g_def,
             'context_single_value_another_key_dynamic',
@@ -330,7 +348,6 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         LOG.debug('Delete drive')
         dc.delete(d1['uuid'])
         self._wait_deleted(d1['uuid'], client=dc)
-
 
     @skip("Temporary skipping inconsistent tests")
     def test_firewall(self):

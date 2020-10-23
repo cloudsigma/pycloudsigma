@@ -18,7 +18,7 @@ class StatefulResourceTestBase(unittest.TestCase):
 
     def setUp(self):
         unittest.TestCase.setUp(self)
-        # create a resource handle object
+        # Create a resource handle object
         self.client = cr.ResourceBase()
         self._clean_servers()
         self._clean_drives()
@@ -28,7 +28,7 @@ class StatefulResourceTestBase(unittest.TestCase):
         self._clean_drives()
 
     def _get_persistent_image_uuid_and_pass(self):
-        # Get a good persistant test image
+        # Get a good persistent test image
         p_name = config.get('persistent_drive_name')
         p_pass = config.get('persistent_drive_ssh_password')
 
