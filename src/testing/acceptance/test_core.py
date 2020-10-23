@@ -4,6 +4,7 @@ import logging
 from unittest import SkipTest, skip
 
 from nose.plugins.attrib import attr
+from fabric import Connection
 
 from testing.utils import DumpResponse
 from cloudsigma import resource as cr
@@ -97,8 +98,6 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         self._wait_for_open_socket(ip1, 22, timeout=90, close_on_success=True)
         self._wait_for_open_socket(ip2, 22, timeout=40, close_on_success=True)
 
-        from fabric import Connection
-
         set_hostname = 'hostname {} && service avahi-daemon restart'
         fkwargs = {'password': p_pass}
 
@@ -159,7 +158,8 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
 
     def get_full_ctx(self, command, conn):
         res_string = ''
-        # TODO: Remove this retry when proper guest context client is implemented
+        # TODO: Remove this retry when proper guest
+        #  context client is implemented
         ctx_res_json = {}
         for retry in range(5):
             if retry > 0:
