@@ -980,7 +980,7 @@ class ServerTest(ServerTestBase):
 
 @attr('stress_test')
 class ServerStressTest(StatefulResourceTestBase):
-    SERVER_COUNT = 2
+    SERVER_COUNT = 60
 
     def setUp(self):
         super(ServerStressTest, self).setUp()
@@ -1054,7 +1054,7 @@ class ServerStressTest(StatefulResourceTestBase):
                 client=self.server_client
             )
 
-        print(f'\nStopping Servers', end='')
+        print(f'\nStopping Servers', end='', flush=True)
         for i, server in enumerate(servers):
             self.server_client.stop(server['uuid'])
             print(f' {i + 1}', end='', flush=True)
