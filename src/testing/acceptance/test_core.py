@@ -112,7 +112,11 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
 
         LOG.debug('Ping the two hosts via private network')
         ping_res = c1.run("ping atom2.local -c 1")
-        self.assertEqual(ping_res.return_code, 0, 'Could not ping host atom2 from atom1')
+        self.assertEqual(
+            ping_res.return_code,
+            0,
+            'Could not ping host atom2 from atom1'
+        )
 
         LOG.debug('Halt both servers')
         c1.run('poweroff')
@@ -136,7 +140,8 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         self._wait_deleted(d2_uuid, client=dc)
 
     def get_single_ctx_val(self, command, expected_val, conn):
-        # TODO: Remove this retry when proper guest context client is implemented
+        # TODO: Remove this retry when proper guest context
+        #  client is implemented
         res_string = None
         for retry in range(5):
             if retry > 0:
