@@ -50,7 +50,7 @@ class ServerTest(ServerTestBase):
     def test_list_limit(self):
         servers_to_create = 50
 
-        print(f'Creating {servers_to_create} servers ...')
+        print(f'\nCreating servers ({servers_to_create})')
         servers = [
             self._create_a_server(
                 server_req={
@@ -68,9 +68,10 @@ class ServerTest(ServerTestBase):
 
         time.sleep(10)
 
+        print('Deleting Servers', end='', flush=True)
         for i, server in enumerate(servers):
             self.client.delete(server['uuid'])
-            print(f'Deleting server {i + 1} of {servers_to_create} ...')
+            print(f' {i + 1}', end='', flush=True)
 
     @attr('docs_snippets')
     def test_server_state_cycle(self):
@@ -748,10 +749,9 @@ class ServerTest(ServerTestBase):
 
         # Check if usage is correct
         usage_client = cr.CurrentUsage()
-        print(usage_client.list())
         curr_cpu_usage = usage_client.list()['usage']['intel_cpu']['using']
 
-        print(f'Creating {num_of_servers} servers ...')
+        print(f'\nCreating servers ({num_of_servers})')
         server_req = [
             {
                 'name': 'test_start_stop_server_%i' % i,
@@ -766,8 +766,9 @@ class ServerTest(ServerTestBase):
         cpu_usage = sum(g['cpu'] for g in server_req) + curr_cpu_usage
 
         # Starting the servers
+        print('Starting Servers', end='', flush=True)
         for i, server in enumerate(servers):
-            print(f'Starting server {i + 1} of {num_of_servers} ...')
+            print(f' {i + 1}', end='', flush=True)
             self.client.start(server['uuid'])
 
         # give a bit of time for usage to update
@@ -783,8 +784,9 @@ class ServerTest(ServerTestBase):
             self._wait_for_status(server['uuid'], 'running')
 
         # Stop the servers
+        print('\nStopping Servers', end='', flush=True)
         for i, server in enumerate(servers):
-            print(f'Stopping server {i + 1} of {num_of_servers} ...')
+            print(f' {i + 1}', end='', flush=True)
             self.client.stop(server['uuid'])
 
         # Wait for them to stop
@@ -792,8 +794,9 @@ class ServerTest(ServerTestBase):
             self._wait_for_status(server['uuid'], 'stopped', timeout=45)
 
         # Delete them
+        print('\nDeleting Servers', end='', flush=True)
         for i, server in enumerate(servers):
-            print(f'Deleting server {i + 1} of {num_of_servers} ...')
+            print(f' {i + 1}', end='', flush=True)
             self.client.delete(server['uuid'])
 
     @attr('docs_snippets')
@@ -1058,5 +1061,3 @@ class ServerStressTest(StatefulResourceTestBase):
         for i, server in enumerate(servers):
             self.server_client.stop(server['uuid'])
             print(f' {i + 1}', end='', flush=True)
-
-
