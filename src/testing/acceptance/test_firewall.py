@@ -1,5 +1,7 @@
 import unittest
+
 from nose.plugins.attrib import attr
+
 from testing.utils import DumpResponse
 import cloudsigma.resource as resource
 
@@ -83,8 +85,9 @@ class FirewallPolicyTest(unittest.TestCase):
         with self.dump_response('fwpolicy_create_full'):
             full_policy = self.client.create(base_policy)
 
-        # Test if applied rules look like the ones returned from the API
-        # The dict is subset will not work, because API alters/normalizes some of the data
+        # Test if applied rules look like the ones returned from the API.
+        # The dict is subset will not work, because API
+        # alters/normalizes some of the data.
         for idx, rules in enumerate(base_policy['rules']):
             for key in rules:
                 match_a = str(full_policy['rules'][idx][key])
@@ -143,7 +146,9 @@ class FirewallPolicyTest(unittest.TestCase):
         with DumpResponse(clients=[server_client])("fwpolicy_server_attach"):
             server = server_client.create(server_def)
 
-        self.assertEqual(server['nics'][0]['firewall_policy']['uuid'], policy['uuid'])
+        self.assertEqual(
+            server['nics'][0]['firewall_policy']['uuid'], policy['uuid']
+        )
 
         self.client.delete(policy['uuid'])
 

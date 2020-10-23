@@ -8,7 +8,8 @@ class ApiClientError(Exception):
 
     def __repr__(self):
         return "<{s.__class__.__name__}(" \
-               "'{s.message}', status_code={s.status_code}, request_id='{s.request_id}')>".format(s=self)
+               "'{s.message}', status_code={s.status_code}, " \
+               "request_id='{s.request_id}')>".format(s=self)
 
 
 class PermissionError(ApiClientError):

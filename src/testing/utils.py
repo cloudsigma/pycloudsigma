@@ -1,36 +1,42 @@
 from future import standard_library
 standard_library.install_aliases()
+
 from builtins import object
-import urllib.request, urllib.parse, urllib.error
-from cloudsigma.conf import config
+import urllib.request, urllib.parse, urllib.error, urllib.parse
 import simplejson
 import logging
 import os
-import urllib.parse
-from testing.templates import get_template
 
-__author__ = 'islavov'
+from testing.templates import get_template
+from cloudsigma.conf import config
+
 
 LOG = logging.getLogger(__name__)
 
 
 class ResponseDumper(object):
 
-    def __init__(self, name=None, suffix=None, dump_path=None, req_data_filter=None, resp_data_filter=None):
+    def __init__(
+            self,
+            name=None,
+            suffix=None,
+            dump_path=None,
+            req_data_filter=None,
+            resp_data_filter=None
+    ):
         self.name = name
         self.suffix = suffix
         self.tmp_name = None
         self.req_data_filter = req_data_filter
         self.resp_data_filter = resp_data_filter
 
-        # If dump path not found/derived,
+        # If dump path not found/derived
         if dump_path is None and config.get('dump_path') is not None:
             self.dump_path = os.path.join(os.path.expanduser(config['dump_path']))
         else:
             self.dump_path = dump_path
 
     def __call__(self, resp, *args, **kwargs):
-
         if self.dump_path is None:
             return
 
@@ -44,7 +50,9 @@ class ResponseDumper(object):
 
         fname = self.get_filename(resp)
 
-        with open(os.path.join(self.dump_path, "request_{}".format(fname, )), "w") as fl:
+        with open(
+                os.path.join(self.dump_path, "request_{}".format(fname, )), "w"
+        ) as fl:
             LOG.info("Dumping request to {}".format(fl.name))
             if self.req_data_filter:
                 data = self.resp_data_filter(resp.request.body)
@@ -57,7 +65,9 @@ class ResponseDumper(object):
                     data,
                     path_url=urllib.parse.unquote(resp.request.path_url)))
 
-        with open(os.path.join(self.dump_path, "response_{}".format(fname)), "w") as fl:
+        with open(
+                os.path.join(self.dump_path, "response_{}".format(fname)), "w"
+        ) as fl:
             LOG.info("Dumping response to {}".format(fl.name))
             if self.resp_data_filter:
                 LOG.info("Filtering response data")
@@ -77,7 +87,11 @@ class ResponseDumper(object):
         elif self.name:
             fname = self.name
         else:
-            fname = "{}_api_{}_{}".format(resp.request.method, path_arr[1], path_arr[2])
+            fname = "{}_api_{}_{}".format(
+                resp.request.method,
+                path_arr[1],
+                path_arr[2]
+            )
             if len(path_arr) > 3:
                 check = path_arr[3]
                 if check == 'detail':

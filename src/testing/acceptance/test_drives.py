@@ -4,17 +4,19 @@ import struct
 import tempfile
 import unittest
 import random
+from logging import getLogger
+
 from nose.plugins.attrib import attr
 from past.builtins import basestring
 
 import cloudsigma.resource as cr
 import cloudsigma.errors as errors
-
 from testing.utils import DumpResponse
 from testing.acceptance.common import StatefulResourceTestBase
 
-from logging import getLogger
+
 LOG = getLogger(__name__)
+
 
 @attr('acceptance_test')
 class DriveBasicTest(StatefulResourceTestBase):
@@ -38,14 +40,16 @@ class DriveBasicTest(StatefulResourceTestBase):
 
         self.assertEqual(drive['status'], 'creating')
 
-
         self._wait_for_status(drive_uuid, 'unmounted')
 
         with self.dump_response('drive_get_unmounted'):
             drive = self.client.get(drive_uuid)
 
         with self.dump_response('drive_update_meta'):
-            drive['meta'] = {'meta_key1': 'value', 'meta_key2': 'value\nwith\nnew lines'}
+            drive['meta'] = {
+                'meta_key1': 'value',
+                'meta_key2': 'value\nwith\nnew lines'
+            }
             updated_drive = self.client.update(drive_uuid, drive)
 
         self.assertEqual(drive['meta'], updated_drive['meta'])
@@ -57,7 +61,7 @@ class DriveBasicTest(StatefulResourceTestBase):
 
     @attr('docs_snippets')
     def test_drive_resize(self):
-        DRIVE_CREATE_SIZE = 2*1024**3
+        DRIVE_CREATE_SIZE = 2 * 1024 ** 3
         drive_def = {
             'name': 'test_drive_1',
             'size': DRIVE_CREATE_SIZE,
@@ -65,9 +69,13 @@ class DriveBasicTest(StatefulResourceTestBase):
         }
         drive = self.client.create(drive_def)
         self.assertEqual(drive['status'], 'creating')
-        self._wait_for_status(drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CREATED)
+        self._wait_for_status(
+            drive['uuid'],
+            'unmounted',
+            timeout=self.TIMEOUT_DRIVE_CREATED
+        )
 
-        DRIVE_NEW_SIZE = DRIVE_CREATE_SIZE + 3*1024**3
+        DRIVE_NEW_SIZE = DRIVE_CREATE_SIZE + 3 * 1024 ** 3
         with self.dump_response('drive_resize'):
             drive_def['size'] = DRIVE_NEW_SIZE
             resizing_drive = self.client.update(drive['uuid'], drive_def)
@@ -75,7 +83,11 @@ class DriveBasicTest(StatefulResourceTestBase):
         self._wait_for_status(resizing_drive['uuid'], 'unmounted')
 
         resized_drive = self.client.get(drive['uuid'])
-        self.assertEqual(int(resized_drive['size']), DRIVE_NEW_SIZE, 'Size mismatch after drive resize')
+        self.assertEqual(
+            int(resized_drive['size']),
+            DRIVE_NEW_SIZE,
+            'Size mismatch after drive resize'
+        )
 
         DRIVE_NEW_ODD_SIZE = DRIVE_NEW_SIZE + 1*1024**3 + 7*1024**2 + 3*1024
         drive_def['size'] = DRIVE_NEW_ODD_SIZE
@@ -85,17 +97,21 @@ class DriveBasicTest(StatefulResourceTestBase):
 
         ALLOWED_SIZE_ROUNDING = 64*1024
         resized_drive = self.client.get(drive['uuid'])
-        self.assertNotEqual(int(resized_drive['size']),
-                            DRIVE_NEW_SIZE,
-                            'Size of {!r} did not change'.format(drive['uuid'])
+        self.assertNotEqual(
+            int(resized_drive['size']),
+            DRIVE_NEW_SIZE,
+            'Size of {!r} did not change'.format(drive['uuid'])
         )
 
-        self.assertLess(abs(DRIVE_NEW_ODD_SIZE-int(resized_drive['size'])), ALLOWED_SIZE_ROUNDING,
-                        'New size differs with more than %d bytes, requested size %d bytes, reported size after resize %d bytes' % (
-                            ALLOWED_SIZE_ROUNDING,
-                            DRIVE_NEW_ODD_SIZE,
-                            resized_drive['size'],
-                        )
+        self.assertLess(
+            abs(DRIVE_NEW_ODD_SIZE-int(resized_drive['size'])),
+            ALLOWED_SIZE_ROUNDING,
+            'New size differs with more than %d bytes, requested size %d '
+            'bytes, reported size after resize %d bytes' % (
+                ALLOWED_SIZE_ROUNDING,
+                DRIVE_NEW_ODD_SIZE,
+                resized_drive['size']
+            )
         )
 
         self.client.delete(drive['uuid'])
@@ -110,13 +126,21 @@ class DriveBasicTest(StatefulResourceTestBase):
             'media': 'disk',
         }
         drive = self.client.create(drive_def)
-        self._wait_for_status(drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CREATED)
+        self._wait_for_status(
+            drive['uuid'],
+            'unmounted',
+            timeout=self.TIMEOUT_DRIVE_CREATED
+        )
 
         drive['size'] = 2 * drive['size']
         with self.dump_response('drive_resize_action'):
             self.client.resize(drive['uuid'], drive)
 
-        self._wait_for_status(drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CREATED)
+        self._wait_for_status(
+            drive['uuid'],
+            'unmounted',
+            timeout=self.TIMEOUT_DRIVE_CREATED
+        )
 
         resized_drive = self.client.get(drive['uuid'])
         self.assertEqual(resized_drive['size'], drive['size'])
@@ -140,18 +164,18 @@ class DriveBasicTest(StatefulResourceTestBase):
         for drive in drives:
             self._wait_for_status(drive['uuid'], 'unmounted')
 
-        #Get the short list of fields
+        # Get the short list of fields
         with self.dump_response('drive_list'):
             self.client.list()
 
-        #Get just a list of uuids
+        # Get just a list of uuids
         with self.dump_response('drive_list_just_uuid_and_status'):
             just_uuids = self.client.list(query_params={'fields':'uuid,status'})
 
         for el in just_uuids:
             self.assertEqual(set(el.keys()), set(['uuid', 'status']))
 
-        #Get detailed information on drives
+        # Get detailed information on drives
         with self.dump_response('drive_list_detail'):
             self.client.list_detail()
 
@@ -192,7 +216,11 @@ class DriveBasicTest(StatefulResourceTestBase):
         }
 
         drive = self.client.create(drive_def)
-        self._wait_for_status(drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
+        self._wait_for_status(
+            drive['uuid'],
+            'unmounted',
+            timeout=self.TIMEOUT_DRIVE_CLONING
+        )
 
         clone_drive_def = {
             'name': 'test_drive_y',
@@ -203,7 +231,11 @@ class DriveBasicTest(StatefulResourceTestBase):
         with self.dump_response('drive_clone'):
             cloned_drive = self.client.clone(drive['uuid'], clone_drive_def)
 
-        self._wait_for_status(cloned_drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
+        self._wait_for_status(
+            cloned_drive['uuid'],
+            'unmounted',
+            timeout=self.TIMEOUT_DRIVE_CLONING
+        )
 
         self.client.delete(drive['uuid'])
         self.client.delete(cloned_drive['uuid'])
@@ -219,7 +251,11 @@ class DriveBasicTest(StatefulResourceTestBase):
         }
 
         drive = self.client.create(drive_def)
-        self._wait_for_status(drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
+        self._wait_for_status(
+            drive['uuid'],
+            'unmounted',
+            timeout=self.TIMEOUT_DRIVE_CLONING
+        )
 
         clone_drive_def = {
             'name': 'test_drive_y',
@@ -227,26 +263,38 @@ class DriveBasicTest(StatefulResourceTestBase):
             'affinities': [],
         }
 
+        cloned_drive = self.client.clone(
+            drive['uuid'],
+            clone_drive_def,
+            avoid=drive['uuid']
+        )
 
-        cloned_drive = self.client.clone(drive['uuid'], clone_drive_def, avoid=drive['uuid'])
+        another_drive = self.client.create(drive_def, avoid=drive['uuid'])
 
-        another_dirve = self.client.create(drive_def, avoid=drive['uuid'])
-
-        self._wait_for_status(cloned_drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
-        self._wait_for_status(another_dirve['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING)
+        self._wait_for_status(
+            cloned_drive['uuid'],
+            'unmounted',
+            timeout=self.TIMEOUT_DRIVE_CLONING
+        )
+        self._wait_for_status(
+            another_drive['uuid'],
+            'unmounted',
+            timeout=self.TIMEOUT_DRIVE_CLONING
+        )
 
         self.client.delete(drive['uuid'])
         self.client.delete(cloned_drive['uuid'])
-        self.client.delete(another_dirve['uuid'])
+        self.client.delete(another_drive['uuid'])
 
         self._wait_deleted(cloned_drive['uuid'], timeout=60)
         self._wait_deleted(drive['uuid'], timeout=60)
-        self._wait_deleted(another_dirve['uuid'], timeout=60)
+        self._wait_deleted(another_drive['uuid'], timeout=60)
 
     @attr('docs_snippets')
     def test_get_schema(self):
         with self.dump_response('drive_schema'):
             self.client.get_schema()
+
 
 @attr('acceptance_test')
 class LibraryDriveTest(StatefulResourceTestBase):
@@ -298,10 +346,12 @@ class LibraryDriveTest(StatefulResourceTestBase):
         with self.dump_response('libdrive_list'):
             libdrives = self.client.list(query_params={'limit': 5})
 
-        # Select the lib drive with most interesting attributes
-        libdrive_uuid = libdrives[0]['uuid']            # by default use the first possible
+        # Select the lib drive with most interesting attributes.
+        # By default use the first possible
+        libdrive_uuid = libdrives[0]['uuid']
         for d in libdrives:
-            if len(d['licenses']) > 0:                  # pick a drive with licenses
+            # pick a drive with licenses
+            if len(d['licenses']) > 0:
                 libdrive_uuid = d['uuid']
                 break
 
@@ -316,9 +366,7 @@ class LibraryDriveTest(StatefulResourceTestBase):
         self.assertEqual(libdrive['uuid'], libdrive_from_drive_url['uuid'])
         self.assertEqual(libdrive['name'], libdrive_from_drive_url['name'])
 
-
     def test_attaching_cdrom(self):
-
         server_client = cr.Server()
 
         found = None
@@ -328,7 +376,9 @@ class LibraryDriveTest(StatefulResourceTestBase):
                 break
 
         if found is None:
-            raise unittest.SkipTest('Cannot find a cdrom drive in drives library')
+            raise unittest.SkipTest(
+                'Cannot find a cdrom drive in drives library'
+            )
 
         guest_def = self._gen_server_definition(drives=[found['uuid']])
         new_guest = server_client.create(guest_def)
@@ -346,7 +396,9 @@ class LibraryDriveTest(StatefulResourceTestBase):
                 break
 
         if found is None:
-            raise unittest.SkipTest('Cannot find a preinstalled drive in the drives library')
+            raise unittest.SkipTest(
+                'Cannot find a preinstalled drive in the drives library.'
+            )
 
         guest_def = self._gen_server_definition(drives=[found['uuid']])
 
@@ -383,7 +435,12 @@ class DriveStressTest(StatefulResourceTestBase):
             res.append(self.client.create(drive_def))
 
         for creating_drive in res:
-            self._wait_for_status(creating_drive['uuid'], status='unmounted', client=self.client, timeout=60)
+            self._wait_for_status(
+                creating_drive['uuid'],
+                status='unmounted',
+                client=self.client,
+                timeout=60
+            )
 
         for drive in res:
             self.client.delete(drive['uuid'])
@@ -397,10 +454,20 @@ class DriveStressTest(StatefulResourceTestBase):
 
         cloned = []
         for num in range(self.CLONE_COUNT):
-            cloned.append(self.client.clone(puuid, {'name': "test_atom_clone_{}".format(num)}))
+            cloned.append(
+                self.client.clone(
+                    puuid,
+                    {'name': "test_atom_clone_{}".format(num)}
+                )
+            )
 
         for cloning_drive in cloned:
-            self._wait_for_status(cloning_drive['uuid'], status='unmounted', client=self.client, timeout=self.TIMEOUT_DRIVE_CLONING)
+            self._wait_for_status(
+                cloning_drive['uuid'],
+                status='unmounted',
+                client=self.client,
+                timeout=self.TIMEOUT_DRIVE_CLONING
+            )
 
         for drive in cloned:
             self.client.delete(drive['uuid'])
@@ -413,7 +480,8 @@ class TestUpload(StatefulResourceTestBase):
     def setUp(self):
         super(TestUpload, self).setUp()
 
-        self.file_size = 10 * 1024 ** 2 + random.randrange(0, 1024)  # 10.something MiB
+        # 10.something MiB
+        self.file_size = 10 * 1024 ** 2 + random.randrange(0, 1024)
         self.file_path = self.generate_file()
         # self.downloaded_path = tempfile.mktemp(prefix='test_download_')
         self.dc = cr.Drive()
@@ -444,8 +512,13 @@ class TestUpload(StatefulResourceTestBase):
 
     def test_resumable_upload(self):
         from cloudsigma.resumable_upload import Upload
+
         def do_upload(queue):
-            up = Upload(self.file_path, chunk_size=1024**2, drive_name='test_drive_upload')
+            up = Upload(
+                self.file_path,
+                chunk_size=1024 ** 2,
+                drive_name='test_drive_upload'
+            )
 
             up.upload()
 

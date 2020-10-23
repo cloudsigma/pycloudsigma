@@ -1,22 +1,21 @@
 import unittest
 import time
-from nose.plugins.attrib import attr
 import socket
+
+from nose.plugins.attrib import attr
+from future.moves.urllib.parse import urlparse
+
 from testing.acceptance.common import StatefulResourceTestBase
-
-from future.moves.urllib.parse import urlparse, urlencode
-from future.moves.urllib.request import urlopen, Request
-from future.moves.urllib.error import HTTPError
-
-import cloudsigma.resource as cr
 from testing.utils import DumpResponse
+import cloudsigma.resource as cr
 
 
 @attr('acceptance_test')
 class ServerTestBase(StatefulResourceTestBase):
     def setUp(self):
         unittest.TestCase.setUp(self)
-        self.client = cr.Server()            # create a resource handle object
+        # Create a resource handle object
+        self.client = cr.Server()
         self.dump_response = DumpResponse(clients=[self.client])
 
     def _create_a_server(self, server_req=None):
@@ -28,8 +27,16 @@ class ServerTestBase(StatefulResourceTestBase):
                 'vnc_password': 'testserver',
             }
         server = self.client.create(server_req)
-        self.assertDictContainsSubset(server_req, server, 'Server created with different params')
-        self.assertEqual(server['status'], 'stopped', 'Server created with wrong status')
+        self.assertDictContainsSubset(
+            server_req,
+            server,
+            'Server created with different params'
+        )
+        self.assertEqual(
+            server['status'],
+            'stopped',
+            'Server created with wrong status'
+        )
         return server
 
 
@@ -56,8 +63,7 @@ class ServerTest(ServerTestBase):
 
     @attr('docs_snippets')
     def test_server_state_cycle(self):
-        """Test simple server create-start-stop-delete cycle
-        """
+        """Test simple server create-start-stop-delete cycle"""
         dump_response = DumpResponse(clients=[self.client])
 
         with dump_response('server_create_minimal'):
@@ -144,8 +150,9 @@ class ServerTest(ServerTestBase):
         with dump_response('server_create_full'):
             server = self.client.create(server_definition)
 
-        # TODO: Uncomment this when the guest_drive definition order changes reach production
-        #self._verify_list(server, True)
+        # TODO: Uncomment this when the guest_drive definition
+        #  order changes reach production
+        # self._verify_list(server, True)
 
         self.client.delete(server['uuid'])
 
@@ -180,7 +187,10 @@ class ServerTest(ServerTestBase):
         self._wait_for_status(drive1['uuid'], 'unmounted', client=dv)
         self._wait_for_status(drive2['uuid'], 'unmounted', client=dv)
 
-        with DumpResponse(clients=[dv], name='server_recurse_del_disks_drives_before'):
+        with DumpResponse(
+                clients=[dv],
+                name='server_recurse_del_disks_drives_before'
+        ):
             dv.list_detail()
 
         server_definition = {
@@ -224,8 +234,9 @@ class ServerTest(ServerTestBase):
         with dump_response('server_recurse_del_disks_create'):
             server = self.client.create(server_definition)
 
-        # TODO: Uncomment this when the guest_drive definition order changes reach production
-        #self._verify_list(server, True)
+        # TODO: Uncomment this when the guest_drive definition order
+        #  changes reach production
+        # self._verify_list(server, True)
         with dump_response('server_recurse_del_disks_delete'):
             self.client.delete_with_disks(server['uuid'])
 
@@ -234,7 +245,10 @@ class ServerTest(ServerTestBase):
         self._wait_deleted(drive1['uuid'], client=dv)
 
         self.assertEqual(dv.get(drive2['uuid'])['status'], 'unmounted')
-        with DumpResponse(clients=[dv], name='server_recurse_del_disks_drives_after'):
+        with DumpResponse(
+                clients=[dv],
+                name='server_recurse_del_disks_drives_after'
+        ):
             dv.list()
 
         dv.delete(drive2['uuid'])
@@ -299,11 +313,11 @@ class ServerTest(ServerTestBase):
             "vnc_password": "tester",
         }
 
-
         server = self.client.create(server_definition)
 
-        # TODO: Uncomment this when the guest_drive definition order changes reach production
-        #self._verify_list(server, True)
+        # TODO: Uncomment this when the guest_drive definition order
+        #  changes reach production
+        # self._verify_list(server, True)
 
         self.client.delete_with_cdroms(server['uuid'])
 
@@ -338,7 +352,10 @@ class ServerTest(ServerTestBase):
         self._wait_for_status(drive1['uuid'], 'unmounted', client=dv)
         self._wait_for_status(drive2['uuid'], 'unmounted', client=dv)
 
-        with DumpResponse(clients=[dv], name='server_recurse_del_all_drives_drives_before'):
+        with DumpResponse(
+                clients=[dv],
+                name='server_recurse_del_all_drives_drives_before'
+        ):
             dv.list_detail()
 
         server_definition = {
@@ -346,7 +363,7 @@ class ServerTest(ServerTestBase):
             "name": "test_acc_full_server",
             "cpus_instead_of_cores": False,
             "tags": [],
-            "mem": 256*1024**2,
+            "mem": 256 * 1024 ** 2,
             "nics": [
                 {
                     "ip_v4_conf": {
@@ -382,22 +399,23 @@ class ServerTest(ServerTestBase):
         with dump_response('server_recurse_del_all_drives_create'):
             server = self.client.create(server_definition)
 
-        # TODO: Uncomment this when the guest_drive definition order changes reach production
-        #self._verify_list(server, True)
+        # TODO: Uncomment this when the guest_drive definition order
+        #  changes reach production
+        # self._verify_list(server, True)
         with dump_response('server_recurse_del_all_drives_delete'):
             self.client.delete_with_all_drives(server['uuid'])
 
         self._verify_list(server, False)
 
-
-
         self._wait_deleted(drive1['uuid'], client=dv)
         self._wait_deleted(drive2['uuid'], client=dv)
         self._wait_deleted(server['uuid'], client=self.client)
 
-        with DumpResponse(clients=[dv], name='server_recurse_del_all_drives_drives_after'):
+        with DumpResponse(
+                clients=[dv],
+                name='server_recurse_del_all_drives_drives_after'
+        ):
             dv.list_detail()
-
 
     @attr('docs_snippets')
     def test_server_nics(self):
@@ -408,7 +426,13 @@ class ServerTest(ServerTestBase):
         vlan_client = cr.VLAN()
         vlans = vlan_client.list()
         if not vlans:
-            subs_client.create({'resource': 'vlan', 'amount': 1, 'period': '1 month'})
+            subs_client.create(
+                {
+                    'resource': 'vlan',
+                    'amount': 1,
+                    'period': '1 month'
+                }
+            )
             vlans = vlan_client.list()
         vlan_uuid = vlans[0]['uuid']
 
@@ -431,13 +455,22 @@ class ServerTest(ServerTestBase):
         with DumpResponse(clients=[self.client], name='server_add_dhcp_nic'):
             server = self.client.update(server['uuid'], server)
 
-        server['nics'] = [{'ip_v4_conf': {'conf': 'dhcp'}, 'model': 'e1000'}, {'vlan': vlan_uuid}]
+        server['nics'] = [
+            {
+                'ip_v4_conf': {'conf': 'dhcp'},
+                'model': 'e1000'
+            },
+            {'vlan': vlan_uuid}
+        ]
         server = self.client.update(server['uuid'], server)
         with DumpResponse(clients=[self.client], name='server_get_two_nics'):
             server = self.client.get(server['uuid'])
 
         server['nics'][0]['ip_v4_conf'] = {'conf': 'static', 'ip': ip_uuid}
-        with DumpResponse(clients=[self.client], name='server_change_nic_to_static'):
+        with DumpResponse(
+                clients=[self.client],
+                name='server_change_nic_to_static'
+        ):
             server = self.client.update(server['uuid'], server)
 
         server['nics'] = [server['nics'][1], server['nics'][0]]
@@ -446,7 +479,10 @@ class ServerTest(ServerTestBase):
 
         private_mac = server['nics'][0]['mac']
         server['nics'] = [{'ip_v4_conf': {'conf': 'dhcp'}, 'mac': private_mac}]
-        with DumpResponse(clients=[self.client], name='server_del_and_change_nic'):
+        with DumpResponse(
+                clients=[self.client],
+                name='server_del_and_change_nic'
+        ):
             server = self.client.update(server['uuid'], server)
 
         server['nics'] = [{'ip_v4_conf': {'conf': 'manual'}}]
@@ -502,7 +538,10 @@ class ServerTest(ServerTestBase):
         with DumpResponse(clients=[self.client], name='server_get_running'):
             server_def = self.client.get(server['uuid'])
 
-        self.assertEqual(server_def['runtime']['nics'][0]['interface_type'], 'public')
+        self.assertEqual(
+            server_def['runtime']['nics'][0]['interface_type'],
+            'public'
+        )
         self.assertIsNotNone(server_def['runtime']['nics'][0]['ip_v4'])
 
         # check runtime call
@@ -527,9 +566,15 @@ class ServerTest(ServerTestBase):
         with self.dump_response('server_open_vnc'):
             open_vnc_resp = self.client.open_vnc(server['uuid'])
 
-        self.assertDictContainsSubset({'result': 'success', 'uuid': server['uuid']}, open_vnc_resp)
+        self.assertDictContainsSubset(
+            {
+                'result': 'success',
+                'uuid': server['uuid']
+            },
+            open_vnc_resp
+        )
 
-        #Parsing vnc address and port from vnc_url
+        # Parsing vnc address and port from vnc_url
         vnc_args = urlparse(open_vnc_resp['vnc_url']).netloc.split(":")
         vnc_address = (str(vnc_args[0]), int(vnc_args[1]))
         
@@ -539,8 +584,14 @@ class ServerTest(ServerTestBase):
         with self.dump_response('server_close_vnc'):
             close_vnc_resp = self.client.close_vnc(server['uuid'])
 
-        self.assertDictContainsSubset({'result': 'success', 'uuid': server['uuid'], 'action': 'close_vnc'},
-                                      close_vnc_resp)
+        self.assertDictContainsSubset(
+            {
+                'result': 'success',
+                'uuid': server['uuid'],
+                'action': 'close_vnc'
+            },
+            close_vnc_resp
+        )
 
         self.client.stop(server['uuid'])
         self._wait_for_status(server['uuid'], 'stopped')
@@ -564,16 +615,16 @@ class ServerTest(ServerTestBase):
 
         while now + 15 >= time.time():
             try:
-                #Check if we can connect to VNC address
+                # Check if we can connect to VNC address
                 vnc_sock.connect(vnc_address)
             except:
                 time.sleep(1)
             else:
                 break
 
-        #Checking if VNC initial handshake is sent
+        # Checking if VNC initial handshake is sent
         vnc_ver = vnc_sock.recv(16).decode()
-        self.assertRegexpMatches(vnc_ver, 'RFB \d+\.\d+\\n')
+        self.assertRegexpMatches(vnc_ver, r'RFB \d+\.\d+\\n')
         vnc_sock.close()
     
         self._close_vnc_tunnel(server)
@@ -657,7 +708,7 @@ class ServerTest(ServerTestBase):
         drive = dv.create(drive_def_1)
         self._wait_for_status(drive['uuid'], 'unmounted', client=dv)
 
-        #Test attach drive
+        # Test attach drive
         server_def['drives'] = [
             {
                 "device": "virtio",
@@ -688,12 +739,14 @@ class ServerTest(ServerTestBase):
         usage_client = cr.CurrentUsage()
         curr_cpu_usage = usage_client.list()['usage']['cpu']['using']
 
-        server_req = [{
-                          'name': 'test_start_stop_server_%i' % i,
-                          'cpu': 500,
-                          'mem': 512 * 1024 ** 2,
-                          'vnc_password': 'testserver',
-                      } for i in range(40)]
+        server_req = [
+            {
+                'name': 'test_start_stop_server_%i' % i,
+                'cpu': 500,
+                'mem': 512 * 1024 ** 2,
+                'vnc_password': 'testserver',
+            } for i in range(40)
+        ]
 
         # Creating 40 servers
         servers = self.client.create(server_req)
@@ -703,8 +756,12 @@ class ServerTest(ServerTestBase):
         for server in servers:
             self.client.start(server['uuid'])
 
-        time.sleep(2)           # give a bit of time for usage to update
-        self.assertEqual(cpu_usage, usage_client.list()['usage']['intel_cpu']['using'])
+        # give a bit of time for usage to update
+        time.sleep(2)
+        self.assertEqual(
+            cpu_usage,
+            usage_client.list()['usage']['intel_cpu']['using']
+        )
 
         # Wait for status running
         for server in servers:
@@ -730,7 +787,13 @@ class ServerTest(ServerTestBase):
             server = self.client.get(server['uuid'])
 
         with DumpResponse(clients=[self.client], name='server_clone'):
-            clone = self.client.clone(server['uuid'], {'name': 'test cloned server name', 'random_vnc_password': True})
+            clone = self.client.clone(
+                server['uuid'],
+                {
+                    'name': 'test cloned server name',
+                    'random_vnc_password': True
+                }
+            )
 
         self.client.delete(server['uuid'])
         self.client.delete(clone['uuid'])
@@ -787,14 +850,27 @@ class ServerTest(ServerTestBase):
 
         server = self.client.create(server_def)
 
-        clone = self.client.clone(server['uuid'], {'name': 'cloned server name', 'random_vnc_password': True})
+        clone = self.client.clone(
+            server['uuid'],
+            {
+                'name': 'cloned server name',
+                'random_vnc_password': True
+            }
+        )
 
         for mount in clone['drives']:
             drive_uuid = mount['drive']['uuid']
             self._wait_for_status(drive_uuid, 'mounted', client=dv)
 
-        self.assertNotEqual(clone['drives'][0]['drive']['uuid'], server['drives'][0]['drive']['uuid'])
-        self.assertEqual(clone['drives'][1]['drive']['uuid'], server['drives'][1]['drive']['uuid'])
+        self.assertNotEqual(
+            clone['drives'][0]['drive']['uuid'],
+            server['drives'][0]['drive']['uuid']
+        )
+
+        self.assertEqual(
+            clone['drives'][1]['drive']['uuid'],
+            server['drives'][1]['drive']['uuid']
+        )
 
         self.client.delete_with_all_drives(server['uuid'])
         self.client.delete_with_disks(clone['uuid'])
@@ -855,15 +931,27 @@ class ServerTest(ServerTestBase):
 
         server = self.client.create(server_def)
 
-        clone = self.client.clone(server['uuid'], {'name': 'cloned server name', 'random_vnc_password': True},
-                                  avoid=[server['uuid']])
+        clone = self.client.clone(
+            server['uuid'],
+            {
+                'name': 'cloned server name',
+                'random_vnc_password': True
+            },
+            avoid=[server['uuid']]
+        )
 
         for mount in clone['drives']:
             drive_uuid = mount['drive']['uuid']
             self._wait_for_status(drive_uuid, 'mounted', client=dv)
 
-        self.assertNotEqual(clone['drives'][0]['drive']['uuid'], server['drives'][0]['drive']['uuid'])
-        self.assertEqual(clone['drives'][1]['drive']['uuid'], server['drives'][1]['drive']['uuid'])
+        self.assertNotEqual(
+            clone['drives'][0]['drive']['uuid'],
+            server['drives'][0]['drive']['uuid']
+        )
+        self.assertEqual(
+            clone['drives'][1]['drive']['uuid'],
+            server['drives'][1]['drive']['uuid']
+        )
 
         self.client.delete_with_all_drives(server['uuid'])
         self.client.delete_with_disks(clone['uuid'])
@@ -890,7 +978,12 @@ class ServerStressTest(StatefulResourceTestBase):
 
         cloned = []
         for num in range(self.SERVER_COUNT):
-            cloned.append(self.drive_client.clone(puuid, {'name': "test_stress_server_{}".format(num)}))
+            cloned.append(
+                self.drive_client.clone(
+                    puuid,
+                    {'name': "test_stress_server_{}".format(num)}
+                )
+            )
 
         for i, drive in enumerate(cloned):
             server_req.append({
@@ -922,13 +1015,22 @@ class ServerStressTest(StatefulResourceTestBase):
         sip_map = {}
 
         for cloning_drive in cloned:
-            self._wait_for_status(cloning_drive['uuid'], status='mounted', client=self.drive_client, timeout=120*1000)
+            self._wait_for_status(
+                cloning_drive['uuid'],
+                status='mounted',
+                client=self.drive_client,
+                timeout=120 * 1000
+            )
 
         for server in servers:
             self.server_client.start(server['uuid'])
 
         for server in servers:
-            self._wait_for_status(server['uuid'], status='running', client=self.server_client)
+            self._wait_for_status(
+                server['uuid'],
+                status='running',
+                client=self.server_client
+            )
 
         for server in self.server_client.list_detail():
             sip_map[server['uuid']] = server['runtime']['nics'][0]['ip_v4']

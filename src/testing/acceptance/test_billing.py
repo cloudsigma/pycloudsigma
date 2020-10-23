@@ -24,7 +24,6 @@ class BillingDocs(unittest.TestCase):
         with DumpResponse(clients=[client])('pricing_schema'):
             client.get_schema()
 
-
     def test_balance(self):
         client = cr.Balance()
         with DumpResponse(clients=[client])('balance_list'):
@@ -32,10 +31,10 @@ class BillingDocs(unittest.TestCase):
         with DumpResponse(clients=[client])('balance_schema'):
             client.get_schema()
 
-    def test_currentusage(self):
+    def test_current_usage(self):
         client = cr.CurrentUsage()
         with DumpResponse(clients=[client])('currentusage_list'):
-            currentusage = client.get()
+            current_usage = client.get()
         with DumpResponse(clients=[client])('currentusage_schema'):
             client.get_schema()
 

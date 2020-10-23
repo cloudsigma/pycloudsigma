@@ -1,7 +1,8 @@
 from nose.plugins.attrib import attr
+
+import cloudsigma.resource as cr
 from testing.acceptance.common import StatefulResourceTestBase
 from testing.utils import DumpResponse
-import cloudsigma.resource as cr
 
 
 @attr('acceptance_test')

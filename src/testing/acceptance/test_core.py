@@ -1,16 +1,16 @@
 import json
 import os
-from nose.plugins.attrib import attr
-from testing.utils import DumpResponse
+import logging
+from unittest import SkipTest, skip
 
+from nose.plugins.attrib import attr
+
+from testing.utils import DumpResponse
+from cloudsigma import resource as cr
 from . import common
 
-from cloudsigma import resource as cr
-from cloudsigma import generic as gc
-from unittest import SkipTest, skip
-import logging
-
 LOG = logging.getLogger(__name__)
+
 
 @attr('acceptance_test')
 class TestCoreFuncs(common.StatefulResourceTestBase):
@@ -30,7 +30,12 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
 
         LOG.debug('Clone the persistent image')
         d1 = dc.clone(puuid, {'name': 'test_atom_clone_1'})
-        self._wait_for_status(d1['uuid'], status='unmounted', timeout=self.TIMEOUT_DRIVE_CLONING, client=dc)
+        self._wait_for_status(
+            d1['uuid'],
+            status='unmounted',
+            timeout=self.TIMEOUT_DRIVE_CLONING,
+            client=dc
+        )
 
         g_def = {
             "name": "test_server",
@@ -135,7 +140,11 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         res_string = None
         for retry in range(5):
             if retry > 0:
-                LOG.warning('Retrying guest context single value execution {}'.format(retry))
+                LOG.warning(
+                    'Retrying guest context single value execution {}'.format(
+                        retry
+                    )
+                )
             ctx_val_res = conn.run(command)
 
             res_string = ctx_val_res.stdout.rstrip()
@@ -149,7 +158,9 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         ctx_res_json = {}
         for retry in range(5):
             if retry > 0:
-                LOG.warning('Retrying guest context whole definition execution {}'.format(retry))
+                LOG.warning(
+                    'Retrying guest context whole definition execution {}'.format(retry)
+                )
             try:
                 ctx_res = conn.run(command)
                 res_string = ctx_res.stdout.rstrip()
@@ -222,7 +233,16 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
                 },
             ],
             "meta": {
-                "ssh_public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCy4XpmD3kEfRZ+LCwFh3Xmqrkm7rSiDu8v+ZCTOA3vlNjmy/ZOc3vy9Zr+IhWPP4yipiApkGRsBM63tTgnxqUUn/WU7qkbBNktZBcs5p7Mj/zO4ZHkk4VoTczFzHlPGwuak2P4wTftEj7sU8IRutaAbMoKj4AMuFF50j4sIgF7P5b5FtTIM2b5HSW8BlDz10b67+xsj6s3Jv05xxbBs+RWj+v7D5yjMVeeErXoSui8dlHpUu6QOVKn8LLmdpxvehc6ns8yW7cbQvWmLjOICMnm6BXdVtOKWBncDq9FGLmKF3fUeZZPbv79Z7dyZs+xGZGMHbpaNHpuY9QhNS/hQ5D5 dave@hal"
+                "ssh_public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCy"
+                                  "4XpmD3kEfRZ+LCwFh3Xmqrkm7rSiDu8v+ZCTOA3v"
+                                  "lNjmy/ZOc3vy9Zr+IhWPP4yipiApkGRsBM63tTgn"
+                                  "xqUUn/WU7qkbBNktZBcs5p7Mj/zO4ZHkk4VoTczF"
+                                  "zHlPGwuak2P4wTftEj7sU8IRutaAbMoKj4AMuFF5"
+                                  "0j4sIgF7P5b5FtTIM2b5HSW8BlDz10b67+xsj6s3"
+                                  "Jv05xxbBs+RWj+v7D5yjMVeeErXoSui8dlHpUu6Q"
+                                  "OVKn8LLmdpxvehc6ns8yW7cbQvWmLjOICMnm6BXd"
+                                  "VtOKWBncDq9FGLmKF3fUeZZPbv79Z7dyZs+xGZGM"
+                                  "HbpaNHpuY9QhNS/hQ5D5 dave@hal"
             }
         }
 
@@ -241,7 +261,6 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
 
         g1 = sc.get(g1['uuid'])
 
-
         LOG.debug('Get the assigned ips')
         ip1 = g1['nics'][0]['runtime']['ip_v4']["uuid"]
 
@@ -252,11 +271,18 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         fkwargs = {'password': p_pass}
         conn = Connection(ip1, user='root', connect_kwargs=fkwargs)
         dump_path = dump_response.response_dump.dump_path
-        self.command_template = r'v=$(read -t 13 READVALUE < /dev/ttyS1 && echo $READVALUE & sleep 1; echo -en "<\n{}\n>" > /dev/ttyS1; wait %1); echo $v'
+        self.command_template = r'v=$(read -t 13 READVALUE < /dev/ttyS1 && ' \
+                                r'echo $READVALUE & sleep 1; echo -en ' \
+                                r'"<\n{}\n>" > /dev/ttyS1; wait %1); echo $v'
 
         LOG.debug('Test the guest context')
         self.check_key_retrieval(g_def, 'context_single_value', 'name', dump_path, conn)
-        self.check_key_retrieval(g_def, 'context_single_value_ssh_key', '/meta/ssh_public_key', dump_path, conn)
+        self.check_key_retrieval(
+            g_def,
+            'context_single_value_ssh_key',
+            '/meta/ssh_public_key',
+            dump_path, conn
+        )
         self.check_all_retrieval(g_def, 'context_all', dump_path, conn)
 
         LOG.debug('Check context dynamic update')
@@ -265,7 +291,13 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         upd_res = sc.update(g1['uuid'], g_def)
         self.assertEqual(g_def['name'], upd_res['name'])
         self.check_key_retrieval(g_def, 'context_single_value_dynamic', 'name', dump_path, conn)
-        self.check_key_retrieval(g_def, 'context_single_value_another_key_dynamic', '/meta/another_key', dump_path, conn)
+        self.check_key_retrieval(
+            g_def,
+            'context_single_value_another_key_dynamic',
+            '/meta/another_key',
+            dump_path,
+            conn
+        )
         self.check_all_retrieval(g_def, 'context_all_dynamic', dump_path, conn)
         with dump_response('update_global_context'):
             gcc.update({'new_global_key': 'new_global_val'})
@@ -275,7 +307,12 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         expected_val = 'new_global_val'
         res_string = self.get_single_ctx_val(command, expected_val, conn)
         self.assertEqual(res_string, expected_val)
-        self.dump_ctx_command(command, res_string, 'global_context_single_value', dump_path)
+        self.dump_ctx_command(
+            command,
+            res_string,
+            'global_context_single_value',
+            dump_path
+        )
         self.check_all_retrieval(g_def, 'global_context_all', dump_path, conn)
 
         LOG.debug('Stopping guest')
@@ -300,7 +337,12 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
 
         LOG.debug('Clone the persistent image')
         d1 = dc.clone(puuid, {'name': 'test_atom_clone_1'})
-        self._wait_for_status(d1['uuid'], status='unmounted', timeout=self.TIMEOUT_DRIVE_CLONING, client=dc)
+        self._wait_for_status(
+            d1['uuid'],
+            status='unmounted',
+            timeout=self.TIMEOUT_DRIVE_CLONING,
+            client=dc
+        )
 
         fw_policy = fwp.create({})
 

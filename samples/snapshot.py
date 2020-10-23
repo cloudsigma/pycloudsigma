@@ -1,6 +1,7 @@
-import cloudsigma
 import sys
 from time import sleep
+
+import cloudsigma
 
 snapshot = cloudsigma.resource.Snapshot()
 snapshot_done = False

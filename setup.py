@@ -5,7 +5,6 @@ from setuptools import setup
 exec(open("src/cloudsigma/version.py").read())
 
 
-
 with open('requirements.txt') as f:
     required = f.read().splitlines()
 

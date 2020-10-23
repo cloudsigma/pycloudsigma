@@ -1,8 +1,9 @@
+import simplejson as json
 from nose.plugins.attrib import attr
+
 from testing.acceptance.common import StatefulResourceTestBase
 from testing.utils import DumpResponse
 import cloudsigma.resource as cr
-import simplejson as json
 
 
 def anonymize_profile(response_body):
@@ -27,13 +28,20 @@ class ProfileTest(StatefulResourceTestBase):
     @attr('docs_snippets')
     def test_profile(self):
 
-        with DumpResponse(name='profile', clients=[self.client], resp_data_filter=anonymize_profile):
+        with DumpResponse(
+                name='profile',
+                clients=[self.client],
+                resp_data_filter=anonymize_profile
+        ):
             profile = self.client.get()
 
         profile['company'] = 'Newly Set Company Name'
-        with DumpResponse(name='profile_update', clients=[self.client],
-                          resp_data_filter=anonymize_profile,
-                          req_data_filter=anonymize_profile):
+        with DumpResponse(
+                name='profile_update',
+                clients=[self.client],
+                resp_data_filter=anonymize_profile,
+                req_data_filter=anonymize_profile
+        ):
             self.client.update(profile)
 
         profile['company'] = ''
