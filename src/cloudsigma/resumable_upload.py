@@ -113,7 +113,7 @@ class Upload(ResourceBase):
         self.start_threads()
 
         LOG.debug('waiting for queue to finish')
-        while watcher_t.isAlive():
+        while watcher_t.is_alive():
             self.report_progress()
             time.sleep(self.progress_report_interval)
         self.report_progress()

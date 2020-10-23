@@ -104,7 +104,7 @@ class CSUploader(object):
 
         self.start_threads()
 
-        while watcher_t.isAlive():
+        while watcher_t.is_alive():
             self.report_progress()
             time.sleep(0.5)
         self.report_progress()
