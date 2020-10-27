@@ -1,8 +1,8 @@
 from nose.plugins.attrib import attr
-from testing.acceptance.common import StatefulResourceTestBase
 
 import cloudsigma.resource as cr
 from testing.utils import DumpResponse
+from testing.acceptance.common import StatefulResourceTestBase
 
 
 @attr('acceptance_test')
@@ -28,7 +28,15 @@ class VLANBasicTest(StatefulResourceTestBase):
             self.client.get(vlan_uuid)
 
         with self.dump_response('vlan_update'):
-            self.client.update(vlan_uuid, {'meta': {'name': 'my vlan', 'custom_field': 'some custom data'}})
+            self.client.update(
+                vlan_uuid,
+                {
+                    'meta': {
+                        'name': 'my vlan',
+                        'custom_field': 'some custom data'
+                    }
+                }
+            )
 
         self.client.update(vlan_uuid, {'meta': {}})
 
@@ -56,6 +64,14 @@ class IPBasicTest(StatefulResourceTestBase):
             self.client.get(ip_uuid)
 
         with self.dump_response('ip_update'):
-            self.client.update(ip_uuid, {'meta': {'name': 'my ip', 'custom_field': 'some custom data'}})
+            self.client.update(
+                ip_uuid,
+                {
+                    'meta': {
+                        'name': 'my ip',
+                        'custom_field': 'some custom data'
+                    }
+                }
+            )
 
         self.client.update(ip_uuid, {'meta': {}})

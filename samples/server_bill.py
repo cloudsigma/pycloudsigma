@@ -14,11 +14,14 @@ start_time = datetime(2014, 1, 1)
 end_time = datetime(2014, 2, 1)
 
 
-
-
 def get_usages(usage_client, ledger_time, start_date, usage_list, bisect_list):
     if not usage_list:
-        return usage_client.list(dict(poll_time__lt=ledger_time, poll_time__gt=start_date.isoformat()))
+        return usage_client.list(
+            dict(
+                poll_time__lt=ledger_time,
+                poll_time__gt=start_date.isoformat()
+            )
+        )
     else:
         i = bisect.bisect_left(bisect_list, start_date)
         res = []
@@ -44,15 +47,32 @@ def get_per_server_usage(start_time, end_time):
     server_billing = defaultdict(int)
     interval = (end_time - start_time).days
 
-    ledger_list = ledger_client.list(dict(time__gt=end_time - timedelta(days=interval), time__lt=end_time))
+    ledger_list = ledger_client.list(
+        dict(
+            time__gt=end_time - timedelta(days=interval),
+            time__lt=end_time
+        )
+    )
     usage_list = []
     i = 0
     for i in range(7, interval, 7):
-        usage_list.extend(usage_client.list(dict(poll_time__gt=end_time - timedelta(days=i),
-                                                 poll_time__lt=end_time - timedelta(days=i - 7))))
+        usage_list.extend(
+            usage_client.list(
+                dict(
+                    poll_time__gt=end_time - timedelta(days=i),
+                    poll_time__lt=end_time - timedelta(days=i - 7)
+                )
+            )
+        )
     if interval % 7 != 0:
-        usage_list.extend(usage_client.list(dict(poll_time__gt=end_time - timedelta(days=interval),
-                                                 poll_time__lt=end_time - timedelta(days=i))))
+        usage_list.extend(
+            usage_client.list(
+                dict(
+                    poll_time__gt=end_time - timedelta(days=interval),
+                    poll_time__lt=end_time - timedelta(days=i)
+                )
+            )
+        )
     usage_list = list(sorted(usage_list, key=lambda x:x['poll_time']))
     bisect_list = [dateutil.parser.parse(u['poll_time']) for u in usage_list]
     for ledger in ledger_list:
@@ -65,15 +85,25 @@ def get_per_server_usage(start_time, end_time):
         ledger['resource'] = match.group(1)
         poll_time = dateutil.parser.parse(ledger['time'])
         start_date = poll_time - timedelta(seconds=ledger['interval'] - 1)
-        usages = get_usages(usage_client, ledger['time'], start_date, usage_list, bisect_list)
+        usages = get_usages(
+            usage_client,
+            ledger['time'],
+            start_date,
+            usage_list,
+            bisect_list
+        )
         for usage in usages:
             if usage['resource'] != ledger['resource']:
                 continue
             server = server_resources.get(usage['uuid'])
             if server:
-                server_billing[server] += old_div(Decimal(usage['amount']), Decimal(ledger['resource_amount'])) * Decimal(ledger['amount'])
+                server_billing[server] += old_div(
+                    Decimal(usage['amount']),
+                    Decimal(ledger['resource_amount'])
+                ) * Decimal(ledger['amount'])
 
     return server_billing
+
 
 if __name__ == '__main__':
     for server, amount in get_per_server_usage(start_time, end_time).items():

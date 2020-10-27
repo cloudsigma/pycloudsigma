@@ -1,8 +1,9 @@
 from nose.plugins.attrib import attr
-from testing.acceptance.common import StatefulResourceTestBase
-from testing.utils import DumpResponse
+
 from cloudsigma.errors import ClientError
 import cloudsigma.resource as cr
+from testing.acceptance.common import StatefulResourceTestBase
+from testing.utils import DumpResponse
 
 
 @attr('acceptance_test')
@@ -11,7 +12,9 @@ class SnapshotsTest(StatefulResourceTestBase):
         super(SnapshotsTest, self).setUp()
         self.snap_client = cr.Snapshot()
         self.drive_client = cr.Drive()
-        self.dump_response = DumpResponse(clients=[self.snap_client, self.drive_client])
+        self.dump_response = DumpResponse(
+            clients=[self.snap_client, self.drive_client]
+        )
 
     @attr('docs_snippets')
     def test_get_snapshot_schema(self):
@@ -30,7 +33,11 @@ class SnapshotsTest(StatefulResourceTestBase):
             d = self.drive_client.create(drive_def)
         drive_uuid = d['uuid']
 
-        self._wait_for_status(drive_uuid, client=self.drive_client, status='unmounted')
+        self._wait_for_status(
+            drive_uuid,
+            client=self.drive_client,
+            status='unmounted'
+        )
         self.assertFalse(d['snapshots'])
 
         snap_def = {
@@ -55,7 +62,13 @@ class SnapshotsTest(StatefulResourceTestBase):
         with self.dump_response('snapshot_create_another'):
             another_snap = self.snap_client.create(another_snap_def)
         another_snap_uuid = another_snap['uuid']
-        self._wait_for_status(another_snap_uuid, 'available', client=self.snap_client)
+
+        self._wait_for_status(
+            another_snap_uuid,
+            'available',
+            client=self.snap_client
+        )
+
         another_snap['name'] = 'another_snap'
         self.snap_client.update(another_snap_uuid, another_snap)
 
@@ -66,7 +79,10 @@ class SnapshotsTest(StatefulResourceTestBase):
         with self.dump_response('drive_with_two_snapshots'):
             d = self.drive_client.get(drive_uuid)
 
-        self.assertCountEqual([snap_uuid, another_snap_uuid], [s['uuid'] for s in d['snapshots']])
+        self.assertCountEqual(
+            [snap_uuid, another_snap_uuid],
+            [s['uuid'] for s in d['snapshots']]
+        )
 
         with self.dump_response('snapshot_delete'):
             self.snap_client.delete(snap_uuid)
@@ -126,19 +142,32 @@ class SnapshotsTest(StatefulResourceTestBase):
         self.assertTrue(set(snap_uuids).issubset([s['uuid'] for s in snap_list]))
 
         with self.dump_response('snapshot_list_for_drive'):
-            drive_snapshots = self.snap_client.list_detail(query_params={'drive': drive_uuids[0]})
+            drive_snapshots = self.snap_client.list_detail(
+                query_params={'drive': drive_uuids[0]}
+            )
 
         self.assertEqual(len(drive_snapshots), 2)
         with self.dump_response('snapshots_in_drive_def'):
-            snapshots_from_drive_def = self.drive_client.get(drive_uuids[0])['snapshots']
+            snapshots_from_drive_def = self.drive_client.get(
+                drive_uuids[0]
+            )['snapshots']
 
-        self.assertCountEqual([s['uuid'] for s in drive_snapshots], [s['uuid'] for s in snapshots_from_drive_def])
+        self.assertCountEqual(
+            [s['uuid'] for s in drive_snapshots],
+            [s['uuid'] for s in snapshots_from_drive_def]
+        )
 
         for d_uuid in drive_uuids:
             self.drive_client.delete(d_uuid)
 
         self._wait_deleted(drive_uuids[0], client=self.drive_client)
-        self.assertFalse(self.snap_client.list_detail(query_params={'drive': drive_uuids[0]}))
+        self.assertFalse(
+            self.snap_client.list_detail(
+                query_params={
+                    'drive': drive_uuids[0]
+                }
+            )
+        )
 
     @attr('docs_snippets')
     def test_snapshot_clone(self):
@@ -152,10 +181,18 @@ class SnapshotsTest(StatefulResourceTestBase):
             d = self.drive_client.create(drive_def)
         drive_uuid = d['uuid']
 
-        self._wait_for_status(drive_uuid, client=self.drive_client, status='unmounted')
+        self._wait_for_status(
+            drive_uuid,
+            client=self.drive_client,
+            status='unmounted'
+        )
         snap = self.snap_client.create({'drive': drive_uuid})
         snap_uuid = snap['uuid']
-        self._wait_for_status(snap_uuid, client=self.snap_client, status='available')
+        self._wait_for_status(
+            snap_uuid,
+            client=self.snap_client,
+            status='available'
+        )
 
         with self.dump_response('snapshot_clone'):
             cloned_drive = self.snap_client.clone(snap_uuid, avoid=drive_uuid)
@@ -164,17 +201,29 @@ class SnapshotsTest(StatefulResourceTestBase):
         self.assertEqual(d['media'], cloned_drive['media'])
         self.assertEqual(d['size'], cloned_drive['size'])
 
-        self._wait_for_status(cloned_drive['uuid'], 'unmounted', client=self.drive_client)
+        self._wait_for_status(
+            cloned_drive['uuid'],
+            'unmounted',
+            client=self.drive_client
+        )
         self.drive_client.delete(cloned_drive['uuid'])
         self._wait_deleted(cloned_drive['uuid'], client=self.drive_client)
 
         clone_data = {'media': 'cdrom', 'name': 'test_drive_snapshot_clone_name'}
 
-        cloned_drive = self.snap_client.clone(snap_uuid, data=clone_data, avoid=drive_uuid)
+        cloned_drive = self.snap_client.clone(
+            snap_uuid,
+            data=clone_data,
+            avoid=drive_uuid
+        )
 
         self.assertEqual(clone_data['name'], cloned_drive['name'])
         self.assertEqual(clone_data['media'], cloned_drive['media'])
         self.assertEqual(d['size'], cloned_drive['size'])
 
-        self._wait_for_status(cloned_drive['uuid'], 'unmounted', client=self.drive_client)
+        self._wait_for_status(
+            cloned_drive['uuid'],
+            'unmounted',
+            client=self.drive_client
+        )
         self.drive_client.delete(cloned_drive['uuid'])

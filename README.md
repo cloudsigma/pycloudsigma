@@ -128,7 +128,7 @@ pprint(my_test_server)
 
 ### Attach a drive the drive and a NIC to the server
 
-We could of course have attached this above, but in order to keep things simple, let's do this in to phases.
+We could of course have attached this above, but in order to keep things simple, let's do this in two phases.
 
 Attach the drive:
 

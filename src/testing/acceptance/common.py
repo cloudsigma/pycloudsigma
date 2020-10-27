@@ -12,13 +12,14 @@ LOG = logging.getLogger(__name__)
 
 @attr('acceptance_test')
 class StatefulResourceTestBase(unittest.TestCase):
-    TIMEOUT_DRIVE_CREATED = 2*60
-    TIMEOUT_DRIVE_CLONING = 20*60
-    TIMEOUT_DRIVE_DELETED = 3*60
+    TIMEOUT_DRIVE_CREATED = 2 * 60
+    TIMEOUT_DRIVE_CLONING = 20 * 60
+    TIMEOUT_DRIVE_DELETED = 3 * 60
 
     def setUp(self):
         unittest.TestCase.setUp(self)
-        self.client = cr.ResourceBase()            # create a resource handle object
+        # Create a resource handle object
+        self.client = cr.ResourceBase()
         self._clean_servers()
         self._clean_drives()
 
@@ -27,16 +28,20 @@ class StatefulResourceTestBase(unittest.TestCase):
         self._clean_drives()
 
     def _get_persistent_image_uuid_and_pass(self):
-        # Get a good persistant test image
+        # Get a good persistent test image
         p_name = config.get('persistent_drive_name')
         p_pass = config.get('persistent_drive_ssh_password')
 
         if p_name is None:
-            raise SkipTest('A persistent_drive_name must be stated in the client configuration to execute this test')
+            raise SkipTest(
+                'A persistent_drive_name must be stated in the '
+                'client configuration to execute this test'
+            )
 
         def _filter_drives(av_drives):
             for drive in av_drives:
-                if p_name in drive['name'] and drive['status'] in ('mounted', 'unmounted', 'cloning_src', ):
+                if p_name in drive['name'] and drive['status'] in \
+                        ('mounted', 'unmounted', 'cloning_src',):
                     return drive['uuid']
             return None
 
@@ -46,10 +51,15 @@ class StatefulResourceTestBase(unittest.TestCase):
             if puuid is not None:
                 client_drives = cr.Drive()
                 clone_drive_def = {
-                    'name':p_name,
+                    'name': p_name,
                 }
                 cloned_drive = client_drives.clone(puuid, clone_drive_def)
-                self._wait_for_status(cloned_drive['uuid'], 'unmounted', timeout=self.TIMEOUT_DRIVE_CLONING, client=client_drives)
+                self._wait_for_status(
+                    cloned_drive['uuid'],
+                    'unmounted',
+                    timeout=self.TIMEOUT_DRIVE_CLONING,
+                    client=client_drives
+                )
                 puuid = cloned_drive['uuid']
 
         if puuid is None:
@@ -68,7 +78,9 @@ class StatefulResourceTestBase(unittest.TestCase):
         while True:
             resources = client.list_detail()
             if should_be_found:
-                self.assertGreaterEqual(len(resources), 1, 'Resource listing fails')
+                self.assertGreaterEqual(
+                    len(resources), 1, 'Resource listing fails'
+                )
             resource_found = False
             for x in resources:
                 if x['uuid'] == resource['uuid']:
@@ -77,7 +89,13 @@ class StatefulResourceTestBase(unittest.TestCase):
             if should_be_found == resource_found:
                 break
 
-            self.assertLessEqual(count_waited, TIMEOUT/WAIT_STEP, 'Resource list didn\'t update as expected for %d seconds' % (TIMEOUT,))
+            self.assertLessEqual(
+                count_waited,
+                TIMEOUT / WAIT_STEP,
+                'Resource list didn\'t update as expected for %d seconds' % (
+                    TIMEOUT,
+                )
+            )
             time.sleep(WAIT_STEP)
             count_waited += 1
 
@@ -92,7 +110,14 @@ class StatefulResourceTestBase(unittest.TestCase):
             resource = client.get(uuid)
             if resource['status'] == status:
                 break
-            self.assertLessEqual(count_waited, timeout/WAIT_STEP, 'Resource didn\'t reach state "%s" for %d seconds' % (status, timeout))
+            self.assertLessEqual(
+                count_waited,
+                timeout / WAIT_STEP,
+                'Resource didn\'t reach state "%s" for %d seconds' % (
+                    status,
+                    timeout
+                )
+            )
             time.sleep(WAIT_STEP)
             count_waited += 1
 
@@ -111,11 +136,21 @@ class StatefulResourceTestBase(unittest.TestCase):
                     break
                 else:
                     raise
-            self.assertLessEqual(count_waited, timeout/WAIT_STEP, 'Resource did not delete %d seconds' % (timeout))
+            self.assertLessEqual(
+                count_waited,
+                timeout / WAIT_STEP,
+                'Resource did not delete %d seconds' % (timeout)
+            )
             time.sleep(WAIT_STEP)
             count_waited += 1
 
-    def _wait_for_open_socket(self, host, port, timeout=15, close_on_success=False):
+    def _wait_for_open_socket(
+            self,
+            host,
+            port,
+            timeout=15,
+            close_on_success=False
+    ):
         import socket
         import time
 
@@ -126,7 +161,7 @@ class StatefulResourceTestBase(unittest.TestCase):
         connected = False
         while now + timeout >= time.time():
             try:
-                #Check if we can connect to socket
+                # Check if we can connect to socket
                 sock.connect((host, port))
             except:
                 time.sleep(1)
@@ -134,11 +169,14 @@ class StatefulResourceTestBase(unittest.TestCase):
                 connected = True
                 break
 
-        self.assertTrue(connected, "Socket to {}:{} failed to open in {} seconds".format(
-            host,
-            port,
-            timeout,
-        ))
+        self.assertTrue(
+            connected,
+            "Socket to {}:{} failed to open in {} seconds".format(
+                host,
+                port,
+                timeout,
+            )
+        )
 
         if close_on_success:
             sock.close()
@@ -153,7 +191,7 @@ class StatefulResourceTestBase(unittest.TestCase):
         closed = False
         while now + timeout >= time.time():
             try:
-                #Check if we can connect to socket
+                # Check if we can connect to socket
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 sock.settimeout(3)
                 sock.connect((host, port))
@@ -163,11 +201,14 @@ class StatefulResourceTestBase(unittest.TestCase):
             else:
                 sock.close()
                 time.sleep(1)
-        self.assertTrue(closed, "We can still open connection to {}:{} after {} seconds".format(
-            host,
-            port,
-            timeout,
-        ))
+        self.assertTrue(
+            closed,
+            "We can still open connection to {}:{} after {} seconds".format(
+                host,
+                port,
+                timeout,
+            )
+        )
 
     def _clean_servers(self):
         """
@@ -198,7 +239,6 @@ class StatefulResourceTestBase(unittest.TestCase):
             except:
                 LOG.exception("Server {} did not stop in time".format(uuid))
             else:
-
                 server_client.delete(uuid)
                 deleting.append(uuid)
 
@@ -209,7 +249,10 @@ class StatefulResourceTestBase(unittest.TestCase):
                 LOG.exception("Server {} did not delete in time".format(uuid))
 
         if len(inter) != 0:
-            LOG.error('The servers {} are stuck in intermediate states. Cannot remove them.'.format(inter))
+            LOG.error(
+                'The servers {} are stuck in intermediate states. '
+                'Cannot remove them.'.format(inter)
+            )
 
     def _clean_drives(self):
         """
@@ -240,8 +283,16 @@ class StatefulResourceTestBase(unittest.TestCase):
                 LOG.exception("Drive {} did not delete in time".format(uuid))
 
         if mounted:
-            LOG.error('The drives {} are still mounted and cannot be deleted'.format(mounted))
+            LOG.error(
+                'The drives {} are still mounted and cannot be deleted'.format(
+                    mounted
+                )
+            )
 
         if inter:
-            LOG.error('The drives {} are stuck in intermediate states and cannot be deleted.'.format(inter))
-
+            LOG.error(
+                'The drives {} are stuck in intermediate states'
+                ' and cannot be deleted.'.format(
+                    inter
+                )
+            )

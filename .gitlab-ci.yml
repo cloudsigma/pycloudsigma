@@ -15,11 +15,11 @@ acceptance tests:
     - nosetests -x ./src/testing/acceptance/test_billing.py
     - nosetests -x ./src/testing/acceptance/test_capabilities.py
     - nosetests -x ./src/testing/acceptance/test_core.py
-    - nosetests -x ./src/testing/acceptance/test_drives.py
+    - nosetests -x -s ./src/testing/acceptance/test_drives.py
     - nosetests -x ./src/testing/acceptance/test_firewall.py
     - nosetests -x ./src/testing/acceptance/test_networking.py
     - nosetests -x ./src/testing/acceptance/test_profile.py
-    - nosetests -x ./src/testing/acceptance/test_servers.py
+    - nosetests -x -s ./src/testing/acceptance/test_servers.py
     - nosetests -x ./src/testing/acceptance/test_snapshots.py
     - nosetests -x ./src/testing/acceptance/test_subscriptions.py
     - nosetests -x ./src/testing/acceptance/test_tags.py

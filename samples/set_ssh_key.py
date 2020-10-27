@@ -1,7 +1,8 @@
 from builtins import oct
-import cloudsigma
 import os
 import stat
+
+import cloudsigma
 
 metadata = cloudsigma.metadata.GetServerMetadata().get()
 ssh_key = metadata['meta']['ssh_public_key']
@@ -14,6 +15,7 @@ authorized_keys = os.path.join(ssh_path, 'authorized_keys')
 
 def get_permission(path):
     return oct(os.stat(ssh_path)[stat.ST_MODE])[-4:]
+
 
 if not os.path.isdir(ssh_path):
     print('Creating folder %s' % ssh_path)

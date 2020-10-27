@@ -1,8 +1,8 @@
-from builtins import str
-from past.builtins import basestring
-from builtins import object
+from builtins import str, object
 import socket
 import time
+
+from past.builtins import basestring
 
 from cloudsigma.generic import get_client, WebsocketClient, GenericClient
 
@@ -20,7 +20,8 @@ class ResourceBase(object):
         self.c.response_hook = None
 
     def _get_url(self):
-        assert self.resource_name, 'Descendant class must set the resource_name field'
+        assert self.resource_name, \
+            'Descendant class must set the resource_name field'
         return '/%s/' % (self.resource_name,)
 
     def get(self, uuid=None):
@@ -62,13 +63,20 @@ class ResourceBase(object):
             if 'objects' not in data:
                 res_data = {'objects': [data]}
         else:
-            raise TypeError('%r is not should be of type list, tuple or dict' % data)
+            raise TypeError(
+                '%r is not should be of type list, tuple or dict' % data
+            )
         return res_data
 
     def create(self, data, query_params=None):
         query_params = query_params or {}
         url = self._get_url()
-        return self.c.post(url, self._pepare_data(data), return_list=False, query_params=query_params)
+        return self.c.post(
+            url,
+            self._pepare_data(data),
+            return_list=False,
+            query_params=query_params
+        )
 
     def update(self, uuid, data):
         url = self._get_url() + uuid + '/'
@@ -87,11 +95,12 @@ class ResourceBase(object):
             url = self._get_url() + 'action/'
         else:
             url = self._get_url() + uuid + '/action/'
-        return self.c.post(url,
-                           data,
-                           query_params=q_params,
-                           return_list=False
-                           )
+        return self.c.post(
+            url,
+            data,
+            query_params=q_params,
+            return_list=False
+        )
 
 
 class Profile(ResourceBase):
@@ -141,8 +150,10 @@ class Drive(ResourceBase):
         :param data:
             Clone drive options. Refer to API docs for possible options.
         :param avoid:
-            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the clone on a different
-            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
+            A list of drive or server uuids to avoid for the clone.
+            Avoid attempts to put the clone on a different physical storage
+            host from the drives in *avoid*.
+            If a server uuid is in *avoid* it is internally expanded
             to the drives attached to the server.
         :return:
             Cloned drive definition.
@@ -158,7 +169,8 @@ class Drive(ResourceBase):
 
     def resize(self, uuid, data=None):
         """
-        Resize a drive. Raises an error if drive is mounted on a running server or unavailable.
+        Resize a drive. Raises an error if drive is mounted on a running
+        server or unavailable.
         :param uuid:
             UUID of the drive.
         :param data:
@@ -175,9 +187,10 @@ class Drive(ResourceBase):
         :param data:
             Drive definition.
         :param avoid:
-            A list of drive or server uuids to avoid for the new drive. Avoid attempts to put the drive on a different
-            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
-            to the drives attached to the server.
+            A list of drive or server uuids to avoid for the new drive.
+            Avoid attempts to put the drive on a different physical storage
+            host from the drives in *avoid*. If a server uuid is in *avoid*
+            it is internally expanded to the drives attached to the server.
         :return:
             New drive definition.
         """
@@ -199,22 +212,25 @@ class Server(ResourceBase):
         return self._action(uuid, 'start', data)
 
     def stop(self, uuid):
-        return self._action(uuid,
-                            'stop',
-                            data={}  # Workaround API issue - see TUR-1346
-                            )
+        return self._action(
+            uuid,
+            'stop',
+            data={}  # Workaround API issue - see TUR-1346
+        )
 
     def restart(self, uuid):
-        return self._action(uuid,
-                            'restart',
-                            data={}  # Workaround API issue - see TUR-1346
-                            )
+        return self._action(
+            uuid,
+            'restart',
+            data={}  # Workaround API issue - see TUR-1346
+        )
 
     def shutdown(self, uuid):
-        return self._action(uuid,
-                            'shutdown',
-                            data={}  # Workaround API issue - see TUR-1346
-                            )
+        return self._action(
+            uuid,
+            'shutdown',
+            data={}  # Workaround API issue - see TUR-1346
+        )
 
     def runtime(self, uuid):
         url = self._get_url() + uuid + '/runtime/'
@@ -234,17 +250,19 @@ class Server(ResourceBase):
 
     def clone(self, uuid, data=None, avoid=None):
         """
-        Clone a server. Attached disk drives get cloned and attached to the new server, and attached cdroms get
-        attached to the new server (without cloning).
+        Clone a server. Attached disk drives get cloned and attached to the new
+        server, and attached cdroms get attached to the
+        new server (without cloning).
 
         :param uuid:
             Source server for the clone.
         :param data:
             Clone server options. Refer to API docs for possible options.
         :param avoid:
-            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the cloned drives on a
-            different physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally
-            expanded to the drives attached to the server.
+            A list of drive or server uuids to avoid for the clone. Avoid
+            attempts to put the cloned drives on a different physical storage
+            host from the drives in *avoid*. If a server uuid is in *avoid* it
+            is internally expanded to the drives attached to the server.
         :return:
             Cloned server definition.
         """
@@ -264,8 +282,9 @@ class Server(ResourceBase):
         :param uuid:
             uuid of the server to delete
         :param recurse:
-            option to recursively delete attached drives. Possible values are 'all_drives', 'disks'. It is
-            possible to use one of the supplied convenience functions: delete_with_all_drives, delete_with_disks,
+            option to recursively delete attached drives. Possible values are
+            'all_drives', 'disks'. It is possible to use one of the supplied
+            convenience functions: delete_with_all_drives, delete_with_disks,
             delete_with_cdroms
 
         :return:
@@ -302,11 +321,14 @@ class Server(ResourceBase):
         """
         return self.delete(uuid, recurse='cdroms')
 
+
 class BServer(Server):
     resource_name = 'bservers'
 
+
 class ServersAvailabilityGroups(ResourceBase):
     resource_name = 'servers/availability_groups'
+
 
 class VLAN(ResourceBase):
     resource_name = 'vlans'
@@ -396,9 +418,10 @@ class Snapshot(ResourceBase):
         :param data:
             Clone drive options. Refer to API docs for possible options.
         :param avoid:
-            A list of drive or server uuids to avoid for the clone. Avoid attempts to put the clone on a different
-            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
-            to the drives attached to the server.
+            A list of drive or server uuids to avoid for the clone. Avoid
+            attempts to put the clone on a different physical storage host from
+            the drives in *avoid*. If a server uuid is in *avoid* it is
+            internally expanded to the drives attached to the server.
         :return:
             Cloned drive definition.
         """
@@ -416,7 +439,11 @@ class Tags(ResourceBase):
     resource_name = 'tags'
 
     def list_resource(self, uuid, resource_name):
-        url = '{base}{tag_uuid}/{res_name}/'.format(base=self._get_url(), tag_uuid=uuid, res_name=resource_name)
+        url = '{base}{tag_uuid}/{res_name}/'.format(
+            base=self._get_url(),
+            tag_uuid=uuid,
+            res_name=resource_name
+        )
         return self.c.get(url, return_list=True)
 
     def drives(self, uuid):
@@ -469,7 +496,9 @@ class Websocket(object):
             try:
                 frame = self.ws.recv(timeout)
             except socket.timeout as e:
-                raise WebsocketTimeoutError('Timeout reached when waiting for events')
+                raise WebsocketTimeoutError(
+                    'Timeout reached when waiting for events'
+                )
             events.append(frame)
             if self.filter_frame(message_filter, frame):
                 return events
@@ -494,7 +523,14 @@ class Websocket(object):
         ret = self.wait({"resource_uri": resource_uri})
         return cls().get_from_url(resource_uri)
 
-    def wait_obj_wrapper(self, waiter, args, kwargs=None, timeout=None, extra_filter=lambda x: True):
+    def wait_obj_wrapper(
+            self,
+            waiter,
+            args,
+            kwargs=None,
+            timeout=None,
+            extra_filter=lambda x: True
+    ):
         if timeout is None:
             timeout = self.timeout
         if kwargs is None:
@@ -509,8 +545,12 @@ class Websocket(object):
         raise WebsocketTimeoutError('Timeout reached when waiting for events')
 
     def wait_for_status(self, uri, resource, status, timeout=30):
-        return self.wait_obj_wrapper(self.wait_obj_uri, (uri, resource), timeout=timeout,
-                                     extra_filter=lambda x: x['status'] == status)
+        return self.wait_obj_wrapper(
+            self.wait_obj_uri,
+            (uri, resource),
+            timeout=timeout,
+            extra_filter=lambda x: x['status'] == status
+        )
 
 
 class BurstUsage(ResourceBase):

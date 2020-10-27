@@ -1,12 +1,12 @@
 from future import standard_library
 standard_library.install_aliases()
+
 from builtins import range
 import datetime
 import queue
 import threading
 import time
 from logging import getLogger
-
 import requests
 import os
 
@@ -19,9 +19,18 @@ LOG = getLogger(__name__)
 class Upload(ResourceBase):
     resource_name = 'initupload'
 
-    def __init__(self, image_path, drive_uuid=None, chunk_size=5 * 1024 ** 2, n_threads=4,
-                 drive_name=None, drive_media='disk', progress_callback=None, progress_report_interval=1,
-                 generic_client_kwargs=None):
+    def __init__(
+            self,
+            image_path,
+            drive_uuid=None,
+            chunk_size=5 * 1024 ** 2,
+            n_threads=4,
+            drive_name=None,
+            drive_media='disk',
+            progress_callback=None,
+            progress_report_interval=1,
+            generic_client_kwargs=None
+    ):
         """
         A python implementation of the resummable.js protocol.
 
@@ -34,11 +43,13 @@ class Upload(ResourceBase):
         :param n_threads:
             Number of parallel upload threads. Default is 4.
         :param drive_name
-            The name of the uploaded drive. If not givent it will be set to Upload_<current date time>
+            The name of the uploaded drive. If not givent it will be set to
+            Upload_<current date time>
         :param drive_media:
                 The media of the uploaded drive. If not givent it will be set to "disk"
         :param progress_callback:
-            A callback to be called every *progress_report_interval* second with the current progress.
+            A callback to be called every *progress_report_interval* second
+            with the current progress.
             progress_callback(self.uploaded_size, self.file_size)
         :param progress_report_interval:
             Seconds between *progress_callback* calls. Default is 1 second.
@@ -83,8 +94,15 @@ class Upload(ResourceBase):
             self.drive_uuid = drive['uuid']
 
         if self.remote_size != self.file_size:
-            raise ValueError('File {} has different size from remote drive {}:'
-                             ' {} != {}'.format(self.image_path, self.drive_uuid, self.file_size, self.remote_size))
+            raise ValueError(
+                'File {} has different size from remote drive {}:'
+                ' {} != {}'.format(
+                    self.image_path,
+                    self.drive_uuid,
+                    self.file_size,
+                    self.remote_size
+                )
+            )
 
         self.enqueue_chunks()
 
@@ -95,7 +113,7 @@ class Upload(ResourceBase):
         self.start_threads()
 
         LOG.debug('waiting for queue to finish')
-        while watcher_t.isAlive():
+        while watcher_t.is_alive():
             self.report_progress()
             time.sleep(self.progress_report_interval)
         self.report_progress()
@@ -118,7 +136,8 @@ class Upload(ResourceBase):
         """
         n_chunks = self.file_size // self.chunk_size
         if n_chunks > 0:
-            for chunk in range(n_chunks - 1):  # excludes last chunk and starts from 1. last chunk is bigger
+            # excludes last chunk and starts from 1. last chunk is bigger
+            for chunk in range(n_chunks - 1):
                 offset = chunk * self.chunk_size
                 yield chunk + 1, offset, self.chunk_size
 
@@ -144,29 +163,39 @@ class Upload(ResourceBase):
         while not self.finished:
             chunk_number, chunk_offset, real_chunk_size = self.queue.get()
             try:
-                LOG.debug('Uploading chunk {}:{}:{}'.format(chunk_number, chunk_offset, real_chunk_size))
+                LOG.debug(
+                    'Uploading chunk {}:{}:{}'.format(
+                        chunk_number,
+                        chunk_offset,
+                        real_chunk_size
+                    )
+                )
                 self.upload_chunk(chunk_number, chunk_offset, real_chunk_size)
                 self.update_progress(real_chunk_size)
             except:
                 LOG.exception('Error ocurred for chunk {}'.format(chunk_number))
                 self.queue.put((chunk_number, chunk_offset, real_chunk_size))
             finally:
-                # Always call task_done even on fail because in order to finish the number of put calls should be
-                # equal to task_done calls
+                # Always call task_done even on fail because in order to finish
+                # the number of put calls should be equal to task_done calls
                 self.queue.task_done()
 
     def upload_chunk(self, chunk_number, chunk_offset, real_chunk_size):
-        upload_url = self.c._get_full_url('/{}/{}/upload/'.format('drives', self.drive_uuid))
+        upload_url = self.c._get_full_url(
+            '/{}/{}/upload/'.format('drives', self.drive_uuid)
+        )
         with open(self.image_path, mode='rb') as f:
             f.seek(chunk_offset)
             file_data = f.read(real_chunk_size)
-            # do str() on numbers because requests multipart encoding assumes integers are file descriptors
-            resumable_js_data = {'resumableChunkNumber': str(chunk_number),
-                                 'resumableChunkSize': str(self.chunk_size),
-                                 'resumableTotalSize': str(self.file_size),
-                                 'resumableIdentifier': os.path.split(self.image_path)[1],
-                                 'resumableFilename': os.path.split(self.image_path)[1],
-                                 }
+            # do str() on numbers because requests multipart encoding
+            # assumes integers are file descriptors
+            resumable_js_data = {
+                'resumableChunkNumber': str(chunk_number),
+                'resumableChunkSize': str(self.chunk_size),
+                'resumableTotalSize': str(self.file_size),
+                'resumableIdentifier': os.path.split(self.image_path)[1],
+                'resumableFilename': os.path.split(self.image_path)[1],
+            }
 
             kwargs = {
                 'auth': (self.c.username, self.c.password),
@@ -178,19 +207,42 @@ class Upload(ResourceBase):
             res = requests.get(upload_url, params=resumable_js_data, **kwargs)
 
             if 199 < res.status_code < 300:
-                LOG.debug('Chunk {}:{}:{} already uploaded'.format(chunk_number, chunk_offset, real_chunk_size))
+                LOG.debug(
+                    'Chunk {}:{}:{} already uploaded'.format(
+                        chunk_number,
+                        chunk_offset,
+                        real_chunk_size
+                    )
+                )
                 return
 
-            resumable_js_data_multipart = list(resumable_js_data.items()) + [('file', str(file_data))]
+            resumable_js_data_multipart = list(resumable_js_data.items()) \
+                                          + [('file', str(file_data))]
 
-            res = requests.post(upload_url, files=resumable_js_data_multipart, **kwargs)
+            res = requests.post(
+                upload_url,
+                files=resumable_js_data_multipart,
+                **kwargs
+            )
             if 199 < res.status_code < 300:
-                LOG.debug('Chunk {}:{}:{} finished uploading'.format(chunk_number, chunk_offset, real_chunk_size))
+                LOG.debug(
+                    'Chunk {}:{}:{} finished uploading'.format(
+                        chunk_number,
+                        chunk_offset,
+                        real_chunk_size
+                    )
+                )
                 return
             else:
-                raise Exception('Wrong status {} returned for request '
-                                '{}:{}:{}. Response body is:'
-                                '\n{}'.format(res.status_code, chunk_number, chunk_offset, real_chunk_size, res.text))
+                raise Exception(
+                    'Wrong status {} returned for request {}:{}:{}. Response '
+                    'body is:\n{}'.format(
+                        res.status_code,
+                        chunk_number,
+                        chunk_offset,
+                        real_chunk_size, res.text
+                    )
+                )
 
     def update_progress(self, uploaded_size):
         self.progress_lock.acquire()

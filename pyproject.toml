@@ -4,7 +4,7 @@ version = "0.5"
 description = "CloudSigma's official python library."
 authors = ["CloudSigma AG <dev-support@cloudsigma.com>"]
 keywords = ["cloud", "cloudsigma", "api", "cloud", "computing"]
-classifiers = ["Programming Language :: Python", "Development Status :: 4 - Beta", "Intended Audience :: System Administrators", "Intended Audience :: Developers"]
+classifiers = ["Programming Language :: Python", "Development Status :: 5 - Production/Stable", "Intended Audience :: System Administrators", "Intended Audience :: Developers"]
 homepage = "https://github.com/cloudsigma/pycloudsigma"
 readme = "README.md"
 
