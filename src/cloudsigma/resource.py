@@ -411,19 +411,19 @@ class Snapshot(ResourceBase):
 
     def clone(self, uuid, data=None, avoid=None):
         """
-        Clone a drive.
+        Clone a snapshot (creates a drive).
 
         :param uuid:
-            Source drive for the clone.
+            Source snapshot for the clone.
         :param data:
-            Clone drive options. Refer to API docs for possible options.
+            Clone snapshot options. Refer to API docs for possible options.
         :param avoid:
-            A list of drive or server uuids to avoid for the clone. Avoid
+            A list of snapshot or server uuids to avoid for the clone. Avoid
             attempts to put the clone on a different physical storage host from
-            the drives in *avoid*. If a server uuid is in *avoid* it is
-            internally expanded to the drives attached to the server.
+            the snapshot in *avoid*. If a server uuid is in *avoid* it is
+            internally expanded to the snapshots attached to the server.
         :return:
-            Cloned drive definition.
+            Cloned snapshot definition.
         """
         data = data or {}
         query_params = {}

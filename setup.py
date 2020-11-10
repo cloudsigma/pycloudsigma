@@ -37,7 +37,7 @@ setup(
     ],
     classifiers=[
         "Programming Language :: Python",
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: System Administrators",
         "Intended Audience :: Developers",
     ],
@@ -48,7 +48,7 @@ CloudSigma's official python library
 
 pycloudsigma allows you to easily manage your entire infrastructure from within Python.
 
-Creating a server is a simple as:
+Creating a server is as simple as:
 
 ::
 
@@ -60,7 +60,7 @@ Creating a server is a simple as:
 
 For more examples, please visit pycloudsigma_.
 
-For more detailed information about CloudSigma's, please visit the `API documentation <https://zrh.cloudsigma.com/docs/>`_.
+For more detailed information about CloudSigma, please visit the `API documentation <https://zrh.cloudsigma.com/docs/>`_.
 
 .. _pycloudsigma: https://github.com/cloudsigma/pycloudsigma/blob/master/README.md
     """
