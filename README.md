@@ -126,7 +126,7 @@ pprint(my_test_server)
  u'vnc_password': u'test_server'}
 ```
 
-### Attach a drive the drive and a NIC to the server
+### Attach a drive and a NIC to the server
 
 We could of course have attached this above, but in order to keep things simple, let's do this in two phases.
 
@@ -180,7 +180,7 @@ server.stop(my_test_server['uuid'])
 
 ### Reading Meta Data
 
-CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need `~/.cloudsigma.conf` in order to use this feature, as the data is read directly from `/dev/ttyS1`. More information on how to this works can be found [here](https://cloudsigma-docs.readthedocs.io/en/2.14.1/server_context.html#setting-up-the-virtual-serial-port).
+CloudSigma supports the notion of exposing meta data to guests. Using the Python library, this can be done very easily. **Please note** that you do not need `~/.cloudsigma.conf` in order to use this feature, as the data is read directly from `/dev/ttyS1`. More information on how this works can be found [here](https://cloudsigma-docs.readthedocs.io/en/2.14.1/server_context.html#setting-up-the-virtual-serial-port).
 
 By default, various system information is exposed, but it is also possible to push user-defined data, such as an SSH-key to the guest.
 
@@ -350,9 +350,9 @@ while not snapshot_done:
 
 [Download](https://raw.github.com/cloudsigma/pycloudsigma/master/samples/snapshot.py)
 
-There's also another script named [snapshot_purge.py](https://raw.githubusercontent.com/cloudsigma/pycloudsigma/master/samples/snapshot_purge.py) that can used for automatically purging old snapshots.
+There's also another script named [snapshot_purge.py](https://raw.githubusercontent.com/cloudsigma/pycloudsigma/master/samples/snapshot_purge.py) that can be used for automatically purging old snapshots.
 
 ## Running the tests
 
-There must be a VM available by the name that matches `persistent_drive_name`. This VM should be a server with SSH installed, where one can be log in as `root` with the password set in `persistent_drive_ssh_password`.
+There must be a VM available by the name that matches `persistent_drive_name`. This VM should be a server with SSH installed, where one can be logged in as `root` with the password set in `persistent_drive_ssh_password`.
 
