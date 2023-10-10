@@ -590,8 +590,12 @@ class RemoteSnapshot(ResourceBase):
 
         return self._action(uuid, 'clone', data, query_params=query_params)
 
-    class Vpc(ResourceBase):
-        resource_name = 'vpc'
 
-    class Nodes(ResourceBase):
-        resource_name = 'nodes'
+class Vpc(ResourceBase):
+    resource_name = 'vpc'
+
+
+class Nodes(ResourceBase):
+    resource_name = 'nodes'
+
+
