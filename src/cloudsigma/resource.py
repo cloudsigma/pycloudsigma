@@ -559,3 +559,33 @@ class BurstUsage(ResourceBase):
 
 class Locations(ResourceBase):
     resource_name = 'locations'
+
+
+class RemoteSnapshot(ResourceBase):
+    resource_name = 'remotesnapshots'
+
+    def clone(self, uuid, data=None, avoid=None):
+        """
+        Clone a drive from a remote snapshot.
+
+        :param uuid:
+            Source drive for the clone.
+        :param data:
+            Clone drive options. Refer to API docs for possible options.
+        :param avoid:
+            A list of drive or server uuids to avoid for the clone.
+            Avoid attempts to put the clone on a different
+            physical storage host from the drives in *avoid*.
+            If a server uuid is in *avoid* it is internally expanded
+            to the drives attached to the server.
+        :return:
+            Cloned drive definition.
+        """
+        data = data or {}
+        query_params = {}
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] = ','.join(avoid)
+
+        return self._action(uuid, 'clone', data, query_params=query_params)
