@@ -607,6 +607,5 @@ class HostAllocationPools(ResourceBase):
     resource_name = 'hostallocationpools'
 
 
-
-
-
+class DriveUsers(ResourceBase):
+    resource_name = 'driveusers'
