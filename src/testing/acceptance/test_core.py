@@ -1,3 +1,5 @@
+from builtins import str
+from builtins import range
 import json
 import os
 import logging
@@ -200,7 +202,7 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
     def check_all_retrieval(self, g_def, op_name, dump_path, conn):
         command = self.command_template.format('')
         ctx_res_json, res_string = self.get_full_ctx(command, conn)
-        for k, v in g_def.items():
+        for k, v in list(g_def.items()):
             if not isinstance(v, (list, dict)):
                 self.assertEqual(v, ctx_res_json[k])
         self.dump_ctx_command(command, res_string, op_name, dump_path)

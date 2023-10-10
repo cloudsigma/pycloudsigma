@@ -36,7 +36,7 @@ class UploadError(Exception):
 
 
 def console_progress():
-    spinner_pos = itertools.cycle(range(3))
+    spinner_pos = itertools.cycle(list(range(3)))
 
     def output_progress(uploaded, total):
         pos_char = {0: '/', 1: '-', 2: '\\'}

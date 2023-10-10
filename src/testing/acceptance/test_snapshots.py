@@ -1,3 +1,4 @@
+from builtins import range
 from nose.plugins.attrib import attr
 
 from cloudsigma.errors import ClientError

@@ -1,3 +1,4 @@
+from builtins import str
 import unittest
 
 from nose.plugins.attrib import attr

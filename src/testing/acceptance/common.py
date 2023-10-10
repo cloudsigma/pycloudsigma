@@ -1,3 +1,5 @@
+from __future__ import division
+from past.utils import old_div
 import cloudsigma.resource as cr
 from cloudsigma import errors
 import unittest
@@ -91,7 +93,7 @@ class StatefulResourceTestBase(unittest.TestCase):
 
             self.assertLessEqual(
                 count_waited,
-                TIMEOUT / WAIT_STEP,
+                old_div(TIMEOUT, WAIT_STEP),
                 'Resource list didn\'t update as expected for %d seconds' % (
                     TIMEOUT,
                 )
@@ -112,7 +114,7 @@ class StatefulResourceTestBase(unittest.TestCase):
                 break
             self.assertLessEqual(
                 count_waited,
-                timeout / WAIT_STEP,
+                old_div(timeout, WAIT_STEP),
                 'Resource didn\'t reach state "%s" for %d seconds' % (
                     status,
                     timeout
@@ -138,7 +140,7 @@ class StatefulResourceTestBase(unittest.TestCase):
                     raise
             self.assertLessEqual(
                 count_waited,
-                timeout / WAIT_STEP,
+                old_div(timeout, WAIT_STEP),
                 'Resource did not delete %d seconds' % (timeout)
             )
             time.sleep(WAIT_STEP)
