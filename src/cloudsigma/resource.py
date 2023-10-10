@@ -599,3 +599,9 @@ class Nodes(ResourceBase):
     resource_name = 'nodes'
 
 
+class HostAvailabilityZones(ResourceBase):
+    resource_name = 'hostavailabilityzones'
+
+
+
+
