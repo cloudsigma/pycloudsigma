@@ -603,5 +603,10 @@ class HostAvailabilityZones(ResourceBase):
     resource_name = 'hostavailabilityzones'
 
 
+class HostAllocationPools(ResourceBase):
+    resource_name = 'hostallocationpools'
+
+
+
 
 
