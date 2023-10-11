@@ -684,3 +684,15 @@ class VrFwPolicies(ResourceBase):
     def disable(self, fw_policy_uuid, data):
         data = data or {}
         return self._action(fw_policy_uuid, 'disable', data)
+
+
+class VrFwFilters(ResourceBase):
+    resource_name = 'vrfwfilters'
+
+    def enable_logging(self, fw_filter_uuid, data):
+        data = data or {}
+        return self._action(fw_filter_uuid, 'enable_logging', data)
+
+    def disable_logging(self, fw_filter_uuid, data):
+        data = data or {}
+        return self._action(fw_filter_uuid, 'disable_logging', data)
