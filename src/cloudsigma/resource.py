@@ -652,3 +652,7 @@ class Lans(ResourceBase):
     def configure_dhcp(self, virtual_router_uuid, data):
         data = data or {}
         return self._action(virtual_router_uuid, 'configure_dhcp', data)
+
+
+class IpAliases(ResourceBase):
+    resource_name = 'ipaliases'
