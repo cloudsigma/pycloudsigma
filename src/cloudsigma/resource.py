@@ -668,3 +668,7 @@ class Upstream(ResourceBase):
 
 class PortForwards(ResourceBase):
     resource_name = 'portforwards'
+
+
+class AddressForwards(ResourceBase):
+    resource_name = 'addressforwards'
