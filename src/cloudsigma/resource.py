@@ -664,3 +664,7 @@ class Upstream(ResourceBase):
     def configure_vpn(self, virtual_router_uuid, data):
         data = data or {}
         return self._action(virtual_router_uuid, 'configure_vpn', data)
+
+
+class PortForwards(ResourceBase):
+    resource_name = 'portforwards'
