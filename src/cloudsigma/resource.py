@@ -672,3 +672,15 @@ class PortForwards(ResourceBase):
 
 class AddressForwards(ResourceBase):
     resource_name = 'addressforwards'
+
+
+class VrFwPolicies(ResourceBase):
+    resource_name = 'vrfwpolicies'
+
+    def enable(self, fw_policy_uuid, data):
+        data = data or {}
+        return self._action(fw_policy_uuid, 'enable', data)
+
+    def disable(self, fw_policy_uuid, data):
+        data = data or {}
+        return self._action(fw_policy_uuid, 'disable', data)
