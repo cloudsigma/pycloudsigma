@@ -8,6 +8,14 @@ import time
 import logging
 from cloudsigma.conf import config
 from unittest import SkipTest
+from cloudsigma.resource import Nodes, Vpc
+from cloudsigma import resource
+import datetime
+import requests
+import copy
+from copy import deepcopy
+import simplejson
+from future.moves.urllib.parse import urlparse
 
 LOG = logging.getLogger(__name__)
 
@@ -298,3 +306,311 @@ class StatefulResourceTestBase(unittest.TestCase):
                     inter
                 )
             )
+
+
+class VpcTestsBase(StatefulResourceTestBase):
+
+    def setUp(self):
+        super(VpcTestsBase, self).setUp()
+        self.vpc_client = Vpc()
+        self.vpc_client_2 = Vpc(**self.get_other_account())
+        self.sub_client = resource.Subscriptions()
+        self.nodes_client = Nodes()
+        self.resource_name = 'dedicated_host_6148'
+        self.vpc_resource_name = 'vpc'
+        self.DEFAULT_STATE = 'active'
+        self.DEFAULT_STATUS = 'active'
+
+    def _create_vpc_subscription(self):
+        list = self.vpc_client.list()
+        if len(list) == 0:
+            now = datetime.datetime.now()
+            future_date = now + datetime.timedelta(days=365)
+            self.sub_client.create({
+                "amount": "1",
+                "resource": self.vpc_resource_name,
+                "auto_renew": True,
+                "start_time": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "end_time": future_date.strftime("%Y-%m-%d %H:%M:%S")})
+
+        list = self.vpc_client.list()
+        if len(list) == 0:
+            SkipTest("It was not possible to create a VPC subscription")
+        return list[0]
+
+    def _create_node_subscription(self):
+        list = self.nodes_client.list()
+        if len(list) == 0:
+            now = datetime.datetime.now()
+            future_date = now + datetime.timedelta(days=365)
+            self.sub_client.create({
+                "amount": "1",
+                "resource": self.resource_name,
+                "auto_renew": True,
+                "start_time": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "end_time": future_date.strftime("%Y-%m-%d %H:%M:%S")})
+
+        list = self.nodes_client.list()
+        if len(list) == 0:
+            SkipTest("It was not possible to create a node subscription")
+        return list[0]
+
+    def _configure_vpc_and_node(self, vpc, node):
+        node_in_vpc = False
+        for n in vpc['nodes']:
+            if n['uuid'] == node['uuid']:
+                node_in_vpc = True
+                break
+
+        if not node_in_vpc:
+            vpc['nodes'] = [node['uuid']]
+            self.vpc_client.update(vpc['uuid'], vpc)
+
+    def _create_subscriptions(self):
+        vpc = self._create_vpc_subscription()
+        node = self._create_node_subscription()
+        self._configure_vpc_and_node(vpc, node)
+
+    def check_nodes(self, vpc, expected):
+        self.assertEqual(len(vpc['nodes']), len(expected))
+        for node in vpc['nodes']:
+            self.assertIn(node['uuid'], expected)
+            n = self.nodes_client.get(node['uuid'])
+            self.assertEqual(n['vpc']['uuid'], vpc['uuid'])
+            self.assertEqual(n['status'], self.DEFAULT_STATUS)
+
+
+def wrap_with_log_hook(log_level, next_hook=None):
+    if not next_hook:  # noop next hook
+        next_hook = lambda r, *args, **kwargs: None
+
+    if not log_level:  # no log level so no logging, just return next hook
+        return next_hook
+
+    level = getattr(logging, log_level, None)
+    if not level:
+        LOG.error('Wrong log_lgevel {}'.format(log_level))
+        return next_hook
+
+    def log_hook(response, *args, **kwargs):
+        request = response.request
+        req_msg = '-----RECONSTRUCTED-REQUEST:\n' \
+                  '{req.method} {req.path_url} HTTP/1.1\r\n{headers}\r\n\r\n{body}' \
+                  '\n-----RECONSTRUCTED-REQUEST-END'.format(req=request,
+                                                            headers='\r\n'.join('{}: {}'.format(k, v)
+                                                                                for k, v
+                                                                                in request.headers.items()),
+                                                            body=request.body if request.body else '')
+        resp_msg = '-----RECONSTRUCTED-RESPONSE:\n' \
+                   'HTTP/1.1 {resp.status_code} {resp.reason}\r\n{headers}\r\n\r\n{body}' \
+                   '\n-----RECONSTRUCTED-RESPONSE-END'.format(resp=response,
+                                                              headers='\r\n'.join('{}: {}'.format(k, v)
+                                                                                  for k, v
+                                                                                  in response.headers.items()),
+                                                              body=response.content if response.content else '')
+        LOG.log(level, '{}\n\n{}'.format(req_msg, resp_msg))
+
+        next_hook(response, *args, **kwargs)
+    return log_hook
+
+
+@attr('acceptance_test')
+class StatefulResourceTestBase(unittest.TestCase):
+    TIMEOUT_DRIVE_CREATED = 2 * 60
+    TIMEOUT_DRIVE_CLONING = 20 * 60
+    TIMEOUT_DRIVE_DELETED = 3 * 60
+
+    def setUp(self):
+        unittest.TestCase.setUp(self)
+        self.client = cr.ResourceBase()  # create a resource handle object
+        self._clean_servers()
+        self._clean_drives()
+        self._clean_keypairs(ignore_errors=True)
+        self._clean_tags(ignore_errors=True)
+        self._clean_acls(ignore_errors=True)
+
+    def tearDown(self):
+        self._clean_servers()
+        self._clean_drives()
+        self._clean_keypairs(ignore_errors=True)
+        self._clean_tags(ignore_errors=True)
+        self._clean_acls(ignore_errors=True)
+
+    def assertDictContainsSubset(
+            self, expected, actual, msg=None, exclude=None):
+        if exclude is None:
+            exclude = []
+
+        expected_2 = deepcopy(expected)
+        actual_2 = deepcopy(actual)
+        for item in exclude:
+            if item in expected_2:
+                del expected_2[item]
+            if item in actual_2:
+                del actual_2[item]
+        super(StatefulResourceTestBase, self).assertDictContainsSubset(
+            expected_2, actual_2, msg)
+
+
+class GenericClient(object):
+
+    """Handles all low level HTTP, authentication, parsing and error handling.
+    """
+    LOGIN_METHOD_BASIC = 'basic'
+    LOGIN_METHOD_SESSION = 'session'
+    LOGIN_METHOD_NONE = 'none'
+    LOGIN_METHODS = (
+        LOGIN_METHOD_BASIC,
+        LOGIN_METHOD_SESSION,
+        LOGIN_METHOD_NONE,
+    )
+
+    def __init__(self, api_endpoint=None, username=None, password=None, login_method=LOGIN_METHOD_BASIC,
+                 request_log_level=None):
+        try:
+            self.api_endpoint = api_endpoint if api_endpoint else config['api_endpoint']
+            self.username = username if username else config['username']
+            self.password = password if password else config['password']
+            self.login_method = config.get('login_method', login_method)
+            assert self.login_method in self.LOGIN_METHODS, 'Invalid value %r for login_method' % (login_method,)
+
+            self._session = None
+            self.resp = None
+            self.response_hook = None
+            self.request_log_level = request_log_level if request_log_level else config.get('request_log_level', None)
+            if self.request_log_level:
+                self.request_log_level = self.request_log_level.upper()
+
+            if login_method == self.LOGIN_METHOD_SESSION:
+                self._login_session()
+        except KeyError as exc:
+            raise errors.ClientConfigError(
+                'Missing key {!r} from configuration file {}'.format(exc.message, config.filename)
+            )
+
+    def _login_session(self):
+        self.login_method = self.LOGIN_METHOD_SESSION
+        self._session = requests.Session()
+        full_url = self._get_full_url('/accounts/action/')
+        kwargs = self._get_req_args(query_params={'do': 'login'})
+        data = simplejson.dumps({"username": self.username, "password": self.password})
+        res = self.http.post(full_url, data=data, **kwargs)
+        self._process_response(res)
+        csrf_token = res.cookies['csrftoken']
+        self._session.headers.update({'X-CSRFToken': csrf_token, 'Referer': self._get_full_url('/')})
+
+    def _get_full_url(self, url):
+        api_endpoint = urlparse.urlparse(self.api_endpoint)
+        if url.startswith(api_endpoint.path):
+            full_url = list(api_endpoint)
+            full_url[2] = url
+            full_url = urlparse.urlunparse(full_url)
+        else:
+            if url[0] == '/':
+                url = url[1:]
+            full_url = urlparse.urljoin(self.api_endpoint, url)
+
+        if not full_url.endswith("/"):
+            full_url += "/"
+
+        return full_url
+
+    def _process_response(self, resp, return_list=False):
+        resp_data = None
+        request_id = resp.headers.get('X-REQUEST-ID', None)
+        if resp.status_code in (200, 201, 202):
+            resp_data = copy.deepcopy(resp.json())
+            if 'objects' in resp_data:
+                resp_data = resp_data['objects']
+                if len(resp_data) == 1 and not return_list:
+                    resp_data = resp_data[0]
+        elif resp.status_code == 401:
+            raise errors.AuthError(request_id, status_code=resp.status_code)
+        elif resp.status_code == 403:
+            raise errors.PermissionError(resp.text, status_code=resp.status_code, request_id=request_id)
+        elif resp.status_code / 100 == 4:
+            raise errors.ClientError(resp.text, status_code=resp.status_code, request_id=request_id)
+        elif resp.status_code / 100 == 5:
+            raise errors.ServerError(resp.text, status_code=resp.status_code, request_id=request_id)
+
+        return resp_data
+
+    def _get_req_args(self, body=None, query_params=None):
+        kwargs = {}
+        if self.login_method == self.LOGIN_METHOD_BASIC:
+            kwargs['auth'] = (self.username, self.password)
+
+        kwargs['headers'] = {
+            'content-type': 'application/json',
+            'user-agent': 'CloudSigma turlo client',
+        }
+
+        if query_params:
+            if 'params' not in kwargs:
+                kwargs['params'] = {}
+            kwargs['params'].update(query_params)
+
+        kwargs['hooks'] = {
+            'response': wrap_with_log_hook(self.request_log_level, self.response_hook)
+        }
+
+        return kwargs
+
+    @property
+    def http(self):
+        if self._session:
+            return self._session
+        return requests
+
+    def get(self, url, query_params=None, return_list=False):
+        kwargs = self._get_req_args(query_params=query_params)
+        self.resp = self.http.get(self._get_full_url(url), **kwargs)
+        return self._process_response(self.resp, return_list)
+
+    def put(self, url, data, query_params=None, return_list=False):
+        kwargs = self._get_req_args(body=data, query_params=query_params)
+        self.resp = self.http.put(self._get_full_url(url), data=simplejson.dumps(data), **kwargs)
+        return self._process_response(self.resp, return_list)
+
+    def post(self, url, data, query_params=None, return_list=False):
+        kwargs = self._get_req_args(body=data, query_params=query_params)
+        self.resp = self.http.post(self._get_full_url(url), data=simplejson.dumps(data), **kwargs)
+        return self._process_response(self.resp, return_list)
+
+    def delete(self, url, query_params=None):
+        self.resp = self.http.delete(self._get_full_url(url), **self._get_req_args(query_params=query_params))
+        return self._process_response(self.resp)
+
+
+def is_vpc_enabled():
+    gc = GenericClient(login_method=GenericClient.LOGIN_METHOD_SESSION)
+    ret = gc.get('cloud_status')
+    if 'vpc' in ret:
+        return ret['vpc']
+    else:
+        return False
+
+
+def is_vpc_test_enabled():
+    try:
+        value = config.get('vpc_test_enabled')
+        return value.lower() == 'true'
+    except:
+        return False
+
+
+def check_if_vpc_is_enabled():
+    if not is_vpc_test_enabled():
+        raise SkipTest('VPC acceptance tests are disabled')
+
+    if not is_vpc_enabled():
+        raise SkipTest('VPC API calls are disabled')
+
+
+def get_paas_providers():
+    gc = GenericClient(login_method=GenericClient.LOGIN_METHOD_SESSION)
+    ret = gc.get('cloud_status')
+    if 'paas' in ret:
+        return ret['paas']
+    else:
+        return []
