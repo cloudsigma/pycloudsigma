@@ -656,3 +656,11 @@ class Lans(ResourceBase):
 
 class IpAliases(ResourceBase):
     resource_name = 'ipaliases'
+
+
+class Upstream(ResourceBase):
+    resource_name = 'upstream'
+
+    def configure_vpn(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'configure_vpn', data)
