@@ -645,3 +645,10 @@ class VirtualRouters(ResourceBase):
         return self._action(
             virtual_router_uuid, 'get_log', data, query_params=query_params)
 
+
+class Lans(ResourceBase):
+    resource_name = 'lans'
+
+    def configure_dhcp(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'configure_dhcp', data)
