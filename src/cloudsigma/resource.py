@@ -696,3 +696,7 @@ class VrFwFilters(ResourceBase):
     def disable_logging(self, fw_filter_uuid, data):
         data = data or {}
         return self._action(fw_filter_uuid, 'disable_logging', data)
+
+
+class Routes(ResourceBase):
+    resource_name = 'routes'
