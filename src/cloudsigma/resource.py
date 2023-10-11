@@ -609,3 +609,39 @@ class HostAllocationPools(ResourceBase):
 
 class DriveUsers(ResourceBase):
     resource_name = 'driveusers'
+
+
+class VirtualRouters(ResourceBase):
+    resource_name = 'virtualrouters'
+
+    def enable_nat(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'enable_nat', data)
+
+    def disable_nat(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'disable_nat', data)
+
+    def enable_firewall(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'enable_firewall', data)
+
+    def disable_firewall(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'disable_firewall', data)
+
+    def enable_firewall_logging(self, virtual_router_uuid, data):
+        data = data or {}
+        action = 'enable_firewall_logging'
+        return self._action(virtual_router_uuid, action, data)
+
+    def disable_firewall_logging(self, virtual_router_uuid, data):
+        data = data or {}
+        action = 'disable_firewall_logging'
+        return self._action(virtual_router_uuid, action, data)
+
+    def get_log(self, virtual_router_uuid, data, query_params):
+        data = data or {}
+        return self._action(
+            virtual_router_uuid, 'get_log', data, query_params=query_params)
+
