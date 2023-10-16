@@ -37,6 +37,10 @@ class StatefulResourceTestBase(unittest.TestCase):
         self._clean_servers()
         self._clean_drives()
 
+    def get_cpu_type(self):
+        return config.get('guest_cpu_type') \
+            if 'guest_cpu_type' in config else 'amd'
+
     def _get_persistent_image_uuid_and_pass(self):
         # Get a good persistent test image
         p_name = config.get('persistent_drive_name')
@@ -307,6 +311,13 @@ class StatefulResourceTestBase(unittest.TestCase):
                 )
             )
 
+    def get_other_account(self):
+        if not config.get('username2'):
+            raise unittest.SkipTest('Missing second account for ACL tests')
+        return dict(
+            username=config['username2'], password=config['password2']
+        )
+
 
 class VpcTestsBase(StatefulResourceTestBase):
 
@@ -412,44 +423,6 @@ def wrap_with_log_hook(log_level, next_hook=None):
 
         next_hook(response, *args, **kwargs)
     return log_hook
-
-
-@attr('acceptance_test')
-class StatefulResourceTestBase(unittest.TestCase):
-    TIMEOUT_DRIVE_CREATED = 2 * 60
-    TIMEOUT_DRIVE_CLONING = 20 * 60
-    TIMEOUT_DRIVE_DELETED = 3 * 60
-
-    def setUp(self):
-        unittest.TestCase.setUp(self)
-        self.client = cr.ResourceBase()  # create a resource handle object
-        self._clean_servers()
-        self._clean_drives()
-        self._clean_keypairs(ignore_errors=True)
-        self._clean_tags(ignore_errors=True)
-        self._clean_acls(ignore_errors=True)
-
-    def tearDown(self):
-        self._clean_servers()
-        self._clean_drives()
-        self._clean_keypairs(ignore_errors=True)
-        self._clean_tags(ignore_errors=True)
-        self._clean_acls(ignore_errors=True)
-
-    def assertDictContainsSubset(
-            self, expected, actual, msg=None, exclude=None):
-        if exclude is None:
-            exclude = []
-
-        expected_2 = deepcopy(expected)
-        actual_2 = deepcopy(actual)
-        for item in exclude:
-            if item in expected_2:
-                del expected_2[item]
-            if item in actual_2:
-                del actual_2[item]
-        super(StatefulResourceTestBase, self).assertDictContainsSubset(
-            expected_2, actual_2, msg)
 
 
 class GenericClient(object):

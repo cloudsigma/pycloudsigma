@@ -41,14 +41,11 @@ class HostAvailabilityZoneTest(StatefulResourceTestBase):
             server_req.update(server_req_extra)
         server = self.server_client.create(server_req)
 
-        self.assertDictContainsSubset(
-            server_req,
-            server,
-            msg='Server created with different params',
-            exclude=['vnc_password']
-        )
-        self.assertEqual(server['status'], 'stopped',
-                          'Server created with wrong status')
+        for key, value in server_req.items():
+            if key != 'vnc_password':
+                self.assertEqual(server[key], value, 'Key "{}" has a different value.'.format(key))
+
+        self.assertEqual(server['status'], 'stopped', 'Server created with wrong status')
         return server
 
     def _try_to_start_in_a_zone(self, zone):
