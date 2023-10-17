@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cloudsigma"
-version = "1.0"
+version = "2.0.0"
 description = "CloudSigma's official python library."
 authors = ["CloudSigma AG <dev-support@cloudsigma.com>"]
 keywords = ["cloud", "cloudsigma", "api", "cloud", "computing"]
