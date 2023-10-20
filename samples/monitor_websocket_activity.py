@@ -1,3 +1,4 @@
+from __future__ import print_function
 from cloudsigma.generic import GenericClient
 from cloudsigma.resource import Websocket
 from cloudsigma.errors import ClientError, PermissionError

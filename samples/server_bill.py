@@ -1,4 +1,5 @@
 from __future__ import division
+from __future__ import print_function
 from builtins import range
 from past.utils import old_div
 import bisect
@@ -106,5 +107,5 @@ def get_per_server_usage(start_time, end_time):
 
 
 if __name__ == '__main__':
-    for server, amount in get_per_server_usage(start_time, end_time).items():
+    for server, amount in list(get_per_server_usage(start_time, end_time).items()):
         print("%s - %.2f" % (server, amount))

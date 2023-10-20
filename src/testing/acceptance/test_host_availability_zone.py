@@ -41,7 +41,7 @@ class HostAvailabilityZoneTest(StatefulResourceTestBase):
             server_req.update(server_req_extra)
         server = self.server_client.create(server_req)
 
-        for key, value in server_req.items():
+        for key, value in list(server_req.items()):
             if key != 'vnc_password':
                 self.assertEqual(server[key], value, 'Key "{}" has a different value.'.format(key))
 

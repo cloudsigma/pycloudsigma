@@ -1,20 +1,17 @@
 from __future__ import division
+from . import errors
+from .conf import config
+from websocket import create_connection
+from past.utils import old_div
+import simplejson
+import requests
+import copy
+import logging
+import urllib.parse
+from builtins import object
 from builtins import str
 from future import standard_library
 standard_library.install_aliases()
-
-from builtins import object
-import urllib.parse
-import logging
-import copy
-import requests
-import simplejson
-
-from past.utils import old_div
-from websocket import create_connection
-
-from .conf import config
-from . import errors
 
 
 LOG = logging.getLogger(__name__)
@@ -40,22 +37,22 @@ def wrap_with_log_hook(log_level, next_hook=None):
         req_msg = '-----RECONSTRUCTED-REQUEST:\n{req.method} {req.path_url} ' \
                   'HTTP/1.1\r\n{headers}\r\n\r\n{body}\n-----' \
                   'RECONSTRUCTED-REQUEST-END'.format(
-            req=request,
-            headers='\r\n'.join(
-                '{}: {}'.format(k, v) for k, v in list(request.headers.items())
-            ),
-            body=request.body if request.body else ''
-        )
+                      req=request,
+                      headers='\r\n'.join(
+                          '{}: {}'.format(k, v) for k, v in list(request.headers.items())
+                      ),
+                      body=request.body if request.body else ''
+                  )
 
         resp_msg = '-----RECONSTRUCTED-RESPONSE:\nHTTP/1.1 {resp.status_code}' \
                    ' {resp.reason}\r\n{headers}\r\n\r\n{body}' \
                    '\n-----RECONSTRUCTED-RESPONSE-END'.format(
-            resp=response,
-            headers='\r\n'.join(
-                '{}: {}'.format(k, v) for k, v in list(response.headers.items())
-            ),
-            body=response.content if response.content else ''
-        )
+                       resp=response,
+                       headers='\r\n'.join(
+                           '{}: {}'.format(k, v) for k, v in list(response.headers.items())
+                       ),
+                       body=response.content if response.content else ''
+                   )
         LOG.log(level, '{}\n\n{}'.format(req_msg, resp_msg))
 
         next_hook(response, *args, **kwargs)
