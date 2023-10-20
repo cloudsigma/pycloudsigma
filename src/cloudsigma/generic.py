@@ -77,8 +77,7 @@ class GenericClient(object):
             api_endpoint=None,
             username=None,
             password=None,
-            login_method=LOGIN_METHOD_BASIC,
-            request_log_level=None
+            login_method=LOGIN_METHOD_BASIC
     ):
         self.api_endpoint = api_endpoint if api_endpoint \
             else config['api_endpoint']
@@ -91,10 +90,6 @@ class GenericClient(object):
         self._session = None
         self.resp = None
         self.response_hook = None
-        self.request_log_level = request_log_level if request_log_level else \
-            config.get('request_log_level', None)
-        if self.request_log_level:
-            self.request_log_level = self.request_log_level.upper()
 
         if login_method == self.LOGIN_METHOD_SESSION:
             self._login_session()
