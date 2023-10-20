@@ -30,11 +30,11 @@ class HostAvailabilityZoneTest(StatefulResourceTestBase):
     def _create_a_server(self, server_req=None, server_req_extra=None):
         if server_req is None:
             server_req = {
-                    'name': 'testServerAcc',
-                    'cpu': 1000,
-                    'mem': 512 * 1024 ** 2,
-                    'vnc_password': 'testserver',
-                    'cpu_type': self.get_cpu_type(),
+                'name': 'testServerAcc',
+                'cpu': 1000,
+                'mem': 512 * 1024 ** 2,
+                'vnc_password': 'testserver',
+                'cpu_type': self.get_cpu_type(),
             }
 
         if server_req_extra is not None:
@@ -43,23 +43,27 @@ class HostAvailabilityZoneTest(StatefulResourceTestBase):
 
         for key, value in list(server_req.items()):
             if key != 'vnc_password':
-                self.assertEqual(server[key], value, 'Key "{}" has a different value.'.format(key))
+                self.assertEqual(
+                    server[key], value, 'Key "{}" has a different value.'.format(key))
 
-        self.assertEqual(server['status'], 'stopped', 'Server created with wrong status')
+        self.assertEqual(server['status'], 'stopped',
+                         'Server created with wrong status')
         return server
 
     def _try_to_start_in_a_zone(self, zone):
         server = self._create_a_server(
             server_req_extra={'allocation_pool': zone['uuid']})
         self.server_client.start(server['uuid'])
-        self._wait_for_status(server['uuid'], 'running', client=self.server_client, timeout=120)
+        self._wait_for_status(
+            server['uuid'], 'running', client=self.server_client, timeout=120)
 
         server = self.server_client.get(server['uuid'])
         self.assertIn(zone['uuid'], server['allocation_pool'])
         self.assertEqual('running', server['status'])
 
         self.server_client.stop(server['uuid'])
-        self._wait_for_status(server['uuid'], 'stopped', client=self.server_client, timeout=120)
+        self._wait_for_status(
+            server['uuid'], 'stopped', client=self.server_client, timeout=120)
 
     def test_start_a_server_in_an_availability_zone(self):
         zones = self.get_list()

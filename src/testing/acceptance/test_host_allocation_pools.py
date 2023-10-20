@@ -72,7 +72,6 @@ class HostAllocationPoolsTest(VpcTestsBase):
         with self.assertRaises(ClientError):
             self.client_2.update(pool['uuid'], edited_data)
 
-
     def test_invalid_values(self):
         check_if_vpc_is_enabled()
         self._create_vpc_subscription()

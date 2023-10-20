@@ -170,7 +170,8 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         for retry in range(5):
             if retry > 0:
                 LOG.warning(
-                    'Retrying guest context whole definition execution {}'.format(retry)
+                    'Retrying guest context whole definition execution {}'.format(
+                        retry)
                 )
             try:
                 ctx_res = conn.run(command)
@@ -328,7 +329,8 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
             gcc.update({'new_global_key': 'new_global_val'})
 
         LOG.debug('Check global context retrieval')
-        command = self.command_template.format('/global_context/new_global_key')
+        command = self.command_template.format(
+            '/global_context/new_global_key')
         expected_val = 'new_global_val'
         res_string = self.get_single_ctx_val(command, expected_val, conn)
         self.assertEqual(res_string, expected_val)

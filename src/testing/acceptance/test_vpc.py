@@ -12,8 +12,8 @@ class VpcTest(VpcTestsBase):
     def setUp(self):
         super(VpcTest, self).setUp()
         self.sub_client = resource.Subscriptions()
-        self.tag_resource =  resource.Tags()
-        self.acl_resource =  resource.Acls()
+        self.tag_resource = resource.Tags()
+        self.acl_resource = resource.Acls()
         self.server_client = resource.Server()
         self.nodes_client = Nodes()
         self.resource_name = 'dedicated_host_6148'
@@ -53,7 +53,8 @@ class VpcTest(VpcTestsBase):
 
         vpc_name = 'my vpc {}'.format(time.time())
         vpc_description = 'some custom description {}'.format(time.time())
-        vpc = self.vpc_client.update(vpc_uuid, {'name': vpc_name, 'description': vpc_description})
+        vpc = self.vpc_client.update(
+            vpc_uuid, {'name': vpc_name, 'description': vpc_description})
         self.check_nodes(vpc, [node_uuid])
 
         self.assertEqual(vpc['name'], vpc_name)
@@ -62,7 +63,8 @@ class VpcTest(VpcTestsBase):
 
         vpc_name = 'my vpc {}'.format(time.time())
         vpc_description = 'some custom description {}'.format(time.time())
-        vpc = self.vpc_client.update(vpc_uuid, {'name': vpc_name, 'description': vpc_description, 'nodes':[]})
+        vpc = self.vpc_client.update(
+            vpc_uuid, {'name': vpc_name, 'description': vpc_description, 'nodes': []})
         self.check_nodes(vpc, [])
 
         self.assertEqual(vpc['name'], vpc_name)
@@ -125,7 +127,7 @@ class VpcTest(VpcTestsBase):
         self.assertEqual(vpc['owner']['uuid'], vpc_2['owner']['uuid'])
         self.assertEqual(vpc['status'], self.DEFAULT_STATUS)
 
-        vpc['tags'] = [ ]
+        vpc['tags'] = []
         vpc = self.vpc_client.update(vpc['uuid'], vpc)
 
         list = self.vpc_client_2.list()
@@ -169,7 +171,7 @@ class VpcTest(VpcTestsBase):
 
         self.assertEqual(vpc['name'], vpc_name)
         self.assertEqual(vpc['description'], vpc_description)
-        self.check_nodes(vpc,[])
+        self.check_nodes(vpc, [])
 
         vpc_name = 'my vpc {}'.format(time.time())
         vpc_description = 'some custom description {}'.format(time.time())
@@ -198,7 +200,8 @@ class VpcTest(VpcTestsBase):
 
         vpc_name = 'my vpc {}'.format(time.time())
         vpc_description = 'some custom description {}'.format(time.time())
-        updated_data = {'name': vpc_name, 'description': vpc_description, 'nodes': [nodes[0]['uuid']]}
+        updated_data = {
+            'name': vpc_name, 'description': vpc_description, 'nodes': [nodes[0]['uuid']]}
         vpc = self.vpc_client.update(vpc_uuid, updated_data)
 
         self.assertEqual(vpc['name'], vpc_name)
@@ -209,11 +212,11 @@ class VpcTest(VpcTestsBase):
     def _create_a_server(self, server_req=None, server_req_extra=None):
         if server_req is None:
             server_req = {
-                    'name': 'testServerAcc',
-                    'cpu': 1000,
-                    'mem': 512 * 1024 ** 2,
-                    'vnc_password': 'testserver',
-                    'cpu_type': self.get_cpu_type(),
+                'name': 'testServerAcc',
+                'cpu': 1000,
+                'mem': 512 * 1024 ** 2,
+                'vnc_password': 'testserver',
+                'cpu_type': self.get_cpu_type(),
             }
 
         if server_req_extra is not None:
@@ -226,7 +229,7 @@ class VpcTest(VpcTestsBase):
             msg='Edit of server failed',
             exclude=['vnc_password'])
         self.assertEqual(server['status'], 'stopped',
-                          'Server created with wrong status')
+                         'Server created with wrong status')
         return server
 
     def test_start_a_server_in_a_dedicated_host(self):
@@ -241,7 +244,8 @@ class VpcTest(VpcTestsBase):
 
         vpc_name = 'my vpc {}'.format(time.time())
         vpc_description = 'some custom description {}'.format(time.time())
-        updated_data = {'name': vpc_name, 'description': vpc_description, 'nodes': [nodes[0]['uuid']]}
+        updated_data = {
+            'name': vpc_name, 'description': vpc_description, 'nodes': [nodes[0]['uuid']]}
         vpc = self.vpc_client.update(vpc_uuid, updated_data)
 
         self.assertEqual(vpc['name'], vpc_name)
@@ -250,9 +254,11 @@ class VpcTest(VpcTestsBase):
         self.check_nodes(vpc, [node_0['uuid']])
         self.assertEqual(vpc['status'], self.DEFAULT_STATUS)
 
-        server = self._create_a_server(server_req_extra={'allocation_pool': vpc['allocation_pool']})
+        server = self._create_a_server(
+            server_req_extra={'allocation_pool': vpc['allocation_pool']})
         self.server_client.start(server['uuid'])
-        self._wait_for_status(server['uuid'], 'running', client=self.server_client)
+        self._wait_for_status(
+            server['uuid'], 'running', client=self.server_client)
 
         server = self.server_client.get(server['uuid'])
         self.assertEqual(vpc['allocation_pool'], server['allocation_pool'])
@@ -265,4 +271,5 @@ class VpcTest(VpcTestsBase):
 
         self.assertIn(server['uuid'], running_servers)
         self.server_client.stop(server['uuid'])
-        self._wait_for_status(server['uuid'], 'stopped', client=self.server_client)
+        self._wait_for_status(
+            server['uuid'], 'stopped', client=self.server_client)

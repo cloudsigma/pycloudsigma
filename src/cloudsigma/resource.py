@@ -394,7 +394,8 @@ class Accounts(ResourceBase):
     resource_name = 'accounts'
 
     def authenticate_asynchronous(self):
-        return self._action(None, 'authenticate_asynchronous', data={})  # data empty see TUR-1346
+        # data empty see TUR-1346
+        return self._action(None, 'authenticate_asynchronous', data={})
 
     def create(self, email, promo_code=None):
         self.c._session = None

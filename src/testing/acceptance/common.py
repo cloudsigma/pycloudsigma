@@ -1,20 +1,19 @@
 from __future__ import division
+from cloudsigma.generic import GenericClient
+import datetime
+from cloudsigma import resource
+from cloudsigma.resource import Nodes, Vpc
+from unittest import SkipTest
+from cloudsigma.conf import config
+import logging
+import time
+from nose.plugins.attrib import attr
+import unittest
+from cloudsigma import errors
+import cloudsigma.resource as cr
+from past.utils import old_div
 from future import standard_library
 standard_library.install_aliases()
-
-from past.utils import old_div
-import cloudsigma.resource as cr
-from cloudsigma import errors
-import unittest
-from nose.plugins.attrib import attr
-import time
-import logging
-from cloudsigma.conf import config
-from unittest import SkipTest
-from cloudsigma.resource import Nodes, Vpc
-from cloudsigma import resource
-import datetime
-from cloudsigma.generic import GenericClient
 
 
 LOG = logging.getLogger(__name__)

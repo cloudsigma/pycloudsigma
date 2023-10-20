@@ -120,7 +120,8 @@ class SnapshotsTest(StatefulResourceTestBase):
             drive_uuids.append(d['uuid'])
 
         for d_uuid in drive_uuids:
-            self._wait_for_status(d_uuid, 'unmounted', client=self.drive_client)
+            self._wait_for_status(d_uuid, 'unmounted',
+                                  client=self.drive_client)
 
         self.assertFalse(self.drive_client.get(drive_uuids[0])['snapshots'])
 
@@ -140,7 +141,8 @@ class SnapshotsTest(StatefulResourceTestBase):
             snap_list = self.snap_client.list_detail()
 
         self.assertLessEqual(6, len(snap_list))
-        self.assertTrue(set(snap_uuids).issubset([s['uuid'] for s in snap_list]))
+        self.assertTrue(set(snap_uuids).issubset(
+            [s['uuid'] for s in snap_list]))
 
         with self.dump_response('snapshot_list_for_drive'):
             drive_snapshots = self.snap_client.list_detail(
@@ -210,7 +212,8 @@ class SnapshotsTest(StatefulResourceTestBase):
         self.drive_client.delete(cloned_drive['uuid'])
         self._wait_deleted(cloned_drive['uuid'], client=self.drive_client)
 
-        clone_data = {'media': 'cdrom', 'name': 'test_drive_snapshot_clone_name'}
+        clone_data = {'media': 'cdrom',
+                      'name': 'test_drive_snapshot_clone_name'}
 
         cloned_drive = self.snap_client.clone(
             snap_uuid,

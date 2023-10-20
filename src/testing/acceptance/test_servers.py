@@ -451,7 +451,8 @@ class ServerTest(ServerTestBase):
         ips = ip_client.list()
         free_ips = [ip for ip in ips if ip['server'] is None]
         if not free_ips:
-            subs_client.create({'resource': 'ip', 'amount': 1, 'period': '1 month'})
+            subs_client.create(
+                {'resource': 'ip', 'amount': 1, 'period': '1 month'})
             ips = ip_client.list()
             free_ips = [ip for ip in ips if ip['server'] is None]
 

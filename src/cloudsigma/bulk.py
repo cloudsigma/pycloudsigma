@@ -41,7 +41,8 @@ class BulkBase(object):
 class DrivesBulk(BulkBase):
     CREATE_DRIVE_MEDIA = config.get('CREATE_DRIVE_MEDIA', 'disk')
     CREATE_DRIVE_SIZE = config.get('CREATE_DRIVE_SIZE', 10 * 1024 ** 3)
-    CREATE_DRIVE_DESCRIPTION = config.get('CREATE_DRIVE_DESCRIPTION', 'some descr')
+    CREATE_DRIVE_DESCRIPTION = config.get(
+        'CREATE_DRIVE_DESCRIPTION', 'some descr')
 
     def __init__(
             self,
@@ -117,7 +118,8 @@ class DrivesBulk(BulkBase):
                 "affinities": source_drive['affinities'],
             }
             resp = self.c_drive.clone(source_drive['uuid'], d)
-            LOG.info('Cloned drive %r from %r', resp['name'], source_drive['name'])
+            LOG.info('Cloned drive %r from %r',
+                     resp['name'], source_drive['name'])
             drives.append(resp)
 
         # Wait for all drives to finish cloning

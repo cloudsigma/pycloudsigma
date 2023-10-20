@@ -1,14 +1,14 @@
+import urllib.error
+import urllib.parse
+import urllib.request
+from cloudsigma.conf import config
+from testing.templates import get_template
+import os
+import logging
+import simplejson
+from builtins import object
 from future import standard_library
 standard_library.install_aliases()
-
-from builtins import object
-import urllib.request, urllib.parse, urllib.error, urllib.parse
-import simplejson
-import logging
-import os
-
-from testing.templates import get_template
-from cloudsigma.conf import config
 
 
 LOG = logging.getLogger(__name__)
@@ -32,7 +32,8 @@ class ResponseDumper(object):
 
         # If dump path not found/derived
         if dump_path is None and config.get('dump_path') is not None:
-            self.dump_path = os.path.join(os.path.expanduser(config['dump_path']))
+            self.dump_path = os.path.join(
+                os.path.expanduser(config['dump_path']))
         else:
             self.dump_path = dump_path
 
@@ -60,10 +61,10 @@ class ResponseDumper(object):
                 data = resp.request.body
             data = data or ''
             fl.write(self.get_populated_template(
-                    "request_template",
-                    resp.request,
-                    data,
-                    path_url=urllib.parse.unquote(resp.request.path_url)))
+                "request_template",
+                resp.request,
+                data,
+                path_url=urllib.parse.unquote(resp.request.path_url)))
 
         with open(
                 os.path.join(self.dump_path, "response_{}".format(fname)), "w"
@@ -74,7 +75,8 @@ class ResponseDumper(object):
                 data = self.resp_data_filter(resp.content)
             else:
                 data = resp.content
-            fl.write(self.get_populated_template("response_template", resp, data))
+            fl.write(self.get_populated_template(
+                "response_template", resp, data))
 
         self.tmp_name = None
 
@@ -115,7 +117,8 @@ class ResponseDumper(object):
     def get_populated_template(self, template, reqres, data=None, **kwargs):
         if data is not None:
             try:
-                data = simplejson.dumps(simplejson.loads(data), sort_keys=True, indent=4)
+                data = simplejson.dumps(simplejson.loads(
+                    data), sort_keys=True, indent=4)
             except:
                 data = ""
         return get_template(template).format(
@@ -123,7 +126,7 @@ class ResponseDumper(object):
             content_type=reqres.headers.get('content-type'),
             data=data,
             **kwargs
-    )
+        )
 
 
 class DumpResponse(object):

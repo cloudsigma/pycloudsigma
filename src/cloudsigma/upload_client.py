@@ -1,22 +1,22 @@
 from __future__ import division
+import urllib.error
+import urllib.request
+import os
+import json
+import itertools
+import logging
+import urllib.parse
+import datetime
+import sys
+import queue
+import threading
+import argparse
+import time
+from past.utils import old_div
+from builtins import str, next, range, object
 from __future__ import print_function
 from future import standard_library
 standard_library.install_aliases()
-
-from builtins import str, next, range, object
-from past.utils import old_div
-import time
-import urllib.request, urllib.error, urllib.parse
-import argparse
-import threading
-import queue
-import sys
-import datetime
-import urllib.parse
-import logging
-import itertools
-import json
-import os
 
 
 LOG = logging.getLogger(__name__)
@@ -210,7 +210,8 @@ class CSUploader(object):
             try:
                 self.upload_chunk(chunk_number, chunk_offset, real_chunk_size)
             except:
-                LOG.exception('Error ocurred for chunk {}'.format(chunk_number))
+                LOG.exception(
+                    'Error ocurred for chunk {}'.format(chunk_number))
                 self.queue.put((chunk_number, chunk_offset, real_chunk_size))
             finally:
                 # Always call task_done even on fail because in order to finish
