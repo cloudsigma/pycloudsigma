@@ -273,7 +273,8 @@ class Server(ResourceBase):
                 avoid = [avoid]
             query_params['avoid'] = ','.join(avoid)
 
-        return self._action(uuid, 'clone', data=data, query_params=query_params)
+        return self._action(uuid, 'clone', data=data,
+                            query_params=query_params)
 
     def delete(self, uuid, recurse=None):
         """
@@ -400,7 +401,8 @@ class Accounts(ResourceBase):
     def create(self, email, promo_code=None):
         self.c._session = None
         self.c.login_method = GenericClient.LOGIN_METHOD_NONE
-        return self._action(None, 'create', data={'email': email, 'promo': promo_code})
+        return self._action(
+            None, 'create', data={'email': email, 'promo': promo_code})
 
 
 class CurrentUsage(ResourceBase):

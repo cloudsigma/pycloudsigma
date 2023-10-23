@@ -64,7 +64,8 @@ class VpcTest(VpcTestsBase):
         vpc_name = 'my vpc {}'.format(time.time())
         vpc_description = 'some custom description {}'.format(time.time())
         vpc = self.vpc_client.update(
-            vpc_uuid, {'name': vpc_name, 'description': vpc_description, 'nodes': []})
+            vpc_uuid,
+            {'name': vpc_name, 'description': vpc_description, 'nodes': []})
         self.check_nodes(vpc, [])
 
         self.assertEqual(vpc['name'], vpc_name)
@@ -95,7 +96,8 @@ class VpcTest(VpcTestsBase):
         vpc_description = 'some custom description {}'.format(time.time())
         vpc = self.vpc_client.update(
             vpc_uuid,
-            {'name': vpc_name, 'description': vpc_description, 'allocation_pool': allocation_pool})
+            {'name': vpc_name, 'description': vpc_description,
+             'allocation_pool': allocation_pool})
 
         self.assertEqual(vpc['allocation_pool'], vpc_0['allocation_pool'])
 
@@ -201,7 +203,8 @@ class VpcTest(VpcTestsBase):
         vpc_name = 'my vpc {}'.format(time.time())
         vpc_description = 'some custom description {}'.format(time.time())
         updated_data = {
-            'name': vpc_name, 'description': vpc_description, 'nodes': [nodes[0]['uuid']]}
+            'name': vpc_name, 'description': vpc_description,
+            'nodes': [nodes[0]['uuid']]}
         vpc = self.vpc_client.update(vpc_uuid, updated_data)
 
         self.assertEqual(vpc['name'], vpc_name)
@@ -245,7 +248,8 @@ class VpcTest(VpcTestsBase):
         vpc_name = 'my vpc {}'.format(time.time())
         vpc_description = 'some custom description {}'.format(time.time())
         updated_data = {
-            'name': vpc_name, 'description': vpc_description, 'nodes': [nodes[0]['uuid']]}
+            'name': vpc_name, 'description': vpc_description,
+            'nodes': [nodes[0]['uuid']]}
         vpc = self.vpc_client.update(vpc_uuid, updated_data)
 
         self.assertEqual(vpc['name'], vpc_name)
