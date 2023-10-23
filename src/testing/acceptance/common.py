@@ -12,6 +12,7 @@ import unittest
 from cloudsigma import errors
 import cloudsigma.resource as cr
 from past.utils import old_div
+from copy import deepcopy
 from future import standard_library
 standard_library.install_aliases()
 
@@ -316,6 +317,21 @@ class StatefulResourceTestBase(unittest.TestCase):
         return dict(
             username=config['username2'], password=config['password2']
         )
+
+    def assertDictContainsSubset(
+            self, expected, actual, msg=None, exclude=None):
+        if exclude is None:
+            exclude = []
+
+        expected_2 = deepcopy(expected)
+        actual_2 = deepcopy(actual)
+        for item in exclude:
+            if item in expected_2:
+                del expected_2[item]
+            if item in actual_2:
+                del actual_2[item]
+        super(StatefulResourceTestBase, self).assertDictContainsSubset(
+            expected_2, actual_2, msg)
 
 
 class VpcTestsBase(StatefulResourceTestBase):
