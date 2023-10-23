@@ -23,5 +23,6 @@ for s in snapshot_list:
     cut_off_date = datetime.now(pytz.utc) - timedelta(days=days_to_keep)
 
     if s['drive']['uuid'] == drive_uuid and snapshot_timestamp < cut_off_date:
-        print('Deleting snapshot "%s" from %s' % (s['name'], snapshot_timestamp))
+        print('Deleting snapshot "%s" from %s' %
+              (s['name'], snapshot_timestamp))
         snapshot.delete(s['uuid'])

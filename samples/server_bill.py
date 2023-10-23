@@ -34,7 +34,6 @@ def get_usages(usage_client, ledger_time, start_date, usage_list, bisect_list):
         return res
 
 
-
 def get_per_server_usage(start_time, end_time):
     server_client = cr.Server()
     server_list = server_client.list_detail()
@@ -74,7 +73,7 @@ def get_per_server_usage(start_time, end_time):
                 )
             )
         )
-    usage_list = list(sorted(usage_list, key=lambda x:x['poll_time']))
+    usage_list = list(sorted(usage_list, key=lambda x: x['poll_time']))
     bisect_list = [dateutil.parser.parse(u['poll_time']) for u in usage_list]
     for ledger in ledger_list:
         if not ledger['billing_cycle']:
@@ -107,5 +106,6 @@ def get_per_server_usage(start_time, end_time):
 
 
 if __name__ == '__main__':
-    for server, amount in list(get_per_server_usage(start_time, end_time).items()):
+    for server, amount in list(
+            get_per_server_usage(start_time, end_time).items()):
         print("%s - %.2f" % (server, amount))

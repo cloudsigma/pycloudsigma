@@ -15,7 +15,8 @@ class BulkBase(object):
 
     def __init__(self, id_prefix):
         """
-        @param id_prefix: a string prefix that is used in created artifacts names
+        @param id_prefix: a string prefix that is used in
+         created artifacts names
         """
         self.id_prefix = id_prefix
         self.id_counter = 0
@@ -32,15 +33,18 @@ class BulkBase(object):
 
     def filter_by_name_uuid(self, resp, name_or_uuid):
         def _filter(d):
-            return (d['uuid'] == name_or_uuid) or (name_or_uuid in d['name'])
+            return (d['uuid'] == name_or_uuid)\
+                   or (name_or_uuid in d['name'])
 
         candidates = list(filter(_filter, resp))
         return candidates
 
 
 class DrivesBulk(BulkBase):
-    CREATE_DRIVE_MEDIA = config.get('CREATE_DRIVE_MEDIA', 'disk')
-    CREATE_DRIVE_SIZE = config.get('CREATE_DRIVE_SIZE', 10 * 1024 ** 3)
+    CREATE_DRIVE_MEDIA = config.get('CREATE_DRIVE_MEDIA',
+                                    'disk')
+    CREATE_DRIVE_SIZE = config.get('CREATE_DRIVE_SIZE',
+                                   10 * 1024 ** 3)
     CREATE_DRIVE_DESCRIPTION = config.get(
         'CREATE_DRIVE_DESCRIPTION', 'some descr')
 
@@ -90,7 +94,8 @@ class DrivesBulk(BulkBase):
         LOG.info('Deleted drive %r', name)
 
     def wipe(self):
-        """Deletes all artifacts created by this identification prefix"""
+        """Deletes all artifacts created
+         by this identification prefix"""
         resp = self.get_list()
         for d in resp:
             self.delete(d['uuid'], d['name'])
@@ -152,7 +157,8 @@ class DrivesBulk(BulkBase):
             )
 
             LOG.info(
-                'Waiting for all drives cloning from {} to finish cloning:\n{}'.format(
+                'Waiting for all drives cloning'
+                ' from {} to finish cloning:\n{}'.format(
                     source_drive['uuid'],
                     drives_statuses_string
                 )
