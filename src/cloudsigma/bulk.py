@@ -34,7 +34,7 @@ class BulkBase(object):
     def filter_by_name_uuid(self, resp, name_or_uuid):
         def _filter(d):
             return (d['uuid'] == name_or_uuid)\
-                   or (name_or_uuid in d['name'])
+                or (name_or_uuid in d['name'])
 
         candidates = list(filter(_filter, resp))
         return candidates

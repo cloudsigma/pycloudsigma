@@ -45,7 +45,8 @@ class Upload(ResourceBase):
             The name of the uploaded drive. If not givent it will be set to
             Upload_<current date time>
         :param drive_media:
-                The media of the uploaded drive. If not givent it will be set to "disk"
+                The media of the uploaded drive.
+                 If not givent it will be set to "disk"
         :param progress_callback:
             A callback to be called every *progress_report_interval* second
             with the current progress.
@@ -65,7 +66,8 @@ class Upload(ResourceBase):
         self.n_threads = n_threads
         self.file_size = os.path.getsize(self.image_path)
         self.create_data = {
-            'name': drive_name or 'Upload_{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.utcnow()),
+            'name': drive_name or 'Upload_{:%Y-%m-%d %H:%M:%S}'.format(
+                datetime.datetime.utcnow()),
             'media': drive_media,
             'size': self.file_size
         }

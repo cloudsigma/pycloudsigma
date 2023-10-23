@@ -92,10 +92,10 @@ class CSUploader(object):
                 image_path=self.image_path
             )
         )
-        LOG.info('Total size is {size:0.1f} MB. Number of chunks {n_chunks}.'.format(
-            size=old_div(self.size, 1024.0 ** 2),
-            n_chunks=self.size // self.chunk_size)
-        )
+        LOG.info('Total size is {size:0.1f} MB. '
+                 'Number of chunks {n_chunks}.'.format(
+                    size=old_div(self.size, 1024.0 ** 2),
+                    n_chunks=self.size // self.chunk_size))
 
         self.enqueue_chunks()
 
@@ -144,7 +144,8 @@ class CSUploader(object):
     def init_upload(self, media='disk'):
         url = '{}/initupload/'.format(self.api_url.rstrip('/'))
         data = {
-            'name': 'Upload_{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.utcnow()),
+            'name': 'Upload_{:%Y-%m-%d %H:%M:%S}'.format(
+                datetime.datetime.utcnow()),
             'size': self.size,
             'media': media
         }

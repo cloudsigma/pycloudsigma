@@ -39,7 +39,8 @@ def wrap_with_log_hook(log_level, next_hook=None):
                   'RECONSTRUCTED-REQUEST-END'.format(
                       req=request,
                       headers='\r\n'.join(
-                          '{}: {}'.format(k, v) for k, v in list(request.headers.items())
+                          '{}: {}'.format(k, v) for k, v in list(
+                              request.headers.items())
                       ),
                       body=request.body if request.body else ''
                   )
@@ -49,7 +50,8 @@ def wrap_with_log_hook(log_level, next_hook=None):
                    '\n-----RECONSTRUCTED-RESPONSE-END'.format(
                        resp=response,
                        headers='\r\n'.join(
-                           '{}: {}'.format(k, v) for k, v in list(response.headers.items())
+                           '{}: {}'.format(k, v) for k, v in list(
+                               response.headers.items())
                        ),
                        body=response.content if response.content else ''
                    )

@@ -170,7 +170,8 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         for retry in range(5):
             if retry > 0:
                 LOG.warning(
-                    'Retrying guest context whole definition execution {}'.format(
+                    'Retrying guest context'
+                    ' whole definition execution {}'.format(
                         retry)
                 )
             try:
@@ -185,9 +186,11 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         return ctx_res_json, res_string
 
     def dump_ctx_command(self, command, res_string, op_name, dump_path):
-        with open(os.path.join(dump_path, 'request_' + op_name), 'w') as dump_file:
+        with open(os.path.join(dump_path, 'request_' + op_name), 'w')\
+                as dump_file:
             dump_file.write(command)
-        with open(os.path.join(dump_path, 'response_' + op_name), 'w') as dump_file:
+        with open(os.path.join(dump_path, 'response_' + op_name), 'w')\
+                as dump_file:
             dump_file.write(res_string)
 
     def check_key_retrieval(self, g_def, op_name, ctx_path, dump_path, conn):

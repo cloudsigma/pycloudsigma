@@ -226,7 +226,8 @@ class StatefulResourceTestBase(unittest.TestCase):
 
     def _clean_servers(self):
         """
-        Removes all the servers in the acceptance test account ( containing 'test' keyword )
+        Removes all the servers in the acceptance test account
+         ( containing 'test' keyword )
 
         :return:
         """
@@ -270,7 +271,8 @@ class StatefulResourceTestBase(unittest.TestCase):
 
     def _clean_drives(self):
         """
-        Removes all the drives in the acceptance test account ( containing 'test' keyword )
+        Removes all the drives in the acceptance test account
+         ( containing 'test' keyword )
 
         :return:
         """

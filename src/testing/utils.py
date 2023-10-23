@@ -152,6 +152,7 @@ class DumpResponse(object):
 
     def set_tmp_name(self, val):
         """
-        Sets a temporary name for the dump. Dropped after the response is returned.
+        Sets a temporary name for the dump.
+         Dropped after the response is returned.
         """
         self.response_dump.tmp_name = val
