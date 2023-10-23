@@ -3,7 +3,7 @@ import time
 import socket
 
 from nose.plugins.attrib import attr
-from future.moves.urllib.parse import urlparse
+from cloudsigma.generic import get_urlparse
 
 from testing.acceptance.common import StatefulResourceTestBase
 from testing.utils import DumpResponse
@@ -588,6 +588,7 @@ class ServerTest(ServerTestBase):
         )
 
         # Parsing vnc address and port from vnc_url
+        urlparse = get_urlparse()
         vnc_args = urlparse(open_vnc_resp['vnc_url']).netloc.split(":")
         vnc_address = (str(vnc_args[0]), int(vnc_args[1]))
 

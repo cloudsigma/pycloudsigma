@@ -3,6 +3,7 @@ import urllib.parse
 import urllib.request
 from cloudsigma.conf import config
 from testing.templates import get_template
+from cloudsigma.generic import get_urlparse, get_unquote, get_parse_qsl
 import os
 import logging
 import simplejson
@@ -41,6 +42,8 @@ class ResponseDumper(object):
         if self.dump_path is None:
             return
 
+        unquote = get_unquote()
+
         if not os.path.exists(self.dump_path):
             LOG.debug("Creating samples path - {}".format(self.dump_path))
             os.makedirs(self.dump_path)
@@ -64,7 +67,7 @@ class ResponseDumper(object):
                 "request_template",
                 resp.request,
                 data,
-                path_url=urllib.parse.unquote(resp.request.path_url)))
+                path_url=unquote(resp.request.path_url)))
 
         with open(
                 os.path.join(self.dump_path, "response_{}".format(fname)), "w"
@@ -81,7 +84,8 @@ class ResponseDumper(object):
         self.tmp_name = None
 
     def get_filename(self, resp):
-        url = urllib.parse.urlparse(resp.request.path_url)
+        urlparse = get_urlparse()
+        url = urlparse(resp.request.path_url)
         path_arr = [segment for segment in url.path.split('/') if segment]
 
         if self.tmp_name:
@@ -104,7 +108,8 @@ class ResponseDumper(object):
                         fname += "_" + "_".join(path_arr[4:])
 
             if url.query:
-                query_tuple = urllib.parse.parse_qsl(url.query)
+                parse_qsl = get_parse_qsl()
+                query_tuple = parse_qsl(url.query)
                 for key, val in sorted(query_tuple):
                     if key not in ['limit', 'format']:
                         fname += "_{}_{}".format(key, val)

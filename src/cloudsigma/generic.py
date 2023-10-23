@@ -7,7 +7,7 @@ import simplejson
 import requests
 import copy
 import logging
-import urllib.parse
+import sys
 from builtins import object
 from builtins import str
 from future import standard_library
@@ -124,16 +124,19 @@ class GenericClient(object):
         )
 
     def _get_full_url(self, url):
-        api_endpoint = urllib.parse.urlparse(self.api_endpoint)
+        urlparse = get_urlparse()
+        urlunparse = get_urlunparse()
+        urljoin = get_urljoin()
+        api_endpoint = urlparse(self.api_endpoint)
         if url.startswith(api_endpoint.path):
             full_url = list(api_endpoint)
             full_url[2] = url
             full_url = [str(x) for x in full_url]
-            full_url = urllib.parse.urlunparse(full_url)
+            full_url = urlunparse(full_url)
         else:
             if url[0] == '/':
                 url = url[1:]
-            full_url = urllib.parse.urljoin(str(self.api_endpoint), str(url))
+            full_url = urljoin(str(self.api_endpoint), str(url))
 
         if not full_url.endswith("/"):
             full_url += "/"
@@ -270,3 +273,49 @@ def get_client():
     module = importlib.import_module(module_str)
 
     return getattr(module, klass_str)
+
+
+def get_urlparse():
+    if sys.version_info >= (3, 3):
+        from urllib.parse import urlparse
+    else:
+        from urlparse import urlparse
+    return urlparse
+
+
+def get_urljoin():
+    if sys.version_info >= (3, 3):
+        from urllib.parse import urljoin
+    else:
+        from urlparse import urljoin
+    return urljoin
+
+
+def get_urlunparse():
+    if sys.version_info >= (3, 3):
+        from urllib.parse import urlunparse
+    else:
+        from urlparse import urlunparse
+    return urlunparse
+
+
+def get_unquote():
+    if sys.version_info >= (3, 3):
+        from urllib.parse import unquote
+    else:
+        from urlparse import unquote
+    return unquote
+
+
+def get_parse_qsl():
+    if sys.version_info >= (3, 3):
+        from urllib.parse import parse_qsl
+    else:
+        from urlparse import parse_qsl
+    return parse_qsl
+
+
+
+
+
+

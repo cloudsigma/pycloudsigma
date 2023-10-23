@@ -1,4 +1,5 @@
 from __future__ import division
+from __future__ import print_function
 import urllib.error
 import urllib.request
 import os
@@ -14,7 +15,7 @@ import argparse
 import time
 from past.utils import old_div
 from builtins import str, next, range, object
-from __future__ import print_function
+from cloudsigma.generic import get_urlparse
 from future import standard_library
 standard_library.install_aliases()
 
@@ -232,7 +233,8 @@ class CSUploader(object):
             )
             self.update_progress(real_chunk_size)
             return
-        parsed = urllib.parse.urlparse(self.drive_url)
+        urlparse = get_urlparse()
+        parsed = urlparse(self.drive_url)
         upload_url = '{}://{}/{}'.format(
             parsed.scheme,
             parsed.hostname,
