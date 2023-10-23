@@ -45,7 +45,8 @@ def wrap_with_log_hook(log_level, next_hook=None):
                       body=request.body if request.body else ''
                   )
 
-        resp_msg = '-----RECONSTRUCTED-RESPONSE:\nHTTP/1.1 {resp.status_code}' \
+        resp_msg = '-----RECONSTRUCTED-RESPONSE:\nHTTP/1.1' \
+                   ' {resp.status_code}' \
                    ' {resp.reason}\r\n{headers}\r\n\r\n{body}' \
                    '\n-----RECONSTRUCTED-RESPONSE-END'.format(
                        resp=response,
