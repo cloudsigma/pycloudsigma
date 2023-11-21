@@ -20,14 +20,19 @@ class GetServerMetadata(object):
             self.result = json.loads(data[0])
 
             ser.close()
-        except (serial.SerialException, ValueError) as e:
-            # Handle the exception (print an error, log it, etc.)
+        except serial.SerialException as e:
             error_message =\
-                "An error occurred: {}. Please check the documentation for troubleshooting:" \
-                " https://docs.cloudsigma.com/en/2.14.1/server_context.html" \
+                "An error occurred: {}. Please check the documentation for troubleshooting: " \
+                "https://docs.cloudsigma.com/en/2.14.1/server_context.html " \
                 "#setting-up-the-virtual-serial-port".format(e)
-            print(error_message)
+            raise serial.SerialException(error_message)
+        except ValueError as e:
+            error_message = \
+                "An error occurred: {}. Please check the documentation for troubleshooting: " \
+                "https://docs.cloudsigma.com/en/2.14.1/server_context.html" \
+                "#setting-up-the-virtual-serial-port".format(e)
             self.result = None
+            raise ValueError(error_message)
 
     def get(self):
         return self.result
