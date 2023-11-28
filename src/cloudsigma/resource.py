@@ -29,7 +29,10 @@ class ResourceBase(object):
     def get(self, uuid=None):
         url = self._get_url()
         if uuid is not None:
-            uuid_str = uuid.decode('utf-8')
+            if isinstance(uuid, bytes):
+                uuid_str = uuid.decode('utf-8')
+            else:
+                uuid_str = uuid
             url += uuid_str
         return self.c.get(url, return_list=False)
 
