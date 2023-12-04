@@ -1,3 +1,5 @@
+from builtins import str
+from builtins import range
 import json
 import os
 import logging
@@ -168,7 +170,9 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         for retry in range(5):
             if retry > 0:
                 LOG.warning(
-                    'Retrying guest context whole definition execution {}'.format(retry)
+                    'Retrying guest context'
+                    ' whole definition execution {}'.format(
+                        retry)
                 )
             try:
                 ctx_res = conn.run(command)
@@ -182,9 +186,11 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
         return ctx_res_json, res_string
 
     def dump_ctx_command(self, command, res_string, op_name, dump_path):
-        with open(os.path.join(dump_path, 'request_' + op_name), 'w') as dump_file:
+        with open(os.path.join(dump_path, 'request_' + op_name), 'w')\
+                as dump_file:
             dump_file.write(command)
-        with open(os.path.join(dump_path, 'response_' + op_name), 'w') as dump_file:
+        with open(os.path.join(dump_path, 'response_' + op_name), 'w')\
+                as dump_file:
             dump_file.write(res_string)
 
     def check_key_retrieval(self, g_def, op_name, ctx_path, dump_path, conn):
@@ -200,7 +206,7 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
     def check_all_retrieval(self, g_def, op_name, dump_path, conn):
         command = self.command_template.format('')
         ctx_res_json, res_string = self.get_full_ctx(command, conn)
-        for k, v in g_def.items():
+        for k, v in list(g_def.items()):
             if not isinstance(v, (list, dict)):
                 self.assertEqual(v, ctx_res_json[k])
         self.dump_ctx_command(command, res_string, op_name, dump_path)
@@ -326,7 +332,8 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
             gcc.update({'new_global_key': 'new_global_val'})
 
         LOG.debug('Check global context retrieval')
-        command = self.command_template.format('/global_context/new_global_key')
+        command = self.command_template.format(
+            '/global_context/new_global_key')
         expected_val = 'new_global_val'
         res_string = self.get_single_ctx_val(command, expected_val, conn)
         self.assertEqual(res_string, expected_val)

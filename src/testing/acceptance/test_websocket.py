@@ -141,4 +141,3 @@ class WebsocketTest(unittest.TestCase):
         ws.wait_obj_uri(g['resource_uri'], resource.Server)
         resource.Drive().delete(d['uuid'])
         resource.Server().delete(g['uuid'])
-

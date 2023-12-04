@@ -1,3 +1,5 @@
+from __future__ import print_function
+from builtins import str
 import unittest
 
 from nose.plugins.attrib import attr
@@ -14,44 +16,27 @@ class FirewallPolicyTest(unittest.TestCase):
         self.dump_response = DumpResponse(clients=[self.client])
         self.base_policy = {
             "name": "My awesome policy",
-            "rules": [
-                {
-                    "dst_ip": "23",
-                    "direction": "out",
-                    "action": "drop",
-                    "comment": "Drop traffic from the VM to IP address 23.0.0.0/32"
-                },
-                {
-                    "src_ip": "172.66.32.0/24",
-                    "ip_proto": "tcp",
-                    "dst_port": "22",
-                    "direction": "in",
-                    "action": "accept",
-                    "comment": "Allow SSH traffic to the VM from our office in Dubai"
-                },
-                {
-                    "ip_proto": "tcp",
-                    "dst_port": "22",
-                    "direction": "in",
-                    "action": "drop",
-                    "comment": "Drop all other SSH traffic to the VM"
-                },
-                {
-                    "src_ip": "!172.66.32.55",
-                    "ip_proto": "udp",
-                    "direction": "in",
-                    "action": "drop",
-                    "comment": "Drop all UDP traffic to the VM, not originating from 172.66.32.55"
-                },
-                {
-                    "ip_proto": "tcp",
-                    "dst_port": "!1:1024",
-                    "direction": "in",
-                    "action": "drop",
-                    "comment": "Drop any traffic, to the VM with destination port not between 1-1024"
-                }
-            ]
-        }
+            "rules":
+            [{"dst_ip": "23", "direction": "out", "action": "drop",
+              "comment": "Drop traffic from the VM"
+                         " to IP address 23.0.0.0/32"},
+             {"src_ip": "172.66.32.0/24", "ip_proto": "tcp", "dst_port": "22",
+              "direction": "in", "action": "accept",
+              "comment": "Allow SSH traffic to the VM"
+                         " from our office in Dubai"},
+             {"ip_proto": "tcp", "dst_port": "22", "direction": "in",
+              "action": "drop",
+              "comment": "Drop all other SSH traffic to the VM"},
+             {"src_ip": "!172.66.32.55", "ip_proto": "udp", "direction": "in",
+              "action": "drop",
+              "comment":
+              "Drop all UDP traffic to the VM,"
+              " not originating from 172.66.32.55"},
+             {"ip_proto": "tcp", "dst_port": "!1:1024", "direction": "in",
+              "action": "drop",
+              "comment":
+              "Drop any traffic, to the VM with"
+              " destination port not between 1-1024"}]}
         self._clean_policies()
 
     def tearDown(self):
@@ -92,7 +77,7 @@ class FirewallPolicyTest(unittest.TestCase):
             for key in rules:
                 match_a = str(full_policy['rules'][idx][key])
                 match_b = rules[key]
-                print(match_a, match_b)
+                print((match_a, match_b))
                 self.assertTrue(match_a.startswith(match_b))
 
         with self.dump_response('fwpolicy_list'):
