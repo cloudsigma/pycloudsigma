@@ -1,6 +1,8 @@
 from builtins import str, object
 import socket
+import os
 import time
+import requests
 
 from past.builtins import basestring
 
@@ -27,7 +29,11 @@ class ResourceBase(object):
     def get(self, uuid=None):
         url = self._get_url()
         if uuid is not None:
-            url += uuid
+            if isinstance(uuid, bytes):
+                uuid_str = uuid.decode('utf-8')
+            else:
+                uuid_str = uuid
+            url += uuid_str
         return self.c.get(url, return_list=False)
 
     def get_schema(self):
@@ -201,6 +207,79 @@ class Drive(ResourceBase):
             query_params['avoid'] = ','.join(avoid)
         return super(Drive, self).create(data, query_params=query_params)
 
+    def get_upload_chunk_link(self, uuid, chunk_number, chunk_size=5 * 1024 ** 2):
+        """
+        Get an upload URL for a give chunk
+        :param uuid:
+            UUID of the drive. Needs to be in *uploading* state
+        :type uuid: basestring
+        :param chunk_number:
+            The number of the chunk to upload. Counting starts from 0 and last chunk is bigger in size, for example
+            if drive is 5MiB and chunks are 2MiB each, the last chunk (chunk 1) is 3MiB.
+        :type chunk_number: int
+        :param chunk_size:
+            Size of the upload chunk in bytes. For example use 2 * 1024 ** 2 for 2MiB chunks.
+        :type chunk_size: int
+        :return:
+            A link to upload the chunk to. The link does not require authentication and is valid for 5 minutes
+        :rtype: str
+        """
+        res_data = self._action(uuid, 'upload_chunk', {'chunk_number': chunk_number, 'chunk_size': chunk_size})
+        return res_data['link']
+
+    def upload_chunk(self, link, image_path, chunk_number, chunk_size):
+        chunk_offset = chunk_number * chunk_size
+        file_size = os.path.getsize(image_path)
+        n_chunks = file_size // chunk_size
+        if n_chunks == 0:
+            real_chunk_size = file_size
+        elif chunk_number < n_chunks - 1:
+            real_chunk_size = chunk_size
+        else:
+            real_chunk_size = file_size - chunk_offset
+        with open(image_path, 'r') as f:
+            f.seek(chunk_offset)
+            data = f.read(real_chunk_size)
+
+        headers = {
+            'User-Agent': 'CloudSigma turlo client',
+            'Content-Type': 'application/octet-stream',
+            'Accept': 'application/json'
+        }
+        return requests.post(self.c._get_full_url(link), data=data, headers=headers)
+
+
+class InitUpload(ResourceBase):
+    resource_name = 'initupload'
+
+    def create(self, data, avoid=None, image_path=None):
+        """
+        Create a drive for upload.
+
+        :param data:
+            Drive definition. Note that the size of the drive should be equal to the exact file size to be uploaded up
+            to a KiB. The image format should be raw disk image.
+        :param avoid:
+            A list of drive or server uuids to avoid for the new drive. Avoid attempts to put the drive on a different
+            physical storage host from the drives in *avoid*. If a server uuid is in *avoid* it is internally expanded
+            to the drives attached to the server.
+        :param image_path:
+            A path to the drive image to be uploaded. If given, and no name is specified in data, filename will be used
+            as a drive name, also if the size parameter is not preset the file size will be used.
+        :return:
+            New drive definition.
+        """
+        query_params = {}
+        if not data.get('name'):
+            data['name'] = os.path.split(image_path)[1]
+        if not data.get('size'):
+            data['size'] = os.path.getsize(image_path)
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] = ','.join(avoid)
+        return super(InitUpload, self).create(data, query_params=query_params)
+
 
 class Server(ResourceBase):
     resource_name = 'servers'
@@ -273,7 +352,8 @@ class Server(ResourceBase):
                 avoid = [avoid]
             query_params['avoid'] = ','.join(avoid)
 
-        return self._action(uuid, 'clone', data=data, query_params=query_params)
+        return self._action(uuid, 'clone', data=data,
+                            query_params=query_params)
 
     def delete(self, uuid, recurse=None):
         """
@@ -394,12 +474,14 @@ class Accounts(ResourceBase):
     resource_name = 'accounts'
 
     def authenticate_asynchronous(self):
-        return self._action(None, 'authenticate_asynchronous', data={})  # data empty see TUR-1346
+        # data empty see TUR-1346
+        return self._action(None, 'authenticate_asynchronous', data={})
 
     def create(self, email, promo_code=None):
         self.c._session = None
         self.c.login_method = GenericClient.LOGIN_METHOD_NONE
-        return self._action(None, 'create', data={'email': email, 'promo': promo_code})
+        return self._action(
+            None, 'create', data={'email': email, 'promo': promo_code})
 
 
 class CurrentUsage(ResourceBase):
@@ -559,3 +641,144 @@ class BurstUsage(ResourceBase):
 
 class Locations(ResourceBase):
     resource_name = 'locations'
+
+
+class RemoteSnapshot(ResourceBase):
+    resource_name = 'remotesnapshots'
+
+    def clone(self, uuid, data=None, avoid=None):
+        """
+        Clone a drive from a remote snapshot.
+
+        :param uuid:
+            Source drive for the clone.
+        :param data:
+            Clone drive options. Refer to API docs for possible options.
+        :param avoid:
+            A list of drive or server uuids to avoid for the clone.
+            Avoid attempts to put the clone on a different
+            physical storage host from the drives in *avoid*.
+            If a server uuid is in *avoid* it is internally expanded
+            to the drives attached to the server.
+        :return:
+            Cloned drive definition.
+        """
+        data = data or {}
+        query_params = {}
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] = ','.join(avoid)
+
+        return self._action(uuid, 'clone', data, query_params=query_params)
+
+
+class Vpc(ResourceBase):
+    resource_name = 'vpc'
+
+
+class Nodes(ResourceBase):
+    resource_name = 'nodes'
+
+
+class HostAvailabilityZones(ResourceBase):
+    resource_name = 'hostavailabilityzones'
+
+
+class HostAllocationPools(ResourceBase):
+    resource_name = 'hostallocationpools'
+
+
+class DriveUsers(ResourceBase):
+    resource_name = 'driveusers'
+
+
+class VirtualRouters(ResourceBase):
+    resource_name = 'virtualrouters'
+
+    def enable_nat(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'enable_nat', data)
+
+    def disable_nat(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'disable_nat', data)
+
+    def enable_firewall(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'enable_firewall', data)
+
+    def disable_firewall(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'disable_firewall', data)
+
+    def enable_firewall_logging(self, virtual_router_uuid, data):
+        data = data or {}
+        action = 'enable_firewall_logging'
+        return self._action(virtual_router_uuid, action, data)
+
+    def disable_firewall_logging(self, virtual_router_uuid, data):
+        data = data or {}
+        action = 'disable_firewall_logging'
+        return self._action(virtual_router_uuid, action, data)
+
+    def get_log(self, virtual_router_uuid, data, query_params):
+        data = data or {}
+        return self._action(
+            virtual_router_uuid, 'get_log', data, query_params=query_params)
+
+
+class Lans(ResourceBase):
+    resource_name = 'lans'
+
+    def configure_dhcp(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'configure_dhcp', data)
+
+
+class IpAliases(ResourceBase):
+    resource_name = 'ipaliases'
+
+
+class Upstream(ResourceBase):
+    resource_name = 'upstream'
+
+    def configure_vpn(self, virtual_router_uuid, data):
+        data = data or {}
+        return self._action(virtual_router_uuid, 'configure_vpn', data)
+
+
+class PortForwards(ResourceBase):
+    resource_name = 'portforwards'
+
+
+class AddressForwards(ResourceBase):
+    resource_name = 'addressforwards'
+
+
+class VrFwPolicies(ResourceBase):
+    resource_name = 'vrfwpolicies'
+
+    def enable(self, fw_policy_uuid, data):
+        data = data or {}
+        return self._action(fw_policy_uuid, 'enable', data)
+
+    def disable(self, fw_policy_uuid, data):
+        data = data or {}
+        return self._action(fw_policy_uuid, 'disable', data)
+
+
+class VrFwFilters(ResourceBase):
+    resource_name = 'vrfwfilters'
+
+    def enable_logging(self, fw_filter_uuid, data):
+        data = data or {}
+        return self._action(fw_filter_uuid, 'enable_logging', data)
+
+    def disable_logging(self, fw_filter_uuid, data):
+        data = data or {}
+        return self._action(fw_filter_uuid, 'disable_logging', data)
+
+
+class Routes(ResourceBase):
+    resource_name = 'routes'

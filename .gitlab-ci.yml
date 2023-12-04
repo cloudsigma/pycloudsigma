@@ -24,4 +24,6 @@ acceptance tests:
     - nosetests -x ./src/testing/acceptance/test_subscriptions.py
     - nosetests -x ./src/testing/acceptance/test_tags.py
     - nosetests -x ./src/testing/acceptance/test_websocket.py
-
+    - nosetests -x ./src/testing/acceptance/test_vpc.py
+    - nosetests -x ./src/testing/acceptance/test_host_availability_zone.py
+    - nosetests -x ./src/testing/acceptance/test_host_allocation_pools.py

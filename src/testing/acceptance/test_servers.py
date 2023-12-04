@@ -3,7 +3,7 @@ import time
 import socket
 
 from nose.plugins.attrib import attr
-from future.moves.urllib.parse import urlparse
+from cloudsigma.generic import get_urlparse
 
 from testing.acceptance.common import StatefulResourceTestBase
 from testing.utils import DumpResponse
@@ -451,7 +451,8 @@ class ServerTest(ServerTestBase):
         ips = ip_client.list()
         free_ips = [ip for ip in ips if ip['server'] is None]
         if not free_ips:
-            subs_client.create({'resource': 'ip', 'amount': 1, 'period': '1 month'})
+            subs_client.create(
+                {'resource': 'ip', 'amount': 1, 'period': '1 month'})
             ips = ip_client.list()
             free_ips = [ip for ip in ips if ip['server'] is None]
 
@@ -459,7 +460,8 @@ class ServerTest(ServerTestBase):
 
         server['nics'] = [{'vlan': vlan_uuid}]
 
-        with DumpResponse(clients=[self.client], name='server_add_private_nic'):
+        with DumpResponse(clients=[self.client],
+                          name='server_add_private_nic'):
             server = self.client.update(server['uuid'], server)
 
         server['nics'] = [{'ip_v4_conf': {'conf': 'dhcp'}, 'model': 'e1000'}]
@@ -586,6 +588,7 @@ class ServerTest(ServerTestBase):
         )
 
         # Parsing vnc address and port from vnc_url
+        urlparse = get_urlparse()
         vnc_args = urlparse(open_vnc_resp['vnc_url']).netloc.split(":")
         vnc_address = (str(vnc_args[0]), int(vnc_args[1]))
 
@@ -619,7 +622,8 @@ class ServerTest(ServerTestBase):
     def test_vnc_tunnel(self):
         server, vnc_address = self._open_vnc_tunnel()
 
-        vnc_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        vnc_sock = socket.socket(socket.AF_INET,
+                                 socket.SOCK_STREAM)
         vnc_sock.settimeout(10)
 
         now = time.time()
@@ -642,7 +646,8 @@ class ServerTest(ServerTestBase):
 
     @attr('docs_snippets')
     def test_get_schema(self):
-        with DumpResponse(clients=[self.client], name='server_schema'):
+        with DumpResponse(clients=[self.client],
+                          name='server_schema'):
             self.client.get_schema()
 
     @attr('docs_snippets')
@@ -803,10 +808,12 @@ class ServerTest(ServerTestBase):
     def test_server_clone(self):
         server = self._create_a_server()
 
-        with DumpResponse(clients=[self.client], name='server_get_clone_source'):
+        with DumpResponse(clients=[self.client],
+                          name='server_get_clone_source'):
             server = self.client.get(server['uuid'])
 
-        with DumpResponse(clients=[self.client], name='server_clone'):
+        with DumpResponse(clients=[self.client],
+                          name='server_clone'):
             clone = self.client.clone(
                 server['uuid'],
                 {
@@ -826,7 +833,8 @@ class ServerTest(ServerTestBase):
             'media': 'disk',
         }
         drive1 = dv.create(drive_def_1)
-        self._wait_for_status(drive1['uuid'], 'unmounted', client=dv)
+        self._wait_for_status(drive1['uuid'],
+                              'unmounted', client=dv)
 
         dv = cr.Drive()
         drive_def_2 = {
@@ -835,7 +843,8 @@ class ServerTest(ServerTestBase):
             'media': 'cdrom',
         }
         drive2 = dv.create(drive_def_2)
-        self._wait_for_status(drive2['uuid'], 'unmounted', client=dv)
+        self._wait_for_status(drive2['uuid'],
+                              'unmounted', client=dv)
 
         server_def = {
             'name': 'testServerAcc',

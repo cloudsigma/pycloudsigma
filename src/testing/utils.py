@@ -1,14 +1,15 @@
+import urllib.error
+import urllib.parse
+import urllib.request
+from cloudsigma.conf import config
+from testing.templates import get_template
+from cloudsigma.generic import get_urlparse, get_unquote, get_parse_qsl
+import os
+import logging
+import simplejson
+from builtins import object
 from future import standard_library
 standard_library.install_aliases()
-
-from builtins import object
-import urllib.request, urllib.parse, urllib.error, urllib.parse
-import simplejson
-import logging
-import os
-
-from testing.templates import get_template
-from cloudsigma.conf import config
 
 
 LOG = logging.getLogger(__name__)
@@ -32,13 +33,16 @@ class ResponseDumper(object):
 
         # If dump path not found/derived
         if dump_path is None and config.get('dump_path') is not None:
-            self.dump_path = os.path.join(os.path.expanduser(config['dump_path']))
+            self.dump_path = os.path.join(
+                os.path.expanduser(config['dump_path']))
         else:
             self.dump_path = dump_path
 
     def __call__(self, resp, *args, **kwargs):
         if self.dump_path is None:
             return
+
+        unquote = get_unquote()
 
         if not os.path.exists(self.dump_path):
             LOG.debug("Creating samples path - {}".format(self.dump_path))
@@ -60,10 +64,10 @@ class ResponseDumper(object):
                 data = resp.request.body
             data = data or ''
             fl.write(self.get_populated_template(
-                    "request_template",
-                    resp.request,
-                    data,
-                    path_url=urllib.parse.unquote(resp.request.path_url)))
+                "request_template",
+                resp.request,
+                data,
+                path_url=unquote(resp.request.path_url)))
 
         with open(
                 os.path.join(self.dump_path, "response_{}".format(fname)), "w"
@@ -74,12 +78,14 @@ class ResponseDumper(object):
                 data = self.resp_data_filter(resp.content)
             else:
                 data = resp.content
-            fl.write(self.get_populated_template("response_template", resp, data))
+            fl.write(self.get_populated_template(
+                "response_template", resp, data))
 
         self.tmp_name = None
 
     def get_filename(self, resp):
-        url = urllib.parse.urlparse(resp.request.path_url)
+        urlparse = get_urlparse()
+        url = urlparse(resp.request.path_url)
         path_arr = [segment for segment in url.path.split('/') if segment]
 
         if self.tmp_name:
@@ -102,7 +108,8 @@ class ResponseDumper(object):
                         fname += "_" + "_".join(path_arr[4:])
 
             if url.query:
-                query_tuple = urllib.parse.parse_qsl(url.query)
+                parse_qsl = get_parse_qsl()
+                query_tuple = parse_qsl(url.query)
                 for key, val in sorted(query_tuple):
                     if key not in ['limit', 'format']:
                         fname += "_{}_{}".format(key, val)
@@ -115,7 +122,8 @@ class ResponseDumper(object):
     def get_populated_template(self, template, reqres, data=None, **kwargs):
         if data is not None:
             try:
-                data = simplejson.dumps(simplejson.loads(data), sort_keys=True, indent=4)
+                data = simplejson.dumps(simplejson.loads(
+                    data), sort_keys=True, indent=4)
             except:
                 data = ""
         return get_template(template).format(
@@ -123,7 +131,7 @@ class ResponseDumper(object):
             content_type=reqres.headers.get('content-type'),
             data=data,
             **kwargs
-    )
+        )
 
 
 class DumpResponse(object):
@@ -149,6 +157,7 @@ class DumpResponse(object):
 
     def set_tmp_name(self, val):
         """
-        Sets a temporary name for the dump. Dropped after the response is returned.
+        Sets a temporary name for the dump.
+         Dropped after the response is returned.
         """
         self.response_dump.tmp_name = val

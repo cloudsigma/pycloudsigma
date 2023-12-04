@@ -170,7 +170,8 @@ class DriveBasicTest(StatefulResourceTestBase):
 
         # Get just a list of uuids
         with self.dump_response('drive_list_just_uuid_and_status'):
-            just_uuids = self.client.list(query_params={'fields':'uuid,status'})
+            just_uuids = self.client.list(
+                query_params={'fields': 'uuid,status'})
 
         for el in just_uuids:
             self.assertEqual(set(el.keys()), {'uuid', 'status'})

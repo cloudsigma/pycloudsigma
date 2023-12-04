@@ -1,11 +1,21 @@
-import cloudsigma.resource as cr
-from cloudsigma import errors
-import unittest
-from nose.plugins.attrib import attr
-import time
-import logging
-from cloudsigma.conf import config
+from __future__ import division
+from cloudsigma.generic import GenericClient
+import datetime
+from cloudsigma import resource
+from cloudsigma.resource import Nodes, Vpc
 from unittest import SkipTest
+from cloudsigma.conf import config
+import logging
+import time
+from nose.plugins.attrib import attr
+import unittest
+from cloudsigma import errors
+import cloudsigma.resource as cr
+from past.utils import old_div
+from copy import deepcopy
+from future import standard_library
+standard_library.install_aliases()
+
 
 LOG = logging.getLogger(__name__)
 
@@ -26,6 +36,10 @@ class StatefulResourceTestBase(unittest.TestCase):
     def tearDown(self):
         self._clean_servers()
         self._clean_drives()
+
+    def get_cpu_type(self):
+        return config.get('guest_cpu_type') \
+            if 'guest_cpu_type' in config else 'amd'
 
     def _get_persistent_image_uuid_and_pass(self):
         # Get a good persistent test image
@@ -91,7 +105,7 @@ class StatefulResourceTestBase(unittest.TestCase):
 
             self.assertLessEqual(
                 count_waited,
-                TIMEOUT / WAIT_STEP,
+                old_div(TIMEOUT, WAIT_STEP),
                 'Resource list didn\'t update as expected for %d seconds' % (
                     TIMEOUT,
                 )
@@ -112,7 +126,7 @@ class StatefulResourceTestBase(unittest.TestCase):
                 break
             self.assertLessEqual(
                 count_waited,
-                timeout / WAIT_STEP,
+                old_div(timeout, WAIT_STEP),
                 'Resource didn\'t reach state "%s" for %d seconds' % (
                     status,
                     timeout
@@ -138,7 +152,7 @@ class StatefulResourceTestBase(unittest.TestCase):
                     raise
             self.assertLessEqual(
                 count_waited,
-                timeout / WAIT_STEP,
+                old_div(timeout, WAIT_STEP),
                 'Resource did not delete %d seconds' % (timeout)
             )
             time.sleep(WAIT_STEP)
@@ -212,7 +226,8 @@ class StatefulResourceTestBase(unittest.TestCase):
 
     def _clean_servers(self):
         """
-        Removes all the servers in the acceptance test account ( containing 'test' keyword )
+        Removes all the servers in the acceptance test account
+         ( containing 'test' keyword )
 
         :return:
         """
@@ -256,7 +271,8 @@ class StatefulResourceTestBase(unittest.TestCase):
 
     def _clean_drives(self):
         """
-        Removes all the drives in the acceptance test account ( containing 'test' keyword )
+        Removes all the drives in the acceptance test account
+         ( containing 'test' keyword )
 
         :return:
         """
@@ -296,3 +312,131 @@ class StatefulResourceTestBase(unittest.TestCase):
                     inter
                 )
             )
+
+    def get_other_account(self):
+        if not config.get('username2'):
+            raise unittest.SkipTest('Missing second account for ACL tests')
+        return dict(
+            username=config['username2'], password=config['password2']
+        )
+
+    def assertDictContainsSubset(
+            self, expected, actual, msg=None, exclude=None):
+        if exclude is None:
+            exclude = []
+
+        expected_2 = deepcopy(expected)
+        actual_2 = deepcopy(actual)
+        for item in exclude:
+            if item in expected_2:
+                del expected_2[item]
+            if item in actual_2:
+                del actual_2[item]
+        super(StatefulResourceTestBase, self).assertDictContainsSubset(
+            expected_2, actual_2, msg)
+
+
+class VpcTestsBase(StatefulResourceTestBase):
+
+    def setUp(self):
+        super(VpcTestsBase, self).setUp()
+        self.vpc_client = Vpc()
+        self.vpc_client_2 = Vpc(**self.get_other_account())
+        self.sub_client = resource.Subscriptions()
+        self.nodes_client = Nodes()
+        self.resource_name = 'dedicated_host_6148'
+        self.vpc_resource_name = 'vpc'
+        self.DEFAULT_STATE = 'active'
+        self.DEFAULT_STATUS = 'active'
+
+    def _create_vpc_subscription(self):
+        list = self.vpc_client.list()
+        if len(list) == 0:
+            now = datetime.datetime.now()
+            future_date = now + datetime.timedelta(days=365)
+            self.sub_client.create({
+                "amount": "1",
+                "resource": self.vpc_resource_name,
+                "auto_renew": True,
+                "start_time": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "end_time": future_date.strftime("%Y-%m-%d %H:%M:%S")})
+
+        list = self.vpc_client.list()
+        if len(list) == 0:
+            SkipTest("It was not possible to create a VPC subscription")
+        return list[0]
+
+    def _create_node_subscription(self):
+        list = self.nodes_client.list()
+        if len(list) == 0:
+            now = datetime.datetime.now()
+            future_date = now + datetime.timedelta(days=365)
+            self.sub_client.create({
+                "amount": "1",
+                "resource": self.resource_name,
+                "auto_renew": True,
+                "start_time": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "end_time": future_date.strftime("%Y-%m-%d %H:%M:%S")})
+
+        list = self.nodes_client.list()
+        if len(list) == 0:
+            SkipTest("It was not possible to create a node subscription")
+        return list[0]
+
+    def _configure_vpc_and_node(self, vpc, node):
+        node_in_vpc = False
+        for n in vpc['nodes']:
+            if n['uuid'] == node['uuid']:
+                node_in_vpc = True
+                break
+
+        if not node_in_vpc:
+            vpc['nodes'] = [node['uuid']]
+            self.vpc_client.update(vpc['uuid'], vpc)
+
+    def _create_subscriptions(self):
+        vpc = self._create_vpc_subscription()
+        node = self._create_node_subscription()
+        self._configure_vpc_and_node(vpc, node)
+
+    def check_nodes(self, vpc, expected):
+        self.assertEqual(len(vpc['nodes']), len(expected))
+        for node in vpc['nodes']:
+            self.assertIn(node['uuid'], expected)
+            n = self.nodes_client.get(node['uuid'])
+            self.assertEqual(n['vpc']['uuid'], vpc['uuid'])
+            self.assertEqual(n['status'], self.DEFAULT_STATUS)
+
+
+def is_vpc_enabled():
+    gc = GenericClient(login_method=GenericClient.LOGIN_METHOD_SESSION)
+    ret = gc.get('cloud_status')
+    if 'vpc' in ret:
+        return ret['vpc']
+    else:
+        return False
+
+
+def is_vpc_test_enabled():
+    try:
+        value = config.get('vpc_test_enabled')
+        return value.lower() == 'true'
+    except:
+        return False
+
+
+def check_if_vpc_is_enabled():
+    if not is_vpc_test_enabled():
+        raise SkipTest('VPC acceptance tests are disabled')
+
+    if not is_vpc_enabled():
+        raise SkipTest('VPC API calls are disabled')
+
+
+def get_paas_providers():
+    gc = GenericClient(login_method=GenericClient.LOGIN_METHOD_SESSION)
+    ret = gc.get('cloud_status')
+    if 'paas' in ret:
+        return ret['paas']
+    else:
+        return []

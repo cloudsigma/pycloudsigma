@@ -1,16 +1,15 @@
+from .resource import Drive, ResourceBase
+import os
+import requests
+from logging import getLogger
+import time
+import threading
+import queue
+import datetime
+from builtins import range
+from builtins import str
 from future import standard_library
 standard_library.install_aliases()
-
-from builtins import range
-import datetime
-import queue
-import threading
-import time
-from logging import getLogger
-import requests
-import os
-
-from .resource import Drive, ResourceBase
 
 
 LOG = getLogger(__name__)
@@ -46,7 +45,8 @@ class Upload(ResourceBase):
             The name of the uploaded drive. If not givent it will be set to
             Upload_<current date time>
         :param drive_media:
-                The media of the uploaded drive. If not givent it will be set to "disk"
+                The media of the uploaded drive.
+                 If not givent it will be set to "disk"
         :param progress_callback:
             A callback to be called every *progress_report_interval* second
             with the current progress.
@@ -66,7 +66,8 @@ class Upload(ResourceBase):
         self.n_threads = n_threads
         self.file_size = os.path.getsize(self.image_path)
         self.create_data = {
-            'name': drive_name or 'Upload_{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.utcnow()),
+            'name': drive_name or 'Upload_{:%Y-%m-%d %H:%M:%S}'.format(
+                datetime.datetime.utcnow()),
             'media': drive_media,
             'size': self.file_size
         }
@@ -173,7 +174,8 @@ class Upload(ResourceBase):
                 self.upload_chunk(chunk_number, chunk_offset, real_chunk_size)
                 self.update_progress(real_chunk_size)
             except:
-                LOG.exception('Error ocurred for chunk {}'.format(chunk_number))
+                LOG.exception(
+                    'Error ocurred for chunk {}'.format(chunk_number))
                 self.queue.put((chunk_number, chunk_offset, real_chunk_size))
             finally:
                 # Always call task_done even on fail because in order to finish
@@ -217,7 +219,7 @@ class Upload(ResourceBase):
                 return
 
             resumable_js_data_multipart = list(resumable_js_data.items()) \
-                                          + [('file', str(file_data))]
+                + [('file', str(file_data))]
 
             res = requests.post(
                 upload_url,

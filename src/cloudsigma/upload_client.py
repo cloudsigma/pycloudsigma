@@ -1,21 +1,23 @@
 from __future__ import division
+from __future__ import print_function
+import urllib.error
+import urllib.request
+import os
+import json
+import itertools
+import logging
+import urllib.parse
+import datetime
+import sys
+import queue
+import threading
+import argparse
+import time
+from past.utils import old_div
+from builtins import str, next, range, object
+from cloudsigma.generic import get_urlparse
 from future import standard_library
 standard_library.install_aliases()
-
-from builtins import str, next, range, object
-from past.utils import old_div
-import time
-import urllib.request, urllib.error, urllib.parse
-import argparse
-import threading
-import queue
-import sys
-import datetime
-import urllib.parse
-import logging
-import itertools
-import json
-import os
 
 
 LOG = logging.getLogger(__name__)
@@ -36,7 +38,7 @@ class UploadError(Exception):
 
 
 def console_progress():
-    spinner_pos = itertools.cycle(range(3))
+    spinner_pos = itertools.cycle(list(range(3)))
 
     def output_progress(uploaded, total):
         pos_char = {0: '/', 1: '-', 2: '\\'}
@@ -91,10 +93,10 @@ class CSUploader(object):
                 image_path=self.image_path
             )
         )
-        LOG.info('Total size is {size:0.1f} MB. Number of chunks {n_chunks}.'.format(
-            size=old_div(self.size, 1024.0 ** 2),
-            n_chunks=self.size // self.chunk_size)
-        )
+        LOG.info('Total size is {size:0.1f} MB. '
+                 'Number of chunks {n_chunks}.'.format(
+                    size=old_div(self.size, 1024.0 ** 2),
+                    n_chunks=self.size // self.chunk_size))
 
         self.enqueue_chunks()
 
@@ -143,7 +145,8 @@ class CSUploader(object):
     def init_upload(self, media='disk'):
         url = '{}/initupload/'.format(self.api_url.rstrip('/'))
         data = {
-            'name': 'Upload_{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.utcnow()),
+            'name': 'Upload_{:%Y-%m-%d %H:%M:%S}'.format(
+                datetime.datetime.utcnow()),
             'size': self.size,
             'media': media
         }
@@ -209,7 +212,8 @@ class CSUploader(object):
             try:
                 self.upload_chunk(chunk_number, chunk_offset, real_chunk_size)
             except:
-                LOG.exception('Error ocurred for chunk {}'.format(chunk_number))
+                LOG.exception(
+                    'Error ocurred for chunk {}'.format(chunk_number))
                 self.queue.put((chunk_number, chunk_offset, real_chunk_size))
             finally:
                 # Always call task_done even on fail because in order to finish
@@ -229,7 +233,8 @@ class CSUploader(object):
             )
             self.update_progress(real_chunk_size)
             return
-        parsed = urllib.parse.urlparse(self.drive_url)
+        urlparse = get_urlparse()
+        parsed = urlparse(self.drive_url)
         upload_url = '{}://{}/{}'.format(
             parsed.scheme,
             parsed.hostname,
