@@ -493,7 +493,7 @@ class Snapshot(ResourceBase):
 
     def clone(self, uuid, data=None, avoid=None):
         """
-        Clone a snapshot (creates a drive).
+        Clones a snapshot (creates a drive).
 
         :param uuid:
             Source snapshot for the clone.
