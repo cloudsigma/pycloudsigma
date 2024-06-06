@@ -14,7 +14,7 @@ authorized_keys = os.path.join(ssh_path, 'authorized_keys')
 
 
 def get_permission(path):
-    return oct(os.stat(ssh_path).st_mode)[-4:]
+    return oct(os.stat(path).st_mode)[-4:]
 
 
 if not os.path.isdir(ssh_path):
