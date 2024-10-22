@@ -11,6 +11,8 @@ import sys
 from builtins import object
 from builtins import str
 from future import standard_library
+import pyotp
+
 standard_library.install_aliases()
 
 
@@ -80,6 +82,7 @@ class GenericClient(object):
             api_endpoint=None,
             username=None,
             password=None,
+            secret=None,
             login_method=LOGIN_METHOD_BASIC,
             request_log_level=None
     ):
@@ -87,6 +90,7 @@ class GenericClient(object):
             else config['api_endpoint']
         self.username = username if username else config['username']
         self.password = password if password else config['password']
+        self.secret = secret if secret else config['secret']
         self.login_method = config.get('login_method', login_method)
         assert self.login_method in self.LOGIN_METHODS, \
             'Invalid value %r for login_method' % (login_method,)
@@ -99,7 +103,7 @@ class GenericClient(object):
         if self.request_log_level:
             self.request_log_level = self.request_log_level.upper()
 
-        if login_method == self.LOGIN_METHOD_SESSION:
+        if self.login_method == self.LOGIN_METHOD_SESSION:
             self._login_session()
 
     def _login_session(self):
@@ -107,12 +111,14 @@ class GenericClient(object):
         self._session = requests.Session()
         full_url = self._get_full_url('/accounts/action/')
         kwargs = self._get_req_args(query_params={'do': 'login'})
-        data = simplejson.dumps(
-            {
-                "username": self.username,
-                "password": self.password
-            }
-        )
+        login_object = {
+            "username": self.username,
+            "password": self.password
+        }
+        if self.secret:
+            otp = pyotp.TOTP(self.secret).now()
+            login_object["otp"] = otp
+        data = simplejson.dumps(login_object)
         res = self.http.post(full_url, data=data, **kwargs)
         self._process_response(res)
         csrf_token = res.cookies['csrftoken']
@@ -207,6 +213,9 @@ class GenericClient(object):
 
     def get(self, url, query_params=None, return_list=False):
         kwargs = self._get_req_args(query_params=query_params)
+        if self.login_method == self.LOGIN_METHOD_SESSION and self.secret:
+            kwargs['headers'].update({'X-CSRFToken':self._session.headers['x-csrftoken']})
+            kwargs['headers'].update({'OTP':pyotp.TOTP(self.secret).now()})
         self.resp = self.http.get(self._get_full_url(url), **kwargs)
         return self._process_response(self.resp, return_list)
 
