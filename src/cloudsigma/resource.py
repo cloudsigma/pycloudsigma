@@ -568,6 +568,24 @@ class CurrentUsage(ResourceBase):
 class Snapshot(ResourceBase):
     resource_name = 'snapshots'
 
+    def delete_multiple(self, data, query_params=None):
+        """
+        Deletes multiple snapshots specified by their UUIDs.
+
+        :param data:
+            A dictionary or list of dictionaries containing 'uuid' keys for snapshots to delete.
+            Example: {'objects': [{'uuid': 'uuid1'}, {'uuid': 'uuid2'}]}
+            or [{'uuid': 'uuid1'}, {'uuid': 'uuid2'}]
+        :type data: dict or list
+        :param query_params:
+            Additional query parameters to pass to the API call.
+        :type query_params: dict
+        :return:
+            API response indicating the deletion process has started.
+        """
+        url = self._get_url()
+        return self.c.delete(url, data=self._pepare_data(data), query_params=query_params)
+
     def clone(self, uuid, data=None, avoid=None):
         """
         Clones a snapshot (creates a drive).
