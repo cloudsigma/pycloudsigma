@@ -1144,3 +1144,30 @@ class Routes(ResourceBase):
 
 class RDSDrive(ResourceBase):
     resource_name = 'driveusers'
+
+
+class KVMServer(ResourceBase):
+    resource_name = 'servers'
+
+    def open_vnc(self, uuid):
+        """
+        Open a VNC tunnel to a KVM server.
+
+        :param uuid: UUID of the KVM server.
+        :type uuid: basestring
+        :return: The VNC URL to connect to the server's console.
+        :rtype: str
+        """
+        res_data = self._action(uuid, 'open_vnc', data={})
+        return res_data['vnc_url']
+
+    def close_vnc(self, uuid):
+        """
+        Close an active VNC tunnel to a KVM server.
+
+        :param uuid: UUID of the KVM server.
+        :type uuid: basestring
+        :return: The API response indicating the outcome of the action.
+        :rtype: dict
+        """
+        return self._action(uuid, 'close_vnc', data={})
