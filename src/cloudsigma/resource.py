@@ -984,18 +984,84 @@ class Capabilities(ResourceBase):
         return super(Capabilities, self).get(uuid=None)
 
 
-class Accounts(ResourceBase):
+class Account(ResourceBase): # Renamed class from Accounts to Account
     resource_name = 'accounts'
 
     def authenticate_asynchronous(self):
         # data empty see TUR-1346
         return self._action(None, 'authenticate_asynchronous', data={})
 
-    def create(self, email, promo_code=None):
+    def create_account(self, email, promo=None):
+        """
+        Creates an account on the system.
+
+        In case of success, the user has to check his email for a
+        confirmation link, which will ask him to create a password
+        for the account.
+
+        :param email:
+            The email of the account to be created.
+        :type email: basestring
+        :param promo:
+            Promo code for initial subscriptions and demo server.
+        :type promo: basestring or None
+        :return:
+            Account creation status and UUID.
+        """
         self.c._session = None
         self.c.login_method = GenericClient.LOGIN_METHOD_NONE
         return self._action(
-            None, 'create', data={'email': email, 'promo': promo_code})
+            None, 'create', data={'email': email, 'promo': promo})
+
+    def login(self, username, password):
+        """
+        Log in to the system using cookie auth.
+
+        :param username:
+            The username (email) for login.
+        :type username: basestring
+        :param password:
+            The password for login.
+        :type password: basestring
+        :return:
+            Empty response on success, raises error on failure.
+        """
+        data = {'username': username, 'password': password}
+        return self._action(uuid=None, action='login', data=data)
+
+    def logout(self):
+        """
+        Logout from the system when using cookie auth.
+
+        :return:
+            Empty response on success.
+        """
+        return self._action(uuid=None, action='logout', data={})
+
+    def check_login(self):
+        """
+        Check if you are logged in to the system.
+
+        :return:
+            Empty response on success.
+        """
+        return self._action(uuid=None, action='check_login', data={})
+
+    def check_login_with_return_uuid(self, username, password):
+        """
+        Check how an authenticated service can get a user uuid via Cloudsigma API.
+
+        :param username:
+            The username (email) for login.
+        :type username: basestring
+        :param password:
+            The password for login.
+        :type password: basestring
+        :return:
+            User UUID on success.
+        """
+        data = {'username': username, 'password': password}
+        return self._action(uuid=None, action='check_login_with_return_uuid', data=data)
 
 
 class CurrentUsage(ResourceBase):
@@ -1160,7 +1226,7 @@ class Websocket(object):
 
     def __init__(self, timeout=10):
         self.timeout = timeout
-        accounts = Accounts()
+        accounts = Account() # Changed from Accounts to Account
         accounts.authenticate_asynchronous()
         cookie = accounts.c.resp.cookies['async_auth']
         self.ws = WebsocketClient(cookie, self.timeout)
