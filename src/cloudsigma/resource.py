@@ -1,3 +1,70 @@
+
+class BackupScheduler(ResourceBase):
+    resource_name = 'backupschedulers'
+
+
+class FeedbackTicket(ResourceBase):
+    resource_name = 'feedback_ticket'
+
+
+class GPU(ResourceBase):
+    resource_name = 'gpus'
+
+
+class KeyPair(ResourceBase):
+    resource_name = 'keypairs'
+
+
+class NotificationType(ResourceBase):
+    resource_name = 'notification_types'
+
+
+class ObjectStorage(ResourceBase):
+    resource_name = 'object-storage'
+
+
+class PubKey(ResourceBase):
+    resource_name = 'pubkeys'
+
+
+class SupportTicket(ResourceBase):
+    resource_name = 'support_tickets'
+
+
+class Tunnel(ResourceBase):
+    resource_name = 'tunnels'
+
+
+class Usage(ResourceBase):
+    resource_name = 'usage'
+
+
+class VmwareDriveAsync(ResourceBase):
+    resource_name = 'vmware_drive_async'
+
+
+class VmwareDrive(ResourceBase):
+    resource_name = 'vmware_drives'
+
+
+class VmwareLibrary(ResourceBase):
+    resource_name = 'vmware_library'
+
+
+class VmwareServerAsync(ResourceBase):
+    resource_name = 'vmware_server_async'
+
+
+class VmwareServerFromTemplate(ResourceBase):
+    resource_name = 'vmware_server_from_template'
+
+
+class VmwareServer(ResourceBase):
+    resource_name = 'vmware_servers'
+
+
+class VrouterRequest(ResourceBase):
+    resource_name = 'vrouter_requests'
 from builtins import str, object
 import socket
 import os
