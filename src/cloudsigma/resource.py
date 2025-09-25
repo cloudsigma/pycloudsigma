@@ -427,12 +427,34 @@ class Server(ResourceBase):
     resource_name = 'servers'
 
     def start(self, uuid, allocation_method=None):
+        """
+        Starts a server with specific UUID.
+
+        :param uuid:
+            UUID of the server to start.
+        :type uuid: basestring
+        :param allocation_method:
+            Optional allocation method (e.g., 'auto').
+        :type allocation_method: basestring or None
+        :return:
+            Action result.
+        """
         data = {}
         if allocation_method:
             data = {'allocation_method': str(allocation_method)}
         return self._action(uuid, 'start', data)
 
     def stop(self, uuid):
+        """
+        Stops a server with specific UUID. This action is equivalent to pulling the power cord of a physical server.
+        For more graceful shutdown see :py:meth:`shutdown`.
+
+        :param uuid:
+            UUID of the server to stop.
+        :type uuid: basestring
+        :return:
+            Action result.
+        """
         return self._action(
             uuid,
             'stop',
@@ -447,6 +469,23 @@ class Server(ResourceBase):
         )
 
     def shutdown(self, uuid):
+        """
+        Sends an ACPI shutdowns to a server with specific UUID for a minute.
+        If the VM OS handles ACPI shutdown events (equivalent to pressing the power button),
+        it will shutdown gracefully. As some operating systems don’t always
+        handle single ACPI event the shutdown is sent every second for a minute.
+        While the shutdown is initiated, the server is put into status ``stopping``
+        to prevent interfering actions. If after a minute the server has not
+        powered off during this minute the status is returned to ``running``
+        to allow the user to :py:meth:`stop` it. If the server shuts down successfully
+        during the one minute period it will be switched to ``stopped`` status.
+
+        :param uuid:
+            UUID of the server to shut down.
+        :type uuid: basestring
+        :return:
+            Action result.
+        """
         return self._action(
             uuid,
             'shutdown',
@@ -464,38 +503,84 @@ class Server(ResourceBase):
         return self._action(uuid, 'close_vnc', data={})
 
     def open_console(self, uuid):
-        return self._action(uuid, 'open_console', data={})
+        """
+        Opens a serial console connection for a server.
+
+        Each server has a virtual serial device, which is tunneled to a TCP socket.
+        The serial device is seen as /dev/ttyS0 or COM1 on most operating systems.
+        If your OS supports it, you can configure a serial console on this virtual
+        serial port, which might be more convenient to use than VNC, as it generally
+        uses less bandwidth and allows you to copy-paste in the virtual terminal.
+
+        :param uuid:
+            UUID of the server.
+        :type uuid: basestring
+        :return:
+            A dictionary containing the console URL.
+        :rtype: dict
+        """
+        res_data = self._action(uuid, 'open_console')
+        return res_data['console_url']
 
     def close_console(self, uuid):
+        """
+        Closes a serial console connection to a server with specific UUID.
+
+        :param uuid:
+            UUID of the server.
+        :type uuid: basestring
+        :return:
+            Action result.
+        """
         return self._action(uuid, 'close_console', data={})
 
-    def clone(self, uuid, data=None, avoid=None):
+    def clone(self, uuid, name=None, random_vnc_password=None, data=None, avoid=None):
         """
-        Clone a server. Attached disk drives get cloned and attached to the new
-        server, and attached cdroms get attached to the
-        new server (without cloning).
+        Clones a server. Does cascading clone of server drives, i.e. all disk drives
+        attached to the server are cloned and attached to the new server. CDROM drives
+        attached to the clone source are attached to the clone. IPs of the cloned server
+        are set to DHCP. All other properties of the clone are equal to the original.
+
+        The optional `data` dictionary can contain other clone server options.
+        The optional `name` attribute will be the name of the newly-cloned server.
+        The `random_vnc_password` boolean attribute, if set, will generate a new vnc
+        password for the new server.
+        The `avoid` parameter is a list of drive or server uuids to avoid for the clone.
+        Avoid attempts to put the cloned drives on a different physical storage
+        host from the drives in *avoid*. If a server uuid is in *avoid* it
+        is internally expanded to the drives attached to the server.
 
         :param uuid:
             Source server for the clone.
+        :type uuid: basestring
+        :param name:
+            Name of the cloned server.
+        :type name: basestring or None
+        :param random_vnc_password:
+            If true, a new VNC password will be generated for the cloned server.
+        :type random_vnc_password: bool or None
         :param data:
             Clone server options. Refer to API docs for possible options.
+        :type data: dict or None
         :param avoid:
-            A list of drive or server uuids to avoid for the clone. Avoid
-            attempts to put the cloned drives on a different physical storage
-            host from the drives in *avoid*. If a server uuid is in *avoid* it
-            is internally expanded to the drives attached to the server.
+            A list of drive or server uuids to avoid for the clone.
+        :type avoid: list of basestring or basestring or None
         :return:
             Cloned server definition.
         """
-        data = data or {}
+        _data = data or {}
+        if name is not None:
+            _data['name'] = name
+        if random_vnc_password is not None:
+            _data['random_vnc_password'] = random_vnc_password
+
         query_params = {}
         if avoid:
             if isinstance(avoid, basestring):
                 avoid = [avoid]
             query_params['avoid'] = ','.join(avoid)
 
-        return self._action(uuid, 'clone', data=data,
-                            query_params=query_params)
+        return self._action(uuid, 'clone', data=_data, query_params=query_params)
 
     def delete(self, uuid, recurse=None):
         """
@@ -505,9 +590,9 @@ class Server(ResourceBase):
             uuid of the server to delete
         :param recurse:
             option to recursively delete attached drives. Possible values are
-            'all_drives', 'disks'. It is possible to use one of the supplied
-            convenience functions: delete_with_all_drives, delete_with_disks,
-            delete_with_cdroms
+            'all_drives', 'disks', 'cdroms'. It is possible to use one of the supplied
+            convenience functions: delete_all_attached_drives, delete_disks,
+            delete_cdroms
 
         :return:
         """
@@ -519,27 +604,39 @@ class Server(ResourceBase):
 
         return super(Server, self).delete(uuid, query_params=query_params)
 
-    def delete_with_all_drives(self, uuid):
+    def delete_all_attached_drives(self, uuid):
         """
-        Deletes a server with all attached drives.
-        :param uuid: uuid of the server to delete
+        Deletes a server together with all its attached drives (recursive delete).
+
+        :param uuid:
+            UUID of the server to delete.
+        :type uuid: basestring
         :return:
+            Response from the API.
         """
         return self.delete(uuid, recurse='all_drives')
 
-    def delete_with_disks(self, uuid):
+    def delete_disks(self, uuid):
         """
-        Deletes a server with all attached drives with media='disk'.
-        :param uuid: uuid of the server to delete
+        Deletes a server together with its attached disk drives, leaving CDROMs intact.
+
+        :param uuid:
+            UUID of the server to delete.
+        :type uuid: basestring
         :return:
+            Response from the API.
         """
         return self.delete(uuid, recurse='disks')
 
-    def delete_with_cdroms(self, uuid):
+    def delete_cdroms(self, uuid):
         """
-        Deletes a server with all attached drives with media='cdrom'.
-        :param uuid: uuid of the server to delete
+        Deletes a server together with its attached CDROM drives, leaving disk drives intact.
+
+        :param uuid:
+            UUID of the server to delete.
+        :type uuid: basestring
         :return:
+            Response from the API.
         """
         return self.delete(uuid, recurse='cdroms')
 
