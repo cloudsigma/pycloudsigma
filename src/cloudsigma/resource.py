@@ -1,4 +1,3 @@
-
 class BackupScheduler(ResourceBase):
     resource_name = 'backupschedulers'
 
@@ -661,7 +660,7 @@ class Websocket(object):
             if key in frame:
                 for value in message_filter[key]:
                     if frame[key] == value:
-                        return True
+                        True
         return False
 
     def wait_obj_type(self, resource_type, cls, timeout=None):
@@ -708,6 +707,25 @@ class BurstUsage(ResourceBase):
 
 class Locations(ResourceBase):
     resource_name = 'locations'
+
+    def list(self, query_params=None):
+        """
+        Get a list of all available CloudSigma locations and their details.
+
+        :param query_params:
+            Dictionary of query parameters to filter the results.
+            By default, 'limit': 0 is used to get all results without pagination.
+        :type query_params: dict
+        :return:
+            A list of location definitions.
+        :rtype: list
+        """
+        _query_params = {
+            'limit': 0,  # get all results, do not use pagination
+        }
+        if query_params:
+            _query_params.update(query_params)
+        return super(Locations, self).list(_query_params)
 
 
 class RemoteSnapshot(ResourceBase):
