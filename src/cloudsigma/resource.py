@@ -789,28 +789,99 @@ class Locations(ResourceBase):
 
 
 class RemoteSnapshot(ResourceBase):
+    """
+    Remote snapshots are point-in-time versions of a drive. They can be
+    cloned to a full drive, which makes it possible to restore an older
+    version of a VM image.
+
+    Remote snapshots are our backup solution. If the drive gets deleted and
+    the remote snapshot is created, the remote snapshot won't disappear.
+    All remote snapshots (backups) of deleted drives can be found in the
+    UI -> Storage -> Backups.
+    But the remote snapshots of active drives can be found at the
+    Storage -> Drives -> A drive in detailed view -> Backups section.
+
+    Remote snapshots are billed based on their occupied size. Since only the
+    differences from the current drive image are stored, a
+    single remote snapshot's size will be equal to the size of the data which has
+    changed since the remote snapshot has taken. If no data
+    has changed, the remote snapshot's size will be zero.
+
+    Note that remote snapshots are billed as `backup`, so backup subscriptions
+    should be bought in order not to burst on remote snapshots usage.
+
+    We have remote snapshots in the following locations:
+    GVA, ZRH, FRA, CWL, LON, and DUB
+    """
     resource_name = 'remotesnapshots'
+
+    def create(self, drive_uuid, name=None, meta=None):
+        """
+        Creates a new remote snapshot for a given drive.
+
+        Please note that you cannot create more than one remote snapshot
+        of a drive within 30 minutes. Also, you cannot create a second
+        remote snapshot of a drive when the previous one is in
+        'transferring' or 'creating' state.
+
+        :param drive_uuid: UUID of the drive to snapshot.
+        :type drive_uuid: basestring
+        :param name: Optional human readable name of the snapshot.
+        :type name: basestring or None
+        :param meta: User defined meta information.
+        :type meta: dict or None
+        :return: Created remote snapshot definition.
+        :rtype: dict
+        """
+        data = {'drive': drive_uuid}
+        if name is not None:
+            data['name'] = name
+        if meta is not None:
+            data['meta'] = meta
+        return self.c.post(
+            self._get_url(),
+            self._pepare_data(data),
+            return_list=False
+        )
+
+    def delete_multiple(self, uuids):
+        """
+        Deletes multiple remote snapshots specified by their UUIDs.
+
+        Please note that you cannot delete a remote snapshot when the state
+        is 'transferring' or 'creating'.
+
+        :param uuids: A list of remote snapshot UUIDs to delete.
+        :type uuids: list of basestring
+        :return: None on success (204 No Content).
+        :rtype: None
+        """
+        data = [{'uuid': uuid} for uuid in uuids]
+        url = self._get_url()
+        return self.c.delete(url, data=self._pepare_data(data))
 
     def clone(self, uuid, data=None, avoid=None):
         """
-        Clone a drive from a remote snapshot.
+        Clones a remote snapshot to a drive.
 
-        :param uuid:
-            Source drive for the clone.
-        :param data:
-            Clone drive options. Refer to API docs for possible options.
-        :param avoid:
-            A list of drive or server uuids to avoid for the clone.
-            Avoid attempts to put the clone on a different
-            physical storage host from the drives in *avoid*.
-            If a server uuid is in *avoid* it is internally expanded
-            to the drives attached to the server.
-        :return:
-            Cloned drive definition.
+        Please note that you cannot clone (promote to a full drive) a remote
+        snapshot when the state is 'transferring' or 'creating'.
+
+        :param uuid: UUID of the remote snapshot to clone.
+        :type uuid: basestring
+        :param data: Optional drive options for the cloned drive. Refer to API docs for possible options.
+        :type data: dict or None
+        :param avoid: A list of drive or server UUIDs to avoid for the cloned drive.
+                      Avoid attempts to put the clone on a different physical storage
+                      host from the drives in *avoid*.
+        :type avoid: list of basestring or basestring or None
+        :return: Cloned drive definition (which is a drive resource).
+        :rtype: dict
         """
         data = data or {}
         query_params = {}
         if avoid:
+            # Logic for 'avoid' from the Drive class
             if isinstance(avoid, basestring):
                 avoid = [avoid]
             query_params['avoid'] = ','.join(avoid)
