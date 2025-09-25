@@ -964,6 +964,71 @@ class Pricing(ResourceBase):
 class AuditLog(ResourceBase):
     resource_name = 'logs'
 
+    def get(self, uuid=None):
+        """
+        Audit logs cannot be fetched individually by UUID.
+        """
+        raise NotImplementedError("Audit logs cannot be fetched individually by UUID.")
+
+    def get_schema(self):
+        """
+        Gets the schema for the audit log resource.
+        """
+        # This method is inherited and works as expected, but adding the docstring based on HTML
+        url = self._get_url() + 'schema'
+        return self.c.get(url)
+
+    def get_from_url(self, url):
+        """
+        Retrieves a resource from a specific URL.
+        This method is generally applicable and not specific to AuditLog.
+        """
+        # This method is inherited and generally useful, so no need to block.
+        return self.c.get(url, return_list=False)
+
+    def list(self, query_params=None):
+        """
+        Gets the list of audit log entries to which the authenticated user has access.
+        """
+        # This method is inherited and works as expected, but adding the docstring based on HTML
+        url = self._get_url()
+        _query_params = {
+            'limit': 20,  # default limit from schema
+        }
+        if query_params:
+            _query_params.update(query_params)
+        return self.c.get(url, query_params=_query_params, return_list=True)
+
+    def list_detail(self, query_params=None):
+        """
+        Audit logs do not support detailed listing via /logs/detail/.
+        """
+        raise NotImplementedError("Audit logs do not support detailed listing via /logs/detail/.")
+
+    def create(self, data, query_params=None):
+        """
+        Audit logs cannot be created as they are records of actions.
+        """
+        raise NotImplementedError("Audit logs cannot be created.")
+
+    def update(self, uuid, data):
+        """
+        Audit logs cannot be updated as they are immutable records of actions.
+        """
+        raise NotImplementedError("Audit logs cannot be updated.")
+
+    def delete(self, uuid, query_params=None):
+        """
+        Audit logs cannot be deleted as they are immutable records of actions.
+        """
+        raise NotImplementedError("Audit logs cannot be deleted.")
+
+    def _action(self, uuid, action, data=None, query_params=None):
+        """
+        Audit logs do not support custom actions.
+        """
+        raise NotImplementedError("Audit logs do not support custom actions.")
+
 
 class Licenses(ResourceBase):
     resource_name = 'licenses'
@@ -1283,7 +1348,7 @@ class Websocket(object):
             extra_filter=lambda x: True
     ):
         if timeout is None:
-            timeout = self.timeout
+            timeout = timeout
         if kwargs is None:
             kwargs = {}
         while timeout > 0:
