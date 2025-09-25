@@ -260,11 +260,89 @@ class ResourceBase(object):
 class Profile(ResourceBase):
     resource_name = 'profile'
 
-    def get(self):
-        return self.c.get(self._get_url(), return_list=False)
+    def get(self, uuid=None):
+        """
+        Retrieves the authenticated user's profile.
+
+        Note that the /profile/ endpoint is for a single object (the authenticated user's profile)
+        and does not typically use a UUID in the URL path for identification.
+        Calling this method without a UUID parameter will fetch the current user's profile.
+
+        :param uuid:
+            This parameter is not used for the /profile/ endpoint and will raise an error if provided.
+        :return:
+            The profile definition of the authenticated user.
+        """
+        if uuid is not None:
+            raise NotImplementedError(
+                "The /profile/ endpoint does not support fetching by UUID. "
+                "It refers to the authenticated user's profile. "
+                "Call .get() without any arguments to retrieve the profile."
+            )
+        # The inherited ResourceBase.get(uuid=None) method correctly forms the URL
+        # '/profile/' and sets return_list=False, which is appropriate for this endpoint.
+        return super(Profile, self).get(uuid=None)
+
+    def list(self, query_params=None):
+        """
+        Retrieves the authenticated user's profile.
+
+        Note that the /profile/ endpoint returns a single object and not a list
+        of profiles, as it represents the authenticated user's own profile.
+        Any query_params provided might be ignored by the API.
+        This method effectively behaves like :py:meth:`~.get`.
+
+        :param query_params:
+            Optional dictionary of query parameters.
+        :return:
+            The profile definition of the authenticated user.
+        """
+        # The base ResourceBase.list method expects a list response and sets return_list=True.
+        # However, the /profile/ endpoint returns a single object, not a list.
+        # Therefore, we override it to behave like a singular 'get' operation.
+        url = self._get_url()
+        _query_params = {}
+        if query_params:
+            _query_params.update(query_params)
+        return self.c.get(url, query_params=_query_params, return_list=False)
 
     def update(self, data):
-        return self.c.put(self._get_url(), data, return_list=False)
+        """
+        Edits the authenticated user's profile.
+
+        Note that the /profile/ endpoint refers to the authenticated user's profile
+        and does not use a UUID in the URL path for updating.
+
+        :param data:
+            A dictionary with profile fields to update.
+            Refer to the API documentation for possible fields (e.g., 'company', 'address').
+        :return:
+            The updated profile definition.
+        """
+        # The inherited ResourceBase.update(uuid, data) expects a UUID in the URL path.
+        # For the /profile/ endpoint, the URL is simply '/profile/'.
+        url = self._get_url()
+        return self.c.put(url, data, return_list=False)
+
+    def create(self, data, query_params=None):
+        """
+        Creating a new user profile via this API endpoint is not supported.
+        User profiles are typically created during the account registration process.
+        """
+        raise NotImplementedError("Profile creation is not supported via this endpoint.")
+
+    def delete(self, uuid, query_params=None):
+        """
+        Deleting a user profile via this API endpoint is not supported.
+        """
+        raise NotImplementedError("Profile deletion is not supported via this endpoint.")
+
+    def list_detail(self, query_params=None):
+        """
+        Detailed listing is not applicable for a single profile object.
+        This method is not supported via this API endpoint.
+        """
+        raise NotImplementedError("Detailed listing is not supported for the Profile resource as it's a single object.")
 
 
 class GlobalContext(ResourceBase):
@@ -1703,4 +1781,3 @@ class AvailabilityGroups(ResourceBase):
     # As per the instructions, methods already existing in `ResourceBase` should not be rewritten
     # unless specifically needed, and these `avoid` parameters extend existing operations rather
     # than defining new top-level availability group resource methods.
-
