@@ -923,8 +923,25 @@ class Tags(ResourceBase):
         return self.c.delete(url, data=self._pepare_data(data), query_params=query_params)
 
 
-class Acls(ResourceBase):
+class ACL(ResourceBase):
     resource_name = 'acls'
+
+    # The HTML documentation provided for ACLs primarily details the standard
+    # CRUD operations (GET, POST, PUT, DELETE) on the /acls/ endpoint
+    # and /acls/{uuid}/ endpoint. These are already covered by the generic
+    # methods in the ResourceBase class:
+    #
+    # - GET /acls/                -> self.list()
+    # - GET /acls/{uuid}/         -> self.get(uuid)
+    # - POST /acls/               -> self.create(data)
+    # - PUT /acls/{uuid}/         -> self.update(uuid, data)
+    # - DELETE /acls/{uuid}/      -> self.delete(uuid)
+    #
+    # There are no additional custom actions (like 'clone' or 'resize' for 'Drive')
+    # described in the HTML for ACLs that would require new methods beyond what
+    # ResourceBase already provides.
+    # Therefore, this class only needs to define its resource_name.
+    pass
 
 
 class Jobs(ResourceBase):
@@ -1285,4 +1302,3 @@ class KVMServer(ResourceBase):
         :rtype: dict
         """
         return self._action(uuid, 'close_vnc', data={})
-
