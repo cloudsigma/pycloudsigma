@@ -865,13 +865,33 @@ class Snapshot(ResourceBase):
 class Tags(ResourceBase):
     resource_name = 'tags'
 
-    def list_resource(self, uuid, resource_name):
+    def list_resource(self, uuid, resource_name, query_params=None):
+        """
+        Lists the objects of the given resource_name which are associated with this tag.
+
+        :param uuid:
+            UUID of the tag.
+        :type uuid: basestring
+        :param resource_name:
+            The type of resource to list (e.g., 'servers', 'drives', 'ips', 'vlans').
+        :type resource_name: basestring
+        :param query_params:
+            Dictionary of query parameters to apply.
+        :type query_params: dict
+        :return:
+            A list of resources associated with the tag.
+        """
         url = '{base}{tag_uuid}/{res_name}/'.format(
             base=self._get_url(),
             tag_uuid=uuid,
             res_name=resource_name
         )
-        return self.c.get(url, return_list=True)
+        _query_params = {
+            'limit': 0,  # get all results, do not use pagination
+        }
+        if query_params:
+            _query_params.update(query_params)
+        return self.c.get(url, query_params=_query_params, return_list=True)
 
     def drives(self, uuid):
         return self.list_resource(uuid, 'drives')
@@ -884,6 +904,23 @@ class Tags(ResourceBase):
 
     def vlans(self, uuid):
         return self.list_resource(uuid, 'vlans')
+
+    def delete_multiple(self, uuids, query_params=None):
+        """
+        Deletes multiple tags specified by their UUIDs.
+
+        :param uuids:
+            A list of tag UUIDs to delete.
+        :type uuids: list of basestring
+        :param query_params:
+            Additional query parameters to pass to the API call.
+        :type query_params: dict
+        :return:
+            API response indicating the deletion process has started.
+        """
+        data = [{'uuid': u_id} for u_id in uuids]
+        url = self._get_url()
+        return self.c.delete(url, data=self._pepare_data(data), query_params=query_params)
 
 
 class Acls(ResourceBase):
@@ -1135,24 +1172,24 @@ class VirtualRouters(ResourceBase):
         data = data or {}
         return self._action(virtual_router_uuid, 'enable_nat', data)
 
-    def disable_nat(self(self, virtual_router_uuid, data):
+    def disable_nat(self, virtual_router_uuid, data):
         data = data or {}
         return self._action(virtual_router_uuid, 'disable_nat', data)
 
-    def enable_firewall(self(self, virtual_router_uuid, data):
+    def enable_firewall(self, virtual_router_uuid, data):
         data = data or {}
         return self._action(virtual_router_uuid, 'enable_firewall', data)
 
-    def disable_firewall(self(self, virtual_router_uuid, data):
+    def disable_firewall(self, virtual_router_uuid, data):
         data = data or {}
         return self._action(virtual_router_uuid, 'disable_firewall', data)
 
-    def enable_firewall_logging(self(self, virtual_router_uuid, data):
+    def enable_firewall_logging(self, virtual_router_uuid, data):
         data = data or {}
         action = 'enable_firewall_logging'
         return self._action(virtual_router_uuid, action, data)
 
-    def disable_firewall_logging(self(self, virtual_router_uuid, data):
+    def disable_firewall_logging(self, virtual_router_uuid, data):
         data = data or {}
         action = 'disable_firewall_logging'
         return self._action(virtual_router_uuid, action, data)
@@ -1248,3 +1285,4 @@ class KVMServer(ResourceBase):
         :rtype: dict
         """
         return self._action(uuid, 'close_vnc', data={})
+
