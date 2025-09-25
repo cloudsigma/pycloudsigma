@@ -224,6 +224,37 @@ class NotificationPreference(ResourceBase):
 class LibDrive(ResourceBase):
     resource_name = 'libdrives'
 
+    def list_detail(self, query_params=None):
+        """
+        Gets the detailed list of library drives. For consistency, this
+        returns the same level of detail as the regular list call.
+
+        :param query_params:
+            Dictionary of query parameters to apply to the request.
+        :return:
+            A list of library drive definitions.
+        """
+        return self.list(query_params=query_params)
+
+    def clone(self, uuid, data=None):
+        """
+        Clones a library drive into your account.
+        If a library drive is not a CDROM, you have to clone it in your
+        account in order to use it.
+
+        :param uuid:
+            UUID of the source library drive to clone.
+        :type uuid: basestring
+        :param data:
+            Optional dictionary of options for the cloned drive.
+            Refer to API docs for possible options like 'name', 'media', 'affinities', 'storage_type'.
+        :type data: dict or None
+        :return:
+            Cloned drive definition.
+        """
+        data = data or {}
+        return self._action(uuid, 'clone', data)
+
 
 class Drive(ResourceBase):
     resource_name = 'drives'
@@ -1002,4 +1033,3 @@ class Routes(ResourceBase):
 
 class RDSDrive(ResourceBase):
     resource_name = 'driveusers'
-
