@@ -74,7 +74,21 @@ class VmwareServerFromTemplate(ResourceBase):
 
 
 class VmwareServer(ResourceBase):
+    """
+    VMWare Servers API resource.
+
+    The VMWare server integration in the CloudSigma API is still in a BETA stage.
+    Only partial functionality is exposed and the API definition and functionality
+    are subject to changes.
+    """
     resource_name = 'vmware_servers'
+
+    # The HTML documentation for VMWare Servers only specifies GET methods for
+    # listing all servers (/vmware_servers/) and retrieving a single server
+    # by UUID (/vmware_servers/{uuid}/). These functionalities are already
+    # covered by the generic `list` and `get` methods inherited from ResourceBase.
+    # No additional custom methods are required for this resource based on the
+    # provided HTML.
 
 
 class VrouterRequest(ResourceBase):
