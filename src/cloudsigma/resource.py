@@ -1546,7 +1546,64 @@ class Websocket(object):
 
 
 class BurstUsage(ResourceBase):
+    """
+    Provides an interface to manage burst usage records.
+    """
     resource_name = 'burstusage'
+
+    def list(self, date=None, date_gte=None, date_lt=None, date_lte=None, date_gt=None, query_params=None):
+        """
+        Get the accumulated burst usage of the authenticated user for the specified period.
+        By default, it retrieves data for the last 30 days.
+
+        :param date: (str, optional) Filter for an exact date (YYYY-MM-DD).
+        :param date_gte: (str, optional) Filter for dates greater than or equal to (YYYY-MM-DD).
+        :param date_lt: (str, optional) Filter for dates lower than (YYYY-MM-DD).
+        :param date_lte: (str, optional) Filter for dates lower than or equal to (YYYY-MM-DD).
+        :param date_gt: (str, optional) Filter for dates greater than (YYYY-MM-DD).
+        :param query_params: (dict, optional) Additional query parameters to include in the request.
+                             These will be merged with any date filters provided.
+        :return: A list of burst usage objects.
+        :rtype: list
+        """
+        _query_params = query_params or {}
+        if date:
+            _query_params['date'] = date
+        if date_gte:
+            _query_params['date__gte'] = date_gte
+        if date_lt:
+            _query_params['date__lt'] = date_lt
+        if date_lte:
+            _query_params['date__lte'] = date_lte
+        if date_gt:
+            _query_params['date__gt'] = date_gt
+        return super(BurstUsage, self).list(query_params=_query_params)
+
+
+class DailyBurstUsage(ResourceBase):
+    """
+    Provides an interface to manage daily burst usage records.
+    """
+    resource_name = 'dailyburstusage'
+
+    def list(self, date_lt=None, date_gt=None, query_params=None):
+        """
+        Get the accumulated daily burst usage of the authenticated user for the specified period.
+        By default, it retrieves data for the last 30 days.
+
+        :param date_lt: (str, optional) Filter for dates lower than (YYYY-MM-DD).
+        :param date_gt: (str, optional) Filter for dates greater than (YYYY-MM-DD).
+        :param query_params: (dict, optional) Additional query parameters to include in the request.
+                             These will be merged with any date filters provided.
+        :return: A list of daily burst usage objects.
+        :rtype: list
+        """
+        _query_params = query_params or {}
+        if date_lt:
+            _query_params['date__lt'] = date_lt
+        if date_gt:
+            _query_params['date__gt'] = date_gt
+        return super(DailyBurstUsage, self).list(query_params=_query_params)
 
 
 class Locations(ResourceBase):
