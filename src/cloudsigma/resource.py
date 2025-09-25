@@ -1040,18 +1040,50 @@ class Subscription(ResourceBase):
 
 class Ledger(ResourceBase):
     resource_name = 'ledger'
+    # ResourceBase.list() covers GET /ledger/
+    # ResourceBase.get_schema() covers GET /ledger/schema
 
 
 class Balance(ResourceBase):
     resource_name = 'balance'
 
+    def get_details(self):
+        """
+        Get the balance and currency of the current account.
+
+        :return: A dictionary containing balance, credit_limit, and currency.
+        :rtype: dict
+        """
+        url = self._get_url()
+        return self.c.get(url, return_list=False)
+
 
 class Discount(ResourceBase):
     resource_name = 'discount'
+    # ResourceBase.list() covers GET /discount/
+    # ResourceBase.get_schema() covers GET /discount/schema
 
 
 class Pricing(ResourceBase):
     resource_name = 'pricing'
+
+    def get_pricing_summary(self, query_params=None):
+        """
+        Gets the full pricing information, including current and next burst levels,
+        and the list of individual pricing objects.
+
+        :param query_params: Optional dictionary of query parameters.
+        :type query_params: dict
+        :return: A dictionary containing 'current', 'next', 'meta', and 'objects' keys.
+        :rtype: dict
+        """
+        url = self._get_url()
+        _query_params = {
+            'limit': 0,  # Default to get all results, can be overridden by query_params
+        }
+        if query_params:
+            _query_params.update(query_params)
+        return self.c.get(url, query_params=_query_params, return_list=False)
 
 
 class AuditLog(ResourceBase):
@@ -1125,6 +1157,8 @@ class AuditLog(ResourceBase):
 
 class Licenses(ResourceBase):
     resource_name = 'licenses'
+    # ResourceBase.list() covers GET /licenses/
+    # ResourceBase.get_schema() covers GET /licenses/schema
 
 
 class Capabilities(ResourceBase):
@@ -1796,4 +1830,3 @@ class AvailabilityGroups(ResourceBase):
     # As per the instructions, methods already existing in `ResourceBase` should not be rewritten
     # unless specifically needed, and these `avoid` parameters extend existing operations rather
     # than defining new top-level availability group resource methods.
-
