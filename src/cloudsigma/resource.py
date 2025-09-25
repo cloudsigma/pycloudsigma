@@ -944,8 +944,25 @@ class ACL(ResourceBase):
     pass
 
 
-class Jobs(ResourceBase):
+class Job(ResourceBase):
+    """
+    Represents the Jobs resource in the CloudSigma API.
+
+    Jobs are used to track the progress of long-running asynchronous tasks
+    such as cloning drives and servers. This resource allows for listing
+    and retrieving individual job details to monitor their status.
+
+    History of completed jobs is kept for 3 days; older jobs are discarded.
+    """
     resource_name = 'jobs'
+
+    # The HTML documentation indicates that 'jobs' only support GET operations
+    # for listing and retrieving individual jobs.
+    # The 'list' and 'get' methods are already implemented in ResourceBase,
+    # so no specific overrides are necessary here.
+    # There are no POST, PUT, or DELETE operations documented for the /jobs/
+    # endpoint in the provided HTML, so ResourceBase's create, update, delete
+    # methods are not intended to be used or overridden for this resource.
 
 
 class WebsocketTimeoutError(Exception):
