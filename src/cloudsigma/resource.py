@@ -363,7 +363,22 @@ class NotificationPreference(ResourceBase):
     resource_name = 'notification_preferences'
 
     def update(self, data):
-        return self.c.put(self._get_url(), data, return_list=True)
+        """
+        Updates notification preferences.
+
+        :param data:
+            A dictionary representing a single preference update,
+            or a list of dictionaries for multiple preference updates.
+            Each dictionary should contain 'contact', 'medium', 'type', and 'value'.
+        :type data: dict or list
+        :return:
+            List of updated notification preferences.
+        :rtype: list
+        """
+        url = self._get_url()
+        # The API expects raw dict or list for PUT /notification_preferences/,
+        # not wrapped in 'objects' as with POST _pepare_data.
+        return self.c.put(url, data, return_list=True)
 
 
 class LibDrive(ResourceBase):
@@ -1781,3 +1796,4 @@ class AvailabilityGroups(ResourceBase):
     # As per the instructions, methods already existing in `ResourceBase` should not be rewritten
     # unless specifically needed, and these `avoid` parameters extend existing operations rather
     # than defining new top-level availability group resource methods.
+
