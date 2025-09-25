@@ -104,6 +104,55 @@ class Tunnel(ResourceBase):
 class Usage(ResourceBase):
     resource_name = 'usage'
 
+    def list(self, poll_time_gt, poll_time_lt, limit=None, query_params=None):
+        """
+        Retrieve the usage data for a specific time range.
+
+        :param poll_time_gt:
+            The start time for the usage data query (greater than).
+            Format: 'YYYY-MM-DD' or 'YYYY-MM-DDTHH:MM:SS'.
+        :type poll_time_gt: str
+        :param poll_time_lt:
+            The end time for the usage data query (less than).
+            Format: 'YYYY-MM-DD' or 'YYYY-MM-DDTHH:MM:SS'.
+        :type poll_time_lt: str
+        :param limit:
+            The maximum number of results to return. If not specified,
+            defaults to 1500 as per the API documentation example.
+            Set to 0 to retrieve all results.
+        :type limit: int or None
+        :param query_params:
+            Additional query parameters to include in the request. These
+            can override 'poll_time_gt', 'poll_time_lt', or 'limit' if specified.
+        :type query_params: dict or None
+        :return:
+            A list of usage data objects.
+        :rtype: list
+        """
+        _query_params = {}
+
+        # Add the required poll_time parameters
+        _query_params['poll_time_gt'] = poll_time_gt
+        _query_params['poll_time_lt'] = poll_time_lt
+
+        # Handle the limit parameter
+        if limit is not None:
+            _query_params['limit'] = limit
+        else:
+            # If `limit` is not explicitly provided to this method,
+            # use the default of 1500 suggested by the HTML example.
+            _query_params['limit'] = 1500
+
+        # Merge any additional query_params provided by the user.
+        # This allows the user to override `poll_time_gt`, `poll_time_lt`,
+        # or `limit` if they are explicitly passed in `query_params`.
+        if query_params:
+            _query_params.update(query_params)
+
+        # Call the base class's list method with the constructed query_params.
+        # The base list method already handles `return_list=True` and setting the URL.
+        return super(Usage, self).list(query_params=_query_params)
+
 
 class VmwareDriveAsync(ResourceBase):
     resource_name = 'vmware_drive_async'
