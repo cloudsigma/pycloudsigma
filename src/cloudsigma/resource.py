@@ -1319,3 +1319,69 @@ class KVMServer(ResourceBase):
         :rtype: dict
         """
         return self._action(uuid, 'close_vnc', data={})
+
+
+class AvailabilityGroups(ResourceBase):
+    resource_name = None  # This resource doesn't map directly to a single top-level endpoint for standard ResourceBase methods
+
+    def servers_list_availability_groups(self):
+        """
+        Returns a list of arrays, where each inner array holds the UUIDs of servers
+        that reside on the same physical compute host. Non-running servers are not
+        included.
+
+        :return: A list of lists, each containing server UUIDs grouped by physical host.
+        :rtype: list
+        """
+        url = '/servers/availability_groups/'
+        return self.c.get(url, return_list=True)
+
+    def servers_get_availability_group(self, uuid):
+        """
+        Queries which other servers share the same physical host as the given one.
+        Returns an array holding server UUIDs. The response includes also the UUID
+        of the queried server. If the queried server is not running, the array will be empty.
+
+        :param uuid:
+            UUID of the server.
+        :type uuid: basestring
+        :return: A list of server UUIDs that share the same physical host.
+        :rtype: list
+        """
+        url = '/servers/availability_groups/%s/' % uuid
+        return self.c.get(url, return_list=True)
+
+    def drives_list_availability_groups(self):
+        """
+        Returns a list of arrays, where each inner array holds the UUIDs of drives
+        that reside on the same physical storage host.
+
+        :return: A list of lists, each containing drive UUIDs grouped by physical storage host.
+        :rtype: list
+        """
+        url = '/drives/availability_groups/'
+        return self.c.get(url, return_list=True)
+
+    def drives_get_availability_group(self, uuid):
+        """
+        Queries which other drives share the same physical storage host as the given one.
+        Returns an array holding drive UUIDs. The response includes also the UUID
+        of the queried drive.
+
+        :param uuid:
+            UUID of the drive.
+        :type uuid: basestring
+        :return: A list of drive UUIDs that share the same physical storage host.
+        :rtype: list
+        """
+        url = '/drives/availability_groups/%s/' % uuid
+        return self.c.get(url, return_list=True)
+
+    # Note: The HTML also describes `avoid` parameters for `POST /servers/{uuid}/action/?do=start`,
+    # `POST /drives/{uuid}/action/?do=clone`, `POST /drives/` and `POST /servers/{server_uuid}/action/?do=clone`.
+    # These functionalities are typically handled within the respective `Server` and `Drive` resource classes
+    # (e.g., `Drive.clone` already supports an `avoid` parameter as seen in the example code)
+    # and utilize the `_action` or `create` methods of `ResourceBase` which accept `query_params`.
+    # As per the instructions, methods already existing in `ResourceBase` should not be rewritten
+    # unless specifically needed, and these `avoid` parameters extend existing operations rather
+    # than defining new top-level availability group resource methods.
