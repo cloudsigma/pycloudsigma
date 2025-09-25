@@ -234,7 +234,7 @@ class ResourceBase(object):
 
     def update(self, uuid, data):
         url = self._get_url() + uuid + '/'
-        return self.c.put(url, data, return_list=False)
+        return self.c.put(url, data, return_list=false)
 
     def delete(self, uuid, query_params=None):
         url = self._get_url() + uuid
@@ -738,24 +738,211 @@ class FirewallPolicy(ResourceBase):
     resource_name = 'fwpolicies'
 
 
-class Subscriptions(ResourceBase):
+class Subscription(ResourceBase):
     resource_name = 'subscriptions'
 
-    def extend(self, uuid, data=None):
-        return self._action(uuid, 'extend', data or {})
+    def get(self, subscription_id):
+        """
+        Gets details of a single subscription identified by ID.
 
+        :param subscription_id:
+            ID of the subscription.
+        :type subscription_id: str or int
+        :return:
+            Subscription definition.
+        :rtype: dict
+        """
+        url = self._get_url() + str(subscription_id) + '/'
+        return self.c.get(url, return_list=False)
 
-class SubscriptionCalculator(Subscriptions):
-    resource_name = 'subscriptioncalculator'
+    def list(self, status='all', resource=None, query_params=None):
+        """
+        Gets the list of subscriptions of the user.
 
-    def get_price(self, amount, period, resource_type):
-        data = dict(
-            amount=amount,
-            period=period,
-            resource=resource_type
+        :param status:
+            Filters only subscriptions in that status. Can be one of 'active',
+            'inactive', 'expired', 'all', 'notexpired'. Default is 'all'.
+        :type status: str
+        :param resource:
+            A list (comma separated string) of resources. One or more of:
+            'dssd', 'cpu', 'mem', 'tx', 'ip', 'vlan'.
+        :type resource: str or list[str]
+        :param query_params:
+            Additional query parameters to send with the request.
+        :type query_params: dict
+        :return:
+            List of subscriptions.
+        :rtype: list
+        """
+        _query_params = query_params or {}
+        _query_params['status'] = status
+        if resource:
+            if isinstance(resource, (list, tuple)):
+                _query_params['resource'] = ','.join(resource)
+            # Python 2/3 compatibility: `basestring` is used in the existing file.
+            elif isinstance(resource, basestring):
+                _query_params['resource'] = resource
+            else:
+                raise TypeError("resource must be a string or list/tuple of strings")
+        
+        # The base list method already handles limit=0 by default and query_params
+        # so we can just call it with our prepared parameters.
+        return super(Subscription, self).list(query_params=_query_params)
+
+    def create(self, data, query_params=None):
+        """
+        Creates a new subscription or multiple subscriptions.
+        The resource can be a license or one of: 'dssd', 'cpu', 'mem', 'tx', 'ip', 'vlan'.
+        When buying 'tx', the time parameters are ignored.
+        Trying to purchase a subscription for IP or VLAN with an amount bigger
+        than one will generate several subscriptions of that type.
+
+        :param data:
+            Subscription definition(s). Can be a dictionary for a single subscription
+            or a list of dictionaries for multiple subscriptions.
+            Example: {'amount': 30000, 'period': '1 month', 'resource': 'dssd'}
+            or [{'amount': ..., 'resource': ...}, ...]
+        :type data: dict or list
+        :param query_params:
+            Additional query parameters to send with the request.
+        :type query_params: dict
+        :return:
+            Created subscription definition(s).
+        :rtype: dict or list
+        """
+        # The base create method handles data preparation and POST request.
+        return super(Subscription, self).create(data, query_params)
+
+    def extend(self, subscription_id, period=None, end_time=None):
+        """
+        Extends the subscription. An extended subscription is actually just
+        another subscription that is linked to the original.
+        If a period or an end_time are specified in the request, they are used.
+        If neither are specified, the creation length of the subscription is used.
+
+        :param subscription_id:
+            ID of the subscription to extend.
+        :type subscription_id: str or int
+        :param period:
+            Free form text describing the period. Ex: '2 months 1 week'.
+        :type period: str
+        :param end_time:
+            In ISO 8601 format.
+        :type end_time: str
+        :return:
+            Extended subscription definition.
+        :rtype: dict
+        """
+        data = {}
+        if period is not None:
+            data['period'] = period
+        if end_time is not None:
+            data['end_time'] = end_time
+        # The _action method expects a string UUID/ID.
+        return self._action(str(subscription_id), 'extend', data if data else None)
+
+    def auto_renew(self, subscription_id, value=None):
+        """
+        Toggles the autorenew flag of the subscription. Optionally, the value
+        can be specified in the request.
+
+        :param subscription_id:
+            ID of the subscription to modify.
+        :type subscription_id: str or int
+        :param value:
+            Boolean value to set for auto_renew. If None, the flag is toggled.
+        :type value: bool
+        :return:
+            Updated subscription definition.
+        :rtype: dict
+        """
+        data = {}
+        if value is not None:
+            data['auto_renew'] = value
+        # The _action method expects a string UUID/ID.
+        return self._action(str(subscription_id), 'auto_renew', data if data else None)
+
+    def list_grouped(self, query_params=None):
+        """
+        Returns only the first subscriptions from a chain of extended subscriptions.
+        The extensions are listed in the 'descendants' attribute and the end_time
+        is that of the last subscription in the chain.
+
+        :param query_params:
+            Additional query parameters to send with the request.
+        :type query_params: dict
+        :return:
+            List of grouped subscriptions.
+        :rtype: list
+        """
+        # This endpoint has a different base path, so we don't use _get_url().
+        url = '/groupedsubscriptions/'
+        _query_params = {
+            'limit': 0,  # get all results, do not use pagination as per example
+        }
+        if query_params:
+            _query_params.update(query_params)
+        return self.c.get(url, query_params=_query_params, return_list=True)
+
+    def calculator(self, data):
+        """
+        Returns the price of the subscriptions POSTed in the same format
+        as the normal subscriptions.
+
+        :param data:
+            Subscription definition(s) for price calculation.
+            Can be a dictionary for a single subscription
+            or a list of dictionaries for multiple subscriptions.
+            Example: {'amount': 10000000000, 'period': '1 month', 'resource': 'dssd'}
+            or [{'amount': ..., 'resource': ...}, ...]
+        :type data: dict or list
+        :return:
+            Calculated price response.
+        :rtype: dict
+        """
+        # This endpoint has a different base path, so we don't use _get_url().
+        url = '/subscriptioncalculator/'
+        # The calculator endpoint for creation expects data structured similarly to resource creation.
+        return self.c.post(
+            url,
+            self._pepare_data(data), # Use _pepare_data from ResourceBase
+            return_list=False
         )
-        resp = self.create(data)
-        return resp['price']
+
+    def calculator_extend(self, subscription_id, period=None, end_time=None):
+        """
+        Calculates the price of extending a subscription.
+
+        :param subscription_id:
+            ID of the subscription to calculate extension price for.
+        :type subscription_id: str or int
+        :param period:
+            Free form text describing the period. Ex: '2 months 1 week'.
+        :type period: str
+        :param end_time:
+            In ISO 8601 format.
+        :type end_time: str
+        :return:
+            Calculated extension price response.
+        :rtype: dict
+        """
+        # This endpoint has a different base path and action structure.
+        url = '/subscriptioncalculator/{}/action/'.format(subscription_id)
+        query_params = {'do': 'extend'}
+        data = {}
+        if period is not None:
+            data['period'] = period
+        if end_time is not None:
+            data['end_time'] = end_time
+        
+        # The example request for calculator_extend is an empty dict {}.
+        # So we pass the data directly, which might be an empty dict.
+        return self.c.post(
+            url,
+            data if data else None, # Pass None if data is empty to match example's {}
+            query_params=query_params,
+            return_list=False
+        )
 
 
 class Ledger(ResourceBase):
@@ -1385,3 +1572,4 @@ class AvailabilityGroups(ResourceBase):
     # As per the instructions, methods already existing in `ResourceBase` should not be rewritten
     # unless specifically needed, and these `avoid` parameters extend existing operations rather
     # than defining new top-level availability group resource methods.
+
