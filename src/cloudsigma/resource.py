@@ -878,3 +878,7 @@ class VrFwFilters(ResourceBase):
 
 class Routes(ResourceBase):
     resource_name = 'routes'
+
+
+class RDSDrive(ResourceBase):
+    resource_name = 'driveusers'
