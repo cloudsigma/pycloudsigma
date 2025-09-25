@@ -145,6 +145,7 @@ class VmwareServer(ResourceBase):
 
 class VrouterRequest(ResourceBase):
     resource_name = 'vrouter_requests'
+import sys
 from builtins import str, object
 import socket
 import os
@@ -702,11 +703,35 @@ class ServersAvailabilityGroups(ResourceBase):
 
 
 class VLAN(ResourceBase):
+    """
+    Manages VLAN (Virtual Local Area Network) resources.
+
+    VLANs can be listed, retrieved by UUID, and their metadata can be updated.
+    Creation and deletion are handled via subscriptions.
+    """
     resource_name = 'vlans'
+
+    # The HTML documentation implies that 'list', 'list_detail', 'get', and 'update'
+    # methods are directly available via the base ResourceBase class,
+    # as they correspond to GET /vlans/, GET /vlans/detail/, GET /vlans/{uuid}/,
+    # and PUT /vlans/{uuid}/ respectively.
+    # No custom methods or overrides are explicitly required by the HTML.
 
 
 class IP(ResourceBase):
+    """
+    Manages IP (Internet Protocol) address resources.
+
+    IPs can be listed, retrieved by address (acting as UUID), and their
+    metadata can be updated. Creation and deletion are handled via subscriptions.
+    """
     resource_name = 'ips'
+
+    # Similar to VLAN, the HTML documentation suggests that 'list', 'list_detail', 'get',
+    # and 'update' methods are directly available via the base ResourceBase class,
+    # corresponding to GET /ips/, GET /ips/detail/, GET /ips/{uuid}/,
+    # and PUT /ips/{uuid}/ respectively.
+    # No custom methods or overrides are explicitly required by the HTML.
 
 
 class FirewallPolicy(ResourceBase):
@@ -1110,24 +1135,24 @@ class VirtualRouters(ResourceBase):
         data = data or {}
         return self._action(virtual_router_uuid, 'enable_nat', data)
 
-    def disable_nat(self, virtual_router_uuid, data):
+    def disable_nat(self(self, virtual_router_uuid, data):
         data = data or {}
         return self._action(virtual_router_uuid, 'disable_nat', data)
 
-    def enable_firewall(self, virtual_router_uuid, data):
+    def enable_firewall(self(self, virtual_router_uuid, data):
         data = data or {}
         return self._action(virtual_router_uuid, 'enable_firewall', data)
 
-    def disable_firewall(self, virtual_router_uuid, data):
+    def disable_firewall(self(self, virtual_router_uuid, data):
         data = data or {}
         return self._action(virtual_router_uuid, 'disable_firewall', data)
 
-    def enable_firewall_logging(self, virtual_router_uuid, data):
+    def enable_firewall_logging(self(self, virtual_router_uuid, data):
         data = data or {}
         action = 'enable_firewall_logging'
         return self._action(virtual_router_uuid, action, data)
 
-    def disable_firewall_logging(self, virtual_router_uuid, data):
+    def disable_firewall_logging(self(self, virtual_router_uuid, data):
         data = data or {}
         action = 'disable_firewall_logging'
         return self._action(virtual_router_uuid, action, data)
