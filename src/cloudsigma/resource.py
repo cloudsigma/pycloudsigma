@@ -303,7 +303,7 @@ class Drive(ResourceBase):
             real_chunk_size = chunk_size
         else:
             real_chunk_size = file_size - chunk_offset
-        with open(image_path, 'r') as f:
+        with open(image_path, 'rb') as f: # Changed 'r' to 'rb' for binary file reading
             f.seek(chunk_offset)
             data = f.read(real_chunk_size)
 
@@ -532,8 +532,19 @@ class Licenses(ResourceBase):
     resource_name = 'licenses'
 
 
-class Capabilites(ResourceBase):
+class Capabilities(ResourceBase):
     resource_name = 'capabilities'
+
+    def get(self):
+        """
+        Gets the capabilities object which contains basic, sensible limits of the API.
+        This includes dynamic information based on factors such as cloud usage, location,
+        and other relevant parameters.
+
+        :return:
+            The capabilities object (a dictionary).
+        """
+        return super(Capabilities, self).get(uuid=None)
 
 
 class Accounts(ResourceBase):
