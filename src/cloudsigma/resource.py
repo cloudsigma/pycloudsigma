@@ -152,7 +152,21 @@ class NotificationPreference(ResourceBase):
     resource_name = 'notification_preferences'
 
     def update(self, data):
-        return self.c.put(self._get_url(), data, return_list=True)
+        """
+        Updates the specified notification preferences. Only the ones in the request are modified.
+
+        :param data:
+            A dictionary or a list of dictionaries representing the preferences to update.
+            Each dictionary should contain 'contact', 'medium', 'type', and 'value'.
+        :return:
+            Updated notification preferences.
+        """
+        url = self._get_url()
+        return self.c.put(
+            url,
+            self._pepare_data(data),
+            return_list=True
+        )
 
 
 class LibDrive(ResourceBase):
