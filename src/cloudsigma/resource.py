@@ -861,6 +861,82 @@ class Accounts(ResourceBase):
         return self._action(
             None, 'create', data={'email': email, 'promo': promo_code})
 
+    def create_account(self, email, promo=None):
+        """
+        Creates an account on the system.
+
+        :param email:
+            The email of the account to be created.
+        :type email: str
+        :param promo:
+            Promo code for initial subscriptions and demo server (optional).
+        :type promo: str or None
+        :return:
+            A dictionary with success status and the UUID of the created account.
+        :rtype: dict
+        """
+        data = {
+            'email': email,
+            'promo': promo
+        }
+        return self._action(None, 'create', data=data)
+
+    def login(self, username, password):
+        """
+        Log in to the system using cookie auth.
+
+        :param username:
+            The username (email) for login.
+        :type username: str
+        :param password:
+            The password for login.
+        :type password: str
+        :return:
+            An empty response on success.
+        """
+        data = {
+            'username': username,
+            'password': password
+        }
+        return self._action(None, 'login', data=data)
+
+    def logout(self):
+        """
+        Logout from the system when using cookie auth.
+
+        :return:
+            An empty response on success.
+        """
+        return self._action(None, 'logout', data={})
+
+    def check_login(self):
+        """
+        Check if you are logged in to the system.
+
+        :return:
+            An empty response on success.
+        """
+        return self._action(None, 'check_login', data={})
+
+    def check_login_with_return_uuid(self, username, password):
+        """
+        Check how an authenticated service can get a user uuid via CloudSigma API.
+
+        :param username:
+            The username (email) for checking login.
+        :type username: str
+        :param password:
+            The password for checking login.
+        :type password: str
+        :return:
+            The user UUID on success.
+        """
+        data = {
+            'username': username,
+            'password': password
+        }
+        return self._action(None, 'check_login_with_return_uuid', data=data)
+
 
 class CurrentUsage(ResourceBase):
     resource_name = 'currentusage'
@@ -1443,7 +1519,7 @@ class VrouterRequests(ResourceBase):
     resource_name = 'vrouter_requests'
 
 
-class GroupedSubscription(ResourceBase): # Appended new class
+class GroupedSubscription(ResourceBase):
     resource_name = 'groupedsubscriptions'
 
 # === n8n:END auto-generated resources ===
