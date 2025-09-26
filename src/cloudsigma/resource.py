@@ -149,7 +149,9 @@ class Drive(ResourceBase):
 
     def clone(self, uuid, data=None, avoid=None):
         """
-        Clone a drive.
+        Clones a drive. Request body is optional and any or all of the key/value
+        pairs from the drive definition can be omitted. Size of the cloned drive
+        can only be bigger or the same.
 
         :param uuid:
             Source drive for the clone.
@@ -182,6 +184,7 @@ class Drive(ResourceBase):
         :param data:
             Drive definition containing the new size.
         :return:
+            Updated drive definition.
         """
         data = data or {}
         return self._action(uuid, 'resize', data)
@@ -247,6 +250,26 @@ class Drive(ResourceBase):
             'Accept': 'application/json'
         }
         return requests.post(self.c._get_full_url(link), data=data, headers=headers)
+
+    def delete_multiple(self, uuids, query_params=None):
+        """
+        Deletes multiple mounted or unmounted drives specified by their UUIDs.
+
+        :param uuids:
+            A list of drive UUIDs to delete.
+        :type uuids: list of basestring
+        :param query_params:
+            Additional query parameters.
+        :return:
+            Deletion confirmation.
+        """
+        if not isinstance(uuids, (list, tuple)):
+            raise TypeError('uuids must be a list or tuple of drive UUIDs')
+        
+        data = {'objects': [{'uuid': u} for u in uuids]}
+        
+        url = self._get_url()
+        return self.c.delete(url, data=data, query_params=query_params)
 
 
 class InitUpload(ResourceBase):
