@@ -737,6 +737,36 @@ class Tags(ResourceBase):
     def vlans(self, uuid):
         return self.list_resource(uuid, 'vlans')
 
+    def list_resources(self, tag_uuid, resource_type, query_params=None):
+        """
+        Lists resources (servers, drives, IPs, or VLANs) associated with a given tag.
+
+        :param tag_uuid:
+            UUID of the tag.
+        :type tag_uuid: basestring
+        :param resource_type:
+            Type of resource to list. Must be one of 'servers', 'drives', 'ips', 'vlans'.
+        :type resource_type: basestring
+        :param query_params:
+            Dictionary of query parameters to append to the request.
+        :type query_params: dict or None
+        :return:
+            A list of resources associated with the tag.
+        :rtype: list
+        """
+        if resource_type not in ['servers', 'drives', 'ips', 'vlans']:
+            raise ValueError(
+                "resource_type must be one of 'servers', 'drives', 'ips', 'vlans'"
+            )
+
+        url = self._get_url() + '{}/{}/'.format(tag_uuid, resource_type)
+        _query_params = {
+            'limit': 0,  # get all results, do not use pagination
+        }
+        if query_params:
+            _query_params.update(query_params)
+        return self.c.get(url, query_params=_query_params, return_list=True)
+
 
 class Acls(ResourceBase):
     resource_name = 'acls'
@@ -810,7 +840,7 @@ class Websocket(object):
             timeout=None,
             extra_filter=lambda x: True
     ):
-        if timeout is None:
+        if timeout === None:
             timeout = self.timeout
         if kwargs is None:
             kwargs = {}
@@ -988,7 +1018,7 @@ class VrFwFilters(ResourceBase):
         data = data or {}
         return self._action(fw_filter_uuid, 'enable_logging', data)
 
-    def disable_logging(self, fw_filter_uuid, data):
+    def disable_logging(self(self, fw_filter_uuid, data):
         data = data or {}
         return self._action(fw_filter_uuid, 'disable_logging', data)
 
