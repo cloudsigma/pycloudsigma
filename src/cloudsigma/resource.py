@@ -3,6 +3,7 @@ import socket
 import os
 import time
 import requests
+import sys
 
 from past.builtins import basestring
 
@@ -820,6 +821,78 @@ class Routes(ResourceBase):
 
 class Backupschedulers(ResourceBase):
     resource_name = 'backupschedulers'
+
+    def delete_many(self, data, query_params=None):
+        """
+        Deletes multiple backup schedulers.
+
+        :param data:
+            List of backup scheduler UUIDs to delete, or a dictionary
+            with an 'objects' key containing a list of dictionaries with 'uuid' keys.
+            Example: ['uuid1', 'uuid2'] or {'objects': [{'uuid': 'uuid1'}, {'uuid': 'uuid2'}]}
+        :type data: list or dict
+        :param query_params:
+            Dictionary of query parameters to append to the URL.
+        :type query_params: dict
+        :return:
+            API response from the delete operation.
+        """
+        data = data or []
+        request_body = {}
+
+        if isinstance(data, (list, tuple)):
+            # Convert list of UUID strings to list of dictionaries with 'uuid' key
+            request_body['objects'] = [{'uuid': u} for u in data]
+        elif isinstance(data, dict):
+            if 'objects' in data:
+                # If data is already in the expected {'objects': [...]} format, use it directly.
+                request_body = data
+            else:
+                # If it's a single dictionary (e.g., {'uuid': '...'}), wrap it in 'objects'.
+                request_body['objects'] = [data]
+        else:
+            raise TypeError(
+                "Data for bulk delete must be a list of UUIDs or a dictionary "
+                "with an 'objects' key containing a list of dictionaries."
+            )
+
+        url = self._get_url()
+        # The base client's delete method is assumed to accept a 'data' keyword argument for bulk deletes with a body.
+        return self.c.delete(url, data=request_body, query_params=query_params)
+
+    def list_by_type(self, scheduler_type, query_params=None):
+        """
+        Gets the list of backup schedulers of a specific type.
+
+        :param scheduler_type:
+            The type of scheduler to filter by (e.g., 'backup' or 'snapshot').
+        :type scheduler_type: basestring
+        :param query_params:
+            Dictionary of additional query parameters to append to the URL.
+        :type query_params: dict
+        :return:
+            List of backup schedulers of the specified type.
+        """
+        query_params = query_params or {}
+        query_params['type'] = scheduler_type
+        return self.list(query_params=query_params)
+
+    def list_detail_by_type(self, scheduler_type, query_params=None):
+        """
+        Gets the detailed list of backup schedulers of a specific type.
+
+        :param scheduler_type:
+            The type of scheduler to filter by (e.g., 'backup' or 'snapshot').
+        :type scheduler_type: basestring
+        :param query_params:
+            Dictionary of additional query parameters to append to the URL.
+        :type query_params: dict
+        :return:
+            Detailed list of backup schedulers of the specified type.
+        """
+        query_params = query_params or {}
+        query_params['type'] = scheduler_type
+        return self.list_detail(query_params=query_params)
 
 
 class Capabilities(ResourceBase):
