@@ -292,6 +292,25 @@ class Drive(ResourceBase):
         url = self._get_url()
         return self.c.delete(url, data=data, query_params=query_params)
 
+    def list_availability_groups(self, query_params=None):
+        url = self._get_url() + 'availability_groups/'
+        _query_params = {
+            'limit': 0,  # get all results, do not use pagination
+        }
+        if query_params:
+            _query_params.update(query_params)
+        return self.c.get(url, query_params=_query_params, return_list=True)
+
+    def get_availability_group(self, uuid):
+        url = self._get_url() + 'availability_groups/'
+        if uuid is not None:
+            if isinstance(uuid, bytes):
+                uuid_str = uuid.decode('utf-8')
+            else:
+                uuid_str = uuid
+            url += uuid_str + '/'
+        return self.c.get(url, return_list=False)
+
 
 class InitUpload(ResourceBase):
     resource_name = 'initupload'
@@ -328,7 +347,7 @@ class InitUpload(ResourceBase):
 class Server(ResourceBase):
     resource_name = 'servers'
 
-    def start(self, uuid, allocation_method=None, data=None, query_params=None):
+    def start(self, uuid, allocation_method=None, data=None, query_params=None, avoid=None):
         """
         Starts a server with specific UUID.
 
@@ -341,13 +360,40 @@ class Server(ResourceBase):
             Dictionary of body parameters to append to the request.
         :param query_params:
             Dictionary of query parameters to append to the request.
+        :param avoid:
+            A list of drive or server uuids to avoid for the server start.
+            Avoid attempts to put the server on a different physical host from
+            the resources in *avoid*.
         :return:
             API response.
         """
         _data = data or {}
         if allocation_method:
             _data['allocation_method'] = str(allocation_method)
-        return self._action(uuid, 'start', data=_data, query_params=query_params)
+        
+        _query_params = query_params or {}
+        if avoid:
+            _avoid_list = []
+            if isinstance(avoid, (str, bytes)):
+                if isinstance(avoid, bytes):
+                    _avoid_list.append(avoid.decode('utf-8'))
+                else:
+                    _avoid_list.append(avoid)
+            elif isinstance(avoid, (list, tuple)):
+                for item in avoid:
+                    if isinstance(item, bytes):
+                        _avoid_list.append(item.decode('utf-8'))
+                    elif isinstance(item, str):
+                        _avoid_list.append(item)
+                    else:
+                        raise TypeError("Avoid list elements must be strings or bytes, not %r" % item)
+            else:
+                raise TypeError("Avoid must be a string, bytes, list, or tuple, not %r" % avoid)
+            
+            if _avoid_list:
+                _query_params['avoid'] = ','.join(_avoid_list)
+
+        return self._action(uuid, 'start', data=_data, query_params=_query_params)
 
     def stop(self, uuid, data=None, query_params=None):
         """
@@ -534,9 +580,25 @@ class Server(ResourceBase):
 
         _query_params = query_params or {}
         if avoid:
-            if isinstance(avoid, basestring):
-                avoid = [avoid]
-            _query_params['avoid'] = ','.join(avoid)
+            _avoid_list = []
+            if isinstance(avoid, (str, bytes)):
+                if isinstance(avoid, bytes):
+                    _avoid_list.append(avoid.decode('utf-8'))
+                else:
+                    _avoid_list.append(avoid)
+            elif isinstance(avoid, (list, tuple)):
+                for item in avoid:
+                    if isinstance(item, bytes):
+                        _avoid_list.append(item.decode('utf-8'))
+                    elif isinstance(item, str):
+                        _avoid_list.append(item)
+                    else:
+                        raise TypeError("Avoid list elements must be strings or bytes, not %r" % item)
+            else:
+                raise TypeError("Avoid must be a string, bytes, list, or tuple, not %r" % avoid)
+            
+            if _avoid_list:
+                _query_params['avoid'] = ','.join(_avoid_list)
 
         return self._action(uuid, 'clone', data=_data, query_params=_query_params)
 
@@ -587,6 +649,25 @@ class Server(ResourceBase):
         :return:
         """
         return self.delete(uuid, recurse='cdroms')
+
+    def list_availability_groups(self, query_params=None):
+        url = self._get_url() + 'availability_groups/'
+        _query_params = {
+            'limit': 0,
+        }
+        if query_params:
+            _query_params.update(query_params)
+        return self.c.get(url, query_params=_query_params, return_list=True)
+
+    def get_availability_group(self, uuid):
+        url = self._get_url() + 'availability_groups/'
+        if uuid is not None:
+            if isinstance(uuid, bytes):
+                uuid_str = uuid.decode('utf-8')
+            else:
+                uuid_str = uuid
+            url += uuid_str + '/'
+        return self.c.get(url, return_list=False)
 
 
 class BServer(Server):
