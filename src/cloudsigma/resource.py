@@ -782,3 +782,74 @@ class VrFwFilters(ResourceBase):
 
 class Routes(ResourceBase):
     resource_name = 'routes'
+
+# === n8n:BEGIN auto-generated resources ===
+<code language="Python">
+class Backupschedulers(ResourceBase):
+    resource_name = 'backupschedulers'
+
+
+class FeedbackTicket(ResourceBase):
+    resource_name = 'feedback_ticket'
+
+
+class Gpus(ResourceBase):
+    resource_name = 'gpus'
+
+
+class Keypairs(ResourceBase):
+    resource_name = 'keypairs'
+
+
+class NotificationTypes(ResourceBase):
+    resource_name = 'notification_types'
+
+
+class ObjectStorage(ResourceBase):
+    resource_name = 'object-storage'
+
+
+class Pubkeys(ResourceBase):
+    resource_name = 'pubkeys'
+
+
+class SupportTickets(ResourceBase):
+    resource_name = 'support_tickets'
+
+
+class Tunnels(ResourceBase):
+    resource_name = 'tunnels'
+
+
+class Usage(ResourceBase):
+    resource_name = 'usage'
+
+
+class VmwareDriveAsync(ResourceBase):
+    resource_name = 'vmware_drive_async'
+
+
+class VmwareDrives(ResourceBase):
+    resource_name = 'vmware_drives'
+
+
+class VmwareLibrary(ResourceBase):
+    resource_name = 'vmware_library'
+
+
+class VmwareServerAsync(ResourceBase):
+    resource_name = 'vmware_server_async'
+
+
+class VmwareServerFromTemplate(ResourceBase):
+    resource_name = 'vmware_server_from_template'
+
+
+class VmwareServers(ResourceBase):
+    resource_name = 'vmware_servers'
+
+
+class VrouterRequests(ResourceBase):
+    resource_name = 'vrouter_requests'
+</code>
+# === n8n:END auto-generated resources ===
