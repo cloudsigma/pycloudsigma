@@ -514,21 +514,31 @@ class CurrentUsage(ResourceBase):
 class Snapshot(ResourceBase):
     resource_name = 'snapshots'
 
+    def delete_many(self, uuids):
+        """
+        Deletes multiple snapshots specified by their UUIDs.
+
+        :param uuids: A list of snapshot UUIDs to delete.
+        :type uuids: list of str
+        :return: Response from the API call.
+        """
+        data = [{'uuid': u} for u in uuids]
+        url = self._get_url()
+        return self.c.delete(url, self._pepare_data(data))
+
     def clone(self, uuid, data=None, avoid=None):
         """
-        Clones a snapshot (creates a drive).
+        Clones a snapshot to a drive.
 
-        :param uuid:
-            Source snapshot for the clone.
-        :param data:
-            Clone snapshot options. Refer to API docs for possible options.
-        :param avoid:
-            A list of snapshot or server uuids to avoid for the clone. Avoid
-            attempts to put the clone on a different physical storage host from
-            the snapshot in *avoid*. If a server uuid is in *avoid* it is
-            internally expanded to the snapshots attached to the server.
-        :return:
-            Cloned snapshot definition.
+        :param uuid: UUID of the snapshot to clone.
+        :type uuid: basestring
+        :param data: Optional new drive definition for the cloned drive.
+        :type data: dict
+        :param avoid: A list of drive or server UUIDs to avoid for the clone.
+                      Avoid attempts to put the clone on a different physical storage
+                      host from the resources in *avoid*.
+        :type avoid: list or basestring
+        :return: Cloned drive definition.
         """
         data = data or {}
         query_params = {}
