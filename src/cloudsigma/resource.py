@@ -1167,6 +1167,10 @@ class BurstUsage(ResourceBase):
     resource_name = 'burstusage'
 
 
+class DailyBurstUsage(ResourceBase):
+    resource_name = 'dailyburstusage'
+
+
 class Locations(ResourceBase):
     resource_name = 'locations'
 
