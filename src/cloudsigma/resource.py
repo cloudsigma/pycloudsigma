@@ -706,6 +706,22 @@ class RemoteSnapshot(ResourceBase):
 
         return self._action(uuid, 'clone', data, query_params=query_params)
 
+    def delete_multiple(self, uuids, query_params=None):
+        """
+        Deletes multiple remote snapshots specified by their UUIDs.
+
+        :param uuids:
+            A list of remote snapshot UUIDs to delete.
+        :type uuids: list
+        :param query_params:
+            Additional query parameters.
+        :return:
+            API response (204 No Content expected).
+        """
+        data = {'objects': [{'uuid': u} for u in uuids]}
+        url = self._get_url()
+        return self.c.delete(url, data=data, query_params=query_params)
+
 
 class Vpc(ResourceBase):
     resource_name = 'vpc'
