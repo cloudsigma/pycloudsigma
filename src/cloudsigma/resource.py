@@ -840,6 +840,10 @@ class AuditLog(ResourceBase):
     resource_name = 'logs'
 
 
+class AuditLogs(ResourceBase):
+    resource_name = 'logs'
+
+
 class Licenses(ResourceBase):
     resource_name = 'licenses'
 
