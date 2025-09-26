@@ -996,6 +996,37 @@ class VrFwFilters(ResourceBase):
 class Routes(ResourceBase):
     resource_name = 'routes'
 
+
+class KvmServers(ResourceBase):
+    resource_name = 'servers'
+
+    def open_vnc(self, uuid):
+        """
+        Server’s console (virtual keyboard, mouse, and display) is exposed to the user through the VNC protocol.
+        The `open_vnc` call opens a VNC tunnel to the server. The returned object contains a `vnc_url` specifying the
+        endpoint to which to connect the VNC client. The password for the VNC connection is specified in the
+        `vnc_password` field on the server definition. Note that the tunnel is not closed until reboot, so if you prefer
+        you can close is using the `close_vnc` action.
+        VNC URL will be different each time you close/open the tunnel.
+
+        :param uuid:
+            UUID of the server.
+        :return:
+            Server definition including vnc_url and other details.
+        """
+        return self._action(uuid, 'open_vnc', data={})
+
+    def close_vnc(self, uuid):
+        """
+        Closes a VNC tunnel to a server with specific UUID.
+
+        :param uuid:
+            UUID of the server.
+        :return:
+            Action status.
+        """
+        return self._action(uuid, 'close_vnc', data={})
+
 # === n8n:BEGIN auto-generated resources ===
 
 class Backupschedulers(ResourceBase):
