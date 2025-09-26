@@ -144,6 +144,10 @@ class NotificationContact(ResourceBase):
     resource_name = 'notification_contacts'
 
 
+class NotificationContacts(ResourceBase):
+    resource_name = 'notification_contacts'
+
+
 class NotificationPreference(ResourceBase):
     resource_name = 'notification_preferences'
 
