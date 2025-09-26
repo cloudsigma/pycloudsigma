@@ -789,6 +789,10 @@ class Backupschedulers(ResourceBase):
     resource_name = 'backupschedulers'
 
 
+class Capabilities(ResourceBase):
+    resource_name = 'capabilities'
+
+
 class FeedbackTicket(ResourceBase):
     resource_name = 'feedback_ticket'
 
