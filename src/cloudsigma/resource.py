@@ -784,7 +784,7 @@ class Routes(ResourceBase):
     resource_name = 'routes'
 
 # === n8n:BEGIN auto-generated resources ===
-<code language="Python">
+
 class Backupschedulers(ResourceBase):
     resource_name = 'backupschedulers'
 
@@ -851,5 +851,5 @@ class VmwareServers(ResourceBase):
 
 class VrouterRequests(ResourceBase):
     resource_name = 'vrouter_requests'
-</code>
+
 # === n8n:END auto-generated resources ===
