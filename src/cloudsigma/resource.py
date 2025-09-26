@@ -7,6 +7,12 @@ import sys
 
 from past.builtins import basestring
 
+# Add try-except for basestring for broader compatibility
+try:
+    basestring
+except NameError:
+    basestring = str
+
 from cloudsigma.generic import get_client, WebsocketClient, GenericClient
 
 
@@ -322,54 +328,185 @@ class InitUpload(ResourceBase):
 class Server(ResourceBase):
     resource_name = 'servers'
 
-    def start(self, uuid, allocation_method=None):
-        data = {}
-        if allocation_method:
-            data = {'allocation_method': str(allocation_method)}
-        return self._action(uuid, 'start', data)
+    def start(self, uuid, allocation_method=None, data=None, query_params=None):
+        """
+        Starts a server with specific UUID.
 
-    def stop(self, uuid):
+        :param uuid:
+            UUID of the server to start.
+        :param allocation_method:
+            Optional parameter to specify how resources should be allocated.
+            Refer to API docs for possible options.
+        :param data:
+            Dictionary of body parameters to append to the request.
+        :param query_params:
+            Dictionary of query parameters to append to the request.
+        :return:
+            API response.
+        """
+        _data = data or {}
+        if allocation_method:
+            _data['allocation_method'] = str(allocation_method)
+        return self._action(uuid, 'start', data=_data, query_params=query_params)
+
+    def stop(self, uuid, data=None, query_params=None):
+        """
+        Stops a server with specific UUID. This action is equivalent to pulling the
+        power cord of a physical server. For more graceful shutdown see ACPI Shutdown.
+
+        :param uuid:
+            UUID of the server to stop.
+        :param data:
+            Dictionary of body parameters to append to the request. (Used for API workaround).
+        :param query_params:
+            Dictionary of query parameters to append to the request.
+        :return:
+            API response.
+        """
+        # Preserve the workaround if data is not explicitly provided by the caller
+        _data = data if data is not None else {}
         return self._action(
             uuid,
             'stop',
-            data={}  # Workaround API issue - see TUR-1346
+            data=_data,
+            query_params=query_params
         )
 
-    def restart(self, uuid):
+    def restart(self, uuid, data=None, query_params=None):
+        """
+        Restarts a server with specific UUID. This action is equivalent to pressing the
+        reset button of a physical server.
+
+        :param uuid:
+            UUID of the server to restart.
+        :param data:
+            Dictionary of body parameters to append to the request. (Used for API workaround).
+        :param query_params:
+            Dictionary of query parameters to append to the request.
+        :return:
+            API response.
+        """
+        _data = data if data is not None else {}
         return self._action(
             uuid,
             'restart',
-            data={}  # Workaround API issue - see TUR-1346
+            data=_data,
+            query_params=query_params
         )
 
-    def shutdown(self, uuid):
+    def shutdown(self, uuid, data=None, query_params=None):
+        """
+        Sends an ACPI shutdown signal to a server with a specific UUID for a minute.
+        If the VM OS handles ACPI shutdown events (equivalent to pressing the power button),
+        it will shutdown gracefully. As some operating systems don’t always handle single
+        ACPI event the shutdown is sent every second for a minute. While the shutdown is
+        initiated, the server is put into status 'stopping' to prevent interfering actions.
+        If after a minute the server has not powered off during this minute the status
+        is returned to 'running' to allow the user to Stop it. If the server shuts down
+        successfully during the one minute period it will be switched to 'stopped' status.
+
+        :param uuid:
+            UUID of the server to shutdown.
+        :param data:
+            Dictionary of body parameters to append to the request. (Used for API workaround).
+        :param query_params:
+            Dictionary of query parameters to append to the request.
+        :return:
+            API response.
+        """
+        _data = data if data is not None else {}
         return self._action(
             uuid,
             'shutdown',
-            data={}  # Workaround API issue - see TUR-1346
+            data=_data,
+            query_params=query_params
         )
 
     def runtime(self, uuid):
         url = self._get_url() + uuid + '/runtime/'
         return self.c.get(url, return_list=False)
 
-    def open_vnc(self, uuid):
-        return self._action(uuid, 'open_vnc', data={})
-
-    def close_vnc(self, uuid):
-        return self._action(uuid, 'close_vnc', data={})
-
-    def open_console(self, uuid):
-        return self._action(uuid, 'open_console', data={})
-
-    def close_console(self, uuid):
-        return self._action(uuid, 'close_console', data={})
-
-    def clone(self, uuid, data=None, avoid=None):
+    def open_vnc(self, uuid, data=None, query_params=None):
         """
-        Clone a server. Attached disk drives get cloned and attached to the new
+        Open a VNC connection to a server with a specific UUID.
+
+        :param uuid:
+            UUID of the server to open VNC for.
+        :param data:
+            Dictionary of body parameters to append to the request. (Used for API workaround).
+        :param query_params:
+            Dictionary of query parameters to append to the request.
+        :return:
+            API response, including VNC connection details.
+        """
+        _data = data if data is not None else {}
+        return self._action(uuid, 'open_vnc', data=_data, query_params=query_params)
+
+    def close_vnc(self, uuid, data=None, query_params=None):
+        """
+        Close a VNC connection to a server with a specific UUID.
+
+        :param uuid:
+            UUID of the server to close VNC for.
+        :param data:
+            Dictionary of body parameters to append to the request. (Used for API workaround).
+        :param query_params:
+            Dictionary of query parameters to append to the request.
+        :return:
+            API response.
+        """
+        _data = data if data is not None else {}
+        return self._action(uuid, 'close_vnc', data=_data, query_params=query_params)
+
+    def open_console(self, uuid, data=None, query_params=None):
+        """
+        Open a serial console connection to a server with a specific UUID.
+        Each server has a virtual serial device, which is tunneled to a TCP socket.
+        The serial device is seen as /dev/ttyS0 or COM1 on most operating systems.
+        If your OS supports it, you can configure a serial console on this virtual
+        serial port, which might be more convenient to use than VNC, as it generally
+        uses less bandwidth and allows you to copy-paste in the virtual terminal.
+
+        The return object contains 'console_url' formatted as csconsole://<cs-domain>:<port>.
+
+        :param uuid:
+            UUID of the server to open console for.
+        :param data:
+            Dictionary of body parameters to append to the request. (Used for API workaround).
+        :param query_params:
+            Dictionary of query parameters to append to the request.
+        :return:
+            The console URL (str).
+        """
+        _data = data if data is not None else {}
+        res_data = self._action(uuid, 'open_console', data=_data, query_params=query_params)
+        return res_data['console_url']
+
+    def close_console(self, uuid, data=None, query_params=None):
+        """
+        Closes a serial console connection to a server with a specific UUID.
+
+        :param uuid:
+            UUID of the server to close console for.
+        :param data:
+            Dictionary of body parameters to append to the request. (Used for API workaround).
+        :param query_params:
+            Dictionary of query parameters to append to the request.
+        :return:
+            API response.
+        """
+        _data = data if data is not None else {}
+        return self._action(uuid, 'close_console', data=_data, query_params=query_params)
+
+    def clone(self, uuid, data=None, avoid=None, name=None, random_vnc_password=None, query_params=None):
+        """
+        Clones a server. Attached disk drives get cloned and attached to the new
         server, and attached cdroms get attached to the
         new server (without cloning).
+
+        The optional body can contain a 'name' attribute, which will be the name of
+        the newly-cloned server and/or 'random_vnc_password' boolean attribute which
+        if set will generate a new vnc password for the new server.
 
         :param uuid:
             Source server for the clone.
@@ -380,39 +517,51 @@ class Server(ResourceBase):
             attempts to put the cloned drives on a different physical storage
             host from the drives in *avoid*. If a server uuid is in *avoid* it
             is internally expanded to the drives attached to the server.
+        :param name:
+            Optional name for the cloned server.
+        :param random_vnc_password:
+            If True, a new random VNC password will be generated for the cloned server.
+        :param query_params:
+            Dictionary of additional query parameters to append to the request.
         :return:
             Cloned server definition.
         """
-        data = data or {}
-        query_params = {}
+        _data = data or {}
+        if name is not None:
+            _data['name'] = name
+        if random_vnc_password is not None:
+            _data['random_vnc_password'] = random_vnc_password
+
+        _query_params = query_params or {}
         if avoid:
             if isinstance(avoid, basestring):
                 avoid = [avoid]
-            query_params['avoid'] = ','.join(avoid)
+            _query_params['avoid'] = ','.join(avoid)
 
-        return self._action(uuid, 'clone', data=data,
-                            query_params=query_params)
+        return self._action(uuid, 'clone', data=_data, query_params=_query_params)
 
-    def delete(self, uuid, recurse=None):
+    def delete(self, uuid, recurse=None, query_params=None):
         """
-        Deletes a server.
+        Deletes a single server.
+        It is possible to delete a server together with its drives (recursive delete).
+        There are three options: delete all attached drives, delete only disks
+        (non-cdrom drives), or delete only attached cdroms.
 
         :param uuid:
-            uuid of the server to delete
+            UUID of the server to delete.
         :param recurse:
-            option to recursively delete attached drives. Possible values are
-            'all_drives', 'disks'. It is possible to use one of the supplied
-            convenience functions: delete_with_all_drives, delete_with_disks,
-            delete_with_cdroms
-
+            Optional parameter for recursive deletion of drives.
+            Can be 'all_drives', 'disks', or 'cdroms'.
+        :param query_params:
+            Dictionary of query parameters to append to the request.
         :return:
+            API response.
         """
-        query_params = {}
-        if recurse is not None:
-            query_params.update(recurse=recurse)
-        if not query_params:
-            query_params = None
-
+        query_params = query_params or {}
+        if recurse:
+            if recurse not in ['all_drives', 'disks', 'cdroms']:
+                raise ValueError("recurse must be one of 'all_drives', 'disks', 'cdroms'")
+            query_params['recurse'] = recurse
         return super(Server, self).delete(uuid, query_params=query_params)
 
     def delete_with_all_drives(self, uuid):
