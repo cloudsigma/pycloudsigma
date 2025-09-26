@@ -13,7 +13,7 @@ from cloudsigma.generic import get_client, WebsocketClient, GenericClient
 class ResourceBase(object):
     resource_name = None
 
-    def __init__(self(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         self.c = get_client()(*args, **kwargs)
 
     def attach_response_hook(self, func):
@@ -255,7 +255,7 @@ class Drive(ResourceBase):
             real_chunk_size = chunk_size
         else:
             real_chunk_size = file_size - chunk_offset
-        with open(image_path, 'r') as f:
+        with open(image_path, 'rb') as f: # Changed from 'r' to 'rb' for binary file reading
             f.seek(chunk_offset)
             data = f.read(real_chunk_size)
 
