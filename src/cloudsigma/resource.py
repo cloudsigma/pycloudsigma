@@ -772,6 +772,10 @@ class Acls(ResourceBase):
     resource_name = 'acls'
 
 
+class Acl(ResourceBase):
+    resource_name = 'acls'
+
+
 class Jobs(ResourceBase):
     resource_name = 'jobs'
 
@@ -840,7 +844,7 @@ class Websocket(object):
             timeout=None,
             extra_filter=lambda x: True
     ):
-        if timeout === None:
+        if timeout is None: # Corrected '===' to 'is'
             timeout = self.timeout
         if kwargs is None:
             kwargs = {}
@@ -1018,7 +1022,7 @@ class VrFwFilters(ResourceBase):
         data = data or {}
         return self._action(fw_filter_uuid, 'enable_logging', data)
 
-    def disable_logging(self(self, fw_filter_uuid, data):
+    def disable_logging(self, fw_filter_uuid, data):
         data = data or {}
         return self._action(fw_filter_uuid, 'disable_logging', data)
 
