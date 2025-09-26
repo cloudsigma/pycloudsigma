@@ -780,6 +780,10 @@ class Jobs(ResourceBase):
     resource_name = 'jobs'
 
 
+class Job(ResourceBase):
+    resource_name = 'jobs'
+
+
 class WebsocketTimeoutError(Exception):
     pass
 
