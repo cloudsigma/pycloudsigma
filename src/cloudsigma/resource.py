@@ -123,7 +123,11 @@ class Profile(ResourceBase):
         return self.c.get(self._get_url(), return_list=False)
 
     def update(self, data):
-        return self.c.put(self._get_url(), data, return_list=False)
+        """
+        Edits a user profile.
+        """
+        url = self._get_url()
+        return self.c.put(url, data, return_list=False)
 
 
 class GlobalContext(ResourceBase):
@@ -1119,7 +1123,7 @@ class Websocket(object):
             timeout=None,
             extra_filter=lambda x: True
     ):
-        if timeout is None: # Corrected '===' to 'is'
+        if timeout is None:
             timeout = self.timeout
         if kwargs is None:
             kwargs = {}
