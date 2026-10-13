@@ -8,6 +8,8 @@ import requests
 import copy
 import logging
 import sys
+import math
+from urllib.parse import urlsplit
 from builtins import object
 from builtins import str
 from future import standard_library
@@ -32,31 +34,8 @@ def wrap_with_log_hook(log_level, next_hook=None):
         return next_hook
 
     def log_hook(response, *args, **kwargs):
-        request = response.request
-
-        req_msg = '-----RECONSTRUCTED-REQUEST:\n{req.method} {req.path_url} ' \
-                  'HTTP/1.1\r\n{headers}\r\n\r\n{body}\n-----' \
-                  'RECONSTRUCTED-REQUEST-END'.format(
-                      req=request,
-                      headers='\r\n'.join(
-                          '{}: {}'.format(k, v) for k, v in list(
-                              request.headers.items())
-                      ),
-                      body=request.body if request.body else ''
-                  )
-
-        resp_msg = '-----RECONSTRUCTED-RESPONSE:\nHTTP/1.1' \
-                   ' {resp.status_code}' \
-                   ' {resp.reason}\r\n{headers}\r\n\r\n{body}' \
-                   '\n-----RECONSTRUCTED-RESPONSE-END'.format(
-                       resp=response,
-                       headers='\r\n'.join(
-                           '{}: {}'.format(k, v) for k, v in list(
-                               response.headers.items())
-                       ),
-                       body=response.content if response.content else ''
-                   )
-        LOG.log(level, '{}\n\n{}'.format(req_msg, resp_msg))
+        # Never log URLs, headers, payloads or response text: all may contain secrets.
+        LOG.log(level, 'HTTP response status=%s', response.status_code)
 
         next_hook(response, *args, **kwargs)
     return log_hook
@@ -80,18 +59,29 @@ class GenericClient(object):
             api_endpoint=None,
             username=None,
             password=None,
-            login_method=LOGIN_METHOD_BASIC,
-            request_log_level=None
+            login_method=None,
+            request_log_level=None,
+            timeout=15, trust_env=False, proxies=None, session=None
     ):
         self.api_endpoint = api_endpoint if api_endpoint \
             else config['api_endpoint']
         self.username = username if username else config['username']
         self.password = password if password else config['password']
-        self.login_method = config.get('login_method', login_method)
+        self.login_method = login_method if login_method is not None else config.get('login_method', self.LOGIN_METHOD_BASIC)
         assert self.login_method in self.LOGIN_METHODS, \
             'Invalid value %r for login_method' % (login_method,)
 
-        self._session = None
+        def positive(value):
+            return type(value) in (int, float) and math.isfinite(value) and value > 0
+        if not (positive(timeout) or (type(timeout) is tuple and len(timeout) == 2 and all(positive(x) for x in timeout))):
+            raise ValueError('timeout must be finite and positive')
+        if type(trust_env) is not bool or (proxies is not None and type(proxies) is not dict):
+            raise ValueError('invalid transport options')
+        self.timeout = timeout
+        self.proxies = dict(proxies) if proxies is not None else None
+        self._session = session if session is not None else requests.Session()
+        # Borrowed sessions must support requests.Session semantics; policy is explicit.
+        self._session.trust_env = trust_env
         self.resp = None
         self.response_hook = None
         self.request_log_level = request_log_level if request_log_level else \
@@ -99,12 +89,11 @@ class GenericClient(object):
         if self.request_log_level:
             self.request_log_level = self.request_log_level.upper()
 
-        if login_method == self.LOGIN_METHOD_SESSION:
+        if self.login_method == self.LOGIN_METHOD_SESSION:
             self._login_session()
 
     def _login_session(self):
         self.login_method = self.LOGIN_METHOD_SESSION
-        self._session = requests.Session()
         full_url = self._get_full_url('/accounts/action/')
         kwargs = self._get_req_args(query_params={'do': 'login'})
         data = simplejson.dumps(
@@ -124,6 +113,35 @@ class GenericClient(object):
         )
 
     def _get_full_url(self, url):
+        def canonical(value):
+            try:
+                parsed = urlsplit(value)
+                if (parsed.scheme.lower() not in ('http', 'https') or not parsed.hostname
+                        or parsed.username is not None or parsed.password is not None
+                        or '%' in parsed.netloc or parsed.netloc.endswith(':')):
+                    raise ValueError()
+                host = parsed.hostname.encode('idna').decode('ascii').lower()
+                port = parsed.port or (443 if parsed.scheme.lower() == 'https' else 80)
+                return parsed.scheme.lower(), host, port
+            except (ValueError, UnicodeError):
+                raise errors.ApiClientError('invalid request origin') from None
+        def unambiguous(value):
+            if (not isinstance(value, str) or not value or '\\' in value
+                    or any(ord(c) <= 32 or ord(c) == 127 for c in value)
+                    or any(x in value.lower() for x in ('%2f', '%5c'))):
+                raise errors.ApiClientError('ambiguous request URL')
+        unambiguous(self.api_endpoint)
+        unambiguous(url)
+        expected = canonical(self.api_endpoint)
+        if url.startswith('//'):
+            raise errors.ApiClientError('ambiguous request URL')
+        try:
+            requested = urlsplit(url)
+            if requested.scheme or requested.netloc:
+                if canonical(url) != expected:
+                    raise errors.ApiClientError('cross-origin request refused')
+        except ValueError:
+            raise errors.ApiClientError('invalid request URL') from None
         urlparse = get_urlparse()
         urlunparse = get_urlunparse()
         urljoin = get_urljoin()
@@ -141,6 +159,15 @@ class GenericClient(object):
         if not full_url.endswith("/"):
             full_url += "/"
 
+        # Validate both resolver output and requests normalization before auth dispatch.
+        if canonical(full_url) != expected:
+            raise errors.ApiClientError('cross-origin request refused')
+        try:
+            prepared = requests.Request('GET', full_url).prepare().url
+        except (ValueError, requests.RequestException):
+            raise errors.ApiClientError('invalid resolved URL') from None
+        if canonical(prepared) != expected:
+            raise errors.ApiClientError('cross-origin request refused')
         return full_url
 
     def _process_response(self, resp, return_list=False):
@@ -152,6 +179,8 @@ class GenericClient(object):
                 resp_data = resp_data['objects']
                 if len(resp_data) == 1 and not return_list:
                     resp_data = resp_data[0]
+        elif 300 <= resp.status_code < 400:
+            raise errors.ApiClientError('redirect refused', status_code=resp.status_code, request_id=request_id)
         elif resp.status_code == 401:
             raise errors.AuthError(request_id, status_code=resp.status_code)
         elif resp.status_code == 403:
@@ -176,7 +205,9 @@ class GenericClient(object):
         return resp_data
 
     def _get_req_args(self, body=None, query_params=None):
-        kwargs = {}
+        kwargs = {'timeout': self.timeout, 'allow_redirects': False}
+        if self.proxies is not None:
+            kwargs['proxies'] = self.proxies.copy()
         if self.login_method == self.LOGIN_METHOD_BASIC:
             kwargs['auth'] = (self.username, self.password)
 
