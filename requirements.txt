@@ -1,4 +1,4 @@
-backports.ssl-match-hostname>=3.4.0.2
+backports.ssl-match-hostname>=3.4.0.2; python_version < "3.5"
 configobj>=5.0.6
 future>=0.18.2
 iso8601>=0.1.12
