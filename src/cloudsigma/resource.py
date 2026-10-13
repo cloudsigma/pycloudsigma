@@ -406,8 +406,52 @@ class BServer(Server):
     resource_name = 'bservers'
 
 
-class ServersAvailabilityGroups(ResourceBase):
+class _AvailabilityGroups(ResourceBase):
+    """Availability reads with explicit array shapes, not object pagination.
+
+    Identifier policy: accept UTF-8 bytes or nonempty ASCII letters, digits,
+    hyphen and underscore. This is route safety, not UUID/account validation.
+    Existing inherited mutation methods are unchanged, not newly authorized.
+    """
+    @staticmethod
+    def _identifier(value):
+        if isinstance(value, bytes):
+            value = value.decode('utf-8')
+        if not isinstance(value, str) or not value or any(
+                c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+                for c in value):
+            raise ValueError('invalid availability identifier')
+        return value
+
+    @staticmethod
+    def _shape(value, grouped):
+        if type(value) is not list:
+            raise ValueError('availability response must be an array')
+        groups = value if grouped else [value]
+        for group in groups:
+            if type(group) is not list or any(type(item) is not str for item in group):
+                raise ValueError('availability members must be string arrays')
+        return value
+
+    def get(self, uuid=None):
+        url = self._get_url()
+        if uuid is not None:
+            url += self._identifier(uuid) + '/'
+        return self._shape(self.c.get(url, return_list=False), uuid is None)
+
+    def list(self, query_params=None):
+        # Availability arrays have no documented pagination envelope.
+        # Preserve explicit caller query mappings; do not invent limit=0.
+        return self._shape(self.c.get(self._get_url(), query_params=query_params,
+                                      return_list=True), True)
+
+
+class ServersAvailabilityGroups(_AvailabilityGroups):
     resource_name = 'servers/availability_groups'
+
+
+class DrivesAvailabilityGroups(_AvailabilityGroups):
+    resource_name = 'drives/availability_groups'
 
 
 class VLAN(ResourceBase):
