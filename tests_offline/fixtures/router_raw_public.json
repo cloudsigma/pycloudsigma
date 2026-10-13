@@ -1,0 +1,86 @@
+{
+"configuration": {
+"firewall": {
+"active": false,
+"policies": [],
+"uuid": "136256a6-4a04-4ab2-9024-01c330c56619"
+},
+"firewall_logging": false,
+"lan_interface": [
+{
+"default_gateway": "",
+"dhcp": false,
+"ip_address": "10.0.1.1/24",
+"ip_address_v6": "",
+"ip_aliases": [],
+"ip_range": {
+"from": "",
+"to": ""
+},
+"ipv4_enabled": true,
+"ipv4_ipv6_enabled": false,
+"ipv6_enabled": false,
+"name": "LAN 1",
+"router_advertiser": false,
+"uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+"vlan": "68317648-0a2a-4fb4-b179-700fa4dc359d"
+}
+],
+"name": "BLACK HOLE",
+"nat": {
+"active": false,
+"address_forwarding": [],
+"port_forwarding": [],
+"uuid": "38589c2f-035e-4616-9cca-1d93e71490d5"
+},
+"routes": [
+{
+"gateway": "91.92.71.129",
+"inet": "inet",
+"network": "default",
+"uuid": "8979c468-dd08-45d9-803a-86a9e870b8dc"
+}
+],
+"type": "basic",
+"upstream": {
+"ip_config": {
+"default_gateway": "",
+"dhcp_client": false,
+"ip_address": "",
+"ip_address_v6": "",
+"ipv6_automatic": false,
+"router_ipv6_default_gateway": "",
+"upstream_lines": "",
+"vlan": ""
+},
+"ipv4_address": "91.92.71.149",
+"uuid": "c0f07d61-1fd0-40a2-a808-593f5e03685e",
+"vpn": {
+"active": false,
+"password": "f9M0fEscA1ae52r4",
+"username": "dione",
+"vpn_type": "pptp"
+},
+"wan_type": "internet"
+}
+},
+"jobs": [
+{
+"resource_uri": "/api/2.0/jobs/238e40d5-d1cd-42b0-8c07-41737bb77b68/",
+"uuid": "238e40d5-d1cd-42b0-8c07-41737bb77b68"
+}
+],
+"owner": {
+"resource_uri": "/api/2.0/user/93ff48d9-b9a3-49ec-9c41-de0cc9d02c34/",
+"uuid": "93ff48d9-b9a3-49ec-9c41-de0cc9d02c34"
+},
+"resource_uri": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/",
+"runtime": {
+"stats": {},
+"timestamp": "1624735481"
+},
+"state": "created",
+"status": "running",
+"type": "basic",
+"uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+}
