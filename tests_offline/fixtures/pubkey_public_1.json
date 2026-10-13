@@ -1,0 +1,12 @@
+{
+"fingerprint": "e8:ee:43:72:38:09:6d:1e:8e:46:9e:76:80:a3:0a:01",
+"grantees": [],
+"has_private_key": false,
+"meta": {},
+"name": "test_another_pub",
+"permissions": [],
+"public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDFGtYDl+/Oua9uBXqwcbE84QUBBbDdMMzaZ6MAGg1Bmus9VEW0P8kK6npZ0SaUnB2xRrBNwCv0Q0uZBJ70UicgsrhBjCXIVa7K6yQYrFzMxfN8saNAjJvGDdWGSvcMxJdpYwXiOQhFan36eJCCwQjni7I538Ii9chPD8/tyJcBIw==",
+"resource_uri": "/api/2.0/pubkeys/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/",
+"tags": [],
+"uuid": "6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244"
+}
