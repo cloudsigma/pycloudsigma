@@ -1,0 +1,52 @@
+{
+    "meta": {
+        "limit": 0,
+        "offset": 0,
+        "total_count": 1
+    },
+
+    "objects": [
+        {
+            "cores_per_socket": 4,
+            "cpus": 4,
+            "deployed": true,
+            "description": "Test description",
+            "disk": [
+                {
+                    "diskElementName": "Hard disk 1",
+                    "diskVirtualQuantityInBytes": 17179869184
+            }],
+            "enabled": true,
+            "media": [
+                {
+                    "mediaCdElementName": "CD/DVD Drive 1",
+                    "mediaCdHostResource": "test.iso"
+            }],
+            "memory": 4096, "name": "testVLAN10",
+            "nics": [
+                {
+                    "adapter_type": "VMXNET3",
+                    "connected": "true",
+                    "index": "0",
+                    "ip_address": "127.0.0.1",
+                    "ip_address_mode": "MANUAL",
+                    "mac_address": "00:50:56:01:00:12",
+                    "network": "VLAN0 Network",
+                    "primary": "True"
+            },
+                {
+                    "adapter_type": "VMXNET3",
+                    "connected": "true",
+                    "index": "1",
+                    "ip_address": "10.10.11.1",
+                    "ip_address_mode": "MANUAL",
+                    "mac_address": "00:50:56:01:00:14",
+                    "network": "VLAN57 - Private to cloud",
+                    "primary": "True"
+            }],
+            "organisation": "5ce13c06-a1a4-4bf8-8ab0-64d23f455dda",
+            "powered": true,
+            "resource_uri": "/api/2.0/vmware_servers/d1f1bd39-124c-45c0-952c-2844a22f842e/",
+            "uuid": "d1f1bd39-124c-45c0-952c-2844a22f842e"
+    }]
+}
