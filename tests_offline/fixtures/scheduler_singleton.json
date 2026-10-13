@@ -1,0 +1,67 @@
+{
+"enable_backup_policy_notifications": true,
+"enable_retention_policy_notifications": false,
+"grantees": [],
+"incremental_backup": {
+"day_of_month": "*",
+"day_of_week": [
+"*"
+],
+"end_time": {
+"hour": 23,
+"minute": 45
+},
+"hour": "",
+"minute": "*",
+"month": "*",
+"repeat": {
+"hour": "*/2",
+"minute": ""
+},
+"start_time": {
+"hour": 0,
+"minute": 0
+}
+},
+"initial_backup": {
+"day_of_week": [
+"*"
+],
+"end_time": {
+"hour": 23,
+"minute": 45
+},
+"start_time": {
+"hour": 0,
+"minute": 0
+}
+},
+"is_default": false,
+"is_enabled": true,
+"manual_incremental_backup": "",
+"meta": {
+
+},
+"name": "snapshots policy",
+"orchestrator_timezone": "",
+"owner": {
+"resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+"uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+},
+"permissions": [],
+"remote_location": "TBC",
+"resource_uri": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/",
+"retention_policy": {
+"name": "Last 3 days",
+"rules": [
+{
+"period": "days",
+"quantity": 3
+}
+]
+},
+"tags": [],
+"type": "snapshot",
+"user_timezone": "America/Danmarkshavn",
+"uuid": "eb352f24-3a72-47a9-96cc-7b508ef52d8e"
+}
