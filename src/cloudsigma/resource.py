@@ -61,6 +61,20 @@ class ResourceBase(object):
             _query_params.update(query_params)
         return self.c.get(url, query_params=_query_params, return_list=True)
 
+    def list_raw(self, query_params=None):
+        """Return one complete collection response; do not follow pages."""
+        query = {'limit': 0}
+        if query_params:
+            query.update(query_params)
+        return self.c.get_raw(self._get_url(), query_params=query)
+
+    def list_detail_raw(self, query_params=None):
+        """Return one complete detail collection response; do not follow pages."""
+        query = {'limit': 0}
+        if query_params:
+            query.update(query_params)
+        return self.c.get_raw(self._get_url() + 'detail/', query_params=query)
+
     def _pepare_data(self, data):
         res_data = data
         if isinstance(data, (list, tuple)):

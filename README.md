@@ -355,3 +355,30 @@ There's also another script named [snapshot_purge.py](https://raw.githubusercont
 
 There must be a VM available by the name that matches `persistent_drive_name`. This VM should be a server with SSH installed, where one can be logged in as `root` with the password set in `persistent_drive_ssh_password`.
 
+
+### Opt-in complete collection responses
+
+`resource.IP(...).list_raw(query_params={'limit': 2, 'offset': 3})` and
+`resource.VLAN(...).list_detail_raw(...)` return one complete decoded response,
+including `meta` and `objects`, rather than only the objects array. These methods
+are inherited from `ResourceBase`; only IP/VLAN summary/detail routes have the
+new installed fake-transport regressions. Inheritance does not establish that
+all resource endpoints support collections. Existing `list` / `list_detail`
+return values are unchanged. Like those legacy methods, the default is `limit=0`;
+explicit pagination and filter parameters are forwarded without mutating the
+caller mapping. No subsequent page is requested.
+
+The public pagination contract documents `meta.limit`, `meta.offset` and
+`meta.total_count`; it does not specify `next` or `previous`. No pagination keys
+are synthesized or stripped. Unknown keys, null/absent distinctions and array
+order survive decoding; response schemas are not validated. `GenericClient.get_raw`
+is the underlying single-GET primitive, not a full-API coverage claim. It uses
+the generic Requests JSON decoder and deep-copy policy: integers remain Python
+integers, fractions follow the existing JSON decoder (typically float), not the
+Decimal policy of the separate scoped raw readers. It does not preserve original
+JSON numeric lexemes or duplicate keys. Existing scoped readers remain unchanged.
+The new raw path deliberately bypasses `_process_response` overrides; custom
+clients must implement `get_raw` to support the new resource methods. Existing
+custom-client calls are unchanged. Authentication, transport and HTTP error
+policy are shared; raw responses and legacy service error messages may contain
+sensitive data. These methods are not read-only capability fences.

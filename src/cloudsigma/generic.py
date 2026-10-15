@@ -171,11 +171,14 @@ class GenericClient(object):
         return full_url
 
     def _process_response(self, resp, return_list=False):
+        return self._decode_response(resp, return_list)
+
+    def _decode_response(self, resp, return_list=False, preserve_envelope=False):
         resp_data = None
         request_id = resp.headers.get('X-REQUEST-ID', None)
         if resp.status_code in (200, 201, 202):
             resp_data = copy.deepcopy(resp.json())
-            if 'objects' in resp_data:
+            if not preserve_envelope and 'objects' in resp_data:
                 resp_data = resp_data['objects']
                 if len(resp_data) == 1 and not return_list:
                     resp_data = resp_data[0]
@@ -240,6 +243,16 @@ class GenericClient(object):
         kwargs = self._get_req_args(query_params=query_params)
         self.resp = self.http.get(self._get_full_url(url), **kwargs)
         return self._process_response(self.resp, return_list)
+
+    def get_raw(self, url, query_params=None):
+        """Return one decoded GET response without unwrapping objects.
+
+        Uses the existing JSON numeric policy, authentication and errors.
+        No traversal, schema validation or original JSON lexeme guarantee.
+        """
+        kwargs = self._get_req_args(query_params=query_params)
+        self.resp = self.http.get(self._get_full_url(url), **kwargs)
+        return self._decode_response(self.resp, preserve_envelope=True)
 
     def put(self, url, data, query_params=None, return_list=False):
         kwargs = self._get_req_args(body=data, query_params=query_params)
