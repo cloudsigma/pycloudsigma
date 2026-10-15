@@ -1,0 +1,40 @@
+{
+  "gateway": "185.12.6.1",
+  "grantees": [],
+  "meta": {
+    "description": "nested fixture caf\u00e9",
+    "empty": ""
+  },
+  "nameservers": [
+    "69.194.139.62",
+    "178.22.66.167",
+    "178.22.71.56"
+  ],
+  "netmask": 24,
+  "owner": {
+    "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+    "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+  },
+  "permissions": [
+    "EDIT",
+    "LIST",
+    "ATTACH"
+  ],
+  "resource_uri": "/api/2.0/ips/185.12.6.183/",
+  "server": null,
+  "subscription": {
+    "id": 7273,
+    "resource_uri": "/api/2.0/subscriptions/7273/"
+  },
+  "tags": [
+    {
+      "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+      "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+    },
+    {
+      "resource_uri": "/api/2.0/tags/5a9e6f2b-7927-4f30-88b5-0cc939208549/",
+      "uuid": "5a9e6f2b-7927-4f30-88b5-0cc939208549"
+    }
+  ],
+  "uuid": "185.12.6.183"
+}
