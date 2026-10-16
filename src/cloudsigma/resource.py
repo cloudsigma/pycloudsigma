@@ -157,6 +157,13 @@ class NotificationPreference(ResourceBase):
 class LibDrive(ResourceBase):
     resource_name = 'libdrives'
 
+    def clone(self, uuid, data=None):
+        """Clone a library drive into the account with an optional definition.
+
+        A successful acknowledgment does not establish clone completion.
+        """
+        return self._action(uuid, 'clone', data if data is not None else {})
+
 
 class Drive(ResourceBase):
     resource_name = 'drives'
