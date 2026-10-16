@@ -18,5 +18,5 @@ os.environ['CLOUDSIGMA_CONFIG']='/dev/null'
 sys.path.insert(0,str(ROOT))
 suite=unittest.defaultTestLoader.discover(str(ROOT/'tests_offline'))
 r=unittest.TextTestRunner(verbosity=2).run(suite)
-assert r.testsRun==117, 'unexpected test count'
+assert r.testsRun==119, 'unexpected test count'
 sys.exit(not r.wasSuccessful())
