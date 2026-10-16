@@ -656,11 +656,11 @@ class Websocket(object):
         return False
 
     def wait_obj_type(self, resource_type, cls, timeout=None):
-        ret = self.wait({"resource_type": resource_type})[-1]
+        ret = self.wait({"resource_type": resource_type}, timeout=timeout)[-1]
         return cls().get_from_url(ret['resource_uri'])
 
     def wait_obj_uri(self, resource_uri, cls, timeout=None):
-        ret = self.wait({"resource_uri": resource_uri})
+        ret = self.wait({"resource_uri": resource_uri}, timeout=timeout)
         return cls().get_from_url(resource_uri)
 
     def wait_obj_wrapper(
