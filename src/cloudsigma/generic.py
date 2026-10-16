@@ -185,7 +185,11 @@ class GenericClient(object):
         elif 300 <= resp.status_code < 400:
             raise errors.ApiClientError('redirect refused', status_code=resp.status_code, request_id=request_id)
         elif resp.status_code == 401:
-            raise errors.AuthError(request_id, status_code=resp.status_code)
+            error = errors.AuthError(request_id, status_code=resp.status_code)
+            # Preserve legacy exception fields; expose response details additively.
+            error.response_body = resp.text
+            error.response_request_id = request_id
+            raise error
         elif resp.status_code == 403:
             raise errors.PermissionError(
                 resp.text,
