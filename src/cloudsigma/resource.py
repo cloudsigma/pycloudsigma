@@ -168,6 +168,16 @@ class LibDrive(ResourceBase):
 class Drive(ResourceBase):
     resource_name = 'drives'
 
+    def set_scheduler(self, uuid, backup_policy_uuid):
+        """Link an existing backup scheduler to a drive.
+
+        Uses the documented backup_policy_uuid request field. The returned
+        acknowledgment does not establish completion. Scheduler creation,
+        unlinking and scheduling policy are not part of this method.
+        """
+        return self._action(uuid, 'set_scheduler',
+                            {'backup_policy_uuid': backup_policy_uuid})
+
     def clone(self, uuid, data=None, avoid=None):
         """
         Clone a drive.
