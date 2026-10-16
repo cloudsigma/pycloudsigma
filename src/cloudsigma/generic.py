@@ -150,7 +150,10 @@ class GenericClient(object):
         api_endpoint = urlparse(self.api_endpoint)
         if url.startswith(api_endpoint.path):
             full_url = list(api_endpoint)
-            full_url[2] = url
+            full_url[2] = requested.path
+            full_url[3] = ''
+            full_url[4] = requested.query
+            full_url[5] = requested.fragment
             full_url = [str(x) for x in full_url]
             full_url = urlunparse(full_url)
         else:
@@ -158,8 +161,11 @@ class GenericClient(object):
                 url = url[1:]
             full_url = urljoin(str(self.api_endpoint), str(url))
 
-        if not full_url.endswith("/"):
-            full_url += "/"
+        # Normalize the resource path only; query values are not path segments.
+        resolved = list(urlparse(full_url))
+        if not resolved[2].endswith('/'):
+            resolved[2] += '/'
+        full_url = urlunparse(resolved)
 
         # Validate both resolver output and requests normalization before auth dispatch.
         if canonical(full_url) != expected:
