@@ -298,11 +298,23 @@ class InitUpload(ResourceBase):
 class Server(ResourceBase):
     resource_name = 'servers'
 
-    def start(self, uuid, allocation_method=None):
+    def start(self, uuid, allocation_method=None, avoid=None):
+        """Start with optional ordered, best-effort compute-host avoidance.
+
+        ``avoid`` is a server UUID or sequence of server UUIDs, as documented
+        at https://docs.cloudsigma.com/en/latest/availability_groups.html.
+        Empty values omit the hint. Acknowledgment does not prove placement
+        or completion. The existing allocation_method argument is unchanged.
+        """
         data = {}
         if allocation_method:
             data = {'allocation_method': str(allocation_method)}
-        return self._action(uuid, 'start', data)
+        query_params = {}
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] = ','.join(avoid)
+        return self._action(uuid, 'start', data, query_params=query_params)
 
     def stop(self, uuid):
         return self._action(
