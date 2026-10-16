@@ -516,6 +516,17 @@ class Subscriptions(ResourceBase):
         return self._action(uuid, 'extend', data or {})
 
 
+class GroupedSubscriptions(ResourceBase):
+    """Read grouped subscriptions with list() or list_raw().
+
+    The public API returns first subscriptions in extension chains, with
+    descendants and the last subscription's end_time. Values are preserved
+    using the existing JSON decoder; no chain calculation or schema validation
+    is performed. Inherited methods do not imply other routes are supported.
+    """
+    resource_name = 'groupedsubscriptions'
+
+
 class SubscriptionCalculator(Subscriptions):
     resource_name = 'subscriptioncalculator'
 
