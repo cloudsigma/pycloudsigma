@@ -726,6 +726,16 @@ class BurstUsage(ResourceBase):
     resource_name = 'burstusage'
 
 
+class DailyBurstUsage(ResourceBase):
+    """Accumulated daily usage via list/list_raw, with optional date filters.
+
+    Pass date__gt/date__lt in query_params; dates and decimal amount strings
+    are returned unchanged. Inherited mutations/detail routes are not a
+    supported contract. Listing does not verify charges or follow pages.
+    """
+    resource_name = 'dailyburstusage'
+
+
 class Locations(ResourceBase):
     resource_name = 'locations'
 
