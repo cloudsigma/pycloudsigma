@@ -46,10 +46,12 @@ class GenericClient(object):
     Handles all low level HTTP, authentication, parsing and error handling.
     """
     LOGIN_METHOD_BASIC = 'basic'
+    LOGIN_METHOD_DIGEST = 'digest'
     LOGIN_METHOD_SESSION = 'session'
     LOGIN_METHOD_NONE = 'none'
     LOGIN_METHODS = (
         LOGIN_METHOD_BASIC,
+        LOGIN_METHOD_DIGEST,
         LOGIN_METHOD_SESSION,
         LOGIN_METHOD_NONE,
     )
@@ -217,6 +219,10 @@ class GenericClient(object):
             kwargs['proxies'] = self.proxies.copy()
         if self.login_method == self.LOGIN_METHOD_BASIC:
             kwargs['auth'] = (self.username, self.password)
+        elif self.login_method == self.LOGIN_METHOD_DIGEST:
+            # Fresh challenge state per operation: never preemptively send a
+            # cached digest to another path, realm or changed endpoint.
+            kwargs['auth'] = requests.auth.HTTPDigestAuth(self.username, self.password)
 
         kwargs['headers'] = {
             'content-type': 'application/json',

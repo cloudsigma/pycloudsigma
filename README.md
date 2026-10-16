@@ -382,3 +382,18 @@ clients must implement `get_raw` to support the new resource methods. Existing
 custom-client calls are unchanged. Authentication, transport and HTTP error
 policy are shared; raw responses and legacy service error messages may contain
 sensitive data. These methods are not read-only capability fences.
+
+### Opt-in HTTP Digest authentication
+
+`GenericClient(..., login_method='digest')` (also accepted by resource
+constructors) uses Requests `HTTPDigestAuth` for the public API's documented
+MD5 / qop=auth challenge-response flow. Each operation starts without an SDK
+Authorization header and may retry once after a Digest challenge; JSON write
+bodies are replayed unchanged. Challenge state is not cached between operations.
+The existing same-origin URL check and redirect refusal still apply.
+
+The default remains Basic; `basic`, `session`, and `none` behavior is unchanged.
+Use HTTPS and an ordinary clean Requests Session: caller-supplied headers,
+cookies, hooks and adapters remain caller-controlled. This is not browser-cookie
+flow support, an algorithm compatibility promise for every server, or live
+CloudSigma acceptance. The documented MD5 digest is not a substitute for TLS.
