@@ -13,7 +13,7 @@ class GetServerMetadata(object):
             ser = serial.Serial('/dev/ttyS1', timeout=1)
 
             # Trigger a read from the serial device
-            ser.write('<\n\n>')
+            ser.write(b'<\n\n>')
 
             # Read the data and convert it to json
             data = ser.readlines()
