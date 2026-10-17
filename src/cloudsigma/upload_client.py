@@ -241,12 +241,12 @@ class CSUploader(object):
             rel_url.lstrip('/')
         )
 
-        with open(self.image_path, 'r') as f:
+        with open(self.image_path, 'rb') as f:
             f.seek(chunk_offset)
             data = f.read(real_chunk_size)
             req = urllib.request.Request(
                 str(upload_url),
-                str(data),
+                data,
                 headers=UPLOAD_HEADERS
             )
             self.opener.open(req)
