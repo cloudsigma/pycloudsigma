@@ -218,7 +218,7 @@ class DrivesBulk(BulkBase):
         resp = self.c_drive.list_detail()
         candidates = self.filter_by_name_uuid(resp, name_or_uuid)
         if not candidates:
-            resp = self.c_drive.list_library_drives()
+            resp = self.c_libdrive.list_detail()
             candidates = self.filter_by_name_uuid(resp, name_or_uuid)
         if len(candidates) == 0:
             raise Exception("Could not find %s with lookup key %s" % (
