@@ -219,7 +219,7 @@ class Upload(ResourceBase):
                 return
 
             resumable_js_data_multipart = list(resumable_js_data.items()) \
-                + [('file', str(file_data))]
+                + [('file', file_data)]
 
             res = requests.post(
                 upload_url,
