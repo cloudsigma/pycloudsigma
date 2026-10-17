@@ -13,11 +13,22 @@ class PricingRead(ResourceBase):
     def __init__(self, *args, **kwargs):
         self.c = _RawReadClient(*args, **kwargs)
 
-    def get(self, limit=None):
+    def get(self, limit=None, offset=None):
+        """Read one pricing page with explicit limit and zero-based offset.
+
+        Omitted values preserve service defaults; limit=0 requests all objects.
+        Existing positional limit calls remain unchanged. No traversal occurs.
+        """
         if limit is not None and (type(limit) is not int or limit < 0):
             raise ValueError('limit must be a nonnegative integer')
-        query = None if limit is None else {'limit': limit}
-        return self.c.get(self._get_url(), query_params=query)
+        if offset is not None and (type(offset) is not int or offset < 0):
+            raise ValueError('offset must be a nonnegative integer')
+        query = {}
+        if limit is not None:
+            query['limit'] = limit
+        if offset is not None:
+            query['offset'] = offset
+        return self.c.get(self._get_url(), query_params=query or None)
 
 
 class LedgerRead(ResourceBase):
