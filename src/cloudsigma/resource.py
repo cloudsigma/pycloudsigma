@@ -640,25 +640,31 @@ class Snapshot(ResourceBase):
 class Tags(ResourceBase):
     resource_name = 'tags'
 
-    def list_resource(self, uuid, resource_name):
+    def list_resource(self, uuid, resource_name, query_params=None):
+        """Read one tagged-resource page with optional limit/offset parameters.
+
+        Omitted parameters preserve the server default page. Pass limit=0
+        explicitly to request all resources. No pages are followed implicitly;
+        the existing list return shape is unchanged.
+        """
         url = '{base}{tag_uuid}/{res_name}/'.format(
             base=self._get_url(),
             tag_uuid=uuid,
             res_name=resource_name
         )
-        return self.c.get(url, return_list=True)
+        return self.c.get(url, query_params=query_params, return_list=True)
 
-    def drives(self, uuid):
-        return self.list_resource(uuid, 'drives')
+    def drives(self, uuid, query_params=None):
+        return self.list_resource(uuid, 'drives', query_params=query_params)
 
-    def servers(self, uuid):
-        return self.list_resource(uuid, 'servers')
+    def servers(self, uuid, query_params=None):
+        return self.list_resource(uuid, 'servers', query_params=query_params)
 
-    def ips(self, uuid):
-        return self.list_resource(uuid, 'ips')
+    def ips(self, uuid, query_params=None):
+        return self.list_resource(uuid, 'ips', query_params=query_params)
 
-    def vlans(self, uuid):
-        return self.list_resource(uuid, 'vlans')
+    def vlans(self, uuid, query_params=None):
+        return self.list_resource(uuid, 'vlans', query_params=query_params)
 
 
 class Acls(ResourceBase):
