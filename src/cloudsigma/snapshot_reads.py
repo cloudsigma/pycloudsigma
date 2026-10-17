@@ -21,8 +21,13 @@ class SnapshotReads(Snapshot):
         """
         return self.c.get(self._get_url(), query_params=query_params)
 
-    def list_detail(self):
-        return self.c.get(self._get_url() + 'detail/')
+    def list_detail(self, query_params=None):
+        """Read one detail page with optional explicit limit/offset values.
+
+        Omitted parameters preserve the service default. Forwarding a query
+        does not establish support for the disputed drive-filter variant.
+        """
+        return self.c.get(self._get_url() + 'detail/', query_params=query_params)
 
     def get(self, uuid=None):
         identifier = _AvailabilityGroups._identifier(uuid)
