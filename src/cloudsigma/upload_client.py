@@ -150,7 +150,7 @@ class CSUploader(object):
             'size': self.size,
             'media': media
         }
-        str_data = json.dumps(data)
+        str_data = json.dumps(data).encode('utf-8')
         req = urllib.request.Request(url, data=str_data, headers=INIT_HEADERS)
         response = self.opener.open(req)
         status = response.getcode()
@@ -271,7 +271,7 @@ class CSUploader(object):
                 'chunk_size': self.chunk_size
             }
         )
-        req = urllib.request.Request(url, data, headers=INIT_HEADERS)
+        req = urllib.request.Request(url, data.encode('utf-8'), headers=INIT_HEADERS)
         self.opener = self.init_auth()
         response = self.opener.open(req)
         response_data = json.loads(response.read())
