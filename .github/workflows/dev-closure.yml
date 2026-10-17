@@ -1,0 +1,36 @@
+name: Offline Poetry development closure
+on:
+  pull_request:
+    paths:
+      - pyproject.toml
+      - poetry.lock
+      - ci/dev-requirements.lock
+      - ci/dev-closure.json
+      - ci/run_dev_offline.py
+      - .github/workflows/dev-closure.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dev-closure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '${{ matrix.python }}'
+      - name: Install exact full development closure (no SDK or acceptance discovery)
+        run: |
+          python -m venv .dev-venv
+          .dev-venv/bin/python -m pip --isolated install --index-url https://pypi.org/simple --only-binary=:all: --require-hashes -r ci/dev-requirements.lock
+          .dev-venv/bin/python -m pip --isolated check
+      - name: Guarded finite development-consumer checks
+        timeout-minutes: 2
+        run: .dev-venv/bin/python -I -B ci/run_dev_offline.py
