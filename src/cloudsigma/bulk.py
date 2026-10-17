@@ -112,6 +112,10 @@ class DrivesBulk(BulkBase):
         substring match of its name
         """
         source_drive = self.lookup(source_name_or_uuid)
+        # Public library definitions have an explicit null owner.
+        clone_client = (self.c_libdrive
+                        if "owner" in source_drive and source_drive["owner"] is None
+                        else self.c_drive)
 
         drives = []
         for _ in range(count):
@@ -122,7 +126,7 @@ class DrivesBulk(BulkBase):
                 "meta": source_drive['meta'],
                 "affinities": source_drive['affinities'],
             }
-            resp = self.c_drive.clone(source_drive['uuid'], d)
+            resp = clone_client.clone(source_drive['uuid'], d)
             LOG.info('Cloned drive %r from %r',
                      resp['name'], source_drive['name'])
             drives.append(resp)
