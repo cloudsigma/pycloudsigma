@@ -27,5 +27,10 @@ class LedgerRead(ResourceBase):
     def __init__(self, *args, **kwargs):
         self.c = _RawReadClient(*args, **kwargs)
 
-    def get(self):
-        return self.c.get(self._get_url())
+    def get(self, query_params=None):
+        """Read one page, optionally selecting documented limit/offset values.
+
+        Omitted parameters preserve the service's default page. No automatic
+        traversal or new filter support is implied.
+        """
+        return self.c.get(self._get_url(), query_params=query_params)
