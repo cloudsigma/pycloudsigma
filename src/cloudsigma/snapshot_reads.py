@@ -4,7 +4,7 @@ from cloudsigma.router_reads import _RawReadClient
 
 
 class SnapshotReads(Snapshot):
-    """One response, no query or traversal. Inherited mutations are not a fence.
+    """One response, no traversal. Inherited mutations are not a fence.
 
     Fractional numbers use Decimal, not original numeric lexemes. Nested schema
     is not validated. Unexpected sensitive fields remain caller responsibility.
@@ -13,8 +13,13 @@ class SnapshotReads(Snapshot):
     def __init__(self, *args, **kwargs):
         self.c = _RawReadClient(*args, **kwargs)
 
-    def list(self):
-        return self.c.get(self._get_url())
+    def list(self, query_params=None):
+        """Read one summary page with optional explicit limit/offset values.
+
+        Omitted parameters preserve the service default. Forwarding a query
+        does not establish support for the disputed drive-filter variant.
+        """
+        return self.c.get(self._get_url(), query_params=query_params)
 
     def list_detail(self):
         return self.c.get(self._get_url() + 'detail/')
