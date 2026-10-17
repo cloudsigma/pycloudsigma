@@ -1,14 +1,38 @@
-"""Explicit scheduler GETs; no scheduling mutations or traversal contract."""
+"""Explicit scheduler GETs and collection deletion; no traversal contract."""
 from cloudsigma.router_reads import VirtualRouterReads
 
 
 class BackupSchedulerReads(VirtualRouterReads):
     """Preserve HTTP200 envelopes/Decimal values using the scoped read client.
 
-    Inherited mutation methods are not a readonly fence or supported contract.
+    Only delete_many is a qualified mutation here. Other inherited mutations
+    are not a readonly fence or supported contract.
     Existing generic resources are unchanged. Fields projection is list-only.
     """
     resource_name = 'backupschedulers'
+
+
+    def delete_many(self, uuids):
+        """Request scheduler collection deletion, not completion or atomicity.
+
+        Accept a nonempty list/tuple of nonempty ASCII letters, digits, hyphens
+        and underscores. This conservative SDK policy is not public UUID
+        grammar. Validate the whole batch before one request; preserve order
+        and duplicates without modifying the caller's sequence. HTTP 204
+        returns None and means deletion started. No retries, polling, drive
+        deletion or scheduler creation contract is provided.
+        https://docs.cloudsigma.com/en/latest/backup_schedulers.html#deleting
+        """
+        if not isinstance(uuids, (list, tuple)) or not uuids:
+            raise ValueError('scheduler identifiers must be a nonempty list or tuple')
+        objects = []
+        for uuid in uuids:
+            if not isinstance(uuid, str) or not uuid or any(
+                    char not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+                    for char in uuid):
+                raise ValueError('invalid scheduler identifier')
+            objects.append({'uuid': uuid})
+        return self.c.delete(self._get_url(), data={'objects': objects})
 
     def _page(self, detail=False, query_params=None):
         query = {} if query_params is None else dict(query_params)
