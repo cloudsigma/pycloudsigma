@@ -1,0 +1,34 @@
+{
+  "inputs": {
+    "ci/dev-requirements.lock": "b49d2113d0edf7d987e51841c21af37c1dcc90b89241ed42aa20de46c50954a9",
+    "poetry.lock": "220bbd9ecc26bdb7362f937082ce9c9b2ac6d20d696ffe0fc4172b0fbb2559ae",
+    "pyproject.toml": "16b54cfe8ea361b204d35c2fe82347ddf221cb77c8f4bc0413ac55aaea3b0d2a"
+  },
+  "packages": {
+    "bcrypt": "5.0.0",
+    "certifi": "2026.7.22",
+    "cffi": "2.1.1",
+    "charset-normalizer": "3.5.2",
+    "configobj": "5.0.9",
+    "cryptography": "50.0.0",
+    "decorator": "5.3.1",
+    "deprecated": "1.3.1",
+    "fabric": "3.2.3",
+    "future": "1.0.0",
+    "idna": "3.20",
+    "invoke": "2.2.1",
+    "iso8601": "2.1.0",
+    "nose": "1.3.7",
+    "paramiko": "3.5.1",
+    "pycparser": "3.11",
+    "pynacl": "1.6.2",
+    "pyserial": "3.5",
+    "requests": "2.33.0",
+    "simplejson": "4.2.0",
+    "six": "1.17.0",
+    "typing-extensions": "4.16.0",
+    "urllib3": "2.8.0",
+    "websocket-client": "1.9.2",
+    "wrapt": "2.5.1"
+  }
+}

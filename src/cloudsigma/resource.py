@@ -61,6 +61,20 @@ class ResourceBase(object):
             _query_params.update(query_params)
         return self.c.get(url, query_params=_query_params, return_list=True)
 
+    def list_raw(self, query_params=None):
+        """Return one complete collection response; do not follow pages."""
+        query = {'limit': 0}
+        if query_params:
+            query.update(query_params)
+        return self.c.get_raw(self._get_url(), query_params=query)
+
+    def list_detail_raw(self, query_params=None):
+        """Return one complete detail collection response; do not follow pages."""
+        query = {'limit': 0}
+        if query_params:
+            query.update(query_params)
+        return self.c.get_raw(self._get_url() + 'detail/', query_params=query)
+
     def _pepare_data(self, data):
         res_data = data
         if isinstance(data, (list, tuple)):
@@ -143,9 +157,26 @@ class NotificationPreference(ResourceBase):
 class LibDrive(ResourceBase):
     resource_name = 'libdrives'
 
+    def clone(self, uuid, data=None):
+        """Clone a library drive into the account with an optional definition.
+
+        A successful acknowledgment does not establish clone completion.
+        """
+        return self._action(uuid, 'clone', data if data is not None else {})
+
 
 class Drive(ResourceBase):
     resource_name = 'drives'
+
+    def set_scheduler(self, uuid, backup_policy_uuid):
+        """Link an existing backup scheduler to a drive.
+
+        Uses the documented backup_policy_uuid request field. The returned
+        acknowledgment does not establish completion. Scheduler creation,
+        unlinking and scheduling policy are not part of this method.
+        """
+        return self._action(uuid, 'set_scheduler',
+                            {'backup_policy_uuid': backup_policy_uuid})
 
     def clone(self, uuid, data=None, avoid=None):
         """
@@ -284,11 +315,23 @@ class InitUpload(ResourceBase):
 class Server(ResourceBase):
     resource_name = 'servers'
 
-    def start(self, uuid, allocation_method=None):
+    def start(self, uuid, allocation_method=None, avoid=None):
+        """Start with optional ordered, best-effort compute-host avoidance.
+
+        ``avoid`` is a server UUID or sequence of server UUIDs, as documented
+        at https://docs.cloudsigma.com/en/latest/availability_groups.html.
+        Empty values omit the hint. Acknowledgment does not prove placement
+        or completion. The existing allocation_method argument is unchanged.
+        """
         data = {}
         if allocation_method:
             data = {'allocation_method': str(allocation_method)}
-        return self._action(uuid, 'start', data)
+        query_params = {}
+        if avoid:
+            if isinstance(avoid, basestring):
+                avoid = [avoid]
+            query_params['avoid'] = ','.join(avoid)
+        return self._action(uuid, 'start', data, query_params=query_params)
 
     def stop(self, uuid):
         return self._action(
@@ -406,8 +449,52 @@ class BServer(Server):
     resource_name = 'bservers'
 
 
-class ServersAvailabilityGroups(ResourceBase):
+class _AvailabilityGroups(ResourceBase):
+    """Availability reads with explicit array shapes, not object pagination.
+
+    Identifier policy: accept UTF-8 bytes or nonempty ASCII letters, digits,
+    hyphen and underscore. This is route safety, not UUID/account validation.
+    Existing inherited mutation methods are unchanged, not newly authorized.
+    """
+    @staticmethod
+    def _identifier(value):
+        if isinstance(value, bytes):
+            value = value.decode('utf-8')
+        if not isinstance(value, str) or not value or any(
+                c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+                for c in value):
+            raise ValueError('invalid availability identifier')
+        return value
+
+    @staticmethod
+    def _shape(value, grouped):
+        if type(value) is not list:
+            raise ValueError('availability response must be an array')
+        groups = value if grouped else [value]
+        for group in groups:
+            if type(group) is not list or any(type(item) is not str for item in group):
+                raise ValueError('availability members must be string arrays')
+        return value
+
+    def get(self, uuid=None):
+        url = self._get_url()
+        if uuid is not None:
+            url += self._identifier(uuid) + '/'
+        return self._shape(self.c.get(url, return_list=False), uuid is None)
+
+    def list(self, query_params=None):
+        # Availability arrays have no documented pagination envelope.
+        # Preserve explicit caller query mappings; do not invent limit=0.
+        return self._shape(self.c.get(self._get_url(), query_params=query_params,
+                                      return_list=True), True)
+
+
+class ServersAvailabilityGroups(_AvailabilityGroups):
     resource_name = 'servers/availability_groups'
+
+
+class DrivesAvailabilityGroups(_AvailabilityGroups):
+    resource_name = 'drives/availability_groups'
 
 
 class VLAN(ResourceBase):
@@ -427,6 +514,17 @@ class Subscriptions(ResourceBase):
 
     def extend(self, uuid, data=None):
         return self._action(uuid, 'extend', data or {})
+
+
+class GroupedSubscriptions(ResourceBase):
+    """Read grouped subscriptions with list() or list_raw().
+
+    The public API returns first subscriptions in extension chains, with
+    descendants and the last subscription's end_time. Values are preserved
+    using the existing JSON decoder; no chain calculation or schema validation
+    is performed. Inherited methods do not imply other routes are supported.
+    """
+    resource_name = 'groupedsubscriptions'
 
 
 class SubscriptionCalculator(Subscriptions):
@@ -598,11 +696,11 @@ class Websocket(object):
         return False
 
     def wait_obj_type(self, resource_type, cls, timeout=None):
-        ret = self.wait({"resource_type": resource_type})[-1]
+        ret = self.wait({"resource_type": resource_type}, timeout=timeout)[-1]
         return cls().get_from_url(ret['resource_uri'])
 
     def wait_obj_uri(self, resource_uri, cls, timeout=None):
-        ret = self.wait({"resource_uri": resource_uri})
+        ret = self.wait({"resource_uri": resource_uri}, timeout=timeout)
         return cls().get_from_url(resource_uri)
 
     def wait_obj_wrapper(
@@ -637,6 +735,16 @@ class Websocket(object):
 
 class BurstUsage(ResourceBase):
     resource_name = 'burstusage'
+
+
+class DailyBurstUsage(ResourceBase):
+    """Accumulated daily usage via list/list_raw, with optional date filters.
+
+    Pass date__gt/date__lt in query_params; dates and decimal amount strings
+    are returned unchanged. Inherited mutations/detail routes are not a
+    supported contract. Listing does not verify charges or follow pages.
+    """
+    resource_name = 'dailyburstusage'
 
 
 class Locations(ResourceBase):

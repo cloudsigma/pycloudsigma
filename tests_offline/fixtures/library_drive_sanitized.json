@@ -1,0 +1,55 @@
+{
+  "affinities": [],
+  "allow_multimount": false,
+  "arch": "64",
+  "category": [
+    "dbserver"
+  ],
+  "description": "Pre-installed SQL Server 2012 Standard Edition with SP1 64bit English with VirtIO and Python support. Last update on 2013/11/05.",
+  "distribution": null,
+  "favourite": false,
+  "image_type": "preinst",
+  "install_notes": "SYNTHETIC: public installation prose replaced to exclude embedded example credentials",
+  "jobs": [],
+  "licenses": [
+    {
+      "amount": 1,
+      "license": {
+        "burstable": false,
+        "long_name": "SQL Server Standard Edition",
+        "name": "msft_7nq_00302",
+        "resource_uri": "/api/2.0/licenses/14/",
+        "type": "instance",
+        "user_metric": "smp"
+      },
+      "user": null
+    },
+    {
+      "amount": 1,
+      "license": {
+        "burstable": true,
+        "long_name": "Windows Server",
+        "name": "msft_p73_04837_core",
+        "resource_uri": "/api/2.0/licenses/12/",
+        "type": "instance",
+        "user_metric": "smp"
+      },
+      "user": null
+    }
+  ],
+  "media": "disk",
+  "meta": {},
+  "mounted_on": [],
+  "name": "Microsoft SQL Server 2012 Standard Edition with SP1",
+  "os": "windows",
+  "owner": null,
+  "paid": true,
+  "resource_uri": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/",
+  "size": 64424509440,
+  "status": "unmounted",
+  "storage_type": null,
+  "tags": [],
+  "url": "http://www.microsoft.com/",
+  "uuid": "c7105ec8-5d60-43a7-a11b-18dcfc1a4433",
+  "version": null
+}

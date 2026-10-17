@@ -22,7 +22,12 @@ websocket-client = ">=0.57.0"
 nose = ">=1.3.7"
 
 [tool.poetry.dev-dependencies]
-fabric = "^2"
+fabric = "3.2.3"
+# Exact pending development dependency updates; not SDK runtime requirements.
+requests = "2.33.0"
+pynacl = "1.6.2"
+cryptography = "50.0.0"
+cffi = "2.1.1"
 
 [build-system]
 requires = ["setuptools==75.3.2", "wheel==0.45.1"]

@@ -46,10 +46,12 @@ class GenericClient(object):
     Handles all low level HTTP, authentication, parsing and error handling.
     """
     LOGIN_METHOD_BASIC = 'basic'
+    LOGIN_METHOD_DIGEST = 'digest'
     LOGIN_METHOD_SESSION = 'session'
     LOGIN_METHOD_NONE = 'none'
     LOGIN_METHODS = (
         LOGIN_METHOD_BASIC,
+        LOGIN_METHOD_DIGEST,
         LOGIN_METHOD_SESSION,
         LOGIN_METHOD_NONE,
     )
@@ -148,7 +150,10 @@ class GenericClient(object):
         api_endpoint = urlparse(self.api_endpoint)
         if url.startswith(api_endpoint.path):
             full_url = list(api_endpoint)
-            full_url[2] = url
+            full_url[2] = requested.path
+            full_url[3] = ''
+            full_url[4] = requested.query
+            full_url[5] = requested.fragment
             full_url = [str(x) for x in full_url]
             full_url = urlunparse(full_url)
         else:
@@ -156,8 +161,11 @@ class GenericClient(object):
                 url = url[1:]
             full_url = urljoin(str(self.api_endpoint), str(url))
 
-        if not full_url.endswith("/"):
-            full_url += "/"
+        # Normalize the resource path only; query values are not path segments.
+        resolved = list(urlparse(full_url))
+        if not resolved[2].endswith('/'):
+            resolved[2] += '/'
+        full_url = urlunparse(resolved)
 
         # Validate both resolver output and requests normalization before auth dispatch.
         if canonical(full_url) != expected:
@@ -171,18 +179,25 @@ class GenericClient(object):
         return full_url
 
     def _process_response(self, resp, return_list=False):
+        return self._decode_response(resp, return_list)
+
+    def _decode_response(self, resp, return_list=False, preserve_envelope=False):
         resp_data = None
         request_id = resp.headers.get('X-REQUEST-ID', None)
         if resp.status_code in (200, 201, 202):
             resp_data = copy.deepcopy(resp.json())
-            if 'objects' in resp_data:
+            if not preserve_envelope and 'objects' in resp_data:
                 resp_data = resp_data['objects']
                 if len(resp_data) == 1 and not return_list:
                     resp_data = resp_data[0]
         elif 300 <= resp.status_code < 400:
             raise errors.ApiClientError('redirect refused', status_code=resp.status_code, request_id=request_id)
         elif resp.status_code == 401:
-            raise errors.AuthError(request_id, status_code=resp.status_code)
+            error = errors.AuthError(request_id, status_code=resp.status_code)
+            # Preserve legacy exception fields; expose response details additively.
+            error.response_body = resp.text
+            error.response_request_id = request_id
+            raise error
         elif resp.status_code == 403:
             raise errors.PermissionError(
                 resp.text,
@@ -210,6 +225,10 @@ class GenericClient(object):
             kwargs['proxies'] = self.proxies.copy()
         if self.login_method == self.LOGIN_METHOD_BASIC:
             kwargs['auth'] = (self.username, self.password)
+        elif self.login_method == self.LOGIN_METHOD_DIGEST:
+            # Fresh challenge state per operation: never preemptively send a
+            # cached digest to another path, realm or changed endpoint.
+            kwargs['auth'] = requests.auth.HTTPDigestAuth(self.username, self.password)
 
         kwargs['headers'] = {
             'content-type': 'application/json',
@@ -240,6 +259,16 @@ class GenericClient(object):
         kwargs = self._get_req_args(query_params=query_params)
         self.resp = self.http.get(self._get_full_url(url), **kwargs)
         return self._process_response(self.resp, return_list)
+
+    def get_raw(self, url, query_params=None):
+        """Return one decoded GET response without unwrapping objects.
+
+        Uses the existing JSON numeric policy, authentication and errors.
+        No traversal, schema validation or original JSON lexeme guarantee.
+        """
+        kwargs = self._get_req_args(query_params=query_params)
+        self.resp = self.http.get(self._get_full_url(url), **kwargs)
+        return self._decode_response(self.resp, preserve_envelope=True)
 
     def put(self, url, data, query_params=None, return_list=False):
         kwargs = self._get_req_args(body=data, query_params=query_params)

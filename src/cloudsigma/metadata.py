@@ -12,14 +12,22 @@ class GetServerMetadata(object):
             # Open serial device (should always be ttyS1)
             ser = serial.Serial('/dev/ttyS1', timeout=1)
 
-            # Trigger a read from the serial device
-            ser.write('<\n\n>')
+            try:
+                # Trigger a read from the serial device
+                ser.write(b'<\n\n>')
 
-            # Read the data and convert it to json
-            data = ser.readlines()
-            self.result = json.loads(data[0])
-
-            ser.close()
+                # Read the data and convert it to json
+                data = ser.readlines()
+                self.result = json.loads(data[0])
+            except BaseException:
+                # Preserve the original failure if cleanup also fails.
+                try:
+                    ser.close()
+                except Exception:
+                    pass
+                raise
+            else:
+                ser.close()
         except serial.SerialException as e:
             error_message =\
                 "An error occurred: {}. Please check the documentation for troubleshooting: " \

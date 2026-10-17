@@ -1,0 +1,24 @@
+{
+"meta": {
+"limit": 0,
+"offset": 0,
+"total_count": 1
+},
+"objects": [
+{
+"owner": {
+"resource_uri": "/api/2.0/user/93ff48d9-b9a3-49ec-9c41-de0cc9d02c34/",
+"uuid": "93ff48d9-b9a3-49ec-9c41-de0cc9d02c34"
+},
+"resource_uri": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/",
+"runtime": {
+"stats": {},
+"timestamp": "1624735477"
+},
+"state": "created",
+"status": "running",
+"type": "basic",
+"uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+}
+]
+}
