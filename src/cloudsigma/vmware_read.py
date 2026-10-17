@@ -12,5 +12,10 @@ class VMwareRead:
     def __init__(self, *args, **kwargs):
         self.c = _RawReadClient(*args, **kwargs)
 
-    def list(self):
-        return self.c.get('/vmware_servers/')
+    def list(self, query_params=None):
+        """Read one page with optional explicit limit/offset values.
+
+        Omitted parameters preserve the service default; limit=0 requests all
+        objects. No automatic traversal or new filter support is implied.
+        """
+        return self.c.get('/vmware_servers/', query_params=query_params)
