@@ -822,6 +822,25 @@ class HostAllocationPools(ResourceBase):
 class DriveUsers(ResourceBase):
     resource_name = 'driveusers'
 
+    def update_amount(self, drive_uuid, amount):
+        """Update an RDS drive's user count with an amount-only definition.
+
+        Accept a nonempty ASCII alphanumeric/hyphen/underscore identifier and
+        a Python int (not bool). This is conservative SDK input policy, not
+        public UUID grammar or provider count bounds. Zero and negative counts
+        are forwarded without claiming server acceptance. Return the existing
+        unwrapped update response; do not retry, poll or infer completion.
+        The inherited arbitrary-definition update method is unchanged.
+        https://docs.cloudsigma.com/en/latest/drives.html#editing-updating-rds-drive
+        """
+        if not isinstance(drive_uuid, str) or not drive_uuid or any(
+                char not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+                for char in drive_uuid):
+            raise ValueError('invalid drive identifier')
+        if type(amount) is not int:
+            raise ValueError('amount must be an integer')
+        return self.update(drive_uuid, {'amount': amount})
+
 
 class VirtualRouters(ResourceBase):
     resource_name = 'virtualrouters'
