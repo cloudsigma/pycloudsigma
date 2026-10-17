@@ -268,7 +268,7 @@ class Drive(ResourceBase):
             real_chunk_size = chunk_size
         else:
             real_chunk_size = file_size - chunk_offset
-        with open(image_path, 'r') as f:
+        with open(image_path, 'rb') as f:
             f.seek(chunk_offset)
             data = f.read(real_chunk_size)
 
