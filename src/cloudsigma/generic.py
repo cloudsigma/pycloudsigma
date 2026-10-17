@@ -288,10 +288,13 @@ class GenericClient(object):
         )
         return self._process_response(self.resp, return_list)
 
-    def delete(self, url, query_params=None):
+    def delete(self, url, query_params=None, data=None):
+        kwargs = self._get_req_args(query_params=query_params)
+        if data is not None:
+            kwargs['data'] = simplejson.dumps(data)
         self.resp = self.http.delete(
             self._get_full_url(url),
-            **self._get_req_args(query_params=query_params)
+            **kwargs
         )
         return self._process_response(self.resp)
 
