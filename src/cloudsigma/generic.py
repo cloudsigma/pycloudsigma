@@ -112,7 +112,10 @@ class GenericClient(object):
             }
         )
         res = self.http.post(full_url, data=data, **kwargs)
-        self._process_response(res)
+        # The public login contract specifies HTTP 200 with an empty body.
+        # Keep ordinary JSON decoding and all other status handling unchanged.
+        if not (res.status_code == 200 and res.content == b''):
+            self._process_response(res)
         csrf_token = res.cookies['csrftoken']
         self._session.headers.update(
             {
