@@ -828,6 +828,21 @@ class HostAllocationPools(ResourceBase):
 class DriveUsers(ResourceBase):
     resource_name = 'driveusers'
 
+    def create(self, data, query_params=None):
+        """Send plain definitions as the documented singleton RDS request.
+
+        Preserve explicit objects wrappers and list/tuple inputs through the
+        legacy base implementation for compatibility; those alternative wire
+        shapes are not established public contracts. Do not coerce fields or
+        infer count bounds. Query forwarding and response unwrapping remain
+        unchanged. Other resources retain ResourceBase.create behavior.
+        https://docs.cloudsigma.com/en/latest/drives.html#creating-defining-rds-drive
+        """
+        if isinstance(data, dict) and 'objects' not in data:
+            return self.c.post(self._get_url(), data, return_list=False,
+                               query_params=query_params or {})
+        return super(DriveUsers, self).create(data, query_params=query_params)
+
     def update_amount(self, drive_uuid, amount):
         """Update an RDS drive's user count with an amount-only definition.
 
