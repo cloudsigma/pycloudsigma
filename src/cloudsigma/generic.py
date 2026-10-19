@@ -9,6 +9,11 @@ import copy
 import logging
 import sys
 import math
+import base64
+import hashlib
+import hmac
+import struct
+import time
 from urllib.parse import urlsplit
 from builtins import object
 from builtins import str
@@ -63,12 +68,13 @@ class GenericClient(object):
             password=None,
             login_method=None,
             request_log_level=None,
-            timeout=15, trust_env=False, proxies=None, session=None
+            timeout=15, trust_env=False, proxies=None, session=None, secret=None
     ):
         self.api_endpoint = api_endpoint if api_endpoint \
             else config['api_endpoint']
         self.username = username if username else config['username']
         self.password = password if password else config['password']
+        self.secret = secret if secret is not None else config.get('secret')
         self.login_method = login_method if login_method is not None else config.get('login_method', self.LOGIN_METHOD_BASIC)
         assert self.login_method in self.LOGIN_METHODS, \
             'Invalid value %r for login_method' % (login_method,)
@@ -97,7 +103,8 @@ class GenericClient(object):
     def _login_session(self):
         self.login_method = self.LOGIN_METHOD_SESSION
         full_url = self._get_full_url('/accounts/action/')
-        kwargs = self._get_req_args(query_params={'do': 'login'})
+        kwargs = self._get_req_args(query_params={'do': 'login'},
+                                    otp=self._session_otp() if self.secret else None)
         data = simplejson.dumps(
             {
                 "username": self.username,
@@ -113,6 +120,26 @@ class GenericClient(object):
                 'Referer': self._get_full_url('/')
             }
         )
+
+    def _session_otp(self):
+        """Generate once for explicit session login; never for ordinary requests.
+
+        Base32 only. Enrollment URIs are deliberately not consumed. Defaults
+        reflect owner-relayed DevOps guidance, not published API documentation.
+        """
+        key = None
+        try:
+            if type(self.secret) is str and self.secret and not self.secret.startswith('otpauth:'):
+                key = base64.b32decode(self.secret.upper() + '=' * (-len(self.secret) % 8))
+        except (ValueError, TypeError):
+            pass
+        if not key:
+            raise errors.ApiClientError('invalid MFA secret')
+        counter = int(time.time() // 30)
+        digest = hmac.new(key, struct.pack('>Q', counter), hashlib.sha1).digest()
+        offset = digest[-1] & 15
+        value = struct.unpack('>I', digest[offset:offset + 4])[0] & 0x7fffffff
+        return '%06d' % (value % 1000000)
 
     def _get_full_url(self, url):
         def canonical(value):
@@ -219,7 +246,11 @@ class GenericClient(object):
 
         return resp_data
 
-    def _get_req_args(self, body=None, query_params=None):
+    def _get_req_args(self, body=None, query_params=None, otp=None):
+        # Requests Digest response hooks resend the prepared OTP and body.
+        # Refuse this combination rather than remove auth or hide a retry.
+        if otp is not None and self.login_method == self.LOGIN_METHOD_DIGEST:
+            raise errors.ApiClientError('explicit OTP with Digest authentication is unsupported')
         kwargs = {'timeout': self.timeout, 'allow_redirects': False}
         if self.proxies is not None:
             kwargs['proxies'] = self.proxies.copy()
@@ -234,6 +265,11 @@ class GenericClient(object):
             'content-type': 'application/json',
             'user-agent': 'CloudSigma turlo client',
         }
+
+        if otp is not None:
+            if type(otp) is not str or len(otp) != 6 or any(c not in '0123456789' for c in otp):
+                raise errors.ApiClientError('invalid OTP format')
+            kwargs['headers']['OTP'] = otp
 
         if query_params:
             if 'params' not in kwargs:
@@ -255,23 +291,23 @@ class GenericClient(object):
             return self._session
         return requests
 
-    def get(self, url, query_params=None, return_list=False):
-        kwargs = self._get_req_args(query_params=query_params)
+    def get(self, url, query_params=None, return_list=False, otp=None):
+        kwargs = self._get_req_args(query_params=query_params, otp=otp)
         self.resp = self.http.get(self._get_full_url(url), **kwargs)
         return self._process_response(self.resp, return_list)
 
-    def get_raw(self, url, query_params=None):
+    def get_raw(self, url, query_params=None, otp=None):
         """Return one decoded GET response without unwrapping objects.
 
         Uses the existing JSON numeric policy, authentication and errors.
         No traversal, schema validation or original JSON lexeme guarantee.
         """
-        kwargs = self._get_req_args(query_params=query_params)
+        kwargs = self._get_req_args(query_params=query_params, otp=otp)
         self.resp = self.http.get(self._get_full_url(url), **kwargs)
         return self._decode_response(self.resp, preserve_envelope=True)
 
-    def put(self, url, data, query_params=None, return_list=False):
-        kwargs = self._get_req_args(body=data, query_params=query_params)
+    def put(self, url, data, query_params=None, return_list=False, otp=None):
+        kwargs = self._get_req_args(body=data, query_params=query_params, otp=otp)
         self.resp = self.http.put(
             self._get_full_url(url),
             data=simplejson.dumps(data),
@@ -279,8 +315,8 @@ class GenericClient(object):
         )
         return self._process_response(self.resp, return_list)
 
-    def post(self, url, data, query_params=None, return_list=False):
-        kwargs = self._get_req_args(body=data, query_params=query_params)
+    def post(self, url, data, query_params=None, return_list=False, otp=None):
+        kwargs = self._get_req_args(body=data, query_params=query_params, otp=otp)
         self.resp = self.http.post(
             self._get_full_url(url),
             data=simplejson.dumps(data),
@@ -288,8 +324,8 @@ class GenericClient(object):
         )
         return self._process_response(self.resp, return_list)
 
-    def delete(self, url, query_params=None, data=None):
-        kwargs = self._get_req_args(query_params=query_params)
+    def delete(self, url, query_params=None, data=None, otp=None):
+        kwargs = self._get_req_args(query_params=query_params, otp=otp)
         if data is not None:
             kwargs['data'] = simplejson.dumps(data)
         self.resp = self.http.delete(
