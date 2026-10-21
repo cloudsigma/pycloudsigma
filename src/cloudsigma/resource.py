@@ -804,6 +804,28 @@ class Locations(ResourceBase):
 class RemoteSnapshot(ResourceBase):
     resource_name = 'remotesnapshots'
 
+    def delete_many(self, uuids):
+        """Request remote snapshot collection deletion in one HTTP request.
+
+        Accept a nonempty list/tuple of nonempty ASCII letters, digits, hyphens
+        and underscores. This conservative SDK identifier policy is not public
+        UUID grammar. Validate the entire batch before sending; preserve order
+        and duplicates without changing the caller's sequence. HTTP 204 returns
+        None and acknowledges deletion started, not completion or atomicity.
+        No added polling or retries; no ordinary snapshot or drive deletion.
+        https://docs.cloudsigma.com/en/latest/remote_snapshots.html#deleting
+        """
+        if not isinstance(uuids, (list, tuple)) or not uuids:
+            raise ValueError('remote snapshot identifiers must be a nonempty list or tuple')
+        objects = []
+        for uuid in uuids:
+            if not isinstance(uuid, str) or not uuid or any(
+                    char not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+                    for char in uuid):
+                raise ValueError('invalid remote snapshot identifier')
+            objects.append({'uuid': uuid})
+        return self.c.delete(self._get_url(), data={'objects': objects})
+
     def clone(self, uuid, data=None, avoid=None):
         """
         Clone a drive from a remote snapshot.
