@@ -168,6 +168,28 @@ class LibDrive(ResourceBase):
 class Drive(ResourceBase):
     resource_name = 'drives'
 
+    def delete_many(self, uuids):
+        """Request ordinary drive collection deletion in one HTTP request.
+
+        Accept a nonempty list/tuple of nonempty ASCII letters, digits, hyphens
+        and underscores. This conservative SDK identifier policy is not public
+        UUID grammar. Validate the entire batch before sending; preserve order
+        and duplicates without changing the caller's sequence. HTTP 204 returns
+        None and acknowledges deletion started, not completion or atomicity.
+        No polling, retries, remote snapshots or snapshot deletion.
+        https://docs.cloudsigma.com/en/latest/drives.html#deleting
+        """
+        if not isinstance(uuids, (list, tuple)) or not uuids:
+            raise ValueError('drive identifiers must be a nonempty list or tuple')
+        objects = []
+        for uuid in uuids:
+            if not isinstance(uuid, str) or not uuid or any(
+                    char not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+                    for char in uuid):
+                raise ValueError('invalid drive identifier')
+            objects.append({'uuid': uuid})
+        return self.c.delete(self._get_url(), data={'objects': objects})
+
     def set_scheduler(self, uuid, backup_policy_uuid):
         """Link an existing backup scheduler to a drive.
 
