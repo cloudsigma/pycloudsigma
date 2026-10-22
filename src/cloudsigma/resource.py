@@ -593,6 +593,19 @@ class Capabilites(ResourceBase):
 class Accounts(ResourceBase):
     resource_name = 'accounts'
 
+    def logout(self):
+        """Request cookie-auth logout and return the empty HTTP 200 acknowledgment.
+
+        Uses the caller's existing cookie session; does not acquire cookies,
+        clear credentials or the caller's jar, or guarantee session invalidation.
+        For a caller-managed session without constructor login, pass that session
+        with login_method='none'. Basic/Bearer logout support is not implied.
+        No retries or follow-up requests are added.
+        https://docs.cloudsigma.com/en/latest/accounts.html
+        """
+        return self.c.post_empty_ack(
+            self._get_url() + 'action/', {}, query_params={'do': 'logout'})
+
     def check_login(self):
         """Send the documented {} check and return its empty acknowledgment.
 
