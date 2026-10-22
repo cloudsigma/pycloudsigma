@@ -593,6 +593,16 @@ class Capabilites(ResourceBase):
 class Accounts(ResourceBase):
     resource_name = 'accounts'
 
+    def check_login(self):
+        """Send the documented {} check and return its empty acknowledgment.
+
+        Uses existing client authentication, without acquiring cookies, logging
+        in, performing OTP, or guaranteeing a durable session. No retries or
+        follow-up requests. https://docs.cloudsigma.com/en/latest/accounts.html
+        """
+        return self.c.post_empty_ack(
+            self._get_url() + 'action/', {}, query_params={'do': 'check_login'})
+
     def authenticate_asynchronous(self):
         # data empty see TUR-1346
         return self._action(None, 'authenticate_asynchronous', data={})

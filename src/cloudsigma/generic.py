@@ -327,6 +327,19 @@ class GenericClient(object):
         )
         return self._process_response(self.resp, return_list)
 
+    def post_empty_ack(self, url, data, query_params=None):
+        """POST an action documenting HTTP 200 with an exactly empty body.
+
+        Other responses retain the ordinary response decoder and error policy.
+        This does not establish authentication or asynchronous completion.
+        """
+        kwargs = self._get_req_args(body=data, query_params=query_params)
+        self.resp = self.http.post(
+            self._get_full_url(url), data=simplejson.dumps(data), **kwargs)
+        if self.resp.status_code == 200 and self.resp.content == b'':
+            return None
+        return self._process_response(self.resp)
+
     def delete(self, url, query_params=None, data=None, otp=None):
         kwargs = self._get_req_args(query_params=query_params, otp=otp)
         if data is not None:
