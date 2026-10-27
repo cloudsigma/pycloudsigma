@@ -9,8 +9,7 @@ import json
 from unittest import TestCase
 import requests
 from cloudsigma import resource, errors
-from test_network_reads import fixture
-import test_network_reads
+from test_network_reads import NetworkReadTests, fixture
 
 
 class UpdateAdapter(requests.adapters.BaseAdapter):
@@ -47,7 +46,7 @@ class UpdateAdapter(requests.adapters.BaseAdapter):
 
 
 class NetworkUpdateTests(TestCase):
-    assert_json_exact = test_network_reads.NetworkReadTests.assert_json_exact
+    assert_json_exact = NetworkReadTests.assert_json_exact
 
     def update(self, kind, body, payload, status=200, exception=None):
         cls = resource.IP if kind == 'ip' else resource.VLAN

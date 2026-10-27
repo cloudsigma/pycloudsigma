@@ -4,12 +4,11 @@ from unittest import TestCase
 from unittest.mock import patch
 import requests
 from cloudsigma import resource, errors
-from test_network_reads import FixtureAdapter, fixture
-import test_network_reads
+from test_network_reads import FixtureAdapter, NetworkReadTests, fixture
 
 
 class CollectionReadTests(TestCase):
-    assert_json_exact = test_network_reads.NetworkReadTests.assert_json_exact
+    assert_json_exact = NetworkReadTests.assert_json_exact
 
     def read(self, kind, detail, payload, params=None, status=200, exception=None,
              legacy=False):
