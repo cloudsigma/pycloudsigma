@@ -74,6 +74,9 @@ class LiveLifecycleTests(unittest.TestCase):
         self.assertEqual(report['status'], 'passed')
         self.assertEqual(client.calls[0][1]['size'], 1024 ** 3)
         self.assertEqual(client.calls[0][1]['media'], 'disk')
+        update = next(c for c in client.calls if c[0] == 'update')
+        self.assertEqual(update[2]['media'], 'disk')
+        self.assertEqual(update[2]['size'], 1024 ** 3)
         self.assertTrue(all(c[0] in ('create', 'get', 'update', 'delete')
                             for c in client.calls))
 
