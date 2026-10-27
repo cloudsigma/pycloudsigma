@@ -32,12 +32,11 @@ for name, expected in binding['packages'].items():
         raise RuntimeError('development closure version drift: ' + name)
 if len(binding['packages']) != 25:
     raise RuntimeError('unexpected closure size')
-import fabric,paramiko,requests,nacl.signing
-from paramiko.config import invoke
+import fabric,paramiko,paramiko.config,requests,nacl.signing
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 from cryptography.hazmat.primitives.ciphers import Cipher,algorithms,modes
 from cryptography.hazmat.primitives import hashes,hmac
-assert invoke.exceptions.UnexpectedExit
+assert paramiko.config.invoke.exceptions.UnexpectedExit
 config=fabric.Config(overrides={'load_ssh_configs':False},lazy=True)
 c=fabric.Connection('offline.invalid',user='fixture',connect_kwargs={'password':'not-a-credential'},config=config)
 assert c.host=='offline.invalid' and not c.is_connected

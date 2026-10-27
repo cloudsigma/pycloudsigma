@@ -1,8 +1,9 @@
-import os,unittest,io,logging,requests,sys
+import os,io,logging,requests
+from unittest import TestCase
 from unittest.mock import patch
 os.environ['CLOUDSIGMA_CONFIG']='/dev/null'
 from cloudsigma import generic as g,errors
-class Tests(unittest.TestCase):
+class Tests(TestCase):
  def client(self,**kw):return g.GenericClient(api_endpoint='https://example.invalid/api/2.0/',username='user',password='password-canary',**kw)
  def test_finite_native_options(self):
   c=self.client();a=c._get_req_args();self.assertEqual(a['timeout'],15);self.assertIs(a['allow_redirects'],False);self.assertFalse(c.http.trust_env)

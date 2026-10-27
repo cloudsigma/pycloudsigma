@@ -130,7 +130,7 @@ class VpcTest(VpcTestsBase):
         self.assertEqual(vpc['status'], self.DEFAULT_STATUS)
 
         vpc['tags'] = []
-        vpc = self.vpc_client.update(vpc['uuid'], vpc)
+        self.vpc_client.update(vpc['uuid'], vpc)
 
         list = self.vpc_client_2.list()
         self.assertEqual(len(list), 0)
