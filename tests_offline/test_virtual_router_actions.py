@@ -24,6 +24,22 @@ class Wire:
 
 
 class VirtualRouterActionTests(unittest.TestCase):
+    def test_vpn_actions_route_empty_bodies(self):
+        wire = Wire()
+        resource = VirtualRouters(
+            api_endpoint='https://next.cloudsigma.com/api/2.0/',
+            username='synthetic', password='synthetic', login_method='basic')
+        resource.c._session = wire
+
+        self.assertEqual(resource.enable_vpn('router-1'), {'result': 'success'})
+        self.assertEqual(resource.disable_vpn('router-1'), {'result': 'success'})
+        self.assertEqual([k['params'] for _, _, k in wire.calls], [
+            {'do': 'enable_vpn'},
+            {'do': 'disable_vpn'},
+        ])
+        for _, _, kwargs in wire.calls:
+            self.assertEqual(json.loads(kwargs['data']), {})
+
     def test_get_keys_and_export_key_routes(self):
         wire = Wire()
         resource = VirtualRouters(
