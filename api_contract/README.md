@@ -6,8 +6,9 @@ and public resource schema definitions in versioned JSON. It provides a source
 of reviewable changes when the API documentation changes.
 
 The current snapshot contains 62 public documentation pages, 181 explicit
-method/path declarations, 2,587 response field observations, and 430 schema field
-definitions across 31 schema blocks. There are 131 explicit extraction or
+method/path declarations plus one explicitly classified provider-unavailable
+route, 2,587 response field observations, and 430 schema field definitions
+across 31 schema blocks. There are 131 explicit extraction or
 contract gaps. These are discovery counts, not percentages of API coverage.
 No field-level SDK assertion is claimed by this inventory.
 
@@ -25,6 +26,10 @@ No field-level SDK assertion is claimed by this inventory.
 - `bindings.json`: reviewed SDK symbols mapped to exact method/path declarations.
   An unmapped operation is not evidence that the SDK cannot perform it. The
   mapping remains open until its public interface and assertions are traced.
+  A binding may also carry explicit availability evidence for a documented
+  route whose provider behavior prevents an operation block from being
+  extracted. Such a row is retained as `provider-unavailable` and does not
+  claim a response schema.
 - `update.py`: dependency-free discovery, normalization, extraction and diff tool.
 
 Operation IDs preserve the documented HTTP method, path parameters and query
@@ -65,10 +70,13 @@ python -I -B api_contract/update.py rebuild --check
 ```
 
 The validator rejects malformed JSON types, duplicate operation/field/schema
-identities, stale source hashes, missing discovered pages, unsafe source paths,
-and unsupported completeness or assertion claims. It then rebuilds the matrix
-from retained snapshots and reviewed bindings and compares the result exactly.
-It needs no SDK dependency, account or network access.
+identities, stale source and fixture hashes, missing discovered pages, unsafe
+source paths, unredacted sensitive fixture values, and unsupported completeness
+or assertion claims. It then rebuilds the matrix from retained snapshots and
+reviewed bindings and compares the result exactly. It needs no SDK dependency,
+account or network access. The sole non-`incomplete` operation state,
+`schema-unavailable`, is accepted only when the row is explicitly marked
+`provider-unavailable`.
 
 The extractor does not repair invalid published JSON. It records a gap at the
 source page, section and block. Response examples with no matching operation
@@ -102,7 +110,8 @@ A public-documentation refresh does not require or consume QA account credential
 
 ## Remaining qualification work
 
-The 181 declarations are a documentation-derived starting inventory, not an
+The 181 explicit declarations plus one provider-unavailable route are a
+documentation-derived starting inventory, not an
 independently confirmed production endpoint denominator. Prose-only operations,
 request fields, async semantics, permission conditions and newer endpoint
 families still need reconciliation. Schema binding and field assertions must
@@ -112,7 +121,7 @@ exercise individual object fields.
 
 The tunnel page has explicit singleton GET/PUT/DELETE and collection POST
 operations, but no explicit collection GET declaration, no populated examples
-and an empty rendered schema section. The earlier SDK collection read therefore
-remains visible in `bindings.json` as a binding without an explicit public
-operation. Its observed 404 is provider evidence requiring route/entitlement
-resolution; it is not silently counted as supported by this matrix.
+and an empty rendered schema section. The earlier SDK collection read is
+represented as a synthesized `schema-unavailable` operation row with an
+explicit `provider-unavailable` disposition, source block and QA evidence.
+That row records the gap; it is not a field or support claim.
