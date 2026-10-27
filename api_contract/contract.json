@@ -96,7 +96,7 @@
       "response_fields": [],
       "capability_gate": "tunnels",
       "disposition": "provider-unavailable",
-      "availability_note": "The documented route returned HTTP 404 in next.cloudsigma.com during the 2026-10-27 read-only QA probe. Keep this disposition until the API owner confirms enablement or replacement."
+      "availability_note": "The documented route returned HTTP 404 in next.cloudsigma.com during the 2026-10-27 read-only QA probe. The reachable Turlo main source at 9c14200c51da7f783c91e9bc7169f5352dcd00ae registers the resource but raises PageNotFound from its collection handler. Keep this disposition until deployment and API-owner replacement/enablement are confirmed."
     }
   ]
 }

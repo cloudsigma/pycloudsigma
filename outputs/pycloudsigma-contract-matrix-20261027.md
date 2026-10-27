@@ -27,9 +27,10 @@ unavailable:
 - [Virtual Router API catalog](https://csigma.atlassian.net/wiki/spaces/DEV/pages/2068742205/VRP2+-+Source+Virtual+Router+API+Catalog)
 
 The QA smoke run against `next.cloudsigma.com` returned HTTP 404 for the
-canonical tunnel collection. The SDK path therefore remains the documented
-path, while the matrix records `provider-unavailable` and
-`schema-unavailable`. The CI live workflow now runs a GET-only diagnostic over
+canonical tunnel collection, HTTP 301 for the slashless spelling, and HTTP 500
+for the schema route. The SDK path therefore remains the documented path,
+while the matrix records `provider-unavailable` and `schema-unavailable`. The
+CI live workflow now runs a GET-only diagnostic over
 the API root, capabilities, cloud status, canonical and slashless tunnel
 routes, tunnel schema, and both virtual-router route spellings. It records
 status, safe response shape, `Allow`, content type and request ID, then uploads
@@ -37,10 +38,15 @@ the JSON as a workflow artifact. Authentication and permission failures fail
 the probe so credential regressions cannot be mistaken for provider route
 absence.
 
-The next provider-side action is an API-owner decision: confirm whether the
-legacy `/api/2.0/tunnels/` route is enabled for this account/location or whether
-the modern `/api/v1/vpn/ipsec/tunnels` surface supersedes it. Once that decision
-and an authoritative schema are available, add the route or a separate SDK
+The backend source currently available on Snowcrash registers the `/tunnels/`
+resource but deliberately raises `PageNotFound` from its collection handler;
+the latest reachable Turlo `main` ref is `9c14200c51da7f783c91e9bc7169f5352dcd00ae`.
+This explains the observed collection 404 as an intentional provider behavior,
+subject to deployment verification. It does not make the modern
+`/api/v1/vpn/ipsec/tunnels` route interchangeable with the public v2 contract.
+The next provider-side action is an API-owner decision on whether to remove,
+enable, or replace the legacy collection route and to publish its authoritative
+schema. Once that decision is available, add the route or a separate SDK
 resource and populate the tunnel field rows in the same matrix change.
 
 No mutating tunnel request is included in CI. The QA workflow runs on every

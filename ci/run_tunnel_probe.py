@@ -19,18 +19,23 @@ ENDPOINT = os.environ.get(
     'CLOUDSIGMA_QA_ENDPOINT',
     'https://next.cloudsigma.com/api/2.0/',
 )
+ALLOWED_ENDPOINT = 'https://next.cloudsigma.com/api/2.0/'
 USERNAME = os.environ.get('CLOUDSIGMA_QA_USERNAME')
 PASSWORD = os.environ.get('CLOUDSIGMA_QA_PASSWORD')
 
 ROUTES = (
-    ('api_root', ''),
-    ('capabilities', 'capabilities/'),
-    ('cloud_status', 'cloud_status/'),
-    ('tunnels_canonical', 'tunnels/'),
-    ('tunnels_without_slash', 'tunnels'),
-    ('tunnels_schema', 'tunnels/schema/'),
-    ('virtualrouters_legacy', 'virtualrouters/'),
-    ('virtualrouters_underscored', 'virtual_routers/'),
+    ('api_root', '', frozenset((200,))),
+    ('capabilities', 'capabilities/', frozenset((200,))),
+    ('cloud_status', 'cloud_status/', frozenset((200,))),
+    # The current provider deliberately returns 404 for collection GET; retain
+    # that as evidence while allowing a future 200 when the endpoint is enabled.
+    ('tunnels_canonical', 'tunnels/', frozenset((200, 404))),
+    # Tastypie redirects the slashless spelling to the canonical route.
+    ('tunnels_without_slash', 'tunnels', frozenset((200, 301))),
+    # The provider currently exposes a broken/unavailable schema endpoint.
+    ('tunnels_schema', 'tunnels/schema/', frozenset((200, 404, 500))),
+    ('virtualrouters_legacy', 'virtualrouters/', frozenset((200,))),
+    ('virtualrouters_underscored', 'virtual_routers/', frozenset((200,))),
 )
 
 
@@ -57,26 +62,29 @@ def _url(path):
 
 def probe(session=None):
     """Probe all documented and diagnostic route variants."""
-    if not USERNAME or not PASSWORD:
+    if not USERNAME or not PASSWORD or ENDPOINT != ALLOWED_ENDPOINT:
         return {
             'status': 'failed',
             'error_type': 'ConfigurationError',
-            'message': 'CLOUDSIGMA_QA_USERNAME and CLOUDSIGMA_QA_PASSWORD are required',
+            'message': 'QA credentials and the fixed Next QA endpoint are required',
             'checks': [],
         }
     client = session or requests.Session()
     client.auth = (USERNAME, PASSWORD)
     client.trust_env = False
     checks = []
-    for name, path in ROUTES:
+    for name, path, expected_statuses in ROUTES:
         url = _url(path)
         started = time.monotonic()
         try:
+            # Limit collection reads to one object. No pagination is followed.
+            params = {'limit': 1} if name.startswith('virtualrouters_') else None
             response = client.get(
                 url,
                 headers={'Accept': 'application/json'},
                 timeout=15,
                 allow_redirects=False,
+                params=params,
             )
         except requests.RequestException as exc:
             checks.append({
@@ -87,18 +95,22 @@ def probe(session=None):
                 'elapsed_ms': round((time.monotonic() - started) * 1000),
             })
             continue
-        if 300 <= response.status_code < 400:
-            status = 'unexpected_redirect'
-        elif response.status_code < 400:
-            status = 'passed'
-        elif response.status_code in (401, 403):
+        if response.status_code in (401, 403):
             status = 'authentication_or_permission_failure'
+        elif response.status_code not in expected_statuses:
+            status = 'unexpected_redirect' if 300 <= response.status_code < 400 else (
+                'unexpected_provider_error' if response.status_code >= 500 else
+                'unexpected_http_status')
         elif response.status_code == 404:
             status = 'provider_unavailable'
-        elif response.status_code >= 500:
-            status = 'unexpected_provider_error'
+        elif response.status_code == 500:
+            status = 'schema_unavailable'
+        elif 300 <= response.status_code < 400:
+            target = urljoin(url, response.headers.get('Location', ''))
+            status = ('redirect_observed' if target == _url('tunnels/')
+                      else 'unexpected_redirect')
         else:
-            status = 'unexpected_http_status'
+            status = 'passed'
         checks.append({
             'name': name,
             'path': path,
@@ -118,11 +130,16 @@ def probe(session=None):
                 'unexpected_provider_error', 'unexpected_http_status',
                 'unexpected_redirect')
     ]
+    gaps = sum(item['status'] in ('provider_unavailable', 'schema_unavailable')
+               for item in checks)
+    if session is None:
+        client.close()
     return {
         'endpoint': ENDPOINT,
-        'status': 'failed' if failures else 'passed',
+        'status': 'failed' if failures else ('passed_with_known_gaps' if gaps else 'passed'),
         'checks': checks,
         'failed': len(failures),
+        'known_provider_gaps': gaps,
     }
 
 
