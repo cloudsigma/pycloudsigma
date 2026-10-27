@@ -6,10 +6,16 @@ from pathlib import Path
 def deny_network(event, args):
     if event.startswith('socket.') and event != 'socket.gethostname':
         raise PermissionError('offline network denied')
+
+
+def resolve_example():
+    return socket.getaddrinfo('example.invalid', 443)
+
+
 # Paramiko expands a local hostname even for empty SSH configuration.
 # This reads no network/configuration; all socket creation and DNS remain denied.
 sys.addaudithook(deny_network)
-for probe in (lambda: socket.socket(), lambda: socket.getaddrinfo('example.invalid', 443)):
+for probe in (socket.socket, resolve_example):
     try:
         probe()
     except PermissionError:

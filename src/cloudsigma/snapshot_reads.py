@@ -10,25 +10,26 @@ class SnapshotReads(Snapshot):
     is not validated. Unexpected sensitive fields remain caller responsibility.
     Existing generic Snapshot and shared decoder/transport remain unchanged.
     """
-    def __init__(self, *args, **kwargs):
-        self.c = _RawReadClient(*args, **kwargs)
+    _client_class = _RawReadClient
 
-    def list(self, query_params=None):
+    def list(self, query_params=None, *, otp=None):
         """Read one summary page with optional explicit limit/offset values.
 
         Omitted parameters preserve the service default. Forwarding a query
         does not establish support for the disputed drive-filter variant.
         """
-        return self.c.get(self._get_url(), query_params=query_params)
+        return self.c.get(self._get_url(), query_params=query_params, otp=otp)
 
-    def list_detail(self, query_params=None):
+    def list_detail(self, query_params=None, *, otp=None):
         """Read one detail page with optional explicit limit/offset values.
 
         Omitted parameters preserve the service default. Forwarding a query
         does not establish support for the disputed drive-filter variant.
         """
-        return self.c.get(self._get_url() + 'detail/', query_params=query_params)
+        return self.c.get(self._get_url() + 'detail/', query_params=query_params,
+                          otp=otp)
 
-    def get(self, uuid=None):
+    def get(self, uuid=None, *, otp=None, query_params=None):
         identifier = _AvailabilityGroups._identifier(uuid)
-        return self.c.get(self._get_url() + identifier + '/')
+        return self.c.get(self._get_url() + identifier + '/',
+                          query_params=query_params, otp=otp)

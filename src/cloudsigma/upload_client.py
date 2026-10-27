@@ -211,7 +211,7 @@ class CSUploader(object):
             chunk_number, chunk_offset, real_chunk_size = self.queue.get()
             try:
                 self.upload_chunk(chunk_number, chunk_offset, real_chunk_size)
-            except:
+            except Exception:
                 LOG.exception(
                     'Error ocurred for chunk {}'.format(chunk_number))
                 self.queue.put((chunk_number, chunk_offset, real_chunk_size))
@@ -363,7 +363,7 @@ if __name__ == '__main__':
             progress_callback=console_progress()
         )
         res = uploader.start()
-    except:
+    except Exception:
         LOG.exception('Error')
         sys.exit(1)
 

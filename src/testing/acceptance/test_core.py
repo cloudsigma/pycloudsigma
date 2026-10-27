@@ -178,7 +178,7 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
                 ctx_res = conn.run(command)
                 res_string = ctx_res.stdout.rstrip()
                 ctx_res_json = json.loads(res_string)
-            except:
+            except Exception:
                 continue
             else:
                 break

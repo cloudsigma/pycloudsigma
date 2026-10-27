@@ -10,15 +10,27 @@ class PricingRead(ResourceBase):
     """
     resource_name = 'pricing'
 
-    def __init__(self, *args, **kwargs):
-        self.c = _RawReadClient(*args, **kwargs)
+    _client_class = _RawReadClient
 
-    def get(self, limit=None, offset=None):
+    def get(self, uuid=None, query_params=None, *, otp=None, limit=None,
+            offset=None):
         """Read one pricing page with explicit limit and zero-based offset.
 
         Omitted values preserve service defaults; limit=0 requests all objects.
         Existing positional limit calls remain unchanged. No traversal occurs.
         """
+        # Keep the historical ``get(limit, offset)`` form while accepting the
+        # ResourceBase-compatible names used by generic callers.
+        if limit is None and offset is None and uuid is not None:
+            limit = uuid
+            if query_params is not None and not isinstance(query_params, dict):
+                offset = query_params
+                query_params = None
+        if isinstance(query_params, dict):
+            if limit is None:
+                limit = query_params.get('limit')
+            if offset is None:
+                offset = query_params.get('offset')
         if limit is not None and (type(limit) is not int or limit < 0):
             raise ValueError('limit must be a nonnegative integer')
         if offset is not None and (type(offset) is not int or offset < 0):
@@ -28,20 +40,21 @@ class PricingRead(ResourceBase):
             query['limit'] = limit
         if offset is not None:
             query['offset'] = offset
-        return self.c.get(self._get_url(), query_params=query or None)
+        return self.c.get(self._get_url(), query_params=query or None, otp=otp)
 
 
 class LedgerRead(ResourceBase):
     """One GET /ledger/ envelope, not complete history or automatic traversal."""
     resource_name = 'ledger'
 
-    def __init__(self, *args, **kwargs):
-        self.c = _RawReadClient(*args, **kwargs)
+    _client_class = _RawReadClient
 
-    def get(self, query_params=None):
+    def get(self, uuid=None, *, otp=None, query_params=None):
         """Read one page, optionally selecting documented limit/offset values.
 
         Omitted parameters preserve the service's default page. No automatic
         traversal or new filter support is implied.
         """
-        return self.c.get(self._get_url(), query_params=query_params)
+        if query_params is None and isinstance(uuid, dict):
+            query_params = uuid
+        return self.c.get(self._get_url(), query_params=query_params, otp=otp)

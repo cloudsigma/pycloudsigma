@@ -178,5 +178,6 @@ class DriveDownload:
                         count += written
                 finally:
                     response.close()
+            raise DownloadError('redirect refused')
         finally:
             session.close()

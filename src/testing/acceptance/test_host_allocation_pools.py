@@ -29,7 +29,7 @@ class HostAllocationPoolsTest(VpcTestsBase):
 
         pool_list = self.get_list()
         self.assertEqual(len(pool_list), len(vpc_pools))
-        self.assertTrue(len(pool_list) > 0)
+        self.assertGreater(len(pool_list), 0)
         for pool in pool_list:
             self.assertIn('uuid', pool)
             self.assertIn('name', pool)
@@ -39,14 +39,14 @@ class HostAllocationPoolsTest(VpcTestsBase):
             self.assertIn(pool['uuid'], vpc_pools)
 
         pools_2 = self.client_2.list()
-        self.assertTrue(len(pools_2) == 0)
+        self.assertEqual(len(pools_2), 0)
 
     @attr('docs_snippets')
     def test_update(self):
         check_if_vpc_is_enabled()
         self._create_vpc_subscription()
         pool_list = self.get_list()
-        self.assertTrue(len(pool_list) > 0)
+        self.assertGreater(len(pool_list), 0)
 
         pool = pool_list[0]
         from time import time
@@ -76,7 +76,7 @@ class HostAllocationPoolsTest(VpcTestsBase):
         check_if_vpc_is_enabled()
         self._create_vpc_subscription()
         pool_list = self.get_list()
-        self.assertTrue(len(pool_list) > 0)
+        self.assertGreater(len(pool_list), 0)
 
         pool = pool_list[0]
         from time import time

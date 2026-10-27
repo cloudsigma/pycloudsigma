@@ -1,6 +1,3 @@
-import urllib.error
-import urllib.parse
-import urllib.request
 from cloudsigma.conf import config
 from testing.templates import get_template
 from cloudsigma.generic import get_urlparse, get_unquote, get_parse_qsl
@@ -124,7 +121,7 @@ class ResponseDumper(object):
             try:
                 data = simplejson.dumps(simplejson.loads(
                     data), sort_keys=True, indent=4)
-            except:
+            except (TypeError, ValueError):
                 data = ""
         return get_template(template).format(
             reqres=reqres,

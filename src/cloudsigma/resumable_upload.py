@@ -173,7 +173,7 @@ class Upload(ResourceBase):
                 )
                 self.upload_chunk(chunk_number, chunk_offset, real_chunk_size)
                 self.update_progress(real_chunk_size)
-            except:
+            except Exception:
                 LOG.exception(
                     'Error ocurred for chunk {}'.format(chunk_number))
                 self.queue.put((chunk_number, chunk_offset, real_chunk_size))

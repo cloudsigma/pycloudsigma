@@ -11,9 +11,11 @@ from cloudsigma.generic import get_client, WebsocketClient, GenericClient
 
 class ResourceBase(object):
     resource_name = None
+    _client_class = None
 
     def __init__(self, *args, **kwargs):
-        self.c = get_client()(*args, **kwargs)
+        client_class = self._client_class or get_client()
+        self.c = client_class(*args, **kwargs)
 
     def attach_response_hook(self, func):
         self.c.response_hook = func
@@ -133,21 +135,31 @@ class ResourceBase(object):
 class Profile(ResourceBase):
     resource_name = 'profile'
 
-    def get(self):
-        return self.c.get(self._get_url(), return_list=False)
+    def get(self, uuid=None, *, otp=None, query_params=None):
+        if uuid is not None:
+            raise ValueError('profile does not accept a resource identifier')
+        return self.c.get(self._get_url(), query_params=query_params,
+                          return_list=False, otp=otp)
 
-    def update(self, data):
-        return self.c.put(self._get_url(), data, return_list=False)
+    def update(self, uuid=None, data=None, *, otp=None):
+        if data is None:
+            data = uuid
+        return self.c.put(self._get_url(), data, return_list=False, otp=otp)
 
 
 class GlobalContext(ResourceBase):
     resource_name = 'global_context'
 
-    def get(self):
-        return self.c.get(self._get_url(), return_list=False)
+    def get(self, uuid=None, *, otp=None, query_params=None):
+        if uuid is not None:
+            raise ValueError('global context does not accept a resource identifier')
+        return self.c.get(self._get_url(), query_params=query_params,
+                          return_list=False, otp=otp)
 
-    def update(self, data):
-        return self.c.post(self._get_url(), data, return_list=False)
+    def update(self, uuid=None, data=None, *, otp=None):
+        if data is None:
+            data = uuid
+        return self.c.post(self._get_url(), data, return_list=False, otp=otp)
 
 
 class NotificationContact(ResourceBase):
@@ -157,8 +169,10 @@ class NotificationContact(ResourceBase):
 class NotificationPreference(ResourceBase):
     resource_name = 'notification_preferences'
 
-    def update(self, data):
-        return self.c.put(self._get_url(), data, return_list=True)
+    def update(self, uuid=None, data=None, *, otp=None):
+        if data is None:
+            data = uuid
+        return self.c.put(self._get_url(), data, return_list=True, otp=otp)
 
 
 class LibDrive(ResourceBase):
@@ -312,7 +326,8 @@ class Drive(ResourceBase):
 class InitUpload(ResourceBase):
     resource_name = 'initupload'
 
-    def create(self, data, avoid=None, image_path=None):
+    def create(self, data, query_params=None, image_path=None, *, otp=None,
+               avoid=None):
         """
         Create a drive for upload.
 
@@ -329,7 +344,10 @@ class InitUpload(ResourceBase):
         :return:
             New drive definition.
         """
-        query_params = {}
+        if avoid is None and query_params is not None and not isinstance(query_params, dict):
+            avoid = query_params
+            query_params = None
+        query_params = dict(query_params or {})
         if not data.get('name'):
             data['name'] = os.path.split(image_path)[1]
         if not data.get('size'):
@@ -338,7 +356,8 @@ class InitUpload(ResourceBase):
             if isinstance(avoid, basestring):
                 avoid = [avoid]
             query_params['avoid'] = ','.join(avoid)
-        return super(InitUpload, self).create(data, query_params=query_params)
+        return super(InitUpload, self).create(
+            data, query_params=query_params, otp=otp)
 
 
 class Server(ResourceBase):
@@ -427,7 +446,7 @@ class Server(ResourceBase):
         return self._action(uuid, 'clone', data=data,
                             query_params=query_params)
 
-    def delete(self, uuid, recurse=None):
+    def delete(self, uuid, query_params=None, *, otp=None, recurse=None):
         """
         Deletes a server.
 
@@ -441,13 +460,17 @@ class Server(ResourceBase):
 
         :return:
         """
-        query_params = {}
+        if recurse is None and query_params is not None and not isinstance(query_params, dict):
+            recurse = query_params
+            query_params = None
+        query_params = dict(query_params or {})
         if recurse is not None:
             query_params.update(recurse=recurse)
         if not query_params:
             query_params = None
 
-        return super(Server, self).delete(uuid, query_params=query_params)
+        return super(Server, self).delete(
+            uuid, query_params=query_params, otp=otp)
 
     def delete_with_all_drives(self, uuid):
         """
@@ -811,7 +834,7 @@ class Websocket(object):
         return cls().get_from_url(ret['resource_uri'])
 
     def wait_obj_uri(self, resource_uri, cls, timeout=None):
-        ret = self.wait({"resource_uri": resource_uri}, timeout=timeout)
+        self.wait({"resource_uri": resource_uri}, timeout=timeout)
         return cls().get_from_url(resource_uri)
 
     def wait_obj_wrapper(

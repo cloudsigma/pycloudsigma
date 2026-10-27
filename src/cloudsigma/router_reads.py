@@ -32,17 +32,16 @@ class VirtualRouterReads(ResourceBase):
     """
     resource_name = 'virtualrouters'
 
-    def __init__(self, *args, **kwargs):
-        self.c = _RawReadClient(*args, **kwargs)
+    _client_class = _RawReadClient
 
-    def _page(self, detail=False, query_params=None):
+    def _page(self, detail=False, query_params=None, *, otp=None):
         query = {} if query_params is None else dict(query_params)
         if any(k not in ('limit', 'offset') for k in query):
             raise ValueError('unsupported router page query')
         if any(type(v) is not int or v < 0 for v in query.values()):
             raise ValueError('page values must be nonnegative integers')
         value = self.c.get(self._get_url() + ('detail/' if detail else ''),
-                           query_params=query, return_list=True)
+                           query_params=query, return_list=True, otp=otp)
         if type(value) is not dict:
             raise ValueError('router page must be an object')
         objects = value.get('objects')
@@ -51,15 +50,16 @@ class VirtualRouterReads(ResourceBase):
             raise ValueError('router objects must be object arrays')
         return value
 
-    def list(self, query_params=None):
-        return self._page(query_params=query_params)
+    def list(self, query_params=None, *, otp=None):
+        return self._page(query_params=query_params, otp=otp)
 
-    def list_detail(self, query_params=None):
-        return self._page(detail=True, query_params=query_params)
+    def list_detail(self, query_params=None, *, otp=None):
+        return self._page(detail=True, query_params=query_params, otp=otp)
 
-    def get(self, uuid=None):
+    def get(self, uuid=None, *, otp=None, query_params=None):
         identifier = _AvailabilityGroups._identifier(uuid)
-        return self.c.get(self._get_url() + identifier + '/')
+        return self.c.get(self._get_url() + identifier + '/',
+                          query_params=query_params, otp=otp)
 
 
 class VirtualRouterPolicyRead(ResourceBase):
@@ -69,9 +69,9 @@ class VirtualRouterPolicyRead(ResourceBase):
     """
     resource_name = 'vrfwpolicies'
 
-    def __init__(self, *args, **kwargs):
-        self.c = _RawReadClient(*args, **kwargs)
+    _client_class = _RawReadClient
 
-    def get(self, uuid=None):
+    def get(self, uuid=None, *, otp=None, query_params=None):
         identifier = _AvailabilityGroups._identifier(uuid)
-        return self.c.get(self._get_url() + identifier + '/')
+        return self.c.get(self._get_url() + identifier + '/',
+                          query_params=query_params, otp=otp)

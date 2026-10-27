@@ -1,4 +1,4 @@
-import os,unittest,io,logging,requests,socket,json,sys
+import os,unittest,io,logging,requests,sys
 from unittest.mock import patch
 os.environ['CLOUDSIGMA_CONFIG']='/dev/null'
 from cloudsigma import generic as g,errors

@@ -1,11 +1,10 @@
-import os,sys,json,unittest,hashlib,logging,io
-from pathlib import Path
+import os,sys,json,unittest
 from unittest.mock import patch
 os.environ['CLOUDSIGMA_CONFIG']='/dev/null'
 def deny(event,args):
  if event.startswith('socket.') or event in ['subprocess.Popen','os.system','os.fork','os.exec']:raise PermissionError('offline')
 sys.addaudithook(deny)
-import requests,cloudsigma
+import requests
 from cloudsigma import resource as r,generic as g,errors
 class Wire:
  def __init__(self,body=None,status=200):self.body=body if body is not None else {'objects':[],'meta':{'limit':1}};self.status=status;self.calls=[]
