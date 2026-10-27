@@ -16,7 +16,7 @@ the offline workflow. It checks JSON types, stable identities, source and
 fixture hashes, documentation discovery closure, fixture redaction, and exact
 rebuild determinism. Focused regression tests cover valid extraction, duplicate
 detection, fixture custody, and the qualified provider-gap state. The current
-installed-artifact offline guard is 302 tests, including the matrix, modern
+installed-artifact offline guard is 333 tests, including the matrix, modern
 router, lifecycle, and tunnel-probe tests.
 
 ## Tunnel disposition
