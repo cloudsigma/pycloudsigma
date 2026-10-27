@@ -38,6 +38,12 @@ class Session:
         )
 
 
+class AuthFailureSession(Session):
+    def get(self, url, **kwargs):
+        self.calls.append((url, kwargs))
+        return Response(status_code=401, body={'detail': 'hidden'})
+
+
 class TunnelProbeTests(unittest.TestCase):
     def test_probe_uses_get_only_and_summarizes_without_values(self):
         session = Session()
@@ -69,6 +75,16 @@ class TunnelProbeTests(unittest.TestCase):
                 contextlib.redirect_stdout(output):
             self.assertEqual(run_tunnel_probe.main(), 0)
         self.assertEqual(output.getvalue().count('"status": "passed"'), 1)
+
+    def test_authentication_failure_fails_probe(self):
+        with mock.patch.object(run_tunnel_probe, 'USERNAME', 'user'), \
+                mock.patch.object(run_tunnel_probe, 'PASSWORD', 'password'):
+            result = run_tunnel_probe.probe(AuthFailureSession())
+        self.assertEqual(result['status'], 'failed')
+        self.assertEqual(result['failed'], len(run_tunnel_probe.ROUTES))
+        self.assertTrue(all(
+            item['status'] == 'authentication_or_permission_failure'
+            for item in result['checks']))
 
 
 if __name__ == '__main__':

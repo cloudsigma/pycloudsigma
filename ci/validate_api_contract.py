@@ -20,6 +20,9 @@ ALLOWED_AUTHORITIES = {
     "schema", "canonical-documentation", "approved-internal-contract",
     "sanitized-live-observation", "example-only",
 }
+FIELD_CONTRACT_STATES = {
+    "complete", "pending-field-extraction", "schema-unavailable",
+}
 FIELD_KEYS = {
     "field_path", "type", "required", "nullable", "mutability",
     "authority", "source_ref", "evidence", "disposition",
@@ -62,8 +65,15 @@ def validate(path=MATRIX):
             errors.append(f"{prefix}.direction is invalid")
         if operation.get("authority") not in ALLOWED_AUTHORITIES:
             errors.append(f"{prefix}.authority is invalid")
+        if not isinstance(operation.get("source_ref"), str) or not operation["source_ref"]:
+            errors.append(f"{prefix}.source_ref must be non-empty")
+        if operation.get("field_contract") not in FIELD_CONTRACT_STATES:
+            errors.append(f"{prefix}.field_contract is invalid")
         if not isinstance(operation.get("status_codes"), list) or not operation["status_codes"]:
             errors.append(f"{prefix}.status_codes must be a non-empty list")
+        elif any(type(status) is not int or status < 100 or status > 599
+                 for status in operation["status_codes"]):
+            errors.append(f"{prefix}.status_codes must contain HTTP status integers")
         if operation.get("disposition") not in ALLOWED_DISPOSITIONS:
             errors.append(f"{prefix}.disposition is invalid")
         fields = operation.get("response_fields")
@@ -84,10 +94,15 @@ def validate(path=MATRIX):
             elif field_path in field_seen:
                 errors.append(f"{field_prefix} duplicates field_path {field_path!r}")
             field_seen.add(field_path)
+            if not isinstance(field.get("type"), str) or not field["type"]:
+                errors.append(f"{field_prefix}.type must be non-empty")
             if not isinstance(field.get("required"), bool) or not isinstance(field.get("nullable"), bool):
                 errors.append(f"{field_prefix}.required and nullable must be booleans")
             if field.get("authority") not in ALLOWED_AUTHORITIES:
                 errors.append(f"{field_prefix}.authority is invalid")
+            for name in ("source_ref", "evidence"):
+                if not isinstance(field.get(name), str) or not field[name]:
+                    errors.append(f"{field_prefix}.{name} must be non-empty")
             if field.get("disposition") not in ALLOWED_DISPOSITIONS:
                 errors.append(f"{field_prefix}.disposition is invalid")
     return errors

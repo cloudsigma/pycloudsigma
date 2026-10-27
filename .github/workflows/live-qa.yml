@@ -3,6 +3,8 @@ name: Live QA acceptance
 on:
   push:
     branches: [master]
+  schedule:
+    - cron: '17 3 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -20,6 +22,8 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.12'
+      - name: Validate API contract matrix
+        run: python -I -B ci/validate_api_contract.py
       - name: Install hashlocked SDK dependencies
         run: python -m pip --isolated install --index-url https://pypi.org/simple --require-hashes -r ci/requirements-3.12.lock
       - name: Build and install exact SDK
@@ -37,4 +41,13 @@ jobs:
           CLOUDSIGMA_QA_USERNAME: ${{ secrets.CLOUDSIGMA_QA_USERNAME }}
           CLOUDSIGMA_QA_PASSWORD: ${{ secrets.CLOUDSIGMA_QA_PASSWORD }}
           CLOUDSIGMA_QA_ENDPOINT: https://next.cloudsigma.com/api/2.0/
-        run: python -I -B ci/run_tunnel_probe.py
+        run: |
+          mkdir -p outputs
+          python -I -B ci/run_tunnel_probe.py | tee outputs/tunnel-probe.json
+      - name: Upload sanitized tunnel probe evidence
+        if: always()
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
+        with:
+          name: tunnel-probe-${{ github.run_id }}
+          path: outputs/tunnel-probe.json
+          if-no-files-found: error

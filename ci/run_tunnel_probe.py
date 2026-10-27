@@ -87,9 +87,18 @@ def probe(session=None):
                 'elapsed_ms': round((time.monotonic() - started) * 1000),
             })
             continue
-        status = 'passed' if response.status_code < 400 else 'provider_unavailable'
-        if response.status_code >= 500:
+        if 300 <= response.status_code < 400:
+            status = 'unexpected_redirect'
+        elif response.status_code < 400:
+            status = 'passed'
+        elif response.status_code in (401, 403):
+            status = 'authentication_or_permission_failure'
+        elif response.status_code == 404:
+            status = 'provider_unavailable'
+        elif response.status_code >= 500:
             status = 'unexpected_provider_error'
+        else:
+            status = 'unexpected_http_status'
         checks.append({
             'name': name,
             'path': path,
@@ -104,7 +113,10 @@ def probe(session=None):
         })
     failures = [
         item for item in checks
-        if item['status'] in ('transport_error', 'unexpected_provider_error')
+        if item['status'] in (
+                'transport_error', 'authentication_or_permission_failure',
+                'unexpected_provider_error', 'unexpected_http_status',
+                'unexpected_redirect')
     ]
     return {
         'endpoint': ENDPOINT,

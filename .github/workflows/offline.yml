@@ -11,11 +11,11 @@ jobs:
       matrix:
         python: ['3.10', '3.11', '3.12']
     steps:
-      - name: Validate API contract matrix
-        run: python -I -B ci/validate_api_contract.py
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+      - name: Validate API contract matrix
+        run: python -I -B ci/validate_api_contract.py
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '${{ matrix.python }}'
