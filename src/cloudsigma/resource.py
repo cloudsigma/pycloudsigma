@@ -26,7 +26,7 @@ class ResourceBase(object):
             'Descendant class must set the resource_name field'
         return '/%s/' % (self.resource_name,)
 
-    def get(self, uuid=None):
+    def get(self, uuid=None, *, otp=None):
         url = self._get_url()
         if uuid is not None:
             if isinstance(uuid, bytes):
@@ -34,7 +34,7 @@ class ResourceBase(object):
             else:
                 uuid_str = uuid
             url += uuid_str
-        return self.c.get(url, return_list=False)
+        return self.c.get(url, return_list=False, otp=otp)
 
     def get_schema(self):
         url = self._get_url() + 'schema'
@@ -43,37 +43,40 @@ class ResourceBase(object):
     def get_from_url(self, url):
         return self.c.get(url, return_list=False)
 
-    def list(self, query_params=None):
+    def list(self, query_params=None, *, otp=None):
         url = self._get_url()
         _query_params = {
             'limit': 0,  # get all results, do not use pagination
         }
         if query_params:
             _query_params.update(query_params)
-        return self.c.get(url, query_params=_query_params, return_list=True)
+        return self.c.get(
+            url, query_params=_query_params, return_list=True, otp=otp)
 
-    def list_detail(self, query_params=None):
+    def list_detail(self, query_params=None, *, otp=None):
         url = self._get_url() + 'detail/'
         _query_params = {
             'limit': 0,  # get all results, do not use pagination
         }
         if query_params:
             _query_params.update(query_params)
-        return self.c.get(url, query_params=_query_params, return_list=True)
+        return self.c.get(
+            url, query_params=_query_params, return_list=True, otp=otp)
 
-    def list_raw(self, query_params=None):
+    def list_raw(self, query_params=None, *, otp=None):
         """Return one complete collection response; do not follow pages."""
         query = {'limit': 0}
         if query_params:
             query.update(query_params)
-        return self.c.get_raw(self._get_url(), query_params=query)
+        return self.c.get_raw(self._get_url(), query_params=query, otp=otp)
 
-    def list_detail_raw(self, query_params=None):
+    def list_detail_raw(self, query_params=None, *, otp=None):
         """Return one complete detail collection response; do not follow pages."""
         query = {'limit': 0}
         if query_params:
             query.update(query_params)
-        return self.c.get_raw(self._get_url() + 'detail/', query_params=query)
+        return self.c.get_raw(
+            self._get_url() + 'detail/', query_params=query, otp=otp)
 
     def _pepare_data(self, data):
         res_data = data
@@ -88,25 +91,26 @@ class ResourceBase(object):
             )
         return res_data
 
-    def create(self, data, query_params=None):
+    def create(self, data, query_params=None, *, otp=None):
         query_params = query_params or {}
         url = self._get_url()
         return self.c.post(
             url,
             self._pepare_data(data),
             return_list=False,
-            query_params=query_params
+            query_params=query_params,
+            otp=otp
         )
 
-    def update(self, uuid, data):
+    def update(self, uuid, data, *, otp=None):
         url = self._get_url() + uuid + '/'
-        return self.c.put(url, data, return_list=False)
+        return self.c.put(url, data, return_list=False, otp=otp)
 
-    def delete(self, uuid, query_params=None):
+    def delete(self, uuid, query_params=None, *, otp=None):
         url = self._get_url() + uuid
-        return self.c.delete(url, query_params=query_params)
+        return self.c.delete(url, query_params=query_params, otp=otp)
 
-    def _action(self, uuid, action, data=None, query_params=None):
+    def _action(self, uuid, action, data=None, query_params=None, *, otp=None):
         query_params = query_params or {}
         q_params = {'do': action}
         q_params.update(query_params)
@@ -119,7 +123,8 @@ class ResourceBase(object):
             url,
             data,
             query_params=q_params,
-            return_list=False
+            return_list=False,
+            otp=otp
         )
 
 
@@ -625,6 +630,15 @@ class Accounts(ResourceBase):
         self.c.login_method = GenericClient.LOGIN_METHOD_NONE
         return self._action(
             None, 'create', data={'email': email, 'promo': promo_code})
+
+
+class Keypairs(ResourceBase):
+    """Manage keypairs with the generic CRUD methods and optional OTP.
+
+    Keypair responses may include private-key material. For public-only reads,
+    use :class:`cloudsigma.public_key_read.PublicKeyRead` instead.
+    """
+    resource_name = 'keypairs'
 
 
 class CurrentUsage(ResourceBase):
