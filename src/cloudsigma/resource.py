@@ -26,7 +26,8 @@ class ResourceBase(object):
             'Descendant class must set the resource_name field'
         return '/%s/' % (self.resource_name,)
 
-    def get(self, uuid=None, *, otp=None):
+    def get(self, uuid=None, *, otp=None, query_params=None):
+        """Read a resource, forwarding documented singleton query filters."""
         url = self._get_url()
         if uuid is not None:
             if isinstance(uuid, bytes):
@@ -34,7 +35,8 @@ class ResourceBase(object):
             else:
                 uuid_str = uuid
             url += uuid_str
-        return self.c.get(url, return_list=False, otp=otp)
+        return self.c.get(url, query_params=query_params,
+                          return_list=False, otp=otp)
 
     def get_schema(self):
         url = self._get_url() + 'schema'
