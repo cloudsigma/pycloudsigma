@@ -34,7 +34,8 @@ class UploadTest(StatefulResourceTestBase):
 
         self.file_size = 10 * 1024 ** 2 + random.randrange(0, 1024)  # 10.something MiB
         self.file_path = self.generate_file()
-        self.downloaded_path = tempfile.mktemp(prefix='test_download_')
+        fd, self.downloaded_path = tempfile.mkstemp(prefix='test_download_')
+        os.close(fd)
 
     def del_file(self, path):
         try:
@@ -109,7 +110,7 @@ class UploadTest(StatefulResourceTestBase):
             '{}/drives/upload/'.format(curl_upload_endpoint)
         ]
 
-        LOG.debug('cURL upload command is: {}'.format(' '.join(cmd_args)))
+        LOG.debug('cURL upload requested for %s', self.file_path)
         return self.run_subprocess(cmd_args)
 
     def do_download(self, uuid):
@@ -125,7 +126,7 @@ class UploadTest(StatefulResourceTestBase):
         ]
         sleep(180)
 
-        LOG.debug('cURL download command is: {}'.format(' '.join(cmd_args)))
+        LOG.debug('cURL download requested for drive %s', uuid)
         p_stdout, p_stderr = self.run_subprocess(cmd_args)
         self.addCleanup(self.del_file, self.downloaded_path)
         status = int(p_stdout)

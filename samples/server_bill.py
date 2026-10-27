@@ -5,6 +5,7 @@ from past.utils import old_div
 import bisect
 from collections import defaultdict
 from datetime import timedelta, datetime
+import hashlib
 import dateutil.parser
 from decimal import Decimal
 import re
@@ -108,4 +109,5 @@ def get_per_server_usage(start_time, end_time):
 if __name__ == '__main__':
     for server, amount in list(
             get_per_server_usage(start_time, end_time).items()):
-        print("%s - %.2f" % (server, amount))
+        server_id = hashlib.sha256(server.encode('utf-8')).hexdigest()[:12]
+        print("server-%s - %.2f" % (server_id, amount))
