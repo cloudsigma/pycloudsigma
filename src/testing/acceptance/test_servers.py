@@ -632,7 +632,7 @@ class ServerTest(ServerTestBase):
             try:
                 # Check if we can connect to VNC address
                 vnc_sock.connect(vnc_address)
-            except:
+            except Exception:
                 time.sleep(1)
             else:
                 break
@@ -707,8 +707,8 @@ class ServerTest(ServerTestBase):
         with self.dump_response('server_edit_meta'):
             updated_server = self.client.update(server['uuid'], updated_server)
 
-        self.assertTrue('meta_key1' not in updated_server['meta'])
-        self.assertTrue(updated_server['meta']['meta_key3'] == 'value3')
+        self.assertNotIn('meta_key1', updated_server['meta'])
+        self.assertEqual(updated_server['meta']['meta_key3'], 'value3')
 
         del server_def['meta']
         self.client.update(server['uuid'], server_def)

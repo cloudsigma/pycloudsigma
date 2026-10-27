@@ -143,7 +143,7 @@ class UploadTest(StatefulResourceTestBase):
                 # check zeroes till the end of file
                 downloaded.seek(self.file_size)
                 remaining_len = downloaded_size - self.file_size
-                self.assertTrue(remaining_len > 0)
+                self.assertGreater(remaining_len, 0)
                 while remaining_len - 8 >= 0:
                     value = struct.unpack('=Q', downloaded.read(8))
                     self.assertEqual(value[0], 0)

@@ -21,7 +21,7 @@ class WebsocketTest(unittest.TestCase):
             }
         )
 
-        ret = ws.wait_obj_wrapper(
+        ws.wait_obj_wrapper(
             ws.wait_obj_uri,
             (d['resource_uri'], resource.Drive),
             timeout=30,
@@ -30,7 +30,7 @@ class WebsocketTest(unittest.TestCase):
         resource.Drive().delete(d['uuid'])
 
         try:
-            ret = ws.wait_obj_wrapper(
+            ws.wait_obj_wrapper(
                 ws.wait_obj_uri,
                 (d['resource_uri'], resource.Drive),
                 timeout=30,
@@ -51,7 +51,7 @@ class WebsocketTest(unittest.TestCase):
             }
         )
 
-        ret = ws.wait_obj_wrapper(
+        ws.wait_obj_wrapper(
             ws.wait_obj_uri,
             (g['resource_uri'], resource.Server),
             timeout=30,
@@ -60,7 +60,7 @@ class WebsocketTest(unittest.TestCase):
 
         resource.Server().start(g['uuid'])
 
-        ret = ws.wait_obj_wrapper(
+        ws.wait_obj_wrapper(
             ws.wait_obj_uri,
             (g['resource_uri'], resource.Server),
             timeout=30,
@@ -79,7 +79,7 @@ class WebsocketTest(unittest.TestCase):
         resource.Server().delete(g['uuid'])
 
         try:
-            g = ws.wait_obj_wrapper(
+            ws.wait_obj_wrapper(
                 ws.wait_obj_uri,
                 (ret['resource_uri'], resource.Server),
                 timeout=30,
@@ -100,7 +100,7 @@ class WebsocketTest(unittest.TestCase):
             }
         )
 
-        ret = ws.wait_obj_wrapper(
+        ws.wait_obj_wrapper(
             ws.wait_obj_uri,
             (g['resource_uri'], resource.Server),
             timeout=30,
@@ -115,7 +115,7 @@ class WebsocketTest(unittest.TestCase):
             }
         )
 
-        ret = ws.wait_obj_wrapper(
+        ws.wait_obj_wrapper(
             ws.wait_obj_uri,
             (d['resource_uri'], resource.Drive),
             timeout=30,

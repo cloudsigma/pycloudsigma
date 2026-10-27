@@ -121,7 +121,7 @@ class VpcTest(VpcTestsBase):
 
         vpc = res[0]
         vpc['tags'] = [tag['uuid'], ]
-        vpc = self.vpc_client.update(vpc['uuid'], vpc)
+        self.vpc_client.update(vpc['uuid'], vpc)
 
         list = self.vpc_client_2.list()
         self.assertEqual(len(list), 1)

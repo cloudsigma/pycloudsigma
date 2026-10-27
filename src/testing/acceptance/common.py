@@ -3,33 +3,29 @@ from cloudsigma.generic import GenericClient
 import datetime
 from cloudsigma import resource
 from cloudsigma.resource import Nodes, Vpc
-from unittest import SkipTest
+from unittest import SkipTest, TestCase
 from cloudsigma.conf import config
 import logging
 import time
 from nose.plugins.attrib import attr
-import unittest
 from cloudsigma import errors
-import cloudsigma.resource as cr
 from past.utils import old_div
 from copy import deepcopy
-from future import standard_library
-standard_library.install_aliases()
 
 
 LOG = logging.getLogger(__name__)
 
 
 @attr('acceptance_test')
-class StatefulResourceTestBase(unittest.TestCase):
+class StatefulResourceTestBase(TestCase):
     TIMEOUT_DRIVE_CREATED = 2 * 60
     TIMEOUT_DRIVE_CLONING = 20 * 60
     TIMEOUT_DRIVE_DELETED = 3 * 60
 
     def setUp(self):
-        unittest.TestCase.setUp(self)
+        TestCase.setUp(self)
         # Create a resource handle object
-        self.client = cr.ResourceBase()
+        self.client = resource.ResourceBase()
         self._clean_servers()
         self._clean_drives()
 
@@ -59,11 +55,11 @@ class StatefulResourceTestBase(unittest.TestCase):
                     return drive['uuid']
             return None
 
-        puuid = _filter_drives(cr.Drive().list_detail())
+        puuid = _filter_drives(resource.Drive().list_detail())
         if puuid is None:
-            puuid = _filter_drives(cr.LibDrive().list_detail())
+            puuid = _filter_drives(resource.LibDrive().list_detail())
             if puuid is not None:
-                client_drives = cr.Drive()
+                client_drives = resource.Drive()
                 clone_drive_def = {
                     'name': p_name,
                 }
@@ -177,7 +173,7 @@ class StatefulResourceTestBase(unittest.TestCase):
             try:
                 # Check if we can connect to socket
                 sock.connect((host, port))
-            except:
+            except Exception:
                 time.sleep(1)
             else:
                 connected = True
@@ -209,7 +205,7 @@ class StatefulResourceTestBase(unittest.TestCase):
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 sock.settimeout(3)
                 sock.connect((host, port))
-            except:
+            except Exception:
                 closed = True
                 break
             else:
@@ -231,7 +227,7 @@ class StatefulResourceTestBase(unittest.TestCase):
 
         :return:
         """
-        server_client = cr.Server()
+        server_client = resource.Server()
 
         stopping = []
         deleting = []
@@ -251,7 +247,7 @@ class StatefulResourceTestBase(unittest.TestCase):
         for uuid in stopping:
             try:
                 self._wait_for_status(uuid, 'stopped', client=server_client)
-            except:
+            except Exception:
                 LOG.exception("Server {} did not stop in time".format(uuid))
             else:
                 server_client.delete(uuid)
@@ -260,7 +256,7 @@ class StatefulResourceTestBase(unittest.TestCase):
         for uuid in deleting:
             try:
                 self._wait_deleted(uuid, client=server_client)
-            except:
+            except Exception:
                 LOG.exception("Server {} did not delete in time".format(uuid))
 
         if len(inter) != 0:
@@ -276,7 +272,7 @@ class StatefulResourceTestBase(unittest.TestCase):
 
         :return:
         """
-        drive_client = cr.Drive()
+        drive_client = resource.Drive()
 
         mounted = []
         deleting = []
@@ -295,7 +291,7 @@ class StatefulResourceTestBase(unittest.TestCase):
         for uuid in deleting:
             try:
                 self._wait_deleted(uuid, client=drive_client)
-            except:
+            except Exception:
                 LOG.exception("Drive {} did not delete in time".format(uuid))
 
         if mounted:
@@ -315,7 +311,7 @@ class StatefulResourceTestBase(unittest.TestCase):
 
     def get_other_account(self):
         if not config.get('username2'):
-            raise unittest.SkipTest('Missing second account for ACL tests')
+            raise SkipTest('Missing second account for ACL tests')
         return dict(
             username=config['username2'], password=config['password2']
         )
@@ -421,7 +417,7 @@ def is_vpc_test_enabled():
     try:
         value = config.get('vpc_test_enabled')
         return value.lower() == 'true'
-    except:
+    except Exception:
         return False
 
 

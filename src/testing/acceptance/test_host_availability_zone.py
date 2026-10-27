@@ -22,7 +22,7 @@ class HostAvailabilityZoneTest(StatefulResourceTestBase):
     @attr('docs_snippets')
     def test_listing(self):
         zones = self.get_list()
-        self.assertTrue(len(zones) > 0)
+        self.assertGreater(len(zones), 0)
         for zone in zones:
             self.assertIn('uuid', zone)
             self.assertIn('name', zone)

@@ -135,7 +135,7 @@ class GenericClient(object):
             if type(self.secret) is str and self.secret and not self.secret.startswith('otpauth:'):
                 key = base64.b32decode(self.secret.upper() + '=' * (-len(self.secret) % 8))
         except (ValueError, TypeError):
-            pass
+            key = None
         if not key:
             raise errors.ApiClientError('invalid MFA secret')
         counter = int(time.time() // 30)

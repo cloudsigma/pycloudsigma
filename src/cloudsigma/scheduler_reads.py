@@ -34,7 +34,7 @@ class BackupSchedulerReads(VirtualRouterReads):
             objects.append({'uuid': uuid})
         return self.c.delete(self._get_url(), data={'objects': objects})
 
-    def _page(self, detail=False, query_params=None):
+    def _page(self, detail=False, query_params=None, *, otp=None):
         query = {} if query_params is None else dict(query_params)
         allowed = ('type', 'limit', 'offset') if detail else ('type', 'fields', 'limit', 'offset')
         if any(k not in allowed for k in query):
@@ -47,7 +47,7 @@ class BackupSchedulerReads(VirtualRouterReads):
         if 'fields' in query and (type(query['fields']) is not str or not query['fields']):
             raise ValueError('fields must be a nonempty string')
         value = self.c.get(self._get_url() + ('detail/' if detail else ''),
-                           query_params=query, return_list=True)
+                           query_params=query, return_list=True, otp=otp)
         if type(value) is not dict:
             raise ValueError('scheduler page must be an object')
         objects = value.get('objects')
