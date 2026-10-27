@@ -1,0 +1,982 @@
+{
+  "blocks": [
+    {
+      "anchor": "profile",
+      "kind": "heading",
+      "level": 1,
+      "text": "Profile"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get the profile object"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "update the profile object"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--profile-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/profile/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the user profile. Note that profile is a single object so the API does not return a list."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "73475141604677f427acaa2b377eded9b6d03c38ce698ecce16bd4c29e0b6bb0",
+      "path": "/api/2.0/profile/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/profile/"
+      },
+      "original_sha256": "0f92d9c9fc1f3266a779703c6fad6b0a58bc120e970e6388d61ab88f4858ecad",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"api_https_only\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"autotopup_amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"autotopup_threshold\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"bank_reference\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"clone_naming\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"company\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"country\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"currency\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"first_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"has_autotopup\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"has_tx_autotopup\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"invoicing\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"key_auth\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"language\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"last_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"mailing_list\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"my_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"network_restrictions\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nickname\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"phone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"postcode\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"reseller\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"signup_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tax_name\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"tax_rate\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"title\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"town\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tx_autotopup_amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tx_autotopup_threshold\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vat\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "put--profile-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/profile/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits a user profile. (We want to change the company name for example)"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "64912ad3fc90c4ce3977b35cc4fdc7275e4b466edf52a25627f840462af536bb",
+      "path": "/api/2.0/profile/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "PUT",
+        "path": "/api/2.0/profile/"
+      },
+      "original_sha256": "69429b43c20560bd63070b068e0933acb901dc81407d0d23d4b8ce6c6ebdb7bf",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"api_https_only\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"autotopup_amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"autotopup_threshold\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"bank_reference\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"clone_naming\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"company\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"country\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"currency\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"first_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"has_autotopup\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"has_tx_autotopup\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"invoicing\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"key_auth\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"language\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"last_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"mailing_list\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"my_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"network_restrictions\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nickname\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"phone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"postcode\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"reseller\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"signup_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tax_name\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"tax_rate\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"title\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"town\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tx_autotopup_amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tx_autotopup_threshold\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vat\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "7dd5be1e1dd3c7884a7320f227344925cf1c8b1fe87ecc9ddb58e48ffcc085d1",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "put"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "put"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "address": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "api_https_only": {
+            "blank": false,
+            "default": false,
+            "help_text": "Boolean data. Ex: True",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          },
+          "autotopup_amount": {
+            "blank": false,
+            "default": 0,
+            "help_text": "Fixed precision numeric data. Ex: 26.73",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "autotopup_threshold": {
+            "blank": false,
+            "default": 0,
+            "help_text": "Fixed precision numeric data. Ex: 26.73",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "bank_reference": {
+            "blank": true,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": true,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "clone_naming": {
+            "blank": false,
+            "default": "NONE",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "company": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "country": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "currency": {
+            "blank": true,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": true,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "email": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "first_name": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "has_autotopup": {
+            "blank": false,
+            "default": false,
+            "help_text": "Boolean data. Ex: True",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          },
+          "has_tx_autotopup": {
+            "blank": false,
+            "default": false,
+            "help_text": "Boolean data. Ex: True",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          },
+          "invoicing": {
+            "blank": false,
+            "default": true,
+            "help_text": "Boolean data. Ex: True",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          },
+          "key_auth": {
+            "blank": false,
+            "default": false,
+            "help_text": "Boolean data. Ex: True",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          },
+          "language": {
+            "blank": false,
+            "default": "EN",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "last_name": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "mailing_list": {
+            "blank": false,
+            "default": true,
+            "help_text": "Boolean data. Ex: True",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          },
+          "meta": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "A dictionary of data. Ex: {'price': 26.73, 'name': 'Daniel'}",
+            "nullable": false,
+            "readonly": false,
+            "type": "dict",
+            "unique": false
+          },
+          "my_notes": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "network_restrictions": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": true,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "nickname": {
+            "blank": false,
+            "default": "",
+            "help_text": "User nickname",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "phone": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "postcode": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "reseller": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "signup_time": {
+            "blank": false,
+            "default": "2015-03-19T13:49:15.421660+00:00",
+            "help_text": "A date & time as a string. Ex: \"2010-11-10T03:07:43\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "datetime",
+            "unique": false
+          },
+          "state": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "tax_name": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": true,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "tax_rate": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Fixed precision numeric data. Ex: 26.73",
+            "nullable": true,
+            "readonly": true,
+            "type": "decimal",
+            "unique": false
+          },
+          "title": {
+            "blank": false,
+            "default": "",
+            "help_text": "User title",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "town": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "tx_autotopup_amount": {
+            "blank": false,
+            "default": 0,
+            "help_text": "Fixed precision numeric data. Ex: 26.73",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "tx_autotopup_threshold": {
+            "blank": false,
+            "default": 0,
+            "help_text": "Fixed precision numeric data. Ex: 26.73",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "uuid": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "vat": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          }
+        }
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "24816ae5b2e07d64817ea4a2126d76cd30e0b099c614c09181e74849a1ac2222",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/profile.html"
+}

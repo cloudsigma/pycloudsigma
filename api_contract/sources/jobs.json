@@ -1,0 +1,1145 @@
+{
+  "blocks": [
+    {
+      "anchor": "jobs",
+      "kind": "heading",
+      "level": 1,
+      "text": "Jobs"
+    },
+    {
+      "anchor": "jobs",
+      "kind": "prose",
+      "text": "Jobs are used to track progress of long running tasks. A good example for a long running task is cloning of drives and servers. Depending on the current cloud resource usage and the users preferences ( Creating Drives in a Different Availability Group (Create/Clone Avoid) ), a drive clone operation can take a while."
+    },
+    {
+      "anchor": "jobs",
+      "kind": "prose",
+      "text": "Drive cloning"
+    },
+    {
+      "anchor": "jobs",
+      "kind": "prose",
+      "text": "Server cloning"
+    },
+    {
+      "anchor": "how-it-works",
+      "kind": "heading",
+      "level": 2,
+      "text": "How it works"
+    },
+    {
+      "anchor": "drive-cloning",
+      "kind": "heading",
+      "level": 3,
+      "text": "Drive cloning"
+    },
+    {
+      "anchor": "drive-cloning",
+      "kind": "prose",
+      "text": "After successfully starting a cloning operation via the API, you will receive the definition of the newly created drive. All drives have a jobs field, containing references to the all the long running tasks executed on them. The destination, since it is a newly created drive, references only 1 job - the currently running one. The source might contain more jobs, depending on how many times it was cloned. History of completed jobs is kept for 3 days. Older jobs are discarded."
+    },
+    {
+      "anchor": "drive-cloning",
+      "kind": "prose",
+      "text": "Example clone request:"
+    },
+    {
+      "anchor": "drive-cloning",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "84e4d101a76fed7d5b28f84e9c5b5f5f4942c5023702f79279c79664aa373e80",
+      "path": "/api/2.0/drives/5d537d3f-22ea-4967-9ec0-32e837a8b390/action/?do=clone"
+    },
+    {
+      "anchor": "drive-cloning",
+      "kind": "prose",
+      "text": "Example clone response:"
+    },
+    {
+      "anchor": "drive-cloning",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "307dd57502b86175febd091487ddb38c873850055d198db58d66cc414250a18d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "drive-cloning",
+      "kind": "prose",
+      "text": "Using the the jobs field we could examine how is our cloning operation doing:"
+    },
+    {
+      "anchor": "drive-cloning",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "drive-cloning",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "afcd2c9a91827de118837a7c7cd8f60449308fc892cf4e8ca9ca5d6be181b165",
+      "path": "/api/2.0/jobs/6c809fa7-f797-4d0f-bbfb-b1b9ba737dda/"
+    },
+    {
+      "anchor": "drive-cloning",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "drive-cloning",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "b709755af03cc0d11413ac05ca85d4a218c46b88a3dbf0b51867066b53385b1b",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"created\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"data\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"data\"][\"progress\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"last_modified\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"operation\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resources\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resources\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "drive-cloning",
+      "kind": "prose",
+      "text": "The interesting field here is data.progress. 100 means the job has finished."
+    },
+    {
+      "anchor": "server-cloning",
+      "kind": "heading",
+      "level": 3,
+      "text": "Server cloning"
+    },
+    {
+      "anchor": "server-cloning",
+      "kind": "prose",
+      "text": "Cloning a server is a bit more complex. Since servers generally contain drives, drives must also be cloned. That is why jobs support sub-jobs. When you send a clone server request, you receive the definition of the newly created server. It also has a jobs field containing the definitions of jobs and sub-jobs."
+    },
+    {
+      "anchor": "server-cloning",
+      "kind": "prose",
+      "text": "Example clone request:"
+    },
+    {
+      "anchor": "server-cloning",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "c06b48889c336636adf04bdb529ea6186b0d4d57fbb5572203e6698eed87ef55",
+      "path": "/api/2.0/servers/ee11b9d1-e837-4f27-91a4-d1ae4c621bd1/action/?do=clone"
+    },
+    {
+      "anchor": "server-cloning",
+      "kind": "prose",
+      "text": "Example clone response:"
+    },
+    {
+      "anchor": "server-cloning",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "19db875b7027969961594293b44f89719991e15fef4f42d080bd1e5274f3dfd2",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "server-cloning",
+      "kind": "prose",
+      "text": "Each job has children field with containing its sub-jobs. Note that each sub-job contains a children field, too. Meaning that a sub-job could have a sub-jobs, too."
+    },
+    {
+      "anchor": "server-cloning",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "server-cloning",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "df0a3450267b463fd8d3db2554a8406c8ad5441e571f6e0a8941c0755a78c05e",
+      "path": "/api/2.0/jobs/4e1944be-a078-4ead-9d19-5f8823a84d42/"
+    },
+    {
+      "anchor": "server-cloning",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "server-cloning",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "2ccfe8eb98e153bbff1f44ad5fe010227220f0d202def68fcab90f04dc9488b4",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"children\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"created\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"data\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"data\"][\"progress\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"last_modified\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"operation\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"resources\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"resources\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"children\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"created\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"data\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"data\"][\"progress\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"last_modified\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"operation\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resources\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resources\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "list-all-jobs",
+      "kind": "heading",
+      "level": 3,
+      "text": "List all jobs"
+    },
+    {
+      "anchor": "list-all-jobs",
+      "kind": "prose",
+      "text": "All jobs can be listed and examined quite easily."
+    },
+    {
+      "anchor": "list-all-jobs",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "list-all-jobs",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "9db9bb49b64a26d11d0566559da401a5a8856c7ee2aff81419b3efb64a89c293",
+      "path": "/api/2.0/jobs/"
+    },
+    {
+      "anchor": "list-all-jobs",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "list-all-jobs",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "45ffc215fa72131fce27967a883c15f753c9653eac0451589a3562154682c50e",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"children\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"created\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"data\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"data\"][\"progress\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"last_modified\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"operation\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"resources\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"children\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"created\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"data\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"data\"][\"progress\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"last_modified\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"operation\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resources\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resources\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "f5a4cfb3c598638180445d69ecbc9ddf0d8d59760ed240973171ae5d47c6d320",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "children": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Background jobs, initiated by this job.",
+            "nullable": true,
+            "readonly": false,
+            "type": "related",
+            "unique": false
+          },
+          "created": {
+            "blank": false,
+            "default": "2014-06-05T09:46:41.793232+00:00",
+            "help_text": "A date & time as a string. Ex: \"2010-11-10T03:07:43\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "datetime",
+            "unique": false
+          },
+          "data": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Meta information related to this background job's execution.",
+            "nullable": true,
+            "readonly": false,
+            "type": "object",
+            "unique": false
+          },
+          "last_modified": {
+            "blank": false,
+            "default": "2014-06-05T09:46:41.793249+00:00",
+            "help_text": "A date & time as a string. Ex: \"2010-11-10T03:07:43\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "datetime",
+            "unique": false
+          },
+          "operation": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "resource_uri": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "resources": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Resources linked to this background job.",
+            "nullable": true,
+            "readonly": false,
+            "type": "list",
+            "unique": false
+          },
+          "state": {
+            "blank": false,
+            "default": "started",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "uuid": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": true
+          }
+        },
+        "filtering": {
+          "state": 1
+        },
+        "ordering": [
+          "-last_modified"
+        ]
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "a0c811e10286b8b0f164c8e4330f6134220be466677ac0864f1dcc792fcca0b3",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/jobs.html"
+}

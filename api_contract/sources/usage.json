@@ -1,0 +1,235 @@
+{
+  "blocks": [
+    {
+      "anchor": "usage",
+      "kind": "heading",
+      "level": 1,
+      "text": "Usage"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--usage-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/usage/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Retrieve the usage data for a specific time range. The start and end times are specified using the poll_time_gt (greater than) and poll_time_lt (less than) query parameters, along with an optional limit parameter to define the number of results returned."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "7b78aba5b82c3b7854497f3626aa914e16397b957c88b563d8866e5b782c157e"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/usage/"
+      },
+      "original_sha256": "4d2ef886ca0c7e82c84ed8e6fe999a204f61c5c92f242214343c658b7ff1c2bb",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"poll_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example:"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "To retrieve user usage data for the entire day of April 1st, 2024, the query parameters would be set like this:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/usage/"
+      },
+      "original_sha256": "7f3e710935e4776128b55e6d0ca514dfaa55e47a0321e48603d940e963e9f767",
+      "parse_gap": "invalid-or-non-json",
+      "status_code": null
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "This request will fetch all usage data between 2024-04-01 00:00:00 and 2024-04-02 00:00:00. The limit=1500 parameter restricts the response to 1500 records."
+    }
+  ],
+  "html_sha256": "589edfdb5a8ae96090035b34ae55d11202d8d1c900db5abfa205395ae41edf26",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/usage.html"
+}

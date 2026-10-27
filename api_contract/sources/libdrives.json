@@ -1,0 +1,1503 @@
+{
+  "blocks": [
+    {
+      "anchor": "library-drives",
+      "kind": "heading",
+      "level": 1,
+      "text": "Library Drives"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--libdrives-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/libdrives/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of library drives to which the authenticated user has access."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "A set of field names specifying the returned fields"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "16ae5c98b938e9b41515bf6e87976bdb27ca32f0f7f77d77740d84a5b5ad9b21",
+      "path": "/api/2.0/libdrives/?limit=5"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/libdrives/"
+      },
+      "original_sha256": "7dc1a9820d681bd7dc6fda7f37997f834468d3f119d3f9a6f018bc383259733d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"arch\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"category\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"category\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"distribution\"]",
+          "observed_types": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"favourite\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"image_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"install_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"amount\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"burstable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"long_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"user_metric\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"user\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"os\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"paid\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"storage_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"url\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"version\"]",
+          "observed_types": [
+            "null",
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "For consistency, we left /libdrives/detail/ url enabled, but it returns the same level of detail as the list call."
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "heading",
+      "level": 2,
+      "text": "List single drive"
+    },
+    {
+      "anchor": "get--libdrives-uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/libdrives/{uuid}/"
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "prose",
+      "text": "Gets detailed information for library drive identified by uuid."
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "list-single-drive",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "39f784f1e8e23e7d5c4f5e9c0e81f729303f972c9b96fc9c245e1a686fe8d232",
+      "path": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/"
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "list-single-drive",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/libdrives/{uuid}/"
+      },
+      "original_sha256": "f6b3a7242ed68acfdebd8c074e87efd8588e1cbd5907af44ac996b15c60eb874",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"arch\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"category\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"category\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"distribution\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"favourite\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"image_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"install_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"amount\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"burstable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"long_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"user_metric\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"user\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"os\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"paid\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"url\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"version\"]",
+          "observed_types": [
+            "null"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "attaching-library-drive",
+      "kind": "heading",
+      "level": 2,
+      "text": "Attaching library drive"
+    },
+    {
+      "anchor": "attaching-library-drive",
+      "kind": "prose",
+      "text": "If the library drive is a CDROM media, you can attach it directly to an owned server the same way you attach a regular drive - specifying the library drive uuid."
+    },
+    {
+      "anchor": "cloning-library-drive",
+      "kind": "heading",
+      "level": 2,
+      "text": "Cloning library drive"
+    },
+    {
+      "anchor": "post--libdrives-uuid-action-?do=clone",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/libdrives/{uuid}/action/?do=clone"
+    },
+    {
+      "anchor": "cloning-library-drive",
+      "kind": "prose",
+      "text": "If a library drive is not a CDROM, you have to clone it in your account in order to use it. You can clone a library drive the same way you clone a regular drive."
+    },
+    {
+      "anchor": "licensed-drive-images",
+      "kind": "heading",
+      "level": 2,
+      "text": "Licensed drive images"
+    },
+    {
+      "anchor": "licensed-drive-images",
+      "kind": "prose",
+      "text": "Some drives in the library may require additional subscriptions or payment to be used. This is visible from the licenses field in the drive definition. When you clone such image from drives library to your account, the licenses remain bound to the cloned drive and can’t be altered upon drive edit. See also Licenses list regarding how to list all defined licenses."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "heading",
+      "level": 2,
+      "text": "Recognizing library drives"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Note that library drives can be queried through regular drives API using /drives/{uuid}/. If the drive uuid happens to be the uuid of a library drive, the drive defintion will be retrieved. In order to differentiate between owned and library drive, one can check the owner attribute, which is null for library drives."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "It is possible to get a library drive through the drives API, because there isn’t a way to know in advance whether an attached drive in a server definition is owned by the user or one from library."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Library drives are not listed in the list and detailed list for ordinary drives."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Example:"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Get the drive from /drives/{uuid}/:"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "2a07894a4629e9ea1f7d75f3bea210c8680d6f52d76901be13baffa3470be24f",
+      "path": "/api/2.0/drives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "cbc1d361757cadc9d2d5ca67b28100c2d1563691d1a2ff05b117ddd2e9fab9d0",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"amount\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"burstable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"long_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"user_metric\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"user\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Notice that there is no owner (it is null)."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Get the same drive from /libdrives/{uuid}/:"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "39f784f1e8e23e7d5c4f5e9c0e81f729303f972c9b96fc9c245e1a686fe8d232",
+      "path": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "f6b3a7242ed68acfdebd8c074e87efd8588e1cbd5907af44ac996b15c60eb874",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"arch\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"category\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"category\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"distribution\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"favourite\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"image_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"install_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"amount\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"burstable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"long_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"user_metric\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"user\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"os\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"paid\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"url\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"version\"]",
+          "observed_types": [
+            "null"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "05de4b256e380d4091b4fd4d28aecb219c36f5e7c3cffd3939aeb15f64da1acb",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "affinities": {
+            "choices": [
+              "ssd"
+            ],
+            "default": [],
+            "help_text": "A list of affinities this drive should belong to",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "allow_multimount": {
+            "default": false,
+            "help_text": "Allow the drive to be mounted on multiple guests. Not taken into account when drive is cdrom.",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "arch": {
+            "default": null,
+            "help_text": "Operating system bit architecture the drive.",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "category": {
+            "default": [],
+            "help_text": "Category of the drive.",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "description": {
+            "default": null,
+            "help_text": "Description of drive image.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "distribution": {
+            "default": null,
+            "help_text": "OS distribution of the drive.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "favourite": {
+            "default": null,
+            "help_text": "Favourite drive image for user.",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "image_type": {
+            "default": null,
+            "help_text": "Type of drive image.",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "install_notes": {
+            "default": null,
+            "help_text": "Install notes for the drive image.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "jobs": {
+            "default": "No default provided.",
+            "help_text": "Background jobs related to this resource",
+            "readonly": true,
+            "required": true,
+            "type": "related"
+          },
+          "licenses": {
+            "default": [],
+            "fields": {
+              "amount": {
+                "default": 1,
+                "help_text": "Number of licenses",
+                "readonly": false,
+                "required": false,
+                "type": "integer"
+              },
+              "license": {
+                "default": "No default provided.",
+                "help_text": "A single related resource. Can be either a URI or set of nested resource data.",
+                "readonly": false,
+                "required": true,
+                "type": "related"
+              },
+              "user": {
+                "default": null,
+                "help_text": "Owner of the license",
+                "readonly": false,
+                "required": false,
+                "type": "related"
+              }
+            },
+            "help_text": "A list of licenses attached to this drive",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "media": {
+            "choices": [
+              "cdrom",
+              "disk"
+            ],
+            "default": null,
+            "help_text": "Media representation type",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "meta": {
+            "default": {},
+            "help_text": "User defined meta information",
+            "readonly": false,
+            "required": false,
+            "type": "dict"
+          },
+          "mounted_on": {
+            "default": "No default provided.",
+            "help_text": "Servers on which this drive is mounted on",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "name": {
+            "default": null,
+            "help_text": "Human readable name of the drive",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "os": {
+            "default": null,
+            "help_text": "Operating system of the drive.",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "owner": {
+            "default": null,
+            "help_text": "Owner of the drive",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "paid": {
+            "default": null,
+            "help_text": "Paid or free.",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "size": {
+            "default": null,
+            "help_text": "Size of the drive in bytes",
+            "readonly": false,
+            "required": true,
+            "type": "integer"
+          },
+          "status": {
+            "default": "No default provided.",
+            "help_text": "Status of the drive.",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "storage_type": {
+            "default": "No default provided.",
+            "help_text": "Underlying storage",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "tags": {
+            "default": "No default provided.",
+            "help_text": "Many related resources. Can be either a list of URIs or list of individually nested resource data.",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "url": {
+            "default": null,
+            "help_text": "Operating system bit architecture the drive.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "UUID of the drive",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "version": {
+            "default": null,
+            "help_text": "OS version of the drive.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "arch": "exact",
+          "category": "exact",
+          "distribution": "exact",
+          "image_type": "exact",
+          "name": "exact",
+          "name__icontains": "exact",
+          "os": "exact",
+          "uuid": "exact",
+          "version": "exact"
+        }
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "0ea8e178cc90b8ca2d7af5257899221c0f6e0fd43768575641bf794080cb4ebf",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/libdrives.html"
+}

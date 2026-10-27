@@ -1,0 +1,343 @@
+{
+  "blocks": [
+    {
+      "anchor": "accounts",
+      "kind": "heading",
+      "level": 1,
+      "text": "Accounts"
+    },
+    {
+      "anchor": "accounts",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "accounts",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "general",
+      "kind": "heading",
+      "level": 2,
+      "text": "General"
+    },
+    {
+      "anchor": "general",
+      "kind": "prose",
+      "text": "The accounts API supports the following actions"
+    },
+    {
+      "anchor": "create-account",
+      "kind": "heading",
+      "level": 2,
+      "text": "Create account"
+    },
+    {
+      "anchor": "post--accounts-action-?do=create",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/accounts/action/?do=create"
+    },
+    {
+      "anchor": "create-account",
+      "kind": "prose",
+      "text": "Creates an account on the system. In case of success, the user has to check his email for a confirmation link, which will ask him to create a password for the account."
+    },
+    {
+      "anchor": "create-account",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "create-account",
+      "kind": "prose",
+      "text": "email – The email of the account to be created"
+    },
+    {
+      "anchor": "create-account",
+      "kind": "prose",
+      "text": "promo – Promo code for initial subscriptions and demo server (optional)"
+    },
+    {
+      "anchor": "create-account",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "create-account",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "edc2ceab55ec3ef8324ffde8118b904124f00dffe83f36bf1fcc8dbf06799581",
+      "path": "/api/2.0/accounts/action/?do=create"
+    },
+    {
+      "anchor": "create-account",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "create-account",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/accounts/action/?do=create"
+      },
+      "original_sha256": "5ecd8df4673a2a30531e582d18042a4a1a50ff15d57b6475122a1b4faebe9511",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"success\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "heading",
+      "level": 2,
+      "text": "Login/Logout"
+    },
+    {
+      "anchor": "post--accounts-action-?do=login",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/accounts/action/?do=login"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Log in to the system using cookie auth"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "401 Unauthorized – unauthorized"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "login-logout",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "535e593f21bc27a2f0119cfc449e4cd721a294559e5a8ea51f6da830f7d1c4c0",
+      "path": "/api/2.0/accounts/action/?do=login"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Request body"
+    },
+    {
+      "anchor": "login-logout",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "4d2d44a67ab06bbc658e0525b6ca4f11014d65a562865e371351dcb01089bfbd"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Empty"
+    },
+    {
+      "anchor": "post--accounts-action-?do=logout",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/accounts/action/?do=logout"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Logout from the system when using cookie auth"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "login-logout",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "5f695363a4ff34285ffaea86f22b29759272ce85f7546d49bca8fdac2fec6580",
+      "path": "/api/2.0/accounts/action/?do=logout"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Request body"
+    },
+    {
+      "anchor": "login-logout",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Empty"
+    },
+    {
+      "anchor": "post--accounts-action-?do=check_login",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/accounts/action/?do=check_login"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Check if you are logged in to the system"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "login-logout",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "f05d88bc4b7f9a49eef259de1a22ea9f1f3312d8a1597635bb618d7f8dcc6f8c",
+      "path": "/api/2.0/accounts/action/?do=check_login"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Request body"
+    },
+    {
+      "anchor": "login-logout",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Empty"
+    },
+    {
+      "anchor": "post-accounts-action-?do=check_login_with_return_uuid",
+      "kind": "operation",
+      "method": "POST",
+      "path": "accounts/action/?do=check_login_with_return_uuid"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Check how an authenticated service can get a user uuid via Cloudsigma API"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "login-logout",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "b7f02bd71329e844f5816dd98c41702ccde491984b1ce722ce56a68cc6ae0a2f",
+      "path": "accounts/action/?do=check_login_with_return_uuid"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Request body"
+    },
+    {
+      "anchor": "login-logout",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "0a3e7aabc97fea35c0fcc2aea83f70c066b908cb14f20c678bd31691cf8bb9a0"
+    },
+    {
+      "anchor": "login-logout",
+      "kind": "prose",
+      "text": "Empty"
+    }
+  ],
+  "html_sha256": "3a6f72f2e7adc338f0e1518b17a15a9bba764032b1a4f23e05cf8c7fd495a0c6",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/accounts.html"
+}

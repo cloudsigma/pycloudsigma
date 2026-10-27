@@ -1,0 +1,665 @@
+{
+  "blocks": [
+    {
+      "anchor": "clone-naming",
+      "kind": "heading",
+      "level": 1,
+      "text": "Clone naming"
+    },
+    {
+      "anchor": "clone-naming",
+      "kind": "prose",
+      "text": "When cloning drives or whole servers the paramater for the name of the cloned entity could be omitted. In that scenario clone naming strategy based on the profile settings is being invoked."
+    },
+    {
+      "anchor": "clone-naming",
+      "kind": "prose",
+      "text": "Clone naming strategies are kept on clone_naming property in the user profile object. Possible values for it:"
+    },
+    {
+      "anchor": "clone-naming",
+      "kind": "prose",
+      "text": "NONE do not append anything to the cloned drive’s name. [default]"
+    },
+    {
+      "anchor": "clone-naming",
+      "kind": "prose",
+      "text": "COUNTER appends a number at the end of the name or increase it in case there is a number already."
+    },
+    {
+      "anchor": "clone-naming",
+      "kind": "prose",
+      "text": "DATE appends the current date or try to update it in case there is one already."
+    },
+    {
+      "anchor": "clone-naming",
+      "kind": "prose",
+      "text": "TIMESTAMP appends the current timestamp or try to update it in case there is one already."
+    },
+    {
+      "anchor": "clone-naming",
+      "kind": "prose",
+      "text": "If the date/timestamp at the end is already up-to-date the clone naming strategy will fallback to COUNTER without stripping the date/timestamp before."
+    },
+    {
+      "anchor": "example",
+      "kind": "heading",
+      "level": 2,
+      "text": "Example"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Let’s say we have a drive named “test_drive_x” and we’re going to clone it. First we want to check out how the counter strategy is working and we’re going to set the clone_naming property to “COUNTER”."
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "example",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "a052d4332d5ce6e75424e767e19858e731a3d8ae17c334e626be951ba91262ee",
+      "path": "/api/2.0/profile/"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "example",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "d0a43cd58ab8a6dd935a4c88213599a3a43644240bb8b51249dd082b919c0d00",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"api_https_only\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"autotopup_amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"autotopup_threshold\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"bank_reference\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"clone_naming\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"company\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"country\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"currency\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"first_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"has_autotopup\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"invoicing\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"key_auth\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"language\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"last_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"mailing_list\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"my_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nickname\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"phone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"postcode\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"reseller\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"signup_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tax_name\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"tax_rate\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"title\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"town\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vat\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Great. And now we could clone the drive without bothering to make up a new name for it:"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "example",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "69665bb0cc6650dd1b46eb1846e2e9894f5a547e1798494175060de88f5c96a4",
+      "path": "/api/2.0/drives/1455c968-3477-4504-a93d-d0a7dc961f00/action/?do=clone"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "example",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "f5305f9c9b9784cf45ed6282c75694138bf919d058df39f47089ee84c319f3c9",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Done. Our new drive is named “test_drive_x_1”. If you have never changed the clone_naming property it will be set to “COUNTER” by default. Let’s see how the other two strategies are working."
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Starting with “DATE”… (responses below here are stripped for better readability)"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "example",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "b23ad6d2d5e55a97d3e4dc127f09619fcbb3837346e7d9ff5d060e074758586c",
+      "path": "/api/2.0/profile/"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Great. And now cloning:"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "example",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "69665bb0cc6650dd1b46eb1846e2e9894f5a547e1798494175060de88f5c96a4",
+      "path": "/api/2.0/drives/1455c968-3477-4504-a93d-d0a7dc961f00/action/?do=clone"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "example",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "b8e0bae1c71787d6b82642a8dd1e8278dc5fea2d861da1562582ee471f1e5328",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Similary with “TIMESTAMP”…"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "example",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "06680583d0b35168cbc603a0e2c09a6f0b4323c6992161db60114ee5a5ad8a93",
+      "path": "/api/2.0/profile/"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Great. And now cloning:"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "example",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "69665bb0cc6650dd1b46eb1846e2e9894f5a547e1798494175060de88f5c96a4",
+      "path": "/api/2.0/drives/1455c968-3477-4504-a93d-d0a7dc961f00/action/?do=clone"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "example",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "e0774492ac3fc93a3fa072a0e2089c1de94f626ae59356c172d724ec14320706",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    }
+  ],
+  "html_sha256": "0f8bf4f7cf438e0cce18b9454c6497898be5139da80c3521c57d4bde35a8f895",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/clone_naming.html"
+}

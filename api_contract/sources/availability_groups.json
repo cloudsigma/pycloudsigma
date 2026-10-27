@@ -1,0 +1,391 @@
+{
+  "blocks": [
+    {
+      "anchor": "availability-grouping-and-avoid",
+      "kind": "heading",
+      "level": 1,
+      "text": "Availability Grouping and Avoid"
+    },
+    {
+      "anchor": "availability-grouping-and-avoid",
+      "kind": "prose",
+      "text": "Resources requested by the user are usually allocated to maximize performance. However, this can lead to a situation, where the user’s servers or drives share the same compute or storage host. This may be undesirable if the user attempts to build, a redundant setup, as in the unlikely event of hardware failure, servers sharing the same field compute host will crash at the same time, and drives sharing the same failed storage host will become unavailable at the same time."
+    },
+    {
+      "anchor": "availability-grouping-and-avoid",
+      "kind": "prose",
+      "text": "To improve the robustness of redundant setups, it is possible to hint in the system, which resources are preferred to be on separated physical hosts. This is achieved through the Avoid functionality for starting servers, and for creating/cloning drives."
+    },
+    {
+      "anchor": "availability-grouping-and-avoid",
+      "kind": "prose",
+      "text": "To check the grouping of running servers on compute hosts or the grouping of drives on storage hosts, one can use the corresponding availaility_groups API calls."
+    },
+    {
+      "anchor": "checking-availability-groups-for-drives-and-servers",
+      "kind": "heading",
+      "level": 2,
+      "text": "Checking Availability Groups for Drives and Servers"
+    },
+    {
+      "anchor": "checking-availability-groups-for-drives-and-servers",
+      "kind": "prose",
+      "text": "The availability_groups call returns which resources are grouped on the same physical host."
+    },
+    {
+      "anchor": "server-availability-groups",
+      "kind": "heading",
+      "level": 3,
+      "text": "Server availability groups"
+    },
+    {
+      "anchor": "get--servers-availability_groups-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/servers/availability_groups/"
+    },
+    {
+      "anchor": "server-availability-groups",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "server-availability-groups",
+      "kind": "prose",
+      "text": "Returns that running servers share the same physical computer host. Returns an array containing arrays. Each inner array holds the UUIDs of servers that reside on the same physical host. Non-running servers are not in the array as they are on any host."
+    },
+    {
+      "anchor": "get--servers-availability_groups-uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/servers/availability_groups/{uuid}/"
+    },
+    {
+      "anchor": "server-availability-groups",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "server-availability-groups",
+      "kind": "prose",
+      "text": "Queries in which other servers share the same physical host as the given one. Returns an array holding server UUIDs. The response includes also the UUID of the queried server. If the queried server is not running, the array will be empty."
+    },
+    {
+      "anchor": "drives-availability-groups",
+      "kind": "heading",
+      "level": 3,
+      "text": "Drives availability groups"
+    },
+    {
+      "anchor": "get--drives-availability_groups-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/drives/availability_groups/"
+    },
+    {
+      "anchor": "drives-availability-groups",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "drives-availability-groups",
+      "kind": "prose",
+      "text": "Returns that drive share the same physical storage host. Returns an array containing arrays. Each inner array holds the UUIDs of drives that reside on the same physical host."
+    },
+    {
+      "anchor": "get--drives-availability_groups-uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/drives/availability_groups/{uuid}/"
+    },
+    {
+      "anchor": "drives-availability-groups",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "drives-availability-groups",
+      "kind": "prose",
+      "text": "Queries with other drives share the same physical storage host as the given one. Returns an array holding drives UUIDs. The response includes also the UUID of the queried drive."
+    },
+    {
+      "anchor": "examples",
+      "kind": "heading",
+      "level": 3,
+      "text": "Examples"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Example request - servers availability:"
+    },
+    {
+      "anchor": "examples",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "c07f9fe65d77cafb71ae6e553197c6b5cbd92a79ec3dd1cc9e52070f6d0074b2",
+      "path": "/api/2.0/2.0/servers/availability_groups/"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Example response - servers availability:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "84512cd58bf3115885c782af0cc3a8db121b4b922157772bfd35da8840c5f4ca",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[*]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[*][*]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Example request - single-server availability:"
+    },
+    {
+      "anchor": "examples",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "7ee1b2ec63d78349b75db522ecf8aa649881f4091ac8deac1452d8ad68fcd649",
+      "path": "/api/2.0/2.0/servers/availability_groups/313e73a4-592f-48cf-81c4-a6c079d005a5/"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Example response - single-server availability:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "72b1c73028e7040495464c270d4a10329f363aa3df6d2102d37ef92f26f93ebe",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[*]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "general-notes-on-avoid-functionality",
+      "kind": "heading",
+      "level": 2,
+      "text": "General Notes on Avoid Functionality"
+    },
+    {
+      "anchor": "general-notes-on-avoid-functionality",
+      "kind": "prose",
+      "text": "Avoiding functionality is best effort. This means that requests containing avoid will succeed even if the avoid can not be satisfied and the requested resource ends in the same availability group as an avoid resource."
+    },
+    {
+      "anchor": "general-notes-on-avoid-functionality",
+      "kind": "prose",
+      "text": "The order of the avoid argument UUIDs also specifies the order of preference to avoid. This means that avoid requests are satisfied from left to right, and if it is not possible to satisfy the full avoid list, only part of the avoid list will be satisfied and it will consist of UUIDs from the left part of the list. For example, if there are only three hosts that can satisfy a request, and there are three avoid resources on these hosts, the newly requested resource, will end up on the same host as the avoid resource which appears last in the list."
+    },
+    {
+      "anchor": "general-notes-on-avoid-functionality",
+      "kind": "prose",
+      "text": "Avoiding functionality may incur performance penalty. Specifying avoid for drives cloning and servers cloning, as it also clones attached drives, usually slow down significantly the clone operation, as the drive data has to be moved over the network between storage hosts."
+    },
+    {
+      "anchor": "starting-servers-in-a-different-availability-group-start-avoid",
+      "kind": "heading",
+      "level": 2,
+      "text": "Starting Servers in a Different Availability Group (Start Avoid)"
+    },
+    {
+      "anchor": "post--servers-uuid-action-?do=start&avoid=-server1_uuid-,-server2_uuid-,...",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{uuid}/action/?do=start&avoid={<server1_uuid>,<server2_uuid>,...}"
+    },
+    {
+      "anchor": "starting-servers-in-a-different-availability-group-start-avoid",
+      "kind": "prose",
+      "text": "Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "starting-servers-in-a-different-availability-group-start-avoid",
+      "kind": "prose",
+      "text": "Starts a server with a specific UUID attempting to run it on a different physical infrastructure host from the other servers specified in the avoid argument which is a single server UUID or a comma-separated list of server UUIDs. This way the server specified by uuid may be run in a distinct availability group from the other listed servers."
+    },
+    {
+      "anchor": "starting-servers-in-a-different-availability-group-start-avoid",
+      "kind": "prose",
+      "text": "Note that it might not always be possible to run a server in a different availability group, therefore the order of the avoid list also signifies the priority of avoiding other servers."
+    },
+    {
+      "anchor": "starting-servers-in-a-different-availability-group-start-avoid",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "starting-servers-in-a-different-availability-group-start-avoid",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "764b3fd8e78bcabc8202bc93dddc7f6cfbc17d5bd01d37964b96d093df9c80d8",
+      "path": "/api/2.0/2.0/servers/2767d839-3a9d-4bd5-983b-676d1307438f/action/?do=start&avoid=bb1d5184-ebcc-4f33-867e-db654eb2d17e,dc3dd6d4-9b2d-44e6-bc40-e927950e8b77"
+    },
+    {
+      "anchor": "creating-drives-in-a-different-availability-group-create-clone-avoid",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating Drives in a Different Availability Group (Create/Clone Avoid)"
+    },
+    {
+      "anchor": "post--drives-uuid-action-?do=clone&avoid=-server_or_drive_uuid1-,-server_or_drive_uuid2-,...",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/drives/{uuid}/action/?do=clone&avoid={<server_or_drive_uuid1>,<server_or_drive_uuid2>,...}"
+    },
+    {
+      "anchor": "creating-drives-in-a-different-availability-group-create-clone-avoid",
+      "kind": "prose",
+      "text": "Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "post--drives-?avoid=-server_or_drive_uuid1-,-server_or_drive_uuid2-,...",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/drives/?avoid={<server_or_drive_uuid1>,<server_or_drive_uuid2>,...}"
+    },
+    {
+      "anchor": "creating-drives-in-a-different-availability-group-create-clone-avoid",
+      "kind": "prose",
+      "text": "object created"
+    },
+    {
+      "anchor": "post--servers-server_uuid-action-?do=clone&avoid=-server_or_drive_uuid1-,-server_or_drive_uuid2-,...",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{server_uuid}/action/?do=clone&avoid={<server_or_drive_uuid1>,<server_or_drive_uuid2>,...}"
+    },
+    {
+      "anchor": "creating-drives-in-a-different-availability-group-create-clone-avoid",
+      "kind": "prose",
+      "text": "Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "creating-drives-in-a-different-availability-group-create-clone-avoid",
+      "kind": "prose",
+      "text": "It is possible to hint at the system in which drives are preferred to be on separate physical storage hosts. Avoid can be specified on all drive creation operations: create, clone drive, and clone server. The value of the avoid GET parameter may contain a single or a comma-separated list of drive or server UUIDs. If a server uuid is in the avoid parameter, this is interpreted as avoiding all the drives attached to the server."
+    },
+    {
+      "anchor": "creating-drives-in-a-different-availability-group-create-clone-avoid",
+      "kind": "prose",
+      "text": "Note that it might not always create a drive in a different availability group, therefore the order of the avoid list also signifies the priority of avoiding other drives. Since it is not possible to specify the order of drives attached to a server, if a drive from a server needs to be avoided with high priority, it may be specified in addition to the server UUID. For example avoid={important_to_avoid_drive_uuid},{server_uuid_to_which_drive_is_attached}."
+    },
+    {
+      "anchor": "recipe-for-creating-a-redundant-server-backed-by-separate-infrastructure",
+      "kind": "heading",
+      "level": 2,
+      "text": "Recipe for Creating a Redundant Server Backed by Separate Infrastructure"
+    },
+    {
+      "anchor": "recipe-for-creating-a-redundant-server-backed-by-separate-infrastructure",
+      "kind": "prose",
+      "text": "The best way to create a clone of a server that does not share hardware with the original is to clone the origin server with avoiding itself, and to start the clone by avoiding the origin:"
+    },
+    {
+      "anchor": "recipe-for-creating-a-redundant-server-backed-by-separate-infrastructure",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "162bb4a0c6432c40fcfdf0d7e7da22132176094b43c3c7ec95ab6cd0553c0ed3",
+      "path": "/api/2.0/2.0/servers/2767d839-3a9d-4bd5-983b-676d1307438f/action/?do=clone&avoid=2767d839-3a9d-4bd5-983b-676d1307438f"
+    },
+    {
+      "anchor": "recipe-for-creating-a-redundant-server-backed-by-separate-infrastructure",
+      "kind": "prose",
+      "text": "If the created server uuid is bb1d5184-ebcc-4f33-867e-db654eb2d17e:"
+    },
+    {
+      "anchor": "recipe-for-creating-a-redundant-server-backed-by-separate-infrastructure",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "da0052b51bcd48a8c749903b450a866475f9d87e9b3ec0a2cc43fd12d5157dad",
+      "path": "/api/2.0/2.0/servers/bb1d5184-ebcc-4f33-867e-db654eb2d17e/action/?do=start&avoid=2767d839-3a9d-4bd5-983b-676d1307438f"
+    }
+  ],
+  "html_sha256": "e38e58ceb6fa7372592ad2c237946555daf31e21986875a387b91e2d9fbc4f26",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/availability_groups.html"
+}

@@ -1,0 +1,339 @@
+{
+  "blocks": [
+    {
+      "anchor": "vmware-servers",
+      "kind": "heading",
+      "level": 1,
+      "text": "VMWare Servers"
+    },
+    {
+      "anchor": "vmmware-specific-notes",
+      "kind": "heading",
+      "level": 2,
+      "text": "VMMware specific notes"
+    },
+    {
+      "anchor": "vmmware-specific-notes",
+      "kind": "prose",
+      "text": "The VMWare server integration in the CloudSigma API is still in a BETA stage. Only partial functionality is exposed and the API definition and functionality are subject to changes."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 3,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 3,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--vmware_servers-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/vmware_servers/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of servers to which the authenticated user has access."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "5de89414e061ede9179e6832de62ffa6ea99fbda318184a9bcff752a197e00ae",
+      "path": "/api/2.0/vmware_servers/?limit=0"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "http"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/vmware_servers/"
+      },
+      "original_sha256": "1f129ba65e675853b46904b432e7ae9d0ef2aee087c11726e2d15818b24e0b8a",
+      "parse_gap": "invalid-or-non-json",
+      "status_code": 200
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "javascript"
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 3,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "2f505a1534e97fd895fc5b05e4321505931e187569617aba34b0abe64415d81d",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "cores_per_socket": {
+            "default": null,
+            "help_text": "The number of cores per CPU socket",
+            "readonly": false,
+            "required": true,
+            "type": "integer"
+          },
+          "cpus": {
+            "default": null,
+            "help_text": "The number of CPUs assigned to the server",
+            "readonly": false,
+            "required": true,
+            "type": "integer"
+          },
+          "deployed": {
+            "default": false,
+            "help_text": "Indicates if the server has been deployed",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "description": {
+            "default": null,
+            "help_text": "Description of the server",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "enabled": {
+            "default": false,
+            "help_text": "Indicates if the server has been enabled",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "memory": {
+            "default": null,
+            "help_text": "The amount of memory in MB",
+            "readonly": false,
+            "required": true,
+            "type": "integer"
+          },
+          "name": {
+            "default": null,
+            "help_text": "Name of the VMWare server",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "nics": {
+            "default": null,
+            "fields": {
+              "connected": {
+                "default": null,
+                "help_text": "Indicator if the network adapter is connected",
+                "readonly": false,
+                "required": false,
+                "type": "string"
+              },
+              "disk": [
+                {
+                  "fields": {
+                    "diskElementName": {
+                      "help_text": "Name of the hard disk",
+                      "readonly": true,
+                      "type": "string"
+                    },
+                    "diskVirtualQuantityInBytes": {
+                      "help_text": "Size of disk in bytes",
+                      "readonly": true,
+                      "type": "string"
+                    }
+                  }
+                }
+              ],
+              "index": {
+                "default": null,
+                "help_text": "Index of network adapter",
+                "readonly": false,
+                "required": false,
+                "type": "string"
+              },
+              "ip_address": {
+                "default": null,
+                "help_text": "IP address of the network adapter",
+                "readonly": false,
+                "required": false,
+                "type": "string"
+              },
+              "ip_address_mode": {
+                "default": null,
+                "help_text": "Mode of the IP address configuration",
+                "readonly": false,
+                "required": false,
+                "type": "string"
+              },
+              "mac_address": {
+                "default": null,
+                "help_text": "MAC address of the network adapter",
+                "readonly": false,
+                "required": false,
+                "type": "string"
+              },
+              "media": [
+                {
+                  "fields": {
+                    "mediaCdElementName": {
+                      "help_text": "Name of attached media",
+                      "readonly": true,
+                      "type": "string"
+                    },
+                    "mediaCdHostResource": {
+                      "help_text": "Filename of source used to create the virtual media",
+                      "readonly": true,
+                      "type": "string"
+                    }
+                  }
+                }
+              ],
+              "network": {
+                "default": null,
+                "help_text": "Name of the network used",
+                "readonly": false,
+                "required": false,
+                "type": "string"
+              },
+              "primary": {
+                "default": null,
+                "help_text": "Indicator if the network adapter is primary",
+                "readonly": false,
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          "organisation": {
+            "default": null,
+            "help_text": "UUID of the server's parent organisation",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "powered": {
+            "default": false,
+            "help_text": "Indicates if the server is powered on",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          }
+        }
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "9233cbdc2079e3ad385501be47c4dd1995131acdfcf785cffd9e93d803df3aea",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/servers_vmware.html"
+}

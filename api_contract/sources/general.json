@@ -1,0 +1,1102 @@
+{
+  "blocks": [
+    {
+      "anchor": "general-notes",
+      "kind": "heading",
+      "level": 1,
+      "text": "General Notes"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "heading",
+      "level": 2,
+      "text": "Introduction"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "heading",
+      "level": 2,
+      "text": "API endpoint"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Given a server running the CloudSigma API it will be available on the following base URL e.g.:"
+    },
+    {
+      "anchor": "api-endpoint",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "65d5e892ac9065ffe26c839a0c5090d8a956410d5fcc31373bb18ee076dd85dc"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Where {loc} is a subdomain for a specific location. In the rest of the documentation the URLs will be given relative to that base."
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Currently the following CloudSigma location endpoints are available:"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Location"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Location Code"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "API Endpoint"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Australia, Perth"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "PER"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://per.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Germany, Dusseldorf"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "DUS"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://dus.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Germany, Frankfurt"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "FRA"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://fra.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Ireland, Dublin"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "DUB"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://ec.servecentric.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Japan, Tokyo"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "TYO"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://tyo.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Philippines, Clark"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "CRK"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://crk.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Philippines, Manila"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "MNL"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://mnl.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Philippines, Manila-2"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "MNL2"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://mnl2.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Saudi Arabia, Riyadh"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "RUH"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://ruh.cld.v2.sa/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Switzerland, Geneva"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "GVA"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://gva.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Switzerland, Zurich"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "ZRH"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://zrh.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "Turkey, Izmir"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "ADB"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://siaflex.cloud/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "UK, Cardiff"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "CWL"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://cwl.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "UK, London"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "LON"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://lon.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "United States, Honolulu"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "HNL"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://hnl.cloudsigma.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "United States, Washington DC"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "WDC"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "https://wdc.alpha3cloud.com/api/2.0/"
+    },
+    {
+      "anchor": "api-endpoint",
+      "kind": "prose",
+      "text": "See also Locations API call for an automated way to get all currently available locations."
+    },
+    {
+      "anchor": "api-versions",
+      "kind": "heading",
+      "level": 2,
+      "text": "API Versions"
+    },
+    {
+      "anchor": "api-versions",
+      "kind": "prose",
+      "text": "The API version is embedded into the URL. The currently active one is ‘2.0’, e.g."
+    },
+    {
+      "anchor": "api-versions",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "0782ad29ad2ee058229622b50c85469343492829ed78f4a7e97cd2fc3d8d0b49"
+    },
+    {
+      "anchor": "general-url-format",
+      "kind": "heading",
+      "level": 2,
+      "text": "General URL Format"
+    },
+    {
+      "anchor": "general-url-format",
+      "kind": "prose",
+      "text": "API URLs have the following general format:"
+    },
+    {
+      "anchor": "general-url-format",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "cb217e034d3e89fe18dcca119edc8a40c037f2f39803d50900283975e316d22b"
+    },
+    {
+      "anchor": "general-url-format",
+      "kind": "prose",
+      "text": "Here is a list of the possible URL formats relative to the base url (https://{api_endpoint}/api/{api_version}):"
+    },
+    {
+      "anchor": "general-url-format",
+      "kind": "prose",
+      "text": "These URLs usually point to a list of resources like /servers/ or /drives/. It may also point to a single resource object such as /profile/."
+    },
+    {
+      "anchor": "general-url-format",
+      "kind": "prose",
+      "text": "These URLs point to a single resource from a list of resources, for example a single server URL can be: /servers/6e5ceaaa-0cf8-417a-bf47-53e56d4fcaaa/"
+    },
+    {
+      "anchor": "general-url-format",
+      "kind": "prose",
+      "text": "Some objects have actions. The name of the action is specified in the ‘do=’ GET parameter. For example a server object has a start action which is called on the following URL: /servers/6e5ceaaa-0cf8-417a-bf47-53e56d4fcaaa/action/?do=start"
+    },
+    {
+      "anchor": "authentication",
+      "kind": "heading",
+      "level": 2,
+      "text": "Authentication"
+    },
+    {
+      "anchor": "authentication",
+      "kind": "prose",
+      "text": "The API supports the following authentication methods :"
+    },
+    {
+      "anchor": "authentication",
+      "kind": "prose",
+      "text": "HTTP Basic"
+    },
+    {
+      "anchor": "authentication",
+      "kind": "prose",
+      "text": "HTTP Digest"
+    },
+    {
+      "anchor": "authentication",
+      "kind": "prose",
+      "text": "Cookie based authentication for web/browser based clients."
+    },
+    {
+      "anchor": "http-basic-auth",
+      "kind": "heading",
+      "level": 2,
+      "text": "HTTP Basic Auth"
+    },
+    {
+      "anchor": "http-basic-auth",
+      "kind": "prose",
+      "text": "HTTP Basic Authentication is done with the Authorization header. The value of the header is Basic base64_encode({user email}:{password}). For example a user with email user.email@domain.tld with password pass123 results in a value of user.email@domain.tld:pass123, which when encoded in Base64 would result in the following header:"
+    },
+    {
+      "anchor": "http-basic-auth",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "f610925dc9660e7053af9fc7fccaa7b70a51f1979f02728371f36193fa77b592"
+    },
+    {
+      "anchor": "http-basic-auth",
+      "kind": "prose",
+      "text": "See RFC 2617#section-2 for more detailed discussion of HTTP Basic Authentication."
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "kind": "heading",
+      "level": 2,
+      "text": "Digest Access Authentication"
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "kind": "prose",
+      "text": "In order to use digest authentication, clients should make the request without any authentication, which will result in a 401 Unauthorized response. The response will contain a challenge in the WWW-Authenticate header which looks like:"
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "4012829ab53dd7934e0f0d42577d9f90607f241f2c12bab2299972ea66b41eff"
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "kind": "prose",
+      "text": "Three hashes (we call them HA1 and HA2 and RESPONSE in the example) need to be calculated to generate the response to the challenge and authenticate. The API uses md5 hashing algorithm (algorithm=”MD5”) and “auth” quality of protection (qup=”auth”):"
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "aaaf4f01e9d97b4af43c3a21f10ab784050ee78f0798facd2fce4c6f7df3965d"
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "kind": "prose",
+      "text": "The values for realm, nonce, and qop are given in the challenge header WWW-Authenticate. The client has to provide the username, password, cnonce, and nc. cnonce or client nonce is a random value generated by the client and nc or nonce counter is a hexadecimal counter which should be incremented with each subsequent request."
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "kind": "prose",
+      "text": "The client should send an Authorization header which contains all the values from the WWW-Authenticate response header, together with the following values username, uri, cnonce, nc, and response, which contains the calculated RESPONSE hash."
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "kind": "prose",
+      "text": "In the example above a user with an email user.email@domain.tld, and with password pass123 may send the following Authorization header in the next request:"
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "f52fc41288d67ff1050ee5b0974aed7dd3f2e8b1a6012dc9300d681f6ee9a514"
+    },
+    {
+      "anchor": "digest-access-authentication",
+      "kind": "prose",
+      "text": "For more information on Digest access authentication see RFC 2617#section-3 or the wikipedia article on Digest Access Authentication."
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "kind": "heading",
+      "level": 2,
+      "text": "Cookie-based Authentication"
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "kind": "prose",
+      "text": "Browser-based clients can use cookie authentication. The authentication is token in stored in the sessionid cookie. All requests except GET and OPTIONS require also a CSRF token. The CSRF token is needed to prevent Cross-site Request Forgery. It is specified as a custom header X-CSRFToken on each request. The value for the CSRF token is set by the server in the csrftoken cookie."
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "kind": "prose",
+      "text": "To obtain a sessionid and csrftoken cookies, make a login request with a POST to /api/2.0/accounts/action/?do=login with an object containing “username” and “password” fields with the corresponding username and password values:"
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "d1b7d1fbc47839faddc316e4812e6e1700214fa9b4d7a997c42d37bb60a7d056",
+      "path": "/api/2.0/accounts/action/?do=login"
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "kind": "prose",
+      "text": "The response will contain the two cookies:"
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "9da494de5ddbedc8934be89e287246de65bbfc2347cc03a78448a8c82783a676"
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "kind": "prose",
+      "text": "All subsequent requests should contain both sessionid and csrftoken in the Cookie header and csrftoken in the X-CSRFToken header:"
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "35029e4e9b32307452602ee0cf51d62f7b32c8c17a091934472f17bf2229908f"
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "kind": "prose",
+      "text": "To logout (invalidate current sessionid and csrftoken), one needs to send a POST to /api/2.0/accounts/action/?do=logout with an empty object:"
+    },
+    {
+      "anchor": "cookie-based-authentication",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "e5675d9b17b8d8a21f4698dd375813e6b8a869e3cb724605101c584038c91875",
+      "path": "/api/2.0/accounts/action/?do=logout"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "heading",
+      "level": 2,
+      "text": "Data Format (Content Types)"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "The API supports both the JSON and XML data formats. By default JSON is used. The request format is specified using the Content-Type header and is required for operations that have a request body. The response format can be specified in requests using the Accept header. The response contains a Content-Type header specifying the data format returned. The following table summarizes the request and response headers concerning data format:"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "Header name"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "Specified in Request"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "Specified in Response"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "Content-Type"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "applies to request body"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "applies to response body"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "Accept"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "applies to response body"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "not applicable"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "The values which can be used for data format headers are:"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "Encoding"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "Header value"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "JSON"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "application/json or */*"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "XML"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "application/xml"
+    },
+    {
+      "anchor": "data-format-content-types",
+      "kind": "prose",
+      "text": "You can also use a URI parameter ?format=json or ?format=xml to specify the content type of the response, when sending a GET request. This is useful for querying the API manually (via web browser) and should not be used when sending requests programmatically. In case both the Content-Type and URI parameter are used, the URI parameter has precedence. In case there are conflicting URI parameters, the last specified parameter takes precedence. In case of both application/json and application/xml are specified in an Accept header, JSON is returned. If the Accept header contains both */* and application/xml or application/json, the */* is ignored and the more specific content type is used."
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "heading",
+      "level": 2,
+      "text": "Content Compression"
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "Response body data may be compressed with gzip compression in order to minimize the amount of data being transferred over the wire. To request response body compression use the Accept-Encoding header on the request. The response will contain a Content-Encoding header specifying the gzip compression algorithm."
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "Type"
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "Header"
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "Value"
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "Request"
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "Accept-Encoding"
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "gzip"
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "Response"
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "Content-Encoding"
+    },
+    {
+      "anchor": "content-compression",
+      "kind": "prose",
+      "text": "gzip"
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Request Methods"
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "prose",
+      "text": "The API uses different HTTP request methods for different types of operations. In order to list the available HTTP request methods on a URL use an OPTIONS method request on it."
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "prose",
+      "text": "Request:"
+    },
+    {
+      "anchor": "request-methods",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "OPTIONS",
+      "original_sha256": "cff7773359dc149099be838e87ea9791d97bd0bb8ad5ade1ec39ab9beb2e0db7",
+      "path": "/api/2.0/2.0/servers/"
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "prose",
+      "text": "Response:"
+    },
+    {
+      "anchor": "request-methods",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "369fa7d6f471de3ddef638733315b64e6968129162bfc8d10e4a90afca7f3c23",
+      "parse_gap": "invalid-or-non-json",
+      "status_code": 200
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "prose",
+      "text": "The following table specifies that meanings of HTTP methods, which can be used by API clients:"
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "prose",
+      "text": "Retrieve a resource or a list of resources."
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "prose",
+      "text": "Update an existing resource. PUT implies an idempotent action (a request, which when repeated with the same arguments will always yield the same result)."
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "prose",
+      "text": "Create a resources, or do an action on an object (like do start action on a server). POST is used for non-idempotent request (requests, which may have different results if repeated multiple times, even if the input data is the same)."
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "prose",
+      "text": "Delete a resource."
+    },
+    {
+      "anchor": "request-methods",
+      "kind": "prose",
+      "text": "Get a comma separated list of the supported HTTP methods on a URL."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "heading",
+      "level": 2,
+      "text": "Response Status Codes"
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "The API uses the standard HTTP status code classes, where a code from 200 to 299 signifies success. Request errors have status codes between 400 and 499, and server side errors have codes between 500 and 599. The following status codes are returned by the API:"
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Success Status Codes:"
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "OK. Successful request."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Object Created. This request is used for calls which create new objects, such as create drive or create server. The Location response header contains the URI of the newly created object."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Accepted. This header is used for long-running or asynchronous operations such as starting a server or cloning a drive. The header also implies that the request the request may not succeed and may be canceled"
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "No Content. The request was successful an there is no content in response body. This status is used for successful DELETE requests. Clients should be aware to not parse the body as it is empty and is not a valid JSON or XML document."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "API errors usally contain a body which describes the error. Check the Errors section for explanation of the error message format."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Request Error Status Codes:"
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Bad Request. This status means that there is an error in the request. The request error may be data format error (non-valid JSON or XML) or an invalid value."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Unauthorized. The provided credentials are incorrect or missing. This response status is normal part of digest authentication in which case, the response will contain WWW-Authenticate header with an authentication challenge."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Payment Required. This error means there are not enough funds in the account to complete action. It occurs when trying to buy subscription without having enough funds in the account, or when trying to start a server without having enough funds for burst usage of 5 days."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Forbidden. The provided credentials are correct but the user is not permitted to complete the action. This status is used for either “permission” or “operation not allowed” error."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Not Found. The requested object does not exist. This error occurs when requesting non-existing resource. The resource may have never been created, or it may be deleted."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Method Not Allowed. This error occurs, when using incorrect HTTP method on an URL. For example DELETE requests are not allowed on /profile/ URL, and will return a 405 status."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Not Acceptable. This error occurs when the content type requested through the Accept header is not supported by the API. The content types supported by the API are application/json, application/xml, and */*, which defaults to application/json. If the Accept header of the request does not contain any of this content types, a 406 status will be returned."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "System Error Status Code"
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Internal Server Error. This status means a system error has occurred. Please contact support if you encounter such an error."
+    },
+    {
+      "anchor": "response-status-codes",
+      "kind": "prose",
+      "text": "Service Unavailable. This status means that the system temporarily cannot fulfil request. This status is returned for concurrent updates, when the client makes multiple concurrent requests which try to update the same values, or when the system is out of capacity."
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "heading",
+      "level": 2,
+      "text": "Rate Limits"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "The API server needs to impose call-rate limits to protect the infrastructure from being maliciously overloaded."
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "Verb"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "URI RegEx"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "Limit"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": ".*"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "10000 / min"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "^/servers/"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "10000 / min"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": ".*"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "10000 / min"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": ".*"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "10000 / min"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "DELETE"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": ".*"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "1000 / min"
+    },
+    {
+      "anchor": "rate-limits",
+      "kind": "prose",
+      "text": "Note: these limits may change in future"
+    },
+    {
+      "anchor": "permitted-characters",
+      "kind": "heading",
+      "level": 2,
+      "text": "Permitted characters"
+    },
+    {
+      "anchor": "permitted-characters",
+      "kind": "prose",
+      "text": "The API accepts Unicode characters, with the recommended charset being UTF-8. The only special case is \\0, which terminates the string."
+    },
+    {
+      "anchor": "filtering",
+      "kind": "heading",
+      "level": 2,
+      "text": "Filtering"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "The API allows filtering of returned resources through GET parameters. Specific filtering options are listed in the schema. There are two types of filters:"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Matches the exact value of the field"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Matches, case insensitive, a substring of the value."
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "The semantics of the filters are as follows:"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Separate GET parameters are ANDed together:"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "?name=test&tag__name=test_tag"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "It will return resources that match: (name = test) AND (has a tag with name = test_tag)"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Same filter applied twice is still ANDed:"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "?tag__name=test_tag1&tag__name=test_tag2"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "It will return resources that match: (has a tag with name = test_tag1) AND (has a tag with name = test_tag2)"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Within one GET parameter, values are split by comma and ORed together:"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "?name=name1,name2"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "It will return resources that match (name = name1) OR (name = name2)"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Commas can be escaped by a single backslash and they will be not be used to split and backslashes that precede a comma can be escaped in order to keep allow splitting by commas:"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "?name=name\\,long\\\\,name2"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "It will return resources that match (name = name,long\\) OR (name = name2)"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "OR has a higher priority than AND."
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "?name=name1,name2&tag__name=test_tag"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "It will return resources that match ((name = name1) OR (name = name2)) AND (has a tag with name = test_tag)"
+    }
+  ],
+  "html_sha256": "ca9a9d52bb7d94f0f2a74f334532c57868a0c254aaeec7dd7f2c640231c5537f",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/general.html"
+}

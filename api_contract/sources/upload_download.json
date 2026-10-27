@@ -1,0 +1,156 @@
+{
+  "blocks": [
+    {
+      "anchor": "upload-or-download-drive-images",
+      "kind": "heading",
+      "level": 1,
+      "text": "Upload or Download Drive Images"
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "heading",
+      "level": 2,
+      "text": "Uploading a drive image"
+    },
+    {
+      "anchor": "post-https---direct.loc.cloudsigma.com-api-2.0-drives-upload-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "https://direct.{loc}.cloudsigma.com/api/2.0/drives/upload/"
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "prose",
+      "text": "A drive image can be uploaded by issuing a POST request with the image to /drive/upload/. Note that there is a different domain endpoint for uploads direct.{loc}.cloudsigma.com."
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "prose",
+      "text": "Currently only raw disk images are supported. The request body should contain the raw byte stream of disk a image and should specify correct content type (Content-Type: application/octet-stream) in the request headers. The drive upload API supports only Basic HTTP authentication."
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "prose",
+      "text": "It is very important that the Content-Length contains the correct size of the data to be sent, because it determines the size of the drive which will be created. Note that if the uploaded image is smaller than the minimum drive size (Check Capabilities), it will be resized automatically on upload completion."
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "prose",
+      "text": "It is possible to specify the file name in the path, i.e. to upload the image to /drive/upload/file_name path, but the file name is ignored. This makes it easier to use tools, such as curl, which usually upload to a path ending with the name of the file."
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "prose",
+      "text": "The returned response contains the UUID of the created drive."
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "prose",
+      "text": "Below is an example on how to upload a drive image using curl:"
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "9d9d7ff435420b0079d62733604997feff8cb553985eec7c06566a03da832a1b"
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "prose",
+      "text": "Note that in the above command specifying the Content-Type header also sets curl to not encode the body of the request and leave it as an octet-stream."
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "prose",
+      "text": "The command prints the UUID of the uploaded image. You may want to save it to a file with an output redirect by appending > uploaded_drive_uuid at the end of the command."
+    },
+    {
+      "anchor": "uploading-a-drive-image",
+      "kind": "prose",
+      "text": "By default curl does not show upload progress. You may add –verbose (-v) option if you use curl on the command line to print the progress and speed of upload."
+    },
+    {
+      "anchor": "downloading-a-drive-image",
+      "kind": "heading",
+      "level": 2,
+      "text": "Downloading a drive image"
+    },
+    {
+      "anchor": "get-https---direct.loc.cloudsigma.com-api-2.0-drives-uuid-download-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "https://direct.{loc}.cloudsigma.com/api/2.0/drives/{uuid}/download/"
+    },
+    {
+      "anchor": "downloading-a-drive-image",
+      "kind": "prose",
+      "text": "To download a drive image issue a GET request to /drives/{uuid}/download/. Note that there is a different domain endpoint for image download direct.{loc}.cloudsigma.com. The download client should handle HTTP redirects correctly. The resulting response contains an Content-Type: application/octet-stream file. The file name is set to the image UUID in the Content-Disposition header."
+    },
+    {
+      "anchor": "downloading-a-drive-image",
+      "kind": "prose",
+      "text": "Below is an example on how to download a drive image using curl:"
+    },
+    {
+      "anchor": "downloading-a-drive-image",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "e47375f7fdf03132dbe62f769c06766a59cc2b8634c6ff0c5991bdb7d93bf106"
+    },
+    {
+      "anchor": "downloading-a-drive-image",
+      "kind": "prose",
+      "text": "The –location option instructs curl to follow redirects. The client is expected to follow HTTP redirects."
+    },
+    {
+      "anchor": "downloading-a-drive-image",
+      "kind": "prose",
+      "text": "The above command uses –remote-header-name to save the image into a file named as specified in Content-Disposition. The name in the content disposition is set to the drive UUID. It is possible to specify a different output name/path with the –output (-o) option. Note that –remote-header-name should always be used together with –remote-name."
+    }
+  ],
+  "html_sha256": "cc9999bb9446fa4154ff2572a905ac06f29eef1b3748862832053014c90d4f22",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/upload_download.html"
+}

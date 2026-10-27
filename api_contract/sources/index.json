@@ -1,0 +1,87 @@
+{
+  "blocks": [
+    {
+      "anchor": "welcome-to-cloudsigma-api-documentation",
+      "kind": "heading",
+      "level": 1,
+      "text": "Welcome to CloudSigma API documentation!"
+    },
+    {
+      "anchor": "indices-and-tables",
+      "kind": "heading",
+      "level": 1,
+      "text": "Indices and tables"
+    },
+    {
+      "anchor": "indices-and-tables",
+      "kind": "prose",
+      "text": "Index"
+    },
+    {
+      "anchor": "indices-and-tables",
+      "kind": "prose",
+      "text": "Module Index"
+    },
+    {
+      "anchor": "indices-and-tables",
+      "kind": "prose",
+      "text": "Search Page"
+    }
+  ],
+  "html_sha256": "5c11d669db9f9d6338d7649e81e078797c93cdd917ca5b94dede44b7e2569f68",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/genindex.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/py-modindex.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/search.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_filters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_policies.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_ipaliases.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_lans.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_port_forwarding.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_routes.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_upstream.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_vpn_tunnels.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/index.html"
+}

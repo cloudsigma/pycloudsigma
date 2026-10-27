@@ -1,0 +1,446 @@
+{
+  "blocks": [
+    {
+      "anchor": "notification-contacts",
+      "kind": "heading",
+      "level": 1,
+      "text": "Notification contacts"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--notification_contacts-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/notification_contacts/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of contacts configured for the account."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "830c490f93d48d21d647177288a6906d1c4a05c528cea09cbdd56bef095390ba",
+      "path": "/api/2.0/notification_contacts/?limit=0"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/notification_contacts/"
+      },
+      "original_sha256": "050b8d70e7a7fecfaa8f64ba7538e30224c6e015b17c1a5de8a6a775a57cd507",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"main\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"phone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "post--notification_contacts-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/notification_contacts/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new contact."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "201 Created – object created"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "f88d3b55c492f658d5ba23ba41653447fa1a7c0d61ad1929e6435c9ff32ec82a",
+      "path": "/api/2.0/notification_contacts/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/notification_contacts/"
+      },
+      "original_sha256": "5307f846148319c34e2cf963e9d8059f6b60e9882f5cdd17c8ec3cc5fdf2e17f",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"main\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"phone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "put--notification_contacts-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/notification_contacts/{uuid}/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits a notification contact. Note that changing the main user’s email is not recommended, as if the account email changes, so will the main contact."
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "200 OK – no errors"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "0162fdf67cb57c7e9f21f43e90c7af5d47999938c33aacfb175684fc50b4540f",
+      "path": "/api/2.0/notification_contacts/0103f398-9f85-446a-a285-fe63cf9f0f28/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "PUT",
+        "path": "/api/2.0/notification_contacts/{uuid}/"
+      },
+      "original_sha256": "b8032a1df273be6e0acb282bb37f5ce30876056dafa1fcd07f49169481947ce7",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"main\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"phone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"pk\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "delete--notification_contacts-uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/notification_contacts/{uuid}/"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Delete a notification contact. Note that you cannot delete the main contact."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "204 No Content – no errors"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "deleting",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "3507c93fc3b4fef8badefead0e870101e377e17f5ee59287613cb4c9b799f58a",
+      "path": "/api/2.0/notification_contacts/0103f398-9f85-446a-a285-fe63cf9f0f28/"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "deleting",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/notification_contacts/{uuid}/"
+      },
+      "original_sha256": "39f1283922399d2aa196b20aa9171924d2c5bd150f01c1901f34229690fe2f02",
+      "parse_gap": "empty-body",
+      "status_code": 204
+    }
+  ],
+  "html_sha256": "45c5d33711a083a0b55f11e6246a887b3a458072ceecb1e1720e002dc2f7122e",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/notification_contacts.html"
+}

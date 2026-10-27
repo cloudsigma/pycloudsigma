@@ -1,0 +1,1952 @@
+{
+  "blocks": [
+    {
+      "anchor": "remote-snapshots",
+      "kind": "heading",
+      "level": 1,
+      "text": "Remote Snapshots"
+    },
+    {
+      "anchor": "remote-snapshots",
+      "kind": "prose",
+      "text": "Remote snapshots are point-in-time versions of a drive. They can be cloned to a full drive, which makes it possible to restore an older version of a VM image."
+    },
+    {
+      "anchor": "remote-snapshots",
+      "kind": "prose",
+      "text": "Remote snapshots are our backup solution. If the drive gets deleted and the remote snapshot is created, the remote snapshot won’t disappear. All remote snapshots (backups) of deleted drives can be found in the UI -> Storage -> Backups. But the remote snapshots of active drives can be found at the Storage -> Drives -> A drive in detailed view -> Backups section."
+    },
+    {
+      "anchor": "remote-snapshots",
+      "kind": "prose",
+      "text": "Remote snapshots are billed based on their occupied size. Since only the differences from the current drive image are stored, a single remote snapshot’s size will be equal to the size of the data which has changed since the remote snapshot has taken. If no data has changed, the remote snapshot’s size will be zero."
+    },
+    {
+      "anchor": "remote-snapshots",
+      "kind": "prose",
+      "text": "Note that remote snapshots are billed as backup, so backup subscriptions should be bought in order not to burst on remote snapshots usage."
+    },
+    {
+      "anchor": "remote-snapshots",
+      "kind": "prose",
+      "text": "We have remote snapshots in the following locations: GVA, ZRH, FRA, CWL, LON, and DUB"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "create new object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "update / modify object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "DELETE"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "delete object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics."
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--remotesnapshots-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/remotesnapshots/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of remote snapshots to which the authenticated user has access."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "fields – A set of field names specifying the returned fields."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request - default list:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "cb721e4ded01aaa8c4efc546c0c54b0a8441f607f4af726790149a52ab4a149c",
+      "path": "/api/2.0/snapshots/?limit=0"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response - default list:"
+    },
+    {
+      "anchor": "listing",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "260ba5dbed14429ab8fa58c988477999574c0b6beed14b7342cd6ae9e5c064b6",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allocated_size\"]",
+          "observed_types": [
+            "integer",
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing"
+    },
+    {
+      "anchor": "get--remotesnapshots-detail-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/remotesnapshots/detail/"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Gets the detailed list of remote snapshots with additional information to which the authenticated user has access."
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "fields – No parameters."
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "3d713dce3be2e0b42e303a88c9139f0d692bf678082439b2eaa25da9d2616ba5",
+      "path": "/api/2.0/snapshots/detail/?limit=0"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "65c010aca37d4a8f80acfa1a6a5004989fccb2f794ec4fdd399e13b0842a73e2",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "list-single-remote-snapshot",
+      "kind": "heading",
+      "level": 2,
+      "text": "List single remote snapshot"
+    },
+    {
+      "anchor": "get--remotesnapshots-uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/remotesnapshots/{uuid}/"
+    },
+    {
+      "anchor": "list-single-remote-snapshot",
+      "kind": "prose",
+      "text": "Gets detailed information on a remote snapshot identified by snapshot_uuid."
+    },
+    {
+      "anchor": "list-single-remote-snapshot",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "list-single-remote-snapshot",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "list-single-remote-snapshot",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "3418a641ab044e65d9a5383bebdee13bc8937736d668c5036f508455c906661c",
+      "path": "/api/2.0/snapshots/62c600cf-7a25-4703-8003-b3c4445233af/"
+    },
+    {
+      "anchor": "list-single-remote-snapshot",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "list-single-remote-snapshot",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "064787a62192bfb54f0cfefa3aa19562a5ce50e014ef6dba536b93cde113754d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"allocated_size\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Please note that you cannot create more than one remote snapshot of a drive within 30 minutes. And also you cannot create a second remote snapshot of a drive when the previous one is in transferring or creating state."
+    },
+    {
+      "anchor": "post--remotesnapshots-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/remotesnapshots/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new remote snapshot."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "201 Created – object created"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Create a remote snapshot"
+    },
+    {
+      "anchor": "creating",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "a5957dea5771598647ad6b483c0c4d2027b108b022d76a8521806779fd393030",
+      "path": "/api/2.0/snapshots/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response"
+    },
+    {
+      "anchor": "creating",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "58ce67ea2e11afca058e47dbbfb47795281218aba9619c31ae2cab7a53484ee1",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allocated_size\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"][\"key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Please note that you cannot edit a remote snapshot when the state is transferring or creating."
+    },
+    {
+      "anchor": "put--remotesnapshots-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/remotesnapshots/{uuid}/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits a remote snapshot."
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "200 OK – no errors"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "80640c4b8433409f0fe6a63ac544af3e3a2473496736c7d1ee81e70b96d26525",
+      "path": "/api/2.0/snapshots/855ebdc8-ce4b-48d0-9d8d-306c9074be29/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "21b9f7c53d213b43961c0537cab6604790351a40f700e604bc17d230840506b6",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"new_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "metadata",
+      "kind": "heading",
+      "level": 2,
+      "text": "Metadata"
+    },
+    {
+      "anchor": "metadata",
+      "kind": "prose",
+      "text": "It is possible to add arbitrary key-value data to a remote snapshot definition. See Objects’ metadata field for more information."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Please note that you cannot delete a remote snapshot when the state is transferring or creating."
+    },
+    {
+      "anchor": "single-remote-snapshot",
+      "kind": "heading",
+      "level": 3,
+      "text": "Single Remote snapshot"
+    },
+    {
+      "anchor": "delete--remotesnapshots-uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/remotesnapshots/{uuid}/"
+    },
+    {
+      "anchor": "single-remote-snapshot",
+      "kind": "prose",
+      "text": "Deletes a single remote snapshot."
+    },
+    {
+      "anchor": "single-remote-snapshot",
+      "kind": "prose",
+      "text": "204 No Content – No content, object deletion started."
+    },
+    {
+      "anchor": "single-remote-snapshot",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "single-remote-snapshot",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "812d28e6b6372f5259264801a348d13dab5eb4d7c98a7db35c60bc1c6a1a0b01",
+      "path": "/api/2.0/snapshots/855ebdc8-ce4b-48d0-9d8d-306c9074be29/"
+    },
+    {
+      "anchor": "single-remote-snapshot",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "single-remote-snapshot",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "39f1283922399d2aa196b20aa9171924d2c5bd150f01c1901f34229690fe2f02",
+      "parse_gap": "empty-body",
+      "status_code": 204
+    },
+    {
+      "anchor": "multiple-remote-snapshots",
+      "kind": "heading",
+      "level": 3,
+      "text": "Multiple remote snapshots"
+    },
+    {
+      "anchor": "delete--remotesnapshots-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/remotesnapshots/"
+    },
+    {
+      "anchor": "multiple-remote-snapshots",
+      "kind": "prose",
+      "text": "Deletes multiple remote snapshots specified by their UUIDs."
+    },
+    {
+      "anchor": "multiple-remote-snapshots",
+      "kind": "prose",
+      "text": "No content, object deletion started."
+    },
+    {
+      "anchor": "multiple-remote-snapshots",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "multiple-remote-snapshots",
+      "kind": "prose",
+      "text": "Request body"
+    },
+    {
+      "anchor": "multiple-remote-snapshots",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "0ed48cf927fb6d4aaed73736fb1376c404584ae36327cb555333cd165c597bee"
+    },
+    {
+      "anchor": "multiple-remote-snapshots",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "multiple-remote-snapshots",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/remotesnapshots/"
+      },
+      "original_sha256": "5933cb68c53c6c51fe57ced00e76716a0beb8f74b9bdc4768b2990eee5a7c8d8",
+      "parse_gap": "empty-body",
+      "status_code": 204
+    },
+    {
+      "anchor": "cloning",
+      "kind": "heading",
+      "level": 2,
+      "text": "Cloning"
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Please note that you cannot clone (promote to a full drive) a remote snapshot when the state is transferring or creating."
+    },
+    {
+      "anchor": "post--remotesnapshots-uuid-action-?do=clone",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/remotesnapshots/{uuid}/action/?do=clone"
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Clones a remote snapshot to a drive. Request body is optional and any or all of the key/value pairs can be omitted."
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "202 Accepted – Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "cloning",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "ccc643730d9fd2ad9c9bd461a8f02221a450b83d121022ce1c881fe10b082eff",
+      "path": "/api/2.0/snapshots/c6368b7c-9d3d-4631-b008-83b73c05f1bd/action/?do=clone&avoid=d7da5038-ac2d-4776-9097-f60167d6e587"
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Example response: The response is actually a drive definition."
+    },
+    {
+      "anchor": "cloning",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "1940c7a58e86e98acc037f5f7ec92d6155ff594bfe51f23dc7a43cb6aec55f22",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "The name of the cloned drive will be changed using the clone naming strategy set in the profile. See Clone naming for more information."
+    },
+    {
+      "anchor": "listing-a-drive-s-remote-snapshots",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing a drive’s remote snapshots"
+    },
+    {
+      "anchor": "listing-a-drive-s-remote-snapshots",
+      "kind": "prose",
+      "text": "There are 2 ways of getting all the remote snapshots of a drive."
+    },
+    {
+      "anchor": "by-filtering-remote-snapshots",
+      "kind": "heading",
+      "level": 3,
+      "text": "By filtering remote snapshots"
+    },
+    {
+      "anchor": "by-filtering-remote-snapshots",
+      "kind": "prose",
+      "text": "You can apply a drive filter to remote snapshots."
+    },
+    {
+      "anchor": "get--remotesnapshots-uuid-?drive=drive_uuid",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/remotesnapshots/{uuid}/?drive={drive_uuid}"
+    },
+    {
+      "anchor": "by-filtering-remote-snapshots",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "by-filtering-remote-snapshots",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "604bda24b9d636a4a2b43833bd40188aaf22b37c626d3dcd84801a790e50cd83",
+      "path": "/api/2.0/snapshots/detail/?limit=0&drive=b7cb6615-b6a5-4c31-b755-b86980c64d59"
+    },
+    {
+      "anchor": "by-filtering-remote-snapshots",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "by-filtering-remote-snapshots",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "93ed0f8bef01f0970bcd57bdf5ac3c0cedb159082a4b2e2e8676897f57b0e9ca",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "in-drive-definition",
+      "kind": "heading",
+      "level": 3,
+      "text": "In drive definition"
+    },
+    {
+      "anchor": "in-drive-definition",
+      "kind": "prose",
+      "text": "In the detailed drive definition there is a “remote_snapshots” field."
+    },
+    {
+      "anchor": "get--drives-drive_uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/drives/{drive_uuid}/"
+    },
+    {
+      "anchor": "in-drive-definition",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "in-drive-definition",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "27edbbf7e992dc91356c20ba0a646e6055c8c463a9c02621d0251dba761a6986",
+      "path": "/api/2.0/drives/b7cb6615-b6a5-4c31-b755-b86980c64d59/"
+    },
+    {
+      "anchor": "in-drive-definition",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "in-drive-definition",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/drives/{drive_uuid}/"
+      },
+      "original_sha256": "31bd1775c501d634c2334d605e73a94fbf24843f16262c1f197890aa16266c39",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "request-schema",
+      "kind": "heading",
+      "level": 3,
+      "text": "Request schema"
+    },
+    {
+      "anchor": "request-schema",
+      "classification": "schema-definition",
+      "direction": "request",
+      "kind": "code",
+      "original_sha256": "3a852725cd9cbb732652f75794b5dc54748ff8daad7a3c437525d205a9ad2ced",
+      "parse_gap": "invalid-or-non-json",
+      "status_code": null
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "d062913ea7eef0ec5ad538d4c59694588a00192b1816bee58c3f0a81db5587e8",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "put",
+          "delete"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "put",
+          "delete",
+          "post"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "allocated_size": {
+            "default": "No default provided.",
+            "help_text": "Physical size of the snapshot",
+            "readonly": true,
+            "required": true,
+            "type": "integer"
+          },
+          "drive": {
+            "default": null,
+            "help_text": "Drive UUID",
+            "readonly": false,
+            "required": true,
+            "type": "related"
+          },
+          "grantees": {
+            "default": "No default provided.",
+            "help_text": "A list of data. Ex: ['abc', 26.73, 8]",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "meta": {
+            "default": {},
+            "help_text": "User defined meta information",
+            "readonly": false,
+            "required": false,
+            "type": "dict"
+          },
+          "name": {
+            "default": null,
+            "help_text": "Optional human readable name of the snapshot",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "owner": {
+            "default": null,
+            "help_text": "Owner of the snapshot",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "permissions": {
+            "default": "No default provided.",
+            "help_text": "A list of data. Ex: ['abc', 26.73, 8]",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "status": {
+            "default": "No default provided.",
+            "help_text": "Status of the snapshot.",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "tags": {
+            "default": "No default provided.",
+            "help_text": "Many related resources. Can be either a list of URIs or list of individually nested resource data.",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "timestamp": {
+            "default": null,
+            "help_text": "Timestamp of the snapshot creation",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "UUID of the snapshot",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        }
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "64ca0035d64af67ab47599d986f9b75f44e844ed2f45b1bca569d2b1c13579da",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_notifications.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/remote_snapshots.html"
+}

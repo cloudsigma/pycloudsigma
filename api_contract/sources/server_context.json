@@ -1,0 +1,483 @@
+{
+  "blocks": [
+    {
+      "anchor": "server-context",
+      "kind": "heading",
+      "level": 1,
+      "text": "Server Context"
+    },
+    {
+      "anchor": "server-context",
+      "kind": "prose",
+      "text": "Server context is a way for the VM to get information on the way it was set-up, i.e. get it’s definition. Server context is communicated over a virtual serial port device, which on UNIX-like operating system would usually appear as /dev/ttyS1 and on Windows as COM2. The serial port device for server context is the second serial device attached to the VM, because some UNIX operating systems configure a serial console on the first serial port."
+    },
+    {
+      "anchor": "server-context",
+      "kind": "prose",
+      "text": "Having the server definition accessible by the VM can be useful in various ways. For example it is possible to easily determine from within the VM, which network interfaces are connected to public and which to private network. Another use is to pass some data to initial VM setup scripts, like setting the hostname to the VM name or passing ssh public keys through server metadata."
+    },
+    {
+      "anchor": "server-context",
+      "kind": "prose",
+      "text": "At first sight, it might be confusing with the presence of both ‘server context’ and ‘server metadata’. ‘server metadata’ is really a subset of ‘server context’. The ‘server metadata’ itself is a key-value store for user-defined data on a server definition. The ‘server context’ on the other hand is one step above. It includes the full server definition, as well as the server metadata, along with attached drives definitions."
+    },
+    {
+      "anchor": "context-schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Context schema"
+    },
+    {
+      "anchor": "context-schema",
+      "kind": "prose",
+      "text": "The server context has almost the same schema as the /server/<uuid>/detail/ API request schema. It differs in that it lacks owner, subscriptions, status, and runtime information. The other difference is that the drives attributes are expanded to the corresponding /drive/<uuid>/detail/ which also lacks owner and runtime information. There is also a global_context attribute, which contains context available on all servers (see drive edit)."
+    },
+    {
+      "anchor": "setting-up-the-virtual-serial-port",
+      "kind": "heading",
+      "level": 2,
+      "text": "Setting up the virtual serial port"
+    },
+    {
+      "anchor": "setting-up-the-virtual-serial-port",
+      "kind": "prose",
+      "text": "The virtual serial port device in not connected to a hardware device on the other side, so setting serial port hardware settings, such as baud rate and parity bits, does not affect the actual communication. However on Unix-like operating systems it may be necessary to set up the virtual terminal connected to the serial device. In general it is advisable to use the terminal in raw mode so that all characters are received uninterpreted. It is also important to not echo back received responses, because the may fill up the receive buffer, which may eject pending requests."
+    },
+    {
+      "anchor": "setting-up-the-virtual-serial-port",
+      "kind": "prose",
+      "text": "To set-up the terminal to raw mode on most unix systems one needs to the following command:"
+    },
+    {
+      "anchor": "setting-up-the-virtual-serial-port",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "b206690c73284c9cc9b56efb0553c0af7b6249deaa655bb117bfdb03fcc6b909"
+    },
+    {
+      "anchor": "setting-up-the-virtual-serial-port",
+      "kind": "prose",
+      "text": "It is also possible to use cooked mode terminal for checking data on command line using standard utilities such as echo, read, and cat. As all responses are followed by newline and an End of Transmission character (usually represented as ^D or \"\\0x04\"), so setting the terminal to cooked mode would make it interpret the EOT character as an End-Of-File condition, which makes it possible to use read and cat on the terminal device file (/dev/ttyS1) to receive the response. To set up cooked mode use the following command:"
+    },
+    {
+      "anchor": "setting-up-the-virtual-serial-port",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "93e25c0547b62bcb9b70e986537eba4f20483ab45422dfe2a5fc433f4af4b3ef"
+    },
+    {
+      "anchor": "setting-up-the-virtual-serial-port",
+      "kind": "prose",
+      "text": "If the default EOF character is different on your terminal it may be necessary to change it using:"
+    },
+    {
+      "anchor": "setting-up-the-virtual-serial-port",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "aed2eb83f84da06a80770c31b67555471bef4482032029714d0375db45fd1392"
+    },
+    {
+      "anchor": "server-context-protocol",
+      "kind": "heading",
+      "level": 2,
+      "text": "Server Context Protocol"
+    },
+    {
+      "anchor": "requesting-the-complete-server-context",
+      "kind": "heading",
+      "level": 3,
+      "text": "Requesting the complete server context"
+    },
+    {
+      "anchor": "requesting-the-complete-server-context",
+      "kind": "prose",
+      "text": "There is a simple protocol to retrieve the server context from the serial device. To request the whole server context one needs to send two newlines enclosed between inequality signs (aka pointy brackets, angle brackets). The newline can be either CRLF or just LF. In most programming languages the string to send will look like \"<\\n\\n>\"."
+    },
+    {
+      "anchor": "requesting-the-complete-server-context",
+      "kind": "prose",
+      "text": "The resulting response is a single-line json string representing the definition of the VM followed by newline (line feed character) and and an End of Transmission character (usually represented as ^D or \"\\0x04\"). On Unix-like operating systems, if the terminal is set to cooked mode it is possible that the EOT character is interpreted as End-Of-File and is not present in the response."
+    },
+    {
+      "anchor": "requesting-the-complete-server-context",
+      "kind": "prose",
+      "text": "The example below is for a server with the following definition:"
+    },
+    {
+      "anchor": "requesting-the-complete-server-context",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "be76e55658a1226ef66c9096762024f9df70148f7261da8f11c2e8fd85acf14f",
+      "path": "/api/2.0/servers/e0fcf2ae-020e-45e1-bf69-982b17da4b6a/"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-python",
+      "kind": "heading",
+      "level": 3,
+      "text": "Request the complete server context using python"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-python",
+      "kind": "prose",
+      "text": "The best way to access the context is to use a serial port communication library from your favourite programming language. Below is an example using the Python programming language and the pySerial libraray:"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-python",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "4507e71fdbc499fea563e1deb723fd6aef99d68887f3d2e1d138b295042e73be"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-python",
+      "kind": "prose",
+      "text": "Here the same code, as a one-liner, which can be executed directly in bash, or another shell:"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-python",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "f1242b64e6671fabcf919f9bbc0c9e333fc953e31b40ade0a9a8f9d52ae21e38"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-python",
+      "kind": "prose",
+      "text": "Example:"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-python",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "f1242b64e6671fabcf919f9bbc0c9e333fc953e31b40ade0a9a8f9d52ae21e38"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-python",
+      "kind": "prose",
+      "text": "Result:"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-python",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "368a38aee521728e07517cf3e9d7a339129dad15a45a3148a4f23150027d5dfa"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-bash",
+      "kind": "heading",
+      "level": 3,
+      "text": "Request the complete server context using bash"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-bash",
+      "kind": "prose",
+      "text": "It is also possible to issue the reques using just standard commands such as read, echo, and cat. Unfortunately that method is prone to errors because it breaks if there are escaped json values, such as \"value contains quote: \\\"\", so it is higly recommended to use a serial communication library, such as the python example above. Below is an example of making a request, reading the result, and printing it on Linux in the bash shell:"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-bash",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "180b41568b84ed06bcbdedcda6329c0ea521c0fa8233077fc958831b007df561"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-bash",
+      "kind": "prose",
+      "text": "Example:"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-bash",
+      "kind": "prose",
+      "text": "Request command. Including a flushing read before the actual request with echo:"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-bash",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "6f9d5c1c285aa06b779167fb0f368576eb505271a55b9a7b51f2dd5e2b1bca9f"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-bash",
+      "kind": "prose",
+      "text": "Result:"
+    },
+    {
+      "anchor": "request-the-complete-server-context-using-bash",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "368a38aee521728e07517cf3e9d7a339129dad15a45a3148a4f23150027d5dfa"
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "kind": "heading",
+      "level": 3,
+      "text": "Requesting a partial server context or a single value"
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "kind": "prose",
+      "text": "To request a part of the definition json one can provide a path in the request. The path contains strings or integers separated by a forward slash (/). To request only the part of the json which is the NICs definitoins one can request the path “/nics”. To request an element from a list value one can use an index in the path. Note that counting starts from 0. For example to get the defintion of the first network interface one can use the following path “/nics/0”."
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "kind": "prose",
+      "text": "If the value of pointed to the path is a leaf value (it does not contain a json object or alist), it is returned without the surrounding quotes so requesting <\\nname\\n> from a server named “myserver” would return:"
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "dc4e19b77ffd005ff0f9bf0c6bdfd88cfc7aca18ed826ef614c87dfb5bdce5b3"
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "kind": "prose",
+      "text": "and NOT:"
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "1de4aa49d9789adf8c30db961e48c9b0373a505378212ff2ca8e408b762b834f"
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "kind": "prose",
+      "text": "Be advised that the returned strings won’t contain surrounding quotes but ASCII control characters will be backslash escaped. For example line-feed will become \\n, carriage-return will become \\r, and tab will become \\t. Also there is no way to represent null json values so this will be converted to an empty string. Make sure that you parse the escaped characters if you need the original unescaped text in your scripts. An easy way to do it on UNIX-like OS is to use echo -e $READVALUE."
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "kind": "prose",
+      "text": "Examples:"
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "10731309d34735b09c4491cfa288146e38869541118ae29784c4174fb282687c"
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "kind": "prose",
+      "text": "Result:"
+    },
+    {
+      "anchor": "requesting-a-partial-server-context-or-a-single-value",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "1469385077ad3cbd756704413d65ad1a61e6b764f75bb5ab3f95266bfbb4df43"
+    },
+    {
+      "anchor": "passing-information-to-the-vm",
+      "kind": "heading",
+      "level": 2,
+      "text": "Passing information to the VM"
+    },
+    {
+      "anchor": "passing-information-to-the-vm",
+      "kind": "prose",
+      "text": "The most suitable place to store information for passing to the VM through the context interface is the server meta field, or drive meta. Check Objects’ metadata field for more information on editing the meta field."
+    },
+    {
+      "anchor": "passing-information-to-the-vm",
+      "kind": "prose",
+      "text": "For example in the server definition from above examples, the meta looks like:"
+    },
+    {
+      "anchor": "passing-information-to-the-vm",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "8b967954297f98ef98ea06dd82faf42e8739bcd34d768d3ffd456f63e5052327"
+    },
+    {
+      "anchor": "passing-information-to-the-vm",
+      "kind": "prose",
+      "text": "One can retrieve the ssh_public_key from the meta from within the VM using:"
+    },
+    {
+      "anchor": "passing-information-to-the-vm",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "db14a6be7851f93431aa40b4109f975b7caf4398ba0d9b6cd2259e8ec194edf7"
+    },
+    {
+      "anchor": "passing-information-to-the-vm",
+      "kind": "prose",
+      "text": "Result:"
+    },
+    {
+      "anchor": "passing-information-to-the-vm",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "3f4cdba2c0b825b73c7d505e4651a2402fd695a2003c0468d328a2e2abf41313"
+    },
+    {
+      "anchor": "passing-information-to-the-vm",
+      "kind": "prose",
+      "text": "Note that there isn’t anything special about the ssh_public_key attribute of the metadata. It can be stored under any other key in the server metadata, as long as client software is aware where to look for it. It is also possible to store the key in one of the attached drives’ meta."
+    },
+    {
+      "anchor": "global-context",
+      "kind": "heading",
+      "level": 2,
+      "text": "Global context"
+    },
+    {
+      "anchor": "global-context",
+      "kind": "prose",
+      "text": "Global context can be used to hold server context information common to all user’s servers. Like meta field on servers, it can store arbitrary key-value pairs, but as the name suggests it is global for the user account, and the same for all servers."
+    },
+    {
+      "anchor": "global-context",
+      "kind": "prose",
+      "text": "Global context is centrally managed at the /global_context/ API url. Within the VM context it resides in the global_context attribute of the server server definition."
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "kind": "heading",
+      "level": 3,
+      "text": "Get or update global context"
+    },
+    {
+      "anchor": "get--global_context-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/global_context/"
+    },
+    {
+      "anchor": "post--global_context-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/global_context/"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "kind": "prose",
+      "text": "Example:"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "kind": "prose",
+      "text": "Add a value to the global context."
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "137657ddf2dfa72081e58102d2c08738f7b8db2709f56c58013539deb7877f73",
+      "path": "/api/2.0/global_context/"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "kind": "prose",
+      "text": "The resulting global context is:"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/global_context/"
+      },
+      "original_sha256": "1902c095ef2d037eceae184e1c5bc87675f94cc0d9a4e39bfa17302526375be4",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"new_global_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "kind": "prose",
+      "text": "Using the server from examples above, we can check the context from the server shell:"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "kind": "prose",
+      "text": "Request command:"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "f1242b64e6671fabcf919f9bbc0c9e333fc953e31b40ade0a9a8f9d52ae21e38"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "kind": "prose",
+      "text": "Result:"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "cf2f690d3440485cb3e889d98c63e968afc51a09ada2ee6eb04a602d78cdce33"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "kind": "prose",
+      "text": "Notice how the value of the global_context changed:"
+    },
+    {
+      "anchor": "get-or-update-global-context",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "51ecfd1b170be4cd09fc813e7553924e0750a372b2a48903894ba209529f1385"
+    }
+  ],
+  "html_sha256": "11acdbc06fc9f5654c7ccf4cbb1804b9b6df60e3de1ab1e2696cccbfc9687676",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/server_context.html"
+}

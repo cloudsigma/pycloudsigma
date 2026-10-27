@@ -1,0 +1,611 @@
+{
+  "blocks": [
+    {
+      "anchor": "ephemeral-drives",
+      "kind": "heading",
+      "level": 1,
+      "text": "Ephemeral drives"
+    },
+    {
+      "anchor": "ephemeral-drives",
+      "kind": "prose",
+      "text": "Ephemeral drives are physically attached to the compute host. Because they are local and not network-attached, they offer low latency and high throughput, making them ideal for workloads that require maximum performance. However, the storage is ephemeral, data is lost if the guest is stopped, so ephemeral drives are best suited for temporary data or caches rather than persistent storage."
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "heading",
+      "level": 2,
+      "text": "API calls"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Ephemeral drives are managed through the Drives API calls, which allow you to create, attach, detach, and delete these drives as needed."
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Action"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Allowed"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Create"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Yes"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Delete"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Yes"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Update"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Yes"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Attach"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Yes"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Resize"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Yes"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Clone"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "No"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Download"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "No"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Upload"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "No"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Create Snapshot"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "No"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "Create Remote Snapshot"
+    },
+    {
+      "anchor": "api-calls",
+      "kind": "prose",
+      "text": "No"
+    },
+    {
+      "anchor": "resizing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Resizing"
+    },
+    {
+      "anchor": "post--drives-uuid-action-?do=resize",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/drives/{uuid}/action/?do=resize"
+    },
+    {
+      "anchor": "resizing",
+      "kind": "prose",
+      "text": "Note that the resize action is a full definition update (it can update even name and metadata), so a full definition should be provided to this call."
+    },
+    {
+      "anchor": "resize-checks-and-conditions",
+      "kind": "heading",
+      "level": 3,
+      "text": "Resize Checks and Conditions"
+    },
+    {
+      "anchor": "resize-checks-and-conditions",
+      "kind": "prose",
+      "text": "Resize is permitted only when the drive is in an active state (MOUNTED or UNMOUNTED) or in a STAGING state."
+    },
+    {
+      "anchor": "resize-checks-and-conditions",
+      "kind": "prose",
+      "text": "The new size must be within the minimum and maximum limits specified by the Capabilities API call."
+    },
+    {
+      "anchor": "resize-checks-and-conditions",
+      "kind": "prose",
+      "text": "The system verifies that the resized ephemeral drive can fit within the existing available space in the cloud."
+    },
+    {
+      "anchor": "resize-checks-and-conditions",
+      "kind": "prose",
+      "text": "Example:"
+    },
+    {
+      "anchor": "resize-checks-and-conditions",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "46d6eb5be894f0daf46188ed786513c94fa448eb65257667987f1b8393b01346",
+      "path": "/api/2.0/drives/df170528-c34d-4009-a806-c7d85c78cad8/action/?do=resize"
+    },
+    {
+      "anchor": "resize-checks-and-conditions",
+      "kind": "prose",
+      "text": "Note that the drive in the response is with status resizing:"
+    },
+    {
+      "anchor": "resize-checks-and-conditions",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/drives/{uuid}/action/?do=resize"
+      },
+      "original_sha256": "f870b6dc1e6ff4930499c976f0859bfe2ee142c60f97599195483176a1812898",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"is_downloadable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"is_ephemeral\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "billing-usage",
+      "kind": "heading",
+      "level": 2,
+      "text": "Billing & Usage"
+    },
+    {
+      "anchor": "billing-usage",
+      "kind": "prose",
+      "text": "Ephemeral drives are billed only when they are attached to running guests. See the following example."
+    },
+    {
+      "anchor": "local-nvme-billing-calculation",
+      "kind": "heading",
+      "level": 3,
+      "text": "Local NVMe Billing Calculation"
+    },
+    {
+      "anchor": "local-nvme-billing-calculation",
+      "kind": "prose",
+      "text": "The following values show the total Local NVMe capacity allocated to the customer’s account and the amount included in their subscriptions. The allocated capacity represents the maximum Local NVMe space reserved for use, while the subscription amount indicates the portion covered at no additional cost."
+    },
+    {
+      "anchor": "local-nvme-billing-calculation",
+      "kind": "prose",
+      "text": "Local NVMe Allocated: 352 GB — The total Local NVMe storage capacity assigned to the account."
+    },
+    {
+      "anchor": "local-nvme-billing-calculation",
+      "kind": "prose",
+      "text": "Local NVMe Subscription: 1 GB — The amount of Local NVMe usage included in the subscription without extra charges."
+    },
+    {
+      "anchor": "local-nvme-billing-calculation",
+      "kind": "prose",
+      "text": "In this example, with 2 GB in use and 1 GB included in the subscription, the customer is billed for 1 GB of Local NVMe usage."
+    },
+    {
+      "anchor": "local-nvme-billing-calculation",
+      "kind": "prose",
+      "text": "Although 352 GB of Local NVMe is allocated, the billing system counts only the 2 GB actively in use. Since the subscription includes 1 GB, charges apply only to the additional 1 GB of usage beyond the subscription limit."
+    },
+    {
+      "anchor": "guest-configuration",
+      "kind": "heading",
+      "level": 2,
+      "text": "Guest configuration"
+    },
+    {
+      "anchor": "guest-configuration",
+      "kind": "prose",
+      "text": "Setup a guest with an OS drive(NVMe) and an ephemeral drive(Local NVMe)."
+    },
+    {
+      "anchor": "mount-the-ephemeral-drive",
+      "kind": "heading",
+      "level": 2,
+      "text": "Mount the Ephemeral Drive"
+    },
+    {
+      "anchor": "mount-the-ephemeral-drive",
+      "kind": "prose",
+      "text": "To mount the vdb device, you’ll need to format it (if it hasn’t been formatted yet), create a mount point, and then mount it."
+    },
+    {
+      "anchor": "identify-the-ephemeral-drive",
+      "kind": "heading",
+      "level": 3,
+      "text": "1. Identify the Ephemeral Drive"
+    },
+    {
+      "anchor": "identify-the-ephemeral-drive",
+      "kind": "prose",
+      "text": "Before formatting, identify the correct device name for your ephemeral drive. You can list available block devices using:"
+    },
+    {
+      "anchor": "identify-the-ephemeral-drive",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "bcc4e69f277d5e77a0debe5336ac3e2863924a231da31b5927ad8cba044a09b2"
+    },
+    {
+      "anchor": "identify-the-ephemeral-drive",
+      "kind": "prose",
+      "text": "Look for a device that matches the expected size of your ephemeral drive and is not yet mounted. In many cases, the device will appear as /dev/vdb, but this may vary."
+    },
+    {
+      "anchor": "format-the-vdb-device",
+      "kind": "heading",
+      "level": 3,
+      "text": "2. Format the vdb Device"
+    },
+    {
+      "anchor": "format-the-vdb-device",
+      "kind": "prose",
+      "text": "For example, to format vdb with the ext4 filesystem:"
+    },
+    {
+      "anchor": "format-the-vdb-device",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "d588c52b521c5b2ca7788977cae53ecbdb1756d878fb540a3f15aac4cd003ba0"
+    },
+    {
+      "anchor": "create-a-mount-point",
+      "kind": "heading",
+      "level": 3,
+      "text": "3. Create a Mount Point"
+    },
+    {
+      "anchor": "create-a-mount-point",
+      "kind": "prose",
+      "text": "Choose a directory where you want to mount the disk. Commonly, additional storage is mounted under /mnt or /media."
+    },
+    {
+      "anchor": "create-a-mount-point",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "4d2484ed82587a5a3e77f9e7bb14b00b12ea2ee8b46f42a0deb3e1e6dfade660"
+    },
+    {
+      "anchor": "mount-the-vdb-device",
+      "kind": "heading",
+      "level": 3,
+      "text": "4. Mount the vdb Device"
+    },
+    {
+      "anchor": "mount-the-vdb-device",
+      "kind": "prose",
+      "text": "Mount vdb to the directory you created:"
+    },
+    {
+      "anchor": "mount-the-vdb-device",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "8668deb5be712e9480beb03df6b0e7e6dea2533025c69a52bed1505ffb27bde2"
+    },
+    {
+      "anchor": "verify-the-mount",
+      "kind": "heading",
+      "level": 3,
+      "text": "5. Verify the Mount"
+    },
+    {
+      "anchor": "verify-the-mount",
+      "kind": "prose",
+      "text": "Use the lsblk or df -h command to confirm that vdb is mounted:"
+    },
+    {
+      "anchor": "verify-the-mount",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "35df030648d33190037c8a297aa2b2bf7c3d5a3e9e392588142c33d378a6bc44"
+    },
+    {
+      "anchor": "verify-the-mount",
+      "kind": "prose",
+      "text": "To verify write access, create a small test file in the mounted directory:"
+    },
+    {
+      "anchor": "verify-the-mount",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "08e0685fe54e1080e5b58e512792e130018bfd84ad7d17be0fca06b44f8ae791"
+    },
+    {
+      "anchor": "verify-the-mount",
+      "kind": "prose",
+      "text": "List the directory to confirm the file was created:"
+    },
+    {
+      "anchor": "verify-the-mount",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "e6007e00abc15f88a8406df512ed6f510f1f7db6521f63cbcff0be70992a054c"
+    },
+    {
+      "anchor": "verify-the-mount",
+      "kind": "prose",
+      "text": "Once verified, you can remove the test file:"
+    },
+    {
+      "anchor": "verify-the-mount",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "38b28a5a7e75030c29c60707cc434468d9ac4cfc1cbcef83c00211770fc80514"
+    }
+  ],
+  "html_sha256": "6a1eb0e54674b796fa887a6637e28b692a2d66db05dc763471a3fd42bcc9332f",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html"
+}

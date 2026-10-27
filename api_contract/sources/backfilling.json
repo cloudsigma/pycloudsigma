@@ -1,0 +1,502 @@
+{
+  "blocks": [
+    {
+      "anchor": "backfilling",
+      "kind": "heading",
+      "level": 1,
+      "text": "Backfilling"
+    },
+    {
+      "anchor": "backfilling",
+      "kind": "prose",
+      "text": "Backfilling is a feature that allows you to start servers without guaranteeing how long they will be running. The servers defined as “backfilling servers” behave the same as normal servers, except for the following:"
+    },
+    {
+      "anchor": "backfilling",
+      "kind": "prose",
+      "text": "they occupy the free resources currently available in the cloud"
+    },
+    {
+      "anchor": "backfilling",
+      "kind": "prose",
+      "text": "they can be stopped at an arbitrary moment if demand for resources appears by normal servers"
+    },
+    {
+      "anchor": "backfilling",
+      "kind": "prose",
+      "text": "instead of shutdown they can be dynamically downsized in terms of CPU and memory if demand for resources appear by normal servers"
+    },
+    {
+      "anchor": "backfilling",
+      "kind": "prose",
+      "text": "they are billed at a separate discount burst rate. No CPU and MEM subscriptions are allowed for the resources consumed by the backfilling servers."
+    },
+    {
+      "anchor": "backfilling",
+      "kind": "prose",
+      "text": "To use backfilling servers your account must be granted special permission."
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "heading",
+      "level": 2,
+      "text": "Checking For Available Backfilling Resources"
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "If your account is granted permission to run a backfilling server the capabilities API (see Capabilities) call will show additional information regarding backfilling capacity. The free_resources object contains three objects, which show what are the maximum resources that can be used by a single backfilling server."
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "Here is an example capabilities call from a backfilling user:"
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "The following list summarises the information given by each free_resources object:"
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "total"
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "This object shows what are the maximum CPU and memory available for backfilling servers. Note that these maximum values may be available on different hosts, so it may not be possible to start a server with this parameters."
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "most_free_by_cpu"
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "This object shows what is the maximum CPU available for a single server, and what is the amount of memory that is associated with this CPU. Use this object if you need as much CPU as possible."
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "most_free_by_memory"
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "This object shows what is the maximum memory available for a single server, and what is the amount of CPU associated with it. If you need as much RAM as possible in your server, use this object."
+    },
+    {
+      "anchor": "checking-for-available-backfilling-resources",
+      "kind": "prose",
+      "text": "In general, the maximum memory and maximum CPU will not be available on a single physical host, so you should use either most_free_by_cpu or most_free_by_memory depending on whether your workload needs CPU or memory."
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--bservers-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/bservers/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of backfilling servers to which the authenticated user has access."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Forbidden - your account doesn’t have the backfilling feature enabled"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "If your account is not enabled for backfilling, you’ll get the following response."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing"
+    },
+    {
+      "anchor": "get--bservers-detail-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/bservers/detail/"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Gets the detailed list of servers to which the authenticated user has access."
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "post--bservers-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/bservers/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new virtual server or multiple servers. The minimal amount of information you need to set is as follows"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "object created"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "put--bservers-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/bservers/{uuid}/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits a server. Used also for attaching NICs and drives to servers. Note that if a server is running, only name, meta, and tags fields can be changed, and all other changes to the definition of a running server will be ignored."
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "delete--bservers-uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/bservers/{uuid}/"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Deletes a single server."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "No content, object deletion started."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "heading",
+      "level": 2,
+      "text": "Server Runtime and Server Details"
+    },
+    {
+      "anchor": "get--bservers-uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/bservers/{uuid}/"
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "Gets detailed information for server identified by server_uuid."
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "If the server is started the definition includes a runtime attribute. The runtime object contains information on, when the server was started, and runtime information about the server NICs, such as how much traffic went through the interface and what are the dynamic IPs assigned to the NIC. The NIC runtime is also available in the NIC definition of the running server."
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "Note the perf_factor section in the runtime attribute - it is specific to backfilling servers and reflects the ratio with which the CPU and MEM of the server are currently downsized."
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "server-actions",
+      "kind": "heading",
+      "level": 2,
+      "text": "Server Actions"
+    },
+    {
+      "anchor": "start",
+      "kind": "heading",
+      "level": 3,
+      "text": "Start"
+    },
+    {
+      "anchor": "post--bservers-uuid-action-?do=start",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/bservers/{uuid}/action/?do=start"
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "Starts a server with a specific UUID."
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "stop",
+      "kind": "heading",
+      "level": 3,
+      "text": "Stop"
+    },
+    {
+      "anchor": "post--bservers-uuid-action-?do=stop",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/bservers/{uuid}/action/?do=stop"
+    },
+    {
+      "anchor": "stop",
+      "kind": "prose",
+      "text": "Stops a server with a specific UUID. This action is equivalent to pulling the power cord of a physical server. For more graceful shutdown see ACPI Shutdown."
+    },
+    {
+      "anchor": "stop",
+      "kind": "prose",
+      "text": "Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "stop",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "stop",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "compatibility-with-normal-servers-api-and-operations",
+      "kind": "heading",
+      "level": 2,
+      "text": "Compatibility with normal servers API and operations"
+    },
+    {
+      "anchor": "compatibility-with-normal-servers-api-and-operations",
+      "kind": "prose",
+      "text": "For compatibility and interoperability reasons, all the operations are supported for normal servers and supported for the backfilling ones as well. See the Servers / VMs section for detailed documentation. In this regard, backfilling servers are a subset of all servers in the account. The API described in Servers / VMs applies to all servers (including the backfilling ones), but the API described in this section applies to backfilling servers only."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "create new object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "update / modify object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "DELETE"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "delete object/s"
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    }
+  ],
+  "html_sha256": "3845847a8cc20b5475a7e4620d7f8d9317c3a8324e09e650b072d6cec7ea40be",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backfilling.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/backfilling.html"
+}

@@ -1,0 +1,2761 @@
+{
+  "blocks": [
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "heading",
+      "level": 1,
+      "text": "ACLs (Access Control Lists)"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "Access Control Lists (ACLs) can be used to grant permissions to another user to manage your resources. For example it is possible to permit another user to start or stop your servers or to allow another user to connect their servers to your private network (VLAN)."
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "Permissions can be granted on servers, drives, network resources, and firewall policies. All of these resources support LIST and EDIT permissions, which respectively allow the grantee to see the resources when listing them and to edit resources. When a user is granted a LIST permission, this resource appears in the grantee’s resource list. For example, granting LIST on a drive will make it appear in the list with grantees’ drives, when they make a GET request to /drives. Own resources can be differentiated from granted resources, by the owner field."
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "Some resources have additional permissions. Drives have ATTACH permission which allows another user to use the drive on their server. IPs, VLANs, and Firewall policies have ATTACH which will allow another user to assign these network resources to NICs on their server. Servers have START and STOP, OPEN_VNC permissions which allow another user to start or stop the server, or to open the server console through VNC. Note that ACLs may contain permissions that are not directly applicable to some resources, for example, it is possible to have STOP permission in an ACL on tag which refers only to drives. Drives and servers support CLONE permission, which allows cloning them to the grantee account. Note that to clone someone else’s server, you need CLONE permission on both the owner’s server and on the attached non-cdrom drives. For cdrom drives, the user will need an ATTACH permission. The table below summarizes the permissions applicable to each resource:"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "Resource"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "Permissions"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "Server"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "LIST EDIT CLONE START STOP OPEN_VNC"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "Drive"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "LIST EDIT CLONE ATTACH"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "IP, VLAN, Firewall Policy"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "LIST EDIT ATTACH"
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "ACLs are granted on tags and apply to all the tagged resources. One ACL can be attached to multiple tags, and will apply to the set of all resources tagged by these tags. It is also possible to have multiple ACLs on a tag, in which case the permissions on the tagged resources are the combination of all ACLs rules."
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "Each ACL can have one or more grantee users. Each ACL object has a list of rules, that specify what permissions are given by the ACL."
+    },
+    {
+      "anchor": "acls-access-control-lists",
+      "kind": "prose",
+      "text": "Permissions are not transferable to third parties, i.e. if you grant permission to someone, they can’t grant it to a third user. Only owners can grant permissions."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "create new object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "update / modify object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "DELETE"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "delete object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--acls-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/acls/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of ACLs defined by the authenticated user."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "0cb247b1c15829212fc861344703f4f274a76a1de307184171818b26ac246a2a",
+      "path": "/api/2.0/acls/?limit=0"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/acls/"
+      },
+      "original_sha256": "3c69bfd6c682b34d74de49cdf4c270215e0ba45f3fdc6778228ca2276825becd",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"resource_uri\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"resource_uri\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"][*][\"permission\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "list-single-acl",
+      "kind": "heading",
+      "level": 2,
+      "text": "List Single ACL"
+    },
+    {
+      "anchor": "get--acls-(uuid-acl_uuid)-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/acls/(uuid:"
+    },
+    {
+      "anchor": "list-single-acl",
+      "kind": "prose",
+      "text": "Gets detailed information for an ACL identified by acl_uuid."
+    },
+    {
+      "anchor": "list-single-acl",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "list-single-acl",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "list-single-acl",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "511fab6e9a10c4f37719b35b088544962a04e7996525e11a278a4d580d867998",
+      "path": "/api/2.0/acls/adf048e8-5445-47cf-a09c-fc3cfb2c823f/"
+    },
+    {
+      "anchor": "list-single-acl",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "list-single-acl",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "d47b37f652b7f40b4673cc225d914d77d3688cbad75469086173f7cf10593a8a",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"resource_uri\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"resource_uri\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"rules\"][*][\"permission\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "post--acls-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/acls/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new ACL."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "object created"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "a46135adfa6bfdaa19a4bf12f5f25e2882a06680565de6d3964f2f864cd31b6b",
+      "path": "/api/2.0/acls/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/acls/"
+      },
+      "original_sha256": "2b421e00f8aa87091b68c7a9d8d1d17c9f63e04647bec4411b953de84d2cf9a5",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "It is possible to define the grantees, tags, and rules at creation time. Just specify their UUIDs in the grantees list:"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "034c649e5b60f22ebd9757e8b098adb702748b6daa0ade2f9f2592344dfeec64",
+      "path": "/api/2.0/acls/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/acls/"
+      },
+      "original_sha256": "f6883e3ed87ea884f4b31a2a0c9956fc235b561875ac7bc986a14e4c9efc9ddd",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"resource_uri\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"resource_uri\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"][*][\"permission\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "put--acls-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/acls/{uuid}/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits an ACL."
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "4747d43af82d7b4dddcb9d4b5b40de3ee38dad5242b305efdc6951a432555fb7",
+      "path": "/api/2.0/acls/adf048e8-5445-47cf-a09c-fc3cfb2c823f/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "PUT",
+        "path": "/api/2.0/acls/{uuid}/"
+      },
+      "original_sha256": "d47b37f652b7f40b4673cc225d914d77d3688cbad75469086173f7cf10593a8a",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"resource_uri\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"resource_uri\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"rules\"][*][\"permission\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "delete--acls-uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/acls/{uuid}/"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Deletes a single ACL."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "No content, object deletion started."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "deleting",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "3d46ba06475cb3f202cdd865525bc8876d91e8a82b94dfbf24a232f15e61137b",
+      "path": "/api/2.0/acls/adf048e8-5445-47cf-a09c-fc3cfb2c823f/"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "deleting",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/acls/{uuid}/"
+      },
+      "original_sha256": "39f1283922399d2aa196b20aa9171924d2c5bd150f01c1901f34229690fe2f02",
+      "parse_gap": "empty-body",
+      "status_code": 204
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "heading",
+      "level": 2,
+      "text": "Full Example of Sharing a Resource"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "First, let’s create a tag that will be shared with another user:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "Request:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "e7bad0fcd81efa433accc2dc735f58fea1a298be187f2c286e32c74e687f691d",
+      "path": "/api/2.0/tags/"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "Response:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "b3b29c774f90589c1419d0d287a1bc8623652928ea4ed78c5ab5cdbf1c6178cf",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resources\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "Let’s create a drive tagged with the new tag:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "Request:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "a60772d81937b832b488175a17b7e381e0dcda2d0895dab7c2032689437e7e80",
+      "path": "/api/2.0/drives/"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "Response:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "fdd673ee00bc84177bf4f2b3623c40c53008e12010ddc1c5c00bed029e8136c6",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "It is also possible to tag an existing drive. Since there is no ACL on the tag, the grantees attribute of the drive is empty."
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "Now let’s add the tag to an ACL. Notice that we may add several tags to the ACL:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "Request:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "034c649e5b60f22ebd9757e8b098adb702748b6daa0ade2f9f2592344dfeec64",
+      "path": "/api/2.0/acls/"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "Response:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "f6883e3ed87ea884f4b31a2a0c9956fc235b561875ac7bc986a14e4c9efc9ddd",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"resource_uri\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"resource_uri\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"rules\"][*][\"permission\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "If we get the drive definition we will see the grantee in the grantees attribute:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "e9140d9f03fc7fecc094869337671c8b667a3999037c5fdfc480ea8485a7ab74",
+      "path": "/api/2.0/drives/ac5ca635-d119-4dda-b27a-fa5a69fc17da/"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "27f1b31a19bac898a601113f099c5a0f6e1d1672f166831b349b2d2cc143e3a9",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"permissions\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"user\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"user\"][\"email\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"user\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"user\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "Since there is an ACL on the tag all resources created with this tag will be shared. For example, if we create a server with the same tag, we see that it also shows grantees:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "a6cb4586ce799b411b5334a219085977d021a922bd054a4314d108588086c0df",
+      "path": "/api/2.0/servers/"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "1ae9a0cef05b52e4789cb52b0bffdd4d095990e4f47146443a607246324ad667",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"permissions\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"user\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"user\"][\"email\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"user\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"][*][\"user\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "The units for CPU, MEM, and SSD/DSSD are:"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "CPU: GHz"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "MEM: Bytes"
+    },
+    {
+      "anchor": "full-example-of-sharing-a-resource",
+      "kind": "prose",
+      "text": "SSD / DSSD: Bytes"
+    },
+    {
+      "anchor": "permissions-on-resources-attached-to-a-server",
+      "kind": "heading",
+      "level": 2,
+      "text": "Permissions on Resources Attached to a Server"
+    },
+    {
+      "anchor": "permissions-on-resources-attached-to-a-server",
+      "kind": "prose",
+      "text": "When updating another user’s server, the attached resources, such as drives, IPs, VLANs, or firewall policies, should be available for the server owner. This means that either the attached resource should be owned by the server owner or the owner should be given ATTACH permission on the attached resource. For example, if user A shares a server with EDIT permission to user B, and user B wants to attach their drive to the server, user B will have to grant ATTACH permission on the drive so that the owner of the server can start it. Trying to attach a drive, on which there is no permission for the owner of the server will result in an error."
+    },
+    {
+      "anchor": "recognizing-shared-resources-and-what-permissions-are-given-on-them",
+      "kind": "heading",
+      "level": 2,
+      "text": "Recognizing Shared Resources and What Permissions Are Given on Them"
+    },
+    {
+      "anchor": "finding-out-which-resources-were-shared-with-you",
+      "kind": "heading",
+      "level": 3,
+      "text": "Finding out which resources were shared with you"
+    },
+    {
+      "anchor": "finding-out-which-resources-were-shared-with-you",
+      "kind": "prose",
+      "text": "Resources shared with you appear in the resource list along with your resources. To differentiate between owner, and shared with you resources you have to look at the owner field. If the user is the same as you, the resource is yours. Non-owned resource have their respective owner uuid in the owner field. The examples in the next two subsections show the same drive from the viewpoint of permission grantor and grantee. Notice how owner is the same."
+    },
+    {
+      "anchor": "finding-what-permissions-are-granted-to-you-on-a-resource",
+      "kind": "heading",
+      "level": 3,
+      "text": "Finding what permissions are granted to you on a resource"
+    },
+    {
+      "anchor": "finding-what-permissions-are-granted-to-you-on-a-resource",
+      "kind": "prose",
+      "text": "While it is possible to follow the ACL-tag-resource graph to find out what are the resulting permissions on a resource, it hard to do so in a simple script. That is why each resource has permissions field, which shows the effective permissions the current user has on the resource. The permissions field is empty if the owner is the same as the current user."
+    },
+    {
+      "anchor": "finding-what-permissions-are-granted-to-you-on-a-resource",
+      "kind": "prose",
+      "text": "For example, if you get the definition of a drive shared by another user with you:"
+    },
+    {
+      "anchor": "finding-what-permissions-are-granted-to-you-on-a-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "e9140d9f03fc7fecc094869337671c8b667a3999037c5fdfc480ea8485a7ab74",
+      "path": "/api/2.0/drives/ac5ca635-d119-4dda-b27a-fa5a69fc17da/"
+    },
+    {
+      "anchor": "finding-what-permissions-are-granted-to-you-on-a-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "2d22774c34d86ac9ce7cd108b4ebaf08690ae9f873e6191761d510563572e2c4",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_downloadable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_ephemeral\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "finding-what-permissions-are-granted-to-you-on-a-resource",
+      "kind": "prose",
+      "text": "The definition includes non-empty permissions attribute:"
+    },
+    {
+      "anchor": "finding-what-permissions-are-granted-to-you-on-a-resource",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "102f8f6d4bfd5ce67843b8e4399d2297be2526f4250477cc0d6c80be1e0fb377"
+    },
+    {
+      "anchor": "finding-what-permissions-are-granted-to-you-on-a-resource",
+      "kind": "prose",
+      "text": "In the next subsection, there is an example of the same drive but from the viewpoint of the drive owner."
+    },
+    {
+      "anchor": "finding-what-permissions-you-have-granted-on-a-resource",
+      "kind": "heading",
+      "level": 3,
+      "text": "Finding what permissions you have granted on a resource"
+    },
+    {
+      "anchor": "finding-what-permissions-you-have-granted-on-a-resource",
+      "kind": "prose",
+      "text": "As is the case with finding out what permissions are given to the current user, it is also hard to find out, to find out what is granted to other users, as users may be granted different permissions through several ACLs referring to different tags. Therefore each resource has read-only field grantees. Each object of the grantees list contains references to the grantee user and a list of the permissions granted to them."
+    },
+    {
+      "anchor": "finding-what-permissions-you-have-granted-on-a-resource",
+      "kind": "prose",
+      "text": "For example, if you get the definition of your drive shared with another user:"
+    },
+    {
+      "anchor": "finding-what-permissions-you-have-granted-on-a-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "e9140d9f03fc7fecc094869337671c8b667a3999037c5fdfc480ea8485a7ab74",
+      "path": "/api/2.0/drives/ac5ca635-d119-4dda-b27a-fa5a69fc17da/"
+    },
+    {
+      "anchor": "finding-what-permissions-you-have-granted-on-a-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "27f1b31a19bac898a601113f099c5a0f6e1d1672f166831b349b2d2cc143e3a9",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"permissions\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"user\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"user\"][\"email\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"user\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"][*][\"user\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "finding-what-permissions-you-have-granted-on-a-resource",
+      "kind": "prose",
+      "text": "The definition includes non-empty grantees attribute:"
+    },
+    {
+      "anchor": "finding-what-permissions-you-have-granted-on-a-resource",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "dbc12fb99c75c613f4c90573447a9488236dba6f3429f8906aa6ea0b11ce691e"
+    },
+    {
+      "anchor": "finding-what-permissions-you-have-granted-on-a-resource",
+      "kind": "prose",
+      "text": "In the previous subsection, there is an example of the same drive definition but from the viewpoint of the permissions grantee."
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "18908f7caeb8ed54af0aed72908f0028176ed2f1f6a9565fbcdc8d7d8362a6c7",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "put",
+          "delete"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "put",
+          "post",
+          "delete"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "grantees": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Many related resources. Can be either a list of URIs or list of individually nested resource data.",
+            "nullable": true,
+            "readonly": false,
+            "type": "related",
+            "unique": false
+          },
+          "meta": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "A dictionary of data. Ex: {'price': 26.73, 'name': 'Daniel'}",
+            "nullable": false,
+            "readonly": false,
+            "type": "dict",
+            "unique": false
+          },
+          "name": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "owner": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "A single related resource. Can be either a URI or set of nested resource data.",
+            "nullable": false,
+            "readonly": true,
+            "type": "related",
+            "unique": false
+          },
+          "resource_uri": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "rules": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "ACL rules",
+            "nullable": true,
+            "readonly": false,
+            "type": "related",
+            "unique": false
+          },
+          "tags": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Many related resources. Can be either a list of URIs or list of individually nested resource data.",
+            "nullable": true,
+            "readonly": false,
+            "type": "related",
+            "unique": false
+          },
+          "uuid": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          }
+        }
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "fde05530b673a6a87631839855e78339fa319b63db9f7b81318590c3e04c6f31",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/acls.html"
+}

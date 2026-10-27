@@ -1,0 +1,5157 @@
+{
+  "blocks": [
+    {
+      "anchor": "servers-vms",
+      "kind": "heading",
+      "level": 1,
+      "text": "Servers / VMs"
+    },
+    {
+      "anchor": "hypervisors",
+      "kind": "heading",
+      "level": 2,
+      "text": "Hypervisors"
+    },
+    {
+      "anchor": "hypervisors",
+      "kind": "prose",
+      "text": "Servers have hypervisor and cpu_type parameters whose combination must match the one in the capabilities of the cloud. This page deals with generic server operations. There are specifics for each type of hypervisor:"
+    },
+    {
+      "anchor": "hypervisors",
+      "kind": "prose",
+      "text": "kvm"
+    },
+    {
+      "anchor": "hypervisors",
+      "kind": "prose",
+      "text": "The default hypervisor is kvm to maintain backwards compatibility and the default cpu_type is amd. If you specifiy a different hypervisor and no cpu_type, the API will still use amd."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "create new object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "update / modify object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "DELETE"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "delete object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--servers-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/servers/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of servers to which the authenticated user has access."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "5112a8cf7958fd68adb5141bb18d413642418204c983d54e262343df1b89952a",
+      "path": "/api/2.0/servers/?limit=0"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/servers/"
+      },
+      "original_sha256": "33c8a99576f5547f329636174f8fb7e14720c6d990ecbb77f9093cb3e4ddefc0",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing"
+    },
+    {
+      "anchor": "get--servers-detail-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/servers/detail/"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Gets the detailed list of servers to which the authenticated user has access."
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "462253e82347391e24fb13076f823d52e46d816f7201dabc6dd06be98e13f519",
+      "path": "/api/2.0/servers/detail/?limit=0"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/servers/detail/"
+      },
+      "original_sha256": "02c3c20305eff12571506fade9d3fd013a2467746a37671e8b553413854ef347",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "post--servers-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new virtual server or multiple servers. The minimial amount of information you need to set is as follows"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "201 Created – object created"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "4cc53880b0f92283445f639fcfbc8918778e455d600fc4d5707a153ca58a93b3",
+      "path": "/api/2.0/servers/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/"
+      },
+      "original_sha256": "5f0e5daa2b683524566a59ab89463806c7334af53689b5cd2269c28bde6bc0c8",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "put--servers-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/servers/{uuid}/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits a server. Used also for attaching NICs and drives to servers. Note that if a server is running, only name, meta, and tags fields can be changed, and all other changes to the definition of a running server will be ignored."
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "c53dc958586c9321be96bfbae2582a675c8deba92ab598c2e196468f02c24293",
+      "path": "/api/2.0/servers/0dacaaf7-1ba8-451d-b135-8848e76381ee/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "PUT",
+        "path": "/api/2.0/servers/{uuid}/"
+      },
+      "original_sha256": "242e8214b0b2bfc6cad9ea8b1976172007a21b4ef072d8f1a24a59cc0996facf",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "attach-a-drive",
+      "kind": "heading",
+      "level": 2,
+      "text": "Attach a drive"
+    },
+    {
+      "anchor": "put--servers-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/servers/{uuid}/"
+    },
+    {
+      "anchor": "attach-a-drive",
+      "kind": "prose",
+      "text": "Attaching a drive is just an edit server operation."
+    },
+    {
+      "anchor": "attach-a-drive",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "attach-a-drive",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "attach-a-drive",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "b3a236b382823d03a13a3e4d1e9109a1b89a03fbd85fa81706ca78b177cf9641",
+      "path": "/api/2.0/servers/0dacaaf7-1ba8-451d-b135-8848e76381ee/"
+    },
+    {
+      "anchor": "attach-a-drive",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "attach-a-drive",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "PUT",
+        "path": "/api/2.0/servers/{uuid}/"
+      },
+      "original_sha256": "42e4f15cdcbff57782fe9e3cfc8c856a95b15c502590f9013ef81084520fc5ed",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"boot_order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"dev_channel\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"device\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"meta_key2\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"meta_key3\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "metadata",
+      "kind": "heading",
+      "level": 2,
+      "text": "Metadata"
+    },
+    {
+      "anchor": "metadata",
+      "kind": "prose",
+      "text": "It is possible to add arbitrary key-value data to a server definition. See Objects’ metadata field for more information."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "single-server",
+      "kind": "heading",
+      "level": 3,
+      "text": "Single server"
+    },
+    {
+      "anchor": "delete--servers-uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/servers/{uuid}/"
+    },
+    {
+      "anchor": "single-server",
+      "kind": "prose",
+      "text": "Deletes a single server."
+    },
+    {
+      "anchor": "single-server",
+      "kind": "prose",
+      "text": "204 No Content – No content, object deletion started."
+    },
+    {
+      "anchor": "single-server",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "single-server",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "43eafa3f96763c408e783221daa0dd51912e602a58ccdf4650ce14e17e74fa3e",
+      "path": "/api/2.0/servers/d0ae4a09-13d5-4af2-aa12-56935035adef/"
+    },
+    {
+      "anchor": "single-server",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "single-server",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/servers/{uuid}/"
+      },
+      "original_sha256": "39f1283922399d2aa196b20aa9171924d2c5bd150f01c1901f34229690fe2f02",
+      "parse_gap": "empty-body",
+      "status_code": 204
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "heading",
+      "level": 3,
+      "text": "Delete Server together with attached drives (recursive delete)"
+    },
+    {
+      "anchor": "delete--servers-uuid-?recurse=recurse_option",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/servers/{uuid}/?recurse={recurse_option}"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "It is possible to delete a server together with its drives (recursive delete). There are three options: delete all attached drives, delete only disks(non-cdrom drives), or delete only attached cdroms. To recursively delete drives, supply a recurse URL parameter with a value as described in the following table:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "Recurse option"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "Effect"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "all_drives"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "All attached drives regardless of media type will be deleted"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "disks"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "Only attached drives with media type disk will be deleted"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "cdroms"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "Only attached drives with media type cdrom will be deleted"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "Example request to delete a server with all attached drives:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "A server is created with a cdrom and disk drives:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/servers/{uuid}/?recurse={recurse_option}"
+      },
+      "original_sha256": "b4f9750de14f22651c3824446675555a64b1c2f2da42739a8db9837fc7c5b6d1",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"boot_order\"]",
+          "observed_types": [
+            "integer",
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"dev_channel\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"device\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"][\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v4_conf\"][\"conf\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v4_conf\"][\"ip\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "The following drives are available in the account:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/servers/{uuid}/?recurse={recurse_option}"
+      },
+      "original_sha256": "d98118ef2ec4272ab7a297da6f4842cae29e85b2c8499f064f3c5b73cb1f67c3",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"][\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"][\"install_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "The server is recursively deleted with all drives:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "c4b54a4e0d155c293aceef058c36d2b1f58a8a522b026a65ab1a15ba5d27ab18",
+      "path": "/api/2.0/servers/dc3a65b4-0e6f-4f4e-8e34-02cefb9f9eae/?recurse=all_drives"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "After DELETE of the server the, drives attached to the server are deleted:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/servers/{uuid}/?recurse={recurse_option}"
+      },
+      "original_sha256": "1225fa8f1510a39f06ec576c4a33326ef8f5f7c959b1d7b7c1927ae5fadd93eb",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"][\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"][\"install_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "Example request to delete a server with attached disk drives and leave CDROMs:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "A server is created with a cdrom and disk drives:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/servers/{uuid}/?recurse={recurse_option}"
+      },
+      "original_sha256": "b4f9750de14f22651c3824446675555a64b1c2f2da42739a8db9837fc7c5b6d1",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"boot_order\"]",
+          "observed_types": [
+            "integer",
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"dev_channel\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"device\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"][\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v4_conf\"][\"conf\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v4_conf\"][\"ip\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "The following drives are available in the account:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/servers/{uuid}/?recurse={recurse_option}"
+      },
+      "original_sha256": "68f82d12163b66e83cd5705add0af7d064c6dc60d08739ec8bdb7ab3454e7de6",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"][\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"][\"install_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "The server is recursively deleted with all attached drives with media type disk:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "46e8f0c6e7c4069629507429a6818a865f9fe83bfd7134193122769f1c2a09f6",
+      "path": "/api/2.0/servers/efc6cc26-3706-4638-910e-e8b9ef45173f/?recurse=disks"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "kind": "prose",
+      "text": "After DELETE of the server, only drives with media type disk attached to the server are deleted. CDROMs are left intact:"
+    },
+    {
+      "anchor": "delete-server-together-with-attached-drives-recursive-delete",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/servers/{uuid}/?recurse={recurse_option}"
+      },
+      "original_sha256": "8485e1bd96c1ef5412f14e3e0f36808fbce32f858768774a325ab19229d11342",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "heading",
+      "level": 2,
+      "text": "Server Runtime and Server Details"
+    },
+    {
+      "anchor": "get--servers-uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/servers/{uuid}/"
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "Gets detailed information for server identified by server_uuid."
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "If the server is started the definition includes a runtime attribute. The runtime object contains information on, when the server was started, and runtime information about the server NICs, such as how much traffic went through the interface and what are the dynamic IPs assigned to the NIC. The NIC runtime is also available in the NIC definition of the running server."
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "d2a6ea2a3ef2d3f9b0bd74ce039f5363018e73e3e434f8cf41e0d1f33e76c320",
+      "path": "/api/2.0/servers/4e31777b-92b5-4633-9f31-c28443a63cfd/"
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "server-runtime-and-server-details",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/servers/{uuid}/"
+      },
+      "original_sha256": "b5868761cb5195b2b05e592d3f2f1e30a854c9b85a761d09f603b7fabf104b56",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"boot_order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"dev_channel\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"device\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"drive\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"drive\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"drive\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"][\"io\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"][\"io\"][\"bytes_read\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"][\"io\"][\"bytes_written\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"][\"io\"][\"count_flush\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"][\"io\"][\"count_read\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"][\"io\"][\"count_written\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"][\"io\"][\"total_time_ns_flush\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"][\"io\"][\"total_time_ns_read\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"][*][\"runtime\"][\"io\"][\"total_time_ns_write\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"conf\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"interface_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"io\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"io\"][\"bytes_recv\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"io\"][\"bytes_sent\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"io\"][\"packets_recv\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"io\"][\"packets_sent\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"ip_v4\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"ip_v4\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"ip_v4\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"][\"ip_v6\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"active_since\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"interface_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"io\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"io\"][\"bytes_recv\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"io\"][\"bytes_sent\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"io\"][\"packets_recv\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"io\"][\"packets_sent\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"ip_v4\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"ip_v4\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"ip_v4\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"ip_v6\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "server-actions",
+      "kind": "heading",
+      "level": 2,
+      "text": "Server Actions"
+    },
+    {
+      "anchor": "start",
+      "kind": "heading",
+      "level": 3,
+      "text": "Start"
+    },
+    {
+      "anchor": "post--servers-uuid-action-?do=start",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{uuid}/action/?do=start"
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "Starts a server with specific UUID."
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "202 Accepted – Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "start",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "edaca028b3de504a6137cb86793f7a19ba059507110b91d1320751f02dd4810a",
+      "path": "/api/2.0/servers/d0ae4a09-13d5-4af2-aa12-56935035adef/action/?do=start"
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "start",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/{uuid}/action/?do=start"
+      },
+      "original_sha256": "a5ac7e23d7bb106a416e2073dc9667492af22a39d92221addf01527edd41bd13",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "Warning"
+    },
+    {
+      "anchor": "start",
+      "kind": "prose",
+      "text": "Servers have some default network restrictions, applied depending on your user state. Please refer to the default restrictions section the Firewall policies documentation"
+    },
+    {
+      "anchor": "stop",
+      "kind": "heading",
+      "level": 3,
+      "text": "Stop"
+    },
+    {
+      "anchor": "post--servers-uuid-action-?do=stop",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{uuid}/action/?do=stop"
+    },
+    {
+      "anchor": "stop",
+      "kind": "prose",
+      "text": "Stops a server with specific UUID. This action is equivalent to pulling the power cord of a physical server. For more graceful shutdown see ACPI Shutdown."
+    },
+    {
+      "anchor": "stop",
+      "kind": "prose",
+      "text": "202 Accepted – Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "stop",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "stop",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "8736d75f67ccec0a6ca7640e8e6c96a181cfa7c1c0a38bc96364264445c184ea",
+      "path": "/api/2.0/servers/d0ae4a09-13d5-4af2-aa12-56935035adef/action/?do=stop"
+    },
+    {
+      "anchor": "stop",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "stop",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/{uuid}/action/?do=stop"
+      },
+      "original_sha256": "08e8ef80c25eca74aa560785851381f659810289678b21199d5e5954a68abe70",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "acpi-shutdown",
+      "kind": "heading",
+      "level": 3,
+      "text": "ACPI Shutdown"
+    },
+    {
+      "anchor": "post--servers-uuid-action-?do=shutdown",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{uuid}/action/?do=shutdown"
+    },
+    {
+      "anchor": "acpi-shutdown",
+      "kind": "prose",
+      "text": "Sends an ACPI shutdowns to a server with specific UUID for a minute. If the VM OS handles ACPI shutdown events (equivalent to pressing the power button), it will shutdown gracefully. As some operating systems don’t always handle single ACPI event the shutdown is sent every second for a minute. While the shutdown is initiated, the server is put into status stopping to prevent interfering actions. If after a minute the server has not powered off during this minute the status is returned to running to allow the user to Stop it. If the server shuts down successfully during the one minute period it will be switched to stopped status."
+    },
+    {
+      "anchor": "acpi-shutdown",
+      "kind": "prose",
+      "text": "202 Accepted – Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "acpi-shutdown",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "acpi-shutdown",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "ae7e115783aa588fccee4abe6ea299c6defb9150571d8b3efaad5478f697b4fa",
+      "path": "/api/2.0/servers/d79eeec6-9cc5-4131-9f04-36961c267a74/action/?do=shutdown"
+    },
+    {
+      "anchor": "acpi-shutdown",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "acpi-shutdown",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/{uuid}/action/?do=shutdown"
+      },
+      "original_sha256": "d14300721b6936f00d054cc5a767858c90450a314fcd8da6f2eca45f69bda576",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "start-in-a-separate-availability-group",
+      "kind": "heading",
+      "level": 3,
+      "text": "Start in a separate availability group"
+    },
+    {
+      "anchor": "start-in-a-separate-availability-group",
+      "kind": "prose",
+      "text": "It is possible to hint the system which servers are preferred to run on separate hardware host. See Starting Servers in a Different Availability Group (Start Avoid)."
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "kind": "heading",
+      "level": 3,
+      "text": "Open Serial Console Connection"
+    },
+    {
+      "anchor": "post--servers-uuid-action-?do=open_console",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{uuid}/action/?do=open_console"
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "kind": "prose",
+      "text": "Each server has a virtual serial device, which is tunneled to a TCP socket. The serial device is seen as /dev/ttyS0 or COM1 on most operating systems. If your OS supports it, you can configure a serial console on this virtual serial port, which might be more conviniet to use than VNC, as it generally uses less bandwidth and allows you to copy-paste in the virtual terminal."
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "kind": "prose",
+      "text": "202 Accepted – Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "1329815005e297a3156d4d037ef613e6148453b83014553fde393669b3800924",
+      "path": "/api/2.0/servers/e27eacc3-0f20-4c1f-9f7d-eac705bf2d02/action/?do=open_console"
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/{uuid}/action/?do=open_console"
+      },
+      "original_sha256": "271e00e9062e0b2ccca2e0928a42b7982a4c66b63dab89465fbe323b1f10f94f",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"console_url\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "kind": "prose",
+      "text": "The return object contains console_url formatted as csconsole://<cs-domain>:<port>. You can connect to it using telnet:"
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/{uuid}/action/?do=open_console"
+      },
+      "original_sha256": "8cdca68158ddc5b6f67576b5e1787757c14ee63da5d04198f3569827e1aaf146",
+      "parse_gap": "invalid-or-non-json",
+      "status_code": null
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "kind": "prose",
+      "text": "Before being connected to the actual serial console, the server’s vnc_password is required to prevent unauthorized access."
+    },
+    {
+      "anchor": "open-serial-console-connection",
+      "kind": "prose",
+      "text": "Most telnet clients start in line mode, which usually interferes with standard unix shells and programs, so they need to be set to character mode. It is advisable to enter your password in line mode and then change to character mode. Refer to your telnet client manual. On some clients that is done by pressing ctrl+] (^]) and then entering “mode character” at the prompt."
+    },
+    {
+      "anchor": "close-serial-console-connection",
+      "kind": "heading",
+      "level": 3,
+      "text": "Close Serial Console Connection"
+    },
+    {
+      "anchor": "post--servers-uuid-action-?do=close_console",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{uuid}/action/?do=close_console"
+    },
+    {
+      "anchor": "close-serial-console-connection",
+      "kind": "prose",
+      "text": "Closes a VNC tunnel to a server with specific UUID."
+    },
+    {
+      "anchor": "close-serial-console-connection",
+      "kind": "prose",
+      "text": "202 Accepted – Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "close-serial-console-connection",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "close-serial-console-connection",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "544867448395e713d931db4fa159fdde929d474e5c45858432923a17c2a232b1",
+      "path": "/api/2.0/servers/e27eacc3-0f20-4c1f-9f7d-eac705bf2d02/action/?do=close_console"
+    },
+    {
+      "anchor": "close-serial-console-connection",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "close-serial-console-connection",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/{uuid}/action/?do=close_console"
+      },
+      "original_sha256": "1495f501e5d7c1b19711f31b0580ea2ab13aa6cdb4a5847b58e32e9ee380ae60",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "cloning",
+      "kind": "heading",
+      "level": 3,
+      "text": "Cloning"
+    },
+    {
+      "anchor": "post--servers-uuid-action-?do=clone",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{uuid}/action/?do=clone"
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Clones a server. Does cascading clone of server drives, i.e. all disk drives attached to the server are cloned and attached to the new server. CDROM drives attached to the clone source are attached to the clone. IPs of the cloned server are set to DHCP. All other properties of the clone are equal to the original."
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "The optional body can contain a name attribute, which will be the name of the newly-cloned server and/or random_vnc_password boolean attribute which if set will generate a new vnc password for the new server."
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Example clone source server:"
+    },
+    {
+      "anchor": "cloning",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "3700e278f4b4694b0bc2de0f47078c3db5f27240dadef4b59ec1ca23acec1103"
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Example clone request:"
+    },
+    {
+      "anchor": "cloning",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "c06b48889c336636adf04bdb529ea6186b0d4d57fbb5572203e6698eed87ef55",
+      "path": "/api/2.0/servers/ee11b9d1-e837-4f27-91a4-d1ae4c621bd1/action/?do=clone"
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Example clone response:"
+    },
+    {
+      "anchor": "cloning",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/{uuid}/action/?do=clone"
+      },
+      "original_sha256": "19db875b7027969961594293b44f89719991e15fef4f42d080bd1e5274f3dfd2",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "cloning",
+      "kind": "prose",
+      "text": "The name of the cloned drive will be changed using the clone naming strategy set in the profile. See Clone naming for more information"
+    },
+    {
+      "anchor": "cloning-with-drives-on-different-storage-avoid",
+      "kind": "heading",
+      "level": 3,
+      "text": "Cloning with Drives on Different Storage (Avoid)"
+    },
+    {
+      "anchor": "cloning-with-drives-on-different-storage-avoid",
+      "kind": "prose",
+      "text": "It is possible to hint the system which drives are preferred to be on separate physical storage host. See Creating Drives in a Different Availability Group (Create/Clone Avoid). I"
+    },
+    {
+      "anchor": "server-nic-configurations",
+      "kind": "heading",
+      "level": 2,
+      "text": "Server NIC Configurations"
+    },
+    {
+      "anchor": "server-nic-configurations",
+      "kind": "prose",
+      "text": "The network interfaces are configured in the “nics” attribute. For more information on configuring network interfaces check Server Network Interfaces section."
+    },
+    {
+      "anchor": "server-nic-configurations",
+      "kind": "prose",
+      "text": "Here is an example of defining a network interface with a dynamically assigned IP (for brevity only the “nics” attribute of the definitions is shown):"
+    },
+    {
+      "anchor": "server-nic-configurations",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "668dfcc8fb52902cbd312ba1006c89b02133c1de31b38cf45ebef2307180d26b",
+      "path": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/"
+    },
+    {
+      "anchor": "server-nic-configurations",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "645bb2c9716544786fcc05205fdf79089e1108befcb77716cb9104a8c00468e8",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "availability-groups",
+      "kind": "heading",
+      "level": 2,
+      "text": "Availability groups"
+    },
+    {
+      "anchor": "availability-groups",
+      "kind": "prose",
+      "text": "It is possible to query which servers share common hardware hosts. See Server availability groups."
+    },
+    {
+      "anchor": "public-keys",
+      "kind": "heading",
+      "level": 2,
+      "text": "Public keys"
+    },
+    {
+      "anchor": "public-keys",
+      "kind": "prose",
+      "text": "The pubkeys attribute contains a list of keypairs references. The attached pubkeys are available in the server context, and can be used by scripts inside the VM, such as cloudinit, to set the public keys automatically. See the attaching keys to a server section."
+    },
+    {
+      "anchor": "vgpus",
+      "kind": "heading",
+      "level": 2,
+      "text": "vGPUs"
+    },
+    {
+      "anchor": "vgpus",
+      "kind": "prose",
+      "text": "The gpus attribute contains a list of model definitions for attaching vGPU to servers. The available vGPU models can be acquired through the capabilities API call. The actual vGPU is acquired on server start. The capacity can be reserved by creating subscriptions for the desired GPU models."
+    },
+    {
+      "anchor": "vgpus",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "df5701d12c240277985c5c16bfa422ce88157a400c0515cb8d9ca32d715bd1fa",
+      "path": "/api/2.0/servers/2b943154-2b0f-4325-8d4a-60e2eb631511/"
+    },
+    {
+      "anchor": "vgpus",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "9b7e10c9112f677c5fe888145ad244fa74a450a5715f9d3d0bde11f0a0dce29d",
+      "parse_gap": "invalid-or-non-json",
+      "status_code": 200
+    },
+    {
+      "anchor": "sgx",
+      "kind": "heading",
+      "level": 2,
+      "text": "SGX"
+    },
+    {
+      "anchor": "sgx",
+      "kind": "prose",
+      "text": "SGX enclaves can be defined by setting the epcs attribute. Each enclave is defined with its size in bytes. The available SGX capacity can be acquired through the capabilities API call."
+    },
+    {
+      "anchor": "sgx",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "27f961908ca34f1f22466f6c1ed797039c1e089162723f5290f07ab071e6787f",
+      "path": "/api/2.0/servers/2b943154-2b0f-4325-8d4a-60e2eb631511/"
+    },
+    {
+      "anchor": "sgx",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "e0d8516adb5fbb0acfaeec0b92bb8cc1339a4eb70f5f7fd6e145236ab7ee6f72",
+      "parse_gap": "invalid-or-non-json",
+      "status_code": 200
+    },
+    {
+      "anchor": "server-state-diagram",
+      "kind": "heading",
+      "level": 2,
+      "text": "Server State Diagram"
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "216669bd385220667efcadc2b906e315401103c7f59a131af06c34360ba20420",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "put",
+          "delete"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "put",
+          "delete",
+          "post"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "allocation_pool": {
+            "default": null,
+            "help_text": "Host Allocation Pool associated to the server",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "auto_start": {
+            "default": false,
+            "help_text": "Enable auto starting of the guest after a clone.",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "context": {
+            "default": true,
+            "help_text": "Enable guest context serial device",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "cpu": {
+            "default": null,
+            "help_text": "Server's CPU Clock speed measured in MHz",
+            "readonly": false,
+            "required": true,
+            "type": "integer"
+          },
+          "cpu_model": {
+            "choices": [
+              "kvm64"
+            ],
+            "default": null,
+            "help_text": "Choose the virtual CPU model, for mitigating compatibility issues between the guest operating system and the underlying host's CPU. If not specified, all of the hypervisor's CPU capabilities are passed directly to the virtual machine.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "cpu_type": {
+            "choices": [
+              "amd",
+              "intel",
+              "sparc_t4",
+              "sparc_t5",
+              "vmware"
+            ],
+            "default": "amd",
+            "help_text": "Specify the CPU type of the host on which this virtual server should run",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "cpus_instead_of_cores": {
+            "default": false,
+            "help_text": "Expose server SMPs as separate CPUs, instead of cores of a single CPU.",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "drives": {
+            "default": [],
+            "fields": {
+              "boot_order": {
+                "default": null,
+                "help_text": "Drive boot order",
+                "readonly": false,
+                "required": false,
+                "type": "integer"
+              },
+              "dev_channel": {
+                "default": null,
+                "help_text": "Device channel in format {controller:unit} ex. 0:1, 0:2, etc. Keep in mind that there are limits based on emulation type - for example ide can have up to 2 controllers, 2 units each.",
+                "readonly": false,
+                "required": true,
+                "type": "string"
+              },
+              "device": {
+                "choices": [
+                  "ide",
+                  "virtio",
+                  "scsi"
+                ],
+                "default": null,
+                "help_text": "Device emulation type",
+                "readonly": false,
+                "required": true,
+                "type": "string"
+              },
+              "drive": {
+                "default": null,
+                "help_text": "Drive UUID",
+                "readonly": false,
+                "required": true,
+                "type": "related"
+              },
+              "runtime": {
+                "default": "No default provided.",
+                "fields": {
+                  "io": {
+                    "default": null,
+                    "fields": {
+                      "bytes_read": {
+                        "default": 0,
+                        "help_text": "Integer data. Ex: 2673",
+                        "readonly": false,
+                        "required": true,
+                        "type": "integer"
+                      },
+                      "bytes_written": {
+                        "default": 0,
+                        "help_text": "Integer data. Ex: 2673",
+                        "readonly": false,
+                        "required": true,
+                        "type": "integer"
+                      },
+                      "count_flush": {
+                        "default": 0,
+                        "help_text": "Integer data. Ex: 2673",
+                        "readonly": false,
+                        "required": true,
+                        "type": "integer"
+                      },
+                      "count_read": {
+                        "default": 0,
+                        "help_text": "Integer data. Ex: 2673",
+                        "readonly": false,
+                        "required": true,
+                        "type": "integer"
+                      },
+                      "count_written": {
+                        "default": 0,
+                        "help_text": "Integer data. Ex: 2673",
+                        "readonly": false,
+                        "required": true,
+                        "type": "integer"
+                      },
+                      "total_time_ns_flush": {
+                        "default": 0,
+                        "help_text": "Integer data. Ex: 2673",
+                        "readonly": false,
+                        "required": true,
+                        "type": "integer"
+                      },
+                      "total_time_ns_read": {
+                        "default": 0,
+                        "help_text": "Integer data. Ex: 2673",
+                        "readonly": false,
+                        "required": true,
+                        "type": "integer"
+                      },
+                      "total_time_ns_write": {
+                        "default": 0,
+                        "help_text": "Integer data. Ex: 2673",
+                        "readonly": false,
+                        "required": true,
+                        "type": "integer"
+                      }
+                    },
+                    "help_text": "A single related resource. Can be either a URI or set of nested resource data.",
+                    "readonly": false,
+                    "required": false,
+                    "type": "related"
+                  }
+                },
+                "help_text": "Attached drive's runtime information",
+                "readonly": true,
+                "required": false,
+                "type": "related"
+              }
+            },
+            "help_text": "List of attached Drives to server",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "enable_numa": {
+            "default": false,
+            "help_text": "Expose NUMA topology to the server.",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "epcs": {
+            "default": [],
+            "fields": {
+              "size": {
+                "default": null,
+                "help_text": "Size of the EPC in bytes",
+                "readonly": false,
+                "required": true,
+                "type": "integer"
+              }
+            },
+            "help_text": "List of defined EPCs",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "gpus": {
+            "default": [],
+            "fields": {
+              "gpu": {
+                "default": "No default provided.",
+                "fields": {
+                  "model_id": {
+                    "default": null,
+                    "help_text": "Short model name of the GPU",
+                    "readonly": false,
+                    "required": true,
+                    "type": "string"
+                  },
+                  "owner": {
+                    "default": null,
+                    "help_text": "GPU owner",
+                    "readonly": false,
+                    "required": false,
+                    "type": "related"
+                  },
+                  "resource_uri": {
+                    "default": "No default provided.",
+                    "help_text": "Unicode string data. Ex: \"Hello World\"",
+                    "readonly": true,
+                    "required": true,
+                    "type": "string"
+                  },
+                  "subscription": {
+                    "default": null,
+                    "help_text": "Subscription related to this GPU",
+                    "readonly": false,
+                    "required": false,
+                    "type": "related"
+                  },
+                  "uuid": {
+                    "default": null,
+                    "help_text": "UUID of the GPU",
+                    "readonly": false,
+                    "required": false,
+                    "type": "string"
+                  }
+                },
+                "help_text": "GPU details",
+                "readonly": true,
+                "required": false,
+                "type": "related"
+              },
+              "model": {
+                "default": null,
+                "help_text": "Model of the GPU",
+                "readonly": false,
+                "required": true,
+                "type": "string"
+              }
+            },
+            "help_text": "List of attached GPUs",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "grantees": {
+            "default": "No default provided.",
+            "help_text": "A list of data. Ex: ['abc', 26.73, 8]",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "hv_relaxed": {
+            "default": false,
+            "help_text": "Improve performance of Windows servers.",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "hv_tsc": {
+            "default": false,
+            "help_text": "Improves performance of Windows servers with the trade off that the servers cannot be live migrated.",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "hypervisor": {
+            "choices": [
+              "kvm",
+              "solaris-kz"
+            ],
+            "default": "kvm",
+            "help_text": "Specify hypervisor on which this server should run",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "is_grey": {
+            "default": false,
+            "help_text": "Specifies if server can be used to fill up free capacity",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "jobs": {
+            "default": "No default provided.",
+            "help_text": "Background jobs related to this resource",
+            "readonly": true,
+            "required": true,
+            "type": "related"
+          },
+          "mem": {
+            "default": null,
+            "help_text": "Server's Random Access Memory measured in bytes",
+            "readonly": false,
+            "required": true,
+            "type": "integer"
+          },
+          "meta": {
+            "default": {},
+            "help_text": "User assigned meta information for this server",
+            "readonly": false,
+            "required": false,
+            "type": "dict"
+          },
+          "name": {
+            "default": null,
+            "help_text": "Human readable name of server",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "nics": {
+            "default": [],
+            "fields": {
+              "boot_order": {
+                "default": null,
+                "help_text": "Device boot order",
+                "readonly": false,
+                "required": false,
+                "type": "integer"
+              },
+              "ip_v4_conf": {
+                "default": null,
+                "fields": {
+                  "conf": {
+                    "choices": [
+                      "dhcp",
+                      "static",
+                      "manual"
+                    ],
+                    "default": "dhcp",
+                    "help_text": "Configuration type",
+                    "readonly": false,
+                    "required": true,
+                    "type": "string"
+                  },
+                  "ip": {
+                    "default": null,
+                    "help_text": "An IP address reference. Only used in 'static' IP configuration type",
+                    "readonly": false,
+                    "required": false,
+                    "type": "related"
+                  }
+                },
+                "help_text": "Public IPv4 configuration",
+                "readonly": false,
+                "required": false,
+                "type": "related"
+              },
+              "ip_v6_conf": {
+                "default": null,
+                "fields": {
+                  "conf": {
+                    "choices": [
+                      "dhcp",
+                      "static",
+                      "manual"
+                    ],
+                    "default": "dhcp",
+                    "help_text": "Configuration type",
+                    "readonly": false,
+                    "required": true,
+                    "type": "string"
+                  },
+                  "ip": {
+                    "default": null,
+                    "help_text": "An IP address reference. Only used in 'static' IP configuration type",
+                    "readonly": false,
+                    "required": false,
+                    "type": "related"
+                  }
+                },
+                "help_text": "Public IPv6 configuration",
+                "readonly": false,
+                "required": false,
+                "type": "related"
+              },
+              "mac": {
+                "default": null,
+                "help_text": "MAC address of the server NIC",
+                "readonly": false,
+                "required": true,
+                "type": "string"
+              },
+              "model": {
+                "choices": [
+                  "rtl8139",
+                  "e1000",
+                  "virtio"
+                ],
+                "default": null,
+                "help_text": "Model of NIC",
+                "readonly": false,
+                "required": false,
+                "type": "string"
+              },
+              "runtime": {
+                "default": "No default provided.",
+                "fields": {
+                  "interface_type": {
+                    "choices": [
+                      "public",
+                      "private"
+                    ],
+                    "default": null,
+                    "help_text": "Type of interface",
+                    "readonly": false,
+                    "required": true,
+                    "type": "string"
+                  },
+                  "io": {
+                    "default": null,
+                    "fields": {
+                      "bytes_recv": {
+                        "default": 0,
+                        "help_text": "Bytes received on this interface",
+                        "readonly": false,
+                        "required": false,
+                        "type": "integer"
+                      },
+                      "bytes_sent": {
+                        "default": 0,
+                        "help_text": "Packets received on this interface",
+                        "readonly": false,
+                        "required": false,
+                        "type": "integer"
+                      },
+                      "packets_recv": {
+                        "default": 0,
+                        "help_text": "Bytes sent from this interface",
+                        "readonly": false,
+                        "required": false,
+                        "type": "integer"
+                      },
+                      "packets_sent": {
+                        "default": 0,
+                        "help_text": "Packets sent from this interface",
+                        "readonly": false,
+                        "required": false,
+                        "type": "integer"
+                      }
+                    },
+                    "help_text": "NIC runtime Input and Output data",
+                    "readonly": false,
+                    "required": false,
+                    "type": "related"
+                  },
+                  "ip_v4": {
+                    "default": null,
+                    "help_text": "Public IPv4 configuration",
+                    "readonly": false,
+                    "required": false,
+                    "type": "related"
+                  },
+                  "ip_v6": {
+                    "default": null,
+                    "help_text": "Public IPv6 configuration",
+                    "readonly": false,
+                    "required": false,
+                    "type": "string"
+                  },
+                  "rx_foreign": {
+                    "default": 0,
+                    "help_text": "Bytes received on this interface",
+                    "readonly": false,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  "rx_local": {
+                    "default": 0,
+                    "help_text": "Bytes received on this interface",
+                    "readonly": false,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  "tx_foreign": {
+                    "default": 0,
+                    "help_text": "Bytes sent from this interface",
+                    "readonly": false,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  "tx_local": {
+                    "default": 0,
+                    "help_text": "Bytes sent from this interface",
+                    "readonly": false,
+                    "required": false,
+                    "type": "integer"
+                  }
+                },
+                "help_text": "NIC runtime information",
+                "readonly": true,
+                "required": false,
+                "type": "related"
+              },
+              "vlan": {
+                "default": null,
+                "help_text": "UUID of the private VLAN",
+                "readonly": false,
+                "required": false,
+                "type": "related"
+              }
+            },
+            "help_text": "The list of nics attached to this server",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "owner": {
+            "default": null,
+            "help_text": "UUID of the server owner",
+            "readonly": true,
+            "required": true,
+            "type": "related"
+          },
+          "permissions": {
+            "default": "No default provided.",
+            "help_text": "A list of data. Ex: ['abc', 26.73, 8]",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "pubkeys": {
+            "default": [],
+            "help_text": "List of SSH keys for that server",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "requirements": {
+            "default": [],
+            "help_text": "A collection of special requirements for this server",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "runtime": {
+            "default": "No default provided.",
+            "fields": {
+              "active_since": {
+                "default": "No default provided.",
+                "help_text": "Datetime object representing the exact time the guest was started.",
+                "readonly": false,
+                "required": true,
+                "type": "string"
+              },
+              "nics": {
+                "default": [],
+                "fields": {
+                  "interface_type": {
+                    "choices": [
+                      "public",
+                      "private"
+                    ],
+                    "default": null,
+                    "help_text": "Type of interface",
+                    "readonly": false,
+                    "required": true,
+                    "type": "string"
+                  },
+                  "io": {
+                    "default": null,
+                    "fields": {
+                      "bytes_recv": {
+                        "default": 0,
+                        "help_text": "Bytes received on this interface",
+                        "readonly": false,
+                        "required": false,
+                        "type": "integer"
+                      },
+                      "bytes_sent": {
+                        "default": 0,
+                        "help_text": "Packets received on this interface",
+                        "readonly": false,
+                        "required": false,
+                        "type": "integer"
+                      },
+                      "packets_recv": {
+                        "default": 0,
+                        "help_text": "Bytes sent from this interface",
+                        "readonly": false,
+                        "required": false,
+                        "type": "integer"
+                      },
+                      "packets_sent": {
+                        "default": 0,
+                        "help_text": "Packets sent from this interface",
+                        "readonly": false,
+                        "required": false,
+                        "type": "integer"
+                      }
+                    },
+                    "help_text": "NIC runtime Input and Output data",
+                    "readonly": false,
+                    "required": false,
+                    "type": "related"
+                  },
+                  "ip_v4": {
+                    "default": null,
+                    "help_text": "Public IPv4 configuration",
+                    "readonly": false,
+                    "required": false,
+                    "type": "related"
+                  },
+                  "ip_v6": {
+                    "default": null,
+                    "help_text": "Public IPv6 configuration",
+                    "readonly": false,
+                    "required": false,
+                    "type": "string"
+                  },
+                  "mac": {
+                    "default": null,
+                    "help_text": "MAC address of this NIC",
+                    "readonly": false,
+                    "required": false,
+                    "type": "string"
+                  },
+                  "rx_foreign": {
+                    "default": 0,
+                    "help_text": "Bytes received on this interface",
+                    "readonly": false,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  "rx_local": {
+                    "default": 0,
+                    "help_text": "Bytes received on this interface",
+                    "readonly": false,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  "tx_foreign": {
+                    "default": 0,
+                    "help_text": "Bytes sent from this interface",
+                    "readonly": false,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  "tx_local": {
+                    "default": 0,
+                    "help_text": "Bytes sent from this interface",
+                    "readonly": false,
+                    "required": false,
+                    "type": "integer"
+                  }
+                },
+                "help_text": "The list of this server's NICs runtime",
+                "readonly": false,
+                "required": true,
+                "type": "related"
+              }
+            },
+            "help_text": "Runtime information of the guest",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "smp": {
+            "default": null,
+            "help_text": "Symmetric Multiprocessing (SMP) i.e. number of CPU cores",
+            "readonly": false,
+            "required": false,
+            "type": "integer"
+          },
+          "status": {
+            "default": "No default provided.",
+            "help_text": "Status of the guest.",
+            "readonly": true,
+            "required": false,
+            "type": "string"
+          },
+          "tags": {
+            "default": "No default provided.",
+            "help_text": "Many related resources. Can be either a list of URIs or list of individually nested resource data.",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "UUID of server",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "vnc_password": {
+            "default": null,
+            "help_text": "VNC Password to connect to server",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        },
+        "ordering": [
+          "uuid",
+          "name"
+        ]
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "a488aa86545007f82443300a3f78e782988d84c12609fca60da7428bac634ec5",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/servers.html"
+}

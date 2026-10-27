@@ -1,0 +1,1595 @@
+{
+  "blocks": [
+    {
+      "anchor": "networking",
+      "kind": "heading",
+      "level": 1,
+      "text": "Networking"
+    },
+    {
+      "anchor": "vlan",
+      "kind": "heading",
+      "level": 2,
+      "text": "VLAN"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list VLANs"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "edit VLANs meta"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--vlans-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/vlans/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of VLANs to which the authenticated user has access."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "05e058d1f7cd7baa7efd58f337f4f48dfb0bc59b9f428f97df09bf70a03bd29e",
+      "path": "/api/2.0/vlans/?limit=0"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/vlans/"
+      },
+      "original_sha256": "b59b5b1b9ec9a035c73d3059f6c649fb766c7a9a19108b294d285faaa087d22a",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing"
+    },
+    {
+      "anchor": "get--vlans-detail-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/vlans/detail/"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "8b3ea0ebf011620e6c351fbd9b44d57f5db9b95ac9db198e9d540bb8651943ee",
+      "path": "/api/2.0/vlans/detail/?limit=0"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/vlans/detail/"
+      },
+      "original_sha256": "745b331b99fbb9d3ecf63c829b1e848e8af70a15bb4d3c76e341af21fe1d3b16",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"bottom_vlan_tag\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"servers\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"subscription\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"subscription\"][\"id\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"subscription\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "get-single-vlan",
+      "kind": "heading",
+      "level": 2,
+      "text": "Get single VLAN"
+    },
+    {
+      "anchor": "get--vlans-(uuid-vlan_uuid)-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/vlans/(uuid:"
+    },
+    {
+      "anchor": "get-single-vlan",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "get-single-vlan",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "get-single-vlan",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "9d3b0d0926753ad3f4730e3732877f70f311294109602804d1d451b1326e98f1",
+      "path": "/api/2.0/vlans/96537817-f4b6-496b-a861-e74192d3ccb0/"
+    },
+    {
+      "anchor": "get-single-vlan",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "get-single-vlan",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "053cfe7910d96843f68028f29bedb31f229525e1aa3331c79acb8d8ec719da1c",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"bottom_vlan_tag\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"servers\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"][\"id\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "New VLANs are created by buying a subscription. See Subscriptions."
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Currently only VLAN meta field can be edited."
+    },
+    {
+      "anchor": "put--vlans-(uuid-vlan_uuid)-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/vlans/(uuid:"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "8d6f348816ee4d9023352af9f739b737a1ec8d5514a3cf5841f81d75a1872052",
+      "path": "/api/2.0/vlans/96537817-f4b6-496b-a861-e74192d3ccb0/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "4977cd72d26df713c387ff63f001523b5a3558b33a69f58851660df353548155",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"bottom_vlan_tag\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"custom_field\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"servers\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"][\"id\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "metadata",
+      "kind": "heading",
+      "level": 2,
+      "text": "Metadata"
+    },
+    {
+      "anchor": "metadata",
+      "kind": "prose",
+      "text": "It is possible to add arbitrary key-value data to a VLAN definition. See Objects’ metadata field for more information."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Not applicable - The VLAN will disappear when the subscription for it expires."
+    },
+    {
+      "anchor": "attaching-to-servers",
+      "kind": "heading",
+      "level": 2,
+      "text": "Attaching To servers"
+    },
+    {
+      "anchor": "attaching-to-servers",
+      "kind": "prose",
+      "text": "A VLAN can be attached to multiple servers. See Server Network Interfaces for more information on using VLANs in NIC configurations."
+    },
+    {
+      "anchor": "ips",
+      "kind": "heading",
+      "level": 3,
+      "text": "IPs"
+    },
+    {
+      "anchor": "ips",
+      "kind": "prose",
+      "text": "The IP object, contains the actual IP in it’s uuid attribute."
+    },
+    {
+      "anchor": "ips",
+      "kind": "prose",
+      "text": "The list of IPs includes the IPs that are owned (subscribed to) by the user, and the IPs which are dynamically assigned to user’s servers. The owned IP’s are differentiated by dynamically received IPs by the fact that they have a subscription attached to them (their subscription attribute is not empty)."
+    },
+    {
+      "anchor": "ips",
+      "kind": "prose",
+      "text": "The detailed listing includes more information about the IP object, such as netmask, nameservers, and gateway which will be set on the NIC. The netmask value is in CIDR notation (/24 for a 255.255.255.0 mask). The nameservers attribute contains a list of DNS servers, which will be assigned through DHCP, and the gateway attribute contains the IP of the default gateway for the current IP."
+    },
+    {
+      "anchor": "id1",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "get / list IPs"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "edit IP metadata"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "id2",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--ips-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/ips/"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Gets the list of IPSs to which the authenticated user has access."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "id2",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "71f445bd02480f82f41b20aa0f4434f7638b5233ba98366162a19e6c589e97b4",
+      "path": "/api/2.0/ips/?limit=0"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "id2",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/ips/"
+      },
+      "original_sha256": "b64323b44a7130731c02f97e9094ddce2546e17be0045bec032ef4ead1e09727",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"server\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "id3",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing"
+    },
+    {
+      "anchor": "get--ips-detail-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/ips/detail/"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "id3",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "15419da58f369dabfd3e21193b646fbd287635a653d8e82930ff4c10dde3fc86",
+      "path": "/api/2.0/ips/detail/?limit=0"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "id3",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/ips/detail/"
+      },
+      "original_sha256": "1f52bf94b7a3771be3050d0d6108fdb20a76a5a2016ec5afc4f2b240c902bdcf",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nameservers\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nameservers\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"netmask\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"server\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"subscription\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"subscription\"][\"id\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"subscription\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "get-single-ip",
+      "kind": "heading",
+      "level": 2,
+      "text": "Get single IP"
+    },
+    {
+      "anchor": "get--ips-(uuid-ip_uuid)-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/ips/(uuid:"
+    },
+    {
+      "anchor": "get-single-ip",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "get-single-ip",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "get-single-ip",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "a10b4486501851b11623390da2ddbed11b6de9f06a9e257c51c9fa77f629f81a",
+      "path": "/api/2.0/ips/185.12.6.183/"
+    },
+    {
+      "anchor": "get-single-ip",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "get-single-ip",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "6b1f80a66ef9d6ef0aa62689c779b3acce1ddef315ab02ad814316f688c400ec",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nameservers\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nameservers\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"netmask\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"server\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"][\"id\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "id4",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "id4",
+      "kind": "prose",
+      "text": "New IPs are created by buying a subscription. See Subscriptions."
+    },
+    {
+      "anchor": "id5",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "Currently only IP meta field can be edited."
+    },
+    {
+      "anchor": "put--ips-(uuid-ip_uuid)-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/ips/(uuid:"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "id5",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "1798c21489972b013bc1cac37c44d71befad717a4d5e5ea46a1f43a1af4b8d64",
+      "path": "/api/2.0/ips/185.12.6.183/"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "id5",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "c91a274a0de75bc7be16d267ea040318431b10c905e64f48b4f85b9102af875c",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"custom_field\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nameservers\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nameservers\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"netmask\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"server\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"][\"id\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"subscription\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "id6",
+      "kind": "heading",
+      "level": 2,
+      "text": "Metadata"
+    },
+    {
+      "anchor": "id6",
+      "kind": "prose",
+      "text": "It is possible to add arbitrary key-value data to an IP definition. See Objects’ metadata field for more information."
+    },
+    {
+      "anchor": "id7",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "id7",
+      "kind": "prose",
+      "text": "Not applicable - The IP will disappear when the subscription for it expires."
+    },
+    {
+      "anchor": "id8",
+      "kind": "heading",
+      "level": 2,
+      "text": "Attaching To servers"
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "An IP can be attached to a single server. To check whether IP is currently attached to a server look at the attribute on the object in the detailed listing or on single object retrieval. If server is empty, then the IP is not attached to a server and can be used for static IP configuration. See Server Network Interfaces for more information on using IPs in NIC configurations."
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "a3dec543ad849168d39af2b94b31d87d084e1641e261d041d3d65afbc3df7be9",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "put"
+        ],
+        "allowed_list_http_methods": "get",
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "bottom_vlan_tag": {
+            "default": null,
+            "help_text": "Integer data. Ex: 2673",
+            "readonly": true,
+            "required": false,
+            "type": "integer"
+          },
+          "grantees": {
+            "default": "No default provided.",
+            "help_text": "A list of data. Ex: ['abc', 26.73, 8]",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "meta": {
+            "default": {},
+            "help_text": "User defined meta information",
+            "readonly": false,
+            "required": false,
+            "type": "dict"
+          },
+          "owner": {
+            "default": null,
+            "help_text": "VLAN owner",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "permissions": {
+            "default": "No default provided.",
+            "help_text": "A list of data. Ex: ['abc', 26.73, 8]",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "servers": {
+            "default": [],
+            "help_text": "Servers in this VLAN",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "subscription": {
+            "default": null,
+            "help_text": "Subscription related to this VLAN",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "tags": {
+            "default": "No default provided.",
+            "help_text": "Many related resources. Can be either a list of URIs or list of individually nested resource data.",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "VLAN UUID",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        }
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "9eb7b7c19b0c0f01cd6c24e8c5eb35ca7f6039bbd952ba9f3e205243576fcd6e",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/networking.html"
+}

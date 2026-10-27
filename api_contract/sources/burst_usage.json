@@ -1,0 +1,397 @@
+{
+  "blocks": [
+    {
+      "anchor": "burst-usage",
+      "kind": "heading",
+      "level": 1,
+      "text": "Burst Usage"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--burstusage-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/burstusage/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Get the accumulated burst usage of the authenticated user for the specified period (last 30 days by default)."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "5b91e7469d1d58547d9c9018ad7b519379f3a226ece94a452db5803e15ef7acf",
+      "path": "/api/2.0/burstusage/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/burstusage/"
+      },
+      "original_sha256": "9707789cc41c9d30ecaec39681c01ba4389cf05cd02ed248c352a60457d278b5",
+      "parse_gap": "invalid-or-non-json",
+      "status_code": 200
+    },
+    {
+      "anchor": "filtering",
+      "kind": "heading",
+      "level": 2,
+      "text": "Filtering"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "It’s possible to specify period of burst usage using filtering by date:"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Exact: ?date=2014-10-21"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Lower than: ?date__lt=2014-10-21"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Lower than or equal: ?date__lte=2014-10-21"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Greater than: ?date__gt=2014-10-21"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Greater than or equal: ?date__gte=2014-10-21"
+    },
+    {
+      "anchor": "filtering",
+      "kind": "prose",
+      "text": "Example for retrieving burst usage for the whole of July 2014:"
+    },
+    {
+      "anchor": "filtering",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "8274e3345e366522e4e71b23a047d9732d573cf556fc70b12e99a515a6254d0c",
+      "path": "/api/2.0/burstusage/?date__gte=2014-07-01&date__lt=2014-08-01"
+    },
+    {
+      "anchor": "daily-burst-usage",
+      "kind": "heading",
+      "level": 1,
+      "text": "Daily Burst Usage"
+    },
+    {
+      "anchor": "id1",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "id2",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--dailyburstusage-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/dailyburstusage/"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Get the accumulated daily burst usage of the authenticated user for the specified period (last 30 days by default)."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "id2",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "50a761119daaf58321bec0021382628324eedf3f522987d9dee8a1fd131b5b9a",
+      "path": "/api/2.0/dailyburstusage/?date__gt=2014-11-15&date__lt=2014-11-19"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "id2",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/dailyburstusage/"
+      },
+      "original_sha256": "3a3d85c7cfe8dd9f885c6e22fa21675fa739fef6a52c48123f2d31874d9d8686",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"date\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"usage\"]",
+          "observed_types": [
+            "integer"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "id3",
+      "kind": "heading",
+      "level": 2,
+      "text": "Filtering"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "It’s possible to specify a period of burst usage using:ref:filtering <filtering> by date:"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Lower than: ?date__lt=2014-10-21"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Greater than: ?date__gt=2014-10-21"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Example for retrieving burst usage for the whole of July 2014:"
+    },
+    {
+      "anchor": "id3",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "35d9631f2169c5ce65e5216878a6f15ed1a23cb065ab9994c27f6de8c4585adc",
+      "path": "/api/2.0/dailyburstusage/?date__gt=2014-07-01&date__lt=2014-08-01"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "The date is full time, which means that 2014-11-11 is 2014-11-11 00:00. This matters when trying to filter because when using less than, it will not include the day, whereas it will be included for greater than."
+    }
+  ],
+  "html_sha256": "ee12888f830ac187c4175c586839261fcb0cc497aaf7115b67a6a4afe111e1d2",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/burst_usage.html"
+}

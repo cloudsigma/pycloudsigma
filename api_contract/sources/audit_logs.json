@@ -1,0 +1,1211 @@
+{
+  "blocks": [
+    {
+      "anchor": "audit-logs",
+      "kind": "heading",
+      "level": 1,
+      "text": "Audit logs"
+    },
+    {
+      "anchor": "audit-logs",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "audit-logs",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "general",
+      "kind": "heading",
+      "level": 2,
+      "text": "General"
+    },
+    {
+      "anchor": "general",
+      "kind": "prose",
+      "text": "Audit logs are used to track changes made on your resources, either by you or by other parties, like CloudSigma staff or people who have permission to access your resources."
+    },
+    {
+      "anchor": "general",
+      "kind": "prose",
+      "text": "Querying is done as follows:"
+    },
+    {
+      "anchor": "get--logs-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/logs/"
+    },
+    {
+      "anchor": "general",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "general",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "4085b6b85123fd946f15f36958e34224ad23cb06a6592c690878e283407ac1f0",
+      "path": "/api/2.0/logs/?limit=5"
+    },
+    {
+      "anchor": "general",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/logs/"
+      },
+      "original_sha256": "b3c6f44b902ee0e43b8669cf157c021060760dba09b8849e7978f2385f1642a2",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"category\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"details\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_message\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_point\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"success\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "actions",
+      "kind": "heading",
+      "level": 2,
+      "text": "Actions"
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "Actions give information about the operation that created the log. They go in a few categories."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "create: During resource creation"
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "update: During resource update"
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "delete: During resource depletion"
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "change_owner: The ownership of the resource has changed. Currently, only CloudSigma staff can change ownership of a resource."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "clone_src: Resource is used as a cloning source"
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "clone_dst: Resource is a cloning destination - the newly cloned drive."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "move: Drive is moved to another physical storage. Only staff members can move drives."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "convert_to_library: Drive is converted to a library drive. Only staff members can convert drives."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "converted_from_library: Drive is converted to a regular drive from a library drive. Only staff members can convert drives."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "init_upload: Drive upload is initialized."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "start_send: An attempt to start a server"
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "boot: The result of a start operation."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "stop_send: An attempt to stop a server."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "stop: The result of a stop operation"
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "open_vnc: Open VNC channel to a server"
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "close_vnc: Close VNC channel to a server"
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "shutdown_ACPI_send: An ACPI shutdown request is sent to the server."
+    },
+    {
+      "anchor": "actions",
+      "kind": "prose",
+      "text": "heal: The Server got healed because its recorded state did not match the physical infrastructure. For example, a server is marked as unavailable, but it is running fine."
+    },
+    {
+      "anchor": "errors",
+      "kind": "heading",
+      "level": 2,
+      "text": "Errors"
+    },
+    {
+      "anchor": "errors",
+      "kind": "prose",
+      "text": "If the field success is marked as False, that means that an error occurred during the operation. The error details are saved in the following fields:"
+    },
+    {
+      "anchor": "errors",
+      "kind": "prose",
+      "text": "error_type - States the type of the error"
+    },
+    {
+      "anchor": "errors",
+      "kind": "prose",
+      "text": "error_point - Points to the cause of the error and is mainly used for validation errors"
+    },
+    {
+      "anchor": "errors",
+      "kind": "prose",
+      "text": "error_message - Human readable message associated with the error"
+    },
+    {
+      "anchor": "example",
+      "kind": "heading",
+      "level": 2,
+      "text": "Example"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "The following example will show all the logged information during a server’s lifecycle."
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "First, we create a server:"
+    },
+    {
+      "anchor": "example",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "e33fe7aafb5d3bad0dc726248bccdcdec93ce426c90e770db6dc564f8a4266c8",
+      "path": "/api/2.0/servers/"
+    },
+    {
+      "anchor": "example",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "30a5868ef4cf00108dd32754daac572b3e5856b5848805c7b6020af868c89437",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "The units for CPU, MEM, and SSD/DSSD are:"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "CPU: GHz"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "MEM: Bytes"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "SSD / DSSD: Bytes"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Upon completion you will see the following log at the top of the audit log list:"
+    },
+    {
+      "anchor": "example",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "1c4cb06a05c9afff614f4e2b279bc75fb9f47486a47b12db2b50f0c121781420",
+      "path": "/api/2.0/logs/?limit=1"
+    },
+    {
+      "anchor": "example",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "f98808b00e1ec35f21eabf4af88336ae845e848b7f4f319ec7b21474964be666",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"category\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"details\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_message\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_point\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"success\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "action states that we wanted to create a server"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Details state the parameters of the create call"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "actor states the user who executed the operation"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "success is true, so the operation completed successfully."
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "uuid matches the server’s uuid"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Then we start the server:"
+    },
+    {
+      "anchor": "example",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "b27d09486c91873611b0ea9d461a5dd6c105c17543d529cd96f348224ff57c68",
+      "path": "/api/2.0/servers/4002da8d-94d7-4093-ab7a-a78d976a9efc/action/?do=start"
+    },
+    {
+      "anchor": "example",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "27f1898cffc9055cfec8ac18f62f321063da1474207c67ff4570f33a27f1f09d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "We check the logs again. We see that the action is start_send and success is true:"
+    },
+    {
+      "anchor": "example",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "2c8a4437a48aff9a1df77382c8b803c5c821ae51b962b1d7450d7da5e678a346",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"category\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"details\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_message\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_point\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"success\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "If the server is fully booted and operational, its status will change to running. If it failed to boot for some reason, the error_type, error_point, and error_message fields will explain why that happened. In this particular case, we had a successful start, so the audit log looks like this:"
+    },
+    {
+      "anchor": "example",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "kind": "code",
+      "original_sha256": "9f53b4243623dd1b9babba59bdb72a8df71cce1794015367f3e957e8ea885363",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"actor\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"category\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"details\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_message\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_point\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"error_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"success\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "an audit log with action stop_send is saved, representing the status of the request to stop a server."
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "If that succeeded i.e. the request to stop a server is successfully sent, you can expect a log with action stop, representing the status of the stop operation i.e. the server stopped."
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "If you stop a server from inside, only a log entry with stop action will be added. This way, you can figure out if the server got stopped from the API or not:"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "If there are 2 logs stop_send and stop, it is stopped via an API request"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "If only stop is present ( no stop_send ), it means that the server is stopped by other means (stopped from inside, crashed, etc)."
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "get--logs-schema-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/logs/schema/"
+    },
+    {
+      "anchor": "schema",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "90405f4b4e48705bdb1e03c6f5b7d4e4b4b009a1d4567612592da92c18fa5b0e",
+      "path": "/api/2.0/logs/schema/"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "af178413c44af4f562cd4ca439811ff601b0ef68e36495d06fa724fc6d2febac",
+      "schema": {
+        "allowed_detail_http_methods": [],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "action": {
+            "default": null,
+            "help_text": "Name of the executed action",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "actor": {
+            "default": null,
+            "help_text": "User who executed action.",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "category": {
+            "default": null,
+            "help_text": "Category the action belongs to.",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "details": {
+            "default": null,
+            "help_text": "Details about the executed action.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "error_message": {
+            "default": null,
+            "help_text": "Error message, if applicable.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "error_point": {
+            "default": null,
+            "help_text": "The field that caused the error, if applicable.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "error_type": {
+            "default": null,
+            "help_text": "Type of error, if applicable.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "success": {
+            "default": true,
+            "help_text": "Whether the action was successful.",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "timestamp": {
+            "default": null,
+            "help_text": "Time when entry was added.",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "The uuid of resource the action is executed on. Can be empty, meaning no resource is referenced.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        }
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "77c8fdb8e38e0ed4441a8ba7f83a173f26ff6110e68b086938697b0e2d095d22",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/audit_logs.html"
+}
