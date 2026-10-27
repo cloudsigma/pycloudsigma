@@ -390,11 +390,11 @@ def build_contract(documents, bindings):
     # silently invent an operation.
     for key in sorted(set(bindings) - set(operations)):
         binding = bindings[key]
-        availability = binding.get("availability")
         if (not isinstance(binding, dict)
                 or binding.get("status") != "provider-unavailable"
-                or not isinstance(availability, dict)):
+                or not isinstance(binding.get("availability"), dict)):
             continue
+        availability = binding["availability"]
         try:
             method, path = key.split(" ", 1)
         except ValueError:
