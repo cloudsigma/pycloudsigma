@@ -654,6 +654,11 @@ class CurrentUsage(ResourceBase):
     resource_name = 'currentusage'
 
 
+class Usage(ResourceBase):
+    """Read usage records from the documented usage collection."""
+    resource_name = 'usage'
+
+
 class Snapshot(ResourceBase):
     resource_name = 'snapshots'
 
