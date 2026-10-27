@@ -51,13 +51,13 @@ The route/action matrix is evidence-backed at the endpoint level. It does not by
 ## File hashes for this closure
 
 ```text
-`ci/run_offline.py`                                      3e82b2d84f35b79d7c9cd855dc652e82019f9ddf7169bb5a0bb9b6a8be4cf9f2
-`src/cloudsigma/resource.py`                            8eb2dd3f18699defd1238f14282af8e9886e0f32bfe9ded0da47a7cd7d65de77
+`ci/run_offline.py`                                      b35b14037915695ab610aae3b3a881fb2af6960bcc613c97983076cf77fa0538
+`src/cloudsigma/resource.py`                            7bb562df6dcff6650f510ad6cecac4bb3f72552fdd8342a30c19e099f9d54afa
 `tests_offline/test_virtual_router_vpn_tunnels.py`       7f6d29ff2ddbaf83cb484274a6e9bc0d084643bd7a4ede0f13a1caa9a4525a78
 `tests_offline/test_usage_resource.py`                   c92597c138e24edd881aaa54919bbba00d9e1017fe89972d61c892a715091ef4
 `tests_offline/test_subscription_auto_renew.py`          6fdb2eca6bcdc35657de72abdda6cf16c1ad4a69f1aebb5b89c6c83878d9d614
 `tests_offline/test_capabilities_symbol.py`              437a3d74226809f2a883ed2469c325ceb01a3fe09a21fea0433fa9b5aacd8293
-`tests_offline/test_snapshot_singleton_query.py`         4d04a42ed81adfda4576ab6c53a3de34dd98a94edcce99f06dab0bddf3238c49
+`tests_offline/test_snapshot_singleton_query.py`         9afc3fc4a8fe62acea2e91f5ef32cd5a2a23f3e2efca5a90508763773047cfe6
 ```
 
 This report records endpoint/action coverage and exact evidence. It does not claim package publication, release, deployment, live-provider acceptance, or a field-level 100% certification without an independently maintained field matrix.
