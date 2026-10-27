@@ -107,7 +107,8 @@ def get_per_server_usage(start_time, end_time):
 
 
 if __name__ == '__main__':
-    for server, amount in list(
-            get_per_server_usage(start_time, end_time).items()):
+    for server in get_per_server_usage(start_time, end_time):
         server_id = hashlib.sha256(server.encode('utf-8')).hexdigest()[:12]
-        print("server-%s - %.2f" % (server_id, amount))
+        # Billing values are returned by get_per_server_usage for callers to
+        # handle directly; do not emit them into console or CI logs.
+        print("server-%s - billing available" % server_id)
