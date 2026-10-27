@@ -5,8 +5,8 @@
 - Repository: `cloudsigma/pycloudsigma`
 - Checkout: `/Users/rjenkin/Documents/Codex/2026-10-27/text-continue-the-pycloudsigma-work-autonomously/work/pycloudsigma-current-20261025`
 - Base supplied by gateway-owner: `936fc5086c9bbbc565fae9cb80047f2843a8c9e8` (tree `78dcb0565fe4feccd54f3b9af6b19a5c64c1fa4c`)
-- Current master: `2d0f2202136600799e13a88beff4c155a4c7bf75`
-- Current tree: `8d4e126d010103b9c10840114cf56d54e96c655a`
+- Evidence-base master: `6d8e78ee41972bd28c2420b380acc8cea7c1f9ee`
+- Evidence-base tree: `8800218ab4c392d3066e66182f83f6d5c9aeb3ae`
 - Working tree: clean
 - All GitHub changes were pushed and merged as `rjcloudsigma`.
 
@@ -31,7 +31,7 @@ Earlier merged work completed the CodeQL remediation and dependency backlog befo
 | #80 | `199d401f9e3d9d4bf52ca650ec78f2f3490e3bcb` | Subscription `auto_renew` action | Offline workflow run 90 passed |
 | #81 | `2d0f2202136600799e13a88beff4c155a4c7bf75` | Correctly spelled `Capabilities` symbol with `Capabilites` compatibility alias | Offline workflow run 91 passed |
 
-The offline guard is now `289` tests. Local syntax and whitespace gates passed for each slice. The local macOS checkout has no cached `pytest` or `configobj`; no dependency installation was performed. CI used the repository's existing hash-locked dependency workflow.
+The offline guard is now `292` tests after the live-QA runner regression tests were merged in PR #85. Local syntax and whitespace gates passed for each slice. The local macOS checkout has no cached `pytest` or `configobj`; no dependency installation was performed. CI used the repository's existing hash-locked dependency workflow.
 
 ## Public documentation reconciliation
 
@@ -66,3 +66,12 @@ This report records endpoint/action coverage and exact evidence. It does not cla
 ## Addendum: singleton query forwarding
 
 The post-report audit identified and fixed one documented query shape that had not been exposed: snapshot and remote-snapshot singleton reads may include `?drive={drive_uuid}`. `ResourceBase.get(..., query_params=...)` now forwards that mapping without changing existing calls. PR #83 adds synthetic coverage for both routes; its CI result and merge are the final evidence for this addendum.
+
+## Final post-merge verification
+
+- PR #85 (`6d8e78ee41972bd28c2420b380acc8cea7c1f9ee`) is merged by `rjcloudsigma`; the evidence-base checkout matched `github/master` and was clean before this documentation-only update.
+- Live QA acceptance run [40541180791](https://github.com/cloudsigma/pycloudsigma/actions/runs/40541180791) passed on the merge commit. The installed wheel reported 5 read-only checks passed and 1 provider 404 skip for `vpn_tunnels.list`; no check failed.
+- CodeQL push run [40541182599](https://github.com/cloudsigma/pycloudsigma/actions/runs/40541182599) passed both actions and Python analyses.
+- GitHub API review at this commit: open pull requests `0`, open issues `0`, open Dependabot alerts `0`, open code-scanning alerts `0`.
+- The repository has Dependabot security updates enabled. Secret scanning is disabled in the repository settings, so there is no secret-scanning alert status to report.
+- The live workflow runs on every push to `master`, which executes after each merged pull request, and can also be dispatched manually. QA credentials remain repository secrets and are never committed.
