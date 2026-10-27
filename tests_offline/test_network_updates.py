@@ -9,7 +9,6 @@ import json
 from unittest import TestCase
 import requests
 from cloudsigma import resource, errors
-from test_network_reads import fixture
 import test_network_reads
 
 
@@ -51,7 +50,7 @@ class NetworkUpdateTests(TestCase):
 
     def update(self, kind, body, payload, status=200, exception=None):
         cls = resource.IP if kind == 'ip' else resource.VLAN
-        uid = fixture(kind, 'single')['uuid']
+        uid = test_network_reads.fixture(kind, 'single')['uuid']
         path = 'ips' if kind == 'ip' else 'vlans'
         before = copy.deepcopy(body)
         adapter = UpdateAdapter(self, 'https://fixture.invalid/api/2.0/%s/%s/' % (path, uid),
@@ -75,7 +74,7 @@ class NetworkUpdateTests(TestCase):
             for body in ({}, {'meta': {}}, {'meta': {'name': 'synthetic', 'custom_field': 'данни',
                                                      'empty': '', 'k' * 32: 'boundary'}}):
                 with self.subTest(kind=kind, body=body):
-                    response = fixture(kind, 'single')
+                    response = test_network_reads.fixture(kind, 'single')
                     if 'meta' in body:
                         response['meta'] = copy.deepcopy(body['meta'])
                     self.assert_json_exact(self.update(kind, body, response), response)

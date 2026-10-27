@@ -34,7 +34,7 @@ if len(binding['packages']) != 25:
     raise RuntimeError('unexpected closure size')
 import fabric,paramiko,paramiko.config,requests,nacl.signing
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
-from cryptography.hazmat.primitives.ciphers import Cipher,algorithms,modes
+from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives import hashes,hmac
 assert paramiko.config.invoke.exceptions.UnexpectedExit
 config=fabric.Config(overrides={'load_ssh_configs':False},lazy=True)

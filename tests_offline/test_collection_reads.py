@@ -4,7 +4,6 @@ from unittest import TestCase
 from unittest.mock import patch
 import requests
 from cloudsigma import resource, errors
-from test_network_reads import FixtureAdapter, fixture
 import test_network_reads
 
 
@@ -16,7 +15,7 @@ class CollectionReadTests(TestCase):
         cls = resource.IP if kind == 'ip' else resource.VLAN
         route = ('ips/' if kind == 'ip' else 'vlans/') + ('detail/' if detail else '')
         query = '?limit=0' if params is None else '?limit=2&offset=3&name=a+b%26c'
-        adapter = FixtureAdapter(self, 'https://fixture.invalid/api/2.0/' + route + query,
+        adapter = test_network_reads.FixtureAdapter(self, 'https://fixture.invalid/api/2.0/' + route + query,
                                  payload, status, exception)
         before = copy.deepcopy(params)
         with requests.Session() as session:
@@ -36,7 +35,7 @@ class CollectionReadTests(TestCase):
     def test_public_complete_envelope(self):
         for kind in ('ip', 'vlan'):
             for detail in (False, True):
-                payload = fixture(kind, 'detail' if detail else 'summary')
+                payload = test_network_reads.fixture(kind, 'detail' if detail else 'summary')
                 self.assertEqual(set(payload['meta']), {'limit', 'offset', 'total_count'})
                 for params in (None, {'limit': 2, 'offset': 3, 'name': 'a b&c'}):
                     self.assert_json_exact(self.read(kind, detail, payload, params), payload)
@@ -50,7 +49,7 @@ class CollectionReadTests(TestCase):
                 for count in (0, 1, 2):
                     for meta in ({}, {'limit': 2, 'offset': 3, 'total_count': 99},
                                  {'limit': None, 'offset': 0, 'total_count': 0}):
-                        payload = fixture(kind, 'detail' if detail else 'summary')
+                        payload = test_network_reads.fixture(kind, 'detail' if detail else 'summary')
                         first = payload['objects'][0]
                         payload['objects'] = [copy.deepcopy(first) for _ in range(count)]
                         for i, item in enumerate(payload['objects']):
