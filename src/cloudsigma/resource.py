@@ -641,6 +641,15 @@ class Keypairs(ResourceBase):
     resource_name = 'keypairs'
 
 
+class BackupScheduler(ResourceBase):
+    """Manage documented backup-scheduler CRUD operations.
+
+    The read-specialized :class:`cloudsigma.scheduler_reads.BackupSchedulerReads`
+    remains available for complete response envelopes and collection deletion.
+    """
+    resource_name = 'backupschedulers'
+
+
 class CurrentUsage(ResourceBase):
     resource_name = 'currentusage'
 
