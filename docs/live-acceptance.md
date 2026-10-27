@@ -39,6 +39,9 @@ becomes eligible for cleanup only after the create acknowledgement contains a
 canonical UUID and that exact name. Every update and delete is preceded by a
 read that verifies identity and an expected invocation name. Tags must have no
 associated resources; drives must have an explicitly empty `mounted_on` list.
+Drive edits send the documented mutable definition (`name`, `media`, and
+`size`) together. The next provider rejects a name-only drive PUT with HTTP
+400 even though the prose describes name as independently editable.
 There is no list-and-adopt or account-wide cleanup path.
 
 POST, PUT and DELETE are issued at most once per scenario. Only GET is polled,

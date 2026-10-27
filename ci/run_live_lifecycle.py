@@ -148,6 +148,12 @@ def run_scenario(resource, scenario='tags', *, attempts=POLL_ATTEMPTS,
         update = {'name': updated_name}
         if scenario == 'tags':
             update['resources'] = []
+        else:
+            # The documented drive edit request carries the mutable drive
+            # definition, rather than a name-only patch.  The next provider
+            # rejects the latter with HTTP 400 even though the API prose says
+            # that name is independently editable.
+            update.update({'media': 'disk', 'size': DRIVE_SIZE})
         updated = resource.update(identity, update)
         _owned(updated, identity, names, scenario)
         if updated.get('name') != updated_name:
