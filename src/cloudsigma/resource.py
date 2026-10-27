@@ -987,6 +987,16 @@ class VirtualRouters(ResourceBase):
         return self._action(
             virtual_router_uuid, 'get_log', data, query_params=query_params)
 
+    def get_keys(self, virtual_router_uuid, data=None):
+        """Get keys associated with a documented virtual router."""
+        return self._action(virtual_router_uuid, 'get_keys', data or {})
+
+    def export_key(self, virtual_router_uuid, key_uuid, data=None):
+        """Export one virtual-router key by its documented key identifier."""
+        return self._action(
+            virtual_router_uuid, 'export_key', data or {},
+            query_params={'key_uuid': key_uuid})
+
 
 class Lans(ResourceBase):
     resource_name = 'lans'
