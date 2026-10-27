@@ -987,6 +987,14 @@ class VirtualRouters(ResourceBase):
         return self._action(
             virtual_router_uuid, 'get_log', data, query_params=query_params)
 
+    def enable_vpn(self, virtual_router_uuid, data=None):
+        """Enable the documented VPN feature on a virtual router."""
+        return self._action(virtual_router_uuid, 'enable_vpn', data or {})
+
+    def disable_vpn(self, virtual_router_uuid, data=None):
+        """Disable the documented VPN feature on a virtual router."""
+        return self._action(virtual_router_uuid, 'disable_vpn', data or {})
+
     def get_keys(self, virtual_router_uuid, data=None):
         """Get keys associated with a documented virtual router."""
         return self._action(virtual_router_uuid, 'get_keys', data or {})
