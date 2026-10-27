@@ -1060,3 +1060,8 @@ class VrFwFilters(ResourceBase):
 
 class Routes(ResourceBase):
     resource_name = 'routes'
+
+
+class VpnTunnels(ResourceBase):
+    """Manage documented virtual-router VPN tunnels."""
+    resource_name = 'tunnels'
