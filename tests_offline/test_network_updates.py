@@ -50,7 +50,7 @@ class NetworkUpdateTests(TestCase):
 
     def update(self, kind, body, payload, status=200, exception=None):
         cls = resource.IP if kind == 'ip' else resource.VLAN
-        uid = test_network_reads.test_network_reads.fixture(kind, 'single')['uuid']
+        uid = test_network_reads.fixture(kind, 'single')['uuid']
         path = 'ips' if kind == 'ip' else 'vlans'
         before = copy.deepcopy(body)
         adapter = UpdateAdapter(self, 'https://fixture.invalid/api/2.0/%s/%s/' % (path, uid),
