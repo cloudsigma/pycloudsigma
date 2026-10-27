@@ -843,7 +843,7 @@
       "operation_id": "DELETE /api/2.0/tunnels/{tunnel_uuid}/"
     },
     {
-      "kind": "sdk-binding-without-explicit-public-operation",
+      "kind": "response-example-unavailable",
       "operation_id": "GET /api/2.0/tunnels/"
     }
   ],
@@ -3255,6 +3255,29 @@
           "anchor": "get--tags-uuid-resource_type-",
           "block": 65,
           "url": "https://docs.cloudsigma.com/en/latest/tags.html"
+        }
+      ]
+    },
+    {
+      "availability_note": "Collection GET is documented in the method table but the current Turlo main source at 9c14200c51da7f783c91e9bc7169f5352dcd00ae raises PageNotFound from obj_get_list. Next QA returned HTTP 404 on 2026-10-27.",
+      "disposition": "provider-unavailable",
+      "field_contract": "schema-unavailable",
+      "method": "GET",
+      "operation_id": "GET /api/2.0/tunnels/",
+      "path": "/api/2.0/tunnels/",
+      "response_examples": [],
+      "sdk_mapping": {
+        "assertions": [],
+        "status": "provider-unavailable",
+        "symbols": [
+          "cloudsigma.resource.VpnTunnels.list"
+        ]
+      },
+      "sources": [
+        {
+          "anchor": "allowed-http-methods",
+          "block": 5,
+          "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_vpn_tunnels.html"
         }
       ]
     },
@@ -6009,29 +6032,6 @@
           "anchor": "put--vrfwpolicies-uuid-",
           "block": 27,
           "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_policies.html"
-        }
-      ]
-    },
-    {
-      "availability_note": "Collection GET is documented in the method table but the current Turlo main source at 9c14200c51da7f783c91e9bc7169f5352dcd00ae raises PageNotFound from obj_get_list. Next QA returned HTTP 404 on 2026-10-27.",
-      "disposition": "provider-unavailable",
-      "field_contract": "schema-unavailable",
-      "method": "GET",
-      "operation_id": "GET /api/2.0/tunnels/",
-      "path": "/api/2.0/tunnels/",
-      "response_examples": [],
-      "sdk_mapping": {
-        "assertions": [],
-        "status": "provider-unavailable",
-        "symbols": [
-          "cloudsigma.resource.VpnTunnels.list"
-        ]
-      },
-      "sources": [
-        {
-          "anchor": "allowed-http-methods",
-          "block": 8,
-          "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_vpn_tunnels.html"
         }
       ]
     }
@@ -80585,7 +80585,7 @@
   "scope": "Public documentation declarations and response examples; schema-to-operation and request-field reconciliation remain open.",
   "summary": {
     "complete": false,
-    "declared_operations": 181,
+    "declared_operations": 182,
     "documents": 62,
     "field_assertions_verified": 0,
     "gaps": 131,

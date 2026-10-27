@@ -382,6 +382,46 @@ def build_contract(documents, bindings):
                     gaps.append({"kind": block["binding_gap"], "source": source})
             if block.get("parse_gap") and block["parse_gap"] != "empty-body":
                 gaps.append({"kind": block["parse_gap"], "source": source})
+    # Some public method tables mention a collection route that has no
+    # machine-readable operation block because the deployed provider returns
+    # 404 by design.  Keep that route in the maintained inventory when its
+    # binding carries explicit availability evidence.  This is deliberately
+    # limited to provider-unavailable entries so a missing SDK mapping cannot
+    # silently invent an operation.
+    for key in sorted(set(bindings) - set(operations)):
+        binding = bindings[key]
+        availability = binding.get("availability")
+        if (not isinstance(binding, dict)
+                or binding.get("status") != "provider-unavailable"
+                or not isinstance(availability, dict)):
+            continue
+        try:
+            method, path = key.split(" ", 1)
+        except ValueError:
+            continue
+        source = availability.get("source")
+        if (method not in METHODS.split("|") or not path
+                or not isinstance(source, dict)
+                or not isinstance(source.get("url"), str)
+                or not isinstance(source.get("anchor"), str)
+                or type(source.get("block")) is not int):
+            continue
+        sdk_mapping = {
+            name: binding.get(name, []) if name != "status"
+            else binding.get(name)
+            for name in ("status", "symbols", "assertions")
+        }
+        operations[key] = {
+            "availability_note": availability.get("note", ""),
+            "disposition": availability.get("disposition"),
+            "field_contract": availability.get("field_contract"),
+            "method": method,
+            "operation_id": key,
+            "path": path,
+            "response_examples": [],
+            "sdk_mapping": sdk_mapping,
+            "sources": [source],
+        }
     for operation in operations.values():
         if not operation["response_examples"]:
             gaps.append({"kind": "response-example-unavailable", "operation_id": operation["operation_id"]})

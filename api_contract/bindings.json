@@ -29,6 +29,16 @@
     "status": "provider-unavailable",
     "symbols": ["cloudsigma.resource.VpnTunnels.list"],
     "assertions": [],
-    "note": "Public method table mentions GET/list; no explicit collection GET declaration or response example. Authenticated Next QA collection read returned 404 on 2026-10-27."
+    "note": "Public method table mentions GET/list; no explicit collection GET declaration or response example. Authenticated Next QA collection read returned 404 on 2026-10-27.",
+    "availability": {
+      "field_contract": "schema-unavailable",
+      "disposition": "provider-unavailable",
+      "note": "Collection GET is documented in the method table but the current Turlo main source at 9c14200c51da7f783c91e9bc7169f5352dcd00ae raises PageNotFound from obj_get_list. Next QA returned HTTP 404 on 2026-10-27.",
+      "source": {
+        "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_vpn_tunnels.html",
+        "anchor": "allowed-http-methods",
+        "block": 5
+      }
+    }
   }
 }

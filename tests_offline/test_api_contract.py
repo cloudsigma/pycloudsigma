@@ -80,6 +80,24 @@ class ApiContractTests(unittest.TestCase):
                     path.write_text(json.dumps(payload))
                     self.assertTrue(any(expected in error for error in MODULE.validate(path)))
 
+    def test_provider_unavailable_route_keeps_schema_contract_explicit(self):
+        """The known tunnel collection 404 is a qualified availability gap."""
+        original = json.loads(MODULE.MATRIX.read_text())
+        tunnel = next(row for row in original["operations"]
+                      if row["operation_id"] == "GET /api/2.0/tunnels/")
+        self.assertEqual(tunnel["field_contract"], "schema-unavailable")
+        self.assertEqual(tunnel["disposition"], "provider-unavailable")
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "contract.json"
+            invalid = copy.deepcopy(original)
+            invalid_tunnel = next(row for row in invalid["operations"]
+                                  if row["operation_id"] == tunnel["operation_id"])
+            invalid_tunnel["disposition"] = "documented"
+            path.write_text(json.dumps(invalid))
+            errors = MODULE.validate(path)
+            self.assertTrue(any("schema-unavailable field contract requires"
+                                in error for error in errors))
+
     def test_manual_matrix_drift_requires_regeneration(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / "contract"

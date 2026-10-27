@@ -82,7 +82,18 @@ def validate(path=MATRIX):
             errors.append("operation has an invalid method or path")
         elif operation["operation_id"] != method + " " + api_path:
             errors.append("operation stable ID differs from method/path")
-        if operation.get("field_contract") != "incomplete":
+        field_contract = operation.get("field_contract")
+        if field_contract == "schema-unavailable":
+            # A documented route can be represented in the matrix even when
+            # the provider intentionally returns 404.  That disposition is a
+            # provider availability result, not a claim that its response
+            # fields are qualified.  Keep this exception explicit and narrow
+            # so other unsupported completeness claims remain rejected.
+            if operation.get("disposition") != "provider-unavailable":
+                errors.append(
+                    "schema-unavailable field contract requires "
+                    "provider-unavailable disposition")
+        elif field_contract != "incomplete":
             errors.append("unsupported complete field contract")
         if not isinstance(operation.get("sources"), list) or not operation["sources"]:
             errors.append("operation sources must be a non-empty list")
