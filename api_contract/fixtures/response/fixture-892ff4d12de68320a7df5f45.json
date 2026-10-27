@@ -1,0 +1,216 @@
+{
+  "active": true,
+  "filters": [
+    {
+      "action": "deny",
+      "action_queue": null,
+      "dst": "10.0.1.1",
+      "dst_addr_op": true,
+      "dst_port": "22",
+      "dst_port_op": true,
+      "icmp_type": "Echo reply",
+      "jobs": [],
+      "log": false,
+      "order": 1,
+      "protocol": "tcp",
+      "resource_uri": {
+        "resource_uri": "/api/2.0/vrfwfilters/fb747784-c370-4137-bc92-469cedc5cbce/",
+        "uuid": "fb747784-c370-4137-bc92-469cedc5cbce"
+      },
+      "src": "10.0.2.1",
+      "src_addr_op": true,
+      "src_port": "",
+      "src_port_op": true,
+      "uuid": "fb747784-c370-4137-bc92-469cedc5cbce"
+    },
+    {
+      "action": "deny",
+      "action_queue": null,
+      "dst": "10.0.1.2",
+      "dst_addr_op": true,
+      "dst_port": "22",
+      "dst_port_op": true,
+      "icmp_type": "Echo reply",
+      "jobs": [],
+      "log": false,
+      "order": 2,
+      "protocol": "tcp",
+      "resource_uri": {
+        "resource_uri": "/api/2.0/vrfwfilters/d2994d4b-e935-4b87-90fb-41e42565a1a0/",
+        "uuid": "d2994d4b-e935-4b87-90fb-41e42565a1a0"
+      },
+      "src": "10.0.2.2",
+      "src_addr_op": true,
+      "src_port": "",
+      "src_port_op": true,
+      "uuid": "d2994d4b-e935-4b87-90fb-41e42565a1a0"
+    },
+    {
+      "action": "deny",
+      "action_queue": null,
+      "dst": "10.0.1.3",
+      "dst_addr_op": true,
+      "dst_port": "22",
+      "dst_port_op": true,
+      "icmp_type": "Echo reply",
+      "jobs": [],
+      "log": false,
+      "order": 3,
+      "protocol": "tcp",
+      "resource_uri": {
+        "resource_uri": "/api/2.0/vrfwfilters/74a7a760-70c2-4267-bffc-d96d695bb7dc/",
+        "uuid": "74a7a760-70c2-4267-bffc-d96d695bb7dc"
+      },
+      "src": "10.0.2.3",
+      "src_addr_op": true,
+      "src_port": "",
+      "src_port_op": true,
+      "uuid": "74a7a760-70c2-4267-bffc-d96d695bb7dc"
+    },
+    {
+      "action": "deny",
+      "action_queue": null,
+      "dst": "10.0.1.4",
+      "dst_addr_op": true,
+      "dst_port": "22",
+      "dst_port_op": true,
+      "icmp_type": "Echo reply",
+      "jobs": [],
+      "log": false,
+      "order": 4,
+      "protocol": "tcp",
+      "resource_uri": {
+        "resource_uri": "/api/2.0/vrfwfilters/4146531d-d902-4b79-ba40-d4cc3ba3495b/",
+        "uuid": "4146531d-d902-4b79-ba40-d4cc3ba3495b"
+      },
+      "src": "10.0.2.4",
+      "src_addr_op": true,
+      "src_port": "",
+      "src_port_op": true,
+      "uuid": "4146531d-d902-4b79-ba40-d4cc3ba3495b"
+    },
+    {
+      "action": "deny",
+      "action_queue": null,
+      "dst": "10.0.1.5",
+      "dst_addr_op": true,
+      "dst_port": "22",
+      "dst_port_op": true,
+      "icmp_type": "Echo reply",
+      "jobs": [],
+      "log": false,
+      "order": 5,
+      "protocol": "tcp",
+      "resource_uri": {
+        "resource_uri": "/api/2.0/vrfwfilters/13390e58-ed8f-4dfa-8401-9d17846638f3/",
+        "uuid": "13390e58-ed8f-4dfa-8401-9d17846638f3"
+      },
+      "src": "10.0.2.5",
+      "src_addr_op": true,
+      "src_port": "",
+      "src_port_op": true,
+      "uuid": "13390e58-ed8f-4dfa-8401-9d17846638f3"
+    },
+    {
+      "action": "deny",
+      "action_queue": null,
+      "dst": "10.0.1.6",
+      "dst_addr_op": true,
+      "dst_port": "22",
+      "dst_port_op": true,
+      "icmp_type": "Echo reply",
+      "jobs": [],
+      "log": false,
+      "order": 6,
+      "protocol": "tcp",
+      "resource_uri": {
+        "resource_uri": "/api/2.0/vrfwfilters/52e2f238-16c7-4882-a2e6-bdb87c1e91e6/",
+        "uuid": "52e2f238-16c7-4882-a2e6-bdb87c1e91e6"
+      },
+      "src": "10.0.2.6",
+      "src_addr_op": true,
+      "src_port": "",
+      "src_port_op": true,
+      "uuid": "52e2f238-16c7-4882-a2e6-bdb87c1e91e6"
+    },
+    {
+      "action": "deny",
+      "action_queue": null,
+      "dst": "10.0.1.7",
+      "dst_addr_op": true,
+      "dst_port": "22",
+      "dst_port_op": true,
+      "icmp_type": "Echo reply",
+      "jobs": [],
+      "log": false,
+      "order": 7,
+      "protocol": "tcp",
+      "resource_uri": {
+        "resource_uri": "/api/2.0/vrfwfilters/a2f3a53b-9a66-4f1b-92b6-95f5760c5854/",
+        "uuid": "a2f3a53b-9a66-4f1b-92b6-95f5760c5854"
+      },
+      "src": "10.0.2.7",
+      "src_addr_op": true,
+      "src_port": "",
+      "src_port_op": true,
+      "uuid": "a2f3a53b-9a66-4f1b-92b6-95f5760c5854"
+    },
+    {
+      "action": "deny",
+      "action_queue": null,
+      "dst": "10.0.1.8",
+      "dst_addr_op": true,
+      "dst_port": "22",
+      "dst_port_op": true,
+      "icmp_type": "Echo reply",
+      "jobs": [],
+      "log": false,
+      "order": 8,
+      "protocol": "tcp",
+      "resource_uri": {
+        "resource_uri": "/api/2.0/vrfwfilters/08bd64b4-1e3b-422c-beba-e0bd8d8cc1fa/",
+        "uuid": "08bd64b4-1e3b-422c-beba-e0bd8d8cc1fa"
+      },
+      "src": "10.0.2.8",
+      "src_addr_op": true,
+      "src_port": "",
+      "src_port_op": true,
+      "uuid": "08bd64b4-1e3b-422c-beba-e0bd8d8cc1fa"
+    }
+  ],
+  "jobs": [
+    {
+      "resource_uri": "/api/2.0/jobs/4a54dd7b-4c9b-45ac-94a4-664d1a93e684/",
+      "uuid": "4a54dd7b-4c9b-45ac-94a4-664d1a93e684"
+    },
+    {
+      "resource_uri": "/api/2.0/jobs/0dd31f40-a6e3-4a76-a289-0850c15630ac/",
+      "uuid": "0dd31f40-a6e3-4a76-a289-0850c15630ac"
+    },
+    {
+      "resource_uri": "/api/2.0/jobs/4f4af216-5f72-4464-a157-f85d3c5c7dae/",
+      "uuid": "4f4af216-5f72-4464-a157-f85d3c5c7dae"
+    },
+    {
+      "resource_uri": "/api/2.0/jobs/139898e2-1385-4f7e-8e90-2d33f71708b7/",
+      "uuid": "139898e2-1385-4f7e-8e90-2d33f71708b7"
+    },
+    {
+      "resource_uri": "/api/2.0/jobs/97b8b81b-c8af-4590-ae59-f4b02230d782/",
+      "uuid": "97b8b81b-c8af-4590-ae59-f4b02230d782"
+    },
+    {
+      "resource_uri": "/api/2.0/jobs/8b07441d-f3af-45ee-a20f-eec7b438d276/",
+      "uuid": "8b07441d-f3af-45ee-a20f-eec7b438d276"
+    }
+  ],
+  "lan_interface": {
+    "resource_uri": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/",
+    "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae"
+  },
+  "name": "WEB POLICY FILTERS ACTIVATE",
+  "order": 1,
+  "resource_uri": "/api/2.0/vrfwpolicies/906abae3-b533-4c5d-8d98-c459195b6230/",
+  "upstream_interface": null,
+  "uuid": "906abae3-b533-4c5d-8d98-c459195b6230"
+}

@@ -1,0 +1,23 @@
+{
+  "objects": [
+    {
+      "active": false,
+      "filters": [],
+      "jobs": [
+        {
+          "resource_uri": "/api/2.0/jobs/bce9ecf6-f503-4f43-be04-d5965c9ab94e/",
+          "uuid": "bce9ecf6-f503-4f43-be04-d5965c9ab94e"
+        }
+      ],
+      "lan_interface": {
+        "resource_uri": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/",
+        "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae"
+      },
+      "name": "Policy two",
+      "order": 2,
+      "resource_uri": "/api/2.0/vrfwpolicies/a5e14575-9e42-4748-95e9-205bf43b2da0/",
+      "upstream_interface": null,
+      "uuid": "a5e14575-9e42-4748-95e9-205bf43b2da0"
+    }
+  ]
+}

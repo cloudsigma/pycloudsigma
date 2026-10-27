@@ -1,0 +1,326 @@
+{
+  "blocks": [
+    {
+      "anchor": "kvm-servers",
+      "kind": "heading",
+      "level": 1,
+      "text": "KVM Servers"
+    },
+    {
+      "anchor": "device-channel",
+      "kind": "heading",
+      "level": 2,
+      "text": "Device channel"
+    },
+    {
+      "anchor": "device-channel",
+      "kind": "prose",
+      "text": "Device channel is used to specify the controller number and unit number for each attached drive. This is used so every time you reboot your virtual machine, the drive remains on the same place in your guest OS ( ex: /dev/sdc ) You specify the channel in the following format - {controller}:{unit} with the following limits for ide and virtio device types:"
+    },
+    {
+      "anchor": "device-channel",
+      "kind": "prose",
+      "text": "ide - 0:0, 0:1, 1:0, 1:1 ( total of 4 drives, max 2 units per controller, i.e 0-1)"
+    },
+    {
+      "anchor": "device-channel",
+      "kind": "prose",
+      "text": "virtio - 0:0, …, 0:5, …, 1:0, etc ( total of 1024 drives, max 6 units per controller i.e 0-5)"
+    },
+    {
+      "anchor": "open-vnc-tunnel",
+      "kind": "heading",
+      "level": 2,
+      "text": "Open VNC Tunnel"
+    },
+    {
+      "anchor": "post--servers-uuid-action-?do=open_vnc",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{uuid}/action/?do=open_vnc"
+    },
+    {
+      "anchor": "open-vnc-tunnel",
+      "kind": "prose",
+      "text": "Server’s console (virtual keyboard, mouse, and display) is exposed to the user through the VNC protocol. The open_vnc call opens a VNC tunnel to the server. The returned object contains a vnc_url specifying the endpoint to which to connect the VNC client. The password for the VNC connection is specified in the vnc_password field on the server definition. Note that the tunnel is not closed until reboot, so if you prefer you can close is using the close_vnc action."
+    },
+    {
+      "anchor": "open-vnc-tunnel",
+      "kind": "prose",
+      "text": "202 Accepted – Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "open-vnc-tunnel",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "open-vnc-tunnel",
+      "kind": "prose",
+      "text": "VNC URL will be different each time you close/open the tunnel."
+    },
+    {
+      "anchor": "open-vnc-tunnel",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "open-vnc-tunnel",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "72de428ab749be50d8593c462e9c78e10411d9e0830a00c4430882afa450da9f",
+      "path": "/api/2.0/servers/42cb8991-a39a-4ed3-b549-efd6a1dedd48/action/?do=open_vnc"
+    },
+    {
+      "anchor": "open-vnc-tunnel",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "open-vnc-tunnel",
+      "classification": "response-example",
+      "fixture_id": "fixture-6a84d1513820b5d1787f43ff",
+      "fixture_payload": {
+        "action": "open_vnc",
+        "result": "success",
+        "uuid": "80751bc7-37cc-48c1-bb08-fd04b46090bf",
+        "vnc_url": "vnc://direct.zrh.cloudsigma.com:42714"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/{uuid}/action/?do=open_vnc"
+      },
+      "original_sha256": "9058a7a21576c4d30fd6471d3feb433b93e8f7449a0ea758c02bf266c614bf8b",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_url\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "close-vnc-tunnel",
+      "kind": "heading",
+      "level": 2,
+      "text": "Close VNC Tunnel"
+    },
+    {
+      "anchor": "post--servers-uuid-action-?do=close_vnc",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/servers/{uuid}/action/?do=close_vnc"
+    },
+    {
+      "anchor": "close-vnc-tunnel",
+      "kind": "prose",
+      "text": "Closes a VNC tunnel to a server with specific UUID."
+    },
+    {
+      "anchor": "close-vnc-tunnel",
+      "kind": "prose",
+      "text": "202 Accepted – Action accepted, execution is proceeding."
+    },
+    {
+      "anchor": "close-vnc-tunnel",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "close-vnc-tunnel",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "33a481ea849079f52f6008cb2fe319a68c15f0ceff9a07beb00f5a743a0e36e6",
+      "path": "/api/2.0/servers/42cb8991-a39a-4ed3-b549-efd6a1dedd48/action/?do=close_vnc"
+    },
+    {
+      "anchor": "close-vnc-tunnel",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "close-vnc-tunnel",
+      "classification": "response-example",
+      "fixture_id": "fixture-b0de946e460a2bfb7483fe85",
+      "fixture_payload": {
+        "action": "close_vnc",
+        "result": "success",
+        "uuid": "80751bc7-37cc-48c1-bb08-fd04b46090bf"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/servers/{uuid}/action/?do=close_vnc"
+      },
+      "original_sha256": "128b5e8f4c0cef4c99e884c4c5cf964a2e5dea065e7c5d711b8e07023787ff30",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "heading",
+      "level": 3,
+      "text": "Advanced settings"
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "On every server configuration there are a few advanced options you can setup."
+    },
+    {
+      "anchor": "advanced-settings",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "c60e5e0ccdc463476a30b7bf5bb2f0e434bef74d9968c320882a0b6d76e0eb88"
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "Type: true/false"
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "Description: selects whether the SMP is exposed as cores of a single CPU or separate CPUs. This should be set to false for Windows, because there are license requirements for multiple CPUs."
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "Type: true/false"
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "Description: This option exposes the NUMA/CPU topology of the hypervisor to the virtual machine. It boosts performance for NUMA aware applications. The option should be set to true for servers with SMP bigger than 6, since this is the number of cores we have per NUMA node on the hypervisor. If set to true, cpus_instead_of_cores should also be set to true for Linux, because some Linux distributions do not support multiple NUMA nodes on multple CPU cores, but only on multiple CPUs."
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "Type: true/false"
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "Description: Relax constraints on timers. This improves the behavior of VMs running Windows."
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "Type: true/false"
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "Description: Enables more precise timers for Windows. This boost performance for timer specific code."
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "Warning"
+    },
+    {
+      "anchor": "advanced-settings",
+      "kind": "prose",
+      "text": "hv_relaxed and hv_tsc should be set to false for VMs running Linux"
+    }
+  ],
+  "html_sha256": "b41e1fb220e5e79cb6c1c6230d2f8124e414b823e2dc668ca123968461055e41",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/servers_kvm.html"
+}

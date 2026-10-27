@@ -1,0 +1,3277 @@
+{
+  "blocks": [
+    {
+      "anchor": "billing",
+      "kind": "heading",
+      "level": 1,
+      "text": "Billing"
+    },
+    {
+      "anchor": "balance",
+      "kind": "heading",
+      "level": 2,
+      "text": "Balance"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 3,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 3,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--balance-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/balance/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Get the balance and currency of the current account."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "9b0f776c78ce8cbf9914e378df2a9f7cd54172bf89d87693ff8f0e50e3a36245",
+      "path": "/api/2.0/balance/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "fixture_id": "fixture-94137593518869067cbe5bd9",
+      "fixture_payload": {
+        "balance": "155367.99237092264288897986",
+        "credit_limit": null,
+        "currency": "EUR"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/balance/"
+      },
+      "original_sha256": "fe5bb21cf9bb309ebf6bdba3961e93c203d812d7a55ba653e9447f6421772d1d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"balance\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"credit_limit\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"currency\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 3,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "e2ef4a0995e393280c74332271933f9dae3c717cb9cd1131db215ef20c8d652c",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "balance": {
+            "default": "No default provided.",
+            "help_text": "Amount of money in account",
+            "readonly": true,
+            "required": true,
+            "type": "decimal"
+          },
+          "credit_limit": {
+            "default": "No default provided.",
+            "help_text": "Credit limit applied to the account, if present",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "currency": {
+            "default": "No default provided.",
+            "help_text": "Currency of the account",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        }
+      },
+      "status_code": 200
+    },
+    {
+      "anchor": "pricing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Pricing"
+    },
+    {
+      "anchor": "id2",
+      "kind": "heading",
+      "level": 3,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "id3",
+      "kind": "heading",
+      "level": 3,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--pricing-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/pricing/"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Gets the pricing information that are applicable to the cloud. Subscription prices use a burst level of 0."
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "id3",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "c47238820082860fe179493948705cc45d24db2b2840ba7fc4875fa1a0882e78",
+      "path": "/api/2.0/pricing/?limit=5"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "id3",
+      "classification": "response-example",
+      "fixture_id": "fixture-9246d38d1de4406c9744db9d",
+      "fixture_payload": {
+        "current": {
+          "backup": 1,
+          "cpu": 1,
+          "cpu_vmware": 1,
+          "dedicated_host_6148": 1,
+          "dedicated_node_large": 1,
+          "dedicated_node_medium": 1,
+          "dedicated_node_small": 1,
+          "disaster_recovery": 1,
+          "dssd": 1,
+          "dssd_vmware": 1,
+          "epc": 1,
+          "intel_cpu": 2,
+          "intel_mem": 1,
+          "ip": 1,
+          "ip_vmware": 1,
+          "mem": 1,
+          "mem_vmware": 1,
+          "migration": 1,
+          "msft_6wc_00002": 1,
+          "msft_7jq_00341": 1,
+          "msft_7nq_00302": 1,
+          "msft_9ea_00039": 1,
+          "msft_p73_04837_core": 1,
+          "msft_tfa_00523": 1,
+          "nvme": 1,
+          "object_storage": 1,
+          "rx_foreign": 1,
+          "rx_local": 1,
+          "ssd": 1,
+          "tx": 1,
+          "tx_foreign": 1,
+          "tx_local": 1,
+          "tx_vmware": 1,
+          "virtual_private_cloud": 1,
+          "vlan": 1,
+          "vlan_ecx": 1,
+          "vlan_ecx_1000": 1,
+          "vlan_ecx_200": 1,
+          "vlan_ecx_500": 1,
+          "vlan_vmware": 1,
+          "vpc": 1,
+          "vrouter_basic": 1,
+          "vrouter_basic_500": 1,
+          "vrouter_enterprise": 1,
+          "vrouter_premium": 1,
+          "zadara": 1
+        },
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 3025
+        },
+        "next": {
+          "backup": 1,
+          "cpu": 1,
+          "cpu_vmware": 1,
+          "dedicated_host_6148": 1,
+          "dedicated_node_large": 1,
+          "dedicated_node_medium": 1,
+          "dedicated_node_small": 1,
+          "disaster_recovery": 1,
+          "dssd": 1,
+          "dssd_vmware": 1,
+          "epc": 1,
+          "intel_cpu": 2,
+          "intel_mem": 1,
+          "ip": 1,
+          "ip_vmware": 1,
+          "mem": 1,
+          "mem_vmware": 1,
+          "migration": 1,
+          "msft_6wc_00002": 1,
+          "msft_7jq_00341": 1,
+          "msft_7nq_00302": 1,
+          "msft_9ea_00039": 1,
+          "msft_p73_04837_core": 1,
+          "msft_tfa_00523": 1,
+          "nvme": 1,
+          "object_storage": 1,
+          "rx_foreign": 1,
+          "rx_local": 1,
+          "ssd": 1,
+          "tx": 1,
+          "tx_foreign": 1,
+          "tx_local": 1,
+          "tx_vmware": 1,
+          "virtual_private_cloud": 1,
+          "vlan": 1,
+          "vlan_ecx": 1,
+          "vlan_ecx_1000": 1,
+          "vlan_ecx_200": 1,
+          "vlan_ecx_500": 1,
+          "vlan_vmware": 1,
+          "vpc": 1,
+          "vrouter_basic": 1,
+          "vrouter_basic_500": 1,
+          "vrouter_enterprise": 1,
+          "vrouter_premium": 1,
+          "zadara": 1
+        },
+        "objects": [
+          {
+            "currency": "GBP",
+            "id": "656",
+            "level": 1,
+            "multiplier": 2783138807808000,
+            "price": "0.18200000000000000000",
+            "resource": "dssd",
+            "unit": "GB/month"
+          },
+          {
+            "currency": "EUR",
+            "id": "636",
+            "level": 1,
+            "multiplier": 2783138807808000,
+            "price": "0.21000000000000000000",
+            "resource": "dssd",
+            "unit": "GB/month"
+          },
+          {
+            "currency": "USD",
+            "id": "616",
+            "level": 1,
+            "multiplier": 2783138807808000,
+            "price": "0.28000000000000000000",
+            "resource": "dssd",
+            "unit": "GB/month"
+          },
+          {
+            "currency": "CHF",
+            "id": "596",
+            "level": 1,
+            "multiplier": 2783138807808000,
+            "price": "0.26600000000000000000",
+            "resource": "dssd",
+            "unit": "GB/month"
+          },
+          {
+            "currency": "USD",
+            "id": "307",
+            "level": 0,
+            "multiplier": 2783138807808000,
+            "price": "0.14000000000000000000",
+            "resource": "dssd",
+            "unit": "GB/month"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/pricing/"
+      },
+      "original_sha256": "8ba69f8ee24adab3ec633cbbbc2a0d64c26bafc115aadb1af85bed96c92aa72a",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"backup\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"cpu_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dedicated_host_6148\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dedicated_node_large\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dedicated_node_medium\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dedicated_node_small\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"disaster_recovery\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dssd\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dssd_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"epc\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"intel_cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"intel_mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"ip\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"ip_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"mem_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"migration\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_6wc_00002\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_7jq_00341\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_7nq_00302\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_9ea_00039\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_p73_04837_core\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_tfa_00523\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"nvme\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"object_storage\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"rx_foreign\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"rx_local\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"ssd\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"tx\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"tx_foreign\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"tx_local\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"tx_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"virtual_private_cloud\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_ecx\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_ecx_1000\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_ecx_200\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_ecx_500\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vpc\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vrouter_basic\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vrouter_basic_500\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vrouter_enterprise\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vrouter_premium\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"zadara\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"backup\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"cpu_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dedicated_host_6148\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dedicated_node_large\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dedicated_node_medium\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dedicated_node_small\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"disaster_recovery\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dssd\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dssd_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"epc\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"intel_cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"intel_mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"ip\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"ip_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"mem_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"migration\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_6wc_00002\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_7jq_00341\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_7nq_00302\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_9ea_00039\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_p73_04837_core\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_tfa_00523\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"nvme\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"object_storage\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"rx_foreign\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"rx_local\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"ssd\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"tx\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"tx_foreign\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"tx_local\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"tx_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"virtual_private_cloud\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_ecx\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_ecx_1000\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_ecx_200\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_ecx_500\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vpc\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vrouter_basic\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vrouter_basic_500\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vrouter_enterprise\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vrouter_premium\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"zadara\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"currency\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"id\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"level\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"multiplier\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"price\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"unit\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "burst-levels",
+      "kind": "heading",
+      "level": 3,
+      "text": "Burst levels"
+    },
+    {
+      "anchor": "burst-levels",
+      "kind": "prose",
+      "text": "The current and future burst levels are provided in objects at the root of the response. The burst levels are calculated every 5 minutes based on the usage of the cloud and are applied 5 minutes later (when the next burst levels are calculated)"
+    },
+    {
+      "anchor": "burst-levels",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "current": {
+          "backup": 1,
+          "cpu": 1,
+          "cpu_vmware": 1,
+          "dedicated_host_6148": 1,
+          "dedicated_node_large": 1,
+          "dedicated_node_medium": 1,
+          "dedicated_node_small": 1,
+          "disaster_recovery": 1,
+          "dssd": 1,
+          "dssd_vmware": 1,
+          "epc": 1,
+          "intel_cpu": 2,
+          "intel_mem": 1,
+          "ip": 1,
+          "ip_vmware": 1,
+          "mem": 1,
+          "mem_vmware": 1,
+          "migration": 1,
+          "msft_6wc_00002": 1,
+          "msft_7jq_00341": 1,
+          "msft_7nq_00302": 1,
+          "msft_9ea_00039": 1,
+          "msft_p73_04837_core": 1,
+          "msft_tfa_00523": 1,
+          "nvme": 1,
+          "object_storage": 1,
+          "rx_foreign": 1,
+          "rx_local": 1,
+          "ssd": 1,
+          "tx": 1,
+          "tx_foreign": 1,
+          "tx_local": 1,
+          "tx_vmware": 1,
+          "virtual_private_cloud": 1,
+          "vlan": 1,
+          "vlan_ecx": 1,
+          "vlan_ecx_1000": 1,
+          "vlan_ecx_200": 1,
+          "vlan_ecx_500": 1,
+          "vlan_vmware": 1,
+          "vpc": 1,
+          "vrouter_basic": 1,
+          "vrouter_basic_500": 1,
+          "vrouter_enterprise": 1,
+          "vrouter_premium": 1,
+          "zadara": 1
+        },
+        "next": {
+          "backup": 1,
+          "cpu": 1,
+          "cpu_vmware": 1,
+          "dedicated_host_6148": 1,
+          "dedicated_node_large": 1,
+          "dedicated_node_medium": 1,
+          "dedicated_node_small": 1,
+          "disaster_recovery": 1,
+          "dssd": 1,
+          "dssd_vmware": 1,
+          "epc": 1,
+          "intel_cpu": 2,
+          "intel_mem": 1,
+          "ip": 1,
+          "ip_vmware": 1,
+          "mem": 1,
+          "mem_vmware": 1,
+          "migration": 1,
+          "msft_6wc_00002": 1,
+          "msft_7jq_00341": 1,
+          "msft_7nq_00302": 1,
+          "msft_9ea_00039": 1,
+          "msft_p73_04837_core": 1,
+          "msft_tfa_00523": 1,
+          "nvme": 1,
+          "object_storage": 1,
+          "rx_foreign": 1,
+          "rx_local": 1,
+          "ssd": 1,
+          "tx": 1,
+          "tx_foreign": 1,
+          "tx_local": 1,
+          "tx_vmware": 1,
+          "virtual_private_cloud": 1,
+          "vlan": 1,
+          "vlan_ecx": 1,
+          "vlan_ecx_1000": 1,
+          "vlan_ecx_200": 1,
+          "vlan_ecx_500": 1,
+          "vlan_vmware": 1,
+          "vpc": 1,
+          "vrouter_basic": 1,
+          "vrouter_basic_500": 1,
+          "vrouter_enterprise": 1,
+          "vrouter_premium": 1,
+          "zadara": 1
+        }
+      },
+      "kind": "code",
+      "original_sha256": "cc4cf353ebc0d87baa311a6ed05cb70d00f82825ba47dc28dbffb94fef961628",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"backup\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"cpu_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dedicated_host_6148\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dedicated_node_large\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dedicated_node_medium\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dedicated_node_small\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"disaster_recovery\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dssd\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"dssd_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"epc\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"intel_cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"intel_mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"ip\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"ip_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"mem_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"migration\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_6wc_00002\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_7jq_00341\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_7nq_00302\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_9ea_00039\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_p73_04837_core\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"msft_tfa_00523\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"nvme\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"object_storage\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"rx_foreign\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"rx_local\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"ssd\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"tx\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"tx_foreign\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"tx_local\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"tx_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"virtual_private_cloud\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_ecx\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_ecx_1000\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_ecx_200\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_ecx_500\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vlan_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vpc\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vrouter_basic\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vrouter_basic_500\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vrouter_enterprise\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"vrouter_premium\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"current\"][\"zadara\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"backup\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"cpu_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dedicated_host_6148\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dedicated_node_large\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dedicated_node_medium\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dedicated_node_small\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"disaster_recovery\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dssd\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"dssd_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"epc\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"intel_cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"intel_mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"ip\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"ip_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"mem_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"migration\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_6wc_00002\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_7jq_00341\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_7nq_00302\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_9ea_00039\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_p73_04837_core\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"msft_tfa_00523\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"nvme\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"object_storage\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"rx_foreign\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"rx_local\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"ssd\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"tx\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"tx_foreign\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"tx_local\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"tx_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"virtual_private_cloud\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_ecx\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_ecx_1000\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_ecx_200\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_ecx_500\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vlan_vmware\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vpc\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vrouter_basic\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vrouter_basic_500\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vrouter_enterprise\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"vrouter_premium\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"next\"][\"zadara\"]",
+          "observed_types": [
+            "integer"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "id4",
+      "kind": "heading",
+      "level": 3,
+      "text": "Schema"
+    },
+    {
+      "anchor": "id4",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "6dcc63c5b2e1397c37106b773393a7a87cd451e6fe7f79abf2b0cce78fc36557",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 0,
+        "fields": {
+          "currency": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "The currency of the price",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "id": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": true
+          },
+          "level": {
+            "blank": false,
+            "default": 0,
+            "help_text": "The burst level the price applies to",
+            "nullable": false,
+            "readonly": false,
+            "type": "integer",
+            "unique": false
+          },
+          "multiplier": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "The multiplier applied to get the price of one unit per second, from the unit of the price",
+            "nullable": false,
+            "readonly": true,
+            "type": "integer",
+            "unique": false
+          },
+          "price": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Price",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "resource": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "The resource the price applies to",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "unit": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "The unit of the price",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          }
+        },
+        "filtering": {
+          "level": 1
+        }
+      },
+      "status_code": 200
+    },
+    {
+      "anchor": "discounts",
+      "kind": "heading",
+      "level": 2,
+      "text": "Discounts"
+    },
+    {
+      "anchor": "id5",
+      "kind": "heading",
+      "level": 3,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "id6",
+      "kind": "heading",
+      "level": 3,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--discount-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/discount/"
+    },
+    {
+      "anchor": "id6",
+      "kind": "prose",
+      "text": "Get discount information."
+    },
+    {
+      "anchor": "id6",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "id6",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "id6",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "2ec1072b589f134a6fe8c86ac5eed0b2ca5394ef67f7b9139cced990dca2857f",
+      "path": "/api/2.0/discount/"
+    },
+    {
+      "anchor": "id6",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "id6",
+      "classification": "response-example",
+      "fixture_id": "fixture-457a16a6fe3811bd2f76de78",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 5
+        },
+        "objects": [
+          {
+            "period": "3 months",
+            "value": "0.0300000000"
+          },
+          {
+            "period": "6 months",
+            "value": "0.1000000000"
+          },
+          {
+            "period": "1 year",
+            "value": "0.2500000000"
+          },
+          {
+            "period": "2 years",
+            "value": "0.3500000000"
+          },
+          {
+            "period": "3 years",
+            "value": "0.4500000000"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/discount/"
+      },
+      "original_sha256": "f8a4fbbb5f2c5bb4d3ded00d12e3a2091019fa12d5430ef9e89f7ee2861373e4",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"value\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "id7",
+      "kind": "heading",
+      "level": 3,
+      "text": "Schema"
+    },
+    {
+      "anchor": "id7",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "09c8c5e6bba98599157e506a54977cb602ac820320e1c637a98266ac55f55a45",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 0,
+        "fields": {
+          "period": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "The minimum period for this discount",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "value": {
+            "blank": false,
+            "default": 0,
+            "help_text": "The value of the discount",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          }
+        }
+      },
+      "status_code": 200
+    },
+    {
+      "anchor": "transaction-list",
+      "kind": "heading",
+      "level": 2,
+      "text": "Transaction list"
+    },
+    {
+      "anchor": "id8",
+      "kind": "heading",
+      "level": 3,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "id9",
+      "kind": "heading",
+      "level": 3,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--ledger-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/ledger/"
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "Get the transactions for the account."
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "id9",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "3995da2c6384a777f7e2deefe8e2637ca5e3301884657c25c6eb9989d4caf3b5",
+      "path": "/api/2.0/ledger/"
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "id9",
+      "classification": "response-example",
+      "fixture_id": "fixture-dbeab21a1074fb776a70d065",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 98203
+        },
+        "objects": [
+          {
+            "amount": "0.00014583333333333333",
+            "billing_cycle": 105157,
+            "end": "469291.07488238102453490453",
+            "human_interval": "5 minutes",
+            "id": "39509304",
+            "initial": "469291.07502821435786823786",
+            "interval": 300,
+            "poll_time": "2014-06-05T09:06:06.713945+00:00",
+            "reason": "Burst: 4.50 GB of dssd for 5 minutes at 2014-06-05 09:06",
+            "resource_amount": "4831838208",
+            "time": "2014-06-05T09:08:47.992023+00:00"
+          },
+          {
+            "amount": "0.00908310000000000000",
+            "billing_cycle": 105150,
+            "end": "469291.07502821435786823786",
+            "human_interval": "2 minutes",
+            "id": "39506824",
+            "initial": "469291.08411131435786823786",
+            "interval": 137,
+            "poll_time": "2014-06-05T08:31:06.610957+00:00",
+            "reason": "Burst: 12.00 GHz of cpu for 2 minutes at 2014-06-05 08:31",
+            "resource_amount": "12000",
+            "time": "2014-06-05T08:33:48.047354+00:00"
+          },
+          {
+            "amount": "0.00255733333333333333",
+            "billing_cycle": 105150,
+            "end": "469291.08411131435786823786",
+            "human_interval": "2 minutes",
+            "id": "39506823",
+            "initial": "469291.08666864769120157119",
+            "interval": 137,
+            "poll_time": "2014-06-05T08:31:06.610957+00:00",
+            "reason": "Burst: 4.00 GB of mem for 2 minutes at 2014-06-05 08:31",
+            "resource_amount": "4294967296",
+            "time": "2014-06-05T08:33:48.036326+00:00"
+          },
+          {
+            "amount": "0.00014534722222222222",
+            "billing_cycle": 105148,
+            "end": "469291.08666864769120157119",
+            "human_interval": "5 minutes",
+            "id": "39506114",
+            "initial": "469291.08681399491342379341",
+            "interval": 299,
+            "poll_time": "2014-06-05T08:21:06.603517+00:00",
+            "reason": "Burst: 4.50 GB of dssd for 5 minutes at 2014-06-05 08:21",
+            "resource_amount": "4831838208",
+            "time": "2014-06-05T08:23:50.433096+00:00"
+          },
+          {
+            "amount": "-55.45000000000000284217",
+            "billing_cycle": null,
+            "end": "469291.08681399491342379341",
+            "human_interval": null,
+            "id": "39505412",
+            "initial": "469235.63681399491342095124",
+            "interval": null,
+            "poll_time": "2014-06-05T08:16:04.495196+00:00",
+            "reason": "Payment through card - 9fddd858-ec89-11e3-8c3b-00259082dfa8",
+            "resource_amount": "1",
+            "time": "2014-06-05T08:16:04.495183+00:00"
+          },
+          {
+            "amount": "-77.23000000000000397904",
+            "billing_cycle": null,
+            "end": "469235.63681399491342095124",
+            "human_interval": null,
+            "id": "39505411",
+            "initial": "469158.40681399491341697220",
+            "interval": null,
+            "poll_time": "2014-06-05T08:15:58.552271+00:00",
+            "reason": "Payment through card - 9c37a0bc-ec89-11e3-8c3b-00259082dfa8",
+            "resource_amount": "1",
+            "time": "2014-06-05T08:15:58.552247+00:00"
+          },
+          {
+            "amount": "0.00888420000000000000",
+            "billing_cycle": 105138,
+            "end": "469158.40681399491341697220",
+            "human_interval": "2 minutes",
+            "id": "39502556",
+            "initial": "469158.41569819491341697220",
+            "interval": 134,
+            "poll_time": "2014-06-05T07:31:06.597276+00:00",
+            "reason": "Burst: 12.00 GHz of cpu for 2 minutes at 2014-06-05 07:31",
+            "resource_amount": "12000",
+            "time": "2014-06-05T07:33:51.033990+00:00"
+          },
+          {
+            "amount": "0.00250133333333333333",
+            "billing_cycle": 105138,
+            "end": "469158.41569819491341697220",
+            "human_interval": "2 minutes",
+            "id": "39502555",
+            "initial": "469158.41819952824675030553",
+            "interval": 134,
+            "poll_time": "2014-06-05T07:31:06.597276+00:00",
+            "reason": "Burst: 4.00 GB of mem for 2 minutes at 2014-06-05 07:31",
+            "resource_amount": "4294967296",
+            "time": "2014-06-05T07:33:51.022223+00:00"
+          },
+          {
+            "amount": "0.00014534722222222222",
+            "billing_cycle": 105136,
+            "end": "469158.41819952824675030553",
+            "human_interval": "5 minutes",
+            "id": "39501851",
+            "initial": "469158.41834487546897252775",
+            "interval": 299,
+            "poll_time": "2014-06-05T07:21:06.607872+00:00",
+            "reason": "Burst: 4.50 GB of dssd for 5 minutes at 2014-06-05 07:21",
+            "resource_amount": "4831838208",
+            "time": "2014-06-05T07:23:49.590257+00:00"
+          },
+          {
+            "amount": "-55.45000000000000284217",
+            "billing_cycle": null,
+            "end": "469158.41834487546897252775",
+            "human_interval": null,
+            "id": "39501157",
+            "initial": "469102.96834487546896968558",
+            "interval": null,
+            "poll_time": "2014-06-05T07:16:04.926285+00:00",
+            "reason": "Payment through card - 3fe9a3bc-ec81-11e3-bf8f-00259082dfa8",
+            "resource_amount": "1",
+            "time": "2014-06-05T07:16:04.926273+00:00"
+          },
+          {
+            "amount": "-77.23000000000000397904",
+            "billing_cycle": null,
+            "end": "469102.96834487546896968558",
+            "human_interval": null,
+            "id": "39501156",
+            "initial": "469025.73834487546896570654",
+            "interval": null,
+            "poll_time": "2014-06-05T07:16:01.585853+00:00",
+            "reason": "Payment through card - 3dca136e-ec81-11e3-bf8f-00259082dfa8",
+            "resource_amount": "1",
+            "time": "2014-06-05T07:16:01.585840+00:00"
+          },
+          {
+            "amount": "0.00633993750000000000",
+            "billing_cycle": 105126,
+            "end": "469025.73834487546896570654",
+            "human_interval": "2 minutes",
+            "id": "39498298",
+            "initial": "469025.74468481296896570654",
+            "interval": 135,
+            "poll_time": "2014-06-05T06:31:06.554201+00:00",
+            "reason": "Burst: 8.50 GHz of cpu for 2 minutes at 2014-06-05 06:31",
+            "resource_amount": "8500",
+            "time": "2014-06-05T06:33:52.255963+00:00"
+          },
+          {
+            "amount": "0.00031500000000000000",
+            "billing_cycle": 105126,
+            "end": "469025.74468481296896570654",
+            "human_interval": "2 minutes",
+            "id": "39498297",
+            "initial": "469025.74499981296896570654",
+            "interval": 135,
+            "poll_time": "2014-06-05T06:31:06.554201+00:00",
+            "reason": "Burst: 0.50 GB of mem for 2 minutes at 2014-06-05 06:31",
+            "resource_amount": "536870912",
+            "time": "2014-06-05T06:33:52.244645+00:00"
+          },
+          {
+            "amount": "0.00014534722222222222",
+            "billing_cycle": 105124,
+            "end": "469025.74499981296896570654",
+            "human_interval": "5 minutes",
+            "id": "39497582",
+            "initial": "469025.74514516019118792876",
+            "interval": 299,
+            "poll_time": "2014-06-05T06:21:06.570020+00:00",
+            "reason": "Burst: 4.50 GB of dssd for 5 minutes at 2014-06-05 06:21",
+            "resource_amount": "4831838208",
+            "time": "2014-06-05T06:23:51.102193+00:00"
+          },
+          {
+            "amount": "-55.45000000000000284217",
+            "billing_cycle": null,
+            "end": "469025.74514516019118792876",
+            "human_interval": null,
+            "id": "39496879",
+            "initial": "468970.29514516019118508659",
+            "interval": null,
+            "poll_time": "2014-06-05T06:16:03.979389+00:00",
+            "reason": "Payment through card - dc2f7084-ec78-11e3-bf8f-00259082dfa8",
+            "resource_amount": "1",
+            "time": "2014-06-05T06:16:03.979376+00:00"
+          },
+          {
+            "amount": "-77.23000000000000397904",
+            "billing_cycle": null,
+            "end": "468970.29514516019118508659",
+            "human_interval": null,
+            "id": "39496878",
+            "initial": "468893.06514516019118110755",
+            "interval": null,
+            "poll_time": "2014-06-05T06:15:58.310868+00:00",
+            "reason": "Payment through card - d88fbc54-ec78-11e3-bf8f-00259082dfa8",
+            "resource_amount": "1",
+            "time": "2014-06-05T06:15:58.310852+00:00"
+          },
+          {
+            "amount": "0.00536987500000000000",
+            "billing_cycle": 105114,
+            "end": "468893.06514516019118110755",
+            "human_interval": "2 minutes",
+            "id": "39494022",
+            "initial": "468893.07051503519118110755",
+            "interval": 133,
+            "poll_time": "2014-06-05T05:31:06.501327+00:00",
+            "reason": "Burst: 7.50 GHz of cpu for 2 minutes at 2014-06-05 05:31",
+            "resource_amount": "7500",
+            "time": "2014-06-05T05:33:52.682096+00:00"
+          },
+          {
+            "amount": "0.00014583333333333333",
+            "billing_cycle": 105112,
+            "end": "468893.07051503519118110755",
+            "human_interval": "5 minutes",
+            "id": "39493319",
+            "initial": "468893.07066086852451444088",
+            "interval": 300,
+            "poll_time": "2014-06-05T05:21:06.511910+00:00",
+            "reason": "Burst: 4.50 GB of dssd for 5 minutes at 2014-06-05 05:21",
+            "resource_amount": "4831838208",
+            "time": "2014-06-05T05:23:50.866953+00:00"
+          },
+          {
+            "amount": "-55.45000000000000284217",
+            "billing_cycle": null,
+            "end": "468893.07066086852451444088",
+            "human_interval": null,
+            "id": "39492621",
+            "initial": "468837.62066086852451159871",
+            "interval": null,
+            "poll_time": "2014-06-05T05:15:59.277046+00:00",
+            "reason": "Payment through card - 78fc2118-ec70-11e3-8c3b-00259082dfa8",
+            "resource_amount": "1",
+            "time": "2014-06-05T05:15:59.277034+00:00"
+          },
+          {
+            "amount": "-77.23000000000000397904",
+            "billing_cycle": null,
+            "end": "468837.62066086852451159871",
+            "human_interval": null,
+            "id": "39492620",
+            "initial": "468760.39066086852450761967",
+            "interval": null,
+            "poll_time": "2014-06-05T05:15:55.898020+00:00",
+            "reason": "Payment through card - 76a699d4-ec70-11e3-8c3b-00259082dfa8",
+            "resource_amount": "1",
+            "time": "2014-06-05T05:15:55.898007+00:00"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/ledger/"
+      },
+      "original_sha256": "adbfbc6b045b2b3a785a58f6a097933d916f9810bb119bb6ab4d6beae35d8499",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"billing_cycle\"]",
+          "observed_types": [
+            "integer",
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"end\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"human_interval\"]",
+          "observed_types": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"id\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"interval\"]",
+          "observed_types": [
+            "integer",
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"poll_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"reason\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"time\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "id10",
+      "kind": "heading",
+      "level": 3,
+      "text": "Schema"
+    },
+    {
+      "anchor": "id10",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "fb98fc9b700e00cd6faafdf796d81ac230a27ac122185c0793715a1ac0db3ee4",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "amount": {
+            "blank": false,
+            "default": 0,
+            "help_text": "Amount of the operation, positive for debits, negative for credits",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "billing_cycle": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Billing cycle that generated this charge",
+            "nullable": true,
+            "readonly": false,
+            "type": "integer",
+            "unique": false
+          },
+          "end": {
+            "blank": false,
+            "default": 0,
+            "help_text": "Amount of money after the operation",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "human_interval": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Human readable interval of bill entry",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "id": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": true
+          },
+          "initial": {
+            "blank": false,
+            "default": 0,
+            "help_text": "Amount of money before the operation",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "interval": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Interval of bill entry",
+            "nullable": true,
+            "readonly": false,
+            "type": "integer",
+            "unique": false
+          },
+          "poll_time": {
+            "blank": false,
+            "default": "2014-06-05T09:41:58.809494+00:00",
+            "help_text": "A date & time as a string. Ex: \"2010-11-10T03:07:43\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "datetime",
+            "unique": false
+          },
+          "reason": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Description of the operation",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "resource_amount": {
+            "blank": false,
+            "default": 1,
+            "help_text": "Resource amount",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "time": {
+            "blank": false,
+            "default": "2014-06-05T09:41:58.809480+00:00",
+            "help_text": "A date & time as a string. Ex: \"2010-11-10T03:07:43\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "datetime",
+            "unique": false
+          }
+        },
+        "filtering": {
+          "billing_cycle": 1,
+          "time": 1
+        },
+        "ordering": [
+          "time"
+        ]
+      },
+      "status_code": 200
+    },
+    {
+      "anchor": "id11",
+      "kind": "heading",
+      "level": 2,
+      "text": "Discounts"
+    },
+    {
+      "anchor": "id12",
+      "kind": "heading",
+      "level": 3,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "id13",
+      "kind": "heading",
+      "level": 3,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--discount-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/discount/"
+    },
+    {
+      "anchor": "id13",
+      "kind": "prose",
+      "text": "Get discount information."
+    },
+    {
+      "anchor": "id13",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "id13",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "id13",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "2ec1072b589f134a6fe8c86ac5eed0b2ca5394ef67f7b9139cced990dca2857f",
+      "path": "/api/2.0/discount/"
+    },
+    {
+      "anchor": "id13",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "id13",
+      "classification": "response-example",
+      "fixture_id": "fixture-565e192f2c6c4838dbedd2e8",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 5
+        },
+        "objects": [
+          {
+            "period": "3 months",
+            "value": "0.0300000000"
+          },
+          {
+            "period": "6 months",
+            "value": "0.1000000000"
+          },
+          {
+            "period": "1 year",
+            "value": "0.2500000000"
+          },
+          {
+            "period": "2 years",
+            "value": "0.3500000000"
+          },
+          {
+            "period": "3 years",
+            "value": "0.4500000000"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/discount/"
+      },
+      "original_sha256": "f8a4fbbb5f2c5bb4d3ded00d12e3a2091019fa12d5430ef9e89f7ee2861373e4",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"value\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "id14",
+      "kind": "heading",
+      "level": 3,
+      "text": "Schema"
+    },
+    {
+      "anchor": "id14",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "09c8c5e6bba98599157e506a54977cb602ac820320e1c637a98266ac55f55a45",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 0,
+        "fields": {
+          "period": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "The minimum period for this discount",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "value": {
+            "blank": false,
+            "default": 0,
+            "help_text": "The value of the discount",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          }
+        }
+      },
+      "status_code": 200
+    },
+    {
+      "anchor": "licenses-list",
+      "kind": "heading",
+      "level": 2,
+      "text": "Licenses list"
+    },
+    {
+      "anchor": "id15",
+      "kind": "heading",
+      "level": 3,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "id16",
+      "kind": "heading",
+      "level": 3,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--licenses-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/licenses/"
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "Get the licenses available on the cloud. The type of the license can be one of:"
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "install - These licenses are billed per installation, regardless of whether it is attached to a running server or not."
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "instance - These licenses are billed per running instance of a server. A license attached to a guest that’s stopped is not billed."
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "stub - These licenses are billed per a metric specified by the customer (i.e. per number of users license)"
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "The user metric field specifies what attribute on the instance of the server is used for determining the number of licenses. For example, “smp” will count one license for each CPU/core in the virtual machine."
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "id16",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "92417be1f0186c7c5f74e5bf82fa445d64a2a21623b4fa0f84ec37fbbab80feb",
+      "path": "/api/2.0/licenses/"
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "id16",
+      "classification": "response-example",
+      "fixture_id": "fixture-f3f4bf00ecf9baca5e71f96b",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 4
+        },
+        "objects": [
+          {
+            "burstable": false,
+            "long_name": "SQL Server Enterprise Edition",
+            "name": "msft_7jq_00341",
+            "resource_uri": "/api/2.0/licenses/13/",
+            "type": "instance",
+            "user_metric": "smp"
+          },
+          {
+            "burstable": false,
+            "long_name": "SQL Server Standard Edition",
+            "name": "msft_7nq_00302",
+            "resource_uri": "/api/2.0/licenses/14/",
+            "type": "instance",
+            "user_metric": "smp"
+          },
+          {
+            "burstable": true,
+            "long_name": "Windows Server",
+            "name": "msft_p73_04837_core",
+            "resource_uri": "/api/2.0/licenses/12/",
+            "type": "instance",
+            "user_metric": "smp"
+          },
+          {
+            "burstable": false,
+            "long_name": "SQL Server Web",
+            "name": "msft_tfa_00523",
+            "resource_uri": "/api/2.0/licenses/15/",
+            "type": "instance",
+            "user_metric": "smp"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/licenses/"
+      },
+      "original_sha256": "18f9d14aa7e15c4598f1f7d5ed4875faa335b490d1b0b9cb122c736556f18cdc",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"burstable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"long_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"user_metric\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "id17",
+      "kind": "heading",
+      "level": 3,
+      "text": "Schema"
+    },
+    {
+      "anchor": "id17",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "3f9b1d45e0f71068ad9ff13c2e1a64274989b50b748b8404c0286f983d3df535",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "burstable": {
+            "blank": false,
+            "default": false,
+            "help_text": "Whether this resource can be used on burst",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          },
+          "long_name": {
+            "blank": false,
+            "default": "",
+            "help_text": "A human readable name for the resource.",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "name": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Name that should be used when purchasing",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": true
+          },
+          "resource_uri": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "type": {
+            "blank": false,
+            "default": "instance",
+            "help_text": "Type of billing",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "user_metric": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "The metric that the user is charged for",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          }
+        }
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "0249fd7aab0dd91a5c815aab8028e0d22792f647dd69dd6a8114f1c6f04b8e33",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/billing.html"
+}

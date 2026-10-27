@@ -1,0 +1,605 @@
+{
+  "blocks": [
+    {
+      "anchor": "backup-scheduler-api-field-reference",
+      "kind": "heading",
+      "level": 1,
+      "text": "Backup Scheduler API – Field Reference"
+    },
+    {
+      "anchor": "overview",
+      "kind": "heading",
+      "level": 2,
+      "text": "Overview"
+    },
+    {
+      "anchor": "overview",
+      "kind": "prose",
+      "text": "The Backup Scheduler API allows you to automate the creation and retention of snapshots or backups. You can configure when backups happen and how long to keep them, helping ensure disaster recovery and data lifecycle policies are respected."
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "heading",
+      "level": 2,
+      "text": "Required Fields"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "Field"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "Type"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "type"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "string"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "Type of scheduler. Allowed values: “snapshot” or “backup”"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "name"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "string"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "Descriptive name of the scheduler policy."
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "is_enabled"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "boolean"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "Enables or disables the policy."
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "is_default"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "boolean"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "This field sets the DR schedule operational period as Continous(is_default=True) or Restricted(is_default=False)."
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "enable_backup_policy_notifications"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "boolean"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "When set to True, the backup scheduler will trigger backup-related notifications (such as scheduled actions and creation events) if the corresponding notification type is also enabled in the user preferences."
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "enable_retention_policy_notifications"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "boolean"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "When set to True, the backup scheduler will trigger retention-related notifications (such as snapshot or backup deletions) if the corresponding notification type is also enabled in the user preferences."
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "retention_policy"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "object"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "Rules to automatically delete old backups."
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "incremental_backup"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "object"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "Defines the time(s) when backups occur."
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "user_timezone"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "string"
+    },
+    {
+      "anchor": "required-fields",
+      "kind": "prose",
+      "text": "The timezone used for schedule evaluation (e.g., “Etc/UTC”)."
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "heading",
+      "level": 2,
+      "text": "Optional Fields"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Field"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Type"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "manual_incremental_backup"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "string"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Comma-separated list of specific times in “HH:MM” format."
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "initial_backup"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "object"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Defines an optional one-time backup configuration."
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Used on migration schedules."
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Set the time for the initial full backup."
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "remote_location"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "string"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Location where backups will be stored (e.g., “ZRH”)."
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "meta"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "dict"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Optional metadata for custom integrations."
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "tags"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "list"
+    },
+    {
+      "anchor": "optional-fields",
+      "kind": "prose",
+      "text": "Optional tags for categorization or filtering."
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "heading",
+      "level": 2,
+      "text": "manual_incremental_backup"
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "prose",
+      "text": "Use when specific times like “02:00,14:00” are required. Only runs backups at the explicitly listed times. No other intervals will be used."
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "prose",
+      "text": "Property"
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "prose",
+      "text": "Format"
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "prose",
+      "text": "“HH:MM” (24-hour format), comma-separated"
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "prose",
+      "text": "Example"
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "prose",
+      "text": "“02:00,06:00,20:00,22:15”"
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "prose",
+      "text": "Can be used in combination with incremental_backup fields"
+    },
+    {
+      "anchor": "manual-incremental-backup",
+      "kind": "prose",
+      "text": "day_of_week, start_time, end_time"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "heading",
+      "level": 2,
+      "text": "incremental_backup"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Field"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Type"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "day_of_week"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "list[string]"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Weekdays to run backups. Valid values: “mon”, “tue”, …, “sun” or “*”."
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "day_of_month"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "string"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Days of month (e.g., “1,15”, or “*” for any day)."
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "month"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "string/list"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Months (e.g., “1,3,12” or “*”, which means every month)."
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "hour"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "string"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Specific hour(s) to run backups (e.g., “1”, “1,13”, or “*”, if used with repeat)."
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "minute"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "string"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Specific minute(s) to run backups (e.g., “0”, “0,30”, or “*”, if used with repeat)."
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "repeat"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "dict"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Specifies repeat interval. E.g., “{“hour”: “/12”}” or “{“minute”: “/15”}”."
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "start_time / end_time"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "object"
+    },
+    {
+      "anchor": "incremental-backup",
+      "kind": "prose",
+      "text": "Defines the time range within which scheduled or manual backups can run."
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "heading",
+      "level": 2,
+      "text": "retention_policy.rules"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "Each rule defines how long snapshots are retained based on time periods."
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "Field"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "Type"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "period"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "string"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "Time unit for retention. Allowed values: “days”, “weeks”, “months”."
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "quantity"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "integer"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "How many units of the specified period to retain (e.g., 2, 4, 12)."
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "time_option"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "integer (optional)"
+    },
+    {
+      "anchor": "retention-policy-rules",
+      "kind": "prose",
+      "text": "Restricts the rule to a specific day: - For weeks: Day of the week (“0”=Sunday, “6”=Saturday) - For months: Day of the month (“1” to “31”)"
+    },
+    {
+      "anchor": "example-rules",
+      "kind": "heading",
+      "level": 2,
+      "text": "Example Rules"
+    },
+    {
+      "anchor": "example-rules",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "1d428c55e3bd75b1876152b4a165cbc15588cbc919bd5dc022825e90177dff19"
+    },
+    {
+      "anchor": "example-rules",
+      "kind": "prose",
+      "text": "Notes:"
+    },
+    {
+      "anchor": "example-rules",
+      "kind": "prose",
+      "text": "Rules are evaluated together, keeping snapshots that match any rule."
+    },
+    {
+      "anchor": "example-rules",
+      "kind": "prose",
+      "text": "Snapshots outside all rules are deleted automatically."
+    }
+  ],
+  "html_sha256": "5d386ea16f222fd30552400abbe271778cc397431629322efbdd3881168191ae",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_scheduler_every_45_minutes.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_field_reference.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/backup_schedulers_field_reference.html"
+}

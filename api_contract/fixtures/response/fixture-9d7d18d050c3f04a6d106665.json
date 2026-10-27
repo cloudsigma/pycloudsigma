@@ -1,0 +1,39 @@
+{
+  "affinities": [],
+  "allow_multimount": false,
+  "backup_scheduler": {
+    "resource_uri": "/api/2.0/backupschedulers/103de42c-17a1-40ea-bc0f-521789168bbf/",
+    "uuid": "103de42c-17a1-40ea-bc0f-521789168bbf"
+  },
+  "grantees": [],
+  "iops": null,
+  "jobs": [],
+  "licenses": [],
+  "media": "disk",
+  "meta": {},
+  "mounted_on": [],
+  "name": "test_drive_remote_snapshot_1",
+  "owner": {
+    "resource_uri": "/api/2.0/user/18f6256b-90a2-4908-b671-c28c6b79c020/",
+    "uuid": "18f6256b-90a2-4908-b671-c28c6b79c020"
+  },
+  "permissions": [],
+  "remote_snapshots": [],
+  "resource_uri": "/api/2.0/drives/34f9c721-ec23-4f5c-86ab-2839f687f14e/",
+  "runtime": {
+    "is_snapshotable": true,
+    "snapshots_allocated_size": 0,
+    "storage_type": "dssd"
+  },
+  "size": 1073741824,
+  "snapshots": [],
+  "status": "unmounted",
+  "storage_type": "dssd",
+  "tags": [
+    {
+      "resource_uri": "/api/2.0/tags/6310b9fb-a411-49cc-9381-15f51022b26a/",
+      "uuid": "6310b9fb-a411-49cc-9381-15f51022b26a"
+    }
+  ],
+  "uuid": "34f9c721-ec23-4f5c-86ab-2839f687f14e"
+}

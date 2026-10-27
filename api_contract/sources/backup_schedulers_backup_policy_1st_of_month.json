@@ -1,0 +1,147 @@
+{
+  "blocks": [
+    {
+      "anchor": "st-of-the-month-backup-policy",
+      "kind": "heading",
+      "level": 1,
+      "text": "1st of the Month Backup Policy"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "heading",
+      "level": 2,
+      "text": "Introduction"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "prose",
+      "text": "This backup policy is designed to take one remote snapshot per month, specifically on the 1st day of each month at 23:00 UTC. It uses a monthly retention strategy, keeping one backup per month for the last 12 months."
+    },
+    {
+      "anchor": "scheduler-configuration",
+      "kind": "heading",
+      "level": 2,
+      "text": "Scheduler Configuration"
+    },
+    {
+      "anchor": "scheduler-configuration",
+      "kind": "prose",
+      "text": "Frequency: Monthly, on the 1st day of every month at 23:00 UTC"
+    },
+    {
+      "anchor": "scheduler-configuration",
+      "kind": "prose",
+      "text": "Retention Rule: - Keep one backup per month for the last 12 months"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "heading",
+      "level": 2,
+      "text": "Snapshot Timeline (1 Year)"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "prose",
+      "text": "After one year of operation:"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "prose",
+      "text": "You will have 12 monthly backups (one for each of the past 12 months)"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "prose",
+      "text": "Older backups (beyond 12 months) are automatically deleted"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "prose",
+      "text": "Total snapshots retained after 1 year: 12"
+    },
+    {
+      "anchor": "api-summary",
+      "kind": "heading",
+      "level": 2,
+      "text": "API Summary"
+    },
+    {
+      "anchor": "api-summary",
+      "kind": "prose",
+      "text": "Endpoint:"
+    },
+    {
+      "anchor": "api-summary",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "7cbeff95793706523aa64b9efbb8e873d98108908bed62dcd16ca49acc8cc476"
+    },
+    {
+      "anchor": "api-summary",
+      "kind": "prose",
+      "text": "JSON Payload:"
+    },
+    {
+      "anchor": "api-summary",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "3c8c7e4e8b6df1379be0c8a625f852dc168fda43db62bd3e80aca600a79f9be3"
+    }
+  ],
+  "html_sha256": "6a0bdff28e5df51f03adf81221a7d25874546a2acb1bb16d0aec35b8cd1671d9",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_policy_1st_of_month.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_scheduler_every_45_minutes.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_scheduler_every_hour_20_00_23_00.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_bi_monthly_snapshot_policy.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_every_first_of_month_2359.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_every_sunday_23_00.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_sfg_retention_strategy.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_snapshot_every_12_hours_keep_last_2_days.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_snapshot_policy_defined_hours_backups_keep_1_month.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_weekdays_3am_snapshot_policy.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_weekdays_workhours_backup_policy.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_policy_1st_of_month.html"
+}

@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "limit": 20,
+    "offset": 0,
+    "total_count": 2
+  },
+  "objects": [
+    {
+      "amount": 2,
+      "drive": {
+        "resource_uri": "/api/2.0/drives/9876be5b-db07-4bc3-99cb-00c7ff55ec19/",
+        "uuid": "9876be5b-db07-4bc3-99cb-00c7ff55ec19"
+      }
+    },
+    {
+      "amount": 4,
+      "drive": {
+        "resource_uri": "/api/2.0/drives/5a613e14-0e74-4f2c-b5b8-cf8e0403488a/",
+        "uuid": "5a613e14-0e74-4f2c-b5b8-cf8e0403488a"
+      }
+    }
+  ]
+}

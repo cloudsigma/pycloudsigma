@@ -1,0 +1,18 @@
+{
+  "objects": [
+    {
+      "amount": "10000000000",
+      "discount_amount": "0E-24",
+      "discount_percent": "0",
+      "discounts": {},
+      "end_time": "2015-04-20T12:00:00+00:00",
+      "free_tier": false,
+      "period": "31 days, 22:04:59.904871",
+      "price": "1.010484993457794189453125",
+      "resource": "dssd",
+      "start_time": "2015-03-19T13:55:00.095129+00:00",
+      "was_billed": true
+    }
+  ],
+  "price": "1.010484993457794189453125"
+}

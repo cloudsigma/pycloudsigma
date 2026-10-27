@@ -1,0 +1,20 @@
+{
+  "objects": [
+    {
+      "forwarding_host": "10.0.1.22",
+      "forwarding_port": 2222,
+      "jobs": [
+        {
+          "resource_uri": "/api/2.0/jobs/63fb18bf-b486-44f4-a9a0-df8239a1b125/",
+          "uuid": "63fb18bf-b486-44f4-a9a0-df8239a1b125"
+        }
+      ],
+      "mapped_port": 22,
+      "nat": "38589c2f-035e-4616-9cca-1d93e71490d5",
+      "order": 2,
+      "protocol": "TCP",
+      "resource_uri": "/api/2.0/portforwards/a6626dca-bd73-420c-bb86-bfced4de0e78/",
+      "uuid": "a6626dca-bd73-420c-bb86-bfced4de0e78"
+    }
+  ]
+}

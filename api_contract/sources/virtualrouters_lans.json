@@ -1,0 +1,511 @@
+{
+  "blocks": [
+    {
+      "anchor": "virtual-routers-lans",
+      "kind": "heading",
+      "level": 1,
+      "text": "Virtual Routers Lans"
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "put--virtualrouters-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/virtualrouters/{uuid}/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits a virtual router LAN Interface. Note that only name and order fields can be changed, and all other changes to the definition of a LAN Interface will be ignored."
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "d1050a8fde224398844b3e18b510c33942424863fdefc0f5200d2bd8f532435a",
+      "path": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "dhcp_range_from": "10.0.0.100",
+        "dhcp_range_to": "10.0.0.200",
+        "dhcp_vlan_gateway": "10.0.1.1/24",
+        "iface": "vtnet1",
+        "internet_protocol": "ipv4",
+        "ip_aliases": [],
+        "ipv4_address_gateway": "10.0.1.1/24",
+        "ipv4_dhcp_enabled": false,
+        "ipv6_address_gateway": null,
+        "ipv6_router_advertirser_enabled": false,
+        "name": "WORM HOLE",
+        "order": 1,
+        "resource_uri": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/",
+        "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+        "virtual_router": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2",
+        "vlan": {
+          "resource_uri": "/api/2.0/vlans/68317648-0a2a-4fb4-b179-700fa4dc359d/",
+          "uuid": "68317648-0a2a-4fb4-b179-700fa4dc359d"
+        }
+      },
+      "kind": "code",
+      "original_sha256": "5c7a64f70916dda042a6166de7c1488f738e1737aaa7e16d7694b3cde3a65502",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"dhcp_range_from\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"dhcp_range_to\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"dhcp_vlan_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"iface\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"internet_protocol\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"ip_aliases\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"ipv4_address_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"ipv4_dhcp_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"ipv6_address_gateway\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"ipv6_router_advertirser_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"virtual_router\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vlan\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"vlan\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vlan\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "configure-dhcp",
+      "kind": "heading",
+      "level": 2,
+      "text": "Configure DHCP"
+    },
+    {
+      "anchor": "post--lans-uuid-action-?do=configure_dhcp",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/lans/{uuid}/action/?do=configure_dhcp"
+    },
+    {
+      "anchor": "configure-dhcp",
+      "kind": "prose",
+      "text": "Configures the DHCP service for a Virtual Router LAN Interface."
+    },
+    {
+      "anchor": "configure-dhcp",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "configure-dhcp",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "configure-dhcp",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "326a5f4655648d42963a91a147a16c660d7778fb9d405ce480841ca884038c30",
+      "path": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/action/?do=configure_dhcp"
+    },
+    {
+      "anchor": "configure-dhcp",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "configure-dhcp",
+      "classification": "response-example",
+      "fixture_id": "fixture-b3f6ea1371cce122e70dc3dc",
+      "fixture_payload": {
+        "action": "configure_dhcp",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/7205b0a5-89f9-4726-aaaa-bfa422e630ee/",
+          "uuid": "7205b0a5-89f9-4726-aaaa-bfa422e630ee"
+        },
+        "result": "success",
+        "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/lans/{uuid}/action/?do=configure_dhcp"
+      },
+      "original_sha256": "e81b444f2bdc8f006b9cb8fb8267318d85e7b792f8d68c5fa4f07d026499b604",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "068090e2cc8b0f6f109bf38ecccc293b2114c4a8fb75539848d7db39b47a6d5c",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "put",
+          "delete"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "put",
+          "delete",
+          "post"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "dhcp_range_from": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "dhcp_range_to": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "dhcp_vlan_gateway": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "iface": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "internet_protocol": {
+            "choices": [
+              "ipv4",
+              "ipv6",
+              "both"
+            ],
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "ip_aliases": {
+            "default": [],
+            "help_text": "A list of data. Ex: ['abc', 26.73, 8]",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "ipv4_address_gateway": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "ipv4_dhcp_enabled": {
+            "default": null,
+            "help_text": "Boolean data. Ex: True",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "ipv6_address_gateway": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "ipv6_router_advertirser_enabled": {
+            "default": null,
+            "help_text": "Boolean data. Ex: True",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "name": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "order": {
+            "default": null,
+            "help_text": "Integer data. Ex: 2673",
+            "readonly": false,
+            "required": true,
+            "type": "integer"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "UUID of the virtual router LAN interface",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "virtual_router": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "vlan": {
+            "default": null,
+            "help_text": "A single related resource. Can be either a URI or set of nested resource data.",
+            "readonly": false,
+            "required": true,
+            "type": "related"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        },
+        "ordering": [
+          "uuid",
+          "name"
+        ]
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "fb23dc5759e19bac6c56344f167fda635598c3e805833d9fd2f416a5045d4a6b",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_filters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_policies.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_ipaliases.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_lans.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_port_forwarding.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_routes.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_upstream.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_vpn_tunnels.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_lans.html"
+}

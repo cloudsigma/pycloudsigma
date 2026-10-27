@@ -1,0 +1,1769 @@
+{
+  "blocks": [
+    {
+      "anchor": "release-notes",
+      "kind": "heading",
+      "level": 1,
+      "text": "Release Notes"
+    },
+    {
+      "anchor": "releases",
+      "kind": "heading",
+      "level": 2,
+      "text": "2026 Releases"
+    },
+    {
+      "anchor": "id1",
+      "kind": "heading",
+      "level": 3,
+      "text": "2609"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Date Released: 2026-09-21"
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Server creation dates are available through the API, server-details pages, and detailed usage reports."
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Backup-retention windows use consistent UTC-based timing across CloudSigma locations."
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "Mixed GPU and virtual GPU hosts can fall back to standard virtual machine allocation where supported."
+    },
+    {
+      "anchor": "id1",
+      "kind": "prose",
+      "text": "This release also includes further reliability updates across virtual machine provisioning, backup handling, and billing services."
+    },
+    {
+      "anchor": "id2",
+      "kind": "heading",
+      "level": 3,
+      "text": "2608"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Date Released: 2026-08-17"
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Grouped subscription lists can return all matching subscriptions without the previous response limit."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Customers can select a billing-limit mode through the profile API where this capability is available."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "CDR reports can be downloaded, reviewed, and post-processed through dedicated reporting tools for partner accounts."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Backup scheduler details show all drives attached to a backup schedule, including for partner-managed resources."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Partner administrators can review notification-contact synchronization status and repair affected contacts from the notification service tools."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "One-time-password device details provide expanded information for partner account-support operations."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Cloud locations can apply configurable virtual CPU-pinning strategies for supported virtual machine workloads."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Service-provider payment requests support a location-scoped payment reference, which is returned in the service-provider response."
+    },
+    {
+      "anchor": "id2",
+      "kind": "prose",
+      "text": "Numerous additional improvements strengthen cloud operations, billing controls, notifications, and platform stability."
+    },
+    {
+      "anchor": "id3",
+      "kind": "heading",
+      "level": 3,
+      "text": "2607"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Date Released: 2026-07-15"
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Supported virtual machines can use multiple public IPv4 addresses on a single network interface."
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "UEFI and SMBIOS settings provide broader virtual machine compatibility."
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "Partner CDR reports can be downloaded as a single ZIP archive."
+    },
+    {
+      "anchor": "id3",
+      "kind": "prose",
+      "text": "The release also contains further refinements to virtual machine management, storage handling, and cloud service reliability."
+    },
+    {
+      "anchor": "id4",
+      "kind": "heading",
+      "level": 3,
+      "text": "2606"
+    },
+    {
+      "anchor": "id4",
+      "kind": "prose",
+      "text": "Date Released: 2026-06-09"
+    },
+    {
+      "anchor": "id4",
+      "kind": "prose",
+      "text": "This release delivers a major modernization of CloudSigma’s core cloud platform, following several months of work across the API, cloud control services, and compute infrastructure."
+    },
+    {
+      "anchor": "id4",
+      "kind": "prose",
+      "text": "The API and core services now run on an updated foundation for long-term platform support and compatibility with current infrastructure."
+    },
+    {
+      "anchor": "id4",
+      "kind": "prose",
+      "text": "Core virtual machine, storage, networking, billing, and account services have been transitioned to the modernized platform foundation."
+    },
+    {
+      "anchor": "id4",
+      "kind": "prose",
+      "text": "The update strengthens the platform’s ability to support newer cloud infrastructure, virtual machine configurations, and service integrations."
+    },
+    {
+      "anchor": "id4",
+      "kind": "prose",
+      "text": "Customers and partners benefit from a more maintainable and future-ready cloud platform while retaining the familiar CloudSigma API and cloud-management experience."
+    },
+    {
+      "anchor": "id4",
+      "kind": "prose",
+      "text": "This work also provides a stronger foundation for delivering future features and platform capabilities across CloudSigma locations."
+    },
+    {
+      "anchor": "id4",
+      "kind": "prose",
+      "text": "It also incorporates a wide range of stability, compatibility, and service-quality improvements across the platform."
+    },
+    {
+      "anchor": "id5",
+      "kind": "heading",
+      "level": 3,
+      "text": "2602"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "Date Released: 2026-02-25"
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "SATA is available as a virtual machine drive emulation type."
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "UEFI virtual machines can use SATA CD-ROM devices where required."
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "VPC API responses provide allocation-pool details instead of only an allocation-pool UUID."
+    },
+    {
+      "anchor": "id5",
+      "kind": "prose",
+      "text": "Additional updates improve compatibility and reliability across networking, storage, and virtual machine services."
+    },
+    {
+      "anchor": "id6",
+      "kind": "heading",
+      "level": 3,
+      "text": "2601"
+    },
+    {
+      "anchor": "id6",
+      "kind": "prose",
+      "text": "Date Released: 2026-01-21"
+    },
+    {
+      "anchor": "id6",
+      "kind": "prose",
+      "text": "NVIDIA L40S GPU resources are available for supported cloud configurations."
+    },
+    {
+      "anchor": "id6",
+      "kind": "prose",
+      "text": "Snapshot schedules can be configured for recurring backup creation."
+    },
+    {
+      "anchor": "id6",
+      "kind": "prose",
+      "text": "This release also includes further improvements to cloud resource management, account services, and platform stability."
+    },
+    {
+      "anchor": "id7",
+      "kind": "heading",
+      "level": 2,
+      "text": "2025 Releases"
+    },
+    {
+      "anchor": "id8",
+      "kind": "heading",
+      "level": 3,
+      "text": "2511"
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "Date Released: 2025-12-10"
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "We resolved Object Storage billing calculations to ensure accurate usage tracking and charges."
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "UEFI boot method support has been fully implemented for modern virtual machine configurations."
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "vTPM (Virtual Trusted Platform Module) functionality is now available for enhanced security features."
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "Drive device type selectors have been updated for better hardware compatibility options."
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "UEFI and BIOS support capabilities are now exposed through improved API endpoints."
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "Storage tiers have been implemented for Object Storage with differentiated service levels."
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "Guest virtual machine startup performance has been optimized for faster boot times."
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "Guest cloning operations have been profiled and optimized to eliminate bottlenecks."
+    },
+    {
+      "anchor": "id8",
+      "kind": "prose",
+      "text": "CPU speed limiting mechanisms have been documented and improved for better control, along with numerous other infrastructure improvements and optimizations."
+    },
+    {
+      "anchor": "id9",
+      "kind": "heading",
+      "level": 3,
+      "text": "2510"
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "Date Released: 2025-10-16"
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "We resolved billing cycle and auto-renewal issues that were affecting some saved card payments."
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "Fixed notification delays when new user accounts are created through management interfaces."
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "Multiple email contacts per user are now handled more efficiently in notification workflows."
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "Snapshot scheduler items now require drives to be attached to running VMs for creation."
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "VNC and console tunnel services have been refactored to improve the stability."
+    },
+    {
+      "anchor": "id9",
+      "kind": "prose",
+      "text": "We significantly enhanced the notification system with improved multi-language support, faster delivery times, better error handling, and more reliable email processing across the entire platform."
+    },
+    {
+      "anchor": "id10",
+      "kind": "heading",
+      "level": 3,
+      "text": "2508"
+    },
+    {
+      "anchor": "id10",
+      "kind": "prose",
+      "text": "Date Released: 2025-08-20"
+    },
+    {
+      "anchor": "id10",
+      "kind": "prose",
+      "text": "Local storage drives can now be resized while in staging state, improving flexibility during provisioning."
+    },
+    {
+      "anchor": "id10",
+      "kind": "prose",
+      "text": "Enhanced Object Storage performance with optimized data handling and retrieval mechanisms."
+    },
+    {
+      "anchor": "id10",
+      "kind": "prose",
+      "text": "Storage allocation algorithms have been optimized for better resource distribution."
+    },
+    {
+      "anchor": "id10",
+      "kind": "prose",
+      "text": "API response times have been reduced through query optimization and caching improvements."
+    },
+    {
+      "anchor": "id10",
+      "kind": "prose",
+      "text": "Backup scheduling mechanisms have been updated to handle timezone differences correctly."
+    },
+    {
+      "anchor": "id10",
+      "kind": "prose",
+      "text": "System health checks have been expanded to cover additional service components."
+    },
+    {
+      "anchor": "id10",
+      "kind": "prose",
+      "text": "Configuration validation has been enhanced to catch errors before deployment, along with numerous other stability improvements and performance optimizations."
+    },
+    {
+      "anchor": "id11",
+      "kind": "heading",
+      "level": 3,
+      "text": "2505"
+    },
+    {
+      "anchor": "id11",
+      "kind": "prose",
+      "text": "Date Released: 2025-06-09"
+    },
+    {
+      "anchor": "id11",
+      "kind": "prose",
+      "text": "We’ve improved GPU resource management so your devices work smoothly without any allocation conflicts in our cloud environments."
+    },
+    {
+      "anchor": "id11",
+      "kind": "prose",
+      "text": "We optimized message queue performance to keep things running fast and reduce those pesky processing delays across all our locations."
+    },
+    {
+      "anchor": "id11",
+      "kind": "prose",
+      "text": "We’ve been working hard preparing our next-generation VNC service to give you even better remote access capabilities."
+    },
+    {
+      "anchor": "id11",
+      "kind": "prose",
+      "text": "We made scheduler functionality smarter with automated local snapshot creation and deletion to make your life easier."
+    },
+    {
+      "anchor": "id11",
+      "kind": "prose",
+      "text": "We enhanced authentication workflows across all our cloud services for a smoother and more secure experience."
+    },
+    {
+      "anchor": "id11",
+      "kind": "prose",
+      "text": "And numerous additional fixes, optimizations, and system improvements for enhanced stability and performance."
+    },
+    {
+      "anchor": "id12",
+      "kind": "heading",
+      "level": 3,
+      "text": "2504"
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "Date Released: 2025-05-08"
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "Fixed authentication issues where users with two-factor authentication enabled experienced login problems when email addresses differed between linked accounts."
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "Implemented enhanced websocket services with production-ready configurations for improved real-time communication capabilities."
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "Optimized storage usage monitoring with accurate burst amount calculations for better resource management."
+    },
+    {
+      "anchor": "id12",
+      "kind": "prose",
+      "text": "Additionally, we addressed various other minor bug fixes and performance improvements across the platform."
+    },
+    {
+      "anchor": "id13",
+      "kind": "heading",
+      "level": 3,
+      "text": "2503"
+    },
+    {
+      "anchor": "id13",
+      "kind": "prose",
+      "text": "Date Released: 2025-04-01"
+    },
+    {
+      "anchor": "id13",
+      "kind": "prose",
+      "text": "Library drives received major upgrades to Architecture flag functionality in both the frontend and API, allowing for more precise control and improved system recognition."
+    },
+    {
+      "anchor": "id13",
+      "kind": "prose",
+      "text": "Performance metrics show significant improvements thanks to streamlined resource allocation processes, reducing overhead and optimizing performance in high-demand environments."
+    },
+    {
+      "anchor": "id13",
+      "kind": "prose",
+      "text": "Additionally, this release includes numerous stability enhancements, minor bug resolutions, and quality-of-life improvements throughout the platform ecosystem."
+    },
+    {
+      "anchor": "id14",
+      "kind": "heading",
+      "level": 3,
+      "text": "2502.2"
+    },
+    {
+      "anchor": "id14",
+      "kind": "prose",
+      "text": "Date Released: 2025-02-20"
+    },
+    {
+      "anchor": "id14",
+      "kind": "prose",
+      "text": "Enhanced security measures have been implemented to properly handle authentication states during logout processes across all integrated systems."
+    },
+    {
+      "anchor": "id14",
+      "kind": "prose",
+      "text": "Fixed an issue where virtual machines could occasionally remain in maintenance status after migration attempts."
+    },
+    {
+      "anchor": "id14",
+      "kind": "prose",
+      "text": "For our partners, we’ve added a convenient “mark all” button functionality in the management interface to streamline bulk operations."
+    },
+    {
+      "anchor": "id14",
+      "kind": "prose",
+      "text": "Updated the resource monitoring system to provide better visibility into Free Tier usage and consumption metrics."
+    },
+    {
+      "anchor": "id14",
+      "kind": "prose",
+      "text": "Additional improvements include 18 bug fixes and enhancements across platform components, focusing on system stability, security patches, and user interface refinements."
+    },
+    {
+      "anchor": "id15",
+      "kind": "heading",
+      "level": 3,
+      "text": "2502.1"
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "Date Released: 2025-02-06"
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "The detailed reporting system has been enhanced with additional metrics and improved clarity."
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "We’ve enhanced your security protection across the platform, ensuring a safer environment for your operations."
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "Your feedback helped us refine permission handling with clearer messages and smoother validations."
+    },
+    {
+      "anchor": "id15",
+      "kind": "prose",
+      "text": "Along with 15 additional platform enhancements, bug fixes, and system improvements to ensure a smoother and more reliable experience for your daily operations."
+    },
+    {
+      "anchor": "id16",
+      "kind": "heading",
+      "level": 3,
+      "text": "2501"
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "Date Released: 2025-01-20"
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "We enhanced the subscription management experience by improving the visibility of payment notifications and adding detailed tax breakdowns in the billing history."
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "We optimized the storage management system with improved drive allocation strategies and better handling of volume operations."
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "Our guest management system received significant updates with smarter startup processes and more efficient data migration handling."
+    },
+    {
+      "anchor": "id16",
+      "kind": "prose",
+      "text": "Administrative functions have been fortified with additional configuration options and improved access control settings for the partners."
+    },
+    {
+      "anchor": "id17",
+      "kind": "heading",
+      "level": 2,
+      "text": "2024 Releases"
+    },
+    {
+      "anchor": "id18",
+      "kind": "heading",
+      "level": 3,
+      "text": "2412"
+    },
+    {
+      "anchor": "id18",
+      "kind": "prose",
+      "text": "Date Released: 2025-01-06"
+    },
+    {
+      "anchor": "id18",
+      "kind": "prose",
+      "text": "New configuration options have been added to support flexible currency settings and billing operations."
+    },
+    {
+      "anchor": "id18",
+      "kind": "prose",
+      "text": "Advanced storage healing capabilities have been implemented to ensure data integrity and system reliability."
+    },
+    {
+      "anchor": "id18",
+      "kind": "prose",
+      "text": "Implementation of location-specific features now includes new invoice templates and notification systems in multiple languages."
+    },
+    {
+      "anchor": "id18",
+      "kind": "prose",
+      "text": "System performance has been boosted through message volume reduction and improved runtime task processing, particularly focusing on GPU functionality."
+    },
+    {
+      "anchor": "id18",
+      "kind": "prose",
+      "text": "User experience has been enhanced with improved interface responsiveness and optimized client-side performance."
+    },
+    {
+      "anchor": "id19",
+      "kind": "heading",
+      "level": 3,
+      "text": "2411"
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "Date Released: 2024-11-21"
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "We’ve enhanced our overall snapshot management system with improved functionality and reliability."
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "Authentication workflows have been optimized to improve security and performance across all services."
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "Storage management interface now includes advanced filtering and sorting capabilities."
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "WebApp drive upload functionality has been stabilized and optimized across all locations."
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "Backend processing has been enhanced to improve response times during peak usage."
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "Drive management capabilities now include the option to unassign backup schedules."
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "Detailed usage report functionality is now available in the Management Interface for partners, and it will be expanded to all users in the next releases."
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "The resource allocation system has been upgraded to handle concurrent requests more efficiently."
+    },
+    {
+      "anchor": "id19",
+      "kind": "prose",
+      "text": "We’re working on enhancing the notification system to provide more stable status updates and urgent messages."
+    },
+    {
+      "anchor": "id20",
+      "kind": "heading",
+      "level": 3,
+      "text": "2410"
+    },
+    {
+      "anchor": "id20",
+      "kind": "prose",
+      "text": "Date Released: 2024-10-14"
+    },
+    {
+      "anchor": "id20",
+      "kind": "prose",
+      "text": "We enhanced our resource monitoring system by resolving an issue where the automated alert mechanism failed to send critical notifications."
+    },
+    {
+      "anchor": "id20",
+      "kind": "prose",
+      "text": "We improved VMWare server management by resolving a synchronization problem that prevented timely updates of server states."
+    },
+    {
+      "anchor": "id20",
+      "kind": "prose",
+      "text": "Implemented post-migration memory limit application to ensure proper resource management in the new environment."
+    },
+    {
+      "anchor": "id20",
+      "kind": "prose",
+      "text": "This release also includes numerous other optimizations, bug fixes, and performance enhancements to improve overall system stability and user experience."
+    },
+    {
+      "anchor": "id21",
+      "kind": "heading",
+      "level": 3,
+      "text": "2409"
+    },
+    {
+      "anchor": "id21",
+      "kind": "prose",
+      "text": "Date Released: 2024-09-15"
+    },
+    {
+      "anchor": "id21",
+      "kind": "prose",
+      "text": "We’ve addressed an issue where users encountered errors when attempting to access certain API resources without proper permissions."
+    },
+    {
+      "anchor": "id21",
+      "kind": "prose",
+      "text": "The system now provides clear error messages when invalid values are entered for critical configuration settings, ensuring more robust user inputs."
+    },
+    {
+      "anchor": "id21",
+      "kind": "prose",
+      "text": "Enhanced logging capabilities have been implemented to track and record specific user actions for improved auditing and security purposes."
+    },
+    {
+      "anchor": "id21",
+      "kind": "prose",
+      "text": "A significant refactoring effort has been undertaken to improve the atomicity and reliability of core billing processes."
+    },
+    {
+      "anchor": "id21",
+      "kind": "prose",
+      "text": "The file upload workflow has been optimized to resolve long-standing issues and improve overall performance."
+    },
+    {
+      "anchor": "id22",
+      "kind": "heading",
+      "level": 3,
+      "text": "2408"
+    },
+    {
+      "anchor": "id22",
+      "kind": "prose",
+      "text": "Date Released: 2024-08-19"
+    },
+    {
+      "anchor": "id22",
+      "kind": "prose",
+      "text": "Upgraded security measures and authentication processes across the platform."
+    },
+    {
+      "anchor": "id22",
+      "kind": "prose",
+      "text": "Optimized backend systems for better performance and reliability."
+    },
+    {
+      "anchor": "id22",
+      "kind": "prose",
+      "text": "Improved API functionality for more efficient resource management and usage reporting."
+    },
+    {
+      "anchor": "id23",
+      "kind": "heading",
+      "level": 3,
+      "text": "2407"
+    },
+    {
+      "anchor": "id23",
+      "kind": "prose",
+      "text": "Date Released: 2024-07-23"
+    },
+    {
+      "anchor": "id23",
+      "kind": "prose",
+      "text": "Optimized promo code functionality across the platform."
+    },
+    {
+      "anchor": "id23",
+      "kind": "prose",
+      "text": "Updated VLAN information display for better visibility and management."
+    },
+    {
+      "anchor": "id23",
+      "kind": "prose",
+      "text": "This release introduces several new features and addresses multiple bug fixes, enhancing overall platform performance."
+    },
+    {
+      "anchor": "id24",
+      "kind": "heading",
+      "level": 3,
+      "text": "2406"
+    },
+    {
+      "anchor": "id24",
+      "kind": "prose",
+      "text": "Date Released: 2024-06-17"
+    },
+    {
+      "anchor": "id24",
+      "kind": "prose",
+      "text": "We’ve been busy making things smoother for you! Enjoy an improved user experience."
+    },
+    {
+      "anchor": "id24",
+      "kind": "prose",
+      "text": "Get ready for an enhanced information experience! We’re optimizing our documents for clarity and ease of access."
+    },
+    {
+      "anchor": "id24",
+      "kind": "prose",
+      "text": "This update squashed 20 pesky bugs and introduced several core system enhancements for a smoother ride."
+    },
+    {
+      "anchor": "id25",
+      "kind": "heading",
+      "level": 3,
+      "text": "2405"
+    },
+    {
+      "anchor": "id25",
+      "kind": "prose",
+      "text": "Date Released: 2024-05-21"
+    },
+    {
+      "anchor": "id25",
+      "kind": "prose",
+      "text": "We have fixed an inconvenience with Access Control Lists and one of the accounts gets removed. Now it works much better."
+    },
+    {
+      "anchor": "id25",
+      "kind": "prose",
+      "text": "Also, we’ve further improved our shiny new payment module."
+    },
+    {
+      "anchor": "id25",
+      "kind": "prose",
+      "text": "And more! With a sprinkle of code and a dash of innovation, our tech alchemists have brewed up 26 improvements!"
+    },
+    {
+      "anchor": "id25",
+      "kind": "prose",
+      "text": "Get ready for a smoother, more secure, and delightful cloud experience."
+    },
+    {
+      "anchor": "id26",
+      "kind": "heading",
+      "level": 3,
+      "text": "2404"
+    },
+    {
+      "anchor": "id26",
+      "kind": "prose",
+      "text": "Date Released: 2024-04-13"
+    },
+    {
+      "anchor": "id26",
+      "kind": "prose",
+      "text": "While there are no new groundbreaking features at this time, we’ve been busy making improvements behind the scenes to enhance stability, security, and usability by implementing almost 20 stories."
+    },
+    {
+      "anchor": "id26",
+      "kind": "prose",
+      "text": "We’ve ironed out some wrinkles to ensure a smoother user experience."
+    },
+    {
+      "anchor": "id26",
+      "kind": "prose",
+      "text": "Exciting news! Our cloud is expanding with a new location, bringing you a more seamless experience, MTY - “Monterrey, Mexico”."
+    },
+    {
+      "anchor": "id27",
+      "kind": "heading",
+      "level": 3,
+      "text": "2403"
+    },
+    {
+      "anchor": "id27",
+      "kind": "prose",
+      "text": "Date Released: 2024-03-18"
+    },
+    {
+      "anchor": "id27",
+      "kind": "prose",
+      "text": "For the sake of easier interaction with our Cloud services, we have introduced a newer version of our main website (aka WebApp). You can try it from the Home page in each cloud location, now!"
+    },
+    {
+      "anchor": "id27",
+      "kind": "prose",
+      "text": "In other news, we are now switching to Stripe as our payment system."
+    },
+    {
+      "anchor": "id27",
+      "kind": "prose",
+      "text": "And the usual bug extermination routine, of small issues, core system improvements, etc. 43 of them."
+    },
+    {
+      "anchor": "id28",
+      "kind": "heading",
+      "level": 3,
+      "text": "2402"
+    },
+    {
+      "anchor": "id28",
+      "kind": "prose",
+      "text": "Date Released: 2024-02-15"
+    },
+    {
+      "anchor": "id28",
+      "kind": "prose",
+      "text": "We had to change the address in the profile section to be no longer than 180 characters."
+    },
+    {
+      "anchor": "id28",
+      "kind": "prose",
+      "text": "Due to an external dependency, we had to change the allowed characters in the fields: address, state, city, and postcode to accept ASCII characters."
+    },
+    {
+      "anchor": "id28",
+      "kind": "prose",
+      "text": "And 17 other bug fixes and improvements."
+    },
+    {
+      "anchor": "id29",
+      "kind": "heading",
+      "level": 3,
+      "text": "2401"
+    },
+    {
+      "anchor": "id29",
+      "kind": "prose",
+      "text": "Date Released: 2024-01-18"
+    },
+    {
+      "anchor": "id29",
+      "kind": "prose",
+      "text": "Starting with this version, we are adding a few changes to the required data for all our accounts such as “state/province” and “mobile number”."
+    },
+    {
+      "anchor": "id29",
+      "kind": "prose",
+      "text": "We improved the accuracy of the out-of-memory exception, which all our customers received."
+    },
+    {
+      "anchor": "id29",
+      "kind": "prose",
+      "text": "We fixed a minor issue in the Backup Scheduler."
+    },
+    {
+      "anchor": "id29",
+      "kind": "prose",
+      "text": "And 30 other bugs and improvements."
+    },
+    {
+      "anchor": "chlorine-releases",
+      "kind": "heading",
+      "level": 2,
+      "text": "Chlorine Releases"
+    },
+    {
+      "anchor": "chlorine-17-2312",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2312"
+    },
+    {
+      "anchor": "chlorine-17-2312",
+      "kind": "prose",
+      "text": "Date Released: 2023-12-08"
+    },
+    {
+      "anchor": "chlorine-17-2312",
+      "kind": "prose",
+      "text": "We fixed a rare condition, which could cause a problem when trying to save a payment method while making a payment."
+    },
+    {
+      "anchor": "chlorine-17-2312",
+      "kind": "prose",
+      "text": "We are happy to announce that our cloud is growing again with more locations! So we did the magic under the hood, so they work just as well."
+    },
+    {
+      "anchor": "chlorine-17-2312",
+      "kind": "prose",
+      "text": "We are pleased to announce that our cloud is getting closer to you with a new location, DUS - “Düsseldorf, Germany”."
+    },
+    {
+      "anchor": "chlorine-17-2312",
+      "kind": "prose",
+      "text": "We also introduced 20 improvements under the hood."
+    },
+    {
+      "anchor": "chlorine-17-2311",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2311"
+    },
+    {
+      "anchor": "chlorine-17-2311",
+      "kind": "prose",
+      "text": "Date Released: 2023-11-13"
+    },
+    {
+      "anchor": "chlorine-17-2311",
+      "kind": "prose",
+      "text": "For this release, we’ve introduced a number of improvements under the hood, 23 to be precise."
+    },
+    {
+      "anchor": "chlorine-17-2311",
+      "kind": "prose",
+      "text": "The system behaves the exact same way as before, just better."
+    },
+    {
+      "anchor": "chlorine-17-2310",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2310"
+    },
+    {
+      "anchor": "chlorine-17-2310",
+      "kind": "prose",
+      "text": "Date Released: 2023-10-12"
+    },
+    {
+      "anchor": "chlorine-17-2310",
+      "kind": "prose",
+      "text": "This month we’re working on making our product more stable and robust."
+    },
+    {
+      "anchor": "chlorine-17-2310",
+      "kind": "prose",
+      "text": "We’ve introduced a number of improvements under the hood, 9 to be precise."
+    },
+    {
+      "anchor": "chlorine-17-2310",
+      "kind": "prose",
+      "text": "It behaves the exact same way as before, just better."
+    },
+    {
+      "anchor": "chlorine-17-2309",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2309"
+    },
+    {
+      "anchor": "chlorine-17-2309",
+      "kind": "prose",
+      "text": "Date Released: 2023-09-11"
+    },
+    {
+      "anchor": "chlorine-17-2309",
+      "kind": "prose",
+      "text": "We’re adding lots of features under the hood that will be available in our WebUI soon."
+    },
+    {
+      "anchor": "chlorine-17-2309",
+      "kind": "prose",
+      "text": "We’re enabling support for zones in different data centers and the capability to create remote snapshots in multiple clusters as well."
+    },
+    {
+      "anchor": "chlorine-17-2309",
+      "kind": "prose",
+      "text": "We’re also making account inactivity settings configurable, which will make it to our shiny new WebApp anytime soon."
+    },
+    {
+      "anchor": "chlorine-17-2309",
+      "kind": "prose",
+      "text": "And other bugs and improvements (13 to be precise)."
+    },
+    {
+      "anchor": "chlorine-17-2308",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2308"
+    },
+    {
+      "anchor": "chlorine-17-2308",
+      "kind": "prose",
+      "text": "Date Released: 2023-08-15"
+    },
+    {
+      "anchor": "chlorine-17-2308",
+      "kind": "prose",
+      "text": "We fixed an issue that prevented our system from sending automated monthly transactions and subscription reports. Your highly valuable report is back in action now!"
+    },
+    {
+      "anchor": "chlorine-17-2308",
+      "kind": "prose",
+      "text": "We’ve disabled the account country change per API call. If you need to change your country, please contact our support department."
+    },
+    {
+      "anchor": "chlorine-17-2308",
+      "kind": "prose",
+      "text": "We’ve improved payment method creation logic, so your payment experience is better and our bank account - is happier!"
+    },
+    {
+      "anchor": "chlorine-17-2308",
+      "kind": "prose",
+      "text": "And many others, which are not-so-interesting."
+    },
+    {
+      "anchor": "chlorine-17-2307",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2307"
+    },
+    {
+      "anchor": "chlorine-17-2307",
+      "kind": "prose",
+      "text": "Date Released: 2023-07-19"
+    },
+    {
+      "anchor": "chlorine-17-2307",
+      "kind": "prose",
+      "text": "We fixed a minor issue regarding drive resizing by the grantee when a drive is shared with them."
+    },
+    {
+      "anchor": "chlorine-17-2307",
+      "kind": "prose",
+      "text": "We’ve fixed a rarely occurring issue related to our scheduler for migrations."
+    },
+    {
+      "anchor": "chlorine-17-2307",
+      "kind": "prose",
+      "text": "Some of our clouds are receiving better stability when operating with GPUs in pass-through mode."
+    },
+    {
+      "anchor": "chlorine-17-2307",
+      "kind": "prose",
+      "text": "We are making further improvements under the hood so that our next-gen UI can bring your beloved cloud experience."
+    },
+    {
+      "anchor": "chlorine-17-2306",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2306"
+    },
+    {
+      "anchor": "chlorine-17-2306",
+      "kind": "prose",
+      "text": "Date Released: 2023-06-15"
+    },
+    {
+      "anchor": "chlorine-17-2306",
+      "kind": "prose",
+      "text": "This month’s release mainly focuses on making our platform shinier behind the scenes. While nothing major to report, we have a few things to note."
+    },
+    {
+      "anchor": "chlorine-17-2306",
+      "kind": "prose",
+      "text": "We’ve improved an out-of-memory notification event."
+    },
+    {
+      "anchor": "chlorine-17-2306",
+      "kind": "prose",
+      "text": "We improved the invoice generation capabilities that were having a hiccup with some languages."
+    },
+    {
+      "anchor": "chlorine-17-2306",
+      "kind": "prose",
+      "text": "We added support for our new soon-to-be-announced location under the hood."
+    },
+    {
+      "anchor": "chlorine-17-2306",
+      "kind": "prose",
+      "text": "A number of other Bug Fixes & minor UI Improvements."
+    },
+    {
+      "anchor": "chlorine-17-2305",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2305"
+    },
+    {
+      "anchor": "chlorine-17-2305",
+      "kind": "prose",
+      "text": "Date Released: 2023-05-10"
+    },
+    {
+      "anchor": "chlorine-17-2305",
+      "kind": "prose",
+      "text": "We are proud to announce that our cloud is growing with another new location, CWL - “Newport, Wales”."
+    },
+    {
+      "anchor": "chlorine-17-2305",
+      "kind": "prose",
+      "text": "We have tweaked the subject of our email notifications to be more informational by including the cloud location 3-letter code."
+    },
+    {
+      "anchor": "chlorine-17-2305",
+      "kind": "prose",
+      "text": "We changed the API call to create drives, if no drive type is specified, we will take a default input as defined per cloud location."
+    },
+    {
+      "anchor": "chlorine-17-2305",
+      "kind": "prose",
+      "text": "We did a lot of under-the-hood work, to make your cloud computing experience seamless."
+    },
+    {
+      "anchor": "chlorine-17-2305",
+      "kind": "prose",
+      "text": "A number of other Bug Fixes & minor UI Improvements."
+    },
+    {
+      "anchor": "chlorine-17-2304",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2304"
+    },
+    {
+      "anchor": "chlorine-17-2304",
+      "kind": "prose",
+      "text": "Date Released: 2023-04-11"
+    },
+    {
+      "anchor": "chlorine-17-2304",
+      "kind": "prose",
+      "text": "We enabled a new SSH Key type (ED25519) as an option for new VM creation and new SSH key creation."
+    },
+    {
+      "anchor": "chlorine-17-2304",
+      "kind": "prose",
+      "text": "We are improving the SQL server experience. After a SQL Server subscription has expired, the resource will continue to operate on burst pricing, instead of stopping abruptly."
+    },
+    {
+      "anchor": "chlorine-17-2304",
+      "kind": "prose",
+      "text": "A new notification type for SQL Server bursting is introduced."
+    },
+    {
+      "anchor": "chlorine-17-2304",
+      "kind": "prose",
+      "text": "An issue regarding metadata was resolved (SSH keys remain in Metadata after deletion)."
+    },
+    {
+      "anchor": "chlorine-17-2304",
+      "kind": "prose",
+      "text": "A number of other Bug Fixes & minor UI Improvements."
+    },
+    {
+      "anchor": "chlorine-17-2303",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2303"
+    },
+    {
+      "anchor": "chlorine-17-2303",
+      "kind": "prose",
+      "text": "Date Released: 2023-03-16"
+    },
+    {
+      "anchor": "chlorine-17-2303",
+      "kind": "prose",
+      "text": "A name adjustment for our UK, London location."
+    },
+    {
+      "anchor": "chlorine-17-2303",
+      "kind": "prose",
+      "text": "A new notification is introduced, which will send a digest with all subscriptions and notifications on the first day of each month."
+    },
+    {
+      "anchor": "chlorine-17-2303",
+      "kind": "prose",
+      "text": "A new storage type is introduced to our infrastructure - NVMe."
+    },
+    {
+      "anchor": "chlorine-17-2303",
+      "kind": "prose",
+      "text": "A number of other Bug Fixes & minor UI Improvements."
+    },
+    {
+      "anchor": "chlorine-17-2302",
+      "kind": "heading",
+      "level": 3,
+      "text": "Chlorine-17.2302"
+    },
+    {
+      "anchor": "chlorine-17-2302",
+      "kind": "prose",
+      "text": "Date Released: 2023-02-16"
+    },
+    {
+      "anchor": "chlorine-17-2302",
+      "kind": "prose",
+      "text": "Password Reset Link requests now expires after 24 hours."
+    },
+    {
+      "anchor": "chlorine-17-2302",
+      "kind": "prose",
+      "text": "Fixed an issue related to notification text when an account has no saved credit card."
+    },
+    {
+      "anchor": "chlorine-17-2302",
+      "kind": "prose",
+      "text": "Fixed an issue related to the error message “incorrect email”, when a customer already activated a Guest session from the same IP."
+    },
+    {
+      "anchor": "chlorine-17-2302",
+      "kind": "prose",
+      "text": "A number of other Bug Fixes & minor UI Improvements."
+    },
+    {
+      "anchor": "silicon-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Silicon Release"
+    },
+    {
+      "anchor": "silicon-release",
+      "kind": "prose",
+      "text": "Date Released: 2015-03-26"
+    },
+    {
+      "anchor": "silicon-release",
+      "kind": "prose",
+      "text": "Allow resources to be shared and accessed between accounts Access Control Lists"
+    },
+    {
+      "anchor": "silicon-release",
+      "kind": "prose",
+      "text": "Allow SSH keys to be imported and managed by the cloud and attached to servers SSH key pairs"
+    },
+    {
+      "anchor": "aluminium-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Aluminium Release"
+    },
+    {
+      "anchor": "aluminium-release",
+      "kind": "prose",
+      "text": "Date Released: 2014-11-26"
+    },
+    {
+      "anchor": "aluminium-release",
+      "kind": "prose",
+      "text": "Extended Capabilities call"
+    },
+    {
+      "anchor": "aluminium-release",
+      "kind": "prose",
+      "text": "Support of Zadara storage type Drives"
+    },
+    {
+      "anchor": "aluminium-release",
+      "kind": "prose",
+      "text": "Better explained firewall restrictions depending on account state Firewall Policies"
+    },
+    {
+      "anchor": "aluminium-release",
+      "kind": "prose",
+      "text": "Fixed list of API endpoints in General Notes and Locations"
+    },
+    {
+      "anchor": "aluminium-release",
+      "kind": "prose",
+      "text": "We now support Solaris Kernel Zones in some cloud locations. Improved details and split sections depending on hypervisor - see Servers / VMs, KVM Servers"
+    },
+    {
+      "anchor": "aluminium-release",
+      "kind": "prose",
+      "text": "Support for serial console to a server - see Servers / VMs. Servers running under KVM hypervisor also allow VNC as before - KVM Servers."
+    },
+    {
+      "anchor": "magnesium-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Magnesium Release"
+    },
+    {
+      "anchor": "magnesium-release",
+      "kind": "prose",
+      "text": "Date Released: 2014-09-08"
+    },
+    {
+      "anchor": "magnesium-release",
+      "kind": "prose",
+      "text": "Various stability and performance improvements."
+    },
+    {
+      "anchor": "magnesium-release",
+      "kind": "prose",
+      "text": "Better explanation of storage types and explanation of default network restrictions."
+    },
+    {
+      "anchor": "magnesium-release",
+      "kind": "prose",
+      "text": "Support for Juju simple streams."
+    },
+    {
+      "anchor": "magnesium-release",
+      "kind": "prose",
+      "text": "Now it is possible to specify size for drive clone call, so that the new drive is bigger than the original."
+    },
+    {
+      "anchor": "sodium-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Sodium Release"
+    },
+    {
+      "anchor": "sodium-release",
+      "kind": "prose",
+      "text": "Date Released: 2014-05-20"
+    },
+    {
+      "anchor": "sodium-release",
+      "kind": "prose",
+      "text": "Documented the Firewall Policies delete request."
+    },
+    {
+      "anchor": "sodium-release",
+      "kind": "prose",
+      "text": "Detailed documentation for the special Metadata fields."
+    },
+    {
+      "anchor": "sodium-release",
+      "kind": "prose",
+      "text": "Better explanation for using Server Context."
+    },
+    {
+      "anchor": "sodium-release",
+      "kind": "prose",
+      "text": "Documented server ACPI shutdown API request - ACPI Shutdown."
+    },
+    {
+      "anchor": "neon-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Neon Release"
+    },
+    {
+      "anchor": "neon-release",
+      "kind": "prose",
+      "text": "Date Released: 2014-01-29"
+    },
+    {
+      "anchor": "neon-release",
+      "kind": "prose",
+      "text": "New drive parameter allowing changing the storage type."
+    },
+    {
+      "anchor": "neon-release",
+      "kind": "prose",
+      "text": "Most API calls now support standardised filtering."
+    },
+    {
+      "anchor": "neon-release",
+      "kind": "prose",
+      "text": "Asnychronous operations now are exposed via a jobs API."
+    },
+    {
+      "anchor": "neon-release",
+      "kind": "prose",
+      "text": "Cloning drives and servers can now change the destinations’ names to differentiate between source and destination."
+    },
+    {
+      "anchor": "neon-release",
+      "kind": "prose",
+      "text": "Added audit log documentation."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Fluorine Release"
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Date Released: 2013-12-10"
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Notification preferences functionality allowing multiple recipients. See Notification preferences."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Server runtime details now report I/O statistics for the attached drives in the drives/runtime/io object from the response. See Server Runtime and Server Details."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Capabilities call now includes the count allowed snapshots in the snapshots object from the response. See Capabilities."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "API now returns all numbers as integer literals instead of string literals"
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Date Released: 2013-11-18"
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Global server context is a place to hold server context information, which is common to all user’s servers. See Global context."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "A call for querying the account current usage current-usage."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Clarifications regarding drive resize Resizing (Update or Fail)."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Section describing allowed names Permitted characters."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Fixed documentation of response status codes Servers / VMs, Snapshots, Cloning."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "More flexible call for subscriptions auto-renew Autorenewing."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Login call returns a json object with the user UUID"
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Server firewall updates are applied every 30 seconds, as opposed to previous versions, when they were applied immediately on change."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "We now support bursting on IP resources. After the IP subscription has expired, all servers that have the IP attached as static will continue to operate until the user runs out of money. All other servers, will block outgoing traffic originating from that IP - i.e. the IP will stop working on servers on which the user configured it manually."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Manually configuring an IP, given to the user via DHCP, to another server owned by the same user, is now prohibited."
+    },
+    {
+      "anchor": "fluorine-release",
+      "kind": "prose",
+      "text": "Buying a new IP resource, will make the same available on all of the user’s servers without power-cycling them. The user can manually configure it on his public network interfaces and it will JUST work."
+    },
+    {
+      "anchor": "oxygen-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Oxygen Release"
+    },
+    {
+      "anchor": "oxygen-release",
+      "kind": "prose",
+      "text": "Date Released: 2013-10-07"
+    },
+    {
+      "anchor": "oxygen-release",
+      "kind": "prose",
+      "text": "Server context can be updated for a running server, by updating server or drive definition. See below."
+    },
+    {
+      "anchor": "oxygen-release",
+      "kind": "prose",
+      "text": "It is possible to update name, meta, and tags on a running server or a drive mounted on a running server. See server edit and drive edit."
+    },
+    {
+      "anchor": "oxygen-release",
+      "kind": "prose",
+      "text": "Added an action to update a drive, which will fail to update if the drive is mounted on a running serve. It is called resize because size is the only drive attribute which cannot be changed on a drive mounted on a running server. See Resizing (Update or Fail)."
+    },
+    {
+      "anchor": "oxygen-release",
+      "kind": "prose",
+      "text": "It is possible to create snapshots for a drive, and later clone the snapshot to a full drive. This makes it possible to restore from a point-in-time version of the snapshot. See Snapshots."
+    },
+    {
+      "anchor": "oxygen-release",
+      "kind": "prose",
+      "text": "Added documentation for uploading drive images though simple HTTP POST. See Upload or Download Drive Images."
+    },
+    {
+      "anchor": "nitrogen-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Nitrogen Release"
+    },
+    {
+      "anchor": "nitrogen-release",
+      "kind": "prose",
+      "text": "Date Released: 2013-08-01"
+    },
+    {
+      "anchor": "nitrogen-release",
+      "kind": "prose",
+      "text": "Server context. Server context makes it possible to get configuration information about the server from within the virtual machine. Server Context"
+    },
+    {
+      "anchor": "nitrogen-release",
+      "kind": "prose",
+      "text": "It is possible to request the system to separate a drive physically from one or more other drives. See Creating Drives in a Different Availability Group (Create/Clone Avoid)."
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Carbon Release"
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "Date Released: 2013-07-08"
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "Recursive deletion of servers - ability to delete a server and its attached drives with a single API call. See Delete Server together with attached drives (recursive delete)."
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "Date Released: 2013-05-22"
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "Firewall functionality. The user can attach firewall policies to NICs. Each policy may have multiple rules for filtering traffic. See My Network -> policies in WebApp or check fwpolicies section for API documentation."
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "Web VNC. Users can open VNC sessions directly in WebApp. The browser needs to support websockets. To open a Web VNC session go to server properties on a running server, open VNC tunnel, click on the VNC button and choose whether to open the session in the same browser window or in a new browser window/tab."
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "The old hdd resource is renamed to dssd (Distributed SSD). This is reflected in all areas of the API. The subscriptions API still accepts hdd as an alias, but returns dssd. The capabilities API returns dssd."
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "OAuth support for single sign-on in WebApp. Users can authenticate in WebApp with an existing account from Google, Twitter, LinkedIn, or Facebook. See Profile -> settings to connect you CloudSigma account with an existing OAuth provider."
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "Drive images licenses. Servers running with drives from drives library, which contain software that requires a license need a subscriptions in order to be started. Check Subscriptions -> Purchase -> Software licenses in WebApp to list or purchase software licenses. See Subscriptions for API docs on purchasing licenses, and Licenses list for listing purchased licenses."
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "NIC runtime information, when listing running servers, now is also added to the NIC definition, so that it is easier to access NIC runtime info from the NIC object itself rather than the server runtime. The old NIC runtime information in the server runtime is retained for backward compatibility."
+    },
+    {
+      "anchor": "carbon-release",
+      "kind": "prose",
+      "text": "Drives attached to stopped servers can now be deleted."
+    },
+    {
+      "anchor": "boron-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Boron Release"
+    },
+    {
+      "anchor": "boron-release",
+      "kind": "prose",
+      "text": "Date Released: 2013-03-19"
+    },
+    {
+      "anchor": "api-http-response-status-code-changes",
+      "kind": "heading",
+      "level": 3,
+      "text": "API HTTP response status code changes"
+    },
+    {
+      "anchor": "api-http-response-status-code-changes",
+      "kind": "prose",
+      "text": "HTTP status for PUT (update) requests is changed from 202 Accepted to 200 OK."
+    },
+    {
+      "anchor": "api-http-response-status-code-changes",
+      "kind": "prose",
+      "text": "HTTP status for creation of objects is changed from 202 Accepted to 201 Created. This affects Subscription, Servers, Drives, and Tags creation."
+    },
+    {
+      "anchor": "api-http-response-status-code-changes",
+      "kind": "prose",
+      "text": "HTTP status for Subscriptions Calcultaor is changed from 202 Accepted to 200 OK."
+    },
+    {
+      "anchor": "api-http-response-status-code-changes",
+      "kind": "prose",
+      "text": "HTTP status for actions with asynchronous results is changed from 200 to 202. This affects action calls on Servers (start, stop, clone, open_vnc, close_vnc) and Drives (clone)."
+    },
+    {
+      "anchor": "berilium-release",
+      "kind": "heading",
+      "level": 2,
+      "text": "Berilium Release"
+    },
+    {
+      "anchor": "berilium-release",
+      "kind": "prose",
+      "text": "Date Released: 2013-01-16"
+    }
+  ],
+  "html_sha256": "94ad1744c302d6e8a244ad519b8ff68db8f453c6034ce215e24c7a68c1420b77",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/release_notes.html"
+}

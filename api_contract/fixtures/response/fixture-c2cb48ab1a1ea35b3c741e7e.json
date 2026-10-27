@@ -1,0 +1,10 @@
+{
+  "objects": [
+    {
+      "contact": "/api/2.0/notification_contacts/e13c4b8c-68c8-4163-bc00-2a43a86e5937/",
+      "medium": "email",
+      "type": "trial_expire",
+      "value": true
+    }
+  ]
+}

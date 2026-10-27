@@ -1,0 +1,531 @@
+{
+  "blocks": [
+    {
+      "anchor": "ip-aliases",
+      "kind": "heading",
+      "level": 1,
+      "text": "IP Aliases"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "create new object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "DELETE"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "delete object/s"
+    },
+    {
+      "anchor": "list-single-ip-alias",
+      "kind": "heading",
+      "level": 2,
+      "text": "List single IP alias"
+    },
+    {
+      "anchor": "get--ipaliases-ipalias_uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/ipaliases/{ipalias_uuid}/"
+    },
+    {
+      "anchor": "list-single-ip-alias",
+      "kind": "prose",
+      "text": "Gets information on an IP Alias identified by ipalias_uuid."
+    },
+    {
+      "anchor": "list-single-ip-alias",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "list-single-ip-alias",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "list-single-ip-alias",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "6390a59a3600d347f51ae28e43461f9ca7c38954c5a271da041250cabd3dbd27",
+      "path": "/api/2.0/ipaliases/f317b570-1693-4002-95fe-172cd4327cb2/"
+    },
+    {
+      "anchor": "list-single-ip-alias",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "list-single-ip-alias",
+      "classification": "response-example",
+      "fixture_id": "fixture-c3f35eed413fff3fe9289e4c",
+      "fixture_payload": {
+        "interface": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+        "ip_address": "10.0.22.1",
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/9b293ff2-cf38-4b5f-837d-ac676a107993/",
+            "uuid": "9b293ff2-cf38-4b5f-837d-ac676a107993"
+          }
+        ],
+        "resource_uri": "/api/2.0/ipaliases/f317b570-1693-4002-95fe-172cd4327cb2/",
+        "uuid": "f317b570-1693-4002-95fe-172cd4327cb2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/ipaliases/{ipalias_uuid}/"
+      },
+      "original_sha256": "7760d1c334500a92d423fe71c8872ea273d1266e5f098299ab58943fab5e1b87",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"interface\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "post--ipaliases-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/ipaliases/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new IP Alias."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "object created"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "46378af0711a26c7787035606195dfc36691b1f7bdee2b8da2a946084b345d6d",
+      "path": "/api/2.0/ipaliases/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "response-example",
+      "fixture_id": "fixture-446a7f12a1504d7e3c378404",
+      "fixture_payload": {
+        "objects": [
+          {
+            "interface": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+            "ip_address": "10.0.22.1",
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/9b293ff2-cf38-4b5f-837d-ac676a107993/",
+                "uuid": "9b293ff2-cf38-4b5f-837d-ac676a107993"
+              }
+            ],
+            "resource_uri": "/api/2.0/ipaliases/f317b570-1693-4002-95fe-172cd4327cb2/",
+            "uuid": "f317b570-1693-4002-95fe-172cd4327cb2"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/ipaliases/"
+      },
+      "original_sha256": "357584ad0c64d668d956998b32d5fe39c5179a9fad31b138809cb0a5d5c897d8",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"interface\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "delete--ipaliases-ipalias_uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/ipaliases/{ipalias_uuid}/"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Deletes a single IP Alias identified by ipalias_uuid."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "No content, object deletion started."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "deleting",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "7107467d7dd001f73cbd8cb1d507bbb483445ca3aba85b1803ec5ccfdc504d2a",
+      "path": "/api/2.0/ipaliases/f317b570-1693-4002-95fe-172cd4327cb2/"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "deleting",
+      "classification": "response-example",
+      "fixture_id": "fixture-c8ce60224052a73f9d21f045",
+      "fixture_payload": {
+        "job": {
+          "resource_uri": "/api/2.0/jobs/aa44571e-9dba-4f49-a553-2d4425a5a65a/",
+          "uuid": "aa44571e-9dba-4f49-a553-2d4425a5a65a"
+        },
+        "uuid": "f317b570-1693-4002-95fe-172cd4327cb2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/ipaliases/{ipalias_uuid}/"
+      },
+      "original_sha256": "692761cb9367ee7c9b9651b4f35d8a1a6a28f1e0a348939aab3314ca8a2266d8",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "64c4db7fb482f65fc0c1971fc93b880213bcfb65a884d7d1f3ac35efcc69f4da",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "post",
+          "delete"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "post",
+          "delete"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "interface": {
+            "default": null,
+            "help_text": "UUID of the LAN interface",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "ip_address": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "jobs": {
+            "default": "No default provided.",
+            "help_text": "Background jobs related to this resource",
+            "readonly": true,
+            "required": true,
+            "type": "related"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "UUID of the IP Alias",
+            "readonly": true,
+            "required": false,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        },
+        "ordering": [
+          "uuid",
+          "name"
+        ]
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "7010caf452f353331ef402763ff266f38699af8c8f5e1a5833d25b8945fe007f",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_filters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_policies.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_ipaliases.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_lans.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_port_forwarding.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_routes.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_upstream.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_vpn_tunnels.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_ipaliases.html"
+}

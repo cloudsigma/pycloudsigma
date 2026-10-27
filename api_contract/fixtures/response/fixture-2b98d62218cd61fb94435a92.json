@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "limit": 0,
+    "offset": 0,
+    "total_count": 1
+  },
+  "objects": [
+    {
+      "email": "some_email_1@example.com",
+      "main": true,
+      "name": "Some Name",
+      "phone": "",
+      "resource_uri": "/api/2.0/notification_contacts/e13c4b8c-68c8-4163-bc00-2a43a86e5937/",
+      "uuid": "e13c4b8c-68c8-4163-bc00-2a43a86e5937"
+    }
+  ]
+}

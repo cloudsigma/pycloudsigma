@@ -1,0 +1,32 @@
+{
+  "context": true,
+  "cpu": 2000,
+  "cpu_model": null,
+  "cpu_type": "amd",
+  "cpus_instead_of_cores": false,
+  "drives": [],
+  "enable_numa": false,
+  "grantees": [],
+  "hv_relaxed": false,
+  "hv_tsc": false,
+  "hypervisor": "kvm",
+  "jobs": [],
+  "mem": 536870912,
+  "meta": {},
+  "name": "test_server_updated",
+  "nics": [],
+  "owner": {
+    "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+    "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+  },
+  "permissions": [],
+  "pubkeys": [],
+  "requirements": [],
+  "resource_uri": "/api/2.0/servers/0dacaaf7-1ba8-451d-b135-8848e76381ee/",
+  "runtime": null,
+  "smp": 1,
+  "status": "stopped",
+  "tags": [],
+  "uuid": "0dacaaf7-1ba8-451d-b135-8848e76381ee",
+  "vnc_password": "<redacted>"
+}

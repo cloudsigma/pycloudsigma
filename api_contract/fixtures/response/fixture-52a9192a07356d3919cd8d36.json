@@ -1,0 +1,20 @@
+{
+  "allocated_size": null,
+  "drive": {
+    "resource_uri": "/api/2.0/drives/bb2b8f77-04ee-42c1-b142-47bc31c2824e/",
+    "uuid": "bb2b8f77-04ee-42c1-b142-47bc31c2824e"
+  },
+  "grantees": [],
+  "meta": {},
+  "name": "bb2b8f77-04ee-42c1-b142-47bc31c2824e__2014-06-05__09_53_31",
+  "owner": {
+    "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+    "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+  },
+  "permissions": [],
+  "resource_uri": "/api/2.0/snapshots/62c600cf-7a25-4703-8003-b3c4445233af/",
+  "status": "creating",
+  "tags": [],
+  "timestamp": "2014-06-05 09:53:31.377681+00:00",
+  "uuid": "62c600cf-7a25-4703-8003-b3c4445233af"
+}

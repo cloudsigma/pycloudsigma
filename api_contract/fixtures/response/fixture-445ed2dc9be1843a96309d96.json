@@ -1,0 +1,18 @@
+{
+  "objects": [
+    {
+      "gateway": "91.92.71.129",
+      "inet": "inet",
+      "jobs": [
+        {
+          "resource_uri": "/api/2.0/jobs/9e9a97ec-2a84-4938-a390-0a08a40d3fb7/",
+          "uuid": "9e9a97ec-2a84-4938-a390-0a08a40d3fb7"
+        }
+      ],
+      "network": "default",
+      "resource_uri": "/api/2.0/routes/8979c468-dd08-45d9-803a-86a9e870b8dc/",
+      "uuid": "6251235d-c5a6-4422-a9e5-f6b4308f4f4a",
+      "virtual_router": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+    }
+  ]
+}

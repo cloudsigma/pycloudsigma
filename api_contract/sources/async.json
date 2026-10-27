@@ -1,0 +1,172 @@
+{
+  "blocks": [
+    {
+      "anchor": "asynchronous-server",
+      "kind": "heading",
+      "level": 1,
+      "text": "Asynchronous server"
+    },
+    {
+      "anchor": "authentication",
+      "kind": "heading",
+      "level": 2,
+      "text": "Authentication"
+    },
+    {
+      "anchor": "authentication",
+      "kind": "prose",
+      "text": "To use the asynchronous server, you must first authenticate through the API. This will give you a cookie that is valid for 2 minutes and that has to be used when connecting to the server."
+    },
+    {
+      "anchor": "authentication",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "authentication",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "authentication",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "901f1e3df7ed8b424e4f5ab65445bdba57d23fad95264d8d7e999196e81cef66",
+      "path": "/api/2.0/2.0/accounts/action/?do=authenticate_asynchronous"
+    },
+    {
+      "anchor": "authentication",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "authentication",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {},
+      "kind": "code",
+      "original_sha256": "531e35121a9cbb86642462685da3916e660518f267f02711ff091102c8a8f10b",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "authentication",
+      "kind": "prose",
+      "text": "Using this cookie will allow you to connect to the server at /2.0/websocket"
+    },
+    {
+      "anchor": "information",
+      "kind": "heading",
+      "level": 2,
+      "text": "Information"
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "The websocket server sends frames every time one of the following changes:"
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "Subscriptions"
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "Drives"
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "Servers / VMs"
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "Networking"
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "Balance"
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "Profile"
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "Jobs"
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "resource_type: A text field that describes the type of resource covered by the notification."
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "resource_uri: The URI of the resource that has changed."
+    },
+    {
+      "anchor": "information",
+      "kind": "prose",
+      "text": "The JSON object might contain an ‘object’ key, that will contain the full-blown resource referenced by the notification, JSON encoded."
+    }
+  ],
+  "html_sha256": "81fe4e4dc6d7709f257358e5b5de6e7d1beaa8d48954973e5d2b3a5a73d50312",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/async.html"
+}

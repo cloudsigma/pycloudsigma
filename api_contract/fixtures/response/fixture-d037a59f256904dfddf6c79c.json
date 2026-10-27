@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "limit": 0,
+    "offset": 0,
+    "total_count": 2
+  },
+  "objects": [
+    {
+      "fingerprint": "8c:71:a2:f0:bc:a4:45:66:a8:59:77:6d:80:d5:a0:89",
+      "grantees": [],
+      "meta": {},
+      "name": "ala",
+      "permissions": [],
+      "private_key": "<redacted>",
+      "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9E5ykn/RPmJlTN9HJ2wkjjMJu5AB8YfcGX9uKCA9jVq0urN+LPqVy1jzCzPaxi2z05Cia0IH/G0w99SMdmkuDUQ/j+F8/U0Ja2whsiINgqvM0QWAClI7UCSoFny1UvaCk9S5J1ork/eU+ORu3jd2CdOEjIy82iLSDueALovqz3rQm8Gq5qY693zBVpb9WlvJmsqpHC+awwfWkYSuFIB4SsiY53AzzC0J10tLc7ifF+2zTqnIRwaG6m8fyWmH2r6MonGmDvCFSQ4nJmgw3VeAO+1EVvP0++XGo/RI55wQc/7jII6ANwlrr0tIUXGaVKiD0GK0K/mpEXCu8oawxhx6x",
+      "resource_uri": "/api/2.0/keypairs/186106ac-afb5-40e5-a0de-6f0feba5a3d5/",
+      "tags": [],
+      "uuid": "186106ac-afb5-40e5-a0de-6f0feba5a3d5"
+    },
+    {
+      "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+      "grantees": [],
+      "meta": {},
+      "name": "test_name",
+      "permissions": [],
+      "private_key": "<redacted>",
+      "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+      "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+      "tags": [],
+      "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+    }
+  ]
+}

@@ -1,0 +1,1439 @@
+{
+  "blocks": [
+    {
+      "anchor": "subscriptions",
+      "kind": "heading",
+      "level": 1,
+      "text": "Subscriptions"
+    },
+    {
+      "anchor": "statuses",
+      "kind": "heading",
+      "level": 2,
+      "text": "Statuses"
+    },
+    {
+      "anchor": "statuses",
+      "kind": "prose",
+      "text": "Every subscription has a status associated with it:"
+    },
+    {
+      "anchor": "statuses",
+      "kind": "prose",
+      "text": "active: A subscription that is currently being used, either because the current time is between its start or end date or because it was the subscription for depletable resources (traffic) that is currently being used."
+    },
+    {
+      "anchor": "statuses",
+      "kind": "prose",
+      "text": "inactive: A subscription that is not currently being used, either because its not active yet or because there is another depletable resource (traffic) subscription being used."
+    },
+    {
+      "anchor": "statuses",
+      "kind": "prose",
+      "text": "expired: A subscription that has either expired or that has been depleted."
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--subscriptions-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/subscriptions/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of subscriptions of the user."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "filters only subscriptions in that status. Can be one of active , inactive, expired, all, notexpired. Default is all."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "a list (comma separated) of resources. One or more of: dssd, cpu, mem, tx, ip, vlan."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "f9c8ec1cd316349b9ee33c2159214854cd629b40c66171c4160ca0a79ccb619c",
+      "path": "/api/2.0/subscriptions/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "fixture_id": "fixture-480379d4a2dc246772ddb5fe",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 5
+        },
+        "objects": [
+          {
+            "amount": "32212254720",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "14",
+            "period": "365 days, 2:45:57.487493",
+            "price": "0E-20",
+            "remaining": "32212254720",
+            "resource": "dssd",
+            "resource_uri": "/api/2.0/subscriptions/14/",
+            "start_time": "2014-08-26T09:14:02.512507+00:00",
+            "status": "active",
+            "subscribed_object": null,
+            "uuid": "e067df3c-35c5-4327-927e-2ee52b6f796a",
+            "was_billed": true
+          },
+          {
+            "amount": "1",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "13",
+            "period": "365 days, 2:46:06.019766",
+            "price": "0E-20",
+            "remaining": "1",
+            "resource": "ip",
+            "resource_uri": "/api/2.0/subscriptions/13/",
+            "start_time": "2014-08-26T09:13:53.980234+00:00",
+            "status": "active",
+            "subscribed_object": "94.26.101.195",
+            "uuid": "aa442254-08fa-4d36-b511-47d4aa3a303b",
+            "was_billed": true
+          },
+          {
+            "amount": "1",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "12",
+            "period": "365 days, 2:46:12.563258",
+            "price": "0E-20",
+            "remaining": "1",
+            "resource": "vlan",
+            "resource_uri": "/api/2.0/subscriptions/12/",
+            "start_time": "2014-08-26T09:13:47.436742+00:00",
+            "status": "active",
+            "subscribed_object": "10619300-edda-42ba-91e0-7e3df0689d00",
+            "uuid": "e31585fb-6c3f-422d-a51e-395fd53fd2e5",
+            "was_billed": true
+          },
+          {
+            "amount": "17179869184",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "10",
+            "period": "365 days, 2:46:54.269604",
+            "price": "0E-20",
+            "remaining": "17179869184",
+            "resource": "mem",
+            "resource_uri": "/api/2.0/subscriptions/10/",
+            "start_time": "2014-08-26T09:13:05.730396+00:00",
+            "status": "active",
+            "subscribed_object": null,
+            "uuid": "5830f712-6eef-4732-9dbd-6a9f3b1fcb2f",
+            "was_billed": true
+          },
+          {
+            "amount": "10000",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "9",
+            "period": "365 days, 2:47:23.682426",
+            "price": "0E-20",
+            "remaining": "10000",
+            "resource": "cpu",
+            "resource_uri": "/api/2.0/subscriptions/9/",
+            "start_time": "2014-08-26T09:12:36.317574+00:00",
+            "status": "active",
+            "subscribed_object": null,
+            "uuid": "664fb99b-f8cc-4e85-8764-ef3215767682",
+            "was_billed": true
+          }
+        ],
+        "price": "0E-20"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/subscriptions/"
+      },
+      "original_sha256": "b75a6179bbad31424acd02100a500b8fcccb689d1e8708d061547d65369fd5f2",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"auto_renew\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"descendants\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"discount_amount\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"discount_percent\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"discounts\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"end_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"free_tier\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"id\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"price\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"remaining\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"start_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"subscribed_object\"]",
+          "observed_types": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"was_billed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"price\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "heading",
+      "level": 2,
+      "text": "Subscription duration"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "There are three parameters that determine the subscription’s duration. All times are in UTC. Not all combinations are valid:"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "start_time: In ISO 8601 format. Defaults to the current time."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "end_time: In ISO 8601 format."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "period: Free form text describing the period. Ex: ‘2 months 1 week’."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "Inputs"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "Result"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "start_time"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "end_time"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "period"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "Error: Ambiguous."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "Between start_time and end_time."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "Period from start_time."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "Error: Not specific enough."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "Period until end_time."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "From now until end_time."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "Period from now."
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "subscription-duration",
+      "kind": "prose",
+      "text": "Error: Not specific enough."
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "post--subscriptions-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/subscriptions/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "201 Created – object created"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new subscription. There is a limit of 500 subscriptions that can be purchased in one request."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "The resource can be a license or one of: dssd (hdd is an alias for this, but is being deprecated), cpu, mem, tx, ip, vlan."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "When buying tx, the time parameters are ignored."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Trying to purchase a subscription for IP or VLAN with an amount bigger than one will generate several subscriptions of that type."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Subscription times are rounded to noon UTC, using the following rules:"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "End time is always rounded to the next noon."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Start time is rounded to the maximum between the current time an the previous noon. This means that subscriptions bought for now do start now, but subscriptions for the future start at the previous noon."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Warning"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Subscriptions are mostly immutable for the customer. The only parameter that can be changed is the auto renew."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "547c7647fc8cf5028c261c875cd6795c7384683cecbaa36c0d1634cd514e7e3c",
+      "path": "/api/2.0/subscriptions/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "response-example",
+      "fixture_id": "fixture-0763e4432c5cfbe7a09c28a2",
+      "fixture_payload": {
+        "objects": [
+          {
+            "amount": "30000",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": "0",
+            "discount_percent": "0",
+            "end_time": "2013-04-22T12:00:00+00:00",
+            "id": "28",
+            "period": "31 days, 1:31:53.888650",
+            "price": "0.000003839842975139617919921875",
+            "remaining": "30000",
+            "resource": "dssd",
+            "resource_uri": "/api/2.0/subscriptions/28/",
+            "start_time": "2013-03-22T10:28:06.111350+00:00",
+            "status": "active",
+            "subscribed_object": null,
+            "uuid": "f622f364-bccf-4a36-a1ce-632a81640ad4"
+          }
+        ],
+        "price": "0.000003839842975139617919921875"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/subscriptions/"
+      },
+      "original_sha256": "b2f524ac5ca74f984375170596c7a0f6bbcc450afa69f867ae0327651d8df1b7",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"auto_renew\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"descendants\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"discount_amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"discount_percent\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"end_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"id\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"price\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"remaining\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"start_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"subscribed_object\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"price\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "extending",
+      "kind": "heading",
+      "level": 2,
+      "text": "Extending"
+    },
+    {
+      "anchor": "post--subscriptions-id-action-?do=extend",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/subscriptions/{id}/action/?do=extend"
+    },
+    {
+      "anchor": "extending",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "extending",
+      "kind": "prose",
+      "text": "Extends the subscription. An extended subscription is actually just another subscription that is linked to the original If a period or and end_time are specified in the request,they are used. If neither are specified, the creation length of the subscription is used."
+    },
+    {
+      "anchor": "extending",
+      "kind": "prose",
+      "text": "A caveat to this is that a subscription created initially with an end_time, the exact interval is used. Subscriptions that are created with a period have the period parsed again in the context of the new start_time. An example would be a subscription created on the 1st of February with a period of ‘1 month’ will be extended for 31 days, but one that was created with an end date of 1st of March will be extended for 28 days."
+    },
+    {
+      "anchor": "extending",
+      "kind": "prose",
+      "text": "If the specified subscription has actually been extended, it traverses and extends the last subscription in the chain."
+    },
+    {
+      "anchor": "autorenewing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Autorenewing"
+    },
+    {
+      "anchor": "post--subscriptions-id-action-?do=auto_renew",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/subscriptions/{id}/action/?do=auto_renew"
+    },
+    {
+      "anchor": "autorenewing",
+      "kind": "prose",
+      "text": "Toggles the autorenew flag of the subscription. Optionally, the value can be specified in the request."
+    },
+    {
+      "anchor": "autorenewing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 3,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "30a58acf50cda8d76fe7c14ceb9ce61c1029e06d152f8735f24c7cb1e773d4ba",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "post"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "post"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "amount": {
+            "blank": false,
+            "default": 1,
+            "help_text": "Subscription amount",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "auto_renew": {
+            "blank": false,
+            "default": true,
+            "help_text": "States if the subscription will auto renew on expire",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          },
+          "descendants": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Subscriptions that have been extended from the current one",
+            "nullable": true,
+            "readonly": true,
+            "type": "related",
+            "unique": false
+          },
+          "discount_amount": {
+            "blank": true,
+            "default": "No default provided.",
+            "help_text": "Amount of discount",
+            "nullable": true,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "discount_percent": {
+            "blank": true,
+            "default": "No default provided.",
+            "help_text": "Percent of discount",
+            "nullable": true,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "discounts": {
+            "blank": true,
+            "default": "No default provided.",
+            "help_text": "All discounts for this subscription",
+            "nullable": true,
+            "readonly": true,
+            "type": "dict",
+            "unique": false
+          },
+          "end_time": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "End time of subscription",
+            "nullable": true,
+            "readonly": false,
+            "type": "datetime",
+            "unique": false
+          },
+          "free_tier": {
+            "blank": false,
+            "default": false,
+            "help_text": "Boolean data. Ex: True",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          },
+          "id": {
+            "blank": false,
+            "default": "",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": true
+          },
+          "period": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Duration of the subscription",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "price": {
+            "blank": false,
+            "default": 0,
+            "help_text": "Subscription price",
+            "nullable": false,
+            "readonly": false,
+            "type": "decimal",
+            "unique": false
+          },
+          "remaining": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Amount remaining",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "resource": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Name of resource associated with the subscription",
+            "nullable": false,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "resource_uri": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "start_time": {
+            "blank": false,
+            "default": "2015-03-19T13:55:01.236421+00:00",
+            "help_text": "Start time of subscription",
+            "nullable": false,
+            "readonly": false,
+            "type": "datetime",
+            "unique": false
+          },
+          "status": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Status of the subscription",
+            "nullable": false,
+            "readonly": true,
+            "type": "string",
+            "unique": false
+          },
+          "subscribed_object": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Subscribed object - the target of this subscription, if applicable",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": false
+          },
+          "uuid": {
+            "blank": false,
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "nullable": true,
+            "readonly": false,
+            "type": "string",
+            "unique": true
+          },
+          "was_billed": {
+            "blank": false,
+            "default": false,
+            "help_text": "Boolean data. Ex: True",
+            "nullable": false,
+            "readonly": false,
+            "type": "boolean",
+            "unique": false
+          }
+        },
+        "filtering": {
+          "subscribed_object": [
+            "exact"
+          ]
+        }
+      },
+      "status_code": 200
+    },
+    {
+      "anchor": "grouped-subscriptions",
+      "kind": "heading",
+      "level": 2,
+      "text": "Grouped subscriptions"
+    },
+    {
+      "anchor": "get--groupedsubscriptions-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/groupedsubscriptions/"
+    },
+    {
+      "anchor": "grouped-subscriptions",
+      "kind": "prose",
+      "text": "Returns only the first subscriptions from a chain of extended subscriptions. The extensions are listed in the ‘descendants’ attribute and the end_time is that of the last subscription in the chain."
+    },
+    {
+      "anchor": "grouped-subscriptions",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "calculator",
+      "kind": "heading",
+      "level": 2,
+      "text": "Calculator"
+    },
+    {
+      "anchor": "post--subscriptioncalculator-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/subscriptioncalculator/"
+    },
+    {
+      "anchor": "calculator",
+      "kind": "prose",
+      "text": "Returns the price of the subscriptions POSTed in the same format as the normal subscriptions."
+    },
+    {
+      "anchor": "calculator",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "calculator",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "calculator",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "5d554604a35a398de10e55218ea0ddc6e651f004267163bf3f1c739c00cd79f2",
+      "path": "/api/2.0/subscriptioncalculator/"
+    },
+    {
+      "anchor": "calculator",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "calculator",
+      "classification": "response-example",
+      "fixture_id": "fixture-06c657bb9b8548fc7a4000ce",
+      "fixture_payload": {
+        "objects": [
+          {
+            "amount": "10000000000",
+            "discount_amount": "0E-24",
+            "discount_percent": "0",
+            "discounts": {},
+            "end_time": "2015-04-20T12:00:00+00:00",
+            "free_tier": false,
+            "period": "31 days, 22:04:59.904871",
+            "price": "1.010484993457794189453125",
+            "resource": "dssd",
+            "start_time": "2015-03-19T13:55:00.095129+00:00",
+            "was_billed": true
+          }
+        ],
+        "price": "1.010484993457794189453125"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/subscriptioncalculator/"
+      },
+      "original_sha256": "936c55174488db308db41bad68e2185b3ae9a478b455ca6da8fe85c8859cb277",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"discount_amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"discount_percent\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"discounts\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"end_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"free_tier\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"price\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"start_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"was_billed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"price\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "calculator",
+      "kind": "prose",
+      "text": "Similarly, the price of extending a subscription can be calculated."
+    },
+    {
+      "anchor": "calculator",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "calculator",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "6a839ef7688e31a37d7a4d694755ca80d5de7511856a7350fb38cc93f2d500db",
+      "path": "/api/2.0/subscriptioncalculator/7272/action/?do=extend"
+    },
+    {
+      "anchor": "calculator",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "calculator",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "amount": "32212254720",
+        "discount_amount": "9.60750000000000000",
+        "discount_percent": "0.2500000000",
+        "discounts": {
+          "period": "0.2500000000"
+        },
+        "end_time": "2016-08-26T12:00:00+00:00",
+        "free_tier": false,
+        "period": "366 days, 0:00:00",
+        "price": "28.82250000000000000000",
+        "resource": "dssd",
+        "start_time": "2015-08-26T12:00:00+00:00",
+        "was_billed": true
+      },
+      "kind": "code",
+      "original_sha256": "1c6b9d087566565fda525724129542fda1045ce86c420f9a186913f433293d37",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"discount_amount\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"discount_percent\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"discounts\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"discounts\"][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"end_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"free_tier\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"price\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"start_time\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"was_billed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        }
+      ],
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "833584c72e21ae14b9783ade43782ba7a2bef523cf1c45e8f8ee0e495517baaf",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/subscriptions.html"
+}

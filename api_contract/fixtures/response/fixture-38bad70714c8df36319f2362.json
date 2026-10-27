@@ -1,0 +1,16 @@
+{
+  "forwarding_host": "10.0.1.22",
+  "forwarding_port": 2222,
+  "jobs": [
+    {
+      "resource_uri": "/api/2.0/jobs/f67e71ef-7be2-4277-92b3-adce07ce7571/",
+      "uuid": "f67e71ef-7be2-4277-92b3-adce07ce7571"
+    }
+  ],
+  "mapped_port": 22,
+  "nat": "38589c2f-035e-4616-9cca-1d93e71490d5",
+  "order": 1,
+  "protocol": "TCP",
+  "resource_uri": "/api/2.0/portforwards/c7eed42d-4f05-4c4a-b070-84bd266ac800/",
+  "uuid": "c7eed42d-4f05-4c4a-b070-84bd266ac800"
+}

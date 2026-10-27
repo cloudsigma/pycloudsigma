@@ -1,0 +1,12 @@
+{
+  "objects": [
+    {
+      "email": "some_email_2@example.com",
+      "main": null,
+      "name": "Some Name 2",
+      "phone": "+11235551234",
+      "resource_uri": "/api/2.0/notification_contacts/0103f398-9f85-446a-a285-fe63cf9f0f28/",
+      "uuid": "0103f398-9f85-446a-a285-fe63cf9f0f28"
+    }
+  ]
+}

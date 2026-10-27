@@ -1,0 +1,1853 @@
+{
+  "blocks": [
+    {
+      "anchor": "library-drives",
+      "kind": "heading",
+      "level": 1,
+      "text": "Library Drives"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--libdrives-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/libdrives/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of library drives to which the authenticated user has access."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "A set of field names specifying the returned fields"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "16ae5c98b938e9b41515bf6e87976bdb27ca32f0f7f77d77740d84a5b5ad9b21",
+      "path": "/api/2.0/libdrives/?limit=5"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "fixture_id": "fixture-51f605bb7ea385aa9edef53f",
+      "fixture_payload": {
+        "meta": {
+          "limit": 5,
+          "offset": 0,
+          "total_count": 158
+        },
+        "objects": [
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "webserver",
+              "general",
+              "dbserver"
+            ],
+            "description": "Ubuntu 12.04.4 Server - 64bit Pre-Installed English with VirtIO support, SSH and Python. Last update on 2014/06/4.",
+            "distribution": "Ubuntu",
+            "favourite": false,
+            "image_type": "preinst",
+            "install_notes": "Initial Credentials: \\n Username: cloudsigma \\n Password: cs2014!!! \\n \\n Detailed Installation Instructions: \\n 1. Clone the Image. \\n The image needs to be cloned and then attached to a server. \\n \\n 2. Connect to your server via VNC. \\n a) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n b) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n OR \\n c) Having installed a compatible VNC client, open a VNC connection to your server through the UI. \\n d) Enter your VNC url and VNC password as displayed on your Server Properties Window. \\n \\n 3. Minimum Hardware Requirements. \\n The recommended minimum hardware requirements as published by ubuntu.com: 1GB RAM and 1GHz CPU \\n \\n 4. Update your administrator password. \\n For security reasons the \"root\" login is disabled (including for ssh) \\n User \"cloudsigma\" is available for access instead. \\n Please be aware that on first login you will be asked to change the initial password. \\n To switch to \"root\" please use the command \"sudo su\" for example. \\n \\n 5. Setup your OS. \\n The timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in. \\n \\n 6. Configuring your Networking. \\n a) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings. \\n b) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n",
+            "jobs": [],
+            "licenses": [],
+            "media": "disk",
+            "meta": {},
+            "mounted_on": [],
+            "name": "Ubuntu 12.04.4 Server",
+            "os": "linux",
+            "owner": null,
+            "paid": false,
+            "resource_uri": "/api/2.0/libdrives/d446038b-784d-4ae4-9a4d-46c7b51b403d/",
+            "size": 10737418240,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "",
+            "uuid": "d446038b-784d-4ae4-9a4d-46c7b51b403d",
+            "version": "12.04.4"
+          },
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "webserver",
+              "general",
+              "dbserver"
+            ],
+            "description": "Ubuntu 12.04.4 - 64bit Pre-Installed English with VirtIO support and SSH. Last update on 2014/06/4",
+            "distribution": "Ubuntu",
+            "favourite": false,
+            "image_type": "preinst",
+            "install_notes": "Initial Credentials: \\n Username: cloudsigma \\n Password: cs2014!!! \\n \\n Detailed Installation Instructions: \\n 1. Clone the Image. \\n The image needs to be cloned and then attached to a server. \\n \\n 2. Connect to your server via VNC. \\n a) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n b) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n OR \\n c) Having installed a compatible VNC client, open a VNC connection to your server through the UI. \\n d) Enter your VNC url and VNC password as displayed on your Server Properties Window. \\n \\n 3. Minimum Hardware Requirements. \\n The recommended minimum hardware requirements as published by ubuntu.com: 1GB RAM and 1GHz CPU \\n \\n 4. Update your administrator password. \\n For security reasons the \"root\" login is disabled (including for ssh) \\n User \"cloudsigma\" is available for access instead. \\n Please be aware that on first login you will be asked to change the initial password. \\n To switch to \"root\" please use the command \"sudo su\" for example. \\n \\n 5. Setup your OS. \\n The timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in. \\n \\n 6. Configuring your Networking. \\n a) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings. \\n b) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n",
+            "jobs": [],
+            "licenses": [],
+            "media": "disk",
+            "meta": {},
+            "mounted_on": [],
+            "name": "Ubuntu 12.04.4 Desktop",
+            "os": "linux",
+            "owner": null,
+            "paid": false,
+            "resource_uri": "/api/2.0/libdrives/0a06a5f5-a74e-4f1d-844e-b00d915cfd3c/",
+            "size": 10737418240,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "",
+            "uuid": "0a06a5f5-a74e-4f1d-844e-b00d915cfd3c",
+            "version": "12.04.4"
+          },
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "other"
+            ],
+            "description": "VirtIO Drivers for Windows v.0.1-65",
+            "distribution": null,
+            "favourite": false,
+            "image_type": "install",
+            "install_notes": "1. Attach the CD. \\n Please be aware that the CD needs to be attached to the server to IDE.\\n \\n 2. Attach VirtIO devices.\\n \\n The CD image with the VirtIO drivers does not include setup application. You will need to attach additional disk (or CD ) and network interface (recommended private) \\n In order to force windows to detect the new hardware (VirtIO) and require drivers.\\n \\n 3. Drivers installation.\\n \\n You must be logged on as an administrator to perform these steps.\\n \\n Open Device Manager by clicking the Start button Picture of the Start button, clicking Control Panel, clicking System and Maintenance, and then clicking Device Manager.‌\\n Administrator permission required If you are prompted for an administrator password or confirmation, type the password or provide confirmation.\\n \\n In Device Manager, locate the device you want to install, and then double-click the device name.\\n \\n Click the Driver tab, and then click install Driver and follow the instructions.\\n \\n Basically you need to browse to the CD subfolders and make sure selecting drivers are compatible with your windows distribution i.e. Win7 for Windows 2008 R2 and Vista for Windows 2008 R1\\n \\n 4. Power cycle and reattach all existing non-VirtIO devices on VirtIO\\n \\n Once you have properly installed drives you can shutdown the server and re-attach the system disk and the network interface on VirtIO. You can also detach all unnecessary devices and power on the server.\\n \\n Please be aware, if you are trying to run windows with system disk attached on VirtIO without installed drivers for VirtIO. Windows will stuck at blue screen error and probably reboot.\\n",
+            "jobs": [],
+            "licenses": [],
+            "media": "cdrom",
+            "meta": {},
+            "mounted_on": [],
+            "name": "VirtIO Drivers for Windows 0.1-65",
+            "os": "windows",
+            "owner": null,
+            "paid": false,
+            "resource_uri": "/api/2.0/libdrives/6626f7cd-6085-42a2-a0b4-42262c9c6036/",
+            "size": 1000013824,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "",
+            "uuid": "6626f7cd-6085-42a2-a0b4-42262c9c6036",
+            "version": null
+          },
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "general"
+            ],
+            "description": "Oracle Solaris 11.1 Server - 64bit - Install CD",
+            "distribution": null,
+            "favourite": false,
+            "image_type": "install",
+            "install_notes": "1. Attach the CD. \\n Please be aware that the CD needs to be attached to the server as IDE. \\n \\n 2. Attach a Drive. \\n Please be aware that the minimum drive size where you are going to install the OS should be 5 GB. \\n \\n 3. Connecting to your server via VNC. \\n a) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n b) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n OR \\n c) Having installed a compatible VNC client, open a VNC connection to your server through the UI. \\n d) Enter your VNC url and VNC password as displayed on your Server Properties Window. \\n \\n 4. Minimum Hardware Requirements. \\n The recommended minimum hardware requirements as published by oracle.com are: 0.5GB RAM and 0.5GHz CPU \\n \\n",
+            "jobs": [],
+            "licenses": [],
+            "media": "cdrom",
+            "meta": {},
+            "mounted_on": [],
+            "name": "Oracle Solaris 11.1 Server",
+            "os": "linux",
+            "owner": null,
+            "paid": false,
+            "resource_uri": "/api/2.0/libdrives/07f3cc68-203e-4094-92c6-5d684ad609b1/",
+            "size": 613695488,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "http://www.oracle.com/",
+            "uuid": "07f3cc68-203e-4094-92c6-5d684ad609b1",
+            "version": null
+          },
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "dbserver"
+            ],
+            "description": "Pre-installed SQL Server 2012 Standard Edition with SP1 64bit English with VirtIO and Python support. Last update on 2013/11/05.",
+            "distribution": null,
+            "favourite": false,
+            "image_type": "preinst",
+            "install_notes": "Initial Credentials: \\n\r\nUsername: Cloudsigma \\n\r\nPassword: cs2013! \\n\r\n\\n\r\nDetailed Installation Instructions: \\n\r\n1. Clone the Image \\n\r\nThe image needs to be cloned and then attached to a server. \\n\r\n \\n\r\n2. Buy a license \\n\r\nIn order to use CloudSigma's windows pre-installed image you need to buy a license from the UI: \\n\r\na) Click on Control Panel \\n\r\nb) Click on Subscriptions \\n\r\nC) Click on Purchase >> software licenses \\n\r\n \\n\r\n3. Connecting to your server via VNC \\n\r\na) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n\r\nb) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n\r\nOR \\n\r\nc) Having installed a compatible VNC client, open a VNC connection to your server through the UI.  \\n\r\nd) Enter your VNC url and VNC password as displayed on your Server Properties Window.  \\n\r\n \\n\r\n4. Minimum Hardware Requirements \\n\r\nThe recommended minimum hardware requirements as published by Microsoft can be found through the following link: http://msdn.microsoft.com/en-us/windowsserver/cc196364.aspx .\r\nWe recommend specifying a higher level of RAM for a better user experience. \\n\r\n \\n\r\n5. Update your administrator password \\n\r\nFor security reasons the \"administrator\" login is disabled. \\n\r\nUser \"cloudsigma\" is available for access instead. \\n\r\nPlease be aware that on first login you will be asked to change the initial password.  \\n\r\n \\n\r\n6. Setup your Windows \\n\r\nThe timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in.  \\n\r\n \\n\r\n7. Configuring your Networking \\n\r\na) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings.  \\n\r\nb) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n\r\n\\n\r\n8. Expanding your drive \\n\r\nThe system is fully installed, but you will need to extend the disk partition to cover the whole of your drive. In order to do this please follow the steps below: \\n\r\na) Open the \"Computer Management\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) Select \"Storage\" then \"Disk Management\" in the left hand pane \\n\r\nc) Right-click on the 19.90 GB NTFS primary partition, and select \"Extend Volume\" \\n\r\nd) Enter the amount of disk space that you want to increase the Volume size by (the default will be the maximum available) \\n\r\nYou will need to repeat this procedure if you ever resize this drive in future. \\n\r\n \\n\r\n9. Enabling Remote Access \\n\r\nAfter logging in thought VNC for a first time to configure your new Windows server, we recommend that if you are logging in from a Windows Desktop that you enable Remote Desktop for better access performance. To do this, follow these instructions below: \\n\r\na) Select \"Start\" | \"Applications\" | \"Control Panel\" \\n\r\nb) Select \"System and Security\" \\n\r\nc) Under \"System\" select \"Allow Remote Access\" \\n\r\nd) Select the corresponding connection type according to your Security Configuration \\n\r\n \\n\r\n10. Pinging Service \\n\r\nThe Pinging service has been turned on by default, if you wish to disable it please follow the instructions below: \\n\r\na) Select the \"Windows Firewall with Advanced Security\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) On the left hand pane, select \"Inbound Rules\" \\n\r\nc) On the middle pane, select the rules \"File and Printer Sharing (Echo Request - ICMPv4-In)\" and \"File and Printer Sharing (Echo Request - ICMPv6-In)\" \\n\r\nd) From the right-hand pane, select \"Disable Rules\" \\n\r\n",
+            "jobs": [],
+            "licenses": [
+              {
+                "amount": 1,
+                "license": {
+                  "burstable": true,
+                  "long_name": "Windows Server",
+                  "name": "msft_p73_04837_core",
+                  "resource_uri": "/api/2.0/licenses/12/",
+                  "type": "instance",
+                  "user_metric": "smp"
+                },
+                "user": null
+              },
+              {
+                "amount": 1,
+                "license": {
+                  "burstable": false,
+                  "long_name": "SQL Server Standard Edition",
+                  "name": "msft_7nq_00302",
+                  "resource_uri": "/api/2.0/licenses/14/",
+                  "type": "instance",
+                  "user_metric": "smp"
+                },
+                "user": null
+              }
+            ],
+            "media": "disk",
+            "meta": {},
+            "mounted_on": [],
+            "name": "Microsoft SQL Server 2012 Standard Edition with SP1",
+            "os": "windows",
+            "owner": null,
+            "paid": true,
+            "resource_uri": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/",
+            "size": 64424509440,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "http://www.microsoft.com/",
+            "uuid": "c7105ec8-5d60-43a7-a11b-18dcfc1a4433",
+            "version": null
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/libdrives/"
+      },
+      "original_sha256": "7dc1a9820d681bd7dc6fda7f37997f834468d3f119d3f9a6f018bc383259733d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"arch\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"category\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"category\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"distribution\"]",
+          "observed_types": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"favourite\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"image_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"install_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"amount\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"burstable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"long_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"license\"][\"user_metric\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"licenses\"][*][\"user\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"os\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"paid\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"storage_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"url\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"version\"]",
+          "observed_types": [
+            "null",
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "For consistency, we left /libdrives/detail/ url enabled, but it returns the same level of detail as the list call."
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "heading",
+      "level": 2,
+      "text": "List single drive"
+    },
+    {
+      "anchor": "get--libdrives-uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/libdrives/{uuid}/"
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "prose",
+      "text": "Gets detailed information for library drive identified by uuid."
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "list-single-drive",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "39f784f1e8e23e7d5c4f5e9c0e81f729303f972c9b96fc9c245e1a686fe8d232",
+      "path": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/"
+    },
+    {
+      "anchor": "list-single-drive",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "list-single-drive",
+      "classification": "response-example",
+      "fixture_id": "fixture-b1b25227503949a2fa988e49",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "arch": "64",
+        "category": [
+          "dbserver"
+        ],
+        "description": "Pre-installed SQL Server 2012 Standard Edition with SP1 64bit English with VirtIO and Python support. Last update on 2013/11/05.",
+        "distribution": null,
+        "favourite": false,
+        "image_type": "preinst",
+        "install_notes": "Initial Credentials: \\n\r\nUsername: Cloudsigma \\n\r\nPassword: cs2013! \\n\r\n\\n\r\nDetailed Installation Instructions: \\n\r\n1. Clone the Image \\n\r\nThe image needs to be cloned and then attached to a server. \\n\r\n \\n\r\n2. Buy a license \\n\r\nIn order to use CloudSigma's windows pre-installed image you need to buy a license from the UI: \\n\r\na) Click on Control Panel \\n\r\nb) Click on Subscriptions \\n\r\nC) Click on Purchase >> software licenses \\n\r\n \\n\r\n3. Connecting to your server via VNC \\n\r\na) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n\r\nb) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n\r\nOR \\n\r\nc) Having installed a compatible VNC client, open a VNC connection to your server through the UI.  \\n\r\nd) Enter your VNC url and VNC password as displayed on your Server Properties Window.  \\n\r\n \\n\r\n4. Minimum Hardware Requirements \\n\r\nThe recommended minimum hardware requirements as published by Microsoft can be found through the following link: http://msdn.microsoft.com/en-us/windowsserver/cc196364.aspx .\r\nWe recommend specifying a higher level of RAM for a better user experience. \\n\r\n \\n\r\n5. Update your administrator password \\n\r\nFor security reasons the \"administrator\" login is disabled. \\n\r\nUser \"cloudsigma\" is available for access instead. \\n\r\nPlease be aware that on first login you will be asked to change the initial password.  \\n\r\n \\n\r\n6. Setup your Windows \\n\r\nThe timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in.  \\n\r\n \\n\r\n7. Configuring your Networking \\n\r\na) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings.  \\n\r\nb) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n\r\n\\n\r\n8. Expanding your drive \\n\r\nThe system is fully installed, but you will need to extend the disk partition to cover the whole of your drive. In order to do this please follow the steps below: \\n\r\na) Open the \"Computer Management\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) Select \"Storage\" then \"Disk Management\" in the left hand pane \\n\r\nc) Right-click on the 19.90 GB NTFS primary partition, and select \"Extend Volume\" \\n\r\nd) Enter the amount of disk space that you want to increase the Volume size by (the default will be the maximum available) \\n\r\nYou will need to repeat this procedure if you ever resize this drive in future. \\n\r\n \\n\r\n9. Enabling Remote Access \\n\r\nAfter logging in thought VNC for a first time to configure your new Windows server, we recommend that if you are logging in from a Windows Desktop that you enable Remote Desktop for better access performance. To do this, follow these instructions below: \\n\r\na) Select \"Start\" | \"Applications\" | \"Control Panel\" \\n\r\nb) Select \"System and Security\" \\n\r\nc) Under \"System\" select \"Allow Remote Access\" \\n\r\nd) Select the corresponding connection type according to your Security Configuration \\n\r\n \\n\r\n10. Pinging Service \\n\r\nThe Pinging service has been turned on by default, if you wish to disable it please follow the instructions below: \\n\r\na) Select the \"Windows Firewall with Advanced Security\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) On the left hand pane, select \"Inbound Rules\" \\n\r\nc) On the middle pane, select the rules \"File and Printer Sharing (Echo Request - ICMPv4-In)\" and \"File and Printer Sharing (Echo Request - ICMPv6-In)\" \\n\r\nd) From the right-hand pane, select \"Disable Rules\" \\n\r\n",
+        "jobs": [],
+        "licenses": [
+          {
+            "amount": 1,
+            "license": {
+              "burstable": false,
+              "long_name": "SQL Server Standard Edition",
+              "name": "msft_7nq_00302",
+              "resource_uri": "/api/2.0/licenses/14/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          },
+          {
+            "amount": 1,
+            "license": {
+              "burstable": true,
+              "long_name": "Windows Server",
+              "name": "msft_p73_04837_core",
+              "resource_uri": "/api/2.0/licenses/12/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          }
+        ],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "Microsoft SQL Server 2012 Standard Edition with SP1",
+        "os": "windows",
+        "owner": null,
+        "paid": true,
+        "resource_uri": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/",
+        "size": 64424509440,
+        "status": "unmounted",
+        "storage_type": null,
+        "tags": [],
+        "url": "http://www.microsoft.com/",
+        "uuid": "c7105ec8-5d60-43a7-a11b-18dcfc1a4433",
+        "version": null
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/libdrives/{uuid}/"
+      },
+      "original_sha256": "f6b3a7242ed68acfdebd8c074e87efd8588e1cbd5907af44ac996b15c60eb874",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"arch\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"category\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"category\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"distribution\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"favourite\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"image_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"install_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"amount\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"burstable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"long_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"user_metric\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"user\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"os\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"paid\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"url\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"version\"]",
+          "observed_types": [
+            "null"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "attaching-library-drive",
+      "kind": "heading",
+      "level": 2,
+      "text": "Attaching library drive"
+    },
+    {
+      "anchor": "attaching-library-drive",
+      "kind": "prose",
+      "text": "If the library drive is a CDROM media, you can attach it directly to an owned server the same way you attach a regular drive - specifying the library drive uuid."
+    },
+    {
+      "anchor": "cloning-library-drive",
+      "kind": "heading",
+      "level": 2,
+      "text": "Cloning library drive"
+    },
+    {
+      "anchor": "post--libdrives-uuid-action-?do=clone",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/libdrives/{uuid}/action/?do=clone"
+    },
+    {
+      "anchor": "cloning-library-drive",
+      "kind": "prose",
+      "text": "If a library drive is not a CDROM, you have to clone it in your account in order to use it. You can clone a library drive the same way you clone a regular drive."
+    },
+    {
+      "anchor": "licensed-drive-images",
+      "kind": "heading",
+      "level": 2,
+      "text": "Licensed drive images"
+    },
+    {
+      "anchor": "licensed-drive-images",
+      "kind": "prose",
+      "text": "Some drives in the library may require additional subscriptions or payment to be used. This is visible from the licenses field in the drive definition. When you clone such image from drives library to your account, the licenses remain bound to the cloned drive and can’t be altered upon drive edit. See also Licenses list regarding how to list all defined licenses."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "heading",
+      "level": 2,
+      "text": "Recognizing library drives"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Note that library drives can be queried through regular drives API using /drives/{uuid}/. If the drive uuid happens to be the uuid of a library drive, the drive defintion will be retrieved. In order to differentiate between owned and library drive, one can check the owner attribute, which is null for library drives."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "It is possible to get a library drive through the drives API, because there isn’t a way to know in advance whether an attached drive in a server definition is owned by the user or one from library."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Library drives are not listed in the list and detailed list for ordinary drives."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Example:"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Get the drive from /drives/{uuid}/:"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "2a07894a4629e9ea1f7d75f3bea210c8680d6f52d76901be13baffa3470be24f",
+      "path": "/api/2.0/drives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [],
+        "jobs": [],
+        "licenses": [
+          {
+            "amount": 1,
+            "license": {
+              "burstable": false,
+              "long_name": "SQL Server Standard Edition",
+              "name": "msft_7nq_00302",
+              "resource_uri": "/api/2.0/licenses/14/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          },
+          {
+            "amount": 1,
+            "license": {
+              "burstable": true,
+              "long_name": "Windows Server",
+              "name": "msft_p73_04837_core",
+              "resource_uri": "/api/2.0/licenses/12/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          }
+        ],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "Microsoft SQL Server 2012 Standard Edition with SP1",
+        "owner": null,
+        "permissions": [],
+        "resource_uri": "/api/2.0/drives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/",
+        "runtime": {
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 64424509440,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [],
+        "uuid": "c7105ec8-5d60-43a7-a11b-18dcfc1a4433"
+      },
+      "kind": "code",
+      "original_sha256": "cbc1d361757cadc9d2d5ca67b28100c2d1563691d1a2ff05b117ddd2e9fab9d0",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"amount\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"burstable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"long_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"user_metric\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"user\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Notice that there is no owner (it is null)."
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "kind": "prose",
+      "text": "Get the same drive from /libdrives/{uuid}/:"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "39f784f1e8e23e7d5c4f5e9c0e81f729303f972c9b96fc9c245e1a686fe8d232",
+      "path": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/"
+    },
+    {
+      "anchor": "recognizing-library-drives",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "arch": "64",
+        "category": [
+          "dbserver"
+        ],
+        "description": "Pre-installed SQL Server 2012 Standard Edition with SP1 64bit English with VirtIO and Python support. Last update on 2013/11/05.",
+        "distribution": null,
+        "favourite": false,
+        "image_type": "preinst",
+        "install_notes": "Initial Credentials: \\n\r\nUsername: Cloudsigma \\n\r\nPassword: cs2013! \\n\r\n\\n\r\nDetailed Installation Instructions: \\n\r\n1. Clone the Image \\n\r\nThe image needs to be cloned and then attached to a server. \\n\r\n \\n\r\n2. Buy a license \\n\r\nIn order to use CloudSigma's windows pre-installed image you need to buy a license from the UI: \\n\r\na) Click on Control Panel \\n\r\nb) Click on Subscriptions \\n\r\nC) Click on Purchase >> software licenses \\n\r\n \\n\r\n3. Connecting to your server via VNC \\n\r\na) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n\r\nb) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n\r\nOR \\n\r\nc) Having installed a compatible VNC client, open a VNC connection to your server through the UI.  \\n\r\nd) Enter your VNC url and VNC password as displayed on your Server Properties Window.  \\n\r\n \\n\r\n4. Minimum Hardware Requirements \\n\r\nThe recommended minimum hardware requirements as published by Microsoft can be found through the following link: http://msdn.microsoft.com/en-us/windowsserver/cc196364.aspx .\r\nWe recommend specifying a higher level of RAM for a better user experience. \\n\r\n \\n\r\n5. Update your administrator password \\n\r\nFor security reasons the \"administrator\" login is disabled. \\n\r\nUser \"cloudsigma\" is available for access instead. \\n\r\nPlease be aware that on first login you will be asked to change the initial password.  \\n\r\n \\n\r\n6. Setup your Windows \\n\r\nThe timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in.  \\n\r\n \\n\r\n7. Configuring your Networking \\n\r\na) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings.  \\n\r\nb) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n\r\n\\n\r\n8. Expanding your drive \\n\r\nThe system is fully installed, but you will need to extend the disk partition to cover the whole of your drive. In order to do this please follow the steps below: \\n\r\na) Open the \"Computer Management\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) Select \"Storage\" then \"Disk Management\" in the left hand pane \\n\r\nc) Right-click on the 19.90 GB NTFS primary partition, and select \"Extend Volume\" \\n\r\nd) Enter the amount of disk space that you want to increase the Volume size by (the default will be the maximum available) \\n\r\nYou will need to repeat this procedure if you ever resize this drive in future. \\n\r\n \\n\r\n9. Enabling Remote Access \\n\r\nAfter logging in thought VNC for a first time to configure your new Windows server, we recommend that if you are logging in from a Windows Desktop that you enable Remote Desktop for better access performance. To do this, follow these instructions below: \\n\r\na) Select \"Start\" | \"Applications\" | \"Control Panel\" \\n\r\nb) Select \"System and Security\" \\n\r\nc) Under \"System\" select \"Allow Remote Access\" \\n\r\nd) Select the corresponding connection type according to your Security Configuration \\n\r\n \\n\r\n10. Pinging Service \\n\r\nThe Pinging service has been turned on by default, if you wish to disable it please follow the instructions below: \\n\r\na) Select the \"Windows Firewall with Advanced Security\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) On the left hand pane, select \"Inbound Rules\" \\n\r\nc) On the middle pane, select the rules \"File and Printer Sharing (Echo Request - ICMPv4-In)\" and \"File and Printer Sharing (Echo Request - ICMPv6-In)\" \\n\r\nd) From the right-hand pane, select \"Disable Rules\" \\n\r\n",
+        "jobs": [],
+        "licenses": [
+          {
+            "amount": 1,
+            "license": {
+              "burstable": false,
+              "long_name": "SQL Server Standard Edition",
+              "name": "msft_7nq_00302",
+              "resource_uri": "/api/2.0/licenses/14/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          },
+          {
+            "amount": 1,
+            "license": {
+              "burstable": true,
+              "long_name": "Windows Server",
+              "name": "msft_p73_04837_core",
+              "resource_uri": "/api/2.0/licenses/12/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          }
+        ],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "Microsoft SQL Server 2012 Standard Edition with SP1",
+        "os": "windows",
+        "owner": null,
+        "paid": true,
+        "resource_uri": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/",
+        "size": 64424509440,
+        "status": "unmounted",
+        "storage_type": null,
+        "tags": [],
+        "url": "http://www.microsoft.com/",
+        "uuid": "c7105ec8-5d60-43a7-a11b-18dcfc1a4433",
+        "version": null
+      },
+      "kind": "code",
+      "original_sha256": "f6b3a7242ed68acfdebd8c074e87efd8588e1cbd5907af44ac996b15c60eb874",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"arch\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"category\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"category\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"description\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"distribution\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"favourite\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"image_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"install_notes\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"amount\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"burstable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"long_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"license\"][\"user_metric\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"][*][\"user\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"os\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"paid\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"url\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"version\"]",
+          "observed_types": [
+            "null"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "05de4b256e380d4091b4fd4d28aecb219c36f5e7c3cffd3939aeb15f64da1acb",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get"
+        ],
+        "allowed_list_http_methods": [
+          "get"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "affinities": {
+            "choices": [
+              "ssd"
+            ],
+            "default": [],
+            "help_text": "A list of affinities this drive should belong to",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "allow_multimount": {
+            "default": false,
+            "help_text": "Allow the drive to be mounted on multiple guests. Not taken into account when drive is cdrom.",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "arch": {
+            "default": null,
+            "help_text": "Operating system bit architecture the drive.",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "category": {
+            "default": [],
+            "help_text": "Category of the drive.",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "description": {
+            "default": null,
+            "help_text": "Description of drive image.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "distribution": {
+            "default": null,
+            "help_text": "OS distribution of the drive.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "favourite": {
+            "default": null,
+            "help_text": "Favourite drive image for user.",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "image_type": {
+            "default": null,
+            "help_text": "Type of drive image.",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "install_notes": {
+            "default": null,
+            "help_text": "Install notes for the drive image.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "jobs": {
+            "default": "No default provided.",
+            "help_text": "Background jobs related to this resource",
+            "readonly": true,
+            "required": true,
+            "type": "related"
+          },
+          "licenses": {
+            "default": [],
+            "fields": {
+              "amount": {
+                "default": 1,
+                "help_text": "Number of licenses",
+                "readonly": false,
+                "required": false,
+                "type": "integer"
+              },
+              "license": {
+                "default": "No default provided.",
+                "help_text": "A single related resource. Can be either a URI or set of nested resource data.",
+                "readonly": false,
+                "required": true,
+                "type": "related"
+              },
+              "user": {
+                "default": null,
+                "help_text": "Owner of the license",
+                "readonly": false,
+                "required": false,
+                "type": "related"
+              }
+            },
+            "help_text": "A list of licenses attached to this drive",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "media": {
+            "choices": [
+              "cdrom",
+              "disk"
+            ],
+            "default": null,
+            "help_text": "Media representation type",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "meta": {
+            "default": {},
+            "help_text": "User defined meta information",
+            "readonly": false,
+            "required": false,
+            "type": "dict"
+          },
+          "mounted_on": {
+            "default": "No default provided.",
+            "help_text": "Servers on which this drive is mounted on",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "name": {
+            "default": null,
+            "help_text": "Human readable name of the drive",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "os": {
+            "default": null,
+            "help_text": "Operating system of the drive.",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "owner": {
+            "default": null,
+            "help_text": "Owner of the drive",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "paid": {
+            "default": null,
+            "help_text": "Paid or free.",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "size": {
+            "default": null,
+            "help_text": "Size of the drive in bytes",
+            "readonly": false,
+            "required": true,
+            "type": "integer"
+          },
+          "status": {
+            "default": "No default provided.",
+            "help_text": "Status of the drive.",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "storage_type": {
+            "default": "No default provided.",
+            "help_text": "Underlying storage",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "tags": {
+            "default": "No default provided.",
+            "help_text": "Many related resources. Can be either a list of URIs or list of individually nested resource data.",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "url": {
+            "default": null,
+            "help_text": "Operating system bit architecture the drive.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "UUID of the drive",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "version": {
+            "default": null,
+            "help_text": "OS version of the drive.",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "arch": "exact",
+          "category": "exact",
+          "distribution": "exact",
+          "image_type": "exact",
+          "name": "exact",
+          "name__icontains": "exact",
+          "os": "exact",
+          "uuid": "exact",
+          "version": "exact"
+        }
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "0ea8e178cc90b8ca2d7af5257899221c0f6e0fd43768575641bf794080cb4ebf",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/libdrives.html"
+}

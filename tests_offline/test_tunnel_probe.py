@@ -15,7 +15,7 @@ _spec.loader.exec_module(run_tunnel_probe)
 
 
 class Response:
-    def __init__(self, status_code=404, body=None, headers=None):
+    def __init__(self, status_code=200, body=None, headers=None):
         self.status_code = status_code
         self._body = body
         self.headers = headers or {'Content-Type': 'application/json'}
@@ -45,6 +45,12 @@ class AuthFailureSession(Session):
 
 
 class TunnelProbeTests(unittest.TestCase):
+    def setUp(self):
+        patcher = mock.patch.object(run_tunnel_probe, 'ENDPOINT',
+                                    run_tunnel_probe.ALLOWED_ENDPOINT)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def test_probe_uses_get_only_and_summarizes_without_values(self):
         session = Session()
         with mock.patch.object(run_tunnel_probe, 'USERNAME', 'user'), \
@@ -85,6 +91,52 @@ class TunnelProbeTests(unittest.TestCase):
         self.assertTrue(all(
             item['status'] == 'authentication_or_permission_failure'
             for item in result['checks']))
+
+    def test_known_provider_gaps_are_reported_without_hiding_other_errors(self):
+        statuses = [200, 200, 200, 404, 301, 500, 200, 200]
+        client = Session()
+        responses = [Response(status, headers={
+            'Content-Type': 'application/json',
+            'Location': '/api/2.0/tunnels/'}) for status in statuses]
+        with mock.patch.object(run_tunnel_probe, 'USERNAME', 'user'), \
+                mock.patch.object(run_tunnel_probe, 'PASSWORD', 'password'), \
+                mock.patch.object(client, 'get', side_effect=responses):
+            result = run_tunnel_probe.probe(client)
+        self.assertEqual(result['status'], 'passed_with_known_gaps')
+        self.assertEqual(result['known_provider_gaps'], 2)
+        self.assertEqual(result['checks'][4]['status'], 'redirect_observed')
+        self.assertEqual(result['failed'], 0)
+
+    def test_unexpected_route_failure_and_cross_origin_redirect_fail(self):
+        for index, response in ((0, Response(404)), (3, Response(500)),
+                                (4, Response(301, headers={
+                                    'Location': 'https://other.example/tunnels/'}))):
+            with self.subTest(index=index):
+                responses = [Response() for _ in run_tunnel_probe.ROUTES]
+                responses[index] = response
+                client = Session()
+                with mock.patch.object(run_tunnel_probe, 'USERNAME', 'user'), \
+                        mock.patch.object(run_tunnel_probe, 'PASSWORD', 'password'), \
+                        mock.patch.object(client, 'get', side_effect=responses):
+                    result = run_tunnel_probe.probe(client)
+                self.assertEqual(result['status'], 'failed')
+                self.assertEqual(result['failed'], 1)
+
+    def test_endpoint_refused_before_credential_dispatch(self):
+        client = Session()
+        with mock.patch.object(run_tunnel_probe, 'USERNAME', 'user'), \
+                mock.patch.object(run_tunnel_probe, 'PASSWORD', 'password'), \
+                mock.patch.object(run_tunnel_probe, 'ENDPOINT', 'http://other.example/'):
+            result = run_tunnel_probe.probe(client)
+        self.assertEqual(result['status'], 'failed')
+        self.assertEqual(client.calls, [])
+        self.assertIsNone(client.auth)
+
+    def test_failure_exit_status_is_nonzero(self):
+        with mock.patch.object(run_tunnel_probe, 'probe', return_value={
+                'status': 'failed', 'checks': [], 'failed': 1}), \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(run_tunnel_probe.main(), 1)
 
 
 if __name__ == '__main__':

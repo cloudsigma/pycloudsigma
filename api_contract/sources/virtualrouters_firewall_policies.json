@@ -1,0 +1,1484 @@
+{
+  "blocks": [
+    {
+      "anchor": "virtual-routers-firewall-policies",
+      "kind": "heading",
+      "level": 1,
+      "text": "Virtual Routers Firewall Policies"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "create new object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "DELETE"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "delete object/s"
+    },
+    {
+      "anchor": "list-single-policy",
+      "kind": "heading",
+      "level": 2,
+      "text": "List single policy"
+    },
+    {
+      "anchor": "get--vrfwpolicies-vrfwpolicy_uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/vrfwpolicies/{vrfwpolicy_uuid}/"
+    },
+    {
+      "anchor": "list-single-policy",
+      "kind": "prose",
+      "text": "Gets detailed information on a policy identified by vrfwpolicy_uuid."
+    },
+    {
+      "anchor": "list-single-policy",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "list-single-policy",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "list-single-policy",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "fd5474691a1f319ac101c96d725816eab2ef1129fd3849299709c8dc8f974e43",
+      "path": "/api/2.0/vrfwpolicies/906abae3-b533-4c5d-8d98-c459195b6230/"
+    },
+    {
+      "anchor": "list-single-policy",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "list-single-policy",
+      "classification": "response-example",
+      "fixture_id": "fixture-892ff4d12de68320a7df5f45",
+      "fixture_payload": {
+        "active": true,
+        "filters": [
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "10.0.1.1",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": "Echo reply",
+            "jobs": [],
+            "log": false,
+            "order": 1,
+            "protocol": "tcp",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/vrfwfilters/fb747784-c370-4137-bc92-469cedc5cbce/",
+              "uuid": "fb747784-c370-4137-bc92-469cedc5cbce"
+            },
+            "src": "10.0.2.1",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "fb747784-c370-4137-bc92-469cedc5cbce"
+          },
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "10.0.1.2",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": "Echo reply",
+            "jobs": [],
+            "log": false,
+            "order": 2,
+            "protocol": "tcp",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/vrfwfilters/d2994d4b-e935-4b87-90fb-41e42565a1a0/",
+              "uuid": "d2994d4b-e935-4b87-90fb-41e42565a1a0"
+            },
+            "src": "10.0.2.2",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "d2994d4b-e935-4b87-90fb-41e42565a1a0"
+          },
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "10.0.1.3",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": "Echo reply",
+            "jobs": [],
+            "log": false,
+            "order": 3,
+            "protocol": "tcp",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/vrfwfilters/74a7a760-70c2-4267-bffc-d96d695bb7dc/",
+              "uuid": "74a7a760-70c2-4267-bffc-d96d695bb7dc"
+            },
+            "src": "10.0.2.3",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "74a7a760-70c2-4267-bffc-d96d695bb7dc"
+          },
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "10.0.1.4",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": "Echo reply",
+            "jobs": [],
+            "log": false,
+            "order": 4,
+            "protocol": "tcp",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/vrfwfilters/4146531d-d902-4b79-ba40-d4cc3ba3495b/",
+              "uuid": "4146531d-d902-4b79-ba40-d4cc3ba3495b"
+            },
+            "src": "10.0.2.4",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "4146531d-d902-4b79-ba40-d4cc3ba3495b"
+          },
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "10.0.1.5",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": "Echo reply",
+            "jobs": [],
+            "log": false,
+            "order": 5,
+            "protocol": "tcp",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/vrfwfilters/13390e58-ed8f-4dfa-8401-9d17846638f3/",
+              "uuid": "13390e58-ed8f-4dfa-8401-9d17846638f3"
+            },
+            "src": "10.0.2.5",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "13390e58-ed8f-4dfa-8401-9d17846638f3"
+          },
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "10.0.1.6",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": "Echo reply",
+            "jobs": [],
+            "log": false,
+            "order": 6,
+            "protocol": "tcp",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/vrfwfilters/52e2f238-16c7-4882-a2e6-bdb87c1e91e6/",
+              "uuid": "52e2f238-16c7-4882-a2e6-bdb87c1e91e6"
+            },
+            "src": "10.0.2.6",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "52e2f238-16c7-4882-a2e6-bdb87c1e91e6"
+          },
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "10.0.1.7",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": "Echo reply",
+            "jobs": [],
+            "log": false,
+            "order": 7,
+            "protocol": "tcp",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/vrfwfilters/a2f3a53b-9a66-4f1b-92b6-95f5760c5854/",
+              "uuid": "a2f3a53b-9a66-4f1b-92b6-95f5760c5854"
+            },
+            "src": "10.0.2.7",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "a2f3a53b-9a66-4f1b-92b6-95f5760c5854"
+          },
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "10.0.1.8",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": "Echo reply",
+            "jobs": [],
+            "log": false,
+            "order": 8,
+            "protocol": "tcp",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/vrfwfilters/08bd64b4-1e3b-422c-beba-e0bd8d8cc1fa/",
+              "uuid": "08bd64b4-1e3b-422c-beba-e0bd8d8cc1fa"
+            },
+            "src": "10.0.2.8",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "08bd64b4-1e3b-422c-beba-e0bd8d8cc1fa"
+          }
+        ],
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/4a54dd7b-4c9b-45ac-94a4-664d1a93e684/",
+            "uuid": "4a54dd7b-4c9b-45ac-94a4-664d1a93e684"
+          },
+          {
+            "resource_uri": "/api/2.0/jobs/0dd31f40-a6e3-4a76-a289-0850c15630ac/",
+            "uuid": "0dd31f40-a6e3-4a76-a289-0850c15630ac"
+          },
+          {
+            "resource_uri": "/api/2.0/jobs/4f4af216-5f72-4464-a157-f85d3c5c7dae/",
+            "uuid": "4f4af216-5f72-4464-a157-f85d3c5c7dae"
+          },
+          {
+            "resource_uri": "/api/2.0/jobs/139898e2-1385-4f7e-8e90-2d33f71708b7/",
+            "uuid": "139898e2-1385-4f7e-8e90-2d33f71708b7"
+          },
+          {
+            "resource_uri": "/api/2.0/jobs/97b8b81b-c8af-4590-ae59-f4b02230d782/",
+            "uuid": "97b8b81b-c8af-4590-ae59-f4b02230d782"
+          },
+          {
+            "resource_uri": "/api/2.0/jobs/8b07441d-f3af-45ee-a20f-eec7b438d276/",
+            "uuid": "8b07441d-f3af-45ee-a20f-eec7b438d276"
+          }
+        ],
+        "lan_interface": {
+          "resource_uri": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/",
+          "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae"
+        },
+        "name": "WEB POLICY FILTERS ACTIVATE",
+        "order": 1,
+        "resource_uri": "/api/2.0/vrfwpolicies/906abae3-b533-4c5d-8d98-c459195b6230/",
+        "upstream_interface": null,
+        "uuid": "906abae3-b533-4c5d-8d98-c459195b6230"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/vrfwpolicies/{vrfwpolicy_uuid}/"
+      },
+      "original_sha256": "31c2bd9c02fb2e1b346a3d2e97aabe385801ff9b593e4f64365ffbb632725d15",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"action_queue\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"dst\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"dst_addr_op\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"dst_port\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"dst_port_op\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"icmp_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"log\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"protocol\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"resource_uri\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"resource_uri\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"src\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"src_addr_op\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"src_port\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"src_port_op\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"lan_interface\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"lan_interface\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"lan_interface\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"upstream_interface\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "post--vrfwpolicies-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/vrfwpolicies/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new virtual router firewall policy."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "201 Created – object created"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "592e9f537cdce4f81b3e0dc4765adb118e4aabb48e409733471b94f9613c892a",
+      "path": "/api/2.0/vrfwpolicies/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "creating",
+      "classification": "response-example",
+      "fixture_id": "fixture-d4ad802ddd582d10dcaa6cfa",
+      "fixture_payload": {
+        "objects": [
+          {
+            "active": false,
+            "filters": [],
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/bce9ecf6-f503-4f43-be04-d5965c9ab94e/",
+                "uuid": "bce9ecf6-f503-4f43-be04-d5965c9ab94e"
+              }
+            ],
+            "lan_interface": {
+              "resource_uri": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/",
+              "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae"
+            },
+            "name": "Policy two",
+            "order": 2,
+            "resource_uri": "/api/2.0/vrfwpolicies/a5e14575-9e42-4748-95e9-205bf43b2da0/",
+            "upstream_interface": null,
+            "uuid": "a5e14575-9e42-4748-95e9-205bf43b2da0"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/vrfwpolicies/"
+      },
+      "original_sha256": "9ba1c24fd8af7c7e7f95327ca60bbdb0a71c7ff6eea08cdce3676b5d437d4eca",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"filters\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"lan_interface\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"lan_interface\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"lan_interface\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"upstream_interface\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "put--vrfwpolicies-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/vrfwpolicies/{uuid}/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits a virtual router firewall policy. In case the policy is activated, all the filters are going to be applied. Also in case the policy is deactivated, all the filters are going to be removed from Firewall."
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "4b7f0d213535cc067bc70b1344a675a8fee0fca14b03e10e84a2fb3ab7decfcc",
+      "path": "/api/2.0/vrfwpolicies/c59aa136-23a6-4b6a-a30c-05af01f9c7c2/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "response-example",
+      "fixture_id": "fixture-5b0eeae7db9ea54644eb68da",
+      "fixture_payload": {
+        "active": true,
+        "filters": [
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "192.168.2.108",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": null,
+            "jobs": [],
+            "log": false,
+            "order": 1,
+            "protocol": "tcp",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/vrfwfilters/0ab92f1d-c38d-437c-ab31-3dd67ebfda65/",
+              "uuid": "0ab92f1d-c38d-437c-ab31-3dd67ebfda65"
+            },
+            "src": "192.168.1.10",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "0ab92f1d-c38d-437c-ab31-3dd67ebfda65"
+          }
+        ],
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/f1ec0bb4-3c90-480e-bd15-4f7494c1f32f/",
+            "uuid": "f1ec0bb4-3c90-480e-bd15-4f7494c1f32f"
+          },
+          {
+            "resource_uri": "/api/2.0/jobs/8a9a1e00-040b-4b2c-867a-dc7f6a87cb4a/",
+            "uuid": "8a9a1e00-040b-4b2c-867a-dc7f6a87cb4a"
+          }
+        ],
+        "lan_interface": {
+          "resource_uri": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/",
+          "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae"
+        },
+        "name": "Policy one",
+        "order": 1,
+        "resource_uri": "/api/2.0/vrfwpolicies/c59aa136-23a6-4b6a-a30c-05af01f9c7c2/",
+        "upstream_interface": null,
+        "uuid": "c59aa136-23a6-4b6a-a30c-05af01f9c7c2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "PUT",
+        "path": "/api/2.0/vrfwpolicies/{uuid}/"
+      },
+      "original_sha256": "90a391eed9ac3d296effdd25d1be3cc13efc9873f2baf59e44058bfab5627e16",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"action_queue\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"dst\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"dst_addr_op\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"dst_port\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"dst_port_op\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"icmp_type\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"log\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"protocol\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"resource_uri\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"resource_uri\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"src\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"src_addr_op\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"src_port\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"src_port_op\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"filters\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"lan_interface\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"lan_interface\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"lan_interface\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"upstream_interface\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "delete--vrfwpolicies-vrfwpolicy_uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/vrfwpolicies/{vrfwpolicy_uuid}/"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Deletes a single virtual router firewall policy."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "204 No Content – No content, object deletion started."
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "deleting",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "48f0847a6443f7e515f01d5b952c4761f24df48b7370b732b664c5b0890d1cc3",
+      "path": "/api/2.0/vrfwpolicies/906abae3-b533-4c5d-8d98-c459195b6230/"
+    },
+    {
+      "anchor": "deleting",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "deleting",
+      "classification": "response-example",
+      "fixture_id": "fixture-069f4985aa7f848f48331815",
+      "fixture_payload": {
+        "job": {
+          "resource_uri": "/api/2.0/jobs/dd3f1687-f660-45f5-8e10-1d67fe1fe975/",
+          "uuid": "dd3f1687-f660-45f5-8e10-1d67fe1fe975"
+        },
+        "uuid": "906abae3-b533-4c5d-8d98-c459195b6230"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/vrfwpolicies/{vrfwpolicy_uuid}/"
+      },
+      "original_sha256": "b53daaf52ada63e7e2f896566d0bc44f0a5a77a6aab85c468825b5cbb3633d5a",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "enable-policy",
+      "kind": "heading",
+      "level": 2,
+      "text": "Enable Policy"
+    },
+    {
+      "anchor": "post--vrfwpolicies-vrfwpolicy_uuid-action-?do=enable",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/vrfwpolicies/{vrfwpolicy_uuid}/action/?do=enable"
+    },
+    {
+      "anchor": "enable-policy",
+      "kind": "prose",
+      "text": "Enables the Policy and all its filters."
+    },
+    {
+      "anchor": "enable-policy",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "enable-policy",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "enable-policy",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "c7f1cf180e04119b96a5148bebb0eca14c255442b23b522cc2b4e206b703342d",
+      "path": "/api/2.0/vrfwpolicies/906abae3-b533-4c5d-8d98-c459195b6230/action/?do=enable"
+    },
+    {
+      "anchor": "enable-policy",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "enable-policy",
+      "classification": "response-example",
+      "fixture_id": "fixture-0a27ed97a58047caa88977ba",
+      "fixture_payload": {
+        "action": "enable",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/f98f1e57-e1b2-423e-aacd-e1dcecd1bf31/",
+          "uuid": "f98f1e57-e1b2-423e-aacd-e1dcecd1bf31"
+        },
+        "result": "success",
+        "uuid": "906abae3-b533-4c5d-8d98-c459195b6230"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/vrfwpolicies/{vrfwpolicy_uuid}/action/?do=enable"
+      },
+      "original_sha256": "e790c79c84b14a0cdf93041701966c94c8b68a463a3ed54550d85f331c148120",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "disable-policy",
+      "kind": "heading",
+      "level": 2,
+      "text": "Disable Policy"
+    },
+    {
+      "anchor": "post--vrfwpolicies-vrfwpolicy_uuid-action-?do=disable",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/vrfwpolicies/{vrfwpolicy_uuid}/action/?do=disable"
+    },
+    {
+      "anchor": "disable-policy",
+      "kind": "prose",
+      "text": "Disables the Policy and all its filters."
+    },
+    {
+      "anchor": "disable-policy",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "disable-policy",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "disable-policy",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "c0a4744edea5281192eefbffc72ada74010399fa0d2782825e75b6a39ad4b0e7",
+      "path": "/api/2.0/vrfwpolicies/906abae3-b533-4c5d-8d98-c459195b6230/action/?do=disable"
+    },
+    {
+      "anchor": "disable-policy",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "disable-policy",
+      "classification": "response-example",
+      "fixture_id": "fixture-d339eac15cb11c73befe23fd",
+      "fixture_payload": {
+        "action": "disable",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/7e25b5be-9abe-4c2b-8ff1-39ad1a82a88d/",
+          "uuid": "7e25b5be-9abe-4c2b-8ff1-39ad1a82a88d"
+        },
+        "result": "success",
+        "uuid": "906abae3-b533-4c5d-8d98-c459195b6230"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/vrfwpolicies/{vrfwpolicy_uuid}/action/?do=disable"
+      },
+      "original_sha256": "5487b432db98211d2217da5263442c2d769bfeb0d2c14239cc81fea947dd3e7d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "cfd759f9222b5f94d84c14e543eb5d66761b87bc6a66802f32553d9b7f4ebc24",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "post",
+          "delete",
+          "put"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "post",
+          "delete",
+          "put"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "active": {
+            "default": null,
+            "help_text": "Boolean data. Ex: True",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "filters": {
+            "default": "No default provided.",
+            "help_text": "Filters related to this policy",
+            "readonly": false,
+            "required": true,
+            "type": "related"
+          },
+          "jobs": {
+            "default": "No default provided.",
+            "help_text": "Background jobs related to this resource",
+            "readonly": true,
+            "required": true,
+            "type": "related"
+          },
+          "lan_interface": {
+            "default": null,
+            "help_text": "A single related resource. Can be either a URI or set of nested resource data.",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "name": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "order": {
+            "default": null,
+            "help_text": "Integer data. Ex: 2673",
+            "readonly": false,
+            "required": true,
+            "type": "integer"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "upstream_interface": {
+            "default": null,
+            "help_text": "A single related resource. Can be either a URI or set of nested resource data.",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "UUID of the Firewall Policy",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        },
+        "ordering": [
+          "uuid",
+          "name"
+        ]
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "b45cc7c8e7a27742911050869794e325aa2525584ecb47ca58753a0322de1f28",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_filters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_policies.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_ipaliases.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_lans.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_port_forwarding.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_routes.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_upstream.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_vpn_tunnels.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_policies.html"
+}

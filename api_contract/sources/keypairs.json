@@ -1,0 +1,1706 @@
+{
+  "blocks": [
+    {
+      "anchor": "keypairs-ssh-keys",
+      "kind": "heading",
+      "level": 1,
+      "text": "Keypairs (SSH keys)"
+    },
+    {
+      "anchor": "keypairs-ssh-keys",
+      "kind": "prose",
+      "text": "The keypairs resource can be used to store ssh keys, for use with your servers. You have the choice whether to store only the public key or the full public-private key keypair. Keys attached to a server appear in the server context, and for OS images, which support cloudinit, they can also be automatically added to authorized_keys on a reboot. If you omit the public and private keys when creating a keypair, a new rsa keypair will be automatically generated for you. Having the private key in your profile will allow for using a web-based ssh client. It is also useful if your OS does not have key generation tools installed."
+    },
+    {
+      "anchor": "keypairs-ssh-keys",
+      "kind": "prose",
+      "text": "If the user has turned on two-factor authentication, the keypairs resource is protected with one time password. In order to make key management for servers easier (and not requiring OTP), there is pubkeys resource, which is a read-only version of the keypairs resource. The pubkeys objects are identical to keypairs except for the fact that they do not contain the private key, and have a has_private_key attribute instead of private_key, which indicates whether the private key was set."
+    },
+    {
+      "anchor": "keypairs-ssh-keys",
+      "kind": "prose",
+      "text": "We currently support two types of SSH Keys: RSA and ed25519. The maximum size for the RSA keys is 4096 bits."
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating a keypair"
+    },
+    {
+      "anchor": "post--keypairs-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/keypairs/"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "kind": "prose",
+      "text": "You have three choices when creating a keypair:"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "kind": "prose",
+      "text": "Provide both private and public key"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "kind": "prose",
+      "text": "Provide only a public key, in which case the private key will remain empty"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "kind": "prose",
+      "text": "Provide no public, neither private key, in which case a new pair will be generated for you"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "kind": "prose",
+      "text": "For the 3rd choice, you need to also define the “algorithm_type” for generating the key."
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "kind": "prose",
+      "text": "Here is an example of providing both pairs:"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "70a43b6538c5aebea26c5acdfe9cbab70aff90a4d1434529c358a58f26c8c239",
+      "path": "/api/2.0/keypairs/"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "classification": "response-example",
+      "fixture_id": "fixture-9a46492f47f446f847364faa",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "79:20:0b:49:72:11:b1:bc:df:73:94:09:3d:f8:90:71",
+            "grantees": [],
+            "meta": {},
+            "name": "test_pub",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC5T716fDpTC0M9b7zaYumQQqK0ufV2sJa4u9Z2F14J8xQJUAtkBCJBmTPDIPrHFq/a5HLM/c/ucsa4UP9sX7Govqqr/sq+rMpvv1J8tgQ4uuksDAH7wBeA20tdkcQTQpMEgalP0j9Epd95ZkCZBZKKBNESO64A5BxvLu1vgiCiKw==",
+            "resource_uri": "/api/2.0/keypairs/fdd6fbba-644b-49d8-9324-ff6589179da3/",
+            "tags": [],
+            "uuid": "fdd6fbba-644b-49d8-9324-ff6589179da3"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/keypairs/"
+      },
+      "original_sha256": "f8673c2ee4474b505344ee538630aaf2b1e7bb4488e8749885b3eb331bd3471d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "kind": "prose",
+      "text": "Here is an example of providing only a public key:"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "1ac8335f1940759d0e58a09233b00a4c63d41948739c972569fbc7ecbacb9665",
+      "path": "/api/2.0/keypairs/"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "classification": "response-example",
+      "fixture_id": "fixture-44f1ac95438640d027c01754",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "e8:ee:43:72:38:09:6d:1e:8e:46:9e:76:80:a3:0a:01",
+            "grantees": [],
+            "meta": {},
+            "name": "test_another_pub",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDFGtYDl+/Oua9uBXqwcbE84QUBBbDdMMzaZ6MAGg1Bmus9VEW0P8kK6npZ0SaUnB2xRrBNwCv0Q0uZBJ70UicgsrhBjCXIVa7K6yQYrFzMxfN8saNAjJvGDdWGSvcMxJdpYwXiOQhFan36eJCCwQjni7I538Ii9chPD8/tyJcBIw==",
+            "resource_uri": "/api/2.0/keypairs/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/",
+            "tags": [],
+            "uuid": "6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/keypairs/"
+      },
+      "original_sha256": "bc3667c42accc500e5899364bf2cca0850d5072beaa917f4268abf11664e295d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "kind": "prose",
+      "text": "Here is an example of creating an autogenerated pair, for which you need to also specify the algorithm type. The choices for the algorithm_type can be one of the “rsa” or “ed25519” types. The maximum size for the RSA keys is 4096 bits."
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "2cb8ef759a72fb2e7f9702ec2deaf6fb46806308715ec138b955560899ce3804",
+      "path": "/api/2.0/keypairs/"
+    },
+    {
+      "anchor": "creating-a-keypair",
+      "classification": "response-example",
+      "fixture_id": "fixture-be3ea4c68f711684111a2244",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+            "grantees": [],
+            "meta": {},
+            "name": "test_name",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+            "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+            "tags": [],
+            "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/keypairs/"
+      },
+      "original_sha256": "fc30c15572c16c90d39ca272494e4fb3c0c4009bfecdce5c362c3b154304dcfb",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing, Getting, Updating, Deleting"
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "kind": "prose",
+      "text": "List keypairs:"
+    },
+    {
+      "anchor": "get--keypairs-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/keypairs/"
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "312e4e32423323071ea35ed7dd96af6a123e11a82cbb96cc36fe8e4f14a470d4",
+      "path": "/api/2.0/keypairs/?limit=0"
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "classification": "response-example",
+      "fixture_id": "fixture-d037a59f256904dfddf6c79c",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 2
+        },
+        "objects": [
+          {
+            "fingerprint": "8c:71:a2:f0:bc:a4:45:66:a8:59:77:6d:80:d5:a0:89",
+            "grantees": [],
+            "meta": {},
+            "name": "ala",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9E5ykn/RPmJlTN9HJ2wkjjMJu5AB8YfcGX9uKCA9jVq0urN+LPqVy1jzCzPaxi2z05Cia0IH/G0w99SMdmkuDUQ/j+F8/U0Ja2whsiINgqvM0QWAClI7UCSoFny1UvaCk9S5J1ork/eU+ORu3jd2CdOEjIy82iLSDueALovqz3rQm8Gq5qY693zBVpb9WlvJmsqpHC+awwfWkYSuFIB4SsiY53AzzC0J10tLc7ifF+2zTqnIRwaG6m8fyWmH2r6MonGmDvCFSQ4nJmgw3VeAO+1EVvP0++XGo/RI55wQc/7jII6ANwlrr0tIUXGaVKiD0GK0K/mpEXCu8oawxhx6x",
+            "resource_uri": "/api/2.0/keypairs/186106ac-afb5-40e5-a0de-6f0feba5a3d5/",
+            "tags": [],
+            "uuid": "186106ac-afb5-40e5-a0de-6f0feba5a3d5"
+          },
+          {
+            "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+            "grantees": [],
+            "meta": {},
+            "name": "test_name",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+            "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+            "tags": [],
+            "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/keypairs/"
+      },
+      "original_sha256": "56f3d852dc974b331e2b58eba702ba7f51098de79c398086f275237b0fd63241",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "kind": "prose",
+      "text": "Get a single keypair:"
+    },
+    {
+      "anchor": "get--keypairs-uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/keypairs/{uuid}/"
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "53ec2ac30fd5b14fcec9783e3db050749f567197433c35117fff02b6de45f10d",
+      "path": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/"
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "classification": "response-example",
+      "fixture_id": "fixture-f5125fb14d6c656dfd44e303",
+      "fixture_payload": {
+        "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+        "grantees": [],
+        "meta": {},
+        "name": "test_name",
+        "permissions": [],
+        "private_key": "<redacted>",
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+        "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+        "tags": [],
+        "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/keypairs/{uuid}/"
+      },
+      "original_sha256": "d39284481804068fd855af0bfea72f95551edd9073b24ad1c4b2b57202f01f87",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "kind": "prose",
+      "text": "Update a kypair:"
+    },
+    {
+      "anchor": "put--keypairs-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/keypairs/{uuid}/"
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "ef4f2713274c198beb842427548b430e5b58c8c4d20b5129e80557acd587fce7",
+      "path": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/"
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "classification": "response-example",
+      "fixture_id": "fixture-891a7fe04a3cedf6e213e032",
+      "fixture_payload": {
+        "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+        "grantees": [],
+        "meta": {},
+        "name": "new_name",
+        "permissions": [],
+        "private_key": "<redacted>",
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+        "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+        "tags": [],
+        "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "PUT",
+        "path": "/api/2.0/keypairs/{uuid}/"
+      },
+      "original_sha256": "8a389acc9f40cb8c4621c830bd17f8c49cab70bc9486a4b17d2e5f814fbf7c0b",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "kind": "prose",
+      "text": "Delete a keypair:"
+    },
+    {
+      "anchor": "delete--keypairs-uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/keypairs/{uuid}/"
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "8b11d71248eff0368d4a5529fcd73296694f30b35e947998a2ae9113d3422dae",
+      "path": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/"
+    },
+    {
+      "anchor": "listing-getting-updating-deleting",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/keypairs/{uuid}/"
+      },
+      "original_sha256": "39f1283922399d2aa196b20aa9171924d2c5bd150f01c1901f34229690fe2f02",
+      "parse_gap": "empty-body",
+      "status_code": 204
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "kind": "heading",
+      "level": 2,
+      "text": "Pubkeys resource"
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "kind": "prose",
+      "text": "In order to access just the public keys without the need for OTP, you can use the pubkeys resource. Instead of a private key it contains an attribute has_private_key which indicates whether the private key was set."
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "kind": "prose",
+      "text": "For example creating an autogenerated keypair:"
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "2cb8ef759a72fb2e7f9702ec2deaf6fb46806308715ec138b955560899ce3804",
+      "path": "/api/2.0/keypairs/"
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+            "grantees": [],
+            "meta": {},
+            "name": "test_name",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+            "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+            "tags": [],
+            "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+          }
+        ]
+      },
+      "kind": "code",
+      "original_sha256": "fc30c15572c16c90d39ca272494e4fb3c0c4009bfecdce5c362c3b154304dcfb",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "kind": "prose",
+      "text": "Results in a corresponding pubkeys object with has_private_key, which is true:"
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "d9df81767e9b6cc0db2346ebf317b37305c89e7bda32cf840bb3195b76fe8417",
+      "path": "/api/2.0/pubkeys/fdd6fbba-644b-49d8-9324-ff6589179da3/"
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "fingerprint": "79:20:0b:49:72:11:b1:bc:df:73:94:09:3d:f8:90:71",
+        "grantees": [],
+        "has_private_key": "<redacted>",
+        "meta": {},
+        "name": "test_pub",
+        "permissions": [],
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC5T716fDpTC0M9b7zaYumQQqK0ufV2sJa4u9Z2F14J8xQJUAtkBCJBmTPDIPrHFq/a5HLM/c/ucsa4UP9sX7Govqqr/sq+rMpvv1J8tgQ4uuksDAH7wBeA20tdkcQTQpMEgalP0j9Epd95ZkCZBZKKBNESO64A5BxvLu1vgiCiKw==",
+        "resource_uri": "/api/2.0/pubkeys/fdd6fbba-644b-49d8-9324-ff6589179da3/",
+        "tags": [],
+        "uuid": "fdd6fbba-644b-49d8-9324-ff6589179da3"
+      },
+      "kind": "code",
+      "original_sha256": "7556e5208f96bc9e699de2e0cadf6370567c5a9da887f670d54299f40d5a36eb",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"has_private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "kind": "prose",
+      "text": "Creating a keypair with only a public key:"
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "1ac8335f1940759d0e58a09233b00a4c63d41948739c972569fbc7ecbacb9665",
+      "path": "/api/2.0/keypairs/"
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "e8:ee:43:72:38:09:6d:1e:8e:46:9e:76:80:a3:0a:01",
+            "grantees": [],
+            "meta": {},
+            "name": "test_another_pub",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDFGtYDl+/Oua9uBXqwcbE84QUBBbDdMMzaZ6MAGg1Bmus9VEW0P8kK6npZ0SaUnB2xRrBNwCv0Q0uZBJ70UicgsrhBjCXIVa7K6yQYrFzMxfN8saNAjJvGDdWGSvcMxJdpYwXiOQhFan36eJCCwQjni7I538Ii9chPD8/tyJcBIw==",
+            "resource_uri": "/api/2.0/keypairs/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/",
+            "tags": [],
+            "uuid": "6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244"
+          }
+        ]
+      },
+      "kind": "code",
+      "original_sha256": "bc3667c42accc500e5899364bf2cca0850d5072beaa917f4268abf11664e295d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "kind": "prose",
+      "text": "Results in a corresponding pubkeys object with has_private_key, which is false:"
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "da1de85452b5c3e8d526951da613250ed4e085f6150af4f09ea091707a89cad3",
+      "path": "/api/2.0/pubkeys/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/"
+    },
+    {
+      "anchor": "pubkeys-resource",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "fingerprint": "e8:ee:43:72:38:09:6d:1e:8e:46:9e:76:80:a3:0a:01",
+        "grantees": [],
+        "has_private_key": "<redacted>",
+        "meta": {},
+        "name": "test_another_pub",
+        "permissions": [],
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDFGtYDl+/Oua9uBXqwcbE84QUBBbDdMMzaZ6MAGg1Bmus9VEW0P8kK6npZ0SaUnB2xRrBNwCv0Q0uZBJ70UicgsrhBjCXIVa7K6yQYrFzMxfN8saNAjJvGDdWGSvcMxJdpYwXiOQhFan36eJCCwQjni7I538Ii9chPD8/tyJcBIw==",
+        "resource_uri": "/api/2.0/pubkeys/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/",
+        "tags": [],
+        "uuid": "6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244"
+      },
+      "kind": "code",
+      "original_sha256": "09b7fa7220ec5d89e69b0a95d1f17841523ac60867599ac1f46ba885d22b4015",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"fingerprint\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"has_private_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"public_key\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "attaching-pubkeys-to-a-server",
+      "kind": "heading",
+      "level": 2,
+      "text": "Attaching pubkeys to a server"
+    },
+    {
+      "anchor": "attaching-pubkeys-to-a-server",
+      "kind": "prose",
+      "text": "You can attach the keys to a server definition on the pubkeys attribute. They are made available to the VM OS via the server context."
+    },
+    {
+      "anchor": "attaching-pubkeys-to-a-server",
+      "kind": "prose",
+      "text": "Here is an example of doing that using the keys created in the above section:"
+    },
+    {
+      "anchor": "attaching-pubkeys-to-a-server",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "b5d008ad17aedf7bd3f86f246d5fa974546066c59f3f9cd019777b47a15e347b",
+      "path": "/api/2.0/servers/"
+    },
+    {
+      "anchor": "attaching-pubkeys-to-a-server",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "context": true,
+            "cpu": 1000,
+            "cpu_model": null,
+            "cpu_type": "amd",
+            "cpus_instead_of_cores": false,
+            "drives": [],
+            "enable_numa": false,
+            "grantees": [],
+            "hv_relaxed": false,
+            "hv_tsc": false,
+            "hypervisor": "kvm",
+            "jobs": [],
+            "mem": 1073741824,
+            "meta": {},
+            "name": "test_srv_test_pubkeys",
+            "nics": [
+              {
+                "boot_order": null,
+                "ip_v4_conf": {
+                  "conf": "dhcp",
+                  "ip": null
+                },
+                "ip_v6_conf": null,
+                "mac": "22:30:3d:8a:b6:59",
+                "model": "virtio",
+                "runtime": null,
+                "vlan": null
+              }
+            ],
+            "owner": {
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            },
+            "permissions": [],
+            "pubkeys": [
+              {
+                "resource_uri": "/api/2.0/pubkeys/fdd6fbba-644b-49d8-9324-ff6589179da3/",
+                "uuid": "fdd6fbba-644b-49d8-9324-ff6589179da3"
+              },
+              {
+                "resource_uri": "/api/2.0/pubkeys/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/",
+                "uuid": "6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244"
+              }
+            ],
+            "requirements": [],
+            "resource_uri": "/api/2.0/servers/f400243b-7005-4222-b319-dff0a376c4ea/",
+            "runtime": null,
+            "smp": 1,
+            "status": "stopped",
+            "tags": [],
+            "uuid": "f400243b-7005-4222-b319-dff0a376c4ea",
+            "vnc_password": "<redacted>"
+          }
+        ]
+      },
+      "kind": "code",
+      "original_sha256": "e41edb2c72b87c40b65da3811f2ba7707c3ac2cd3a048a77826446db61d142b4",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v4_conf\"][\"conf\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v4_conf\"][\"ip\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"pubkeys\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    }
+  ],
+  "html_sha256": "6357df46c3c0fc83514a127c465982094e0c8c3335727b3da4d5673eaea81993",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/keypairs.html"
+}

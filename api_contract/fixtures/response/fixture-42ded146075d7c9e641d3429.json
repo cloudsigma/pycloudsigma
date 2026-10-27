@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "limit": 20,
+    "offset": 0,
+    "total_count": 4
+  },
+  "objects": [
+    {
+      "amount": "0.0089",
+      "date": "2014-11-17",
+      "resource_type": "dssd",
+      "usage": 322122547200
+    },
+    {
+      "amount": "0.0089",
+      "date": "2014-11-16",
+      "resource_type": "dssd",
+      "usage": 322122547200
+    },
+    {
+      "amount": "0.0051",
+      "date": "2014-11-18",
+      "resource_type": "dssd",
+      "usage": 268435456000
+    },
+    {
+      "amount": "0.0089",
+      "date": "2014-11-15",
+      "resource_type": "dssd",
+      "usage": 322122547200
+    }
+  ]
+}

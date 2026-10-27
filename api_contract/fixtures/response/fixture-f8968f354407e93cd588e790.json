@@ -1,0 +1,12 @@
+{
+  "snapshots": [
+    {
+      "resource_uri": "/api/2.0/snapshots/f69d43df-092d-4fef-9766-668cb6469f31/",
+      "uuid": "f69d43df-092d-4fef-9766-668cb6469f31"
+    },
+    {
+      "resource_uri": "/api/2.0/snapshots/3a057cc8-9b42-44f2-a8cb-c5561f2eddd3/",
+      "uuid": "3a057cc8-9b42-44f2-a8cb-c5561f2eddd3"
+    }
+  ]
+}

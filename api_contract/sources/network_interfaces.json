@@ -1,0 +1,2572 @@
+{
+  "blocks": [
+    {
+      "anchor": "server-network-interfaces",
+      "kind": "heading",
+      "level": 1,
+      "text": "Server Network Interfaces"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "heading",
+      "level": 2,
+      "text": "Private and Public Network Interfaces"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "There are three configurations for any one NIC that determines how that NIC behaves. Not all combinations of configuration are valid:"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "vlan: Private Network"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "ip_v4_conf: Public IP v4 Network, either static, DHCP, or manually assigned."
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "ip_v6_conf: Public IP v6 Network, either static, DHCP, or manually assigned."
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "Configurations"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "Result"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "vlan"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "ip_v4_conf"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "ip_v6_conf"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "Error: Cannot assign all configs on a NIC"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "Error: Cannot assign both Private and Public on a NIC"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "Error: Cannot assign both Private and Public on a NIC"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "Private network assigned"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "Both IP v4 and v6 assigned"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "Only IP v4 assigned"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "True"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "Only IP v6 assigned"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "False"
+    },
+    {
+      "anchor": "private-and-public-network-interfaces",
+      "kind": "prose",
+      "text": "No config assigned"
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "kind": "heading",
+      "level": 2,
+      "text": "IP Assignment for Public Interfaces"
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "kind": "prose",
+      "text": "Assignment of IPs on private network interface is up to the user."
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "kind": "prose",
+      "text": "For public network interfaces it is possible to configure the way the address is assigned by setting the “conf” attribute on the ip_v4_conf or ip_v6_conf object:"
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "kind": "prose",
+      "text": "The address is chosen by the system at boot time and assigned through DHCP. On each reboot the VM may get a different address. It is an error to specify the IP address for “conf”: “dhcp”. It is possible get the currently assigned dynamic IP of a NIC from the server runtime of a running server."
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "9ece192c099ce2e1d89905091a3245ddfc693fffb0f37e39ccf62bd84cbcc1ee"
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "kind": "prose",
+      "text": "The address is chosen and specified by the user. It is assigned to the NIC through DHCP and does not change between reboots. The “ip” attribute is mandatory and an IP address can be assigned from the addresses owned by the user."
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "05614d4005a905fa6bf5f892b8b344d48f87cc14a1eb213b4cb2b52bf65b04da"
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "kind": "prose",
+      "text": "There is no address specified for the NIC, and the user has to specify the IP address from within the VM. When this setting is used, the NIC is allowed to use all IPs for which the user has subscription. This “conf” can be used to assign multiple IPs to the same NIC."
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "a1997ca918e4c880bfc1063a90b7867672fea85ba320fae57a912503ad273326"
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "ip-assignment-for-public-interfaces",
+      "kind": "prose",
+      "text": "The cloud firewall does not allow traffic to/from IPs which are not owned or not assigned to the VM. The only exception is for “manual” conf where the VM is allowed to use any of the IPs which are owned by the user (the user has a subscriptions for them)."
+    },
+    {
+      "anchor": "mac-addresses",
+      "kind": "heading",
+      "level": 2,
+      "text": "MAC Addresses"
+    },
+    {
+      "anchor": "mac-addresses",
+      "kind": "prose",
+      "text": "Newly created NICs have their mac address randomly generated."
+    },
+    {
+      "anchor": "mac-addresses",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "mac-addresses",
+      "kind": "prose",
+      "text": "All traffic from a MAC address different from the assigned by the system is stopped by the cloud firewall, so users should no attempt to change their MACs from within their VM."
+    },
+    {
+      "anchor": "mac-addresses",
+      "kind": "prose",
+      "text": "In order to update a NIC definition, the definition should have its “mac” attribute filled in. If on “nics” list update a MAC address disappears from the list, the corresponding NIC is deleted. If a MAC appears in the new list, the corresponding nic is updated, and if no MAC is specified on a NIC, a new NIC is created. It is an error to attempt to specify a MAC address which was not previously in the “nics” list."
+    },
+    {
+      "anchor": "mac-addresses",
+      "kind": "prose",
+      "text": "The order of NICs in the “nics” attribute is important, because it is also the order in which nics are presented to the VM. It is possible to rearrange NICs by rearranging their orded in the “nics” list."
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "heading",
+      "level": 2,
+      "text": "NIC Models"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "The “model” attribute specifies the model of the emulated network card. It is recommended to use virtio, whenever possible (when drivers for virtio are available for the VM operating system)."
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "Model"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "Bus"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "Speed"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "e1000"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "PCI"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "1Gb/s"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "Intel Gigabit Ethernet"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "i82551"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "i82557b"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "i82559er"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "ne2k_pci"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "PCI"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "10Mb/s"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "NE2000"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "pcnet"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "rtl8139"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "?"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "10/100Mb/s"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "Realtek Fast Ethernet"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "virtio"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "PCI"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "1Gb/s"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "Virtual High Performance Ethernet card (see Virtio)"
+    },
+    {
+      "anchor": "nic-models",
+      "kind": "prose",
+      "text": "Reference: Wikibooks QEMU/Devices/Network."
+    },
+    {
+      "anchor": "nic-runtime",
+      "kind": "heading",
+      "level": 2,
+      "text": "NIC Runtime"
+    },
+    {
+      "anchor": "nic-runtime",
+      "kind": "prose",
+      "text": "When a server is running, the server definition provides information on the currently assigned dynamic IP and the data traffic made through the NIC. See server runtime for more details."
+    },
+    {
+      "anchor": "examples",
+      "kind": "heading",
+      "level": 2,
+      "text": "Examples"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Example 1 - Private Network assigned to server:"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Definition with all other values default:"
+    },
+    {
+      "anchor": "examples",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "4f7c0005ca840c0af395993eafb2e2f8004f6ee4f99d05d558bd89e19c91d1f8",
+      "path": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Result:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": null,
+            "ip_v6_conf": null,
+            "mac": "22:39:8a:48:33:36",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": {
+              "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+              "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+            }
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
+      "kind": "code",
+      "original_sha256": "1e51c3fe1bc80f49fcc245f2a2079de42f86ee4bce0c5e4eaf1e531fb3227028",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Example 2 - Dynamic IP v4 (DHCP) assigned to NIC with e1000 model:"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Definition with model set to ‘e1000’:"
+    },
+    {
+      "anchor": "examples",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "bdd4a992b06bccee486f5031dca70448ef6ede3f4067f97ec6cd89ae54905a1c",
+      "path": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Result:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "dhcp",
+              "ip": null
+            },
+            "ip_v6_conf": null,
+            "mac": "22:76:35:14:21:7b",
+            "model": "e1000",
+            "runtime": null,
+            "vlan": null
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
+      "kind": "code",
+      "original_sha256": "654e690bc14b88b70f928947770be29a61cfc8bb292bb0d8d5db671ead5a2c85",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"conf\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Example 3 - Update nics:"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Here is an example of a server with two nics:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "dhcp",
+              "ip": null
+            },
+            "ip_v6_conf": null,
+            "mac": "22:cd:d0:81:97:c8",
+            "model": "e1000",
+            "runtime": null,
+            "vlan": null
+          },
+          {
+            "boot_order": null,
+            "ip_v4_conf": null,
+            "ip_v6_conf": null,
+            "mac": "22:25:57:2a:dc:cc",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": {
+              "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+              "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+            }
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
+      "kind": "code",
+      "original_sha256": "a38bf4ca1d1eb8341360cdbc3dd2eabffa7f12f8f81bfe63304236fcb2d542a9",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "null",
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"conf\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "null",
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "In order to change the IP configuration of the NIC the definitions should have a MAC specified. Notice that in order to not delete the other NIC both NICs should be put in the request:"
+    },
+    {
+      "anchor": "examples",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "310af29fe28a05f04e4f10856c946ff738d925d4a3bf072792041d992512b85f",
+      "path": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "The result is:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "static",
+              "ip": {
+                "resource_uri": "/api/2.0/ips/94.26.101.182/",
+                "uuid": "94.26.101.182"
+              }
+            },
+            "ip_v6_conf": null,
+            "mac": "22:cd:d0:81:97:c8",
+            "model": "e1000",
+            "runtime": null,
+            "vlan": null
+          },
+          {
+            "boot_order": null,
+            "ip_v4_conf": null,
+            "ip_v6_conf": null,
+            "mac": "22:25:57:2a:dc:cc",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": {
+              "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+              "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+            }
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
+      "kind": "code",
+      "original_sha256": "3db23b58cbf6e630f10c9f7dce3e838a3de8a9463a7a27f40d6a060186fa3a3c",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "null",
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"conf\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "null",
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Example 4 - Rearrange nics:"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "In order to rearrange the NICs of the server definition from Example 3, the definition should just be updated with different order of NICs (NICs are recognized by their MAC):"
+    },
+    {
+      "anchor": "examples",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "55811a9cabb06600fb491a22aec29851cf8dd71af1f0648d9c59a02220ddb32e",
+      "path": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "The resulting “nics” are:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": null,
+            "ip_v6_conf": null,
+            "mac": "22:25:57:2a:dc:cc",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": {
+              "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+              "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+            }
+          },
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "static",
+              "ip": {
+                "resource_uri": "/api/2.0/ips/94.26.101.182/",
+                "uuid": "94.26.101.182"
+              }
+            },
+            "ip_v6_conf": null,
+            "mac": "22:cd:d0:81:97:c8",
+            "model": "e1000",
+            "runtime": null,
+            "vlan": null
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
+      "kind": "code",
+      "original_sha256": "7847f37e406e2baa54e2ae9738fe10d0fb3a9d95ddd7a289dc251e7dfa8c08ac",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "null",
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"conf\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "null",
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Notice that the private and public NICs changed order compared to Example 3."
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Example 5 - Delete a NIC and change type of the other:"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "In order to change a NIC from private to public just remove the “vlan” field and “ip_v4_conf” field. This can also be combined with deletion of the other interface. Using the NICs from Example 4 here is how to delete the public NIC and change the private NIC to public:"
+    },
+    {
+      "anchor": "examples",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "ed4f470b9a250063bb6ad51683b00353006ce110b04835a84396e42767ebc92a",
+      "path": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "dhcp",
+              "ip": null
+            },
+            "ip_v6_conf": null,
+            "mac": "22:25:57:2a:dc:cc",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": null
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
+      "kind": "code",
+      "original_sha256": "be5ea3ea47d4573cf21322e38ca4ba2e4b4bd2ecfe4048f751a1270a87067f89",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"boot_order\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"conf\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v4_conf\"][\"ip\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"ip_v6_conf\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"mac\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"model\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"][*][\"vlan\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Notice that the NIC has the same MAC as the private NIC from Example 4, but is configured with DHCP."
+    }
+  ],
+  "html_sha256": "a558cf63051f826131a080bfc38d330a142859d022c3e41a67c2c3f353d5b84d",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/network_interfaces.html"
+}

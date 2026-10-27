@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "limit": 0,
+    "offset": 0,
+    "total_count": 7
+  },
+  "objects": [
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/3d504199-6bac-4612-a19e-691c9c6c6728/",
+      "status": "unmounted",
+      "uuid": "3d504199-6bac-4612-a19e-691c9c6c6728"
+    },
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/b969d04b-b63f-4b67-9a92-c878d9d53232/",
+      "status": "unmounted",
+      "uuid": "b969d04b-b63f-4b67-9a92-c878d9d53232"
+    },
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/cd9580ef-692c-4da2-b64d-59c88809c30b/",
+      "status": "unmounted",
+      "uuid": "cd9580ef-692c-4da2-b64d-59c88809c30b"
+    },
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/b9a2e66c-81d1-4de3-aac0-b6f2bde806f1/",
+      "status": "unmounted",
+      "uuid": "b9a2e66c-81d1-4de3-aac0-b6f2bde806f1"
+    },
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/ea31b27b-807a-4710-b37c-c092f64bf4f7/",
+      "status": "unmounted",
+      "uuid": "ea31b27b-807a-4710-b37c-c092f64bf4f7"
+    },
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/e3898bfb-32d5-48d1-afd3-c28f4c8ef6d0/",
+      "status": "unmounted",
+      "uuid": "e3898bfb-32d5-48d1-afd3-c28f4c8ef6d0"
+    },
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/b582ed29-0cab-4e40-bf91-40d4b4dcc964/",
+      "status": "unmounted",
+      "uuid": "b582ed29-0cab-4e40-bf91-40d4b4dcc964"
+    }
+  ]
+}

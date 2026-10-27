@@ -1,0 +1,183 @@
+{
+  "blocks": [
+    {
+      "anchor": "snapshot-policy-every-12-hours-keep-last-2-days",
+      "kind": "heading",
+      "level": 1,
+      "text": "Snapshot Policy: Every 12 Hours. Keep Last 2 Days"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "heading",
+      "level": 2,
+      "text": "Introduction"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "prose",
+      "text": "This snapshot policy creates two daily snapshots, spaced 12 hours apart, and retains only the most recent 2 days of backups."
+    },
+    {
+      "anchor": "scheduler-configuration",
+      "kind": "heading",
+      "level": 2,
+      "text": "Scheduler Configuration"
+    },
+    {
+      "anchor": "scheduler-configuration",
+      "kind": "prose",
+      "text": "Type: snapshot"
+    },
+    {
+      "anchor": "scheduler-configuration",
+      "kind": "prose",
+      "text": "Frequency: Every 12 hours"
+    },
+    {
+      "anchor": "scheduler-configuration",
+      "kind": "prose",
+      "text": "Time window: From 07:00 UTC to 06:45 UTC (next day) — ensures 24h coverage"
+    },
+    {
+      "anchor": "scheduler-configuration",
+      "kind": "prose",
+      "text": "Repeat rule: */12 (every 12 hours)"
+    },
+    {
+      "anchor": "scheduler-configuration",
+      "kind": "prose",
+      "text": "User Timezone: Etc/UTC"
+    },
+    {
+      "anchor": "retention-rules",
+      "kind": "heading",
+      "level": 2,
+      "text": "Retention Rules"
+    },
+    {
+      "anchor": "retention-rules",
+      "kind": "prose",
+      "text": "Keep snapshots from the last 2 days"
+    },
+    {
+      "anchor": "retention-rules",
+      "kind": "prose",
+      "text": "Automatically delete anything older"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "heading",
+      "level": 2,
+      "text": "Snapshot Timeline (1 Year)"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "prose",
+      "text": "Snapshots per day: 2 (1 every 12 hours)"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "prose",
+      "text": "Retention window: 2 days"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "prose",
+      "text": "Total retained snapshots at any time: 4"
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "prose",
+      "text": "No matter how many are created over time, the system will only keep the most recent four snapshots (2 per day × 2 days)."
+    },
+    {
+      "anchor": "snapshot-timeline-1-year",
+      "kind": "prose",
+      "text": "Total snapshots after 1 year: Still four snapshots (Older ones are deleted automatically by the retention policy.)"
+    },
+    {
+      "anchor": "api-summary",
+      "kind": "heading",
+      "level": 2,
+      "text": "API Summary"
+    },
+    {
+      "anchor": "api-summary",
+      "kind": "prose",
+      "text": "Endpoint:"
+    },
+    {
+      "anchor": "api-summary",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "7cbeff95793706523aa64b9efbb8e873d98108908bed62dcd16ca49acc8cc476"
+    },
+    {
+      "anchor": "api-summary",
+      "kind": "prose",
+      "text": "JSON Payload:"
+    },
+    {
+      "anchor": "api-summary",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "a91931564e2b74c48b5ba0c5a985473e40c5e13924886e714631c0c9fadb1a18"
+    }
+  ],
+  "html_sha256": "bab87cc5210dc32cacde04959e329aca0c8c9fb9a825e0dcb18ca2a4303f177f",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_policy_1st_of_month.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_scheduler_every_45_minutes.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_scheduler_every_hour_20_00_23_00.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_bi_monthly_snapshot_policy.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_every_first_of_month_2359.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_every_sunday_23_00.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_sfg_retention_strategy.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_snapshot_every_12_hours_keep_last_2_days.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_snapshot_policy_defined_hours_backups_keep_1_month.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_weekdays_3am_snapshot_policy.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_weekdays_workhours_backup_policy.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/backup_schedulers_snapshot_every_12_hours_keep_last_2_days.html"
+}

@@ -1,0 +1,4503 @@
+{
+  "blocks": [
+    {
+      "anchor": "backup-schedulers",
+      "kind": "heading",
+      "level": 1,
+      "text": "Backup Schedulers"
+    },
+    {
+      "anchor": "backup-schedulers",
+      "kind": "prose",
+      "text": "Backup Schedulers automate the creation and deletion of snapshots for your drives. There are two types of snapshots that can be scheduled:"
+    },
+    {
+      "anchor": "backup-schedulers",
+      "kind": "prose",
+      "text": "Local Snapshots: Created and stored within the same infrastructure as the original drive. They are fast to create and useful for short-term recovery."
+    },
+    {
+      "anchor": "backup-schedulers",
+      "kind": "prose",
+      "text": "Remote Snapshots: Stored in a different location (data center), making them ideal for disaster recovery or geographic redundancy."
+    },
+    {
+      "anchor": "backup-schedulers",
+      "kind": "prose",
+      "text": "With a scheduler, you can define when snapshots should be created—daily, weekly, monthly, or at custom intervals (e.g. every 12 hours, or only on weekdays). The scheduler ensures snapshots are taken automatically without user intervention."
+    },
+    {
+      "anchor": "backup-schedulers",
+      "kind": "prose",
+      "text": "Each scheduler also includes a retention policy, which defines how long snapshots are kept before being deleted. For example, you might keep daily snapshots for 7 days or monthly ones for 12 months. This ensures your storage doesn’t grow indefinitely and your snapshot history stays clean and manageable."
+    },
+    {
+      "anchor": "backup-schedulers",
+      "kind": "prose",
+      "text": "Schedulers are flexible and can be tailored to your backup and recovery strategy—whether you’re looking for frequent local snapshots for fast rollback, or long-term remote backups for compliance and safety."
+    },
+    {
+      "anchor": "backup-schedulers",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "backup-schedulers",
+      "kind": "prose",
+      "text": "This document is related to backup schedulers only."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "create new object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "update / modify object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "DELETE"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "delete object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics."
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--backupschedulers-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/backupschedulers/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of backup schedulers to which the authenticated user has access."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "A set of field names specifying the returned fields."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request - default list:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "aba5d3a5f2e104b6f88e8bde5ba370b8c7534757fd201e2fff2f6ff4774e2032",
+      "path": "/api/2.0/backupschedulers/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "fixture_id": "fixture-b594535bef214fa20a0cce28",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 9
+        },
+        "objects": [
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "BiMonthly Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/14a89b65-c1a4-40e2-b7b2-193214ca1f0e/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "14a89b65-c1a4-40e2-b7b2-193214ca1f0e"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Weekdays Workhours Backup Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/16a910a3-7a04-409a-827e-265b7af8116b/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "16a910a3-7a04-409a-827e-265b7af8116b"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Weekday 3AM Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/2aa193d4-6e3f-4545-9de3-27d1cef90a3d/",
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "2aa193d4-6e3f-4545-9de3-27d1cef90a3d"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Son, Father, GrandFather Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/3079a014-1810-4fb6-8395-2a23cb1979e3/",
+            "type": "snapshot",
+            "user_timezone": "Etc/GMT+12",
+            "uuid": "3079a014-1810-4fb6-8395-2a23cb1979e3"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Every 12 hours. Last 2 days",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/7e39699c-f220-4ee2-b99b-6a678ab51f14/",
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "7e39699c-f220-4ee2-b99b-6a678ab51f14"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "1st of the month backup",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/876a2d01-9025-431e-81d5-bafbcf0ec26c/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "876a2d01-9025-431e-81d5-bafbcf0ec26c"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "backups policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f/",
+            "type": "backup",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Defined hours backups",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/ead05317-e67f-4603-9afe-4cb6aab52e52/",
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "ead05317-e67f-4603-9afe-4cb6aab52e52"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "snapshots policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/",
+            "type": "snapshot",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "eb352f24-3a72-47a9-96cc-7b508ef52d8e"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/backupschedulers/"
+      },
+      "original_sha256": "e8a9b18e9a783c4a3e93904e0b9c322ed187fa51da6294ba12e8ee1ae50e30e1",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_default\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"orchestrator_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"remote_location\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"user_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "listing-schedulers-by-type",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing schedulers by type"
+    },
+    {
+      "anchor": "get--backupschedulers-?type=scheduler_type",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/backupschedulers/?type=scheduler_type"
+    },
+    {
+      "anchor": "listing-schedulers-by-type",
+      "kind": "prose",
+      "text": "Gets the list of backups schedulers to which the authenticated user has access and are from type specified in the filters."
+    },
+    {
+      "anchor": "listing-schedulers-by-type",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "listing-schedulers-by-type",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing-schedulers-by-type",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "d87fcdc577bb06360af02220bca413c19a42992884cadfef53b0c5b0aa17e8ef",
+      "path": "/api/2.0/backupschedulers/?type=backup"
+    },
+    {
+      "anchor": "listing-schedulers-by-type",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing-schedulers-by-type",
+      "classification": "response-example",
+      "fixture_id": "fixture-78b3a10868a4c397b4ed5134",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 4
+        },
+        "objects": [
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "BiMonthly Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/14a89b65-c1a4-40e2-b7b2-193214ca1f0e/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "14a89b65-c1a4-40e2-b7b2-193214ca1f0e"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Weekdays Workhours Backup Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/16a910a3-7a04-409a-827e-265b7af8116b/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "16a910a3-7a04-409a-827e-265b7af8116b"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "1st of the month backup",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/876a2d01-9025-431e-81d5-bafbcf0ec26c/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "876a2d01-9025-431e-81d5-bafbcf0ec26c"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "backups policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f/",
+            "type": "backup",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/backupschedulers/?type=scheduler_type"
+      },
+      "original_sha256": "86245416f49a3a5c3bec8dbbfd6525150490120c4db8ad576c233d2d40333312",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_default\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"orchestrator_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"remote_location\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"user_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing"
+    },
+    {
+      "anchor": "get--backupschedulers-detail-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/backupschedulers/detail/"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Gets the detailed list of backup schedulers with additional information to which the authenticated user has access."
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "b6a6602cc2576b4fe92ef9d24a92925f4b87c3cec428f4e929d07e83dfd769c0",
+      "path": "/api/2.0/backupschedulers/detail/"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "classification": "response-example",
+      "fixture_id": "fixture-bc39e1913ba36867d42dafd1",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 9
+        },
+        "objects": [
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "1",
+              "day_of_week": [
+                ""
+              ],
+              "end_time": {
+                "hour": 19,
+                "minute": 0
+              },
+              "hour": "17",
+              "minute": "0",
+              "month": [
+                "2",
+                "4",
+                "6",
+                "8",
+                "10",
+                "12"
+              ],
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "BiMonthly Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/14a89b65-c1a4-40e2-b7b2-193214ca1f0e/",
+            "retention_policy": {
+              "name": "Keep 12 Month",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 6
+                }
+              ]
+            },
+            "tags": [],
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "14a89b65-c1a4-40e2-b7b2-193214ca1f0e"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "mon",
+                "wed",
+                "fri"
+              ],
+              "end_time": {
+                "hour": 19,
+                "minute": 0
+              },
+              "hour": "",
+              "minute": "",
+              "month": "*",
+              "repeat": {
+                "hour": "*/12",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Weekdays Workhours Backup Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/16a910a3-7a04-409a-827e-265b7af8116b/",
+            "retention_policy": {
+              "name": "Keep 1 Month",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 1
+                }
+              ]
+            },
+            "tags": [],
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "16a910a3-7a04-409a-827e-265b7af8116b"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "3",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Weekday 3AM Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/2aa193d4-6e3f-4545-9de3-27d1cef90a3d/",
+            "retention_policy": {
+              "name": "Keep 3 Weeks",
+              "rules": [
+                {
+                  "period": "weeks",
+                  "quantity": 3
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "2aa193d4-6e3f-4545-9de3-27d1cef90a3d"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "1",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Son, Father, GrandFather Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/3079a014-1810-4fb6-8395-2a23cb1979e3/",
+            "retention_policy": {
+              "name": "Son, Father, GrandFather Policy",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 7
+                },
+                {
+                  "period": "weeks",
+                  "quantity": 4
+                },
+                {
+                  "time_option": 1
+                },
+                {
+                  "period": "months",
+                  "quantity": 12
+                },
+                {
+                  "time_option": 23
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/GMT+12",
+            "uuid": "3079a014-1810-4fb6-8395-2a23cb1979e3"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "",
+              "day_of_week": [
+                ""
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "",
+              "month": "",
+              "repeat": {
+                "hour": "*/12",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Every 12 hours. Last 2 days",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/7e39699c-f220-4ee2-b99b-6a678ab51f14/",
+            "retention_policy": {
+              "name": "Keep 12 Month",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 2
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "7e39699c-f220-4ee2-b99b-6a678ab51f14"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "1",
+              "day_of_week": [
+                ""
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "23",
+              "minute": "0",
+              "month": "",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "1st of the month backup",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/876a2d01-9025-431e-81d5-bafbcf0ec26c/",
+            "retention_policy": {
+              "name": "Keep 12 Month",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 12
+                }
+              ]
+            },
+            "tags": [],
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "876a2d01-9025-431e-81d5-bafbcf0ec26c"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "*",
+              "month": "*",
+              "repeat": {
+                "hour": "*/1",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "backups policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f/",
+            "retention_policy": {
+              "name": "Last 2 days",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 2
+                }
+              ]
+            },
+            "tags": [],
+            "type": "backup",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "",
+              "day_of_week": [
+                "sat",
+                "sun"
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "",
+              "month": "",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "02:00,06:00,20:00,22:15",
+            "meta": {},
+            "name": "Defined hours backups",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/ead05317-e67f-4603-9afe-4cb6aab52e52/",
+            "retention_policy": {
+              "name": "Keep 1 Day",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 1
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "ead05317-e67f-4603-9afe-4cb6aab52e52"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "*",
+              "month": "*",
+              "repeat": {
+                "hour": "*/2",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "snapshots policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/",
+            "retention_policy": {
+              "name": "Last 3 days",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 3
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "eb352f24-3a72-47a9-96cc-7b508ef52d8e"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/backupschedulers/detail/"
+      },
+      "original_sha256": "6ce772f056ea0dae20413ed0bae565cd93d3bee608858e5b4bee183b512d4b7a",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_backup_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_retention_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"day_of_month\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"month\"]",
+          "observed_types": [
+            "array",
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"month\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"repeat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"repeat\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"repeat\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_default\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"manual_incremental_backup\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"orchestrator_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"remote_location\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*][\"quantity\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*][\"time_option\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"user_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "detailed-listing-schedulers-by-type",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing schedulers by type"
+    },
+    {
+      "anchor": "get--backupschedulers-detail-?type=scheduler_type",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/backupschedulers/detail/?type=scheduler_type"
+    },
+    {
+      "anchor": "detailed-listing-schedulers-by-type",
+      "kind": "prose",
+      "text": "Gets the detailed list of backup schedulers to which the authenticated user has access and are from type specified in the filters."
+    },
+    {
+      "anchor": "detailed-listing-schedulers-by-type",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "detailed-listing-schedulers-by-type",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "detailed-listing-schedulers-by-type",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "d444253f063b012836b84e08de793ca27f166915482772fd19a6cfc217864228",
+      "path": "/api/2.0/backupschedulers/detail/?type=snapshot"
+    },
+    {
+      "anchor": "detailed-listing-schedulers-by-type",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "detailed-listing-schedulers-by-type",
+      "classification": "response-example",
+      "fixture_id": "fixture-f79c3e38ae5281f829bb4348",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 5
+        },
+        "objects": [
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "3",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Weekday 3AM Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/2aa193d4-6e3f-4545-9de3-27d1cef90a3d/",
+            "retention_policy": {
+              "name": "Keep 3 Weeks",
+              "rules": [
+                {
+                  "period": "weeks",
+                  "quantity": 3
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "2aa193d4-6e3f-4545-9de3-27d1cef90a3d"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "1",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Son, Father, GrandFather Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/3079a014-1810-4fb6-8395-2a23cb1979e3/",
+            "retention_policy": {
+              "name": "Son, Father, GrandFather Policy",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 7
+                },
+                {
+                  "period": "weeks",
+                  "quantity": 4
+                },
+                {
+                  "time_option": 1
+                },
+                {
+                  "period": "months",
+                  "quantity": 12
+                },
+                {
+                  "time_option": 23
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/GMT+12",
+            "uuid": "3079a014-1810-4fb6-8395-2a23cb1979e3"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "",
+              "day_of_week": [
+                ""
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "",
+              "month": "",
+              "repeat": {
+                "hour": "*/12",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Every 12 hours. Last 2 days",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/7e39699c-f220-4ee2-b99b-6a678ab51f14/",
+            "retention_policy": {
+              "name": "Keep 12 Month",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 2
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "7e39699c-f220-4ee2-b99b-6a678ab51f14"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "",
+              "day_of_week": [
+                "sat",
+                "sun"
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "",
+              "month": "",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "02:00,06:00,20:00,22:15",
+            "meta": {},
+            "name": "Defined hours backups",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/ead05317-e67f-4603-9afe-4cb6aab52e52/",
+            "retention_policy": {
+              "name": "Keep 1 Day",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 1
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "ead05317-e67f-4603-9afe-4cb6aab52e52"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "*",
+              "month": "*",
+              "repeat": {
+                "hour": "*/2",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "snapshots policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/",
+            "retention_policy": {
+              "name": "Last 3 days",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 3
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "eb352f24-3a72-47a9-96cc-7b508ef52d8e"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/backupschedulers/detail/?type=scheduler_type"
+      },
+      "original_sha256": "35caed95e1d88353981d7f2a5a06b3e2852555f7f9fb79f609f0c7df1ef81288",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_backup_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_retention_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"day_of_month\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"month\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"repeat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"repeat\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"repeat\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_default\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"manual_incremental_backup\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"orchestrator_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"remote_location\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*][\"quantity\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*][\"time_option\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"user_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "list-single-backup-scheduler",
+      "kind": "heading",
+      "level": 2,
+      "text": "List single backup scheduler"
+    },
+    {
+      "anchor": "get--backupschedulers-backupscheduler_uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/backupschedulers/{backupscheduler_uuid}/"
+    },
+    {
+      "anchor": "list-single-backup-scheduler",
+      "kind": "prose",
+      "text": "Gets detailed information on a backup scheduler identified by backupscheduler_uuid."
+    },
+    {
+      "anchor": "list-single-backup-scheduler",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "list-single-backup-scheduler",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "list-single-backup-scheduler",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "1c09e67c26f402706fa1d9a04daee2e459ea8107ff11cce986a6f69d0b63077b",
+      "path": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/"
+    },
+    {
+      "anchor": "list-single-backup-scheduler",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "list-single-backup-scheduler",
+      "classification": "response-example",
+      "fixture_id": "fixture-0082461b90f9ca5ac57c3e97",
+      "fixture_payload": {
+        "enable_backup_policy_notifications": true,
+        "enable_retention_policy_notifications": false,
+        "grantees": [],
+        "incremental_backup": {
+          "day_of_month": "*",
+          "day_of_week": [
+            "*"
+          ],
+          "end_time": {
+            "hour": 23,
+            "minute": 45
+          },
+          "hour": "",
+          "minute": "*",
+          "month": "*",
+          "repeat": {
+            "hour": "*/2",
+            "minute": ""
+          },
+          "start_time": {
+            "hour": 0,
+            "minute": 0
+          }
+        },
+        "initial_backup": {
+          "day_of_week": [
+            "*"
+          ],
+          "end_time": {
+            "hour": 23,
+            "minute": 45
+          },
+          "start_time": {
+            "hour": 0,
+            "minute": 0
+          }
+        },
+        "is_default": false,
+        "is_enabled": true,
+        "manual_incremental_backup": "",
+        "meta": {},
+        "name": "snapshots policy",
+        "orchestrator_timezone": "",
+        "owner": {
+          "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+          "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+        },
+        "permissions": [],
+        "remote_location": "TBC",
+        "resource_uri": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/",
+        "retention_policy": {
+          "name": "Last 3 days",
+          "rules": [
+            {
+              "period": "days",
+              "quantity": 3
+            }
+          ]
+        },
+        "tags": [],
+        "type": "snapshot",
+        "user_timezone": "America/Danmarkshavn",
+        "uuid": "eb352f24-3a72-47a9-96cc-7b508ef52d8e"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/backupschedulers/{backupscheduler_uuid}/"
+      },
+      "original_sha256": "3ce3f006e1d8677559cc5fffec1e27527d3bfb7ef1196875a13be197d07701e7",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_backup_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_retention_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"day_of_month\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"month\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"repeat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"repeat\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"repeat\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"is_default\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"is_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"manual_incremental_backup\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"orchestrator_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"remote_location\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"rules\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"rules\"][*][\"quantity\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"user_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "post--backupschedulers-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/backupschedulers/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new backup scheduler."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "object created"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Example response"
+    },
+    {
+      "anchor": "creating",
+      "classification": "response-example",
+      "fixture_id": "fixture-10e8dd55d2dab931c3397385",
+      "fixture_payload": {
+        "objects": [
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "1",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Son, Father, GrandFather Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/0377f6e9-e5f2-4a0a-bb4e-c28c8424eda1/",
+            "retention_policy": {
+              "name": "Son, Father, GrandFather Policy",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 7
+                },
+                {
+                  "period": "weeks",
+                  "quantity": 4,
+                  "time_option": 1
+                },
+                {
+                  "period": "months",
+                  "quantity": 12,
+                  "time_option": 23
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/GMT+12",
+            "uuid": "0377f6e9-e5f2-4a0a-bb4e-c28c8424eda1"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/backupschedulers/"
+      },
+      "original_sha256": "3540158cd9da35b82ecb5e4041e311ebb87053fcd02b5248082206b8aa97ba4d",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_backup_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"enable_retention_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"day_of_month\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"month\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"repeat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"repeat\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"repeat\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"incremental_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"initial_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_default\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"is_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"manual_incremental_backup\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"orchestrator_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"remote_location\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*][\"quantity\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"retention_policy\"][\"rules\"][*][\"time_option\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"user_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "put--backupschedulers-backupscheduler_uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/backupschedulers/{backupscheduler_uuid}/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits a backup scheduler identified by backupscheduler_uuid."
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "no errors"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "14645eb016e42fcec1b5eb4d01490eefe744db53a27e6b8f4012481caa6afc91",
+      "path": "/api/2.0/backupschedulers/1c232887-aa47-45a8-96e6-3293f3b220cb/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "response-example",
+      "fixture_id": "fixture-75d881c96d9116d217943761",
+      "fixture_payload": {
+        "enable_backup_policy_notifications": true,
+        "enable_retention_policy_notifications": false,
+        "grantees": [],
+        "incremental_backup": {
+          "day_of_month": "*",
+          "day_of_week": [
+            "*"
+          ],
+          "end_time": {
+            "hour": 11,
+            "minute": 45
+          },
+          "hour": "1",
+          "minute": "0",
+          "month": "*",
+          "repeat": {
+            "hour": "",
+            "minute": ""
+          },
+          "start_time": {
+            "hour": 12,
+            "minute": 0
+          }
+        },
+        "initial_backup": {
+          "day_of_week": [
+            "*"
+          ],
+          "end_time": {
+            "hour": 11,
+            "minute": 45
+          },
+          "start_time": {
+            "hour": 12,
+            "minute": 0
+          }
+        },
+        "is_default": false,
+        "is_enabled": true,
+        "manual_incremental_backup": "",
+        "meta": {},
+        "name": "Son, Father, GrandFather Policy",
+        "orchestrator_timezone": "",
+        "owner": {
+          "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+          "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+        },
+        "permissions": [],
+        "remote_location": "",
+        "resource_uri": "/api/2.0/backupschedulers/ead05317-e67f-4603-9afe-4cb6aab52e52/",
+        "retention_policy": {
+          "name": "Son, Father, GrandFather Policy",
+          "rules": [
+            {
+              "period": "days",
+              "quantity": 7
+            },
+            {
+              "period": "weeks",
+              "quantity": 4
+            },
+            {
+              "time_option": 1
+            },
+            {
+              "period": "months",
+              "quantity": 12
+            },
+            {
+              "time_option": 23
+            }
+          ]
+        },
+        "tags": [],
+        "type": "snapshot",
+        "user_timezone": "Etc/GMT+12",
+        "uuid": "ead05317-e67f-4603-9afe-4cb6aab52e52"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "PUT",
+        "path": "/api/2.0/backupschedulers/{backupscheduler_uuid}/"
+      },
+      "original_sha256": "8bcc026415760efb15c0e2f834a0010cf59d058bef96c62e1f3ba086ccd8dda2",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_backup_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_retention_policy_notifications\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"day_of_month\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"month\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"repeat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"repeat\"][\"hour\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"repeat\"][\"minute\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"incremental_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"day_of_week\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"day_of_week\"][*]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"end_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"end_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"end_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"start_time\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"start_time\"][\"hour\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"initial_backup\"][\"start_time\"][\"minute\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"is_default\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"is_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"manual_incremental_backup\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"orchestrator_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"remote_location\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"rules\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"rules\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"rules\"][*][\"period\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"rules\"][*][\"quantity\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"retention_policy\"][\"rules\"][*][\"time_option\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"user_timezone\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": null
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "single-backup-scheduler",
+      "kind": "heading",
+      "level": 3,
+      "text": "Single backup scheduler"
+    },
+    {
+      "anchor": "delete--backupschedulers-uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/backupschedulers/{uuid}/"
+    },
+    {
+      "anchor": "single-backup-scheduler",
+      "kind": "prose",
+      "text": "Deletes a single backup scheduler."
+    },
+    {
+      "anchor": "single-backup-scheduler",
+      "kind": "prose",
+      "text": "No content, object deletion started."
+    },
+    {
+      "anchor": "single-backup-scheduler",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "single-backup-scheduler",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "46045bff2b39d42f5224c20baad4ad302bef24131eef5ab8afed758c5b3291c1",
+      "path": "/api/2.0/backupschedulers/09be1ca1-6a17-4686-95ad-fd36dfcf99f9/"
+    },
+    {
+      "anchor": "single-backup-scheduler",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "single-backup-scheduler",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/backupschedulers/{uuid}/"
+      },
+      "original_sha256": "39f1283922399d2aa196b20aa9171924d2c5bd150f01c1901f34229690fe2f02",
+      "parse_gap": "empty-body",
+      "status_code": 204
+    },
+    {
+      "anchor": "deletes-multiple-backup-schedulers",
+      "kind": "heading",
+      "level": 3,
+      "text": "Deletes multiple backup schedulers"
+    },
+    {
+      "anchor": "delete--backupschedulers-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/backupschedulers/"
+    },
+    {
+      "anchor": "deletes-multiple-backup-schedulers",
+      "kind": "prose",
+      "text": "Deletes multiple backup schedulers specified by their UUID’s."
+    },
+    {
+      "anchor": "deletes-multiple-backup-schedulers",
+      "kind": "prose",
+      "text": "No content, object deletion started."
+    },
+    {
+      "anchor": "deletes-multiple-backup-schedulers",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "deletes-multiple-backup-schedulers",
+      "kind": "prose",
+      "text": "Request body"
+    },
+    {
+      "anchor": "deletes-multiple-backup-schedulers",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "0ed48cf927fb6d4aaed73736fb1376c404584ae36327cb555333cd165c597bee"
+    },
+    {
+      "anchor": "deletes-multiple-backup-schedulers",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "deletes-multiple-backup-schedulers",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/backupschedulers/"
+      },
+      "original_sha256": "5933cb68c53c6c51fe57ced00e76716a0beb8f74b9bdc4768b2990eee5a7c8d8",
+      "parse_gap": "empty-body",
+      "status_code": 204
+    },
+    {
+      "anchor": "set-scheduler-to-a-drive",
+      "kind": "heading",
+      "level": 2,
+      "text": "Set scheduler to a drive"
+    },
+    {
+      "anchor": "post--drives-drive_uuid-action-?do=set_scheduler",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/drives/{drive_uuid}/action/?do=set_scheduler"
+    },
+    {
+      "anchor": "set-scheduler-to-a-drive",
+      "kind": "prose",
+      "text": "Link a scheduler to a drive identified by drive_uuid."
+    },
+    {
+      "anchor": "set-scheduler-to-a-drive",
+      "kind": "prose",
+      "text": "Action accepted, execution is proceeding"
+    },
+    {
+      "anchor": "set-scheduler-to-a-drive",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "set-scheduler-to-a-drive",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "5173c1b11cbd83a06fb34ecd85b1f535eabb6fba3d32f2d3cf13742c4eb853bb",
+      "path": "/api/2.0/drives/34f9c721-ec23-4f5c-86ab-2839f687f14e/action/?do=set_scheduler"
+    },
+    {
+      "anchor": "set-scheduler-to-a-drive",
+      "kind": "prose",
+      "text": "Example response"
+    },
+    {
+      "anchor": "set-scheduler-to-a-drive",
+      "classification": "response-example",
+      "fixture_id": "fixture-9d7d18d050c3f04a6d106665",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "backup_scheduler": {
+          "resource_uri": "/api/2.0/backupschedulers/103de42c-17a1-40ea-bc0f-521789168bbf/",
+          "uuid": "103de42c-17a1-40ea-bc0f-521789168bbf"
+        },
+        "grantees": [],
+        "iops": null,
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "test_drive_remote_snapshot_1",
+        "owner": {
+          "resource_uri": "/api/2.0/user/18f6256b-90a2-4908-b671-c28c6b79c020/",
+          "uuid": "18f6256b-90a2-4908-b671-c28c6b79c020"
+        },
+        "permissions": [],
+        "remote_snapshots": [],
+        "resource_uri": "/api/2.0/drives/34f9c721-ec23-4f5c-86ab-2839f687f14e/",
+        "runtime": {
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 1073741824,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [
+          {
+            "resource_uri": "/api/2.0/tags/6310b9fb-a411-49cc-9381-15f51022b26a/",
+            "uuid": "6310b9fb-a411-49cc-9381-15f51022b26a"
+          }
+        ],
+        "uuid": "34f9c721-ec23-4f5c-86ab-2839f687f14e"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/drives/{drive_uuid}/action/?do=set_scheduler"
+      },
+      "original_sha256": "046e13bdbc26b946a31a1a1a9a3e05ffd49900696cd7b04bbd1a9ef19eb052a2",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"backup_scheduler\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"backup_scheduler\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"backup_scheduler\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"iops\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"remote_snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "allowed-timezones",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed timezones"
+    },
+    {
+      "anchor": "allowed-timezones",
+      "kind": "prose",
+      "text": "The following list are the allowed timezone values for the field user_timezone."
+    },
+    {
+      "anchor": "allowed-timezones",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "3e4c530209d4d73ab112e6850d809058edab19023dafe11559e730c18ab4c1c8"
+    },
+    {
+      "anchor": "field-reference",
+      "kind": "heading",
+      "level": 2,
+      "text": "Field reference"
+    },
+    {
+      "anchor": "examples-of-backup-schedulers-and-retention-policies",
+      "kind": "heading",
+      "level": 2,
+      "text": "Examples of backup schedulers and retention policies"
+    },
+    {
+      "anchor": "notifications",
+      "kind": "heading",
+      "level": 2,
+      "text": "Notifications"
+    },
+    {
+      "anchor": "notifications",
+      "kind": "prose",
+      "text": "When using the backup schedulers, you can receive email notifications when certain actions occur—like when a remote snapshot is created or deleted by the scheduler."
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "7154c0e286897b10ba3fa1f34f7ac7bb44eacfdae54598f1eb4791838309206a",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "put",
+          "delete"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "post",
+          "delete"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "enable_backup_policy_notifications": {
+            "default": true,
+            "help_text": "Enable notifications for actions triggered by the backup policy",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "enable_retention_policy_notifications": {
+            "default": true,
+            "help_text": "Enable notifications for actions triggered by the retention policy",
+            "readonly": false,
+            "required": false,
+            "type": "boolean"
+          },
+          "grantees": {
+            "default": "No default provided.",
+            "help_text": "A list of data. Ex: ['abc', 26.73, 8]",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "incremental_backup": {
+            "default": "No default provided.",
+            "fields": {
+              "day_of_month": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set day of the month rule to the scheduler.Accepts values between 1 and 31.",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              },
+              "day_of_week": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set day of the week rule to the scheduler.Accepts values mon, tue, wed, thu, fri, sat, sun.",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              },
+              "end_time": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set the end time hour.rule",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              },
+              "hour": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set hour rule to the scheduler.Accepts values between 0 and 23.",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              },
+              "minute": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set minute rule to the scheduler.Accepts values between 0 and 59.",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              },
+              "month": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set month rule to the scheduler.Accepts values between 1 and 12, 1=January, 12=December",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              },
+              "repeat": {
+                "blank": true,
+                "default": "No default provided.",
+                "help_text": "Repeat fields",
+                "nullable": true,
+                "readonly": false,
+                "type": "related",
+                "unique": false
+              },
+              "start_time": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set the start time hour.rule",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              }
+            },
+            "help_text": "Incremental backup policies of the backup scheduler",
+            "readonly": false,
+            "required": true,
+            "type": "related"
+          },
+          "initial_backup": {
+            "default": "No default provided.",
+            "fields": {
+              "day_of_week": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set day of the week rule to the scheduler.Accepts values mon, tue, wed, thu, fri, sat, sun.",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              },
+              "end_time": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set the end time hour.rule",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              },
+              "start_time": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Set the start time hour.rule",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              }
+            },
+            "help_text": "Initial backup policies of the backup scheduler",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "is_default": {
+            "default": null,
+            "help_text": "Set as default the backup scheduler",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "is_enabled": {
+            "default": null,
+            "help_text": "Enabled or disabled the backup scheduler",
+            "readonly": false,
+            "required": true,
+            "type": "boolean"
+          },
+          "manual_incremental_backup": {
+            "default": null,
+            "help_text": "Set manual incremental time to create backups",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "meta": {
+            "default": {},
+            "help_text": "User assigned meta information for this policy",
+            "readonly": false,
+            "required": false,
+            "type": "dict"
+          },
+          "name": {
+            "default": null,
+            "help_text": "Optional human readable name of the backup scheduler",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "orchestrator_timezone": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "owner": {
+            "default": null,
+            "help_text": "Owner of the backup scheduler",
+            "readonly": true,
+            "required": true,
+            "type": "related"
+          },
+          "permissions": {
+            "default": "No default provided.",
+            "help_text": "A list of data. Ex: ['abc', 26.73, 8]",
+            "readonly": false,
+            "required": false,
+            "type": "list"
+          },
+          "remote_location": {
+            "default": null,
+            "help_text": "Remote location code",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "retention_policy": {
+            "default": "No default provided.",
+            "fields": {
+              "name": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Optional human readable name of the retention poicy",
+                "nullable": false,
+                "readonly": false,
+                "type": "string",
+                "unique": false
+              },
+              "rules": {
+                "blank": false,
+                "default": "No default provided.",
+                "help_text": "Retention policy rules",
+                "nullable": false,
+                "readonly": false,
+                "type": "list",
+                "unique": false
+              }
+            },
+            "help_text": "Retention policies of the backup scheduler",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "tags": {
+            "default": "No default provided.",
+            "help_text": "Many related resources. Can be either a list of URIs or list of individually nested resource data.",
+            "readonly": false,
+            "required": false,
+            "type": "related"
+          },
+          "type": {
+            "choices": [
+              "migration",
+              "backup",
+              "dr",
+              "snapshot"
+            ],
+            "default": null,
+            "help_text": "Policy type",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "user_timezone": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": false,
+            "required": false,
+            "type": "string"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "UUID of the backup scheduler",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        },
+        "ordering": [
+          "uuid",
+          "name"
+        ]
+      },
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "a7eab87ee746c5e1fc33851af028748563bc866b83a17e0925db61c8f7a4be75",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_policy_1st_of_month.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_scheduler_every_45_minutes.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_backup_scheduler_every_hour_20_00_23_00.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_bi_monthly_snapshot_policy.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_every_first_of_month_2359.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_every_sunday_23_00.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_field_reference.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_notifications.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_sfg_retention_strategy.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_snapshot_every_12_hours_keep_last_2_days.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_snapshot_policy_defined_hours_backups_keep_1_month.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_weekdays_3am_snapshot_policy.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_weekdays_workhours_backup_policy.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/backup_schedulers.html"
+}

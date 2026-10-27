@@ -1,0 +1,211 @@
+{
+  "blocks": [
+    {
+      "anchor": "errors",
+      "kind": "heading",
+      "level": 1,
+      "text": "Errors"
+    },
+    {
+      "anchor": "format",
+      "kind": "heading",
+      "level": 2,
+      "text": "Format"
+    },
+    {
+      "anchor": "format",
+      "kind": "prose",
+      "text": "When one or more errors occur, they are returned to the client in an object with three fields:"
+    },
+    {
+      "anchor": "format",
+      "kind": "prose",
+      "text": "error_type: The type of error, one of: validation, notexist, backend, permission, database, concurrency, billing, payment"
+    },
+    {
+      "anchor": "format",
+      "kind": "prose",
+      "text": "error_message: A description of the error that occurred."
+    },
+    {
+      "anchor": "format",
+      "kind": "prose",
+      "text": "error_point: The point at which the error occurred. Always present, but can sometimes be null."
+    },
+    {
+      "anchor": "types",
+      "kind": "heading",
+      "level": 2,
+      "text": "Types"
+    },
+    {
+      "anchor": "types",
+      "kind": "prose",
+      "text": "The types of errors:"
+    },
+    {
+      "anchor": "types",
+      "kind": "prose",
+      "text": "validation: An error occurred while validating the submitted data. If the error is related to a particular field, it will set the error_point."
+    },
+    {
+      "anchor": "types",
+      "kind": "prose",
+      "text": "notexist: The object you are trying to access does not exist."
+    },
+    {
+      "anchor": "types",
+      "kind": "prose",
+      "text": "backend: There was a problem completing the request on the backend. Please contact the support department."
+    },
+    {
+      "anchor": "types",
+      "kind": "prose",
+      "text": "permission: You do not have permission to complete the operation. May set the error_point."
+    },
+    {
+      "anchor": "types",
+      "kind": "prose",
+      "text": "database: There was a database error."
+    },
+    {
+      "anchor": "types",
+      "kind": "prose",
+      "text": "concurrency: There was a concurrency error caused by two simultaneous conflicting operations (i.e. trying to start and delete a server at the same time). The operation should be retried."
+    },
+    {
+      "anchor": "types",
+      "kind": "prose",
+      "text": "billing: There was a billing problem."
+    },
+    {
+      "anchor": "types",
+      "kind": "prose",
+      "text": "payment: There was a problem processing your payment."
+    },
+    {
+      "anchor": "example",
+      "kind": "heading",
+      "level": 2,
+      "text": "Example"
+    },
+    {
+      "anchor": "post--subscriptions-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/subscriptions/"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "example",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "f11810ec63400b47c6251e7e7ad5fee675548216715705dbf25baadb8801ccf6"
+    },
+    {
+      "anchor": "example",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "example",
+      "classification": "response-example",
+      "fixture_id": "fixture-d5c551c7c397b4ca1133e7af",
+      "fixture_payload": [
+        {
+          "error_message": "This field is required",
+          "error_point": "resource",
+          "error_type": "validation"
+        }
+      ],
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/subscriptions/"
+      },
+      "original_sha256": "4dd9b0a82111182c660a37e9c2f0afffa3374987e9f888f692e483154ebc800b",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[*][\"error_message\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[*][\"error_point\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[*][\"error_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": null
+    }
+  ],
+  "html_sha256": "ec2f27f3acfc9f5d12ffab446c14776e19f3aa0f0d71c23c6d62d40143337f79",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/errors.html"
+}

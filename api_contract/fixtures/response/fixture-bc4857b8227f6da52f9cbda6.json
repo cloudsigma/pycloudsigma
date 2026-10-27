@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "limit": 0,
+    "offset": 0,
+    "total_count": 5
+  },
+  "objects": [
+    {
+      "name": "test_server_3",
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/servers/3ca429cc-b4f4-42a8-aaa8-3a6df700af06/",
+      "runtime": null,
+      "status": "stopped",
+      "uuid": "3ca429cc-b4f4-42a8-aaa8-3a6df700af06"
+    },
+    {
+      "name": "test_server_0",
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/servers/f50b672f-a963-4b8a-bf05-809b3ffd9a9f/",
+      "runtime": null,
+      "status": "stopped",
+      "uuid": "f50b672f-a963-4b8a-bf05-809b3ffd9a9f"
+    },
+    {
+      "name": "test_server_1",
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/servers/5d5f22ea-68ae-4b83-9b19-7d7cdd2eb888/",
+      "runtime": null,
+      "status": "stopped",
+      "uuid": "5d5f22ea-68ae-4b83-9b19-7d7cdd2eb888"
+    },
+    {
+      "name": "test_server_4",
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/servers/8d483469-faeb-4408-899b-a10df6bf3587/",
+      "runtime": null,
+      "status": "stopped",
+      "uuid": "8d483469-faeb-4408-899b-a10df6bf3587"
+    },
+    {
+      "name": "test_server_2",
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/servers/514a790d-9798-4476-93e9-5cecb4b1c6a3/",
+      "runtime": null,
+      "status": "stopped",
+      "uuid": "514a790d-9798-4476-93e9-5cecb4b1c6a3"
+    }
+  ]
+}

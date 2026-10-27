@@ -1,0 +1,271 @@
+{
+  "blocks": [
+    {
+      "anchor": "omnifabric",
+      "kind": "heading",
+      "level": 1,
+      "text": "OmniFabric"
+    },
+    {
+      "anchor": "what-s-omnifabric",
+      "kind": "heading",
+      "level": 2,
+      "text": "What’s OmniFabric?"
+    },
+    {
+      "anchor": "what-s-omnifabric",
+      "kind": "prose",
+      "text": "OmniFabric is a robust cloud infrastructure service offered through CloudSigma, providing scalable computing resources, storage, networking, and computing capabilities. Designed to meet diverse enterprise needs, it supports flexible resource scaling, global availability, enterprise-grade security, and a pay-as-you-go model. Users benefit from reliable performance, dedicated support, and streamlined onboarding."
+    },
+    {
+      "anchor": "cloudsigma-omnifabric-collaboration",
+      "kind": "heading",
+      "level": 2,
+      "text": "CloudSigma & OmniFabric Collaboration"
+    },
+    {
+      "anchor": "cloudsigma-omnifabric-collaboration",
+      "kind": "prose",
+      "text": "The collaboration between CloudSigma and OmniFabric offers users a seamless, unified experience by integrating advanced data management and storage capabilities directly into the CloudSigma dashboard. This integration allows users to manage data and analytics in one place without switching between platforms. Users also benefit from OmniFabric’s efficient storage solutions and support for large dataset handling."
+    },
+    {
+      "anchor": "benefits",
+      "kind": "heading",
+      "level": 2,
+      "text": "Benefits"
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "OmniFabric delivers a highly efficient, secure, and cost-effective infrastructure model. Through its pay-as-you-go pricing, organizations reduce upfront infrastructure costs and only pay for what they use—making resource allocation highly economical."
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "The platform is designed for reliability, offering:"
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "High availability"
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "Low-latency networking"
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "High-performance computing that meets enterprise workload demands"
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "Security is also at the forefront, with:"
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "Encryption for data at rest and in transit"
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "Adherence to compliance standards"
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "Ongoing system audits"
+    },
+    {
+      "anchor": "benefits",
+      "kind": "prose",
+      "text": "Dedicated support, centralized issue resolution, and integrated monitoring tools provide peace of mind and stable daily operations."
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "heading",
+      "level": 2,
+      "text": "Use Cases"
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "OmniFabric serves a broad range of enterprise and technical use cases:"
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "Ideal for hosting web and mobile applications, backend services, APIs, and microservices—all of which benefit from the platform’s scalable and geographically distributed infrastructure."
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "Development teams can leverage OmniFabric for staging, QA, and CI/CD environments with minimal setup time."
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "The platform handles large-scale data operations such as:"
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "Backups and data warehousing"
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "Analytics pipelines"
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "Machine learning workloads"
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "For organizations with high computational demands, OmniFabric supports:"
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "Scientific simulations"
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "AI model training"
+    },
+    {
+      "anchor": "use-cases",
+      "kind": "prose",
+      "text": "Financial analysis with robust I/O throughput and compute performance"
+    },
+    {
+      "anchor": "compatibility",
+      "kind": "heading",
+      "level": 2,
+      "text": "Compatibility"
+    },
+    {
+      "anchor": "compatibility",
+      "kind": "prose",
+      "text": "OmniFabric is a cloud-native platform built on MySQL, offering users familiar relational database capabilities in a fully managed environment. As a service provided directly by CloudSigma, OmniFabric abstracts away the need for users to manage infrastructure compatibility or custom deployments. Users interact through a streamlined interface without needing to handle containerization, orchestration, or custom OS configuration—simplifying access and accelerating productivity."
+    },
+    {
+      "anchor": "migration",
+      "kind": "heading",
+      "level": 2,
+      "text": "Migration"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "OmniFabric is designed to support smooth transitions from existing relational database systems into its cloud-native environment. Whether migrating from MySQL, Oracle, SQL Server, or PostgreSQL, users benefit from a guided, secure process. CloudSigma handles the underlying resource planning and service configuration, simplifying the experience for users."
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "Tools and documentation for account setup"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "Secure data transfer capabilities"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "Privilege management guidance"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "Post-migration validation"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "The entire process is optimized to:"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "Maintain data integrity"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "Minimize downtime"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "Ensure continuity across business-critical systems"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "📚 Ready to explore more?"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "Dive deeper into OmniFabric’s complete documentation and technical details:"
+    },
+    {
+      "anchor": "migration",
+      "kind": "prose",
+      "text": "🔗 Visit OmniFabric Documentation"
+    }
+  ],
+  "html_sha256": "9d30897a5d3fcad4b6e18d13e4052c975df2551d90d9ec483d2248ae1da03041",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/omni_fabric.html"
+}

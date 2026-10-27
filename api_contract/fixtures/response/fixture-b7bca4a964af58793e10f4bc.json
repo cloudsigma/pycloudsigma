@@ -1,0 +1,11 @@
+{
+  "objects": [
+    {
+      "amount": 5,
+      "drive": {
+        "resource_uri": "/api/2.0/drives/e26fd531-7336-40e7-9a6f-db42e7a6b9f2/",
+        "uuid": "e26fd531-7336-40e7-9a6f-db42e7a6b9f2"
+      }
+    }
+  ]
+}

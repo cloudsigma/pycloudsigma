@@ -1,0 +1,4562 @@
+{
+  "blocks": [
+    {
+      "anchor": "virtual-routers",
+      "kind": "heading",
+      "level": 1,
+      "text": "Virtual Routers"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get / list object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "POST"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "create new object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "PUT"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "update / modify object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "DELETE"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "delete object/s"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Listing"
+    },
+    {
+      "anchor": "get--virtualrouters-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/virtualrouters/"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Gets the list of virtual routers to which the authenticated user has access."
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "81dd6641e1cd8840058fc3b972a730dee3984ccd32297434222784658869157c",
+      "path": "/api/2.0/virtualrouters/?limit=0"
+    },
+    {
+      "anchor": "listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "listing",
+      "classification": "response-example",
+      "fixture_id": "fixture-2c37b59ee54df8dc2c085d5f",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 1
+        },
+        "objects": [
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/93ff48d9-b9a3-49ec-9c41-de0cc9d02c34/",
+              "uuid": "93ff48d9-b9a3-49ec-9c41-de0cc9d02c34"
+            },
+            "resource_uri": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/",
+            "runtime": {
+              "stats": {},
+              "timestamp": "1624735477"
+            },
+            "state": "created",
+            "status": "running",
+            "type": "basic",
+            "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/virtualrouters/"
+      },
+      "original_sha256": "f398d101219d67374c678998578a95a9db4ea4eaada16a7968f76bb4a0b9c932",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"stats\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Detailed listing"
+    },
+    {
+      "anchor": "get--virtualrouters-detail-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/virtualrouters/detail/"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Gets the detailed list of virtual routers to which the authenticated user has access."
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "5066dce967d2ec1140ebc30a2ce2309cf9fb2ed410ba94b3e7f902b949efd4dd",
+      "path": "/api/2.0/virtualrouters/detail/?limit=0"
+    },
+    {
+      "anchor": "detailed-listing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "detailed-listing",
+      "classification": "response-example",
+      "fixture_id": "fixture-a3e4cc19a897f69ad81dfa04",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 1
+        },
+        "objects": [
+          {
+            "configuration": {
+              "firewall": {
+                "active": false,
+                "policies": [],
+                "uuid": "136256a6-4a04-4ab2-9024-01c330c56619"
+              },
+              "firewall_logging": false,
+              "lan_interface": [
+                {
+                  "default_gateway": "",
+                  "dhcp": false,
+                  "ip_address": "10.0.1.1/24",
+                  "ip_address_v6": "",
+                  "ip_aliases": [],
+                  "ip_range": {
+                    "from": "",
+                    "to": ""
+                  },
+                  "ipv4_enabled": true,
+                  "ipv4_ipv6_enabled": false,
+                  "ipv6_enabled": false,
+                  "name": "LAN 1",
+                  "router_advertiser": false,
+                  "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+                  "vlan": "68317648-0a2a-4fb4-b179-700fa4dc359d"
+                }
+              ],
+              "name": "BLACK HOLE",
+              "nat": {
+                "active": false,
+                "address_forwarding": [],
+                "port_forwarding": [],
+                "uuid": "38589c2f-035e-4616-9cca-1d93e71490d5"
+              },
+              "routes": [
+                {
+                  "gateway": "91.92.71.129",
+                  "inet": "inet",
+                  "network": "default",
+                  "uuid": "8979c468-dd08-45d9-803a-86a9e870b8dc"
+                }
+              ],
+              "type": "basic",
+              "upstream": {
+                "ip_config": {
+                  "default_gateway": "",
+                  "dhcp_client": false,
+                  "ip_address": "",
+                  "ip_address_v6": "",
+                  "ipv6_automatic": false,
+                  "router_ipv6_default_gateway": "",
+                  "upstream_lines": "",
+                  "vlan": ""
+                },
+                "ipv4_address": "91.92.71.149",
+                "uuid": "c0f07d61-1fd0-40a2-a808-593f5e03685e",
+                "vpn": {
+                  "active": false,
+                  "password": "<redacted>",
+                  "username": "dione",
+                  "vpn_type": "pptp"
+                },
+                "wan_type": "internet"
+              }
+            },
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/238e40d5-d1cd-42b0-8c07-41737bb77b68/",
+                "uuid": "238e40d5-d1cd-42b0-8c07-41737bb77b68"
+              }
+            ],
+            "owner": {
+              "resource_uri": "/api/2.0/user/93ff48d9-b9a3-49ec-9c41-de0cc9d02c34/",
+              "uuid": "93ff48d9-b9a3-49ec-9c41-de0cc9d02c34"
+            },
+            "resource_uri": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/",
+            "runtime": {
+              "stats": {},
+              "timestamp": "1624735479"
+            },
+            "state": "created",
+            "status": "running",
+            "type": "basic",
+            "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/virtualrouters/detail/"
+      },
+      "original_sha256": "1784d231951ff4d06ed850476cb4456e933570b3c6e347857bbfcbe926b84f84",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall_logging\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"dhcp\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_aliases\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_range\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"from\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"to\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ipv4_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ipv4_ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"router_advertiser\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"address_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*][\"gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*][\"inet\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*][\"network\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"dhcp_client\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"ipv6_automatic\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"router_ipv6_default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"upstream_lines\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ipv4_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"password\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"username\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"vpn_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"wan_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"stats\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "list-single-virtual-router",
+      "kind": "heading",
+      "level": 2,
+      "text": "List single virtual router"
+    },
+    {
+      "anchor": "get--virtualrouters-virtualrouter_uuid-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/"
+    },
+    {
+      "anchor": "list-single-virtual-router",
+      "kind": "prose",
+      "text": "Gets detailed information on the virtual router identified by virtualrouter_uuid."
+    },
+    {
+      "anchor": "list-single-virtual-router",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "list-single-virtual-router",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "list-single-virtual-router",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "354d45ecc33efb1c96130c3389f889d4428436e034056fcad30d0626174c4240",
+      "path": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/"
+    },
+    {
+      "anchor": "list-single-virtual-router",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "list-single-virtual-router",
+      "classification": "response-example",
+      "fixture_id": "fixture-7258f0de3fe00d6afe6ccd89",
+      "fixture_payload": {
+        "configuration": {
+          "firewall": {
+            "active": false,
+            "policies": [],
+            "uuid": "136256a6-4a04-4ab2-9024-01c330c56619"
+          },
+          "firewall_logging": false,
+          "lan_interface": [
+            {
+              "default_gateway": "",
+              "dhcp": false,
+              "ip_address": "10.0.1.1/24",
+              "ip_address_v6": "",
+              "ip_aliases": [],
+              "ip_range": {
+                "from": "",
+                "to": ""
+              },
+              "ipv4_enabled": true,
+              "ipv4_ipv6_enabled": false,
+              "ipv6_enabled": false,
+              "name": "LAN 1",
+              "router_advertiser": false,
+              "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+              "vlan": "68317648-0a2a-4fb4-b179-700fa4dc359d"
+            }
+          ],
+          "name": "BLACK HOLE",
+          "nat": {
+            "active": false,
+            "address_forwarding": [],
+            "port_forwarding": [],
+            "uuid": "38589c2f-035e-4616-9cca-1d93e71490d5"
+          },
+          "routes": [
+            {
+              "gateway": "91.92.71.129",
+              "inet": "inet",
+              "network": "default",
+              "uuid": "8979c468-dd08-45d9-803a-86a9e870b8dc"
+            }
+          ],
+          "type": "basic",
+          "upstream": {
+            "ip_config": {
+              "default_gateway": "",
+              "dhcp_client": false,
+              "ip_address": "",
+              "ip_address_v6": "",
+              "ipv6_automatic": false,
+              "router_ipv6_default_gateway": "",
+              "upstream_lines": "",
+              "vlan": ""
+            },
+            "ipv4_address": "91.92.71.149",
+            "uuid": "c0f07d61-1fd0-40a2-a808-593f5e03685e",
+            "vpn": {
+              "active": false,
+              "password": "<redacted>",
+              "username": "dione",
+              "vpn_type": "pptp"
+            },
+            "wan_type": "internet"
+          }
+        },
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/238e40d5-d1cd-42b0-8c07-41737bb77b68/",
+            "uuid": "238e40d5-d1cd-42b0-8c07-41737bb77b68"
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/93ff48d9-b9a3-49ec-9c41-de0cc9d02c34/",
+          "uuid": "93ff48d9-b9a3-49ec-9c41-de0cc9d02c34"
+        },
+        "resource_uri": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/",
+        "runtime": {
+          "stats": {},
+          "timestamp": "1624735481"
+        },
+        "state": "created",
+        "status": "running",
+        "type": "basic",
+        "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/"
+      },
+      "original_sha256": "02f27a2e454fb55a9f6729941b4ae33ce5874a5c6dc12ec3f23a7db785dff670",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall\"][\"policies\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall_logging\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"dhcp\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_aliases\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_range\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"from\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"to\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ipv4_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ipv4_ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"router_advertiser\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"][\"address_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"][\"port_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*][\"gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*][\"inet\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*][\"network\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"dhcp_client\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"ipv6_automatic\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"router_ipv6_default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"upstream_lines\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ipv4_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"][\"password\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"][\"username\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"][\"vpn_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"wan_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"stats\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"timestamp\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "creating",
+      "kind": "heading",
+      "level": 2,
+      "text": "Creating"
+    },
+    {
+      "anchor": "post--virtualrouters-",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/"
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "Creates a new virtual router. The minimal amount of information you need to set is given below."
+    },
+    {
+      "anchor": "creating",
+      "kind": "prose",
+      "text": "201 Created – object created"
+    },
+    {
+      "anchor": "minimal-virtual-router-configuration",
+      "kind": "heading",
+      "level": 3,
+      "text": "Minimal virtual router configuration"
+    },
+    {
+      "anchor": "minimal-virtual-router-configuration",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "minimal-virtual-router-configuration",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "cf875706b3d822146560b5efad8d3d8186a22225e452b71165d0e8d59eeb259f",
+      "path": "/api/2.0/virtualrouters/"
+    },
+    {
+      "anchor": "minimal-virtual-router-configuration",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "minimal-virtual-router-configuration",
+      "classification": "response-example",
+      "fixture_id": "fixture-a4654aee90ec4252998bf3b3",
+      "fixture_payload": {
+        "objects": [
+          {
+            "configuration": {
+              "firewall": {
+                "active": false,
+                "policies": [],
+                "uuid": "b1f86fac-cd16-465f-b916-4a0dfa471be0"
+              },
+              "firewall_logging": false,
+              "lan_interface": [
+                {
+                  "default_gateway": "",
+                  "dhcp": false,
+                  "ip_address": "10.0.1.1/24",
+                  "ip_address_v6": "",
+                  "ip_aliases": [],
+                  "ip_range": {
+                    "from": "",
+                    "to": ""
+                  },
+                  "ipv4_enabled": true,
+                  "ipv4_ipv6_enabled": false,
+                  "ipv6_enabled": false,
+                  "name": "LAN 1",
+                  "router_advertiser": false,
+                  "uuid": "04f2dfda-02f9-4bbf-aad9-356a2f1a852a",
+                  "vlan": "8f33e6b8-4c1f-4474-a2ba-9ec74e0fdc14"
+                }
+              ],
+              "load_balancing": {
+                "active": false
+              },
+              "name": "Green Asteroid",
+              "nat": {
+                "active": false,
+                "address_forwarding": [],
+                "port_forwarding": [],
+                "uuid": "266d3a80-fa0a-4ab8-add0-c518cc52a5a9"
+              },
+              "qos": {
+                "active": false,
+                "services": [],
+                "uuid": "d76a8d65-0914-4e2a-a833-97212a36c521"
+              },
+              "routes": [],
+              "upstream": {
+                "ip_config": {
+                  "default_gateway": "",
+                  "dhcp_client": false,
+                  "ip_address": "",
+                  "ip_address_v6": "",
+                  "ipv6_automatic": false,
+                  "router_ipv6_default_gateway": "",
+                  "upstream_lines": "",
+                  "vlan": ""
+                },
+                "ipv4_address": "",
+                "uuid": "83ad34a9-6b88-49ea-bcee-ba5a49dc6392",
+                "vpn": {
+                  "active": false,
+                  "password": "<redacted>",
+                  "username": "tethys",
+                  "vpn_type": "pptp"
+                },
+                "wan_type": "internet"
+              },
+              "vpn": {
+                "active": false,
+                "tunnels": [],
+                "uuid": "513c354f-15ba-46e8-b179-f6024e6c7a9e"
+              }
+            },
+            "owner": {
+              "resource_uri": "/api/2.0/user/e26c5424-d8c5-4d03-b989-9cff5f1016ff/",
+              "uuid": "e26c5424-d8c5-4d03-b989-9cff5f1016ff"
+            },
+            "resource_uri": "/api/2.0/virtualrouters/89a3ec18-b22c-463f-b1c9-0c027fe148b9/",
+            "runtime": null,
+            "state": "stopped",
+            "status": "stopped",
+            "uuid": "89a3ec18-b22c-463f-b1c9-0c027fe148b9"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/virtualrouters/"
+      },
+      "original_sha256": "2e86f94fc8ab195121db8b877ad682035b228c427f8670c68d16f4ecab54e49a",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall_logging\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"dhcp\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_aliases\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_range\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"from\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"to\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ipv4_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ipv4_ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"router_advertiser\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"load_balancing\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"load_balancing\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"address_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"qos\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"qos\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"qos\"][\"services\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"qos\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"dhcp_client\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"ipv6_automatic\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"router_ipv6_default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"upstream_lines\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ipv4_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"password\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"username\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"vpn_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"wan_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"vpn\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"vpn\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"vpn\"][\"tunnels\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"vpn\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "anchor": "more-complex-virtual-router-configuration",
+      "kind": "heading",
+      "level": 3,
+      "text": "More complex virtual router configuration"
+    },
+    {
+      "anchor": "more-complex-virtual-router-configuration",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "more-complex-virtual-router-configuration",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "973338ed626a55cf938d4879ecd10f9215adf5744d888905abedb3cca45e2d23",
+      "path": "/api/2.0/virtualrouters/"
+    },
+    {
+      "anchor": "more-complex-virtual-router-configuration",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "more-complex-virtual-router-configuration",
+      "classification": "response-example",
+      "fixture_id": "fixture-eacb18d57b8587b4ae877dfa",
+      "fixture_payload": {
+        "objects": [
+          {
+            "configuration": {
+              "firewall": {
+                "active": true,
+                "policies": [
+                  {
+                    "filters": [
+                      {
+                        "action": "DENY",
+                        "hostA": "10.0.1.21",
+                        "hostA_to_portA": true,
+                        "hostB": "10.0.1.20",
+                        "hostB_to_portB": true,
+                        "icmp_type": -1,
+                        "log": true,
+                        "order": 1,
+                        "portA": "",
+                        "portB": "22",
+                        "protocol_type": "TCP",
+                        "to_hostA": true,
+                        "to_hostB": true,
+                        "uuid": "f7904898-dc95-4130-9ad8-d8cee9c32629"
+                      }
+                    ],
+                    "isActive": true,
+                    "lan_interface": "f0499ae8-32bc-45e7-998a-15631fbe73b7",
+                    "order": 1,
+                    "policy_name": "Policy 1",
+                    "uuid": "853dde97-ccfb-4153-a87e-e017732a21d1"
+                  },
+                  {
+                    "filters": [
+                      {
+                        "action": "DENY",
+                        "hostA": "",
+                        "hostA_to_portA": true,
+                        "hostB": "",
+                        "hostB_to_portB": true,
+                        "icmp_type": -1,
+                        "log": false,
+                        "order": 1,
+                        "portA": "",
+                        "portB": "",
+                        "protocol_type": "UDP",
+                        "to_hostA": true,
+                        "to_hostB": true,
+                        "uuid": "a830fd2c-5bf8-4e71-85f9-6459f223dc62"
+                      }
+                    ],
+                    "isActive": false,
+                    "lan_interface": "f0499ae8-32bc-45e7-998a-15631fbe73b7",
+                    "order": 2,
+                    "policy_name": "Policy 2",
+                    "uuid": "029aae69-9c8c-4bc8-8375-3fa10e03c9e9"
+                  }
+                ],
+                "uuid": "dd96c1f9-b384-40cc-a403-0e28ae4a6ec6"
+              },
+              "firewall_logging": false,
+              "lan_interface": [
+                {
+                  "default_gateway": "",
+                  "dhcp": true,
+                  "ip_address": "10.0.1.1/24",
+                  "ip_address_v6": "",
+                  "ip_aliases": [
+                    {
+                      "ip_address": "10.0.10.1/24",
+                      "uuid": "70497718-d3e4-46e7-9326-eb9709f69a8d"
+                    },
+                    {
+                      "ip_address": "10.0.100.1/24",
+                      "uuid": "72a04d39-d159-434d-8e9a-b372e488d6f0"
+                    }
+                  ],
+                  "ip_range": {
+                    "from": "10.0.1.100",
+                    "to": "10.0.1.200"
+                  },
+                  "ipv4_enabled": true,
+                  "ipv4_ipv6_enabled": false,
+                  "ipv6_enabled": false,
+                  "name": "LAN 1",
+                  "router_advertiser": false,
+                  "uuid": "f0499ae8-32bc-45e7-998a-15631fbe73b7",
+                  "vlan": "68317648-0a2a-4fb4-b179-700fa4dc359d"
+                }
+              ],
+              "name": "Secret Teegarden b",
+              "nat": {
+                "active": true,
+                "address_forwarding": [
+                  {
+                    "local_ipv4": "10.0.0.30",
+                    "nat": "b294caea-01ff-4426-a5da-3eb00e9c1192",
+                    "order": 1,
+                    "upstream_ipv4": "10.0.0.11",
+                    "uuid": "eeb890bb-780f-44b4-9c37-ef1b27942ac8"
+                  },
+                  {
+                    "local_ipv4": "10.0.0.22",
+                    "nat": "b294caea-01ff-4426-a5da-3eb00e9c1192",
+                    "order": 2,
+                    "upstream_ipv4": "10.0.0.21",
+                    "uuid": "c38efd29-991a-4145-b189-f5f1aaa12ef3"
+                  }
+                ],
+                "port_forwarding": [
+                  {
+                    "forwarding_host": "10.0.1.10",
+                    "forwarding_port": 22,
+                    "mapped_port": 2210,
+                    "nat": "b294caea-01ff-4426-a5da-3eb00e9c1192",
+                    "order": 1,
+                    "protocol": "TCP",
+                    "uuid": "c4777503-c96a-47ce-a171-6f849c469ab9"
+                  },
+                  {
+                    "forwarding_host": "10.0.2.20",
+                    "forwarding_port": 22,
+                    "mapped_port": 2220,
+                    "nat": "b294caea-01ff-4426-a5da-3eb00e9c1192",
+                    "order": 2,
+                    "protocol": "TCP",
+                    "uuid": "efe133ed-bca0-48e4-b33a-cf54e0791ed1"
+                  }
+                ],
+                "uuid": "b294caea-01ff-4426-a5da-3eb00e9c1192"
+              },
+              "routes": [
+                {
+                  "gateway": "91.92.71.129",
+                  "inet": "inet",
+                  "network": "default",
+                  "uuid": "76075f9a-e74b-4318-a773-59b6dff966a1"
+                }
+              ],
+              "type": "basic",
+              "upstream": {
+                "ip_config": {
+                  "default_gateway": "",
+                  "dhcp_client": false,
+                  "ip_address": "",
+                  "ip_address_v6": "",
+                  "ipv6_automatic": false,
+                  "router_ipv6_default_gateway": "",
+                  "upstream_lines": "",
+                  "vlan": ""
+                },
+                "ipv4_address": "91.92.71.136",
+                "uuid": "1cb3e709-2d57-4ff2-9a93-32edd285940a",
+                "vpn": {
+                  "active": true,
+                  "password": "<redacted>",
+                  "username": "io",
+                  "vpn_type": "pptp"
+                },
+                "wan_type": "internet"
+              }
+            },
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/15345acc-3e50-42c6-b9e1-faba70d51a00/",
+                "uuid": "15345acc-3e50-42c6-b9e1-faba70d51a00"
+              }
+            ],
+            "owner": {
+              "resource_uri": "/api/2.0/user/93ff48d9-b9a3-49ec-9c41-de0cc9d02c34/",
+              "uuid": "93ff48d9-b9a3-49ec-9c41-de0cc9d02c34"
+            },
+            "resource_uri": "/api/2.0/virtualrouters/8a512355-cd5a-4158-8f2f-4a0165ab46f0/",
+            "runtime": null,
+            "state": "creating",
+            "status": "creating",
+            "type": "basic",
+            "uuid": "8a512355-cd5a-4158-8f2f-4a0165ab46f0"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/virtualrouters/"
+      },
+      "original_sha256": "665ecc58831bc3d9776b8867d8ab53bccce9c312073315c719216887dc0e13d1",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"hostA\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"hostA_to_portA\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"hostB\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"hostB_to_portB\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"icmp_type\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"log\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"portA\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"portB\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"protocol_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"to_hostA\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"to_hostB\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"filters\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"isActive\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"lan_interface\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"policy_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"policies\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"firewall_logging\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"dhcp\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_aliases\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_aliases\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_aliases\"][*][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_aliases\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_range\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"from\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"to\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ipv4_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ipv4_ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"router_advertiser\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"lan_interface\"][*][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"address_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"address_forwarding\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"address_forwarding\"][*][\"local_ipv4\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"address_forwarding\"][*][\"nat\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"address_forwarding\"][*][\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"address_forwarding\"][*][\"upstream_ipv4\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"address_forwarding\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"][*][\"forwarding_host\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"][*][\"forwarding_port\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"][*][\"mapped_port\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"][*][\"nat\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"][*][\"order\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"][*][\"protocol\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"port_forwarding\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"nat\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*][\"gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*][\"inet\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*][\"network\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"routes\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"dhcp_client\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"ipv6_automatic\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"router_ipv6_default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"upstream_lines\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ip_config\"][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"ipv4_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"password\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"username\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"vpn\"][\"vpn_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"configuration\"][\"upstream\"][\"wan_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "editing",
+      "kind": "heading",
+      "level": 2,
+      "text": "Editing"
+    },
+    {
+      "anchor": "put--virtualrouters-uuid-",
+      "kind": "operation",
+      "method": "PUT",
+      "path": "/api/2.0/virtualrouters/{uuid}/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Edits a virtual router. Note that if a virtual router is running, only the field name can be changed, and all other changes to the definition of a running virtual router will be ignored."
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "231070326bc15341b5ae06e9feca29fb728c0037d7f9cc2778e3c06e7fdc0ee8",
+      "path": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/"
+    },
+    {
+      "anchor": "editing",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "editing",
+      "classification": "response-example",
+      "fixture_id": "fixture-db419ee7db73b6ad95338664",
+      "fixture_payload": {
+        "configuration": {
+          "firewall": {
+            "active": false,
+            "policies": [],
+            "uuid": "136256a6-4a04-4ab2-9024-01c330c56619"
+          },
+          "firewall_logging": false,
+          "lan_interface": [
+            {
+              "default_gateway": "",
+              "dhcp": false,
+              "ip_address": "10.0.1.1/24",
+              "ip_address_v6": "",
+              "ip_aliases": [],
+              "ip_range": {
+                "from": "",
+                "to": ""
+              },
+              "ipv4_enabled": true,
+              "ipv4_ipv6_enabled": false,
+              "ipv6_enabled": false,
+              "name": "LAN 1",
+              "router_advertiser": false,
+              "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+              "vlan": "68317648-0a2a-4fb4-b179-700fa4dc359d"
+            }
+          ],
+          "name": "BLACK HOLE",
+          "nat": {
+            "active": false,
+            "address_forwarding": [],
+            "port_forwarding": [],
+            "uuid": "38589c2f-035e-4616-9cca-1d93e71490d5"
+          },
+          "routes": [
+            {
+              "gateway": "91.92.71.129",
+              "inet": "inet",
+              "network": "default",
+              "uuid": "8979c468-dd08-45d9-803a-86a9e870b8dc"
+            }
+          ],
+          "type": "basic",
+          "upstream": {
+            "ip_config": {
+              "default_gateway": "",
+              "dhcp_client": false,
+              "ip_address": "",
+              "ip_address_v6": "",
+              "ipv6_automatic": false,
+              "router_ipv6_default_gateway": "",
+              "upstream_lines": "",
+              "vlan": ""
+            },
+            "ipv4_address": "91.92.71.149",
+            "uuid": "c0f07d61-1fd0-40a2-a808-593f5e03685e",
+            "vpn": {
+              "active": false,
+              "password": "<redacted>",
+              "username": "dione",
+              "vpn_type": "pptp"
+            },
+            "wan_type": "internet"
+          }
+        },
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/238e40d5-d1cd-42b0-8c07-41737bb77b68/",
+            "uuid": "238e40d5-d1cd-42b0-8c07-41737bb77b68"
+          }
+        ],
+        "name": "BLACK HOLE",
+        "owner": {
+          "resource_uri": "/api/2.0/user/93ff48d9-b9a3-49ec-9c41-de0cc9d02c34/",
+          "uuid": "93ff48d9-b9a3-49ec-9c41-de0cc9d02c34"
+        },
+        "resource_uri": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/",
+        "runtime": null,
+        "state": "created",
+        "status": "running",
+        "type": "basic",
+        "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "PUT",
+        "path": "/api/2.0/virtualrouters/{uuid}/"
+      },
+      "original_sha256": "2b63152cebd1cac7b5a0754e033575d25f4dd4c8b5e241ebaa1b3ce47e4195ee",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall\"][\"policies\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"firewall_logging\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"dhcp\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_aliases\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_range\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"from\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ip_range\"][\"to\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ipv4_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ipv4_ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"ipv6_enabled\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"router_advertiser\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"lan_interface\"][*][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"][\"address_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"][\"port_forwarding\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"nat\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*][\"gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*][\"inet\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*][\"network\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"routes\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"dhcp_client\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"ip_address_v6\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"ipv6_automatic\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"router_ipv6_default_gateway\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"upstream_lines\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ip_config\"][\"vlan\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"ipv4_address\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"][\"active\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"][\"password\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"][\"username\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"vpn\"][\"vpn_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"configuration\"][\"upstream\"][\"wan_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"][*][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"state\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "deleting",
+      "kind": "heading",
+      "level": 2,
+      "text": "Deleting"
+    },
+    {
+      "anchor": "single-virtual-router",
+      "kind": "heading",
+      "level": 3,
+      "text": "Single virtual router"
+    },
+    {
+      "anchor": "delete--virtualrouters-virtualrouter_uuid-",
+      "kind": "operation",
+      "method": "DELETE",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/"
+    },
+    {
+      "anchor": "single-virtual-router",
+      "kind": "prose",
+      "text": "Deletes a single virtual router identified by virtualrouter_uuid."
+    },
+    {
+      "anchor": "single-virtual-router",
+      "kind": "prose",
+      "text": "204 No Content – No content, object deletion started."
+    },
+    {
+      "anchor": "single-virtual-router",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "single-virtual-router",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "DELETE",
+      "original_sha256": "61e884974dd5f69bb606a44124997edf6254e27ae400f8ce32a0034af62930a4",
+      "path": "/api/2.0/virtualrouters/afee4156-9867-42ab-bf0a-c5d9d5468d5e/"
+    },
+    {
+      "anchor": "single-virtual-router",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "single-virtual-router",
+      "classification": "response-example",
+      "fixture_id": "fixture-118a7251678b2d284a062af8",
+      "fixture_payload": {},
+      "kind": "code",
+      "operation": {
+        "method": "DELETE",
+        "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/"
+      },
+      "original_sha256": "5f666ef565ae802de07876bb35f9b224a1cd1ad09e76d0b0f0e0ea99eaabbc2c",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "enable-firewall",
+      "kind": "heading",
+      "level": 2,
+      "text": "Enable Firewall"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=enable_firewall",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=enable_firewall"
+    },
+    {
+      "anchor": "enable-firewall",
+      "kind": "prose",
+      "text": "Activates the firewall feature on a virtual router identified by virtualrouter_uuid."
+    },
+    {
+      "anchor": "enable-firewall",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "enable-firewall",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "enable-firewall",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "068d15e5cb340644fae391f94270fc36d3a33c2c5b767a44db3b2809ae28bd3b",
+      "path": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/action/?do=enable_firewall"
+    },
+    {
+      "anchor": "enable-firewall",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "enable-firewall",
+      "classification": "response-example",
+      "fixture_id": "fixture-ee87779a5f8e7ea297007c70",
+      "fixture_payload": {
+        "action": "enable_firewall",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/ab62200c-8195-4af5-9413-6fec8245a31a/",
+          "uuid": "ab62200c-8195-4af5-9413-6fec8245a31a"
+        },
+        "result": "success",
+        "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=enable_firewall"
+      },
+      "original_sha256": "c01dbf94e88e3b9fa45c71a5916db3bd66aaab0a64cc11a8632cdf37d413a474",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "disable-firewall",
+      "kind": "heading",
+      "level": 2,
+      "text": "Disable Firewall"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=disable_firewall",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=disable_firewall"
+    },
+    {
+      "anchor": "disable-firewall",
+      "kind": "prose",
+      "text": "Deactivates the firewall feature on a virtual router identified by virtualrouter_uuid. This will disable all the applied filters."
+    },
+    {
+      "anchor": "disable-firewall",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "disable-firewall",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "disable-firewall",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "628bb52f3205eb2d958175fd8fc5eca2e30dd118e50fc997cc1bc8815bbe592b",
+      "path": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/action/?do=disable_firewall"
+    },
+    {
+      "anchor": "disable-firewall",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "disable-firewall",
+      "classification": "response-example",
+      "fixture_id": "fixture-8cc9bcce347e97c18b1e73c0",
+      "fixture_payload": {
+        "action": "disable_firewall",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/06b7ebb5-c80b-4d52-bd69-133ab7656287/",
+          "uuid": "06b7ebb5-c80b-4d52-bd69-133ab7656287"
+        },
+        "result": "success",
+        "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=disable_firewall"
+      },
+      "original_sha256": "b98c4a127e89cc81de5008b485b21a0ccdfbfa2a628f39795a0e5fc68c295883",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "enable-firewall-logging",
+      "kind": "heading",
+      "level": 2,
+      "text": "Enable Firewall logging"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=enable_firewall_logging",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=enable_firewall_logging"
+    },
+    {
+      "anchor": "enable-firewall-logging",
+      "kind": "prose",
+      "text": "Enables firewall logging for all active filters on a virtual router identified by virtualrouter_uuid"
+    },
+    {
+      "anchor": "enable-firewall-logging",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "enable-firewall-logging",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "enable-firewall-logging",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "8ccd57cb29f4c752734d4eca15339ba7809970916db7f6533394c68bb0531c5f",
+      "path": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/action/?do=enable_firewall_logging"
+    },
+    {
+      "anchor": "enable-firewall-logging",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "enable-firewall-logging",
+      "classification": "response-example",
+      "fixture_id": "fixture-05f80b6d8681f7312382894b",
+      "fixture_payload": {
+        "action": "enable_firewall_logging",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/80a8f041-4658-46a9-817f-c454374e50b0/",
+          "uuid": "80a8f041-4658-46a9-817f-c454374e50b0"
+        },
+        "result": "success",
+        "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=enable_firewall_logging"
+      },
+      "original_sha256": "47bcedf6dfae267c7401b89deb9ff028a43ccb4c5981068a201ea2fa6328ad18",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "disable-firewall-logging",
+      "kind": "heading",
+      "level": 2,
+      "text": "Disable Firewall logging"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=disable_firewall_logging",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=disable_firewall_logging"
+    },
+    {
+      "anchor": "disable-firewall-logging",
+      "kind": "prose",
+      "text": "Disables firewall logging for all the active filters on a virtual router identified by virtualrouter_uuid"
+    },
+    {
+      "anchor": "disable-firewall-logging",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "disable-firewall-logging",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "disable-firewall-logging",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "0b856f37e7607cef96176b497a2787a110b0b14deede8ccf476d65ab48c948e4",
+      "path": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/action/?do=disable_firewall_logging"
+    },
+    {
+      "anchor": "disable-firewall-logging",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "disable-firewall-logging",
+      "classification": "response-example",
+      "fixture_id": "fixture-01164ee33ee19542eafbba21",
+      "fixture_payload": {
+        "action": "disable_firewall_logging",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/cefb857e-1d7e-41ca-9307-e73f85774487/",
+          "uuid": "cefb857e-1d7e-41ca-9307-e73f85774487"
+        },
+        "result": "success",
+        "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=disable_firewall_logging"
+      },
+      "original_sha256": "122a90162fce94f98c05b9723087cee972a1363720f6b801fb82032c39fffa0a",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "enable-nat",
+      "kind": "heading",
+      "level": 2,
+      "text": "Enable NAT"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=enable_nat",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=enable_nat"
+    },
+    {
+      "anchor": "enable-nat",
+      "kind": "prose",
+      "text": "Activates the NAT feature on a virtual router identified by virtualrouter_uuid"
+    },
+    {
+      "anchor": "enable-nat",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "enable-nat",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "enable-nat",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "c269185076e235957c00349aa24c954f1ffb10e53bf81e28b124be097946b264",
+      "path": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/action/?do=enable_nat"
+    },
+    {
+      "anchor": "enable-nat",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "enable-nat",
+      "classification": "response-example",
+      "fixture_id": "fixture-73830913122a385cc93be58a",
+      "fixture_payload": {
+        "action": "enable_nat",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/0cb8484e-92a3-4dda-970f-39c8132f1494/",
+          "uuid": "0cb8484e-92a3-4dda-970f-39c8132f1494"
+        },
+        "result": "success",
+        "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=enable_nat"
+      },
+      "original_sha256": "0c05ac598579f60fc39cb7c7198298999f88dcccf773d121b5c3172f20559070",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "disable-nat",
+      "kind": "heading",
+      "level": 2,
+      "text": "Disable NAT"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=disable_nat",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=disable_nat"
+    },
+    {
+      "anchor": "disable-nat",
+      "kind": "prose",
+      "text": "Deactivates the NAT feature on a virtual router identified by virtualrouter_uuid"
+    },
+    {
+      "anchor": "disable-nat",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "disable-nat",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "disable-nat",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "c1fc4bc9b7327a6e099628af7e3b627c23b0ac779a439223346f281113382db7",
+      "path": "/api/2.0/virtualrouters/13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2/action/?do=disable_nat"
+    },
+    {
+      "anchor": "disable-nat",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "disable-nat",
+      "classification": "response-example",
+      "fixture_id": "fixture-a33b963b1a5bb918b35cf217",
+      "fixture_payload": {
+        "action": "disable_nat",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/2f487d2e-8b86-48ca-9e91-3bf2cb857166/",
+          "uuid": "2f487d2e-8b86-48ca-9e91-3bf2cb857166"
+        },
+        "result": "success",
+        "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=disable_nat"
+      },
+      "original_sha256": "b1e25ebbe66661e1d89ca1247fceafa6c243eca091b7c8e8ab89af618926222c",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"action\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"job\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"result\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 202
+    },
+    {
+      "anchor": "enable-vpn",
+      "kind": "heading",
+      "level": 2,
+      "text": "Enable VPN"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=enable_vpn",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=enable_vpn"
+    },
+    {
+      "anchor": "enable-vpn",
+      "kind": "prose",
+      "text": "Activates the VPN feature on a virtual router identified by virtualrouter_uuid"
+    },
+    {
+      "anchor": "enable-vpn",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "enable-vpn",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "enable-vpn",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "disable-vpn",
+      "kind": "heading",
+      "level": 2,
+      "text": "Disable VPN"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=disable_vpn",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=disable_vpn"
+    },
+    {
+      "anchor": "disable-vpn",
+      "kind": "prose",
+      "text": "Deactivates the VPN feature on a virtual router identified by virtualrouter_uuid"
+    },
+    {
+      "anchor": "disable-vpn",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "disable-vpn",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "disable-vpn",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "get-log",
+      "kind": "heading",
+      "level": 2,
+      "text": "Get Log"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=get_log",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=get_log"
+    },
+    {
+      "anchor": "get-log",
+      "kind": "prose",
+      "text": "Get the latest log entries on a virtual router identified by vrfwfilter_uuid. Valid log_name values that can be included in the query parameters are: system and firewall."
+    },
+    {
+      "anchor": "get-log",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "get-log",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "get-log",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "POST",
+      "original_sha256": "d6775d635b65cb3370f8a8b9c791e2e30d7f2c3bee2dfc8a7d4886b5b68d374f",
+      "path": "/api/2.0/virtualrouters/250a8bf5-e4d6-45dc-9e36-bbc0f75c41bc/action/?do=get_log&log_name=system"
+    },
+    {
+      "anchor": "get-log",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "get-log",
+      "classification": "response-example",
+      "fixture_id": "fixture-355b95021728b7dca534683b",
+      "fixture_payload": {
+        "meta": {
+          "limit": 200,
+          "log_name": "system",
+          "offset": 0,
+          "total_count": 3
+        },
+        "objects": [
+          {
+            "datetime": "Mar 24 22:21:03",
+            "index": 1,
+            "message": "ec6e6f5e-5077-4e9e-9631-15ccef921b6b kernel: arp: 58:9c:fc:0f:67:4f is using my IP address 91.92.71.148 on net0!"
+          },
+          {
+            "datetime": "Mar 24 22:41:01",
+            "index": 2,
+            "message": "ec6e6f5e-5077-4e9e-9631-15ccef921b6b kernel: arp: 58:9c:fc:0f:9e:44 is using my IP address 91.92.71.148 on net0!"
+          },
+          {
+            "datetime": "Mar 24 23:01:02",
+            "index": 3,
+            "message": "ec6e6f5e-5077-4e9e-9631-15ccef921b6b kernel: arp: 58:9c:fc:05:f4:8c is using my IP address 91.92.71.148 on net0!"
+          }
+        ]
+      },
+      "kind": "code",
+      "operation": {
+        "method": "POST",
+        "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=get_log"
+      },
+      "original_sha256": "5746b65bbc56e778a8a6db0ce5d17c844f620508508dc97a52d1cae742e01d71",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"limit\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"log_name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"offset\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"total_count\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"datetime\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"index\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"objects\"][*][\"message\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "get-keys",
+      "kind": "heading",
+      "level": 2,
+      "text": "Get Keys"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=get_keys",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=get_keys"
+    },
+    {
+      "anchor": "get-keys",
+      "kind": "prose",
+      "text": "Get the keys related to virtual router identified by virtualrouter_uuid"
+    },
+    {
+      "anchor": "get-keys",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "get-keys",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "get-keys",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "export-key",
+      "kind": "heading",
+      "level": 2,
+      "text": "Export key"
+    },
+    {
+      "anchor": "post--virtualrouters-virtualrouter_uuid-action-?do=export_key",
+      "kind": "operation",
+      "method": "POST",
+      "path": "/api/2.0/virtualrouters/{virtualrouter_uuid}/action/?do=export_key"
+    },
+    {
+      "anchor": "export-key",
+      "kind": "prose",
+      "text": "Export the key identified by key_uuid of the virtual router identified by virtualrouter_uuid"
+    },
+    {
+      "anchor": "export-key",
+      "kind": "prose",
+      "text": "200 OK – no error"
+    },
+    {
+      "anchor": "export-key",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "export-key",
+      "kind": "prose",
+      "text": "Example response:"
+    },
+    {
+      "anchor": "schema",
+      "kind": "heading",
+      "level": 2,
+      "text": "Schema"
+    },
+    {
+      "anchor": "schema",
+      "classification": "schema-definition",
+      "direction": "unbound",
+      "kind": "code",
+      "original_sha256": "c707017e0e2c0d67ee310a216fb9b1516e33fc94b7b64e1ab4adf99ae6b5e9b9",
+      "schema": {
+        "allowed_detail_http_methods": [
+          "get",
+          "put",
+          "delete"
+        ],
+        "allowed_list_http_methods": [
+          "get",
+          "put",
+          "delete",
+          "post"
+        ],
+        "default_format": "application/json",
+        "default_limit": 20,
+        "fields": {
+          "configuration": {
+            "default": "No default provided.",
+            "fields": {},
+            "help_text": "vRouter configuration",
+            "readonly": false,
+            "required": true,
+            "type": "related"
+          },
+          "jobs": {
+            "default": "No default provided.",
+            "help_text": "Background jobs related to this resource",
+            "readonly": true,
+            "required": true,
+            "type": "related"
+          },
+          "owner": {
+            "default": null,
+            "help_text": "Owner of the snapshot",
+            "readonly": true,
+            "required": true,
+            "type": "related"
+          },
+          "resource_uri": {
+            "default": "No default provided.",
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          },
+          "runtime": {
+            "default": "No default provided.",
+            "fields": {
+              "stats": {
+                "default": {},
+                "help_text": "Unicode string data. Ex: \"Hello World\"",
+                "readonly": false,
+                "required": true,
+                "type": "string"
+              },
+              "timestamp": {
+                "default": null,
+                "help_text": "UNIX timestamp of the runtime generation",
+                "readonly": false,
+                "required": true,
+                "type": "string"
+              }
+            },
+            "help_text": "Runtime information of the vRouter",
+            "readonly": true,
+            "required": false,
+            "type": "related"
+          },
+          "state": {
+            "default": null,
+            "help_text": "Unicode string data. Ex: \"Hello World\"",
+            "readonly": true,
+            "required": false,
+            "type": "string"
+          },
+          "status": {
+            "default": "No default provided.",
+            "help_text": "Status of the vRouter.",
+            "readonly": true,
+            "required": false,
+            "type": "string"
+          },
+          "type": {
+            "default": "No default provided.",
+            "help_text": "vRouter type",
+            "readonly": false,
+            "required": true,
+            "type": "string"
+          },
+          "uuid": {
+            "default": null,
+            "help_text": "UUID of the snapshot",
+            "readonly": true,
+            "required": true,
+            "type": "string"
+          }
+        },
+        "filtering": {
+          "name": "exact",
+          "name__contains": "exact",
+          "tag": "exact",
+          "uuid": "exact"
+        }
+      },
+      "status_code": 200
+    },
+    {
+      "anchor": "virtual-router-features",
+      "kind": "heading",
+      "level": 1,
+      "text": "Virtual Router Features"
+    },
+    {
+      "anchor": "virtual-router-features",
+      "kind": "prose",
+      "text": "More information about a virtual router’s features."
+    }
+  ],
+  "html_sha256": "39b3cc8b1444b88cff0c4e6811b7ba73d6c38b42069b36c258b52f0bd06cae96",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_filters.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_policies.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_ipaliases.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_lans.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_port_forwarding.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_routes.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_upstream.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters_vpn_tunnels.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+}

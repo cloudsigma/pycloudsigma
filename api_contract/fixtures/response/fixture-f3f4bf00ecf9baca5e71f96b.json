@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "limit": 20,
+    "offset": 0,
+    "total_count": 4
+  },
+  "objects": [
+    {
+      "burstable": false,
+      "long_name": "SQL Server Enterprise Edition",
+      "name": "msft_7jq_00341",
+      "resource_uri": "/api/2.0/licenses/13/",
+      "type": "instance",
+      "user_metric": "smp"
+    },
+    {
+      "burstable": false,
+      "long_name": "SQL Server Standard Edition",
+      "name": "msft_7nq_00302",
+      "resource_uri": "/api/2.0/licenses/14/",
+      "type": "instance",
+      "user_metric": "smp"
+    },
+    {
+      "burstable": true,
+      "long_name": "Windows Server",
+      "name": "msft_p73_04837_core",
+      "resource_uri": "/api/2.0/licenses/12/",
+      "type": "instance",
+      "user_metric": "smp"
+    },
+    {
+      "burstable": false,
+      "long_name": "SQL Server Web",
+      "name": "msft_tfa_00523",
+      "resource_uri": "/api/2.0/licenses/15/",
+      "type": "instance",
+      "user_metric": "smp"
+    }
+  ]
+}

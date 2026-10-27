@@ -1,0 +1,9 @@
+{
+  "action": "configure_dhcp",
+  "job": {
+    "resource_uri": "/api/2.0/jobs/7205b0a5-89f9-4726-aaaa-bfa422e630ee/",
+    "uuid": "7205b0a5-89f9-4726-aaaa-bfa422e630ee"
+  },
+  "result": "success",
+  "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae"
+}

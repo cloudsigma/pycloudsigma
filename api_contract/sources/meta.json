@@ -1,0 +1,1103 @@
+{
+  "blocks": [
+    {
+      "anchor": "objects-metadata-field",
+      "kind": "heading",
+      "level": 1,
+      "text": "Objects’ metadata field"
+    },
+    {
+      "anchor": "objects-metadata-field",
+      "kind": "prose",
+      "text": "Objects, such as servers, drives, IPs, and VLANs have a meta field. This field can be used to store arbitrary information in key-value form. There is no predefined structure for the meta attribute, only keys are limited to 32 characters, and values should be strings. The Web UI uses the meta to store drive and server descriptions."
+    },
+    {
+      "anchor": "objects-metadata-field",
+      "kind": "prose",
+      "text": "Note that the whole meta is updated completely so all old key-value pairs should be present in new definition, when updating meta, unless they are to be deleted."
+    },
+    {
+      "anchor": "server-s-metadata-fields-with-special-meaning",
+      "kind": "heading",
+      "level": 2,
+      "text": "Server’s metadata fields with special meaning"
+    },
+    {
+      "anchor": "server-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "ssh_public_key is filled with the contents of the “SSH Key” field from the server’s properties section"
+    },
+    {
+      "anchor": "server-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "cloudinit-user-data if available (and cloud-init 0.7.5 or newer is installed on the server) this field should contains valid cloud-init user data, that will be taken into account from the cloud-init"
+    },
+    {
+      "anchor": "server-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "base64_fields contains comma-separated meta keys in the metadata that are encoded in base64. This feature is useful when a meta field has more than one lines of text. cloud-init (0.7.5 or newer) for example will automatically decode from base64 the contents of cloudinit-user-data if the name of the meta key is in base64_fields"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "heading",
+      "level": 2,
+      "text": "Drive’s metadata fields with special meaning"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "When drive is cloned from the library we copy its Metadata to the new drive’s meta as:"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "os - drive’s operating system (e.g. GNU/Linux, BSD, Windows…)"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "arch - the architecture of the OS (e.g. 32-bit or 64-bit)"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "distribution - for GNU/Linux and BSD operating systems (e.g. Debian, Fedora, FreeBSD…)"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "version - distribution’s version (if any)"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "default_user - used in pre-installed images in order to specify the default user in the installed OS"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "install notes - used if the image is not pre-installed"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "url - URL to the official website of the OS"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "description - description of what the drive contains"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "image_type - type of the image on the drive (e.g. Live CD, Install CD, Pre-install)"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "category - states what this image is most suitable for (e.g. dbserver, webserver, router, networking, …)"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "paid - this boolean field states if cloning the drive from the library is being charged"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "favorite - this boolean field states if this drive is among the most popular library drives"
+    },
+    {
+      "anchor": "drive-s-metadata-fields-with-special-meaning",
+      "kind": "prose",
+      "text": "These fields with special meaning could still be changed and deleted (even created if missing) just like every other metadata field. Their content don’t change server/drive’s behavior nor any one of them is required."
+    },
+    {
+      "anchor": "examples",
+      "kind": "heading",
+      "level": 2,
+      "text": "Examples"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Add meta to a drive:"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "To add meta to the following drive:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [],
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "test_drive_1",
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/drives/5d3bb6d8-ce39-41e8-8742-2ba5af5ef2d0/",
+        "runtime": {
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 1073741824,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [],
+        "uuid": "5d3bb6d8-ce39-41e8-8742-2ba5af5ef2d0"
+      },
+      "kind": "code",
+      "original_sha256": "4c6efb27679c81ab12f01e3dc515f97a7712f6e0396d5c0af82a72f526b75381",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "one has to use update call:"
+    },
+    {
+      "anchor": "examples",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "ad083b26bbab778183826837bb1df222aef31944d43b2a6755ae707885fb4ef9",
+      "path": "/api/2.0/drives/5d3bb6d8-ce39-41e8-8742-2ba5af5ef2d0/"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Response is:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [],
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {
+          "meta_key1": "value",
+          "meta_key2": "value\nwith\nnew lines"
+        },
+        "mounted_on": [],
+        "name": "test_drive_1",
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/drives/5d3bb6d8-ce39-41e8-8742-2ba5af5ef2d0/",
+        "runtime": {
+          "is_downloadable": true,
+          "is_ephemeral": false,
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 1073741824,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [],
+        "uuid": "5d3bb6d8-ce39-41e8-8742-2ba5af5ef2d0"
+      },
+      "kind": "code",
+      "original_sha256": "fe7880f53d200cb3faad84733f16ca9b1cfed88a5e15afc793d3b94ed070b653",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"affinities\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"allow_multimount\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"licenses\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"media\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"meta_key1\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"meta_key2\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"mounted_on\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_downloadable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_ephemeral\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"is_snapshotable\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"snapshots_allocated_size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"][\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"size\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"snapshots\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"storage_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Update server meta, by removing one key and adding another:"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "Suppose a server is updated to have the following definition:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 2000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {
+          "meta_key1": "value1",
+          "meta_key2": "value2"
+        },
+        "name": "test_server_updated",
+        "nics": [],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/0dacaaf7-1ba8-451d-b135-8848e76381ee/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "0dacaaf7-1ba8-451d-b135-8848e76381ee",
+        "vnc_password": "<redacted>"
+      },
+      "kind": "code",
+      "original_sha256": "1ff9a649924b354d908c72dbe970dd298298c383bd6a4c37039b065ea26bfeb8",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"meta_key1\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"meta_key2\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "In order to remove meta_key1, it is just skipped in the meta definition. Keeping meta_key2 with its value is achieved by redefining it, and new key meta_key3 is added by defining it:"
+    },
+    {
+      "anchor": "examples",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "PUT",
+      "original_sha256": "3192594a726fb4fbec209015b57fe50b80c02216aaf649eea65547f858562089",
+      "path": "/api/2.0/servers/0dacaaf7-1ba8-451d-b135-8848e76381ee/"
+    },
+    {
+      "anchor": "examples",
+      "kind": "prose",
+      "text": "The final result is:"
+    },
+    {
+      "anchor": "examples",
+      "binding_gap": "no-matching-operation-declaration",
+      "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 2000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {
+          "meta_key2": "value2",
+          "meta_key3": "value3"
+        },
+        "name": "test_server_updated",
+        "nics": [],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/0dacaaf7-1ba8-451d-b135-8848e76381ee/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "0dacaaf7-1ba8-451d-b135-8848e76381ee",
+        "vnc_password": "<redacted>"
+      },
+      "kind": "code",
+      "original_sha256": "7c6f21197f6a7e7ee3450a4bd9a4fcabd8b85ace97a752443422e6a22bc4dd23",
+      "shape": [
+        {
+          "field_path": "$",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"context\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_model\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"cpu_type\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"cpus_instead_of_cores\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"drives\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"enable_numa\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"grantees\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_relaxed\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hv_tsc\"]",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "field_path": "$[\"hypervisor\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"jobs\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"mem\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"meta_key2\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"meta\"][\"meta_key3\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"name\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"nics\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"]",
+          "observed_types": [
+            "object"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"owner\"][\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"permissions\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"pubkeys\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"requirements\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"resource_uri\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"runtime\"]",
+          "observed_types": [
+            "null"
+          ]
+        },
+        {
+          "field_path": "$[\"smp\"]",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "field_path": "$[\"status\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"tags\"]",
+          "observed_types": [
+            "array"
+          ]
+        },
+        {
+          "field_path": "$[\"uuid\"]",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "field_path": "$[\"vnc_password\"]",
+          "observed_types": [
+            "string"
+          ]
+        }
+      ],
+      "status_code": 200
+    }
+  ],
+  "html_sha256": "ae5b907e6bf30150cb4df45597c78079afbec8c740b5ee7377d6f7810ab35433",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/meta.html"
+}

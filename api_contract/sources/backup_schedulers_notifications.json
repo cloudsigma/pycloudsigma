@@ -1,0 +1,284 @@
+{
+  "blocks": [
+    {
+      "anchor": "notification-for-backup-schedulers",
+      "kind": "heading",
+      "level": 1,
+      "text": "Notification for Backup Schedulers"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "heading",
+      "level": 2,
+      "text": "1. Introduction"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "prose",
+      "text": "When using the backup schedulers, you can receive email notifications when certain actions occur—like when a remote snapshot is created or deleted by the scheduler. This guide explains:"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "prose",
+      "text": "What types of notifications are supported"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "prose",
+      "text": "How and when they are triggered"
+    },
+    {
+      "anchor": "introduction",
+      "kind": "prose",
+      "text": "How to correctly configure your API requests"
+    },
+    {
+      "anchor": "notification-types",
+      "kind": "heading",
+      "level": 2,
+      "text": "2. Notification Types"
+    },
+    {
+      "anchor": "notification-types",
+      "kind": "prose",
+      "text": "Name"
+    },
+    {
+      "anchor": "notification-types",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "notification-types",
+      "kind": "prose",
+      "text": "backup_scheduler_creation"
+    },
+    {
+      "anchor": "notification-types",
+      "kind": "prose",
+      "text": "Sent when the backup schedulers successfully creates a remote snapshot or local snapshot item."
+    },
+    {
+      "anchor": "notification-types",
+      "kind": "prose",
+      "text": "backup_scheduler_deletion"
+    },
+    {
+      "anchor": "notification-types",
+      "kind": "prose",
+      "text": "Sent when the backup schedulers deletes a remote snapshot or local snapshot, due to retention policies automated cleanup actions."
+    },
+    {
+      "anchor": "default-behavior-preferences",
+      "kind": "heading",
+      "level": 2,
+      "text": "3. Default Behavior & Preferences"
+    },
+    {
+      "anchor": "default-behavior-preferences",
+      "kind": "prose",
+      "text": "Notifications are delivered via email."
+    },
+    {
+      "anchor": "default-behavior-preferences",
+      "kind": "prose",
+      "text": "Notification preferences are disabled by default for all new users with account status REGULAR or INACTIVE."
+    },
+    {
+      "anchor": "default-behavior-preferences",
+      "kind": "prose",
+      "text": "Warning"
+    },
+    {
+      "anchor": "default-behavior-preferences",
+      "kind": "prose",
+      "text": "Even with the correct API fields, notifications will not be sent if the user has disabled them in their preferences."
+    },
+    {
+      "anchor": "default-behavior-preferences",
+      "kind": "prose",
+      "text": "More information about how to configure them can be found in:"
+    },
+    {
+      "anchor": "default-behavior-preferences",
+      "kind": "prose",
+      "text": "Notification Preferences"
+    },
+    {
+      "anchor": "default-behavior-preferences",
+      "kind": "prose",
+      "text": "Notification Contacts"
+    },
+    {
+      "anchor": "notification-requirements",
+      "kind": "heading",
+      "level": 2,
+      "text": "4. Notification Requirements"
+    },
+    {
+      "anchor": "notification-requirements",
+      "kind": "prose",
+      "text": "Notification Type"
+    },
+    {
+      "anchor": "notification-requirements",
+      "kind": "prose",
+      "text": "Required Field in API Payload"
+    },
+    {
+      "anchor": "notification-requirements",
+      "kind": "prose",
+      "text": "backup_scheduler_creation"
+    },
+    {
+      "anchor": "notification-requirements",
+      "kind": "prose",
+      "text": "enable_backup_policy_notifications: true"
+    },
+    {
+      "anchor": "notification-requirements",
+      "kind": "prose",
+      "text": "backup_scheduler_deletion"
+    },
+    {
+      "anchor": "notification-requirements",
+      "kind": "prose",
+      "text": "enable_retention_policy_notifications: true"
+    },
+    {
+      "anchor": "notification-requirements",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "notification-requirements",
+      "kind": "prose",
+      "text": "✅ Both fields are set to false by default when creating backupschedulers."
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "heading",
+      "level": 2,
+      "text": "5. Example Behavior"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "API Field Values"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "Notifications Sent"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "Both flags set to false"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "❌ None"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "Only enable_backup_policy_notifications = true"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "✅ Only creation notifications"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "Only enable_retention_policy_notifications = true"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "✅ Only deletion notifications"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "Both flags set to true"
+    },
+    {
+      "anchor": "example-behavior",
+      "kind": "prose",
+      "text": "✅ All notifications"
+    },
+    {
+      "anchor": "how-to-use-this-in-the-api",
+      "kind": "heading",
+      "level": 2,
+      "text": "6. How to Use This in the API"
+    },
+    {
+      "anchor": "how-to-use-this-in-the-api",
+      "kind": "prose",
+      "text": "When creating or updating a backup schedulers, you can control whether notifications are sent by adjusting the enable flags."
+    },
+    {
+      "anchor": "how-to-use-this-in-the-api",
+      "kind": "prose",
+      "text": "Here’s an example payload that disables both notifications:"
+    },
+    {
+      "anchor": "how-to-use-this-in-the-api",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "9af109c45d92fa62662275e92159161b03834902857df62d26471a23e52eb19b"
+    }
+  ],
+  "html_sha256": "1c5631c5aaf9480476f24c30d44cfc99acbeab18e4288d8da2f9be50473c83c3",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_notifications.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers_sfg_retention_strategy.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/backup_schedulers_notifications.html"
+}

@@ -1,0 +1,357 @@
+{
+  "blocks": [
+    {
+      "anchor": "capabilities",
+      "kind": "heading",
+      "level": 1,
+      "text": "Capabilities"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "heading",
+      "level": 2,
+      "text": "Allowed HTTP methods"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Method"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Description"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "GET"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "get the capabilities object"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Note"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "See RFC 2616#section-9 for more details on HTTP methods semantics"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "limits inside the client application by providing dynamic information based on factors such as cloud usage, location, and other relevant parameters."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Bear in mind, that these capabilities are dynamic - they are based on cloud usage, location, etc. For example, a location might not support lssd, but support magnetic disk option, or vice versa. If a feature is not supported or is disabled, it will disappear from the result of this call. Most entries are obvious limits on the guest or drive properties."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "A list of available host types and their limitations."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "This gives a range of valid CPU values, per SMP, for the given host type. For example, for AMD hosts, one CPU must be between 1000 and 2500MHz: a guest 2000MHz CPU and 2 SMP has 1000MHz per SMP and is valid, but a guest with 8000MHz cpu and 2 smp has a 4000MHz per smp is not."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "A list of hypervisors and which hosts they are available on. More details on the hosts can be found in the in the hosts entry."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "A list of available drive types and their limitations. The values in max_size and min_size are deprecated and are identical to the nested ones in size."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Information about the current and maximum number of snapshots allowed for the account. These are global, not per drive."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "This entry is deprecated and contains the same values for amd hosts."
+    },
+    {
+      "anchor": "get--capabilities-",
+      "kind": "operation",
+      "method": "GET",
+      "path": "/api/2.0/capabilities/"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "no error"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Example request:"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "request-example",
+      "kind": "code",
+      "method": "GET",
+      "original_sha256": "3e5ba783af73d2ba12dba371ec133e60e65ffc94ddfa5050cbd19ae5fe54f713",
+      "path": "/api/2.0/capabilities/?limit=0"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Response:"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "response-example",
+      "kind": "code",
+      "operation": {
+        "method": "GET",
+        "path": "/api/2.0/capabilities/"
+      },
+      "original_sha256": "43e9c73f252f80e8e4044d5580457a2d7b5bba2e67ea6031a439fc8f2ba578a7",
+      "parse_gap": "empty-body",
+      "status_code": 200
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "This is a detailed explanation of the key parameters of the API response for listing capabilities endpoint:"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "backfilling : Indicates whether backfilling is enabled (true) or not (false)."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "Backfilling is a feature that allows you to start servers without guaranteeing how long they will run. For more information https://docs.cloudsigma.com/en/latest/backfilling.html"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "currencies : Lists the supported currencies with their IDs and names."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "cb9f9ea2f18f99bb4a8a19bff4e37a0ac2f52e4f309d78046ab8367f46e34861"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "represents an entry in the “currencies” array."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "id : It is the unique identifier for the currency. In this case, “CHF” represents the Swiss Franc."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "name : It is the common or display name for the currency. In this case, “chf” represents the abbreviation or name used to refer to the Swiss Franc."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "So, this entry indicates that the system supports the Swiss Franc (CHF) as a currency, and “chf” is the identifier or name used within the system for this currency."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "default_inactive_period : The default inactive period is defined as days. A value of 45 indicates the inactive period is 45 days."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "This value is used to find the users with the last login made 45 days ago(using the value in the previous paragraph) and mark them as INACTIVE users."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "default_storage_type : Indicates the default storage type (e.g., “dssd”)."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "drives : Provides detailed information about available drive types and their limitations, including IOPS and size ranges. Example:"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "38a0639a0616e6740f905c5c5699682fe322b98a54b961128c9ae7655b9c0541"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "8. epc : The epc values are related to the Intel SGX enclaves. More information here:"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "88dc28e6ab4c508659b3fee912715255b6ba2c808c28d4b269c3b7cb05ffe641"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "epc_mem_ratio : The epc_mem_ratio represents the ratio of memory needed to start a guest that supports SGX."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "max_per_host : Represents the maximum free Enclave Page Cache (EPC) available in the location. The value is in bytes."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "gpus : Lists GPU models with their maximum CPU, memory, SMP, and other relevant configurations."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "dc4bb8d8bb3211770b85d4caf575987034a99ed53656ca133adf3b4dd922ce90"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "hosts : Details limitations for different host types (e.g., AMD, Intel) concerning CPU, CPU per SMP, memory, and SMP."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "a7ecd4ecedf3ea1d7f829c0f36e5c1f3169eec73ffc499d2feb73885fd43c9ca"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "hypervisors : Specifies which hypervisors (e.g., KVM) are available on particular host types (e.g., Intel, AMD)."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "The “hypervisors” parameter informs users about the available hypervisors and the types of hosts (architectures) each hypervisor supports. In this specific case, the KVM hypervisor supports both “intel” and “amd” architectures."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "f102eb0f9d2d5eb799b7db257834fedb19ca74b595eb31972c022841a6b648d3"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "inactive_period_range : Defines the maximum and minimum values accepted for the Inactivation Timeout defined by the user, for further information please check https://tbc.cloudsigma.com/ui/5.0/security"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "remote_snapshots :Contains information about remote snapshots, including the current count, maximum allowed, and locations."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "The difference between a snapshot and a remote snapshot is that the snapshot is stored in the same location as the source drive; the remote snapshot is stored in a different location."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "servers :Details about server properties, including CPU, memory, SMP, and start methods."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "74eb3bdbdcc78243516e703b94565d6dd2b7be4486863cd98f0259702e3fdee9"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "17. snapshots : Specifies the current count, maximum allowed, and maximum per drive for snapshots. A “snapshot” refers to a point-in-time copy of the state of a virtual machine or a storage drive. Snapshots are typically used for backup, recovery, or cloning purposes."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "vmware_drives : Provides details about VMware drive storage capacity limits."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "928b40df51a690b377330e785e2837e2f88d9bb6e8240d4aecfe40276bde4894"
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "kind": "prose",
+      "text": "vmware_servers :Indicates VMware server compute capacity limits for CPU and memory."
+    },
+    {
+      "anchor": "allowed-http-methods",
+      "classification": "unclassified-code",
+      "kind": "code",
+      "original_sha256": "14e6c9df1a49928b0eff4382292a98f0e43dbf1a5ccda81867155005bb4e0d12"
+    }
+  ],
+  "html_sha256": "c6b2b1b1c4056c92aacd1d164663086d842a288cbcffbcd132a5cc4367429354",
+  "links": [
+    "https://docs.cloudsigma.com/en/latest/accounts.html",
+    "https://docs.cloudsigma.com/en/latest/acls.html",
+    "https://docs.cloudsigma.com/en/latest/async.html",
+    "https://docs.cloudsigma.com/en/latest/audit_logs.html",
+    "https://docs.cloudsigma.com/en/latest/availability_groups.html",
+    "https://docs.cloudsigma.com/en/latest/backfilling.html",
+    "https://docs.cloudsigma.com/en/latest/backup_schedulers.html",
+    "https://docs.cloudsigma.com/en/latest/billing.html",
+    "https://docs.cloudsigma.com/en/latest/burst_usage.html",
+    "https://docs.cloudsigma.com/en/latest/capabilities.html",
+    "https://docs.cloudsigma.com/en/latest/clone_naming.html",
+    "https://docs.cloudsigma.com/en/latest/current_usage.html",
+    "https://docs.cloudsigma.com/en/latest/drives.html",
+    "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html",
+    "https://docs.cloudsigma.com/en/latest/errors.html",
+    "https://docs.cloudsigma.com/en/latest/general.html",
+    "https://docs.cloudsigma.com/en/latest/index.html",
+    "https://docs.cloudsigma.com/en/latest/jobs.html",
+    "https://docs.cloudsigma.com/en/latest/keypairs.html",
+    "https://docs.cloudsigma.com/en/latest/libdrives.html",
+    "https://docs.cloudsigma.com/en/latest/locations.html",
+    "https://docs.cloudsigma.com/en/latest/meta.html",
+    "https://docs.cloudsigma.com/en/latest/network_interfaces.html",
+    "https://docs.cloudsigma.com/en/latest/networking.html",
+    "https://docs.cloudsigma.com/en/latest/notification_contacts.html",
+    "https://docs.cloudsigma.com/en/latest/notification_preferences.html",
+    "https://docs.cloudsigma.com/en/latest/omni_fabric.html",
+    "https://docs.cloudsigma.com/en/latest/pagination.html",
+    "https://docs.cloudsigma.com/en/latest/profile.html",
+    "https://docs.cloudsigma.com/en/latest/release_notes.html",
+    "https://docs.cloudsigma.com/en/latest/remote_snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/server_context.html",
+    "https://docs.cloudsigma.com/en/latest/servers.html",
+    "https://docs.cloudsigma.com/en/latest/servers_kvm.html",
+    "https://docs.cloudsigma.com/en/latest/servers_vmware.html",
+    "https://docs.cloudsigma.com/en/latest/snapshots.html",
+    "https://docs.cloudsigma.com/en/latest/subscriptions.html",
+    "https://docs.cloudsigma.com/en/latest/tags.html",
+    "https://docs.cloudsigma.com/en/latest/upload_download.html",
+    "https://docs.cloudsigma.com/en/latest/usage.html",
+    "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
+  ],
+  "normalization_version": 1,
+  "url": "https://docs.cloudsigma.com/en/latest/capabilities.html"
+}
