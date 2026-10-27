@@ -1,9 +1,8 @@
 import contextlib
 import io
 import json
-import unittest
+from unittest import TestCase, mock
 from pathlib import Path
-from unittest import mock
 
 import importlib.util
 
@@ -44,7 +43,7 @@ class AuthFailureSession(Session):
         return Response(status_code=401, body={'detail': 'hidden'})
 
 
-class TunnelProbeTests(unittest.TestCase):
+class TunnelProbeTests(TestCase):
     def setUp(self):
         patcher = mock.patch.object(run_tunnel_probe, 'ENDPOINT',
                                     run_tunnel_probe.ALLOWED_ENDPOINT)

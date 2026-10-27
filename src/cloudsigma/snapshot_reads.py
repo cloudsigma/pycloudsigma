@@ -29,7 +29,7 @@ class SnapshotReads(Snapshot):
         return self.c.get(self._get_url() + 'detail/', query_params=query_params,
                           otp=otp)
 
-    def get(self, uuid=None, *, otp=None, query_params=None):
+    def get(self, uuid=None, query_params=None, *, otp=None, limit=None, offset=None):
         identifier = _AvailabilityGroups._identifier(uuid)
         return self.c.get(self._get_url() + identifier + '/',
                           query_params=query_params, otp=otp)

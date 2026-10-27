@@ -125,7 +125,7 @@ class TestCoreFuncs(common.StatefulResourceTestBase):
             c1.run('poweroff')
             c2.run('poweroff')
         except invoke.exceptions.UnexpectedExit:
-            pass
+            LOG.debug('Guest poweroff exited before the SSH session closed')
 
         LOG.debug('Wait for complete shutdown')
         sc.stop(g1['uuid'])

@@ -28,7 +28,8 @@ class ResourceBase(object):
             'Descendant class must set the resource_name field'
         return '/%s/' % (self.resource_name,)
 
-    def get(self, uuid=None, *, otp=None, query_params=None):
+    def get(self, uuid=None, query_params=None, *, otp=None, limit=None,
+            offset=None):
         """Read a resource, forwarding documented singleton query filters."""
         url = self._get_url()
         if uuid is not None:
@@ -37,6 +38,12 @@ class ResourceBase(object):
             else:
                 uuid_str = uuid
             url += uuid_str
+        if limit is not None or offset is not None:
+            query_params = dict(query_params or {})
+            if limit is not None:
+                query_params['limit'] = limit
+            if offset is not None:
+                query_params['offset'] = offset
         return self.c.get(url, query_params=query_params,
                           return_list=False, otp=otp)
 
@@ -95,7 +102,10 @@ class ResourceBase(object):
             )
         return res_data
 
-    def create(self, data, query_params=None, *, otp=None):
+    def create(self, data, query_params=None, image_path=None, *, otp=None,
+               avoid=None):
+        if image_path is not None or avoid is not None:
+            raise TypeError('image_path and avoid are only supported by InitUpload')
         query_params = query_params or {}
         url = self._get_url()
         return self.c.post(
@@ -106,7 +116,9 @@ class ResourceBase(object):
             otp=otp
         )
 
-    def update(self, uuid, data, *, otp=None):
+    def update(self, uuid=None, data=None, *, otp=None):
+        if data is None:
+            raise TypeError('update requires uuid and data')
         url = self._get_url() + uuid + '/'
         return self.c.put(url, data, return_list=False, otp=otp)
 
@@ -135,7 +147,7 @@ class ResourceBase(object):
 class Profile(ResourceBase):
     resource_name = 'profile'
 
-    def get(self, uuid=None, *, otp=None, query_params=None):
+    def get(self, uuid=None, query_params=None, *, otp=None, limit=None, offset=None):
         if uuid is not None:
             raise ValueError('profile does not accept a resource identifier')
         return self.c.get(self._get_url(), query_params=query_params,
@@ -150,7 +162,7 @@ class Profile(ResourceBase):
 class GlobalContext(ResourceBase):
     resource_name = 'global_context'
 
-    def get(self, uuid=None, *, otp=None, query_params=None):
+    def get(self, uuid=None, query_params=None, *, otp=None, limit=None, offset=None):
         if uuid is not None:
             raise ValueError('global context does not accept a resource identifier')
         return self.c.get(self._get_url(), query_params=query_params,

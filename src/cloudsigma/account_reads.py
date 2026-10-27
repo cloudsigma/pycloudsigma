@@ -49,7 +49,7 @@ class LedgerRead(ResourceBase):
 
     _client_class = _RawReadClient
 
-    def get(self, uuid=None, *, otp=None, query_params=None):
+    def get(self, uuid=None, query_params=None, *, otp=None, limit=None, offset=None):
         """Read one page, optionally selecting documented limit/offset values.
 
         Omitted parameters preserve the service's default page. No automatic

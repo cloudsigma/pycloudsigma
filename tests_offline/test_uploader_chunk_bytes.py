@@ -1,15 +1,14 @@
 """Local byte fidelity only; fake opener is not provider/transport acceptance."""
 import pathlib
 import tempfile
-import unittest
+from unittest import TestCase, mock
 import urllib.error
 import urllib.request
-from unittest import mock
 
 from cloudsigma.upload_client import CSUploader
 
 
-class UploaderChunkBytesTests(unittest.TestCase):
+class UploaderChunkBytesTests(TestCase):
     def make_uploader(self, path, chunk_size=4):
         uploader = CSUploader('https://example.invalid/api/2.0', str(path),
                               chunk_size, 'synthetic', 'synthetic')

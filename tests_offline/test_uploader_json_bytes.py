@@ -2,10 +2,9 @@
 import datetime
 import io
 import json
-import unittest
+from unittest import TestCase, mock
 import urllib.error
 import urllib.request
-from unittest import mock
 
 from cloudsigma.upload_client import CSUploader, UploadError
 
@@ -34,7 +33,7 @@ class RecordingOpener:
         return response
 
 
-class UploaderJSONBytesTests(unittest.TestCase):
+class UploaderJSONBytesTests(TestCase):
     def uploader(self, opener):
         # Preserve the real constructor and Basic-auth opener construction.
         client = CSUploader('https://example.invalid/api/2.0/',

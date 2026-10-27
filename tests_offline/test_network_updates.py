@@ -6,7 +6,7 @@ sessions, not these prepared populated/omitted requests and typed failures.
 """
 import copy
 import json
-import unittest
+from unittest import TestCase
 import requests
 from cloudsigma import resource, errors
 from test_network_reads import fixture
@@ -46,7 +46,7 @@ class UpdateAdapter(requests.adapters.BaseAdapter):
         pass
 
 
-class NetworkUpdateTests(unittest.TestCase):
+class NetworkUpdateTests(TestCase):
     assert_json_exact = test_network_reads.NetworkReadTests.assert_json_exact
 
     def update(self, kind, body, payload, status=200, exception=None):

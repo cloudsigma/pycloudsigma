@@ -1,6 +1,6 @@
 """Complete one-page envelopes; synthetic extensions are not API schema claims."""
 import copy
-import unittest
+from unittest import TestCase
 from unittest.mock import patch
 import requests
 from cloudsigma import resource, errors
@@ -8,7 +8,7 @@ from test_network_reads import FixtureAdapter, fixture
 import test_network_reads
 
 
-class CollectionReadTests(unittest.TestCase):
+class CollectionReadTests(TestCase):
     assert_json_exact = test_network_reads.NetworkReadTests.assert_json_exact
 
     def read(self, kind, detail, payload, params=None, status=200, exception=None,
