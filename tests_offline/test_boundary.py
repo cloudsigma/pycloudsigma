@@ -1,4 +1,4 @@
-import os,io,logging,requests,sys
+import os,io,logging,requests
 from unittest import TestCase
 from unittest.mock import patch
 os.environ['CLOUDSIGMA_CONFIG']='/dev/null'
