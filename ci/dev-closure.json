@@ -1,12 +1,12 @@
 {
   "inputs": {
-    "ci/dev-requirements.lock": "b49d2113d0edf7d987e51841c21af37c1dcc90b89241ed42aa20de46c50954a9",
-    "poetry.lock": "220bbd9ecc26bdb7362f937082ce9c9b2ac6d20d696ffe0fc4172b0fbb2559ae",
+    "ci/dev-requirements.lock": "fe8a3e15d634cf3145e8a9ab6d2d1143e29fcdabb5577ed71cf1848d94c5422d",
+    "poetry.lock": "631c637d483779617727cc56c15ca19413b0a8b655225957b4897e27772c2d09",
     "pyproject.toml": "16b54cfe8ea361b204d35c2fe82347ddf221cb77c8f4bc0413ac55aaea3b0d2a"
   },
   "packages": {
     "bcrypt": "5.0.0",
-    "certifi": "2026.7.22",
+    "certifi": "2026.10.19",
     "cffi": "2.1.1",
     "charset-normalizer": "3.5.2",
     "configobj": "5.0.9",
