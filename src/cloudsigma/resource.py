@@ -595,8 +595,12 @@ class Licenses(ResourceBase):
     resource_name = 'licenses'
 
 
-class Capabilites(ResourceBase):
+class Capabilities(ResourceBase):
     resource_name = 'capabilities'
+
+
+# Preserve the historical misspelling for callers that already use it.
+Capabilites = Capabilities
 
 
 class Accounts(ResourceBase):
