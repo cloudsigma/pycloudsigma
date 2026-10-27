@@ -542,6 +542,10 @@ class Subscriptions(ResourceBase):
     def extend(self, uuid, data=None):
         return self._action(uuid, 'extend', data or {})
 
+    def auto_renew(self, uuid, data=None):
+        """Enable automatic renewal for a documented subscription."""
+        return self._action(uuid, 'auto_renew', data or {})
+
 
 class GroupedSubscriptions(ResourceBase):
     """Read grouped subscriptions with list() or list_raw().
