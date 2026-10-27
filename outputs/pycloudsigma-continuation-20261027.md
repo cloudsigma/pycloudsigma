@@ -60,3 +60,8 @@ The route/action matrix is evidence-backed at the endpoint level. It does not by
 ```
 
 This report records endpoint/action coverage and exact evidence. It does not claim package publication, release, deployment, live-provider acceptance, or a field-level 100% certification without an independently maintained field matrix.
+
+
+## Addendum: singleton query forwarding
+
+The post-report audit identified and fixed one documented query shape that had not been exposed: snapshot and remote-snapshot singleton reads may include `?drive={drive_uuid}`. `ResourceBase.get(..., query_params=...)` now forwards that mapping without changing existing calls. PR #83 adds synthetic coverage for both routes; its CI result and merge are the final evidence for this addendum.
