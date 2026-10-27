@@ -1,0 +1,9 @@
+{
+  "action": "enable_nat",
+  "job": {
+    "resource_uri": "/api/2.0/jobs/0cb8484e-92a3-4dda-970f-39c8132f1494/",
+    "uuid": "0cb8484e-92a3-4dda-970f-39c8132f1494"
+  },
+  "result": "success",
+  "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+}

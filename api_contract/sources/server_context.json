@@ -374,6 +374,10 @@
     {
       "anchor": "get-or-update-global-context",
       "classification": "response-example",
+      "fixture_id": "fixture-2cae68e8d0e30b45c2cd9646",
+      "fixture_payload": {
+        "new_global_key": "new_global_val"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",

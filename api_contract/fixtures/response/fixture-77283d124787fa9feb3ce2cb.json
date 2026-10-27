@@ -1,0 +1,39 @@
+{
+  "objects": [
+    {
+      "affinities": [],
+      "allow_multimount": false,
+      "backup_scheduler": null,
+      "grantees": [],
+      "iops": null,
+      "jobs": [],
+      "licenses": [],
+      "media": "disk",
+      "meta": {
+        "description": ""
+      },
+      "mounted_on": [],
+      "name": "test_nvme_drive",
+      "owner": {
+        "resource_uri": "/api/2.0/user/e2e634af-d326-4130-a6c4-b1cb267e646f/",
+        "uuid": "e2e634af-d326-4130-a6c4-b1cb267e646f"
+      },
+      "permissions": [],
+      "remote_snapshots": [],
+      "resource_uri": "/api/2.0/drives/0840ecd2-46b3-40c7-249d-02a4024a350e/",
+      "runtime": {
+        "is_downloadable": true,
+        "is_ephemeral": false,
+        "is_snapshotable": true,
+        "snapshots_allocated_size": 0,
+        "storage_type": "nvme"
+      },
+      "size": 1073741824,
+      "snapshots": [],
+      "status": "creating",
+      "storage_type": "nvme",
+      "tags": [],
+      "uuid": "0840ecd2-46b3-40c7-249d-02a4024a350e"
+    }
+  ]
+}

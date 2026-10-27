@@ -74,6 +74,23 @@
     {
       "anchor": "creating-a-keypair",
       "classification": "response-example",
+      "fixture_id": "fixture-9a46492f47f446f847364faa",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "79:20:0b:49:72:11:b1:bc:df:73:94:09:3d:f8:90:71",
+            "grantees": [],
+            "meta": {},
+            "name": "test_pub",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC5T716fDpTC0M9b7zaYumQQqK0ufV2sJa4u9Z2F14J8xQJUAtkBCJBmTPDIPrHFq/a5HLM/c/ucsa4UP9sX7Govqqr/sq+rMpvv1J8tgQ4uuksDAH7wBeA20tdkcQTQpMEgalP0j9Epd95ZkCZBZKKBNESO64A5BxvLu1vgiCiKw==",
+            "resource_uri": "/api/2.0/keypairs/fdd6fbba-644b-49d8-9324-ff6589179da3/",
+            "tags": [],
+            "uuid": "fdd6fbba-644b-49d8-9324-ff6589179da3"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -178,6 +195,23 @@
     {
       "anchor": "creating-a-keypair",
       "classification": "response-example",
+      "fixture_id": "fixture-44f1ac95438640d027c01754",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "e8:ee:43:72:38:09:6d:1e:8e:46:9e:76:80:a3:0a:01",
+            "grantees": [],
+            "meta": {},
+            "name": "test_another_pub",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDFGtYDl+/Oua9uBXqwcbE84QUBBbDdMMzaZ6MAGg1Bmus9VEW0P8kK6npZ0SaUnB2xRrBNwCv0Q0uZBJ70UicgsrhBjCXIVa7K6yQYrFzMxfN8saNAjJvGDdWGSvcMxJdpYwXiOQhFan36eJCCwQjni7I538Ii9chPD8/tyJcBIw==",
+            "resource_uri": "/api/2.0/keypairs/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/",
+            "tags": [],
+            "uuid": "6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -236,7 +270,7 @@
         {
           "field_path": "$[\"objects\"][*][\"private_key\"]",
           "observed_types": [
-            "null"
+            "string"
           ]
         },
         {
@@ -282,6 +316,23 @@
     {
       "anchor": "creating-a-keypair",
       "classification": "response-example",
+      "fixture_id": "fixture-be3ea4c68f711684111a2244",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+            "grantees": [],
+            "meta": {},
+            "name": "test_name",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+            "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+            "tags": [],
+            "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -398,6 +449,40 @@
     {
       "anchor": "listing-getting-updating-deleting",
       "classification": "response-example",
+      "fixture_id": "fixture-d037a59f256904dfddf6c79c",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 2
+        },
+        "objects": [
+          {
+            "fingerprint": "8c:71:a2:f0:bc:a4:45:66:a8:59:77:6d:80:d5:a0:89",
+            "grantees": [],
+            "meta": {},
+            "name": "ala",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9E5ykn/RPmJlTN9HJ2wkjjMJu5AB8YfcGX9uKCA9jVq0urN+LPqVy1jzCzPaxi2z05Cia0IH/G0w99SMdmkuDUQ/j+F8/U0Ja2whsiINgqvM0QWAClI7UCSoFny1UvaCk9S5J1ork/eU+ORu3jd2CdOEjIy82iLSDueALovqz3rQm8Gq5qY693zBVpb9WlvJmsqpHC+awwfWkYSuFIB4SsiY53AzzC0J10tLc7ifF+2zTqnIRwaG6m8fyWmH2r6MonGmDvCFSQ4nJmgw3VeAO+1EVvP0++XGo/RI55wQc/7jII6ANwlrr0tIUXGaVKiD0GK0K/mpEXCu8oawxhx6x",
+            "resource_uri": "/api/2.0/keypairs/186106ac-afb5-40e5-a0de-6f0feba5a3d5/",
+            "tags": [],
+            "uuid": "186106ac-afb5-40e5-a0de-6f0feba5a3d5"
+          },
+          {
+            "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+            "grantees": [],
+            "meta": {},
+            "name": "test_name",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+            "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+            "tags": [],
+            "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -532,6 +617,19 @@
     {
       "anchor": "listing-getting-updating-deleting",
       "classification": "response-example",
+      "fixture_id": "fixture-f5125fb14d6c656dfd44e303",
+      "fixture_payload": {
+        "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+        "grantees": [],
+        "meta": {},
+        "name": "test_name",
+        "permissions": [],
+        "private_key": "<redacted>",
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+        "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+        "tags": [],
+        "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -630,6 +728,19 @@
     {
       "anchor": "listing-getting-updating-deleting",
       "classification": "response-example",
+      "fixture_id": "fixture-891a7fe04a3cedf6e213e032",
+      "fixture_payload": {
+        "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+        "grantees": [],
+        "meta": {},
+        "name": "new_name",
+        "permissions": [],
+        "private_key": "<redacted>",
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+        "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+        "tags": [],
+        "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+      },
       "kind": "code",
       "operation": {
         "method": "PUT",
@@ -765,6 +876,22 @@
       "anchor": "pubkeys-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "99:1e:71:ea:d1:43:80:55:14:ca:27:5c:64:69:3b:10",
+            "grantees": [],
+            "meta": {},
+            "name": "test_name",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjTryYVIZObTbmhqdVKmK3JmOL/ZLcDSNElbWS7jtx36lEGWP2TZzbMLjM8EvYR5jxE0ys39GosgFTQuwf0tnqbtB4VXCDYfRJZ2HiOgXPNwtGSTyyG/HniXboCFpzU7CHzIRGfK6bWZujhUikmMFTHZd3oe6RcMi8Ftb9/F7co7usws1K2TEAJK5GYZf5Sm0xzUzQHfB2keYYSwuImftGzUIzyBBLqIjzwTLB/66x1oczN/zDayMLvCaUp9g0pTCdChQIyHCjrjokJ0Trvbnzg5d2Yb5qo72s1zGFu2JWKiMuuRxsu2wch2fiVS9Tl07H+JQv4fm9G90fBOkdlpj",
+            "resource_uri": "/api/2.0/keypairs/b4fa47cf-f929-4dde-b77a-ea1d326862bd/",
+            "tags": [],
+            "uuid": "b4fa47cf-f929-4dde-b77a-ea1d326862bd"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "fc30c15572c16c90d39ca272494e4fb3c0c4009bfecdce5c362c3b154304dcfb",
       "shape": [
@@ -866,6 +993,18 @@
       "anchor": "pubkeys-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "fingerprint": "79:20:0b:49:72:11:b1:bc:df:73:94:09:3d:f8:90:71",
+        "grantees": [],
+        "has_private_key": "<redacted>",
+        "meta": {},
+        "name": "test_pub",
+        "permissions": [],
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC5T716fDpTC0M9b7zaYumQQqK0ufV2sJa4u9Z2F14J8xQJUAtkBCJBmTPDIPrHFq/a5HLM/c/ucsa4UP9sX7Govqqr/sq+rMpvv1J8tgQ4uuksDAH7wBeA20tdkcQTQpMEgalP0j9Epd95ZkCZBZKKBNESO64A5BxvLu1vgiCiKw==",
+        "resource_uri": "/api/2.0/pubkeys/fdd6fbba-644b-49d8-9324-ff6589179da3/",
+        "tags": [],
+        "uuid": "fdd6fbba-644b-49d8-9324-ff6589179da3"
+      },
       "kind": "code",
       "original_sha256": "7556e5208f96bc9e699de2e0cadf6370567c5a9da887f670d54299f40d5a36eb",
       "shape": [
@@ -890,7 +1029,7 @@
         {
           "field_path": "$[\"has_private_key\"]",
           "observed_types": [
-            "boolean"
+            "string"
           ]
         },
         {
@@ -955,6 +1094,22 @@
       "anchor": "pubkeys-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "fingerprint": "e8:ee:43:72:38:09:6d:1e:8e:46:9e:76:80:a3:0a:01",
+            "grantees": [],
+            "meta": {},
+            "name": "test_another_pub",
+            "permissions": [],
+            "private_key": "<redacted>",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDFGtYDl+/Oua9uBXqwcbE84QUBBbDdMMzaZ6MAGg1Bmus9VEW0P8kK6npZ0SaUnB2xRrBNwCv0Q0uZBJ70UicgsrhBjCXIVa7K6yQYrFzMxfN8saNAjJvGDdWGSvcMxJdpYwXiOQhFan36eJCCwQjni7I538Ii9chPD8/tyJcBIw==",
+            "resource_uri": "/api/2.0/keypairs/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/",
+            "tags": [],
+            "uuid": "6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "bc3667c42accc500e5899364bf2cca0850d5072beaa917f4268abf11664e295d",
       "shape": [
@@ -1009,7 +1164,7 @@
         {
           "field_path": "$[\"objects\"][*][\"private_key\"]",
           "observed_types": [
-            "null"
+            "string"
           ]
         },
         {
@@ -1056,6 +1211,18 @@
       "anchor": "pubkeys-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "fingerprint": "e8:ee:43:72:38:09:6d:1e:8e:46:9e:76:80:a3:0a:01",
+        "grantees": [],
+        "has_private_key": "<redacted>",
+        "meta": {},
+        "name": "test_another_pub",
+        "permissions": [],
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDFGtYDl+/Oua9uBXqwcbE84QUBBbDdMMzaZ6MAGg1Bmus9VEW0P8kK6npZ0SaUnB2xRrBNwCv0Q0uZBJ70UicgsrhBjCXIVa7K6yQYrFzMxfN8saNAjJvGDdWGSvcMxJdpYwXiOQhFan36eJCCwQjni7I538Ii9chPD8/tyJcBIw==",
+        "resource_uri": "/api/2.0/pubkeys/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/",
+        "tags": [],
+        "uuid": "6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244"
+      },
       "kind": "code",
       "original_sha256": "09b7fa7220ec5d89e69b0a95d1f17841523ac60867599ac1f46ba885d22b4015",
       "shape": [
@@ -1080,7 +1247,7 @@
         {
           "field_path": "$[\"has_private_key\"]",
           "observed_types": [
-            "boolean"
+            "string"
           ]
         },
         {
@@ -1156,6 +1323,64 @@
       "anchor": "attaching-pubkeys-to-a-server",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "context": true,
+            "cpu": 1000,
+            "cpu_model": null,
+            "cpu_type": "amd",
+            "cpus_instead_of_cores": false,
+            "drives": [],
+            "enable_numa": false,
+            "grantees": [],
+            "hv_relaxed": false,
+            "hv_tsc": false,
+            "hypervisor": "kvm",
+            "jobs": [],
+            "mem": 1073741824,
+            "meta": {},
+            "name": "test_srv_test_pubkeys",
+            "nics": [
+              {
+                "boot_order": null,
+                "ip_v4_conf": {
+                  "conf": "dhcp",
+                  "ip": null
+                },
+                "ip_v6_conf": null,
+                "mac": "22:30:3d:8a:b6:59",
+                "model": "virtio",
+                "runtime": null,
+                "vlan": null
+              }
+            ],
+            "owner": {
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            },
+            "permissions": [],
+            "pubkeys": [
+              {
+                "resource_uri": "/api/2.0/pubkeys/fdd6fbba-644b-49d8-9324-ff6589179da3/",
+                "uuid": "fdd6fbba-644b-49d8-9324-ff6589179da3"
+              },
+              {
+                "resource_uri": "/api/2.0/pubkeys/6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244/",
+                "uuid": "6d7db550-d1c5-4e3b-9c0a-e83f6a2b8244"
+              }
+            ],
+            "requirements": [],
+            "resource_uri": "/api/2.0/servers/f400243b-7005-4222-b319-dff0a376c4ea/",
+            "runtime": null,
+            "smp": 1,
+            "status": "stopped",
+            "tags": [],
+            "uuid": "f400243b-7005-4222-b319-dff0a376c4ea",
+            "vnc_password": "<redacted>"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "e41edb2c72b87c40b65da3811f2ba7707c3ac2cd3a048a77826446db61d142b4",
       "shape": [

@@ -74,6 +74,39 @@
       "anchor": "example",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "address": "",
+        "api_https_only": false,
+        "autotopup_amount": "200.0000000000000000",
+        "autotopup_threshold": "200.0000000000000000",
+        "bank_reference": "jdoe123",
+        "clone_naming": "COUNTER",
+        "company": "",
+        "country": "US",
+        "currency": "USD",
+        "email": "user@example.com",
+        "first_name": "John",
+        "has_autotopup": false,
+        "invoicing": false,
+        "key_auth": false,
+        "language": "en_US",
+        "last_name": "Doe",
+        "mailing_list": true,
+        "meta": {},
+        "my_notes": "",
+        "nickname": "",
+        "phone": "",
+        "postcode": "",
+        "reseller": "",
+        "signup_time": "2013-11-04T11:30:20.860838+00:00",
+        "state": "REGULAR",
+        "tax_name": null,
+        "tax_rate": null,
+        "title": "",
+        "town": "",
+        "uuid": "6f670b3c-a2e6-433f-aeab-b976b1cdaf03",
+        "vat": ""
+      },
       "kind": "code",
       "original_sha256": "d0a43cd58ab8a6dd935a4c88213599a3a43644240bb8b51249dd082b919c0d00",
       "shape": [
@@ -299,6 +332,43 @@
       "anchor": "example",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "grantees": [],
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/3564c1c2-c498-40d8-b063-aa173e2ec0c5/",
+                "uuid": "3564c1c2-c498-40d8-b063-aa173e2ec0c5"
+              }
+            ],
+            "licenses": [],
+            "media": "cdrom",
+            "meta": {},
+            "mounted_on": [],
+            "name": "test_drive_x_1",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/drives/86164dec-fe21-4590-b2d7-a5733c38b24f/",
+            "runtime": {
+              "is_snapshotable": null,
+              "snapshots_allocated_size": 0,
+              "storage_type": "dssd"
+            },
+            "size": 1073741824,
+            "snapshots": [],
+            "status": "cloning_dst",
+            "storage_type": "dssd",
+            "tags": [],
+            "uuid": "86164dec-fe21-4590-b2d7-a5733c38b24f"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "f5305f9c9b9784cf45ed6282c75694138bf919d058df39f47089ee84c319f3c9",
       "shape": [
@@ -535,6 +605,9 @@
       "anchor": "example",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "name": "test_drive_x-2014-06-05"
+      },
       "kind": "code",
       "original_sha256": "b8e0bae1c71787d6b82642a8dd1e8278dc5fea2d861da1562582ee471f1e5328",
       "shape": [
@@ -598,6 +671,9 @@
       "anchor": "example",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "name": "test_drive_x-2014-06-05 09:45:56"
+      },
       "kind": "code",
       "original_sha256": "e0774492ac3fc93a3fa072a0e2089c1de94f626ae59356c172d724ec14320706",
       "shape": [

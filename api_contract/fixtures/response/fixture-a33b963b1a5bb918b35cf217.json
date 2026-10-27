@@ -1,0 +1,9 @@
+{
+  "action": "disable_nat",
+  "job": {
+    "resource_uri": "/api/2.0/jobs/2f487d2e-8b86-48ca-9e91-3bf2cb857166/",
+    "uuid": "2f487d2e-8b86-48ca-9e91-3bf2cb857166"
+  },
+  "result": "success",
+  "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+}

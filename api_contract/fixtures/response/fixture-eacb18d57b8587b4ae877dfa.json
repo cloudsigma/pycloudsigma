@@ -1,0 +1,181 @@
+{
+  "objects": [
+    {
+      "configuration": {
+        "firewall": {
+          "active": true,
+          "policies": [
+            {
+              "filters": [
+                {
+                  "action": "DENY",
+                  "hostA": "10.0.1.21",
+                  "hostA_to_portA": true,
+                  "hostB": "10.0.1.20",
+                  "hostB_to_portB": true,
+                  "icmp_type": -1,
+                  "log": true,
+                  "order": 1,
+                  "portA": "",
+                  "portB": "22",
+                  "protocol_type": "TCP",
+                  "to_hostA": true,
+                  "to_hostB": true,
+                  "uuid": "f7904898-dc95-4130-9ad8-d8cee9c32629"
+                }
+              ],
+              "isActive": true,
+              "lan_interface": "f0499ae8-32bc-45e7-998a-15631fbe73b7",
+              "order": 1,
+              "policy_name": "Policy 1",
+              "uuid": "853dde97-ccfb-4153-a87e-e017732a21d1"
+            },
+            {
+              "filters": [
+                {
+                  "action": "DENY",
+                  "hostA": "",
+                  "hostA_to_portA": true,
+                  "hostB": "",
+                  "hostB_to_portB": true,
+                  "icmp_type": -1,
+                  "log": false,
+                  "order": 1,
+                  "portA": "",
+                  "portB": "",
+                  "protocol_type": "UDP",
+                  "to_hostA": true,
+                  "to_hostB": true,
+                  "uuid": "a830fd2c-5bf8-4e71-85f9-6459f223dc62"
+                }
+              ],
+              "isActive": false,
+              "lan_interface": "f0499ae8-32bc-45e7-998a-15631fbe73b7",
+              "order": 2,
+              "policy_name": "Policy 2",
+              "uuid": "029aae69-9c8c-4bc8-8375-3fa10e03c9e9"
+            }
+          ],
+          "uuid": "dd96c1f9-b384-40cc-a403-0e28ae4a6ec6"
+        },
+        "firewall_logging": false,
+        "lan_interface": [
+          {
+            "default_gateway": "",
+            "dhcp": true,
+            "ip_address": "10.0.1.1/24",
+            "ip_address_v6": "",
+            "ip_aliases": [
+              {
+                "ip_address": "10.0.10.1/24",
+                "uuid": "70497718-d3e4-46e7-9326-eb9709f69a8d"
+              },
+              {
+                "ip_address": "10.0.100.1/24",
+                "uuid": "72a04d39-d159-434d-8e9a-b372e488d6f0"
+              }
+            ],
+            "ip_range": {
+              "from": "10.0.1.100",
+              "to": "10.0.1.200"
+            },
+            "ipv4_enabled": true,
+            "ipv4_ipv6_enabled": false,
+            "ipv6_enabled": false,
+            "name": "LAN 1",
+            "router_advertiser": false,
+            "uuid": "f0499ae8-32bc-45e7-998a-15631fbe73b7",
+            "vlan": "68317648-0a2a-4fb4-b179-700fa4dc359d"
+          }
+        ],
+        "name": "Secret Teegarden b",
+        "nat": {
+          "active": true,
+          "address_forwarding": [
+            {
+              "local_ipv4": "10.0.0.30",
+              "nat": "b294caea-01ff-4426-a5da-3eb00e9c1192",
+              "order": 1,
+              "upstream_ipv4": "10.0.0.11",
+              "uuid": "eeb890bb-780f-44b4-9c37-ef1b27942ac8"
+            },
+            {
+              "local_ipv4": "10.0.0.22",
+              "nat": "b294caea-01ff-4426-a5da-3eb00e9c1192",
+              "order": 2,
+              "upstream_ipv4": "10.0.0.21",
+              "uuid": "c38efd29-991a-4145-b189-f5f1aaa12ef3"
+            }
+          ],
+          "port_forwarding": [
+            {
+              "forwarding_host": "10.0.1.10",
+              "forwarding_port": 22,
+              "mapped_port": 2210,
+              "nat": "b294caea-01ff-4426-a5da-3eb00e9c1192",
+              "order": 1,
+              "protocol": "TCP",
+              "uuid": "c4777503-c96a-47ce-a171-6f849c469ab9"
+            },
+            {
+              "forwarding_host": "10.0.2.20",
+              "forwarding_port": 22,
+              "mapped_port": 2220,
+              "nat": "b294caea-01ff-4426-a5da-3eb00e9c1192",
+              "order": 2,
+              "protocol": "TCP",
+              "uuid": "efe133ed-bca0-48e4-b33a-cf54e0791ed1"
+            }
+          ],
+          "uuid": "b294caea-01ff-4426-a5da-3eb00e9c1192"
+        },
+        "routes": [
+          {
+            "gateway": "91.92.71.129",
+            "inet": "inet",
+            "network": "default",
+            "uuid": "76075f9a-e74b-4318-a773-59b6dff966a1"
+          }
+        ],
+        "type": "basic",
+        "upstream": {
+          "ip_config": {
+            "default_gateway": "",
+            "dhcp_client": false,
+            "ip_address": "",
+            "ip_address_v6": "",
+            "ipv6_automatic": false,
+            "router_ipv6_default_gateway": "",
+            "upstream_lines": "",
+            "vlan": ""
+          },
+          "ipv4_address": "91.92.71.136",
+          "uuid": "1cb3e709-2d57-4ff2-9a93-32edd285940a",
+          "vpn": {
+            "active": true,
+            "password": "<redacted>",
+            "username": "io",
+            "vpn_type": "pptp"
+          },
+          "wan_type": "internet"
+        }
+      },
+      "jobs": [
+        {
+          "resource_uri": "/api/2.0/jobs/15345acc-3e50-42c6-b9e1-faba70d51a00/",
+          "uuid": "15345acc-3e50-42c6-b9e1-faba70d51a00"
+        }
+      ],
+      "owner": {
+        "resource_uri": "/api/2.0/user/93ff48d9-b9a3-49ec-9c41-de0cc9d02c34/",
+        "uuid": "93ff48d9-b9a3-49ec-9c41-de0cc9d02c34"
+      },
+      "resource_uri": "/api/2.0/virtualrouters/8a512355-cd5a-4158-8f2f-4a0165ab46f0/",
+      "runtime": null,
+      "state": "creating",
+      "status": "creating",
+      "type": "basic",
+      "uuid": "8a512355-cd5a-4158-8f2f-4a0165ab46f0"
+    }
+  ]
+}

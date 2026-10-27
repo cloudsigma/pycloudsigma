@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "limit": 0,
+    "offset": 0,
+    "total_count": 3
+  },
+  "objects": [
+    {
+      "grantees": [
+        {
+          "email": "user2@example.com",
+          "resource_uri": {
+            "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+            "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+          },
+          "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+        }
+      ],
+      "meta": {},
+      "name": "shared_acl",
+      "owner": {
+        "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+        "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+      },
+      "resource_uri": "/api/2.0/acls/d29837e8-27ea-46e8-8b46-843d0df50a82/",
+      "rules": [
+        {
+          "permission": "ATTACH"
+        },
+        {
+          "permission": "OPEN_VNC"
+        },
+        {
+          "permission": "LIST"
+        },
+        {
+          "permission": "EDIT"
+        },
+        {
+          "permission": "DELETE"
+        },
+        {
+          "permission": "START"
+        },
+        {
+          "permission": "STOP"
+        },
+        {
+          "permission": "CLONE"
+        }
+      ],
+      "tags": [],
+      "uuid": "d29837e8-27ea-46e8-8b46-843d0df50a82"
+    },
+    {
+      "grantees": [
+        {
+          "email": "user2@example.com",
+          "resource_uri": {
+            "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+            "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+          },
+          "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+        }
+      ],
+      "meta": {},
+      "name": "shared_acl",
+      "owner": {
+        "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+        "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+      },
+      "resource_uri": "/api/2.0/acls/58aa5d82-e890-44db-8cb8-fe3a2f159320/",
+      "rules": [
+        {
+          "permission": "ATTACH"
+        },
+        {
+          "permission": "OPEN_VNC"
+        },
+        {
+          "permission": "LIST"
+        },
+        {
+          "permission": "EDIT"
+        },
+        {
+          "permission": "DELETE"
+        },
+        {
+          "permission": "START"
+        },
+        {
+          "permission": "STOP"
+        },
+        {
+          "permission": "CLONE"
+        }
+      ],
+      "tags": [],
+      "uuid": "58aa5d82-e890-44db-8cb8-fe3a2f159320"
+    },
+    {
+      "grantees": [],
+      "meta": {},
+      "name": "test_acl",
+      "owner": {
+        "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+        "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+      },
+      "resource_uri": "/api/2.0/acls/adf048e8-5445-47cf-a09c-fc3cfb2c823f/",
+      "rules": [],
+      "tags": [],
+      "uuid": "adf048e8-5445-47cf-a09c-fc3cfb2c823f"
+    }
+  ]
+}

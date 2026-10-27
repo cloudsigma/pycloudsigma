@@ -1,0 +1,61 @@
+{
+  "objects": [
+    {
+      "meta": {},
+      "name": "TagCreatedWithResource",
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/tags/c91f7742-e3b9-4794-a178-f0831ee1d3d2/",
+      "resources": [
+        {
+          "owner": {
+            "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+            "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+          },
+          "res_type": "vlans",
+          "resource_uri": "/api/2.0/vlans/96537817-f4b6-496b-a861-e74192d3ccb0/",
+          "uuid": "96537817-f4b6-496b-a861-e74192d3ccb0"
+        },
+        {
+          "owner": {
+            "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+            "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+          },
+          "res_type": "drives",
+          "resource_uri": "/api/2.0/drives/08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd/",
+          "uuid": "08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd"
+        },
+        {
+          "owner": {
+            "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+            "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+          },
+          "res_type": "servers",
+          "resource_uri": "/api/2.0/servers/cdeca2cf-4628-4169-8a3a-ceebedd9ea3a/",
+          "uuid": "cdeca2cf-4628-4169-8a3a-ceebedd9ea3a"
+        },
+        {
+          "owner": {
+            "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+            "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+          },
+          "res_type": "servers",
+          "resource_uri": "/api/2.0/servers/f52db291-f754-4434-acac-77268cbac94f/",
+          "uuid": "f52db291-f754-4434-acac-77268cbac94f"
+        },
+        {
+          "owner": {
+            "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+            "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+          },
+          "res_type": "ips",
+          "resource_uri": "/api/2.0/ips/185.12.6.183/",
+          "uuid": "185.12.6.183"
+        }
+      ],
+      "uuid": "c91f7742-e3b9-4794-a178-f0831ee1d3d2"
+    }
+  ]
+}

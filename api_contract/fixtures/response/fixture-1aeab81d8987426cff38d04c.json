@@ -1,0 +1,99 @@
+{
+  "context": true,
+  "cpu": 1000,
+  "cpu_model": null,
+  "cpu_type": "amd",
+  "cpus_instead_of_cores": false,
+  "drives": [
+    {
+      "boot_order": 1,
+      "dev_channel": "0:0",
+      "device": "virtio",
+      "drive": {
+        "resource_uri": "/api/2.0/drives/39e4c24b-980a-49ce-968c-1f32b124b23f/",
+        "uuid": "39e4c24b-980a-49ce-968c-1f32b124b23f"
+      },
+      "runtime": {
+        "io": {
+          "bytes_read": 512,
+          "bytes_written": 0,
+          "count_flush": 0,
+          "count_read": 1,
+          "count_written": 0,
+          "total_time_ns_flush": 0,
+          "total_time_ns_read": 606050,
+          "total_time_ns_write": 0
+        }
+      }
+    }
+  ],
+  "enable_numa": false,
+  "grantees": [],
+  "hv_relaxed": false,
+  "hv_tsc": false,
+  "hypervisor": "kvm",
+  "jobs": [],
+  "mem": 536870912,
+  "meta": {},
+  "name": "testServerAcc",
+  "nics": [
+    {
+      "boot_order": null,
+      "ip_v4_conf": {
+        "conf": "dhcp",
+        "ip": null
+      },
+      "ip_v6_conf": null,
+      "mac": "22:b8:8c:17:fe:19",
+      "model": "virtio",
+      "runtime": {
+        "interface_type": "public",
+        "io": {
+          "bytes_recv": 0,
+          "bytes_sent": 0,
+          "packets_recv": 0,
+          "packets_sent": 0
+        },
+        "ip_v4": {
+          "resource_uri": "/api/2.0/ips/94.26.101.149/",
+          "uuid": "94.26.101.149"
+        },
+        "ip_v6": null
+      },
+      "vlan": null
+    }
+  ],
+  "owner": {
+    "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+    "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+  },
+  "permissions": [],
+  "pubkeys": [],
+  "requirements": [],
+  "resource_uri": "/api/2.0/servers/4e31777b-92b5-4633-9f31-c28443a63cfd/",
+  "runtime": {
+    "active_since": "2015-03-19T13:52:51+00:00",
+    "nics": [
+      {
+        "interface_type": "public",
+        "io": {
+          "bytes_recv": 0,
+          "bytes_sent": 0,
+          "packets_recv": 0,
+          "packets_sent": 0
+        },
+        "ip_v4": {
+          "resource_uri": "/api/2.0/ips/94.26.101.149/",
+          "uuid": "94.26.101.149"
+        },
+        "ip_v6": null,
+        "mac": "22:b8:8c:17:fe:19"
+      }
+    ]
+  },
+  "smp": 1,
+  "status": "running",
+  "tags": [],
+  "uuid": "4e31777b-92b5-4633-9f31-c28443a63cfd",
+  "vnc_password": "<redacted>"
+}

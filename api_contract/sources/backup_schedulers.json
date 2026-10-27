@@ -160,6 +160,160 @@
     {
       "anchor": "listing",
       "classification": "response-example",
+      "fixture_id": "fixture-b594535bef214fa20a0cce28",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 9
+        },
+        "objects": [
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "BiMonthly Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/14a89b65-c1a4-40e2-b7b2-193214ca1f0e/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "14a89b65-c1a4-40e2-b7b2-193214ca1f0e"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Weekdays Workhours Backup Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/16a910a3-7a04-409a-827e-265b7af8116b/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "16a910a3-7a04-409a-827e-265b7af8116b"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Weekday 3AM Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/2aa193d4-6e3f-4545-9de3-27d1cef90a3d/",
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "2aa193d4-6e3f-4545-9de3-27d1cef90a3d"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Son, Father, GrandFather Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/3079a014-1810-4fb6-8395-2a23cb1979e3/",
+            "type": "snapshot",
+            "user_timezone": "Etc/GMT+12",
+            "uuid": "3079a014-1810-4fb6-8395-2a23cb1979e3"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Every 12 hours. Last 2 days",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/7e39699c-f220-4ee2-b99b-6a678ab51f14/",
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "7e39699c-f220-4ee2-b99b-6a678ab51f14"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "1st of the month backup",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/876a2d01-9025-431e-81d5-bafbcf0ec26c/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "876a2d01-9025-431e-81d5-bafbcf0ec26c"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "backups policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f/",
+            "type": "backup",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Defined hours backups",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/ead05317-e67f-4603-9afe-4cb6aab52e52/",
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "ead05317-e67f-4603-9afe-4cb6aab52e52"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "snapshots policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/",
+            "type": "snapshot",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "eb352f24-3a72-47a9-96cc-7b508ef52d8e"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -333,6 +487,80 @@
     {
       "anchor": "listing-schedulers-by-type",
       "classification": "response-example",
+      "fixture_id": "fixture-78b3a10868a4c397b4ed5134",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 4
+        },
+        "objects": [
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "BiMonthly Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/14a89b65-c1a4-40e2-b7b2-193214ca1f0e/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "14a89b65-c1a4-40e2-b7b2-193214ca1f0e"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "Weekdays Workhours Backup Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/16a910a3-7a04-409a-827e-265b7af8116b/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "16a910a3-7a04-409a-827e-265b7af8116b"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "1st of the month backup",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/876a2d01-9025-431e-81d5-bafbcf0ec26c/",
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "876a2d01-9025-431e-81d5-bafbcf0ec26c"
+          },
+          {
+            "is_default": false,
+            "is_enabled": true,
+            "meta": {},
+            "name": "backups policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f/",
+            "type": "backup",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -506,6 +734,557 @@
     {
       "anchor": "detailed-listing",
       "classification": "response-example",
+      "fixture_id": "fixture-bc39e1913ba36867d42dafd1",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 9
+        },
+        "objects": [
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "1",
+              "day_of_week": [
+                ""
+              ],
+              "end_time": {
+                "hour": 19,
+                "minute": 0
+              },
+              "hour": "17",
+              "minute": "0",
+              "month": [
+                "2",
+                "4",
+                "6",
+                "8",
+                "10",
+                "12"
+              ],
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "BiMonthly Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/14a89b65-c1a4-40e2-b7b2-193214ca1f0e/",
+            "retention_policy": {
+              "name": "Keep 12 Month",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 6
+                }
+              ]
+            },
+            "tags": [],
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "14a89b65-c1a4-40e2-b7b2-193214ca1f0e"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "mon",
+                "wed",
+                "fri"
+              ],
+              "end_time": {
+                "hour": 19,
+                "minute": 0
+              },
+              "hour": "",
+              "minute": "",
+              "month": "*",
+              "repeat": {
+                "hour": "*/12",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Weekdays Workhours Backup Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/16a910a3-7a04-409a-827e-265b7af8116b/",
+            "retention_policy": {
+              "name": "Keep 1 Month",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 1
+                }
+              ]
+            },
+            "tags": [],
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "16a910a3-7a04-409a-827e-265b7af8116b"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "3",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Weekday 3AM Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/2aa193d4-6e3f-4545-9de3-27d1cef90a3d/",
+            "retention_policy": {
+              "name": "Keep 3 Weeks",
+              "rules": [
+                {
+                  "period": "weeks",
+                  "quantity": 3
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "2aa193d4-6e3f-4545-9de3-27d1cef90a3d"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "1",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Son, Father, GrandFather Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/3079a014-1810-4fb6-8395-2a23cb1979e3/",
+            "retention_policy": {
+              "name": "Son, Father, GrandFather Policy",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 7
+                },
+                {
+                  "period": "weeks",
+                  "quantity": 4
+                },
+                {
+                  "time_option": 1
+                },
+                {
+                  "period": "months",
+                  "quantity": 12
+                },
+                {
+                  "time_option": 23
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/GMT+12",
+            "uuid": "3079a014-1810-4fb6-8395-2a23cb1979e3"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "",
+              "day_of_week": [
+                ""
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "",
+              "month": "",
+              "repeat": {
+                "hour": "*/12",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Every 12 hours. Last 2 days",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/7e39699c-f220-4ee2-b99b-6a678ab51f14/",
+            "retention_policy": {
+              "name": "Keep 12 Month",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 2
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "7e39699c-f220-4ee2-b99b-6a678ab51f14"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "1",
+              "day_of_week": [
+                ""
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "23",
+              "minute": "0",
+              "month": "",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "1st of the month backup",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/876a2d01-9025-431e-81d5-bafbcf0ec26c/",
+            "retention_policy": {
+              "name": "Keep 12 Month",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 12
+                }
+              ]
+            },
+            "tags": [],
+            "type": "backup",
+            "user_timezone": "Etc/UTC",
+            "uuid": "876a2d01-9025-431e-81d5-bafbcf0ec26c"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "*",
+              "month": "*",
+              "repeat": {
+                "hour": "*/1",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "backups policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f/",
+            "retention_policy": {
+              "name": "Last 2 days",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 2
+                }
+              ]
+            },
+            "tags": [],
+            "type": "backup",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "b3a36e0f-4a00-423f-bd3b-8f4b1d1af05f"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "",
+              "day_of_week": [
+                "sat",
+                "sun"
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "",
+              "month": "",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "02:00,06:00,20:00,22:15",
+            "meta": {},
+            "name": "Defined hours backups",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/ead05317-e67f-4603-9afe-4cb6aab52e52/",
+            "retention_policy": {
+              "name": "Keep 1 Day",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 1
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "ead05317-e67f-4603-9afe-4cb6aab52e52"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "*",
+              "month": "*",
+              "repeat": {
+                "hour": "*/2",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "snapshots policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/",
+            "retention_policy": {
+              "name": "Last 3 days",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 3
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "eb352f24-3a72-47a9-96cc-7b508ef52d8e"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -914,6 +1693,324 @@
     {
       "anchor": "detailed-listing-schedulers-by-type",
       "classification": "response-example",
+      "fixture_id": "fixture-f79c3e38ae5281f829bb4348",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 5
+        },
+        "objects": [
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "3",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Weekday 3AM Snapshot Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/2aa193d4-6e3f-4545-9de3-27d1cef90a3d/",
+            "retention_policy": {
+              "name": "Keep 3 Weeks",
+              "rules": [
+                {
+                  "period": "weeks",
+                  "quantity": 3
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "2aa193d4-6e3f-4545-9de3-27d1cef90a3d"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "1",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Son, Father, GrandFather Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/3079a014-1810-4fb6-8395-2a23cb1979e3/",
+            "retention_policy": {
+              "name": "Son, Father, GrandFather Policy",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 7
+                },
+                {
+                  "period": "weeks",
+                  "quantity": 4
+                },
+                {
+                  "time_option": 1
+                },
+                {
+                  "period": "months",
+                  "quantity": 12
+                },
+                {
+                  "time_option": 23
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/GMT+12",
+            "uuid": "3079a014-1810-4fb6-8395-2a23cb1979e3"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "",
+              "day_of_week": [
+                ""
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "",
+              "month": "",
+              "repeat": {
+                "hour": "*/12",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Every 12 hours. Last 2 days",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/7e39699c-f220-4ee2-b99b-6a678ab51f14/",
+            "retention_policy": {
+              "name": "Keep 12 Month",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 2
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "7e39699c-f220-4ee2-b99b-6a678ab51f14"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "",
+              "day_of_week": [
+                "sat",
+                "sun"
+              ],
+              "end_time": {
+                "hour": 6,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "",
+              "month": "",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 7,
+                "minute": 0
+              }
+            },
+            "initial_backup": {},
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "02:00,06:00,20:00,22:15",
+            "meta": {},
+            "name": "Defined hours backups",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/ead05317-e67f-4603-9afe-4cb6aab52e52/",
+            "retention_policy": {
+              "name": "Keep 1 Day",
+              "rules": [
+                {
+                  "period": "months",
+                  "quantity": 1
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/UTC",
+            "uuid": "ead05317-e67f-4603-9afe-4cb6aab52e52"
+          },
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "hour": "",
+              "minute": "*",
+              "month": "*",
+              "repeat": {
+                "hour": "*/2",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 23,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 0,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "snapshots policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "TBC",
+            "resource_uri": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/",
+            "retention_policy": {
+              "name": "Last 3 days",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 3
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "America/Danmarkshavn",
+            "uuid": "eb352f24-3a72-47a9-96cc-7b508ef52d8e"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -1315,6 +2412,72 @@
     {
       "anchor": "list-single-backup-scheduler",
       "classification": "response-example",
+      "fixture_id": "fixture-0082461b90f9ca5ac57c3e97",
+      "fixture_payload": {
+        "enable_backup_policy_notifications": true,
+        "enable_retention_policy_notifications": false,
+        "grantees": [],
+        "incremental_backup": {
+          "day_of_month": "*",
+          "day_of_week": [
+            "*"
+          ],
+          "end_time": {
+            "hour": 23,
+            "minute": 45
+          },
+          "hour": "",
+          "minute": "*",
+          "month": "*",
+          "repeat": {
+            "hour": "*/2",
+            "minute": ""
+          },
+          "start_time": {
+            "hour": 0,
+            "minute": 0
+          }
+        },
+        "initial_backup": {
+          "day_of_week": [
+            "*"
+          ],
+          "end_time": {
+            "hour": 23,
+            "minute": 45
+          },
+          "start_time": {
+            "hour": 0,
+            "minute": 0
+          }
+        },
+        "is_default": false,
+        "is_enabled": true,
+        "manual_incremental_backup": "",
+        "meta": {},
+        "name": "snapshots policy",
+        "orchestrator_timezone": "",
+        "owner": {
+          "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+          "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+        },
+        "permissions": [],
+        "remote_location": "TBC",
+        "resource_uri": "/api/2.0/backupschedulers/eb352f24-3a72-47a9-96cc-7b508ef52d8e/",
+        "retention_policy": {
+          "name": "Last 3 days",
+          "rules": [
+            {
+              "period": "days",
+              "quantity": 3
+            }
+          ]
+        },
+        "tags": [],
+        "type": "snapshot",
+        "user_timezone": "America/Danmarkshavn",
+        "uuid": "eb352f24-3a72-47a9-96cc-7b508ef52d8e"
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -1666,6 +2829,86 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-10e8dd55d2dab931c3397385",
+      "fixture_payload": {
+        "objects": [
+          {
+            "enable_backup_policy_notifications": true,
+            "enable_retention_policy_notifications": false,
+            "grantees": [],
+            "incremental_backup": {
+              "day_of_month": "*",
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "hour": "1",
+              "minute": "0",
+              "month": "*",
+              "repeat": {
+                "hour": "",
+                "minute": ""
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "initial_backup": {
+              "day_of_week": [
+                "*"
+              ],
+              "end_time": {
+                "hour": 11,
+                "minute": 45
+              },
+              "start_time": {
+                "hour": 12,
+                "minute": 0
+              }
+            },
+            "is_default": false,
+            "is_enabled": true,
+            "manual_incremental_backup": "",
+            "meta": {},
+            "name": "Son, Father, GrandFather Policy",
+            "orchestrator_timezone": "",
+            "owner": {
+              "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+              "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+            },
+            "permissions": [],
+            "remote_location": "",
+            "resource_uri": "/api/2.0/backupschedulers/0377f6e9-e5f2-4a0a-bb4e-c28c8424eda1/",
+            "retention_policy": {
+              "name": "Son, Father, GrandFather Policy",
+              "rules": [
+                {
+                  "period": "days",
+                  "quantity": 7
+                },
+                {
+                  "period": "weeks",
+                  "quantity": 4,
+                  "time_option": 1
+                },
+                {
+                  "period": "months",
+                  "quantity": 12,
+                  "time_option": 23
+                }
+              ]
+            },
+            "tags": [],
+            "type": "snapshot",
+            "user_timezone": "Etc/GMT+12",
+            "uuid": "0377f6e9-e5f2-4a0a-bb4e-c28c8424eda1"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -2043,6 +3286,86 @@
     {
       "anchor": "editing",
       "classification": "response-example",
+      "fixture_id": "fixture-75d881c96d9116d217943761",
+      "fixture_payload": {
+        "enable_backup_policy_notifications": true,
+        "enable_retention_policy_notifications": false,
+        "grantees": [],
+        "incremental_backup": {
+          "day_of_month": "*",
+          "day_of_week": [
+            "*"
+          ],
+          "end_time": {
+            "hour": 11,
+            "minute": 45
+          },
+          "hour": "1",
+          "minute": "0",
+          "month": "*",
+          "repeat": {
+            "hour": "",
+            "minute": ""
+          },
+          "start_time": {
+            "hour": 12,
+            "minute": 0
+          }
+        },
+        "initial_backup": {
+          "day_of_week": [
+            "*"
+          ],
+          "end_time": {
+            "hour": 11,
+            "minute": 45
+          },
+          "start_time": {
+            "hour": 12,
+            "minute": 0
+          }
+        },
+        "is_default": false,
+        "is_enabled": true,
+        "manual_incremental_backup": "",
+        "meta": {},
+        "name": "Son, Father, GrandFather Policy",
+        "orchestrator_timezone": "",
+        "owner": {
+          "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+          "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+        },
+        "permissions": [],
+        "remote_location": "",
+        "resource_uri": "/api/2.0/backupschedulers/ead05317-e67f-4603-9afe-4cb6aab52e52/",
+        "retention_policy": {
+          "name": "Son, Father, GrandFather Policy",
+          "rules": [
+            {
+              "period": "days",
+              "quantity": 7
+            },
+            {
+              "period": "weeks",
+              "quantity": 4
+            },
+            {
+              "time_option": 1
+            },
+            {
+              "period": "months",
+              "quantity": 12
+            },
+            {
+              "time_option": 23
+            }
+          ]
+        },
+        "tags": [],
+        "type": "snapshot",
+        "user_timezone": "Etc/GMT+12",
+        "uuid": "ead05317-e67f-4603-9afe-4cb6aab52e52"
+      },
       "kind": "code",
       "operation": {
         "method": "PUT",
@@ -2521,6 +3844,46 @@
     {
       "anchor": "set-scheduler-to-a-drive",
       "classification": "response-example",
+      "fixture_id": "fixture-9d7d18d050c3f04a6d106665",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "backup_scheduler": {
+          "resource_uri": "/api/2.0/backupschedulers/103de42c-17a1-40ea-bc0f-521789168bbf/",
+          "uuid": "103de42c-17a1-40ea-bc0f-521789168bbf"
+        },
+        "grantees": [],
+        "iops": null,
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "test_drive_remote_snapshot_1",
+        "owner": {
+          "resource_uri": "/api/2.0/user/18f6256b-90a2-4908-b671-c28c6b79c020/",
+          "uuid": "18f6256b-90a2-4908-b671-c28c6b79c020"
+        },
+        "permissions": [],
+        "remote_snapshots": [],
+        "resource_uri": "/api/2.0/drives/34f9c721-ec23-4f5c-86ab-2839f687f14e/",
+        "runtime": {
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 1073741824,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [
+          {
+            "resource_uri": "/api/2.0/tags/6310b9fb-a411-49cc-9381-15f51022b26a/",
+            "uuid": "6310b9fb-a411-49cc-9381-15f51022b26a"
+          }
+        ],
+        "uuid": "34f9c721-ec23-4f5c-86ab-2839f687f14e"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",

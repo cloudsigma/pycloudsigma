@@ -60,6 +60,43 @@
       "anchor": "drive-cloning",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "grantees": [],
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/8b00acbb-889b-44a5-8a8d-dc3617a6145d/",
+                "uuid": "8b00acbb-889b-44a5-8a8d-dc3617a6145d"
+              }
+            ],
+            "licenses": [],
+            "media": "cdrom",
+            "meta": {},
+            "mounted_on": [],
+            "name": "test_drive_y",
+            "owner": {
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/drives/03cb7ca7-ca07-4380-9071-c19260fbec59/",
+            "runtime": {
+              "is_snapshotable": true,
+              "snapshots_allocated_size": 0,
+              "storage_type": "dssd"
+            },
+            "size": 1207975936,
+            "snapshots": [],
+            "status": "cloning_dst",
+            "storage_type": "dssd",
+            "tags": [],
+            "uuid": "03cb7ca7-ca07-4380-9071-c19260fbec59"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "307dd57502b86175febd091487ddb38c873850055d198db58d66cc414250a18d",
       "shape": [
@@ -273,6 +310,22 @@
       "anchor": "drive-cloning",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "children": [],
+        "created": "2014-06-05T09:45:08.003595+00:00",
+        "data": {
+          "progress": 100
+        },
+        "last_modified": "2014-06-05T09:45:12.941760+00:00",
+        "operation": "drive_clone",
+        "resource_uri": "/api/2.0/jobs/6c809fa7-f797-4d0f-bbfb-b1b9ba737dda/",
+        "resources": [
+          "/api/2.0/drives/842e4c44-75a2-4d81-b812-9bc63d3be11e/",
+          "/api/2.0/drives/963e3f37-572a-4e40-b70f-06f093ea7eb5/"
+        ],
+        "state": "success",
+        "uuid": "6c809fa7-f797-4d0f-bbfb-b1b9ba737dda"
+      },
       "kind": "code",
       "original_sha256": "b709755af03cc0d11413ac05ca85d4a218c46b88a3dbf0b51867066b53385b1b",
       "shape": [
@@ -389,6 +442,43 @@
       "anchor": "server-cloning",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/559a2a76-df4a-4c0d-8449-979576b2c354/",
+            "uuid": "559a2a76-df4a-4c0d-8449-979576b2c354"
+          }
+        ],
+        "mem": 536870912,
+        "meta": {},
+        "name": "test_cloned_server_name",
+        "nics": [],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/2d69b07c-c7a3-4e25-88d2-c7055217e1fb/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "2d69b07c-c7a3-4e25-88d2-c7055217e1fb",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "19db875b7027969961594293b44f89719991e15fef4f42d080bd1e5274f3dfd2",
       "shape": [
@@ -620,6 +710,39 @@
       "anchor": "server-cloning",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "children": [
+          {
+            "children": [],
+            "created": "2014-06-05T09:50:06.771415+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-05T09:50:12.817209+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/5cf1a9e0-c019-4022-9ca5-08af64fa5105/",
+            "resources": [
+              "/api/2.0/drives/4f41610b-b73b-49f0-a7c8-2e5cd110eb31/",
+              "/api/2.0/drives/eaa0b214-7f8c-446d-9d6b-1c106fcd9aba/"
+            ],
+            "state": "success",
+            "uuid": "5cf1a9e0-c019-4022-9ca5-08af64fa5105"
+          }
+        ],
+        "created": "2014-06-05T09:50:06.436976+00:00",
+        "data": {
+          "progress": 100
+        },
+        "last_modified": "2014-06-05T09:50:12.726357+00:00",
+        "operation": "server_clone",
+        "resource_uri": "/api/2.0/jobs/4e1944be-a078-4ead-9d19-5f8823a84d42/",
+        "resources": [
+          "/api/2.0/servers/3ee19ba9-fd1a-435b-9dbf-559d188fba90/",
+          "/api/2.0/servers/810850e5-593b-4c21-af9e-a7cadac5b79c/"
+        ],
+        "state": "success",
+        "uuid": "4e1944be-a078-4ead-9d19-5f8823a84d42"
+      },
       "kind": "code",
       "original_sha256": "2ccfe8eb98e153bbff1f44ad5fe010227220f0d202def68fcab90f04dc9488b4",
       "shape": [
@@ -803,6 +926,323 @@
       "anchor": "list-all-jobs",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 500
+        },
+        "objects": [
+          {
+            "children": [],
+            "created": "2014-06-05T00:27:12.890638+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-05T00:27:17.537618+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/654b3d26-0b4a-41ff-b166-741adc9fcc61/",
+            "resources": [],
+            "state": "success",
+            "uuid": "654b3d26-0b4a-41ff-b166-741adc9fcc61"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T13:48:30.146021+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T13:48:30.182588+00:00",
+            "operation": "server_clone",
+            "resource_uri": "/api/2.0/jobs/2bb2929e-75e0-47ea-a7ef-88ae5c205bca/",
+            "resources": [],
+            "state": "success",
+            "uuid": "2bb2929e-75e0-47ea-a7ef-88ae5c205bca"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T19:27:22.929792+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T19:27:28.194541+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/6d9eef6c-7b7b-412f-b0c8-b31acfa31b4b/",
+            "resources": [],
+            "state": "success",
+            "uuid": "6d9eef6c-7b7b-412f-b0c8-b31acfa31b4b"
+          },
+          {
+            "children": [],
+            "created": "2014-06-05T05:20:06.808650+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-05T05:20:07.714198+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/f6f9423d-e239-48bf-b3e1-7eef57f41df5/",
+            "resources": [
+              "/api/2.0/drives/b9a2e66c-81d1-4de3-aac0-b6f2bde806f1/"
+            ],
+            "state": "success",
+            "uuid": "f6f9423d-e239-48bf-b3e1-7eef57f41df5"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T09:44:52.922093+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T09:44:59.151935+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/51f17911-5db7-414a-b291-6a26d99c7af4/",
+            "resources": [],
+            "state": "success",
+            "uuid": "51f17911-5db7-414a-b291-6a26d99c7af4"
+          },
+          {
+            "children": [],
+            "created": "2014-06-05T08:27:17.837077+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-05T08:27:22.451556+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/98be68fd-bc5b-42fd-ba42-2a197e7ad7bb/",
+            "resources": [],
+            "state": "success",
+            "uuid": "98be68fd-bc5b-42fd-ba42-2a197e7ad7bb"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T10:37:08.377980+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T10:37:09.264198+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/b18335fd-5c38-43a0-a6ad-5e4150609317/",
+            "resources": [
+              "/api/2.0/drives/b9a2e66c-81d1-4de3-aac0-b6f2bde806f1/"
+            ],
+            "state": "success",
+            "uuid": "b18335fd-5c38-43a0-a6ad-5e4150609317"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T14:47:51.859179+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T14:47:52.695159+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/ad1d412b-c51a-4cca-8ff9-81f5976471dd/",
+            "resources": [
+              "/api/2.0/drives/b9a2e66c-81d1-4de3-aac0-b6f2bde806f1/"
+            ],
+            "state": "success",
+            "uuid": "ad1d412b-c51a-4cca-8ff9-81f5976471dd"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T12:08:35.939653+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T12:08:42.703768+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/9df9bccb-7a7a-4dc3-afbe-65614ae68828/",
+            "resources": [],
+            "state": "success",
+            "uuid": "9df9bccb-7a7a-4dc3-afbe-65614ae68828"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T14:54:38.461484+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T14:54:44.194807+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/a71f63ac-940c-4b1b-b536-d98b7ebcdd1f/",
+            "resources": [],
+            "state": "success",
+            "uuid": "a71f63ac-940c-4b1b-b536-d98b7ebcdd1f"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T10:15:45.013901+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T10:15:49.998849+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/b75498db-c630-4eae-9d4c-545b55c9f80c/",
+            "resources": [],
+            "state": "success",
+            "uuid": "b75498db-c630-4eae-9d4c-545b55c9f80c"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T18:23:05.924797+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T18:23:07.201011+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/5ca591ad-4973-486f-865e-f649924ec8a9/",
+            "resources": [],
+            "state": "success",
+            "uuid": "5ca591ad-4973-486f-865e-f649924ec8a9"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T13:22:41.878643+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T13:22:43.423951+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/1590cc04-a04d-47c6-aeea-e686fba11480/",
+            "resources": [],
+            "state": "success",
+            "uuid": "1590cc04-a04d-47c6-aeea-e686fba11480"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "created": "2014-06-04T09:22:19.895663+00:00",
+                "data": {
+                  "progress": 100
+                },
+                "last_modified": "2014-06-04T09:22:21.182049+00:00",
+                "operation": "drive_clone",
+                "resource_uri": "/api/2.0/jobs/b3c8791a-7163-47fd-871d-ce7e74cdea22/",
+                "resources": [],
+                "state": "success",
+                "uuid": "b3c8791a-7163-47fd-871d-ce7e74cdea22"
+              }
+            ],
+            "created": "2014-06-04T09:22:19.229671+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T09:22:21.090352+00:00",
+            "operation": "server_clone",
+            "resource_uri": "/api/2.0/jobs/2f9fb6cb-d879-4bfb-afaa-0e7e9e8c8171/",
+            "resources": [],
+            "state": "success",
+            "uuid": "2f9fb6cb-d879-4bfb-afaa-0e7e9e8c8171"
+          },
+          {
+            "children": [],
+            "created": "2014-06-05T09:45:29.984652+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-05T09:45:34.243982+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/a34a8179-f6c1-4a0c-8d96-f0d727017807/",
+            "resources": [],
+            "state": "success",
+            "uuid": "a34a8179-f6c1-4a0c-8d96-f0d727017807"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "created": "2014-06-05T07:22:35.318791+00:00",
+                "data": {
+                  "progress": 100
+                },
+                "last_modified": "2014-06-05T07:22:36.437933+00:00",
+                "operation": "drive_clone",
+                "resource_uri": "/api/2.0/jobs/b548f9cc-9290-4c44-880a-688511964088/",
+                "resources": [],
+                "state": "success",
+                "uuid": "b548f9cc-9290-4c44-880a-688511964088"
+              }
+            ],
+            "created": "2014-06-05T07:22:34.982635+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-05T07:22:36.341483+00:00",
+            "operation": "server_clone",
+            "resource_uri": "/api/2.0/jobs/b60c32a1-6c07-4ba0-bffa-ef7a5b51829b/",
+            "resources": [],
+            "state": "success",
+            "uuid": "b60c32a1-6c07-4ba0-bffa-ef7a5b51829b"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "created": "2014-06-04T13:49:17.336222+00:00",
+                "data": {
+                  "progress": 100
+                },
+                "last_modified": "2014-06-04T13:49:22.411035+00:00",
+                "operation": "drive_clone",
+                "resource_uri": "/api/2.0/jobs/2f575e30-3a2c-45a2-bc46-0dd6e73ba5bb/",
+                "resources": [],
+                "state": "success",
+                "uuid": "2f575e30-3a2c-45a2-bc46-0dd6e73ba5bb"
+              }
+            ],
+            "created": "2014-06-04T13:49:16.986663+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T13:49:22.312955+00:00",
+            "operation": "server_clone",
+            "resource_uri": "/api/2.0/jobs/f1deb190-bb8f-4bc2-8013-ca6f69e4f481/",
+            "resources": [],
+            "state": "success",
+            "uuid": "f1deb190-bb8f-4bc2-8013-ca6f69e4f481"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T16:31:41.972433+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T16:31:49.636223+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/eb93dffd-d457-471c-a812-f970c39aef65/",
+            "resources": [],
+            "state": "success",
+            "uuid": "eb93dffd-d457-471c-a812-f970c39aef65"
+          },
+          {
+            "children": [],
+            "created": "2014-06-05T06:22:43.214966+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-05T06:22:44.265751+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/4a616d17-8e57-4756-b186-211539405d8d/",
+            "resources": [],
+            "state": "success",
+            "uuid": "4a616d17-8e57-4756-b186-211539405d8d"
+          },
+          {
+            "children": [],
+            "created": "2014-06-04T15:29:03.093430+00:00",
+            "data": {
+              "progress": 100
+            },
+            "last_modified": "2014-06-04T15:29:09.318627+00:00",
+            "operation": "drive_clone",
+            "resource_uri": "/api/2.0/jobs/68609b60-7f6f-4890-8940-b9e0c8d2af77/",
+            "resources": [],
+            "state": "success",
+            "uuid": "68609b60-7f6f-4890-8940-b9e0c8d2af77"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "45ffc215fa72131fce27967a883c15f753c9653eac0451589a3562154682c50e",
       "shape": [

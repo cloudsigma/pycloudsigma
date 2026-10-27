@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "limit": 20,
+    "offset": 0,
+    "total_count": 1
+  },
+  "objects": [
+    {
+      "name": "test_server2",
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": {
+        "resource_uri": "/api/2.0/servers/cdeca2cf-4628-4169-8a3a-ceebedd9ea3a/",
+        "uuid": "cdeca2cf-4628-4169-8a3a-ceebedd9ea3a"
+      },
+      "runtime": null,
+      "status": "stopped",
+      "uuid": "cdeca2cf-4628-4169-8a3a-ceebedd9ea3a"
+    }
+  ]
+}

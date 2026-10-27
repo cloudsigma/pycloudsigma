@@ -547,6 +547,51 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": null,
+            "ip_v6_conf": null,
+            "mac": "22:39:8a:48:33:36",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": {
+              "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+              "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+            }
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "1e51c3fe1bc80f49fcc245f2a2079de42f86ee4bce0c5e4eaf1e531fb3227028",
       "shape": [
@@ -820,6 +865,51 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "dhcp",
+              "ip": null
+            },
+            "ip_v6_conf": null,
+            "mac": "22:76:35:14:21:7b",
+            "model": "e1000",
+            "runtime": null,
+            "vlan": null
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "654e690bc14b88b70f928947770be29a61cfc8bb292bb0d8d5db671ead5a2c85",
       "shape": [
@@ -1080,6 +1170,63 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "dhcp",
+              "ip": null
+            },
+            "ip_v6_conf": null,
+            "mac": "22:cd:d0:81:97:c8",
+            "model": "e1000",
+            "runtime": null,
+            "vlan": null
+          },
+          {
+            "boot_order": null,
+            "ip_v4_conf": null,
+            "ip_v6_conf": null,
+            "mac": "22:25:57:2a:dc:cc",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": {
+              "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+              "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+            }
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "a38bf4ca1d1eb8341360cdbc3dd2eabffa7f12f8f81bfe63304236fcb2d542a9",
       "shape": [
@@ -1362,6 +1509,66 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "static",
+              "ip": {
+                "resource_uri": "/api/2.0/ips/94.26.101.182/",
+                "uuid": "94.26.101.182"
+              }
+            },
+            "ip_v6_conf": null,
+            "mac": "22:cd:d0:81:97:c8",
+            "model": "e1000",
+            "runtime": null,
+            "vlan": null
+          },
+          {
+            "boot_order": null,
+            "ip_v4_conf": null,
+            "ip_v6_conf": null,
+            "mac": "22:25:57:2a:dc:cc",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": {
+              "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+              "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+            }
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "3db23b58cbf6e630f10c9f7dce3e838a3de8a9463a7a27f40d6a060186fa3a3c",
       "shape": [
@@ -1661,6 +1868,66 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": null,
+            "ip_v6_conf": null,
+            "mac": "22:25:57:2a:dc:cc",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": {
+              "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+              "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+            }
+          },
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "static",
+              "ip": {
+                "resource_uri": "/api/2.0/ips/94.26.101.182/",
+                "uuid": "94.26.101.182"
+              }
+            },
+            "ip_v6_conf": null,
+            "mac": "22:cd:d0:81:97:c8",
+            "model": "e1000",
+            "runtime": null,
+            "vlan": null
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "7847f37e406e2baa54e2ae9738fe10d0fb3a9d95ddd7a289dc251e7dfa8c08ac",
       "shape": [
@@ -1960,6 +2227,51 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "testServerAcc",
+        "nics": [
+          {
+            "boot_order": null,
+            "ip_v4_conf": {
+              "conf": "dhcp",
+              "ip": null
+            },
+            "ip_v6_conf": null,
+            "mac": "22:25:57:2a:dc:cc",
+            "model": "virtio",
+            "runtime": null,
+            "vlan": null
+          }
+        ],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3b3616df-16dc-4a49-bfca-5c2192e1f089/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "3b3616df-16dc-4a49-bfca-5c2192e1f089",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "be5ea3ea47d4573cf21322e38ca4ba2e4b4bd2ecfe4048f751a1270a87067f89",
       "shape": [

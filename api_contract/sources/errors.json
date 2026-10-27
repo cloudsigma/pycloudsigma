@@ -114,6 +114,14 @@
     {
       "anchor": "example",
       "classification": "response-example",
+      "fixture_id": "fixture-d5c551c7c397b4ca1133e7af",
+      "fixture_payload": [
+        {
+          "error_message": "This field is required",
+          "error_point": "resource",
+          "error_type": "validation"
+        }
+      ],
       "kind": "code",
       "operation": {
         "method": "POST",

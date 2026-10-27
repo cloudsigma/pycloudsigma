@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "limit": 0,
+    "offset": 0,
+    "total_count": 1
+  },
+  "objects": [
+    {
+      "bottom_vlan_tag": null,
+      "grantees": [],
+      "meta": {},
+      "owner": {
+        "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+        "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+      },
+      "permissions": [],
+      "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+      "servers": [],
+      "subscription": {
+        "id": 12,
+        "resource_uri": "/api/2.0/subscriptions/12/"
+      },
+      "tags": [],
+      "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+    }
+  ]
+}

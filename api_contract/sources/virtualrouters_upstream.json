@@ -49,6 +49,16 @@
     {
       "anchor": "configure-vpn",
       "classification": "response-example",
+      "fixture_id": "fixture-9da6a203930b5c223e384985",
+      "fixture_payload": {
+        "action": "configure_vpn",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/b752ded1-dcf6-4472-a32d-ef787da9d581/",
+          "uuid": "b752ded1-dcf6-4472-a32d-ef787da9d581"
+        },
+        "result": "success",
+        "uuid": "c0f07d61-1fd0-40a2-a808-593f5e03685e"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",

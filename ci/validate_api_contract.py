@@ -128,6 +128,7 @@ def validate(path=MATRIX):
     if not isinstance(sources, list) or not sources:
         return errors + ["sources must be a non-empty list"]
     documents, urls, files, discovered = [], set(), set(), set()
+    fixture_ids = set()
     for i, source in enumerate(sources):
         if not isinstance(source, dict):
             errors.append(f"sources[{i}] must be an object")
@@ -176,6 +177,36 @@ def validate(path=MATRIX):
         if any(not isinstance(block, dict) for block in snapshot["blocks"]):
             errors.append(f"{relative} has a malformed block")
             continue
+        for block in snapshot["blocks"]:
+            fixture_id = block.get("fixture_id")
+            if fixture_id is None:
+                continue
+            if not isinstance(fixture_id, str) or not fixture_id.startswith("fixture-"):
+                errors.append(f"{relative} has malformed fixture_id")
+                continue
+            fixture_ids.add(fixture_id)
+            fixture_path = root / "fixtures" / "response" / (fixture_id + ".json")
+            try:
+                fixture_data = fixture_path.read_bytes()
+                fixture_payload = read_json(fixture_path)
+            except (OSError, ValueError, UnicodeError) as exc:
+                errors.append(f"cannot read fixture {fixture_id}: {exc}")
+                continue
+            if hashlib.sha256(fixture_data).hexdigest() != hashlib.sha256(
+                    json.dumps(block.get("fixture_payload"), indent=2, sort_keys=True,
+                               ensure_ascii=False).encode("utf-8") + b"\n").hexdigest():
+                errors.append(f"fixture payload mismatch for {fixture_id}")
+            def sensitive_values_are_redacted(value, key=""):
+                if UPDATE.SENSITIVE_KEY_RE.search(key):
+                    return value == "<redacted>"
+                if isinstance(value, dict):
+                    return all(sensitive_values_are_redacted(child, name)
+                               for name, child in value.items())
+                if isinstance(value, list):
+                    return all(sensitive_values_are_redacted(child, key) for child in value)
+                return True
+            if not sensitive_values_are_redacted(fixture_payload):
+                errors.append(f"fixture {fixture_id} contains an unsanitized sensitive value")
         documents.append(snapshot)
     excluded = manifest.get("excluded_navigation")
     if not isinstance(excluded, list) or any(not isinstance(item, str) for item in excluded):
@@ -187,6 +218,29 @@ def validate(path=MATRIX):
         errors.append("documentation index is missing from source manifest")
     if discovered - urls - set(excluded):
         errors.append("discovered documentation pages missing from source manifest")
+    if errors:
+        return errors
+    fixture_root = root / "fixtures" / "response"
+    existing_fixtures = {path.stem for path in fixture_root.glob("*.json")} if fixture_root.exists() else set()
+    if existing_fixtures != fixture_ids:
+        errors.append("fixture directory does not match retained fixture IDs")
+    contract_fixture_refs = {}
+    for operation in document.get("operations", []):
+        for example in operation.get("response_examples", []):
+            if not isinstance(example, dict) or "fixture_id" not in example:
+                continue
+            fixture_id = example["fixture_id"]
+            contract_fixture_refs[fixture_id] = example
+            fixture_path = root / example.get("path", "")
+            try:
+                fixture_data = fixture_path.read_bytes()
+            except OSError:
+                errors.append(f"contract references missing fixture {fixture_id}")
+                continue
+            if hashlib.sha256(fixture_data).hexdigest() != example.get("sha256"):
+                errors.append(f"contract fixture hash mismatch for {fixture_id}")
+    if set(contract_fixture_refs) != fixture_ids:
+        errors.append("contract response examples do not reference every fixture")
     if errors:
         return errors
     try:

@@ -95,6 +95,31 @@
     {
       "anchor": "list-single-filter",
       "classification": "response-example",
+      "fixture_id": "fixture-4e29225bb59ab46276c2b32c",
+      "fixture_payload": {
+        "action": "deny",
+        "action_queue": null,
+        "dst": "10.0.0.22",
+        "dst_addr_op": true,
+        "dst_port": "22",
+        "dst_port_op": true,
+        "icmp_type": null,
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/afbb7e32-5c45-4e1f-a3ef-9baa91c5f359/",
+            "uuid": "afbb7e32-5c45-4e1f-a3ef-9baa91c5f359"
+          }
+        ],
+        "log": false,
+        "order": 1,
+        "protocol": "tcp",
+        "resource_uri": "/api/2.0/vrfwfilters/5f54bebd-3763-47cd-a9b6-ee390e5f465f/",
+        "src": "10.0.0.22",
+        "src_addr_op": true,
+        "src_port": "",
+        "src_port_op": true,
+        "uuid": "5f54bebd-3763-47cd-a9b6-ee390e5f465f"
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -274,6 +299,36 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-86b6b76ec572e962adf13066",
+      "fixture_payload": {
+        "objects": [
+          {
+            "action": "deny",
+            "action_queue": null,
+            "dst": "10.0.0.22",
+            "dst_addr_op": true,
+            "dst_port": "22",
+            "dst_port_op": true,
+            "icmp_type": null,
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/afbb7e32-5c45-4e1f-a3ef-9baa91c5f359/",
+                "uuid": "afbb7e32-5c45-4e1f-a3ef-9baa91c5f359"
+              }
+            ],
+            "log": false,
+            "order": 1,
+            "policy": "906abae3-b533-4c5d-8d98-c459195b6230",
+            "protocol": "tcp",
+            "resource_uri": "/api/2.0/vrfwfilters/5f54bebd-3763-47cd-a9b6-ee390e5f465f/",
+            "src": "10.0.0.22",
+            "src_addr_op": true,
+            "src_port": "",
+            "src_port_op": true,
+            "uuid": "5f54bebd-3763-47cd-a9b6-ee390e5f465f"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -471,6 +526,14 @@
     {
       "anchor": "deleting",
       "classification": "response-example",
+      "fixture_id": "fixture-24cb9341854458f6cbf2e8f0",
+      "fixture_payload": {
+        "job": {
+          "resource_uri": "/api/2.0/jobs/356d8de2-0396-41fa-a1ae-f2f4adca6827/",
+          "uuid": "356d8de2-0396-41fa-a1ae-f2f4adca6827"
+        },
+        "uuid": "5f54bebd-3763-47cd-a9b6-ee390e5f465f"
+      },
       "kind": "code",
       "operation": {
         "method": "DELETE",
@@ -554,6 +617,12 @@
     {
       "anchor": "enable-filter-logging",
       "classification": "response-example",
+      "fixture_id": "fixture-072fa3ef87d5dfe773848098",
+      "fixture_payload": {
+        "action": "enable_logging",
+        "result": "success",
+        "uuid": "5f54bebd-3763-47cd-a9b6-ee390e5f465f"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -631,6 +700,12 @@
     {
       "anchor": "disable-filter-logging",
       "classification": "response-example",
+      "fixture_id": "fixture-5120cac8be4a5f236f9b5b1c",
+      "fixture_payload": {
+        "action": "disable_logging",
+        "result": "success",
+        "uuid": "5f54bebd-3763-47cd-a9b6-ee390e5f465f"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",

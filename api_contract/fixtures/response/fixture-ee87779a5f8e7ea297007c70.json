@@ -1,0 +1,9 @@
+{
+  "action": "enable_firewall",
+  "job": {
+    "resource_uri": "/api/2.0/jobs/ab62200c-8195-4af5-9413-6fec8245a31a/",
+    "uuid": "ab62200c-8195-4af5-9413-6fec8245a31a"
+  },
+  "result": "success",
+  "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+}

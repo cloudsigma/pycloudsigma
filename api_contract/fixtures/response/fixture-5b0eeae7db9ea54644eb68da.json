@@ -1,0 +1,46 @@
+{
+  "active": true,
+  "filters": [
+    {
+      "action": "deny",
+      "action_queue": null,
+      "dst": "192.168.2.108",
+      "dst_addr_op": true,
+      "dst_port": "22",
+      "dst_port_op": true,
+      "icmp_type": null,
+      "jobs": [],
+      "log": false,
+      "order": 1,
+      "protocol": "tcp",
+      "resource_uri": {
+        "resource_uri": "/api/2.0/vrfwfilters/0ab92f1d-c38d-437c-ab31-3dd67ebfda65/",
+        "uuid": "0ab92f1d-c38d-437c-ab31-3dd67ebfda65"
+      },
+      "src": "192.168.1.10",
+      "src_addr_op": true,
+      "src_port": "",
+      "src_port_op": true,
+      "uuid": "0ab92f1d-c38d-437c-ab31-3dd67ebfda65"
+    }
+  ],
+  "jobs": [
+    {
+      "resource_uri": "/api/2.0/jobs/f1ec0bb4-3c90-480e-bd15-4f7494c1f32f/",
+      "uuid": "f1ec0bb4-3c90-480e-bd15-4f7494c1f32f"
+    },
+    {
+      "resource_uri": "/api/2.0/jobs/8a9a1e00-040b-4b2c-867a-dc7f6a87cb4a/",
+      "uuid": "8a9a1e00-040b-4b2c-867a-dc7f6a87cb4a"
+    }
+  ],
+  "lan_interface": {
+    "resource_uri": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/",
+    "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae"
+  },
+  "name": "Policy one",
+  "order": 1,
+  "resource_uri": "/api/2.0/vrfwpolicies/c59aa136-23a6-4b6a-a30c-05af01f9c7c2/",
+  "upstream_interface": null,
+  "uuid": "c59aa136-23a6-4b6a-a30c-05af01f9c7c2"
+}

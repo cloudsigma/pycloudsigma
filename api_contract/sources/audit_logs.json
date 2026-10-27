@@ -54,6 +54,91 @@
     {
       "anchor": "general",
       "classification": "response-example",
+      "fixture_id": "fixture-dd29b6cd2f27388620579cd5",
+      "fixture_payload": {
+        "meta": {
+          "limit": 5,
+          "offset": 0,
+          "total_count": 3193934
+        },
+        "objects": [
+          {
+            "action": "delete",
+            "actor": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "category": "Servers",
+            "details": "",
+            "error_message": "",
+            "error_point": null,
+            "error_type": null,
+            "success": true,
+            "timestamp": "2014-06-05 09:41:29.378194+00:00",
+            "uuid": "4002da8d-94d7-4093-ab7a-a78d976a9efc"
+          },
+          {
+            "action": "stop",
+            "actor": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "category": "Servers",
+            "details": "",
+            "error_message": "",
+            "error_point": null,
+            "error_type": null,
+            "success": true,
+            "timestamp": "2014-06-05 09:41:26.864672+00:00",
+            "uuid": "4002da8d-94d7-4093-ab7a-a78d976a9efc"
+          },
+          {
+            "action": "stop_send",
+            "actor": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "category": "Servers",
+            "details": "",
+            "error_message": "",
+            "error_point": null,
+            "error_type": null,
+            "success": true,
+            "timestamp": "2014-06-05 09:41:24.811553+00:00",
+            "uuid": "4002da8d-94d7-4093-ab7a-a78d976a9efc"
+          },
+          {
+            "action": "boot",
+            "actor": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "category": "Servers",
+            "details": "",
+            "error_message": "",
+            "error_point": null,
+            "error_type": null,
+            "success": true,
+            "timestamp": "2014-06-05 09:40:48.789732+00:00",
+            "uuid": "4002da8d-94d7-4093-ab7a-a78d976a9efc"
+          },
+          {
+            "action": "start_send",
+            "actor": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "category": "Servers",
+            "details": "",
+            "error_message": "",
+            "error_point": null,
+            "error_type": null,
+            "success": true,
+            "timestamp": "2014-06-05 09:40:47.897876+00:00",
+            "uuid": "4002da8d-94d7-4093-ab7a-a78d976a9efc"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -333,6 +418,42 @@
       "anchor": "example",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "context": true,
+            "cpu": 1000,
+            "cpu_model": null,
+            "cpu_type": "amd",
+            "cpus_instead_of_cores": false,
+            "drives": [],
+            "enable_numa": false,
+            "grantees": [],
+            "hv_relaxed": false,
+            "hv_tsc": false,
+            "hypervisor": "kvm",
+            "jobs": [],
+            "mem": 536870912,
+            "meta": {},
+            "name": "test_server",
+            "nics": [],
+            "owner": {
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            },
+            "permissions": [],
+            "pubkeys": [],
+            "requirements": [],
+            "resource_uri": "/api/2.0/servers/973a1039-8014-4622-9a6a-8caf21e08e7e/",
+            "runtime": null,
+            "smp": 1,
+            "status": "stopped",
+            "tags": [],
+            "uuid": "973a1039-8014-4622-9a6a-8caf21e08e7e",
+            "vnc_password": "<redacted>"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "30a5868ef4cf00108dd32754daac572b3e5856b5848805c7b6020af868c89437",
       "shape": [
@@ -568,6 +689,30 @@
       "anchor": "example",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "meta": {
+          "limit": 1,
+          "offset": 0,
+          "total_count": 3193929
+        },
+        "objects": [
+          {
+            "action": "create",
+            "actor": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "category": "Servers",
+            "details": "{\"name\": \"test_server\", \"tags\": [], \"mem\": 536870912, \"smp\": 1, \"cpu\": 1000, \"vnc_password\": \"testserver\"}",
+            "error_message": "",
+            "error_point": null,
+            "error_type": null,
+            "success": true,
+            "timestamp": "2014-06-05 09:40:29.833850+00:00",
+            "uuid": "4002da8d-94d7-4093-ab7a-a78d976a9efc"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "f98808b00e1ec35f21eabf4af88336ae845e848b7f4f319ec7b21474964be666",
       "shape": [
@@ -730,6 +875,11 @@
       "anchor": "example",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "action": "start",
+        "result": "success",
+        "uuid": "4002da8d-94d7-4093-ab7a-a78d976a9efc"
+      },
       "kind": "code",
       "original_sha256": "27f1898cffc9055cfec8ac18f62f321063da1474207c67ff4570f33a27f1f09d",
       "shape": [
@@ -769,6 +919,30 @@
       "anchor": "example",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "meta": {
+          "limit": 1,
+          "offset": 0,
+          "total_count": 3193930
+        },
+        "objects": [
+          {
+            "action": "start_send",
+            "actor": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "category": "Servers",
+            "details": "",
+            "error_message": "",
+            "error_point": null,
+            "error_type": null,
+            "success": true,
+            "timestamp": "2014-06-05 09:40:47.897876+00:00",
+            "uuid": "4002da8d-94d7-4093-ab7a-a78d976a9efc"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "2c8a4437a48aff9a1df77382c8b803c5c821ae51b962b1d7450d7da5e678a346",
       "shape": [
@@ -898,6 +1072,30 @@
       "anchor": "example",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "meta": {
+          "limit": 1,
+          "offset": 0,
+          "total_count": 3193931
+        },
+        "objects": [
+          {
+            "action": "boot",
+            "actor": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "category": "Servers",
+            "details": "",
+            "error_message": "",
+            "error_point": null,
+            "error_type": null,
+            "success": true,
+            "timestamp": "2014-06-05 09:40:48.789732+00:00",
+            "uuid": "4002da8d-94d7-4093-ab7a-a78d976a9efc"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "9f53b4243623dd1b9babba59bdb72a8df71cce1794015367f3e957e8ea885363",
       "shape": [

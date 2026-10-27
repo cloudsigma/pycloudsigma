@@ -146,6 +146,135 @@
       "anchor": "listing",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 6
+        },
+        "objects": [
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/b7cb6615-b6a5-4c31-b755-b86980c64d59/",
+              "uuid": "b7cb6615-b6a5-4c31-b755-b86980c64d59"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "b7cb6615-b6a5-4c31-b755-b86980c64d59__2014-06-05__09_53_28",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/f69d43df-092d-4fef-9766-668cb6469f31/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:28.851859+00:00",
+            "uuid": "f69d43df-092d-4fef-9766-668cb6469f31"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/cb1e0fee-7666-4cb9-ab17-9f064adf6177/",
+              "uuid": "cb1e0fee-7666-4cb9-ab17-9f064adf6177"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "cb1e0fee-7666-4cb9-ab17-9f064adf6177__2014-06-05__09_53_30",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/78db3f50-945d-4795-814b-cff122f6b11f/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:30.563748+00:00",
+            "uuid": "78db3f50-945d-4795-814b-cff122f6b11f"
+          },
+          {
+            "allocated_size": null,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/bb2b8f77-04ee-42c1-b142-47bc31c2824e/",
+              "uuid": "bb2b8f77-04ee-42c1-b142-47bc31c2824e"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "bb2b8f77-04ee-42c1-b142-47bc31c2824e__2014-06-05__09_53_32",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/44b7f63a-7fb7-4ea4-b32c-ed7d4873a3f1/",
+            "status": "creating",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:32.186344+00:00",
+            "uuid": "44b7f63a-7fb7-4ea4-b32c-ed7d4873a3f1"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/cb1e0fee-7666-4cb9-ab17-9f064adf6177/",
+              "uuid": "cb1e0fee-7666-4cb9-ab17-9f064adf6177"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "cb1e0fee-7666-4cb9-ab17-9f064adf6177__2014-06-05__09_53_29",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/33c0b447-d545-457f-a01c-156f674095c8/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:29.770356+00:00",
+            "uuid": "33c0b447-d545-457f-a01c-156f674095c8"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/bb2b8f77-04ee-42c1-b142-47bc31c2824e/",
+              "uuid": "bb2b8f77-04ee-42c1-b142-47bc31c2824e"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "bb2b8f77-04ee-42c1-b142-47bc31c2824e__2014-06-05__09_53_31",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/62c600cf-7a25-4703-8003-b3c4445233af/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:31.377681+00:00",
+            "uuid": "62c600cf-7a25-4703-8003-b3c4445233af"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/b7cb6615-b6a5-4c31-b755-b86980c64d59/",
+              "uuid": "b7cb6615-b6a5-4c31-b755-b86980c64d59"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "b7cb6615-b6a5-4c31-b755-b86980c64d59__2014-06-05__09_53_28",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/3a057cc8-9b42-44f2-a8cb-c5561f2eddd3/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:28.048803+00:00",
+            "uuid": "3a057cc8-9b42-44f2-a8cb-c5561f2eddd3"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "260ba5dbed14429ab8fa58c988477999574c0b6beed14b7342cd6ae9e5c064b6",
       "shape": [
@@ -340,6 +469,135 @@
       "anchor": "detailed-listing",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 6
+        },
+        "objects": [
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/b7cb6615-b6a5-4c31-b755-b86980c64d59/",
+              "uuid": "b7cb6615-b6a5-4c31-b755-b86980c64d59"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "b7cb6615-b6a5-4c31-b755-b86980c64d59__2014-06-05__09_53_28",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/f69d43df-092d-4fef-9766-668cb6469f31/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:28.851859+00:00",
+            "uuid": "f69d43df-092d-4fef-9766-668cb6469f31"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/cb1e0fee-7666-4cb9-ab17-9f064adf6177/",
+              "uuid": "cb1e0fee-7666-4cb9-ab17-9f064adf6177"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "cb1e0fee-7666-4cb9-ab17-9f064adf6177__2014-06-05__09_53_30",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/78db3f50-945d-4795-814b-cff122f6b11f/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:30.563748+00:00",
+            "uuid": "78db3f50-945d-4795-814b-cff122f6b11f"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/bb2b8f77-04ee-42c1-b142-47bc31c2824e/",
+              "uuid": "bb2b8f77-04ee-42c1-b142-47bc31c2824e"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "bb2b8f77-04ee-42c1-b142-47bc31c2824e__2014-06-05__09_53_32",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/44b7f63a-7fb7-4ea4-b32c-ed7d4873a3f1/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:32.186344+00:00",
+            "uuid": "44b7f63a-7fb7-4ea4-b32c-ed7d4873a3f1"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/cb1e0fee-7666-4cb9-ab17-9f064adf6177/",
+              "uuid": "cb1e0fee-7666-4cb9-ab17-9f064adf6177"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "cb1e0fee-7666-4cb9-ab17-9f064adf6177__2014-06-05__09_53_29",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/33c0b447-d545-457f-a01c-156f674095c8/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:29.770356+00:00",
+            "uuid": "33c0b447-d545-457f-a01c-156f674095c8"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/bb2b8f77-04ee-42c1-b142-47bc31c2824e/",
+              "uuid": "bb2b8f77-04ee-42c1-b142-47bc31c2824e"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "bb2b8f77-04ee-42c1-b142-47bc31c2824e__2014-06-05__09_53_31",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/62c600cf-7a25-4703-8003-b3c4445233af/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:31.377681+00:00",
+            "uuid": "62c600cf-7a25-4703-8003-b3c4445233af"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/b7cb6615-b6a5-4c31-b755-b86980c64d59/",
+              "uuid": "b7cb6615-b6a5-4c31-b755-b86980c64d59"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "b7cb6615-b6a5-4c31-b755-b86980c64d59__2014-06-05__09_53_28",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/3a057cc8-9b42-44f2-a8cb-c5561f2eddd3/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:28.048803+00:00",
+            "uuid": "3a057cc8-9b42-44f2-a8cb-c5561f2eddd3"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "65c010aca37d4a8f80acfa1a6a5004989fccb2f794ec4fdd399e13b0842a73e2",
       "shape": [
@@ -528,6 +786,26 @@
       "anchor": "list-single-remote-snapshot",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "allocated_size": null,
+        "drive": {
+          "resource_uri": "/api/2.0/drives/bb2b8f77-04ee-42c1-b142-47bc31c2824e/",
+          "uuid": "bb2b8f77-04ee-42c1-b142-47bc31c2824e"
+        },
+        "grantees": [],
+        "meta": {},
+        "name": "bb2b8f77-04ee-42c1-b142-47bc31c2824e__2014-06-05__09_53_31",
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/snapshots/62c600cf-7a25-4703-8003-b3c4445233af/",
+        "status": "creating",
+        "tags": [],
+        "timestamp": "2014-06-05 09:53:31.377681+00:00",
+        "uuid": "62c600cf-7a25-4703-8003-b3c4445233af"
+      },
       "kind": "code",
       "original_sha256": "064787a62192bfb54f0cfefa3aa19562a5ce50e014ef6dba536b93cde113754d",
       "shape": [
@@ -690,6 +968,32 @@
       "anchor": "creating",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "allocated_size": null,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/450357dc-cbe1-471d-b4cc-dbdfe5f28d84/",
+              "uuid": "450357dc-cbe1-471d-b4cc-dbdfe5f28d84"
+            },
+            "grantees": [],
+            "meta": {
+              "key": "val"
+            },
+            "name": "first_snapshot",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/855ebdc8-ce4b-48d0-9d8d-306c9074be29/",
+            "status": "creating",
+            "tags": [],
+            "timestamp": "2014-06-05 09:52:53.896622+00:00",
+            "uuid": "855ebdc8-ce4b-48d0-9d8d-306c9074be29"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "58ce67ea2e11afca058e47dbbfb47795281218aba9619c31ae2cab7a53484ee1",
       "shape": [
@@ -865,6 +1169,29 @@
       "anchor": "editing",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "allocated_size": 0,
+        "drive": {
+          "resource_uri": "/api/2.0/drives/450357dc-cbe1-471d-b4cc-dbdfe5f28d84/",
+          "uuid": "450357dc-cbe1-471d-b4cc-dbdfe5f28d84"
+        },
+        "grantees": [],
+        "meta": {
+          "key": "val_changed",
+          "new_key": "new_key_value"
+        },
+        "name": "first_snapshot_renamed",
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/snapshots/855ebdc8-ce4b-48d0-9d8d-306c9074be29/",
+        "status": "available",
+        "tags": [],
+        "timestamp": "2014-06-05 09:52:53.896622+00:00",
+        "uuid": "855ebdc8-ce4b-48d0-9d8d-306c9074be29"
+      },
       "kind": "code",
       "original_sha256": "21b9f7c53d213b43961c0537cab6604790351a40f700e604bc17d230840506b6",
       "shape": [
@@ -1160,6 +1487,42 @@
       "anchor": "cloning",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [],
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/260512fc-e9ac-470f-880d-52b4dfcc2b72/",
+            "uuid": "260512fc-e9ac-470f-880d-52b4dfcc2b72"
+          }
+        ],
+        "licenses": [],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "7fbfb2ac-5b21-4c5a-81cb-d4343fca71a1__2015-03-19__13_53_52",
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "resource_uri": {
+          "resource_uri": "/api/2.0/drives/be62f52e-0b0f-480c-89b2-73e108dd2cef/",
+          "uuid": "be62f52e-0b0f-480c-89b2-73e108dd2cef"
+        },
+        "runtime": {
+          "is_snapshotable": null,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 1073741824,
+        "snapshots": [],
+        "status": "cloning_dst",
+        "storage_type": "dssd",
+        "tags": [],
+        "uuid": "be62f52e-0b0f-480c-89b2-73e108dd2cef"
+      },
       "kind": "code",
       "original_sha256": "1940c7a58e86e98acc037f5f7ec92d6155ff594bfe51f23dc7a43cb6aec55f22",
       "shape": [
@@ -1406,6 +1769,55 @@
       "anchor": "by-filtering-remote-snapshots",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 2
+        },
+        "objects": [
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/b7cb6615-b6a5-4c31-b755-b86980c64d59/",
+              "uuid": "b7cb6615-b6a5-4c31-b755-b86980c64d59"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "b7cb6615-b6a5-4c31-b755-b86980c64d59__2014-06-05__09_53_28",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/f69d43df-092d-4fef-9766-668cb6469f31/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:28.851859+00:00",
+            "uuid": "f69d43df-092d-4fef-9766-668cb6469f31"
+          },
+          {
+            "allocated_size": 0,
+            "drive": {
+              "resource_uri": "/api/2.0/drives/b7cb6615-b6a5-4c31-b755-b86980c64d59/",
+              "uuid": "b7cb6615-b6a5-4c31-b755-b86980c64d59"
+            },
+            "grantees": [],
+            "meta": {},
+            "name": "b7cb6615-b6a5-4c31-b755-b86980c64d59__2014-06-05__09_53_28",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/snapshots/3a057cc8-9b42-44f2-a8cb-c5561f2eddd3/",
+            "status": "available",
+            "tags": [],
+            "timestamp": "2014-06-05 09:53:28.048803+00:00",
+            "uuid": "3a057cc8-9b42-44f2-a8cb-c5561f2eddd3"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "93ed0f8bef01f0970bcd57bdf5ac3c0cedb159082a4b2e2e8676897f57b0e9ca",
       "shape": [
@@ -1588,6 +2000,44 @@
     {
       "anchor": "in-drive-definition",
       "classification": "response-example",
+      "fixture_id": "fixture-b9e77ae521deb8637d923d10",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [],
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "test_drive_snapshot",
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/drives/b7cb6615-b6a5-4c31-b755-b86980c64d59/",
+        "runtime": {
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 1073741824,
+        "snapshots": [
+          {
+            "resource_uri": "/api/2.0/snapshots/f69d43df-092d-4fef-9766-668cb6469f31/",
+            "uuid": "f69d43df-092d-4fef-9766-668cb6469f31"
+          },
+          {
+            "resource_uri": "/api/2.0/snapshots/3a057cc8-9b42-44f2-a8cb-c5561f2eddd3/",
+            "uuid": "3a057cc8-9b42-44f2-a8cb-c5561f2eddd3"
+          }
+        ],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [],
+        "uuid": "b7cb6615-b6a5-4c31-b755-b86980c64d59"
+      },
       "kind": "code",
       "operation": {
         "method": "GET",

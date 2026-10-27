@@ -105,7 +105,27 @@ Content-Type: application/json
         self.assertIsNone(name["nullable"])
         self.assertIsNone(name["writable"])
         self.assertIn('$["objects"][*]["a.b"]', fields)
-        self.assertNotIn("private-value", json.dumps(document))
+        self.assertIn("private-value", json.dumps(document))
+
+    def test_operation_examples_expose_sanitized_fixture_ids_and_payloads(self):
+        document = normalized('''<section id="read"><h2>Read</h2>
+          <dl><dt>GET /resources/</dt></dl><p>Example response:</p>
+          <pre>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{"objects":[{"uuid":"resource-1","unknown_provider_field":"retained",
+"password":"must-not-leak"}]}</pre></section>''')
+        contract = UPDATE.build_contract([document], {})
+        example = contract["operations"][0]["response_examples"][0]
+        self.assertRegex(example["fixture_id"], r"^fixture-[0-9a-f]{24}$")
+        self.assertEqual(example["status_code"], 200)
+        fixture = document["blocks"][3]["fixture_payload"]
+        self.assertEqual(fixture["objects"][0]["password"], "<redacted>")
+        self.assertEqual(fixture["objects"][0]["unknown_provider_field"], "retained")
+        field_ids = {row["field_path"]: row for row in contract["response_fields"]}
+        unknown = field_ids['$["objects"][*]["unknown_provider_field"]']
+        self.assertEqual(unknown["fixture_ids"], [example["fixture_id"]])
+        self.assertEqual(unknown["assertion_evidence"], [])
 
     def test_request_fields_never_become_response_fields(self):
         document = normalized('''<section id="create"><h2>Create</h2>

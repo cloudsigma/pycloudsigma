@@ -133,6 +133,34 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [],
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "test_drive_1",
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/drives/5d3bb6d8-ce39-41e8-8742-2ba5af5ef2d0/",
+        "runtime": {
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 1073741824,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [],
+        "uuid": "5d3bb6d8-ce39-41e8-8742-2ba5af5ef2d0"
+      },
       "kind": "code",
       "original_sha256": "4c6efb27679c81ab12f01e3dc515f97a7712f6e0396d5c0af82a72f526b75381",
       "shape": [
@@ -311,6 +339,39 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [],
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {
+          "meta_key1": "value",
+          "meta_key2": "value\nwith\nnew lines"
+        },
+        "mounted_on": [],
+        "name": "test_drive_1",
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/drives/5d3bb6d8-ce39-41e8-8742-2ba5af5ef2d0/",
+        "runtime": {
+          "is_downloadable": true,
+          "is_ephemeral": false,
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 1073741824,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [],
+        "uuid": "5d3bb6d8-ce39-41e8-8742-2ba5af5ef2d0"
+      },
       "kind": "code",
       "original_sha256": "fe7880f53d200cb3faad84733f16ca9b1cfed88a5e15afc793d3b94ed070b653",
       "shape": [
@@ -505,6 +566,41 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 2000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {
+          "meta_key1": "value1",
+          "meta_key2": "value2"
+        },
+        "name": "test_server_updated",
+        "nics": [],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/0dacaaf7-1ba8-451d-b135-8848e76381ee/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "0dacaaf7-1ba8-451d-b135-8848e76381ee",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "1ff9a649924b354d908c72dbe970dd298298c383bd6a4c37039b065ea26bfeb8",
       "shape": [
@@ -725,6 +821,41 @@
       "anchor": "examples",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 2000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {
+          "meta_key2": "value2",
+          "meta_key3": "value3"
+        },
+        "name": "test_server_updated",
+        "nics": [],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/0dacaaf7-1ba8-451d-b135-8848e76381ee/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [],
+        "uuid": "0dacaaf7-1ba8-451d-b135-8848e76381ee",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "7c6f21197f6a7e7ee3450a4bd9a4fcabd8b85ace97a752443422e6a22bc4dd23",
       "shape": [

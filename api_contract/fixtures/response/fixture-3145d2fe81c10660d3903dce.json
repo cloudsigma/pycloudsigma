@@ -1,0 +1,37 @@
+{
+  "objects": [
+    {
+      "affinities": [],
+      "allow_multimount": false,
+      "grantees": [],
+      "jobs": [
+        {
+          "resource_uri": "/api/2.0/jobs/8b00acbb-889b-44a5-8a8d-dc3617a6145d/",
+          "uuid": "8b00acbb-889b-44a5-8a8d-dc3617a6145d"
+        }
+      ],
+      "licenses": [],
+      "media": "cdrom",
+      "meta": {},
+      "mounted_on": [],
+      "name": "test_drive_y",
+      "owner": {
+        "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+        "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+      },
+      "permissions": [],
+      "resource_uri": "/api/2.0/drives/03cb7ca7-ca07-4380-9071-c19260fbec59/",
+      "runtime": {
+        "is_snapshotable": true,
+        "snapshots_allocated_size": 0,
+        "storage_type": "dssd"
+      },
+      "size": 1207975936,
+      "snapshots": [],
+      "status": "cloning_dst",
+      "storage_type": "dssd",
+      "tags": [],
+      "uuid": "03cb7ca7-ca07-4380-9071-c19260fbec59"
+    }
+  ]
+}

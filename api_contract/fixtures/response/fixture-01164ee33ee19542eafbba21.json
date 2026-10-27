@@ -1,0 +1,9 @@
+{
+  "action": "disable_firewall_logging",
+  "job": {
+    "resource_uri": "/api/2.0/jobs/cefb857e-1d7e-41ca-9307-e73f85774487/",
+    "uuid": "cefb857e-1d7e-41ca-9307-e73f85774487"
+  },
+  "result": "success",
+  "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+}

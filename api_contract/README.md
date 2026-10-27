@@ -17,7 +17,9 @@ No field-level SDK assertion is claimed by this inventory.
   original HTML SHA256 fingerprints, and excluded navigation pages.
 - `sources/*.json`: normalized documentation. These retain headings, prose,
   explicit HTTP operation declarations, response shapes, and public schema
-  definitions. HTTP headers and response-example scalar values are omitted.
+ definitions. HTTP headers are omitted. Sanitized response-example payloads are
+ retained as fixture files so offline transport and projection tests can replay
+ the documented response shape without network access.
 - `contract.json`: generated operation and field matrix, schema definitions,
   unresolved gaps, and summary counts.
 - `bindings.json`: reviewed SDK symbols mapped to exact method/path declarations.
@@ -35,9 +37,12 @@ included, so the row count is not a count of business fields.
 Published response examples establish field presence and observed JSON types
 only. A missing, null, false, empty or omitted value is not enough to establish
 requiredness, nullability, default, writable state, or lifecycle behavior.
-Those contract properties stay `null` (unknown). Scalar values are replaced by
-shape information in retained response examples; example passwords and HTTP
-Authorization headers are not copied into this repository.
+Those contract properties stay `null` (unknown). Fixture scalar values are
+retained only where they help a deterministic roundtrip test; keys that look
+credential-like are replaced with `<redacted>`, and HTTP Authorization headers
+are never copied into this repository. Fixture IDs and SHA256 hashes are exposed
+on each operation's `response_examples` entry and on each response-field row's
+`fixture_ids` list.
 
 Resource-wide `fields`/`properties` schemas preserve their explicit facets,
 including nested fields, nullable/required/readonly flags, choices and defaults.
@@ -91,7 +96,8 @@ Review added/removed operation IDs and field/type changes. Reconcile applicable
 API source or schema changes, add SDK mappings and meaningful regressions, then
 copy the candidate `sources/`, `sources.json`, `bindings.json` and `contract.json`
 into this directory in the same PR. Preserve prior snapshots through Git history.
-Run the offline validator and installed SDK qualification workflow before merge.
+Run the offline validator, fixture-backed transport tests and installed SDK
+qualification workflow before merge.
 A public-documentation refresh does not require or consume QA account credentials.
 
 ## Remaining qualification work

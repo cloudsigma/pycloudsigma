@@ -1,0 +1,12 @@
+{
+  "interface": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+  "ip_address": "10.0.22.1",
+  "jobs": [
+    {
+      "resource_uri": "/api/2.0/jobs/9b293ff2-cf38-4b5f-837d-ac676a107993/",
+      "uuid": "9b293ff2-cf38-4b5f-837d-ac676a107993"
+    }
+  ],
+  "resource_uri": "/api/2.0/ipaliases/f317b570-1693-4002-95fe-172cd4327cb2/",
+  "uuid": "f317b570-1693-4002-95fe-172cd4327cb2"
+}

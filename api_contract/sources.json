@@ -6,37 +6,37 @@
     "https://docs.cloudsigma.com/en/latest/py-modindex.html",
     "https://docs.cloudsigma.com/en/latest/search.html"
   ],
-  "fetched_at": "2026-10-27T17:27:08.106754+00:00",
+  "fetched_at": "2026-10-27T17:35:54.862344+00:00",
   "schema_version": 1,
   "sources": [
     {
       "file": "sources/accounts.json",
       "html_sha256": "3a6f72f2e7adc338f0e1518b17a15a9bba764032b1a4f23e05cf8c7fd495a0c6",
-      "sha256": "9856e9f5c5a6789e14a89ba50ea7cd628a3451e3c27592f3b029d2f501ee1c9e",
+      "sha256": "cb1140f42439fb85a2609a3c819f60317226cc1d0da62f9fe10c26e0f17abd4a",
       "url": "https://docs.cloudsigma.com/en/latest/accounts.html"
     },
     {
       "file": "sources/acls.json",
       "html_sha256": "fde05530b673a6a87631839855e78339fa319b63db9f7b81318590c3e04c6f31",
-      "sha256": "dd4efd2f4e58c6861c318c7a6aef740b40f694268597e3aefc9b1f14814b1d3f",
+      "sha256": "8abaa40af21ca6789a40d83693d3ee2f0792e7a14ae3e317376160525a6dfcc9",
       "url": "https://docs.cloudsigma.com/en/latest/acls.html"
     },
     {
       "file": "sources/async.json",
       "html_sha256": "81fe4e4dc6d7709f257358e5b5de6e7d1beaa8d48954973e5d2b3a5a73d50312",
-      "sha256": "080302ea0d53e7d2e33d86ac199b33c296b5bff3d24da152d7a3da30d33edb28",
+      "sha256": "281e0cb8e2102290cbc26d09a3addcfd663a1216aa0d1b761bed65183d7f867d",
       "url": "https://docs.cloudsigma.com/en/latest/async.html"
     },
     {
       "file": "sources/audit_logs.json",
       "html_sha256": "77c8fdb8e38e0ed4441a8ba7f83a173f26ff6110e68b086938697b0e2d095d22",
-      "sha256": "523e9634127c0334c0ba397a4b34b64c434936ab94d4fc061fe126bcc658e974",
+      "sha256": "adf66161495acdb7acd9add00b16dc366c8c7500cdaf544eaab4eb3ac2d0ee7d",
       "url": "https://docs.cloudsigma.com/en/latest/audit_logs.html"
     },
     {
       "file": "sources/availability_groups.json",
       "html_sha256": "e38e58ceb6fa7372592ad2c237946555daf31e21986875a387b91e2d9fbc4f26",
-      "sha256": "028eaed8313f2b6bf0ae07cadd0eb1fd75115d09ed836879fcb7927e5f9edf77",
+      "sha256": "7d2762f468195eaacb03ed539c285bd315c7f89658290451ab6051fb65637d83",
       "url": "https://docs.cloudsigma.com/en/latest/availability_groups.html"
     },
     {
@@ -48,7 +48,7 @@
     {
       "file": "sources/backup_schedulers.json",
       "html_sha256": "a7eab87ee746c5e1fc33851af028748563bc866b83a17e0925db61c8f7a4be75",
-      "sha256": "f99bf7e409dce9f3c7f938396a6dcc3ba435edbd104a9c708659064b73ec832a",
+      "sha256": "77f2e2f82a843fbb38daec023c8984dd9a2671508ac7a21920c5480b83608db0",
       "url": "https://docs.cloudsigma.com/en/latest/backup_schedulers.html"
     },
     {
@@ -132,13 +132,13 @@
     {
       "file": "sources/billing.json",
       "html_sha256": "0249fd7aab0dd91a5c815aab8028e0d22792f647dd69dd6a8114f1c6f04b8e33",
-      "sha256": "dafd53fcf6c3139d74afb95b22770776b89e52e48698b4dee7b90f62d4bc977a",
+      "sha256": "dfaedd02f1bbf6ac0346eccf886b10b11de4ba941ab826826b6c1e20e528aad6",
       "url": "https://docs.cloudsigma.com/en/latest/billing.html"
     },
     {
       "file": "sources/burst_usage.json",
       "html_sha256": "ee12888f830ac187c4175c586839261fcb0cc497aaf7115b67a6a4afe111e1d2",
-      "sha256": "d72584283607f901cf85fbc5402abfdb4f567db67b4424acba03848ab937883c",
+      "sha256": "e7f181a690ca3f5886925c993d39b44664fea48ed719a540652192b989df0d0e",
       "url": "https://docs.cloudsigma.com/en/latest/burst_usage.html"
     },
     {
@@ -150,31 +150,31 @@
     {
       "file": "sources/clone_naming.json",
       "html_sha256": "0f8bf4f7cf438e0cce18b9454c6497898be5139da80c3521c57d4bde35a8f895",
-      "sha256": "4503e23c284b932d6689c6c4e5e5c30415a4624559c154d4929ada8570e4290b",
+      "sha256": "227a3f24382047cfc2467ccad392eb7c7bb0a49707497f640da15f999376f46e",
       "url": "https://docs.cloudsigma.com/en/latest/clone_naming.html"
     },
     {
       "file": "sources/current_usage.json",
       "html_sha256": "1b77e92cb5c08320864b24bf21335c7c967bf0f784d57d5268a2b7f1aaf51e13",
-      "sha256": "fa0f817523a9661b1b2df30e4557913bc588dd8768c6fd9e6b8333e5d15928f1",
+      "sha256": "34725a31bb5661e214ae186805693545254da7f2a333cbda31f1558a33d57754",
       "url": "https://docs.cloudsigma.com/en/latest/current_usage.html"
     },
     {
       "file": "sources/drives.json",
       "html_sha256": "8842c448de0d05886369f54a61c2a2011cde63d3ca48102bd5e0f209dd4cedd0",
-      "sha256": "cfd71e630b98a40ba9add4a6a6d274c9921fea0ccf834b289b3d063ab1ffe20b",
+      "sha256": "779667d043fe21bdacb7635bf3d0325bd683e08f931c6a85631e32cce81db7f7",
       "url": "https://docs.cloudsigma.com/en/latest/drives.html"
     },
     {
       "file": "sources/ephemeral_drives.json",
       "html_sha256": "6a1eb0e54674b796fa887a6637e28b692a2d66db05dc763471a3fd42bcc9332f",
-      "sha256": "83169604a3f617bf4a20f25199ee79b0a24b9af2819265785ec3af51ac1d271d",
+      "sha256": "3f4a8b9d60467ceab73bf769ec3cfc389d9caf7126ea8efcd5e675728d38be3f",
       "url": "https://docs.cloudsigma.com/en/latest/ephemeral_drives.html"
     },
     {
       "file": "sources/errors.json",
       "html_sha256": "ec2f27f3acfc9f5d12ffab446c14776e19f3aa0f0d71c23c6d62d40143337f79",
-      "sha256": "4d5d332cac83a571ea47d460c238f08ca2943be62659a4351d272b6bacbee1b4",
+      "sha256": "18abd33ef43465d604c974e56b546419a21780f8e7f60281ed34cf236c3f35d3",
       "url": "https://docs.cloudsigma.com/en/latest/errors.html"
     },
     {
@@ -192,55 +192,55 @@
     {
       "file": "sources/jobs.json",
       "html_sha256": "a0c811e10286b8b0f164c8e4330f6134220be466677ac0864f1dcc792fcca0b3",
-      "sha256": "205d0ffdadc49f27a65e5247e979022ca48247c06bd77ff8685ae1a509d5a419",
+      "sha256": "c3cc0951c0f3b9b16e02fea0a81e621a8be6a4991aa0e93c36e294798c56d039",
       "url": "https://docs.cloudsigma.com/en/latest/jobs.html"
     },
     {
       "file": "sources/keypairs.json",
       "html_sha256": "6357df46c3c0fc83514a127c465982094e0c8c3335727b3da4d5673eaea81993",
-      "sha256": "25f2e2118a17ac47fc0b2a09ac9482fb4ef9f04110ed31dcc46687da029e3cb2",
+      "sha256": "0b850fd341295657bfc73225dcab87778ede59dac929822984743d2d7a9ca717",
       "url": "https://docs.cloudsigma.com/en/latest/keypairs.html"
     },
     {
       "file": "sources/libdrives.json",
       "html_sha256": "0ea8e178cc90b8ca2d7af5257899221c0f6e0fd43768575641bf794080cb4ebf",
-      "sha256": "62cfdaba4107b119f051d7e16d2b99e43a4ac083f5709f4021164b189fecb413",
+      "sha256": "e93733fd93d372bbe268eee215787f37b3c1720a992c41789ed680245bf5e333",
       "url": "https://docs.cloudsigma.com/en/latest/libdrives.html"
     },
     {
       "file": "sources/locations.json",
       "html_sha256": "a51365d30784781a1fee2e54f47591f819f731562c2d89b9b9593b9f67594026",
-      "sha256": "a1003b0c204c018aad46ff74bc9dbd1034f25f0e3fbe8db9c84e569b14d5daba",
+      "sha256": "18b6c1908318dcec39b167df74fd2346fd38eb1a691c976f119fbd5447bd7b23",
       "url": "https://docs.cloudsigma.com/en/latest/locations.html"
     },
     {
       "file": "sources/meta.json",
       "html_sha256": "ae5b907e6bf30150cb4df45597c78079afbec8c740b5ee7377d6f7810ab35433",
-      "sha256": "d3e38c5fdceb51c6b31a530d3df48826c2e89faa2f1e8fb3676dc949a2e1ab71",
+      "sha256": "0b8893b55dcd25dd6c0e7d72f710e923b9e7bd0303362881972a53a0c58d705e",
       "url": "https://docs.cloudsigma.com/en/latest/meta.html"
     },
     {
       "file": "sources/network_interfaces.json",
       "html_sha256": "a558cf63051f826131a080bfc38d330a142859d022c3e41a67c2c3f353d5b84d",
-      "sha256": "ce6c49bb9d00fceff56b9f96f76ffca546498fb32154a184878f5bf9c12ce957",
+      "sha256": "afbf06c0fc93f600219dc82fe54f0c168f6e121b8fee4bc12ba28447bc8c081c",
       "url": "https://docs.cloudsigma.com/en/latest/network_interfaces.html"
     },
     {
       "file": "sources/networking.json",
       "html_sha256": "9eb7b7c19b0c0f01cd6c24e8c5eb35ca7f6039bbd952ba9f3e205243576fcd6e",
-      "sha256": "00b214bbb4b287677f87dbf31cb37025b83c09f3b89ae957c65050a8b76bbae8",
+      "sha256": "86f08c02a9e97aa6e70fcb059e076fb775e83e94e38ade16f1ada3bb003e49b0",
       "url": "https://docs.cloudsigma.com/en/latest/networking.html"
     },
     {
       "file": "sources/notification_contacts.json",
       "html_sha256": "45c5d33711a083a0b55f11e6246a887b3a458072ceecb1e1720e002dc2f7122e",
-      "sha256": "af888e4fd22e5f5633431e848b1ff186afd2dba33e46a8607e861a7f54c98838",
+      "sha256": "cc3ffb7a1b864099216fcb07d76b48e6b588382a2c7a775cfe020e646a93d2ec",
       "url": "https://docs.cloudsigma.com/en/latest/notification_contacts.html"
     },
     {
       "file": "sources/notification_preferences.json",
       "html_sha256": "3a727f3ab037e2e37b33134134ca6e18e6b37c5bd20dbe409f1eb7a8e614011d",
-      "sha256": "00e6173c20e1dfe1ef681f0e86e242229cdb0f2af6561055c91c069f8c528a92",
+      "sha256": "c426599f0b7df2037c5334cb120eecd56c2ed7520be76918295d3aafd069f5c1",
       "url": "https://docs.cloudsigma.com/en/latest/notification_preferences.html"
     },
     {
@@ -252,13 +252,13 @@
     {
       "file": "sources/pagination.json",
       "html_sha256": "b426bc5c3667ce99d95a24791946bca7934d776fdac58bb3758e143c7e1ffdcc",
-      "sha256": "16064e49ef3db24127d1e35bbe52c79d5022f54b3aa1dd566251b9fedc2c6552",
+      "sha256": "fef8c26c79dd7d983a8f73842b7f946a0fae937642fefcdf7d5c97891e509088",
       "url": "https://docs.cloudsigma.com/en/latest/pagination.html"
     },
     {
       "file": "sources/profile.json",
       "html_sha256": "24816ae5b2e07d64817ea4a2126d76cd30e0b099c614c09181e74849a1ac2222",
-      "sha256": "c1b6c94043736bbdaaea904339eb1b446a4224ade87b2d81bafc3f43f5973ae1",
+      "sha256": "7fd0e474c320f3836951947c67fee8d2454dbef64f72df920c3637a977ce40b5",
       "url": "https://docs.cloudsigma.com/en/latest/profile.html"
     },
     {
@@ -270,25 +270,25 @@
     {
       "file": "sources/remote_snapshots.json",
       "html_sha256": "64ca0035d64af67ab47599d986f9b75f44e844ed2f45b1bca569d2b1c13579da",
-      "sha256": "928f19ba784ac28a13833e4a557e617c4a0563a94e4609ca652f2144f302fadd",
+      "sha256": "2ab1ba90a1364766eff7f50cbb80791afe05e75a09b07df562729eeb50a09af4",
       "url": "https://docs.cloudsigma.com/en/latest/remote_snapshots.html"
     },
     {
       "file": "sources/server_context.json",
       "html_sha256": "11acdbc06fc9f5654c7ccf4cbb1804b9b6df60e3de1ab1e2696cccbfc9687676",
-      "sha256": "bbc834bda638be5357a98b54c5cdbff6dd9f1129b92934f11e04d2793d16c4ed",
+      "sha256": "9752cf5bb6a0ddd5e4b97821b02c4c4f320fa33002899672fbcc684033b4cf81",
       "url": "https://docs.cloudsigma.com/en/latest/server_context.html"
     },
     {
       "file": "sources/servers.json",
       "html_sha256": "a488aa86545007f82443300a3f78e782988d84c12609fca60da7428bac634ec5",
-      "sha256": "e044d25c35dcbfa1e30029d64162d03bb3a059ba1e5aed2c3d31b8484f0781fc",
+      "sha256": "89598d11e6bec22eba141be59fb3d36b40e0e68f456b80ad8ae39912165a9304",
       "url": "https://docs.cloudsigma.com/en/latest/servers.html"
     },
     {
       "file": "sources/servers_kvm.json",
       "html_sha256": "b41e1fb220e5e79cb6c1c6230d2f8124e414b823e2dc668ca123968461055e41",
-      "sha256": "0f87b75975f5d5551c4be8dfd94c526ed135827ef16c32adf217f5ced527d64c",
+      "sha256": "725e2217de6d9fb8f2deedf0bac358ae32c4c408c4f72a84040a0ee8371098e5",
       "url": "https://docs.cloudsigma.com/en/latest/servers_kvm.html"
     },
     {
@@ -300,19 +300,19 @@
     {
       "file": "sources/snapshots.json",
       "html_sha256": "62b081ea6a73f30de9ce0066dfb9bf97782611844f10d4190ba0ee3169671eee",
-      "sha256": "6db51cdc702840ee2e0bbcd68a38c5de6dbd43483b21e880f3f043863ef099d5",
+      "sha256": "a43a3da8c39b1c72060e6c6ebc26f047b6a0b34d682610894a173d813d210635",
       "url": "https://docs.cloudsigma.com/en/latest/snapshots.html"
     },
     {
       "file": "sources/subscriptions.json",
       "html_sha256": "833584c72e21ae14b9783ade43782ba7a2bef523cf1c45e8f8ee0e495517baaf",
-      "sha256": "6f40d5dd7f4a07d771d61d5d4d0a895cd81f3cc30af200ec3fcc95b98f63548d",
+      "sha256": "40d870243f222d05b8623070904a236329fdce806b56b2c18ed3b1f2eb03d05a",
       "url": "https://docs.cloudsigma.com/en/latest/subscriptions.html"
     },
     {
       "file": "sources/tags.json",
       "html_sha256": "e34b7699b5bfa5c70346073ad4dc0e8b4d185771da5e8fa494536a4e00c97284",
-      "sha256": "de88d7a6fc1ff8a3f7fa7d5802ce2a5070584ef55b7a4b22907bb8eaab80d2b5",
+      "sha256": "e4fd665a2372f522d08e7421c213f195615bd819fff2a729834b0ae93da24c55",
       "url": "https://docs.cloudsigma.com/en/latest/tags.html"
     },
     {
@@ -324,55 +324,55 @@
     {
       "file": "sources/usage.json",
       "html_sha256": "589edfdb5a8ae96090035b34ae55d11202d8d1c900db5abfa205395ae41edf26",
-      "sha256": "54784211e575d27dd23c47beb2fe10409e7f2114c52fd0a3792b96ed2489dfce",
+      "sha256": "b095f3b01160ad4e8db1e0e18e9862194f1894ee59b4404c5634ba4082b430b1",
       "url": "https://docs.cloudsigma.com/en/latest/usage.html"
     },
     {
       "file": "sources/virtualrouters.json",
       "html_sha256": "39b3cc8b1444b88cff0c4e6811b7ba73d6c38b42069b36c258b52f0bd06cae96",
-      "sha256": "ad91b9454b536c2d09949eca600d4240104b0e76b53fc07651fbc4710ce6e43c",
+      "sha256": "1ced75ff811bde74ee903672483a13c1a5f3d6996b800c728262505b991cec83",
       "url": "https://docs.cloudsigma.com/en/latest/virtualrouters.html"
     },
     {
       "file": "sources/virtualrouters_firewall_filters.json",
       "html_sha256": "7a88e75c07d401a14ced3d58730b86815316d9ed9adce594e7b38f98e2a7482c",
-      "sha256": "69a731577dc4b3431048fd199f956727d2bace0fe42c27ace82170050e7cf769",
+      "sha256": "d825ae683c503515e2e333463630942cf62e24951ef8e235926cf073277f5b7a",
       "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_filters.html"
     },
     {
       "file": "sources/virtualrouters_firewall_policies.json",
       "html_sha256": "b45cc7c8e7a27742911050869794e325aa2525584ecb47ca58753a0322de1f28",
-      "sha256": "444404fc01d970660a42a7ee98dedd7635e54bfd2839637b4ded05388102cc5b",
+      "sha256": "85ca002ae87bc7f0838ec8d916748c8a717e2f94bd1c4db77cc0d218ffb74d4e",
       "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_firewall_policies.html"
     },
     {
       "file": "sources/virtualrouters_ipaliases.json",
       "html_sha256": "7010caf452f353331ef402763ff266f38699af8c8f5e1a5833d25b8945fe007f",
-      "sha256": "ecd9f5bce5963b51575cea4ab125922c69b52590fd62b8e8dfc158fe5969bbd1",
+      "sha256": "4798f64a18312caefab3aa3fbcfc66b61afbaa97aee9c0df0dbaf7871d0a7153",
       "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_ipaliases.html"
     },
     {
       "file": "sources/virtualrouters_lans.json",
       "html_sha256": "fb23dc5759e19bac6c56344f167fda635598c3e805833d9fd2f416a5045d4a6b",
-      "sha256": "e6abbc9123215be9401d9b1930b58875b410a9396e76f39ca386a8621d4e1e0b",
+      "sha256": "b9169749a33c6c48eb7c03d0703d2a96f0ebce59a7ec3120f8086d1d86d1518f",
       "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_lans.html"
     },
     {
       "file": "sources/virtualrouters_port_forwarding.json",
       "html_sha256": "c1c4f9ec2df7abdb1b295e34e49388634405f1485494f61983fee0f53e5acd92",
-      "sha256": "2c598a6bc4cd2d97505a0bdefba461d8f01fb69a0dbe2cbef2bf4afe47464b6d",
+      "sha256": "7d673b9be9d5fea0e0e8d8697271b2fcf1d3d58ddcb69a7ada3b49b0ec988b90",
       "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_port_forwarding.html"
     },
     {
       "file": "sources/virtualrouters_routes.json",
       "html_sha256": "351ff3c68ca830e5c4e1b981e5a1cd82829553ab3fda92559d0bef1df26cd401",
-      "sha256": "10f39f08ece836cdbf1eef641a14a5cc43b1d25454322c11367a30a8d0caacc0",
+      "sha256": "d6f9a545c7254af4f40fbe2d932879157051691669b25aeca141aa556a68b6fa",
       "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_routes.html"
     },
     {
       "file": "sources/virtualrouters_upstream.json",
       "html_sha256": "b222ffde9b602423e9a8811636be1af97ca6a66a1b4fe081a712d7dffa97beab",
-      "sha256": "87cdcf30c4cc4940f5e5d48eeddcad77c00dfe5d51810d215eb786b361e44344",
+      "sha256": "b999d7f31a2fed3cc724d38007c02bc5116d4866cadbde15efe9edf57ecddd6b",
       "url": "https://docs.cloudsigma.com/en/latest/virtualrouters_upstream.html"
     },
     {

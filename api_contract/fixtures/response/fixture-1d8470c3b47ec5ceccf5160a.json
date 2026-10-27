@@ -1,0 +1,26 @@
+{
+  "objects": [
+    {
+      "allocated_size": null,
+      "drive": {
+        "resource_uri": "/api/2.0/drives/450357dc-cbe1-471d-b4cc-dbdfe5f28d84/",
+        "uuid": "450357dc-cbe1-471d-b4cc-dbdfe5f28d84"
+      },
+      "grantees": [],
+      "meta": {
+        "key": "val"
+      },
+      "name": "first_snapshot",
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "permissions": [],
+      "resource_uri": "/api/2.0/snapshots/855ebdc8-ce4b-48d0-9d8d-306c9074be29/",
+      "status": "creating",
+      "tags": [],
+      "timestamp": "2014-06-05 09:52:53.896622+00:00",
+      "uuid": "855ebdc8-ce4b-48d0-9d8d-306c9074be29"
+    }
+  ]
+}

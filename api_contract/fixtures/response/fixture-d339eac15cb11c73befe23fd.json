@@ -1,0 +1,9 @@
+{
+  "action": "disable",
+  "job": {
+    "resource_uri": "/api/2.0/jobs/7e25b5be-9abe-4c2b-8ff1-39ad1a82a88d/",
+    "uuid": "7e25b5be-9abe-4c2b-8ff1-39ad1a82a88d"
+  },
+  "result": "success",
+  "uuid": "906abae3-b533-4c5d-8d98-c459195b6230"
+}

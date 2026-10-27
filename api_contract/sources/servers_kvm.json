@@ -80,6 +80,13 @@
     {
       "anchor": "open-vnc-tunnel",
       "classification": "response-example",
+      "fixture_id": "fixture-6a84d1513820b5d1787f43ff",
+      "fixture_payload": {
+        "action": "open_vnc",
+        "result": "success",
+        "uuid": "80751bc7-37cc-48c1-bb08-fd04b46090bf",
+        "vnc_url": "vnc://direct.zrh.cloudsigma.com:42714"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -163,6 +170,12 @@
     {
       "anchor": "close-vnc-tunnel",
       "classification": "response-example",
+      "fixture_id": "fixture-b0de946e460a2bfb7483fe85",
+      "fixture_payload": {
+        "action": "close_vnc",
+        "result": "success",
+        "uuid": "80751bc7-37cc-48c1-bb08-fd04b46090bf"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",

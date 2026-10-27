@@ -1,0 +1,9 @@
+{
+  "action": "enable_firewall_logging",
+  "job": {
+    "resource_uri": "/api/2.0/jobs/80a8f041-4658-46a9-817f-c454374e50b0/",
+    "uuid": "80a8f041-4658-46a9-817f-c454374e50b0"
+  },
+  "result": "success",
+  "uuid": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+}

@@ -85,6 +85,122 @@
     {
       "anchor": "listing",
       "classification": "response-example",
+      "fixture_id": "fixture-480379d4a2dc246772ddb5fe",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 5
+        },
+        "objects": [
+          {
+            "amount": "32212254720",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "14",
+            "period": "365 days, 2:45:57.487493",
+            "price": "0E-20",
+            "remaining": "32212254720",
+            "resource": "dssd",
+            "resource_uri": "/api/2.0/subscriptions/14/",
+            "start_time": "2014-08-26T09:14:02.512507+00:00",
+            "status": "active",
+            "subscribed_object": null,
+            "uuid": "e067df3c-35c5-4327-927e-2ee52b6f796a",
+            "was_billed": true
+          },
+          {
+            "amount": "1",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "13",
+            "period": "365 days, 2:46:06.019766",
+            "price": "0E-20",
+            "remaining": "1",
+            "resource": "ip",
+            "resource_uri": "/api/2.0/subscriptions/13/",
+            "start_time": "2014-08-26T09:13:53.980234+00:00",
+            "status": "active",
+            "subscribed_object": "94.26.101.195",
+            "uuid": "aa442254-08fa-4d36-b511-47d4aa3a303b",
+            "was_billed": true
+          },
+          {
+            "amount": "1",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "12",
+            "period": "365 days, 2:46:12.563258",
+            "price": "0E-20",
+            "remaining": "1",
+            "resource": "vlan",
+            "resource_uri": "/api/2.0/subscriptions/12/",
+            "start_time": "2014-08-26T09:13:47.436742+00:00",
+            "status": "active",
+            "subscribed_object": "10619300-edda-42ba-91e0-7e3df0689d00",
+            "uuid": "e31585fb-6c3f-422d-a51e-395fd53fd2e5",
+            "was_billed": true
+          },
+          {
+            "amount": "17179869184",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "10",
+            "period": "365 days, 2:46:54.269604",
+            "price": "0E-20",
+            "remaining": "17179869184",
+            "resource": "mem",
+            "resource_uri": "/api/2.0/subscriptions/10/",
+            "start_time": "2014-08-26T09:13:05.730396+00:00",
+            "status": "active",
+            "subscribed_object": null,
+            "uuid": "5830f712-6eef-4732-9dbd-6a9f3b1fcb2f",
+            "was_billed": true
+          },
+          {
+            "amount": "10000",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": null,
+            "discount_percent": null,
+            "discounts": null,
+            "end_time": "2015-08-26T12:00:00+00:00",
+            "free_tier": false,
+            "id": "9",
+            "period": "365 days, 2:47:23.682426",
+            "price": "0E-20",
+            "remaining": "10000",
+            "resource": "cpu",
+            "resource_uri": "/api/2.0/subscriptions/9/",
+            "start_time": "2014-08-26T09:12:36.317574+00:00",
+            "status": "active",
+            "subscribed_object": null,
+            "uuid": "664fb99b-f8cc-4e85-8764-ef3215767682",
+            "was_billed": true
+          }
+        ],
+        "price": "0E-20"
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -552,6 +668,30 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-0763e4432c5cfbe7a09c28a2",
+      "fixture_payload": {
+        "objects": [
+          {
+            "amount": "30000",
+            "auto_renew": true,
+            "descendants": [],
+            "discount_amount": "0",
+            "discount_percent": "0",
+            "end_time": "2013-04-22T12:00:00+00:00",
+            "id": "28",
+            "period": "31 days, 1:31:53.888650",
+            "price": "0.000003839842975139617919921875",
+            "remaining": "30000",
+            "resource": "dssd",
+            "resource_uri": "/api/2.0/subscriptions/28/",
+            "start_time": "2013-03-22T10:28:06.111350+00:00",
+            "status": "active",
+            "subscribed_object": null,
+            "uuid": "f622f364-bccf-4a36-a1ce-632a81640ad4"
+          }
+        ],
+        "price": "0.000003839842975139617919921875"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -1005,6 +1145,25 @@
     {
       "anchor": "calculator",
       "classification": "response-example",
+      "fixture_id": "fixture-06c657bb9b8548fc7a4000ce",
+      "fixture_payload": {
+        "objects": [
+          {
+            "amount": "10000000000",
+            "discount_amount": "0E-24",
+            "discount_percent": "0",
+            "discounts": {},
+            "end_time": "2015-04-20T12:00:00+00:00",
+            "free_tier": false,
+            "period": "31 days, 22:04:59.904871",
+            "price": "1.010484993457794189453125",
+            "resource": "dssd",
+            "start_time": "2015-03-19T13:55:00.095129+00:00",
+            "was_billed": true
+          }
+        ],
+        "price": "1.010484993457794189453125"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -1132,6 +1291,21 @@
       "anchor": "calculator",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "amount": "32212254720",
+        "discount_amount": "9.60750000000000000",
+        "discount_percent": "0.2500000000",
+        "discounts": {
+          "period": "0.2500000000"
+        },
+        "end_time": "2016-08-26T12:00:00+00:00",
+        "free_tier": false,
+        "period": "366 days, 0:00:00",
+        "price": "28.82250000000000000000",
+        "resource": "dssd",
+        "start_time": "2015-08-26T12:00:00+00:00",
+        "was_billed": true
+      },
       "kind": "code",
       "original_sha256": "1c6b9d087566565fda525724129542fda1045ce86c420f9a186913f433293d37",
       "shape": [

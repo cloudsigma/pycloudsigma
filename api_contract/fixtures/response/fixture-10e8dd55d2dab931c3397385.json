@@ -1,0 +1,79 @@
+{
+  "objects": [
+    {
+      "enable_backup_policy_notifications": true,
+      "enable_retention_policy_notifications": false,
+      "grantees": [],
+      "incremental_backup": {
+        "day_of_month": "*",
+        "day_of_week": [
+          "*"
+        ],
+        "end_time": {
+          "hour": 11,
+          "minute": 45
+        },
+        "hour": "1",
+        "minute": "0",
+        "month": "*",
+        "repeat": {
+          "hour": "",
+          "minute": ""
+        },
+        "start_time": {
+          "hour": 12,
+          "minute": 0
+        }
+      },
+      "initial_backup": {
+        "day_of_week": [
+          "*"
+        ],
+        "end_time": {
+          "hour": 11,
+          "minute": 45
+        },
+        "start_time": {
+          "hour": 12,
+          "minute": 0
+        }
+      },
+      "is_default": false,
+      "is_enabled": true,
+      "manual_incremental_backup": "",
+      "meta": {},
+      "name": "Son, Father, GrandFather Policy",
+      "orchestrator_timezone": "",
+      "owner": {
+        "resource_uri": "/api/2.0/user/6a02f732-4dae-47d6-ac18-f4ddb6fc4b31/",
+        "uuid": "6a02f732-4dae-47d6-ac18-f4ddb6fc4b31"
+      },
+      "permissions": [],
+      "remote_location": "",
+      "resource_uri": "/api/2.0/backupschedulers/0377f6e9-e5f2-4a0a-bb4e-c28c8424eda1/",
+      "retention_policy": {
+        "name": "Son, Father, GrandFather Policy",
+        "rules": [
+          {
+            "period": "days",
+            "quantity": 7
+          },
+          {
+            "period": "weeks",
+            "quantity": 4,
+            "time_option": 1
+          },
+          {
+            "period": "months",
+            "quantity": 12,
+            "time_option": 23
+          }
+        ]
+      },
+      "tags": [],
+      "type": "snapshot",
+      "user_timezone": "Etc/GMT+12",
+      "uuid": "0377f6e9-e5f2-4a0a-bb4e-c28c8424eda1"
+    }
+  ]
+}

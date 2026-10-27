@@ -1,0 +1,6 @@
+{
+  "action": "open_vnc",
+  "result": "success",
+  "uuid": "80751bc7-37cc-48c1-bb08-fd04b46090bf",
+  "vnc_url": "vnc://direct.zrh.cloudsigma.com:42714"
+}

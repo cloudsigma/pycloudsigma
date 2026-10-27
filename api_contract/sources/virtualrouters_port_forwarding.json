@@ -95,6 +95,23 @@
     {
       "anchor": "list-single-port-forward",
       "classification": "response-example",
+      "fixture_id": "fixture-38bad70714c8df36319f2362",
+      "fixture_payload": {
+        "forwarding_host": "10.0.1.22",
+        "forwarding_port": 2222,
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/f67e71ef-7be2-4277-92b3-adce07ce7571/",
+            "uuid": "f67e71ef-7be2-4277-92b3-adce07ce7571"
+          }
+        ],
+        "mapped_port": 22,
+        "nat": "38589c2f-035e-4616-9cca-1d93e71490d5",
+        "order": 1,
+        "protocol": "TCP",
+        "resource_uri": "/api/2.0/portforwards/c7eed42d-4f05-4c4a-b070-84bd266ac800/",
+        "uuid": "c7eed42d-4f05-4c4a-b070-84bd266ac800"
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -226,6 +243,27 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-c8fc4457f7584dc720894fc9",
+      "fixture_payload": {
+        "objects": [
+          {
+            "forwarding_host": "10.0.1.22",
+            "forwarding_port": 2222,
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/63fb18bf-b486-44f4-a9a0-df8239a1b125/",
+                "uuid": "63fb18bf-b486-44f4-a9a0-df8239a1b125"
+              }
+            ],
+            "mapped_port": 22,
+            "nat": "38589c2f-035e-4616-9cca-1d93e71490d5",
+            "order": 2,
+            "protocol": "TCP",
+            "resource_uri": "/api/2.0/portforwards/a6626dca-bd73-420c-bb86-bfced4de0e78/",
+            "uuid": "a6626dca-bd73-420c-bb86-bfced4de0e78"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -369,6 +407,14 @@
     {
       "anchor": "deleting",
       "classification": "response-example",
+      "fixture_id": "fixture-6cbab5acbd7c508047810ff7",
+      "fixture_payload": {
+        "job": {
+          "resource_uri": "/api/2.0/jobs/55df93ac-af7d-489d-985c-99794eb45f86/",
+          "uuid": "55df93ac-af7d-489d-985c-99794eb45f86"
+        },
+        "uuid": "c7eed42d-4f05-4c4a-b070-84bd266ac800"
+      },
       "kind": "code",
       "operation": {
         "method": "DELETE",

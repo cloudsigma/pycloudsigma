@@ -83,6 +83,52 @@
     {
       "anchor": "listing",
       "classification": "response-example",
+      "fixture_id": "fixture-ccd7724e320ede774bbef231",
+      "fixture_payload": {
+        "meta": {
+          "limit": 1500,
+          "offset": 0,
+          "total_count": 0
+        },
+        "objects": [
+          {
+            "amount": "6000",
+            "poll_time": "2024-10-08T11:52:57.757677+00:00",
+            "resource": "intel_cpu",
+            "uuid": "f493b092-5eef-4a17-bf34-cfaec42f5fb2"
+          },
+          {
+            "amount": "3221225472",
+            "poll_time": "2024-10-08T11:52:57.757677+00:00",
+            "resource": "intel_mem",
+            "uuid": "f493b092-5eef-4a17-bf34-cfaec42f5fb2"
+          },
+          {
+            "amount": "3221225472",
+            "poll_time": "2024-10-08T11:52:57.757677+00:00",
+            "resource": "dssd",
+            "uuid": "d73c3226-f53a-4c33-b11f-086ac0349a33"
+          },
+          {
+            "amount": "6000",
+            "poll_time": "2024-10-08T11:57:57.762428+00:00",
+            "resource": "intel_cpu",
+            "uuid": "f493b092-5eef-4a17-bf34-cfaec42f5fb2"
+          },
+          {
+            "amount": "3221225472",
+            "poll_time": "2024-10-08T11:57:57.762428+00:00",
+            "resource": "intel_mem",
+            "uuid": "f493b092-5eef-4a17-bf34-cfaec42f5fb2"
+          },
+          {
+            "amount": "3221225472",
+            "poll_time": "2024-10-08T11:57:57.762428+00:00",
+            "resource": "dssd",
+            "uuid": "d73c3226-f53a-4c33-b11f-086ac0349a33"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",

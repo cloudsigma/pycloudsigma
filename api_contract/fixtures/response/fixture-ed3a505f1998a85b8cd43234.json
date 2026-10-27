@@ -1,0 +1,37 @@
+{
+  "context": true,
+  "cpu": 1000,
+  "cpu_model": null,
+  "cpu_type": "amd",
+  "cpus_instead_of_cores": false,
+  "drives": [],
+  "enable_numa": false,
+  "grantees": [],
+  "hv_relaxed": false,
+  "hv_tsc": false,
+  "hypervisor": "kvm",
+  "jobs": [
+    {
+      "resource_uri": "/api/2.0/jobs/559a2a76-df4a-4c0d-8449-979576b2c354/",
+      "uuid": "559a2a76-df4a-4c0d-8449-979576b2c354"
+    }
+  ],
+  "mem": 536870912,
+  "meta": {},
+  "name": "test_cloned_server_name",
+  "nics": [],
+  "owner": {
+    "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+    "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+  },
+  "permissions": [],
+  "pubkeys": [],
+  "requirements": [],
+  "resource_uri": "/api/2.0/servers/2d69b07c-c7a3-4e25-88d2-c7055217e1fb/",
+  "runtime": null,
+  "smp": 1,
+  "status": "stopped",
+  "tags": [],
+  "uuid": "2d69b07c-c7a3-4e25-88d2-c7055217e1fb",
+  "vnc_password": "<redacted>"
+}

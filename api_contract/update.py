@@ -139,6 +139,23 @@ def response_shape(value, path="$", found=None):
     return [{"field_path": key, "observed_types": sorted(types)} for key, types in sorted(found.items())]
 
 
+SENSITIVE_KEY_RE = re.compile(
+    r"(?:password|passphrase|secret|token|authorization|credential|private[_-]?key|api[_-]?key|access[_-]?key)",
+    re.I,
+)
+
+
+def sanitize_fixture(value, key=""):
+    """Keep public example shape while removing credential-like scalar values."""
+    if SENSITIVE_KEY_RE.search(key):
+        return "<redacted>"
+    if isinstance(value, dict):
+        return {name: sanitize_fixture(child, name) for name, child in value.items()}
+    if isinstance(value, list):
+        return [sanitize_fixture(child, key) for child in value]
+    return value
+
+
 def api_path(path):
     if path.startswith("/api/"):
         return path
@@ -255,7 +272,8 @@ def normalize_document(url, html):
                     elif schema_heading:
                         block["schema"] = value
                     else:
-                        block["shape"] = response_shape(value)
+                        block["fixture_payload"] = sanitize_fixture(value)
+                        block["shape"] = response_shape(block["fixture_payload"])
                 else:
                     block["classification"] = "unclassified-code"
             blocks.append(block)
@@ -265,6 +283,11 @@ def normalize_document(url, html):
                 visit(child, sections)
 
     visit(articles[0])
+    for block_index, block in enumerate(blocks):
+        if (block.get("classification") == "response-example"
+                and "fixture_payload" in block and block.get("operation")
+                and not block.get("binding_gap")):
+            block["fixture_id"] = identifier("fixture", url, block_index)
     links = []
     for href in parser.links:
         resolved = urlsplit(urljoin(url, href))._replace(fragment="").geturl()
@@ -329,18 +352,32 @@ def build_contract(documents, bindings):
                     key = operation["method"] + " " + operation["path"]
                     if key not in operations:
                         raise ValueError("response binding precedes operation declaration")
-                    operations[key]["response_examples"].append(source)
+                    fixture_payload = block.get("fixture_payload")
+                    fixture_id = block.get("fixture_id")
+                    fixture = None
+                    if fixture_id is not None:
+                        fixture_data = encoded(fixture_payload)
+                        fixture = {
+                            "fixture_id": fixture_id,
+                            "path": "fixtures/response/" + fixture_id + ".json",
+                            "sha256": digest(fixture_data),
+                            "status_code": block.get("status_code"),
+                            "source": source,
+                        }
+                    operations[key]["response_examples"].append(fixture or source)
                     for field in block.get("shape", []):
                         field_id = identifier("response", key, field["field_path"])
                         row = response_fields.setdefault(field_id, {
                             "field_id": field_id, "operation_id": key, "direction": "response",
                             "field_path": field["field_path"], "observed_types": [],
                             "required": None, "nullable": None, "writable": None,
-                            "authority": "response-example", "sources": [],
+                            "authority": "response-example", "sources": [], "fixture_ids": [],
                             "sdk_projection": "unverified", "assertion_evidence": [], "live_evidence": [],
                         })
                         row["observed_types"] = sorted(set(row["observed_types"]) | set(field["observed_types"]))
                         row["sources"].append(source)
+                        if fixture_id is not None:
+                            row["fixture_ids"].append(fixture_id)
                 if block.get("binding_gap"):
                     gaps.append({"kind": block["binding_gap"], "source": source})
             if block.get("parse_gap") and block["parse_gap"] != "empty-body":
@@ -398,6 +435,12 @@ def refresh(output):
         relative = "sources/" + name
         data = encoded(document)
         (output / relative).write_bytes(data)
+        for block in document["blocks"]:
+            fixture_id = block.get("fixture_id")
+            if fixture_id is not None:
+                fixture_path = output / "fixtures" / "response" / (fixture_id + ".json")
+                fixture_path.parent.mkdir(parents=True, exist_ok=True)
+                fixture_path.write_bytes(encoded(block["fixture_payload"]))
         sources.append({"url": url, "file": relative, "sha256": digest(data), "html_sha256": document["html_sha256"]})
     manifest = {"schema_version": 1, "entry_point": INDEX, "fetched_at": datetime.now(timezone.utc).isoformat(),
                 "discovery": "recursive same-directory public documentation links",

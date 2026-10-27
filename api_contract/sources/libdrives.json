@@ -90,6 +90,195 @@
     {
       "anchor": "listing",
       "classification": "response-example",
+      "fixture_id": "fixture-51f605bb7ea385aa9edef53f",
+      "fixture_payload": {
+        "meta": {
+          "limit": 5,
+          "offset": 0,
+          "total_count": 158
+        },
+        "objects": [
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "webserver",
+              "general",
+              "dbserver"
+            ],
+            "description": "Ubuntu 12.04.4 Server - 64bit Pre-Installed English with VirtIO support, SSH and Python. Last update on 2014/06/4.",
+            "distribution": "Ubuntu",
+            "favourite": false,
+            "image_type": "preinst",
+            "install_notes": "Initial Credentials: \\n Username: cloudsigma \\n Password: cs2014!!! \\n \\n Detailed Installation Instructions: \\n 1. Clone the Image. \\n The image needs to be cloned and then attached to a server. \\n \\n 2. Connect to your server via VNC. \\n a) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n b) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n OR \\n c) Having installed a compatible VNC client, open a VNC connection to your server through the UI. \\n d) Enter your VNC url and VNC password as displayed on your Server Properties Window. \\n \\n 3. Minimum Hardware Requirements. \\n The recommended minimum hardware requirements as published by ubuntu.com: 1GB RAM and 1GHz CPU \\n \\n 4. Update your administrator password. \\n For security reasons the \"root\" login is disabled (including for ssh) \\n User \"cloudsigma\" is available for access instead. \\n Please be aware that on first login you will be asked to change the initial password. \\n To switch to \"root\" please use the command \"sudo su\" for example. \\n \\n 5. Setup your OS. \\n The timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in. \\n \\n 6. Configuring your Networking. \\n a) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings. \\n b) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n",
+            "jobs": [],
+            "licenses": [],
+            "media": "disk",
+            "meta": {},
+            "mounted_on": [],
+            "name": "Ubuntu 12.04.4 Server",
+            "os": "linux",
+            "owner": null,
+            "paid": false,
+            "resource_uri": "/api/2.0/libdrives/d446038b-784d-4ae4-9a4d-46c7b51b403d/",
+            "size": 10737418240,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "",
+            "uuid": "d446038b-784d-4ae4-9a4d-46c7b51b403d",
+            "version": "12.04.4"
+          },
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "webserver",
+              "general",
+              "dbserver"
+            ],
+            "description": "Ubuntu 12.04.4 - 64bit Pre-Installed English with VirtIO support and SSH. Last update on 2014/06/4",
+            "distribution": "Ubuntu",
+            "favourite": false,
+            "image_type": "preinst",
+            "install_notes": "Initial Credentials: \\n Username: cloudsigma \\n Password: cs2014!!! \\n \\n Detailed Installation Instructions: \\n 1. Clone the Image. \\n The image needs to be cloned and then attached to a server. \\n \\n 2. Connect to your server via VNC. \\n a) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n b) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n OR \\n c) Having installed a compatible VNC client, open a VNC connection to your server through the UI. \\n d) Enter your VNC url and VNC password as displayed on your Server Properties Window. \\n \\n 3. Minimum Hardware Requirements. \\n The recommended minimum hardware requirements as published by ubuntu.com: 1GB RAM and 1GHz CPU \\n \\n 4. Update your administrator password. \\n For security reasons the \"root\" login is disabled (including for ssh) \\n User \"cloudsigma\" is available for access instead. \\n Please be aware that on first login you will be asked to change the initial password. \\n To switch to \"root\" please use the command \"sudo su\" for example. \\n \\n 5. Setup your OS. \\n The timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in. \\n \\n 6. Configuring your Networking. \\n a) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings. \\n b) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n",
+            "jobs": [],
+            "licenses": [],
+            "media": "disk",
+            "meta": {},
+            "mounted_on": [],
+            "name": "Ubuntu 12.04.4 Desktop",
+            "os": "linux",
+            "owner": null,
+            "paid": false,
+            "resource_uri": "/api/2.0/libdrives/0a06a5f5-a74e-4f1d-844e-b00d915cfd3c/",
+            "size": 10737418240,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "",
+            "uuid": "0a06a5f5-a74e-4f1d-844e-b00d915cfd3c",
+            "version": "12.04.4"
+          },
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "other"
+            ],
+            "description": "VirtIO Drivers for Windows v.0.1-65",
+            "distribution": null,
+            "favourite": false,
+            "image_type": "install",
+            "install_notes": "1. Attach the CD. \\n Please be aware that the CD needs to be attached to the server to IDE.\\n \\n 2. Attach VirtIO devices.\\n \\n The CD image with the VirtIO drivers does not include setup application. You will need to attach additional disk (or CD ) and network interface (recommended private) \\n In order to force windows to detect the new hardware (VirtIO) and require drivers.\\n \\n 3. Drivers installation.\\n \\n You must be logged on as an administrator to perform these steps.\\n \\n Open Device Manager by clicking the Start button Picture of the Start button, clicking Control Panel, clicking System and Maintenance, and then clicking Device Manager.‌\\n Administrator permission required If you are prompted for an administrator password or confirmation, type the password or provide confirmation.\\n \\n In Device Manager, locate the device you want to install, and then double-click the device name.\\n \\n Click the Driver tab, and then click install Driver and follow the instructions.\\n \\n Basically you need to browse to the CD subfolders and make sure selecting drivers are compatible with your windows distribution i.e. Win7 for Windows 2008 R2 and Vista for Windows 2008 R1\\n \\n 4. Power cycle and reattach all existing non-VirtIO devices on VirtIO\\n \\n Once you have properly installed drives you can shutdown the server and re-attach the system disk and the network interface on VirtIO. You can also detach all unnecessary devices and power on the server.\\n \\n Please be aware, if you are trying to run windows with system disk attached on VirtIO without installed drivers for VirtIO. Windows will stuck at blue screen error and probably reboot.\\n",
+            "jobs": [],
+            "licenses": [],
+            "media": "cdrom",
+            "meta": {},
+            "mounted_on": [],
+            "name": "VirtIO Drivers for Windows 0.1-65",
+            "os": "windows",
+            "owner": null,
+            "paid": false,
+            "resource_uri": "/api/2.0/libdrives/6626f7cd-6085-42a2-a0b4-42262c9c6036/",
+            "size": 1000013824,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "",
+            "uuid": "6626f7cd-6085-42a2-a0b4-42262c9c6036",
+            "version": null
+          },
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "general"
+            ],
+            "description": "Oracle Solaris 11.1 Server - 64bit - Install CD",
+            "distribution": null,
+            "favourite": false,
+            "image_type": "install",
+            "install_notes": "1. Attach the CD. \\n Please be aware that the CD needs to be attached to the server as IDE. \\n \\n 2. Attach a Drive. \\n Please be aware that the minimum drive size where you are going to install the OS should be 5 GB. \\n \\n 3. Connecting to your server via VNC. \\n a) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n b) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n OR \\n c) Having installed a compatible VNC client, open a VNC connection to your server through the UI. \\n d) Enter your VNC url and VNC password as displayed on your Server Properties Window. \\n \\n 4. Minimum Hardware Requirements. \\n The recommended minimum hardware requirements as published by oracle.com are: 0.5GB RAM and 0.5GHz CPU \\n \\n",
+            "jobs": [],
+            "licenses": [],
+            "media": "cdrom",
+            "meta": {},
+            "mounted_on": [],
+            "name": "Oracle Solaris 11.1 Server",
+            "os": "linux",
+            "owner": null,
+            "paid": false,
+            "resource_uri": "/api/2.0/libdrives/07f3cc68-203e-4094-92c6-5d684ad609b1/",
+            "size": 613695488,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "http://www.oracle.com/",
+            "uuid": "07f3cc68-203e-4094-92c6-5d684ad609b1",
+            "version": null
+          },
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "arch": "64",
+            "category": [
+              "dbserver"
+            ],
+            "description": "Pre-installed SQL Server 2012 Standard Edition with SP1 64bit English with VirtIO and Python support. Last update on 2013/11/05.",
+            "distribution": null,
+            "favourite": false,
+            "image_type": "preinst",
+            "install_notes": "Initial Credentials: \\n\r\nUsername: Cloudsigma \\n\r\nPassword: cs2013! \\n\r\n\\n\r\nDetailed Installation Instructions: \\n\r\n1. Clone the Image \\n\r\nThe image needs to be cloned and then attached to a server. \\n\r\n \\n\r\n2. Buy a license \\n\r\nIn order to use CloudSigma's windows pre-installed image you need to buy a license from the UI: \\n\r\na) Click on Control Panel \\n\r\nb) Click on Subscriptions \\n\r\nC) Click on Purchase >> software licenses \\n\r\n \\n\r\n3. Connecting to your server via VNC \\n\r\na) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n\r\nb) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n\r\nOR \\n\r\nc) Having installed a compatible VNC client, open a VNC connection to your server through the UI.  \\n\r\nd) Enter your VNC url and VNC password as displayed on your Server Properties Window.  \\n\r\n \\n\r\n4. Minimum Hardware Requirements \\n\r\nThe recommended minimum hardware requirements as published by Microsoft can be found through the following link: http://msdn.microsoft.com/en-us/windowsserver/cc196364.aspx .\r\nWe recommend specifying a higher level of RAM for a better user experience. \\n\r\n \\n\r\n5. Update your administrator password \\n\r\nFor security reasons the \"administrator\" login is disabled. \\n\r\nUser \"cloudsigma\" is available for access instead. \\n\r\nPlease be aware that on first login you will be asked to change the initial password.  \\n\r\n \\n\r\n6. Setup your Windows \\n\r\nThe timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in.  \\n\r\n \\n\r\n7. Configuring your Networking \\n\r\na) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings.  \\n\r\nb) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n\r\n\\n\r\n8. Expanding your drive \\n\r\nThe system is fully installed, but you will need to extend the disk partition to cover the whole of your drive. In order to do this please follow the steps below: \\n\r\na) Open the \"Computer Management\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) Select \"Storage\" then \"Disk Management\" in the left hand pane \\n\r\nc) Right-click on the 19.90 GB NTFS primary partition, and select \"Extend Volume\" \\n\r\nd) Enter the amount of disk space that you want to increase the Volume size by (the default will be the maximum available) \\n\r\nYou will need to repeat this procedure if you ever resize this drive in future. \\n\r\n \\n\r\n9. Enabling Remote Access \\n\r\nAfter logging in thought VNC for a first time to configure your new Windows server, we recommend that if you are logging in from a Windows Desktop that you enable Remote Desktop for better access performance. To do this, follow these instructions below: \\n\r\na) Select \"Start\" | \"Applications\" | \"Control Panel\" \\n\r\nb) Select \"System and Security\" \\n\r\nc) Under \"System\" select \"Allow Remote Access\" \\n\r\nd) Select the corresponding connection type according to your Security Configuration \\n\r\n \\n\r\n10. Pinging Service \\n\r\nThe Pinging service has been turned on by default, if you wish to disable it please follow the instructions below: \\n\r\na) Select the \"Windows Firewall with Advanced Security\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) On the left hand pane, select \"Inbound Rules\" \\n\r\nc) On the middle pane, select the rules \"File and Printer Sharing (Echo Request - ICMPv4-In)\" and \"File and Printer Sharing (Echo Request - ICMPv6-In)\" \\n\r\nd) From the right-hand pane, select \"Disable Rules\" \\n\r\n",
+            "jobs": [],
+            "licenses": [
+              {
+                "amount": 1,
+                "license": {
+                  "burstable": true,
+                  "long_name": "Windows Server",
+                  "name": "msft_p73_04837_core",
+                  "resource_uri": "/api/2.0/licenses/12/",
+                  "type": "instance",
+                  "user_metric": "smp"
+                },
+                "user": null
+              },
+              {
+                "amount": 1,
+                "license": {
+                  "burstable": false,
+                  "long_name": "SQL Server Standard Edition",
+                  "name": "msft_7nq_00302",
+                  "resource_uri": "/api/2.0/licenses/14/",
+                  "type": "instance",
+                  "user_metric": "smp"
+                },
+                "user": null
+              }
+            ],
+            "media": "disk",
+            "meta": {},
+            "mounted_on": [],
+            "name": "Microsoft SQL Server 2012 Standard Edition with SP1",
+            "os": "windows",
+            "owner": null,
+            "paid": true,
+            "resource_uri": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/",
+            "size": 64424509440,
+            "status": "unmounted",
+            "storage_type": null,
+            "tags": [],
+            "url": "http://www.microsoft.com/",
+            "uuid": "c7105ec8-5d60-43a7-a11b-18dcfc1a4433",
+            "version": null
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -425,6 +614,62 @@
     {
       "anchor": "list-single-drive",
       "classification": "response-example",
+      "fixture_id": "fixture-b1b25227503949a2fa988e49",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "arch": "64",
+        "category": [
+          "dbserver"
+        ],
+        "description": "Pre-installed SQL Server 2012 Standard Edition with SP1 64bit English with VirtIO and Python support. Last update on 2013/11/05.",
+        "distribution": null,
+        "favourite": false,
+        "image_type": "preinst",
+        "install_notes": "Initial Credentials: \\n\r\nUsername: Cloudsigma \\n\r\nPassword: cs2013! \\n\r\n\\n\r\nDetailed Installation Instructions: \\n\r\n1. Clone the Image \\n\r\nThe image needs to be cloned and then attached to a server. \\n\r\n \\n\r\n2. Buy a license \\n\r\nIn order to use CloudSigma's windows pre-installed image you need to buy a license from the UI: \\n\r\na) Click on Control Panel \\n\r\nb) Click on Subscriptions \\n\r\nC) Click on Purchase >> software licenses \\n\r\n \\n\r\n3. Connecting to your server via VNC \\n\r\na) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n\r\nb) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n\r\nOR \\n\r\nc) Having installed a compatible VNC client, open a VNC connection to your server through the UI.  \\n\r\nd) Enter your VNC url and VNC password as displayed on your Server Properties Window.  \\n\r\n \\n\r\n4. Minimum Hardware Requirements \\n\r\nThe recommended minimum hardware requirements as published by Microsoft can be found through the following link: http://msdn.microsoft.com/en-us/windowsserver/cc196364.aspx .\r\nWe recommend specifying a higher level of RAM for a better user experience. \\n\r\n \\n\r\n5. Update your administrator password \\n\r\nFor security reasons the \"administrator\" login is disabled. \\n\r\nUser \"cloudsigma\" is available for access instead. \\n\r\nPlease be aware that on first login you will be asked to change the initial password.  \\n\r\n \\n\r\n6. Setup your Windows \\n\r\nThe timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in.  \\n\r\n \\n\r\n7. Configuring your Networking \\n\r\na) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings.  \\n\r\nb) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n\r\n\\n\r\n8. Expanding your drive \\n\r\nThe system is fully installed, but you will need to extend the disk partition to cover the whole of your drive. In order to do this please follow the steps below: \\n\r\na) Open the \"Computer Management\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) Select \"Storage\" then \"Disk Management\" in the left hand pane \\n\r\nc) Right-click on the 19.90 GB NTFS primary partition, and select \"Extend Volume\" \\n\r\nd) Enter the amount of disk space that you want to increase the Volume size by (the default will be the maximum available) \\n\r\nYou will need to repeat this procedure if you ever resize this drive in future. \\n\r\n \\n\r\n9. Enabling Remote Access \\n\r\nAfter logging in thought VNC for a first time to configure your new Windows server, we recommend that if you are logging in from a Windows Desktop that you enable Remote Desktop for better access performance. To do this, follow these instructions below: \\n\r\na) Select \"Start\" | \"Applications\" | \"Control Panel\" \\n\r\nb) Select \"System and Security\" \\n\r\nc) Under \"System\" select \"Allow Remote Access\" \\n\r\nd) Select the corresponding connection type according to your Security Configuration \\n\r\n \\n\r\n10. Pinging Service \\n\r\nThe Pinging service has been turned on by default, if you wish to disable it please follow the instructions below: \\n\r\na) Select the \"Windows Firewall with Advanced Security\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) On the left hand pane, select \"Inbound Rules\" \\n\r\nc) On the middle pane, select the rules \"File and Printer Sharing (Echo Request - ICMPv4-In)\" and \"File and Printer Sharing (Echo Request - ICMPv6-In)\" \\n\r\nd) From the right-hand pane, select \"Disable Rules\" \\n\r\n",
+        "jobs": [],
+        "licenses": [
+          {
+            "amount": 1,
+            "license": {
+              "burstable": false,
+              "long_name": "SQL Server Standard Edition",
+              "name": "msft_7nq_00302",
+              "resource_uri": "/api/2.0/licenses/14/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          },
+          {
+            "amount": 1,
+            "license": {
+              "burstable": true,
+              "long_name": "Windows Server",
+              "name": "msft_p73_04837_core",
+              "resource_uri": "/api/2.0/licenses/12/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          }
+        ],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "Microsoft SQL Server 2012 Standard Edition with SP1",
+        "os": "windows",
+        "owner": null,
+        "paid": true,
+        "resource_uri": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/",
+        "size": 64424509440,
+        "status": "unmounted",
+        "storage_type": null,
+        "tags": [],
+        "url": "http://www.microsoft.com/",
+        "uuid": "c7105ec8-5d60-43a7-a11b-18dcfc1a4433",
+        "version": null
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -745,6 +990,56 @@
       "anchor": "recognizing-library-drives",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [],
+        "jobs": [],
+        "licenses": [
+          {
+            "amount": 1,
+            "license": {
+              "burstable": false,
+              "long_name": "SQL Server Standard Edition",
+              "name": "msft_7nq_00302",
+              "resource_uri": "/api/2.0/licenses/14/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          },
+          {
+            "amount": 1,
+            "license": {
+              "burstable": true,
+              "long_name": "Windows Server",
+              "name": "msft_p73_04837_core",
+              "resource_uri": "/api/2.0/licenses/12/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          }
+        ],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "Microsoft SQL Server 2012 Standard Edition with SP1",
+        "owner": null,
+        "permissions": [],
+        "resource_uri": "/api/2.0/drives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/",
+        "runtime": {
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 64424509440,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [],
+        "uuid": "c7105ec8-5d60-43a7-a11b-18dcfc1a4433"
+      },
       "kind": "code",
       "original_sha256": "cbc1d361757cadc9d2d5ca67b28100c2d1563691d1a2ff05b117ddd2e9fab9d0",
       "shape": [
@@ -971,6 +1266,61 @@
       "anchor": "recognizing-library-drives",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "arch": "64",
+        "category": [
+          "dbserver"
+        ],
+        "description": "Pre-installed SQL Server 2012 Standard Edition with SP1 64bit English with VirtIO and Python support. Last update on 2013/11/05.",
+        "distribution": null,
+        "favourite": false,
+        "image_type": "preinst",
+        "install_notes": "Initial Credentials: \\n\r\nUsername: Cloudsigma \\n\r\nPassword: cs2013! \\n\r\n\\n\r\nDetailed Installation Instructions: \\n\r\n1. Clone the Image \\n\r\nThe image needs to be cloned and then attached to a server. \\n\r\n \\n\r\n2. Buy a license \\n\r\nIn order to use CloudSigma's windows pre-installed image you need to buy a license from the UI: \\n\r\na) Click on Control Panel \\n\r\nb) Click on Subscriptions \\n\r\nC) Click on Purchase >> software licenses \\n\r\n \\n\r\n3. Connecting to your server via VNC \\n\r\na) Go to the “Properties” tab of the server and Turn on the VNC Tunnel by clicking the button right next to it \\n\r\nb) In order to use the inbuilt client click on the icon right next to the VNC link and choose “Open in Dialog Window” or “Open in new browser window/tab” \\n\r\nOR \\n\r\nc) Having installed a compatible VNC client, open a VNC connection to your server through the UI.  \\n\r\nd) Enter your VNC url and VNC password as displayed on your Server Properties Window.  \\n\r\n \\n\r\n4. Minimum Hardware Requirements \\n\r\nThe recommended minimum hardware requirements as published by Microsoft can be found through the following link: http://msdn.microsoft.com/en-us/windowsserver/cc196364.aspx .\r\nWe recommend specifying a higher level of RAM for a better user experience. \\n\r\n \\n\r\n5. Update your administrator password \\n\r\nFor security reasons the \"administrator\" login is disabled. \\n\r\nUser \"cloudsigma\" is available for access instead. \\n\r\nPlease be aware that on first login you will be asked to change the initial password.  \\n\r\n \\n\r\n6. Setup your Windows \\n\r\nThe timezone is set to the default one of the OS. So please change it to the desired one as soon as you are logged in.  \\n\r\n \\n\r\n7. Configuring your Networking \\n\r\na) IP networking can be left as DHCP. Even if you are using a static IP address with this server our management layer will apply the same IP address via DHCP. It is recommended to use DHCP which will ensure that there will be no issues receiving the correct networking settings.  \\n\r\nb) CloudSigma employs with an open networking infrastructure. All ports are opened for inbound and outbound traffic. Only for trial users port 25 (SMTP) is blocked. It is important that you secure the access to your server according to your needs. \\n\r\n\\n\r\n8. Expanding your drive \\n\r\nThe system is fully installed, but you will need to extend the disk partition to cover the whole of your drive. In order to do this please follow the steps below: \\n\r\na) Open the \"Computer Management\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) Select \"Storage\" then \"Disk Management\" in the left hand pane \\n\r\nc) Right-click on the 19.90 GB NTFS primary partition, and select \"Extend Volume\" \\n\r\nd) Enter the amount of disk space that you want to increase the Volume size by (the default will be the maximum available) \\n\r\nYou will need to repeat this procedure if you ever resize this drive in future. \\n\r\n \\n\r\n9. Enabling Remote Access \\n\r\nAfter logging in thought VNC for a first time to configure your new Windows server, we recommend that if you are logging in from a Windows Desktop that you enable Remote Desktop for better access performance. To do this, follow these instructions below: \\n\r\na) Select \"Start\" | \"Applications\" | \"Control Panel\" \\n\r\nb) Select \"System and Security\" \\n\r\nc) Under \"System\" select \"Allow Remote Access\" \\n\r\nd) Select the corresponding connection type according to your Security Configuration \\n\r\n \\n\r\n10. Pinging Service \\n\r\nThe Pinging service has been turned on by default, if you wish to disable it please follow the instructions below: \\n\r\na) Select the \"Windows Firewall with Advanced Security\" tool from \"Administrative Tools\" on the \"Start\" menu. \\n\r\nb) On the left hand pane, select \"Inbound Rules\" \\n\r\nc) On the middle pane, select the rules \"File and Printer Sharing (Echo Request - ICMPv4-In)\" and \"File and Printer Sharing (Echo Request - ICMPv6-In)\" \\n\r\nd) From the right-hand pane, select \"Disable Rules\" \\n\r\n",
+        "jobs": [],
+        "licenses": [
+          {
+            "amount": 1,
+            "license": {
+              "burstable": false,
+              "long_name": "SQL Server Standard Edition",
+              "name": "msft_7nq_00302",
+              "resource_uri": "/api/2.0/licenses/14/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          },
+          {
+            "amount": 1,
+            "license": {
+              "burstable": true,
+              "long_name": "Windows Server",
+              "name": "msft_p73_04837_core",
+              "resource_uri": "/api/2.0/licenses/12/",
+              "type": "instance",
+              "user_metric": "smp"
+            },
+            "user": null
+          }
+        ],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "Microsoft SQL Server 2012 Standard Edition with SP1",
+        "os": "windows",
+        "owner": null,
+        "paid": true,
+        "resource_uri": "/api/2.0/libdrives/c7105ec8-5d60-43a7-a11b-18dcfc1a4433/",
+        "size": 64424509440,
+        "status": "unmounted",
+        "storage_type": null,
+        "tags": [],
+        "url": "http://www.microsoft.com/",
+        "uuid": "c7105ec8-5d60-43a7-a11b-18dcfc1a4433",
+        "version": null
+      },
       "kind": "code",
       "original_sha256": "f6b3a7242ed68acfdebd8c074e87efd8588e1cbd5907af44ac996b15c60eb874",
       "shape": [

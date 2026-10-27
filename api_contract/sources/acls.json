@@ -185,6 +185,123 @@
     {
       "anchor": "listing",
       "classification": "response-example",
+      "fixture_id": "fixture-f6664bc698a9ec8c3ccb6203",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 3
+        },
+        "objects": [
+          {
+            "grantees": [
+              {
+                "email": "user2@example.com",
+                "resource_uri": {
+                  "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+                  "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+                },
+                "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+              }
+            ],
+            "meta": {},
+            "name": "shared_acl",
+            "owner": {
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            },
+            "resource_uri": "/api/2.0/acls/d29837e8-27ea-46e8-8b46-843d0df50a82/",
+            "rules": [
+              {
+                "permission": "ATTACH"
+              },
+              {
+                "permission": "OPEN_VNC"
+              },
+              {
+                "permission": "LIST"
+              },
+              {
+                "permission": "EDIT"
+              },
+              {
+                "permission": "DELETE"
+              },
+              {
+                "permission": "START"
+              },
+              {
+                "permission": "STOP"
+              },
+              {
+                "permission": "CLONE"
+              }
+            ],
+            "tags": [],
+            "uuid": "d29837e8-27ea-46e8-8b46-843d0df50a82"
+          },
+          {
+            "grantees": [
+              {
+                "email": "user2@example.com",
+                "resource_uri": {
+                  "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+                  "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+                },
+                "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+              }
+            ],
+            "meta": {},
+            "name": "shared_acl",
+            "owner": {
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            },
+            "resource_uri": "/api/2.0/acls/58aa5d82-e890-44db-8cb8-fe3a2f159320/",
+            "rules": [
+              {
+                "permission": "ATTACH"
+              },
+              {
+                "permission": "OPEN_VNC"
+              },
+              {
+                "permission": "LIST"
+              },
+              {
+                "permission": "EDIT"
+              },
+              {
+                "permission": "DELETE"
+              },
+              {
+                "permission": "START"
+              },
+              {
+                "permission": "STOP"
+              },
+              {
+                "permission": "CLONE"
+              }
+            ],
+            "tags": [],
+            "uuid": "58aa5d82-e890-44db-8cb8-fe3a2f159320"
+          },
+          {
+            "grantees": [],
+            "meta": {},
+            "name": "test_acl",
+            "owner": {
+              "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+              "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+            },
+            "resource_uri": "/api/2.0/acls/adf048e8-5445-47cf-a09c-fc3cfb2c823f/",
+            "rules": [],
+            "tags": [],
+            "uuid": "adf048e8-5445-47cf-a09c-fc3cfb2c823f"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -389,6 +506,44 @@
       "anchor": "list-single-acl",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "grantees": [
+          {
+            "email": "user@example.com",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            },
+            "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+          }
+        ],
+        "meta": {},
+        "name": "test_acl",
+        "owner": {
+          "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+          "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+        },
+        "resource_uri": "/api/2.0/acls/adf048e8-5445-47cf-a09c-fc3cfb2c823f/",
+        "rules": [
+          {
+            "permission": "LIST"
+          },
+          {
+            "permission": "EDIT"
+          }
+        ],
+        "tags": [
+          {
+            "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+            "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+          },
+          {
+            "resource_uri": "/api/2.0/tags/5a9e6f2b-7927-4f30-88b5-0cc939208549/",
+            "uuid": "5a9e6f2b-7927-4f30-88b5-0cc939208549"
+          }
+        ],
+        "uuid": "adf048e8-5445-47cf-a09c-fc3cfb2c823f"
+      },
       "kind": "code",
       "original_sha256": "d47b37f652b7f40b4673cc225d914d77d3688cbad75469086173f7cf10593a8a",
       "shape": [
@@ -570,6 +725,24 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-3d7dbad5fa36d1a6efe5c89c",
+      "fixture_payload": {
+        "objects": [
+          {
+            "grantees": [],
+            "meta": {},
+            "name": "test_acl",
+            "owner": {
+              "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+              "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+            },
+            "resource_uri": "/api/2.0/acls/adf048e8-5445-47cf-a09c-fc3cfb2c823f/",
+            "rules": [],
+            "tags": [],
+            "uuid": "adf048e8-5445-47cf-a09c-fc3cfb2c823f"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -684,6 +857,49 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-80b6233eebaee8bb386f7559",
+      "fixture_payload": {
+        "objects": [
+          {
+            "grantees": [
+              {
+                "email": "user@example.com",
+                "resource_uri": {
+                  "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+                  "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+                },
+                "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+              }
+            ],
+            "meta": {},
+            "name": "test_with_grantees",
+            "owner": {
+              "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+              "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+            },
+            "resource_uri": "/api/2.0/acls/49134280-55ed-4f4e-815c-85c6dd3ab322/",
+            "rules": [
+              {
+                "permission": "LIST"
+              },
+              {
+                "permission": "EDIT"
+              }
+            ],
+            "tags": [
+              {
+                "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+                "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+              },
+              {
+                "resource_uri": "/api/2.0/tags/5a9e6f2b-7927-4f30-88b5-0cc939208549/",
+                "uuid": "5a9e6f2b-7927-4f30-88b5-0cc939208549"
+              }
+            ],
+            "uuid": "49134280-55ed-4f4e-815c-85c6dd3ab322"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -881,6 +1097,45 @@
     {
       "anchor": "editing",
       "classification": "response-example",
+      "fixture_id": "fixture-4192a0f8d5598aa7499f2486",
+      "fixture_payload": {
+        "grantees": [
+          {
+            "email": "user@example.com",
+            "resource_uri": {
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            },
+            "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+          }
+        ],
+        "meta": {},
+        "name": "test_acl",
+        "owner": {
+          "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+          "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+        },
+        "resource_uri": "/api/2.0/acls/adf048e8-5445-47cf-a09c-fc3cfb2c823f/",
+        "rules": [
+          {
+            "permission": "LIST"
+          },
+          {
+            "permission": "EDIT"
+          }
+        ],
+        "tags": [
+          {
+            "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+            "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+          },
+          {
+            "resource_uri": "/api/2.0/tags/5a9e6f2b-7927-4f30-88b5-0cc939208549/",
+            "uuid": "5a9e6f2b-7927-4f30-88b5-0cc939208549"
+          }
+        ],
+        "uuid": "adf048e8-5445-47cf-a09c-fc3cfb2c823f"
+      },
       "kind": "code",
       "operation": {
         "method": "PUT",
@@ -1108,6 +1363,21 @@
       "anchor": "full-example-of-sharing-a-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "meta": {},
+            "name": "test_TagOne",
+            "owner": {
+              "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+              "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+            },
+            "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+            "resources": [],
+            "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "b3b29c774f90589c1419d0d287a1bc8623652928ea4ed78c5ab5cdbf1c6178cf",
       "shape": [
@@ -1207,6 +1477,43 @@
       "anchor": "full-example-of-sharing-a-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "affinities": [],
+            "allow_multimount": false,
+            "grantees": [],
+            "jobs": [],
+            "licenses": [],
+            "media": "disk",
+            "meta": {},
+            "mounted_on": [],
+            "name": "test_drive_acl",
+            "owner": {
+              "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+              "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/drives/ac5ca635-d119-4dda-b27a-fa5a69fc17da/",
+            "runtime": {
+              "is_snapshotable": true,
+              "snapshots_allocated_size": 0,
+              "storage_type": "dssd"
+            },
+            "size": 2147483648,
+            "snapshots": [],
+            "status": "creating",
+            "storage_type": "dssd",
+            "tags": [
+              {
+                "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+                "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+              }
+            ],
+            "uuid": "ac5ca635-d119-4dda-b27a-fa5a69fc17da"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "fdd673ee00bc84177bf4f2b3623c40c53008e12010ddc1c5c00bed029e8136c6",
       "shape": [
@@ -1425,6 +1732,48 @@
       "anchor": "full-example-of-sharing-a-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "grantees": [
+              {
+                "email": "user@example.com",
+                "resource_uri": {
+                  "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+                  "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+                },
+                "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+              }
+            ],
+            "meta": {},
+            "name": "test_with_grantees",
+            "owner": {
+              "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+              "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+            },
+            "resource_uri": "/api/2.0/acls/49134280-55ed-4f4e-815c-85c6dd3ab322/",
+            "rules": [
+              {
+                "permission": "LIST"
+              },
+              {
+                "permission": "EDIT"
+              }
+            ],
+            "tags": [
+              {
+                "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+                "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+              },
+              {
+                "resource_uri": "/api/2.0/tags/5a9e6f2b-7927-4f30-88b5-0cc939208549/",
+                "uuid": "5a9e6f2b-7927-4f30-88b5-0cc939208549"
+              }
+            ],
+            "uuid": "49134280-55ed-4f4e-815c-85c6dd3ab322"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "f6883e3ed87ea884f4b31a2a0c9956fc235b561875ac7bc986a14e4c9efc9ddd",
       "shape": [
@@ -1592,6 +1941,51 @@
       "anchor": "full-example-of-sharing-a-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [
+          {
+            "permissions": [
+              "EDIT",
+              "LIST"
+            ],
+            "user": {
+              "email": null,
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            }
+          }
+        ],
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "test_drive_acl",
+        "owner": {
+          "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+          "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/drives/ac5ca635-d119-4dda-b27a-fa5a69fc17da/",
+        "runtime": {
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 2147483648,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [
+          {
+            "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+            "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+          }
+        ],
+        "uuid": "ac5ca635-d119-4dda-b27a-fa5a69fc17da"
+      },
       "kind": "code",
       "original_sha256": "27f1b31a19bac898a601113f099c5a0f6e1d1672f166831b349b2d2cc143e3a9",
       "shape": [
@@ -1825,6 +2219,59 @@
       "anchor": "full-example-of-sharing-a-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "objects": [
+          {
+            "context": true,
+            "cpu": 1000,
+            "cpu_model": null,
+            "cpu_type": "amd",
+            "cpus_instead_of_cores": false,
+            "drives": [],
+            "enable_numa": false,
+            "grantees": [
+              {
+                "permissions": [
+                  "EDIT",
+                  "LIST"
+                ],
+                "user": {
+                  "email": "user@example.com",
+                  "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+                  "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+                }
+              }
+            ],
+            "hv_relaxed": false,
+            "hv_tsc": false,
+            "hypervisor": "kvm",
+            "jobs": [],
+            "mem": 536870912,
+            "meta": {},
+            "name": "test_server",
+            "nics": [],
+            "owner": {
+              "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+              "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+            },
+            "permissions": [],
+            "pubkeys": [],
+            "requirements": [],
+            "resource_uri": "/api/2.0/servers/e97f8858-4c59-476f-b7e6-08ec2ec85582/",
+            "runtime": null,
+            "smp": 1,
+            "status": "stopped",
+            "tags": [
+              {
+                "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+                "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+              }
+            ],
+            "uuid": "e97f8858-4c59-476f-b7e6-08ec2ec85582",
+            "vnc_password": "<redacted>"
+          }
+        ]
+      },
       "kind": "code",
       "original_sha256": "1ae9a0cef05b52e4789cb52b0bffdd4d095990e4f47146443a607246324ad667",
       "shape": [
@@ -2159,6 +2606,39 @@
       "anchor": "finding-what-permissions-are-granted-to-you-on-a-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [],
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "test_drive_acl",
+        "owner": {
+          "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+          "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+        },
+        "permissions": [
+          "EDIT",
+          "LIST"
+        ],
+        "resource_uri": "/api/2.0/drives/ac5ca635-d119-4dda-b27a-fa5a69fc17da/",
+        "runtime": {
+          "is_downloadable": true,
+          "is_ephemeral": false,
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 2147483648,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [],
+        "uuid": "ac5ca635-d119-4dda-b27a-fa5a69fc17da"
+      },
       "kind": "code",
       "original_sha256": "2d22774c34d86ac9ce7cd108b4ebaf08690ae9f873e6191761d510563572e2c4",
       "shape": [
@@ -2377,6 +2857,51 @@
       "anchor": "finding-what-permissions-you-have-granted-on-a-resource",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "affinities": [],
+        "allow_multimount": false,
+        "grantees": [
+          {
+            "permissions": [
+              "EDIT",
+              "LIST"
+            ],
+            "user": {
+              "email": null,
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            }
+          }
+        ],
+        "jobs": [],
+        "licenses": [],
+        "media": "disk",
+        "meta": {},
+        "mounted_on": [],
+        "name": "test_drive_acl",
+        "owner": {
+          "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+          "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/drives/ac5ca635-d119-4dda-b27a-fa5a69fc17da/",
+        "runtime": {
+          "is_snapshotable": true,
+          "snapshots_allocated_size": 0,
+          "storage_type": "dssd"
+        },
+        "size": 2147483648,
+        "snapshots": [],
+        "status": "unmounted",
+        "storage_type": "dssd",
+        "tags": [
+          {
+            "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+            "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+          }
+        ],
+        "uuid": "ac5ca635-d119-4dda-b27a-fa5a69fc17da"
+      },
       "kind": "code",
       "original_sha256": "27f1b31a19bac898a601113f099c5a0f6e1d1672f166831b349b2d2cc143e3a9",
       "shape": [

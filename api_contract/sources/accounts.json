@@ -80,6 +80,11 @@
     {
       "anchor": "create-account",
       "classification": "response-example",
+      "fixture_id": "fixture-e9dbfde12476afedec1ea49a",
+      "fixture_payload": {
+        "success": true,
+        "uuid": "ba8cce4c-9809-4389-a41e-2f9faabf87e9"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",

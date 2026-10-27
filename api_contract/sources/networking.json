@@ -101,6 +101,24 @@
     {
       "anchor": "listing",
       "classification": "response-example",
+      "fixture_id": "fixture-d596d8e3227c52e4a19adc11",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 1
+        },
+        "objects": [
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "resource_uri": "/api/2.0/vlans/96537817-f4b6-496b-a861-e74192d3ccb0/",
+            "uuid": "96537817-f4b6-496b-a861-e74192d3ccb0"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -221,6 +239,34 @@
     {
       "anchor": "detailed-listing",
       "classification": "response-example",
+      "fixture_id": "fixture-e51c402260cb4ac29f806266",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 1
+        },
+        "objects": [
+          {
+            "bottom_vlan_tag": null,
+            "grantees": [],
+            "meta": {},
+            "owner": {
+              "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+              "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+            "servers": [],
+            "subscription": {
+              "id": 12,
+              "resource_uri": "/api/2.0/subscriptions/12/"
+            },
+            "tags": [],
+            "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -396,6 +442,24 @@
       "anchor": "get-single-vlan",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "bottom_vlan_tag": null,
+        "grantees": [],
+        "meta": {},
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+        "servers": [],
+        "subscription": {
+          "id": 12,
+          "resource_uri": "/api/2.0/subscriptions/12/"
+        },
+        "tags": [],
+        "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+      },
       "kind": "code",
       "original_sha256": "053cfe7910d96843f68028f29bedb31f229525e1aa3331c79acb8d8ec719da1c",
       "shape": [
@@ -547,6 +611,27 @@
       "anchor": "editing",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "bottom_vlan_tag": null,
+        "grantees": [],
+        "meta": {
+          "custom_field": "some custom data",
+          "name": "my vlan"
+        },
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/vlans/10619300-edda-42ba-91e0-7e3df0689d00/",
+        "servers": [],
+        "subscription": {
+          "id": 12,
+          "resource_uri": "/api/2.0/subscriptions/12/"
+        },
+        "tags": [],
+        "uuid": "10619300-edda-42ba-91e0-7e3df0689d00"
+      },
       "kind": "code",
       "original_sha256": "4977cd72d26df713c387ff63f001523b5a3558b33a69f58851660df353548155",
       "shape": [
@@ -798,6 +883,25 @@
     {
       "anchor": "id2",
       "classification": "response-example",
+      "fixture_id": "fixture-32dd0a177e4fbf7b559b203b",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 1
+        },
+        "objects": [
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "resource_uri": "/api/2.0/ips/185.12.6.183/",
+            "server": null,
+            "uuid": "185.12.6.183"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -924,6 +1028,40 @@
     {
       "anchor": "id3",
       "classification": "response-example",
+      "fixture_id": "fixture-1f7d0a35be8c021872c8e45f",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 1
+        },
+        "objects": [
+          {
+            "gateway": "185.12.6.1",
+            "grantees": [],
+            "meta": {},
+            "nameservers": [
+              "69.194.139.62",
+              "178.22.66.167",
+              "178.22.71.56"
+            ],
+            "netmask": 24,
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "permissions": [],
+            "resource_uri": "/api/2.0/ips/185.12.6.183/",
+            "server": null,
+            "subscription": {
+              "id": 7273,
+              "resource_uri": "/api/2.0/subscriptions/7273/"
+            },
+            "tags": [],
+            "uuid": "185.12.6.183"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -1117,6 +1255,30 @@
       "anchor": "get-single-ip",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "gateway": "185.12.6.1",
+        "grantees": [],
+        "meta": {},
+        "nameservers": [
+          "69.194.139.62",
+          "178.22.66.167",
+          "178.22.71.56"
+        ],
+        "netmask": 24,
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/ips/185.12.6.183/",
+        "server": null,
+        "subscription": {
+          "id": 7273,
+          "resource_uri": "/api/2.0/subscriptions/7273/"
+        },
+        "tags": [],
+        "uuid": "185.12.6.183"
+      },
       "kind": "code",
       "original_sha256": "6b1f80a66ef9d6ef0aa62689c779b3acce1ddef315ab02ad814316f688c400ec",
       "shape": [
@@ -1286,6 +1448,33 @@
       "anchor": "id5",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "gateway": "185.12.6.1",
+        "grantees": [],
+        "meta": {
+          "custom_field": "some custom data",
+          "name": "my ip"
+        },
+        "nameservers": [
+          "69.194.139.62",
+          "178.22.66.167",
+          "178.22.71.56"
+        ],
+        "netmask": 24,
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "permissions": [],
+        "resource_uri": "/api/2.0/ips/185.12.6.183/",
+        "server": null,
+        "subscription": {
+          "id": 7273,
+          "resource_uri": "/api/2.0/subscriptions/7273/"
+        },
+        "tags": [],
+        "uuid": "185.12.6.183"
+      },
       "kind": "code",
       "original_sha256": "c91a274a0de75bc7be16d267ea040318431b10c905e64f48b4f85b9102af875c",
       "shape": [

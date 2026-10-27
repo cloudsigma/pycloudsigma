@@ -1,0 +1,30 @@
+{
+  "meta": {},
+  "name": "TagCreatedWithResource",
+  "owner": {
+    "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+    "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+  },
+  "resource_uri": "/api/2.0/tags/c91f7742-e3b9-4794-a178-f0831ee1d3d2/",
+  "resources": [
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "res_type": "drives",
+      "resource_uri": "/api/2.0/drives/08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd/",
+      "uuid": "08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd"
+    },
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "res_type": "snapshots",
+      "resource_uri": "/api/2.0/snapshots/00fc1dd8-893b-4b51-b859-8d5f1ef0cf7f/",
+      "uuid": "00fc1dd8-893b-4b51-b859-8d5f1ef0cf7f"
+    }
+  ],
+  "uuid": "c91f7742-e3b9-4794-a178-f0831ee1d3d2"
+}

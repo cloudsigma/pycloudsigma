@@ -1,0 +1,85 @@
+{
+  "objects": [
+    {
+      "configuration": {
+        "firewall": {
+          "active": false,
+          "policies": [],
+          "uuid": "b1f86fac-cd16-465f-b916-4a0dfa471be0"
+        },
+        "firewall_logging": false,
+        "lan_interface": [
+          {
+            "default_gateway": "",
+            "dhcp": false,
+            "ip_address": "10.0.1.1/24",
+            "ip_address_v6": "",
+            "ip_aliases": [],
+            "ip_range": {
+              "from": "",
+              "to": ""
+            },
+            "ipv4_enabled": true,
+            "ipv4_ipv6_enabled": false,
+            "ipv6_enabled": false,
+            "name": "LAN 1",
+            "router_advertiser": false,
+            "uuid": "04f2dfda-02f9-4bbf-aad9-356a2f1a852a",
+            "vlan": "8f33e6b8-4c1f-4474-a2ba-9ec74e0fdc14"
+          }
+        ],
+        "load_balancing": {
+          "active": false
+        },
+        "name": "Green Asteroid",
+        "nat": {
+          "active": false,
+          "address_forwarding": [],
+          "port_forwarding": [],
+          "uuid": "266d3a80-fa0a-4ab8-add0-c518cc52a5a9"
+        },
+        "qos": {
+          "active": false,
+          "services": [],
+          "uuid": "d76a8d65-0914-4e2a-a833-97212a36c521"
+        },
+        "routes": [],
+        "upstream": {
+          "ip_config": {
+            "default_gateway": "",
+            "dhcp_client": false,
+            "ip_address": "",
+            "ip_address_v6": "",
+            "ipv6_automatic": false,
+            "router_ipv6_default_gateway": "",
+            "upstream_lines": "",
+            "vlan": ""
+          },
+          "ipv4_address": "",
+          "uuid": "83ad34a9-6b88-49ea-bcee-ba5a49dc6392",
+          "vpn": {
+            "active": false,
+            "password": "<redacted>",
+            "username": "tethys",
+            "vpn_type": "pptp"
+          },
+          "wan_type": "internet"
+        },
+        "vpn": {
+          "active": false,
+          "tunnels": [],
+          "uuid": "513c354f-15ba-46e8-b179-f6024e6c7a9e"
+        }
+      },
+      "owner": {
+        "resource_uri": "/api/2.0/user/e26c5424-d8c5-4d03-b989-9cff5f1016ff/",
+        "uuid": "e26c5424-d8c5-4d03-b989-9cff5f1016ff"
+      },
+      "resource_uri": "/api/2.0/virtualrouters/89a3ec18-b22c-463f-b1c9-0c027fe148b9/",
+      "runtime": null,
+      "state": "stopped",
+      "status": "stopped",
+      "uuid": "89a3ec18-b22c-463f-b1c9-0c027fe148b9"
+    }
+  ]
+}

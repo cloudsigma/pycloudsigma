@@ -1,0 +1,17 @@
+{
+  "objects": [
+    {
+      "grantees": [],
+      "meta": {},
+      "name": "test_acl",
+      "owner": {
+        "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+        "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+      },
+      "resource_uri": "/api/2.0/acls/adf048e8-5445-47cf-a09c-fc3cfb2c823f/",
+      "rules": [],
+      "tags": [],
+      "uuid": "adf048e8-5445-47cf-a09c-fc3cfb2c823f"
+    }
+  ]
+}

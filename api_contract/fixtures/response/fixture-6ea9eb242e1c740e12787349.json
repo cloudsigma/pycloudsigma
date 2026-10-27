@@ -1,0 +1,98 @@
+{
+  "balance": {
+    "balance": "155367.99237092264288897986",
+    "currency": "EUR"
+  },
+  "usage": {
+    "amd_cpu": {
+      "burst": 0,
+      "subscribed": 10000,
+      "using": 0
+    },
+    "amd_mem": {
+      "burst": 0,
+      "subscribed": 17179869184,
+      "using": 0
+    },
+    "cpu": {
+      "burst": 0,
+      "subscribed": 10000,
+      "using": 0
+    },
+    "dssd": {
+      "burst": 0,
+      "subscribed": 32212254720,
+      "using": 30064771072
+    },
+    "ip": {
+      "burst": 0,
+      "subscribed": 1,
+      "using": 1
+    },
+    "mem": {
+      "burst": 0,
+      "subscribed": 17179869184,
+      "using": 0
+    },
+    "msft_7jq_00341": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "msft_7nq_00302": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "msft_p73_04837_core": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "msft_tfa_00523": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "sms": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "sparc_t4_cpu": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "sparc_t4_mem": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "ssd": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "tx": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "vlan": {
+      "burst": 0,
+      "subscribed": 1,
+      "using": 1
+    },
+    "vlan_ecx": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    },
+    "zadara": {
+      "burst": 0,
+      "subscribed": 0,
+      "using": 0
+    }
+  }
+}

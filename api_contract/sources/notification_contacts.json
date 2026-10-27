@@ -49,6 +49,24 @@
     {
       "anchor": "listing",
       "classification": "response-example",
+      "fixture_id": "fixture-2b98d62218cd61fb94435a92",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 1
+        },
+        "objects": [
+          {
+            "email": "some_email_1@example.com",
+            "main": true,
+            "name": "Some Name",
+            "phone": "",
+            "resource_uri": "/api/2.0/notification_contacts/e13c4b8c-68c8-4163-bc00-2a43a86e5937/",
+            "uuid": "e13c4b8c-68c8-4163-bc00-2a43a86e5937"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -180,6 +198,19 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-48be13738a95d6b5ed46080c",
+      "fixture_payload": {
+        "objects": [
+          {
+            "email": "some_email_2@example.com",
+            "main": null,
+            "name": "Some Name 2",
+            "phone": "+11235551234",
+            "resource_uri": "/api/2.0/notification_contacts/0103f398-9f85-446a-a285-fe63cf9f0f28/",
+            "uuid": "0103f398-9f85-446a-a285-fe63cf9f0f28"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -287,6 +318,16 @@
     {
       "anchor": "editing",
       "classification": "response-example",
+      "fixture_id": "fixture-458af0566c9ecee1c802a16d",
+      "fixture_payload": {
+        "email": "some_email_2@example.com",
+        "main": null,
+        "name": "Some New Name",
+        "phone": "+11235551234",
+        "pk": "0103f398-9f85-446a-a285-fe63cf9f0f28",
+        "resource_uri": "/api/2.0/notification_contacts/0103f398-9f85-446a-a285-fe63cf9f0f28/",
+        "uuid": "0103f398-9f85-446a-a285-fe63cf9f0f28"
+      },
       "kind": "code",
       "operation": {
         "method": "PUT",

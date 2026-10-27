@@ -95,6 +95,19 @@
     {
       "anchor": "list-single-ip-alias",
       "classification": "response-example",
+      "fixture_id": "fixture-c3f35eed413fff3fe9289e4c",
+      "fixture_payload": {
+        "interface": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+        "ip_address": "10.0.22.1",
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/9b293ff2-cf38-4b5f-837d-ac676a107993/",
+            "uuid": "9b293ff2-cf38-4b5f-837d-ac676a107993"
+          }
+        ],
+        "resource_uri": "/api/2.0/ipaliases/f317b570-1693-4002-95fe-172cd4327cb2/",
+        "uuid": "f317b570-1693-4002-95fe-172cd4327cb2"
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -202,6 +215,23 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-446a7f12a1504d7e3c378404",
+      "fixture_payload": {
+        "objects": [
+          {
+            "interface": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+            "ip_address": "10.0.22.1",
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/9b293ff2-cf38-4b5f-837d-ac676a107993/",
+                "uuid": "9b293ff2-cf38-4b5f-837d-ac676a107993"
+              }
+            ],
+            "resource_uri": "/api/2.0/ipaliases/f317b570-1693-4002-95fe-172cd4327cb2/",
+            "uuid": "f317b570-1693-4002-95fe-172cd4327cb2"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -321,6 +351,14 @@
     {
       "anchor": "deleting",
       "classification": "response-example",
+      "fixture_id": "fixture-c8ce60224052a73f9d21f045",
+      "fixture_payload": {
+        "job": {
+          "resource_uri": "/api/2.0/jobs/aa44571e-9dba-4f49-a553-2d4425a5a65a/",
+          "uuid": "aa44571e-9dba-4f49-a553-2d4425a5a65a"
+        },
+        "uuid": "f317b570-1693-4002-95fe-172cd4327cb2"
+      },
       "kind": "code",
       "operation": {
         "method": "DELETE",

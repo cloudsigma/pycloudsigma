@@ -95,6 +95,21 @@
     {
       "anchor": "list-single-route",
       "classification": "response-example",
+      "fixture_id": "fixture-0ad689194134e52aff240cf2",
+      "fixture_payload": {
+        "gateway": "91.92.71.129",
+        "inet": "inet",
+        "jobs": [
+          {
+            "resource_uri": "/api/2.0/jobs/9e9a97ec-2a84-4938-a390-0a08a40d3fb7/",
+            "uuid": "9e9a97ec-2a84-4938-a390-0a08a40d3fb7"
+          }
+        ],
+        "network": "default",
+        "resource_uri": "/api/2.0/routes/6251235d-c5a6-4422-a9e5-f6b4308f4f4a/",
+        "uuid": "6251235d-c5a6-4422-a9e5-f6b4308f4f4a",
+        "virtual_router": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -214,6 +229,25 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-445ed2dc9be1843a96309d96",
+      "fixture_payload": {
+        "objects": [
+          {
+            "gateway": "91.92.71.129",
+            "inet": "inet",
+            "jobs": [
+              {
+                "resource_uri": "/api/2.0/jobs/9e9a97ec-2a84-4938-a390-0a08a40d3fb7/",
+                "uuid": "9e9a97ec-2a84-4938-a390-0a08a40d3fb7"
+              }
+            ],
+            "network": "default",
+            "resource_uri": "/api/2.0/routes/8979c468-dd08-45d9-803a-86a9e870b8dc/",
+            "uuid": "6251235d-c5a6-4422-a9e5-f6b4308f4f4a",
+            "virtual_router": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -345,6 +379,14 @@
     {
       "anchor": "deleting",
       "classification": "response-example",
+      "fixture_id": "fixture-904d38bc6c46767ff39042f9",
+      "fixture_payload": {
+        "job": {
+          "resource_uri": "/api/2.0/jobs/0c0da23b-9a15-4c1a-8d6e-8a406862ce7e/",
+          "uuid": "0c0da23b-9a15-4c1a-8d6e-8a406862ce7e"
+        },
+        "uuid": "8979c468-dd08-45d9-803a-86a9e870b8dc"
+      },
       "kind": "code",
       "operation": {
         "method": "DELETE",

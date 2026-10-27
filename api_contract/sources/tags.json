@@ -115,6 +115,84 @@
     {
       "anchor": "listing",
       "classification": "response-example",
+      "fixture_id": "fixture-6a0c6810c48d88d3c8913075",
+      "fixture_payload": {
+        "meta": {
+          "limit": 0,
+          "offset": 0,
+          "total_count": 2
+        },
+        "objects": [
+          {
+            "meta": {},
+            "name": "MyGroupOfThings",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "resource_uri": "/api/2.0/tags/7b102579-e850-47cf-adf9-9c1a499b08f8/",
+            "resources": [],
+            "uuid": "7b102579-e850-47cf-adf9-9c1a499b08f8"
+          },
+          {
+            "meta": {},
+            "name": "TagCreatedWithResource",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "resource_uri": "/api/2.0/tags/c91f7742-e3b9-4794-a178-f0831ee1d3d2/",
+            "resources": [
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "vlans",
+                "resource_uri": "/api/2.0/vlans/96537817-f4b6-496b-a861-e74192d3ccb0/",
+                "uuid": "96537817-f4b6-496b-a861-e74192d3ccb0"
+              },
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "drives",
+                "resource_uri": "/api/2.0/drives/08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd/",
+                "uuid": "08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd"
+              },
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "servers",
+                "resource_uri": "/api/2.0/servers/cdeca2cf-4628-4169-8a3a-ceebedd9ea3a/",
+                "uuid": "cdeca2cf-4628-4169-8a3a-ceebedd9ea3a"
+              },
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "servers",
+                "resource_uri": "/api/2.0/servers/f52db291-f754-4434-acac-77268cbac94f/",
+                "uuid": "f52db291-f754-4434-acac-77268cbac94f"
+              },
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "ips",
+                "resource_uri": "/api/2.0/ips/185.12.6.183/",
+                "uuid": "185.12.6.183"
+              }
+            ],
+            "uuid": "c91f7742-e3b9-4794-a178-f0831ee1d3d2"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",
@@ -301,6 +379,63 @@
       "anchor": "list-single-tag",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "meta": {},
+        "name": "TagCreatedWithResource",
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "resource_uri": "/api/2.0/tags/c91f7742-e3b9-4794-a178-f0831ee1d3d2/",
+        "resources": [
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "res_type": "vlans",
+            "resource_uri": "/api/2.0/vlans/96537817-f4b6-496b-a861-e74192d3ccb0/",
+            "uuid": "96537817-f4b6-496b-a861-e74192d3ccb0"
+          },
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "res_type": "drives",
+            "resource_uri": "/api/2.0/drives/08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd/",
+            "uuid": "08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd"
+          },
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "res_type": "servers",
+            "resource_uri": "/api/2.0/servers/cdeca2cf-4628-4169-8a3a-ceebedd9ea3a/",
+            "uuid": "cdeca2cf-4628-4169-8a3a-ceebedd9ea3a"
+          },
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "res_type": "servers",
+            "resource_uri": "/api/2.0/servers/f52db291-f754-4434-acac-77268cbac94f/",
+            "uuid": "f52db291-f754-4434-acac-77268cbac94f"
+          },
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "res_type": "ips",
+            "resource_uri": "/api/2.0/ips/185.12.6.183/",
+            "uuid": "185.12.6.183"
+          }
+        ],
+        "uuid": "c91f7742-e3b9-4794-a178-f0831ee1d3d2"
+      },
       "kind": "code",
       "original_sha256": "e8500d996339419184c6f4d7f42b8775c9c7ce0cb5f2b67720f47c4ea61b6d7d",
       "shape": [
@@ -446,6 +581,22 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-e75e5bd63bbce2231671760e",
+      "fixture_payload": {
+        "objects": [
+          {
+            "meta": {},
+            "name": "MyGroupOfThings",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "resource_uri": "/api/2.0/tags/7b102579-e850-47cf-adf9-9c1a499b08f8/",
+            "resources": [],
+            "uuid": "7b102579-e850-47cf-adf9-9c1a499b08f8"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -548,6 +699,68 @@
     {
       "anchor": "creating",
       "classification": "response-example",
+      "fixture_id": "fixture-fa45909c9ba98bc6581df9b5",
+      "fixture_payload": {
+        "objects": [
+          {
+            "meta": {},
+            "name": "TagCreatedWithResource",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "resource_uri": "/api/2.0/tags/c91f7742-e3b9-4794-a178-f0831ee1d3d2/",
+            "resources": [
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "vlans",
+                "resource_uri": "/api/2.0/vlans/96537817-f4b6-496b-a861-e74192d3ccb0/",
+                "uuid": "96537817-f4b6-496b-a861-e74192d3ccb0"
+              },
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "drives",
+                "resource_uri": "/api/2.0/drives/08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd/",
+                "uuid": "08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd"
+              },
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "servers",
+                "resource_uri": "/api/2.0/servers/cdeca2cf-4628-4169-8a3a-ceebedd9ea3a/",
+                "uuid": "cdeca2cf-4628-4169-8a3a-ceebedd9ea3a"
+              },
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "servers",
+                "resource_uri": "/api/2.0/servers/f52db291-f754-4434-acac-77268cbac94f/",
+                "uuid": "f52db291-f754-4434-acac-77268cbac94f"
+              },
+              {
+                "owner": {
+                  "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+                  "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+                },
+                "res_type": "ips",
+                "resource_uri": "/api/2.0/ips/185.12.6.183/",
+                "uuid": "185.12.6.183"
+              }
+            ],
+            "uuid": "c91f7742-e3b9-4794-a178-f0831ee1d3d2"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
@@ -709,6 +922,37 @@
     {
       "anchor": "editing",
       "classification": "response-example",
+      "fixture_id": "fixture-da0ad8bdca07b201de86e117",
+      "fixture_payload": {
+        "meta": {},
+        "name": "TagCreatedWithResource",
+        "owner": {
+          "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+          "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+        },
+        "resource_uri": "/api/2.0/tags/c91f7742-e3b9-4794-a178-f0831ee1d3d2/",
+        "resources": [
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "res_type": "drives",
+            "resource_uri": "/api/2.0/drives/08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd/",
+            "uuid": "08b9874a-4b2c-4c33-a06e-bed5e0bfa6fd"
+          },
+          {
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "res_type": "snapshots",
+            "resource_uri": "/api/2.0/snapshots/00fc1dd8-893b-4b51-b859-8d5f1ef0cf7f/",
+            "uuid": "00fc1dd8-893b-4b51-b859-8d5f1ef0cf7f"
+          }
+        ],
+        "uuid": "c91f7742-e3b9-4794-a178-f0831ee1d3d2"
+      },
       "kind": "code",
       "operation": {
         "method": "PUT",
@@ -842,6 +1086,47 @@
       "anchor": "editing",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "context": true,
+        "cpu": 1000,
+        "cpu_model": null,
+        "cpu_type": "amd",
+        "cpus_instead_of_cores": false,
+        "drives": [],
+        "enable_numa": false,
+        "grantees": [],
+        "hv_relaxed": false,
+        "hv_tsc": false,
+        "hypervisor": "kvm",
+        "jobs": [],
+        "mem": 536870912,
+        "meta": {},
+        "name": "test_server2",
+        "nics": [],
+        "owner": {
+          "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        },
+        "permissions": [],
+        "pubkeys": [],
+        "requirements": [],
+        "resource_uri": "/api/2.0/servers/3576136a-0a7e-4ece-8050-f2e408fbca96/",
+        "runtime": null,
+        "smp": 1,
+        "status": "stopped",
+        "tags": [
+          {
+            "resource_uri": "/api/2.0/tags/00f4ea87-891c-4ee9-a28f-21e25b96dd48/",
+            "uuid": "00f4ea87-891c-4ee9-a28f-21e25b96dd48"
+          },
+          {
+            "resource_uri": "/api/2.0/tags/c66a2113-be9b-4157-93ac-fb8c0e82087c/",
+            "uuid": "c66a2113-be9b-4157-93ac-fb8c0e82087c"
+          }
+        ],
+        "uuid": "3576136a-0a7e-4ece-8050-f2e408fbca96",
+        "vnc_password": "<redacted>"
+      },
       "kind": "code",
       "original_sha256": "733fa94b0d2ad194c559495b5804adfe2fe0c6f59071af2cb4dabfde280fe1b7",
       "shape": [
@@ -1141,6 +1426,30 @@
     {
       "anchor": "filter-servers-drives-ips-or-vlans-listing-by-tag",
       "classification": "response-example",
+      "fixture_id": "fixture-b8da14e32c1ae50e2e30b0e1",
+      "fixture_payload": {
+        "meta": {
+          "limit": 20,
+          "offset": 0,
+          "total_count": 1
+        },
+        "objects": [
+          {
+            "name": "test_server2",
+            "owner": {
+              "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+              "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+            },
+            "resource_uri": {
+              "resource_uri": "/api/2.0/servers/cdeca2cf-4628-4169-8a3a-ceebedd9ea3a/",
+              "uuid": "cdeca2cf-4628-4169-8a3a-ceebedd9ea3a"
+            },
+            "runtime": null,
+            "status": "stopped",
+            "uuid": "cdeca2cf-4628-4169-8a3a-ceebedd9ea3a"
+          }
+        ]
+      },
       "kind": "code",
       "operation": {
         "method": "GET",

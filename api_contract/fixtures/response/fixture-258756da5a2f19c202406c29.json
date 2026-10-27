@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "limit": 0,
+    "offset": 0,
+    "total_count": 3
+  },
+  "objects": [
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/cf0af312-aeeb-4f3a-bf00-426d13126edf/",
+      "status": "unmounted",
+      "uuid": "cf0af312-aeeb-4f3a-bf00-426d13126edf"
+    },
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/3d504199-6bac-4612-a19e-691c9c6c6728/",
+      "status": "unmounted",
+      "uuid": "3d504199-6bac-4612-a19e-691c9c6c6728"
+    },
+    {
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/drives/b9a2e66c-81d1-4de3-aac0-b6f2bde806f1/",
+      "status": "unmounted",
+      "uuid": "b9a2e66c-81d1-4de3-aac0-b6f2bde806f1"
+    }
+  ]
+}

@@ -44,6 +44,7 @@
       "anchor": "authentication",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {},
       "kind": "code",
       "original_sha256": "531e35121a9cbb86642462685da3916e660518f267f02711ff091102c8a8f10b",
       "shape": [

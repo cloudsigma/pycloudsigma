@@ -1,0 +1,15 @@
+{
+  "objects": [
+    {
+      "meta": {},
+      "name": "MyGroupOfThings",
+      "owner": {
+        "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+        "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+      },
+      "resource_uri": "/api/2.0/tags/7b102579-e850-47cf-adf9-9c1a499b08f8/",
+      "resources": [],
+      "uuid": "7b102579-e850-47cf-adf9-9c1a499b08f8"
+    }
+  ]
+}

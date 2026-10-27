@@ -1,0 +1,37 @@
+{
+  "affinities": [],
+  "allow_multimount": false,
+  "grantees": [],
+  "jobs": [],
+  "licenses": [],
+  "media": "disk",
+  "meta": {},
+  "mounted_on": [],
+  "name": "test_drive_snapshot",
+  "owner": {
+    "resource_uri": "/api/2.0/user/5b4a69a3-8e78-4c45-a8ba-8b13f0895e23/",
+    "uuid": "5b4a69a3-8e78-4c45-a8ba-8b13f0895e23"
+  },
+  "permissions": [],
+  "resource_uri": "/api/2.0/drives/b7cb6615-b6a5-4c31-b755-b86980c64d59/",
+  "runtime": {
+    "is_snapshotable": true,
+    "snapshots_allocated_size": 0,
+    "storage_type": "dssd"
+  },
+  "size": 1073741824,
+  "snapshots": [
+    {
+      "resource_uri": "/api/2.0/snapshots/f69d43df-092d-4fef-9766-668cb6469f31/",
+      "uuid": "f69d43df-092d-4fef-9766-668cb6469f31"
+    },
+    {
+      "resource_uri": "/api/2.0/snapshots/3a057cc8-9b42-44f2-a8cb-c5561f2eddd3/",
+      "uuid": "3a057cc8-9b42-44f2-a8cb-c5561f2eddd3"
+    }
+  ],
+  "status": "unmounted",
+  "storage_type": "dssd",
+  "tags": [],
+  "uuid": "b7cb6615-b6a5-4c31-b755-b86980c64d59"
+}

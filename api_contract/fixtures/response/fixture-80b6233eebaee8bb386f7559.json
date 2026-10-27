@@ -1,0 +1,42 @@
+{
+  "objects": [
+    {
+      "grantees": [
+        {
+          "email": "user@example.com",
+          "resource_uri": {
+            "resource_uri": "/api/2.0/user/c2fc9982-cf2e-434a-bf63-e22a27b39f00/",
+            "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+          },
+          "uuid": "c2fc9982-cf2e-434a-bf63-e22a27b39f00"
+        }
+      ],
+      "meta": {},
+      "name": "test_with_grantees",
+      "owner": {
+        "resource_uri": "/api/2.0/user/3516e556-eb0e-4f0c-bf95-8b642194b8fd/",
+        "uuid": "3516e556-eb0e-4f0c-bf95-8b642194b8fd"
+      },
+      "resource_uri": "/api/2.0/acls/49134280-55ed-4f4e-815c-85c6dd3ab322/",
+      "rules": [
+        {
+          "permission": "LIST"
+        },
+        {
+          "permission": "EDIT"
+        }
+      ],
+      "tags": [
+        {
+          "resource_uri": "/api/2.0/tags/6d302107-fc0b-433a-99b1-9f2d3692eefc/",
+          "uuid": "6d302107-fc0b-433a-99b1-9f2d3692eefc"
+        },
+        {
+          "resource_uri": "/api/2.0/tags/5a9e6f2b-7927-4f30-88b5-0cc939208549/",
+          "uuid": "5a9e6f2b-7927-4f30-88b5-0cc939208549"
+        }
+      ],
+      "uuid": "49134280-55ed-4f4e-815c-85c6dd3ab322"
+    }
+  ]
+}

@@ -50,6 +50,27 @@
       "anchor": "editing",
       "binding_gap": "no-matching-operation-declaration",
       "classification": "response-example",
+      "fixture_payload": {
+        "dhcp_range_from": "10.0.0.100",
+        "dhcp_range_to": "10.0.0.200",
+        "dhcp_vlan_gateway": "10.0.1.1/24",
+        "iface": "vtnet1",
+        "internet_protocol": "ipv4",
+        "ip_aliases": [],
+        "ipv4_address_gateway": "10.0.1.1/24",
+        "ipv4_dhcp_enabled": false,
+        "ipv6_address_gateway": null,
+        "ipv6_router_advertirser_enabled": false,
+        "name": "WORM HOLE",
+        "order": 1,
+        "resource_uri": "/api/2.0/lans/9b183b90-84cf-46fb-b3d8-12d2e5383eae/",
+        "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae",
+        "virtual_router": "13292e1f-0c3e-458d-a6d0-ed2ee2baa0b2",
+        "vlan": {
+          "resource_uri": "/api/2.0/vlans/68317648-0a2a-4fb4-b179-700fa4dc359d/",
+          "uuid": "68317648-0a2a-4fb4-b179-700fa4dc359d"
+        }
+      },
       "kind": "code",
       "original_sha256": "5c7a64f70916dda042a6166de7c1488f738e1737aaa7e16d7694b3cde3a65502",
       "shape": [
@@ -213,6 +234,16 @@
     {
       "anchor": "configure-dhcp",
       "classification": "response-example",
+      "fixture_id": "fixture-b3f6ea1371cce122e70dc3dc",
+      "fixture_payload": {
+        "action": "configure_dhcp",
+        "job": {
+          "resource_uri": "/api/2.0/jobs/7205b0a5-89f9-4726-aaaa-bfa422e630ee/",
+          "uuid": "7205b0a5-89f9-4726-aaaa-bfa422e630ee"
+        },
+        "result": "success",
+        "uuid": "9b183b90-84cf-46fb-b3d8-12d2e5383eae"
+      },
       "kind": "code",
       "operation": {
         "method": "POST",
