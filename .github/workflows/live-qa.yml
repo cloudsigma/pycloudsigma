@@ -32,3 +32,9 @@ jobs:
           CLOUDSIGMA_QA_PASSWORD: ${{ secrets.CLOUDSIGMA_QA_PASSWORD }}
           CLOUDSIGMA_QA_ENDPOINT: https://next.cloudsigma.com/api/2.0/
         run: python -I -B ci/run_live_smoke.py
+      - name: Probe tunnel route availability
+        env:
+          CLOUDSIGMA_QA_USERNAME: ${{ secrets.CLOUDSIGMA_QA_USERNAME }}
+          CLOUDSIGMA_QA_PASSWORD: ${{ secrets.CLOUDSIGMA_QA_PASSWORD }}
+          CLOUDSIGMA_QA_ENDPOINT: https://next.cloudsigma.com/api/2.0/
+        run: python -I -B ci/run_tunnel_probe.py
