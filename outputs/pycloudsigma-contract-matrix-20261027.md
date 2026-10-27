@@ -31,10 +31,9 @@ schema unavailable:
 
 The QA smoke run against `next.cloudsigma.com` returned HTTP 404 for the
 canonical tunnel collection, HTTP 301 for the slashless spelling, and HTTP 500
-for the schema route. The SDK path therefore remains the documented path,
-while the matrix records a synthesized `provider-unavailable` and
-`schema-unavailable` operation row. The
-CI live workflow now runs a GET-only diagnostic over
+for the schema route. The SDK's historical path remains unchanged, while the
+matrix records a synthesized `provider-unavailable` and `schema-unavailable`
+operation row. The CI live workflow now runs a GET-only diagnostic over
 the API root, capabilities, cloud status, canonical and slashless tunnel
 routes, tunnel schema, and both virtual-router route spellings. It records
 status, safe response shape, `Allow`, content type and request ID, then uploads

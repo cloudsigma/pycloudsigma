@@ -7,9 +7,10 @@ of reviewable changes when the API documentation changes.
 
 The current snapshot contains 62 public documentation pages, 181 explicit
 method/path declarations plus one explicitly classified provider-unavailable
-route, 2,587 response field observations, and 430 schema field definitions
-across 31 schema blocks. There are 131 explicit extraction or
-contract gaps. These are discovery counts, not percentages of API coverage.
+route (182 operation rows total), 2,587 response field observations, and 430
+schema field definitions across 31 schema blocks. There are 131 explicit
+extraction or contract gaps. These are discovery counts, not percentages of API
+coverage.
 No field-level SDK assertion is claimed by this inventory.
 
 ## Files and authority
