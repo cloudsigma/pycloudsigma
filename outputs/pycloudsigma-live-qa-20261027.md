@@ -28,6 +28,8 @@ No create, update, delete, action, upload, or websocket operation was issued. Th
 
 The runner emits only check names, result state, response shape, elapsed time, and typed error metadata. It never prints credentials or response bodies.
 
+The post-merge run [40541180791](https://github.com/cloudsigma/pycloudsigma/actions/runs/40541180791) passed on merge commit `6d8e78ee41972bd28c2420b380acc8cea7c1f9ee`: 5 checks passed, 1 documented provider 404 was skipped, and 0 checks failed.
+
 ## Local validation
 
 - Installed-artifact offline suite: **292 tests passed**.
