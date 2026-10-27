@@ -1,0 +1,34 @@
+name: Live QA acceptance
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  read-only-smoke:
+    name: Read-only next QA smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Install hashlocked SDK dependencies
+        run: python -m pip --isolated install --index-url https://pypi.org/simple --require-hashes -r ci/requirements-3.12.lock
+      - name: Build and install exact SDK
+        run: |
+          python -m build --no-isolation --wheel . --outdir sdk-dist
+          python -m pip --isolated install --no-index --no-deps sdk-dist/*.whl
+      - name: Run authenticated read-only smoke checks
+        env:
+          CLOUDSIGMA_QA_USERNAME: ${{ secrets.CLOUDSIGMA_QA_USERNAME }}
+          CLOUDSIGMA_QA_PASSWORD: ${{ secrets.CLOUDSIGMA_QA_PASSWORD }}
+          CLOUDSIGMA_QA_ENDPOINT: https://next.cloudsigma.com/api/2.0/
+        run: python -I -B ci/run_live_smoke.py
