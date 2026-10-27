@@ -42,10 +42,10 @@ class VpnTunnelTests(unittest.TestCase):
         self.assertEqual(
             [(method, url) for method, url, _ in wire.calls], [
                 ('GET', 'https://next.cloudsigma.com/api/2.0/tunnels/'),
-                ('GET', 'https://next.cloudsigma.com/api/2.0/tunnels/tunnel-1'),
+                ('GET', 'https://next.cloudsigma.com/api/2.0/tunnels/tunnel-1/'),
                 ('POST', 'https://next.cloudsigma.com/api/2.0/tunnels/'),
                 ('PUT', 'https://next.cloudsigma.com/api/2.0/tunnels/tunnel-1/'),
-                ('DELETE', 'https://next.cloudsigma.com/api/2.0/tunnels/tunnel-1'),
+                ('DELETE', 'https://next.cloudsigma.com/api/2.0/tunnels/tunnel-1/'),
             ])
 
 
