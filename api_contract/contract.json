@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "api_version": "2.0",
+  "source_policy": [
+    "schema",
+    "canonical-documentation",
+    "approved-internal-contract",
+    "sanitized-live-observation",
+    "example-only"
+  ],
+  "dispositions": [
+    "implemented",
+    "partial",
+    "generic-passthrough",
+    "read-only",
+    "unknown",
+    "provider-unavailable",
+    "blocked"
+  ],
+  "operations": [
+    {
+      "operation_id": "profile.get",
+      "method": "GET",
+      "path": "/api/2.0/profile/",
+      "sdk_symbol": "cloudsigma.resource.Profile.get",
+      "direction": "response",
+      "status_codes": [200],
+      "authority": "canonical-documentation",
+      "source_ref": "https://docs.cloudsigma.com/en/latest/profile.html",
+      "field_contract": "pending-field-extraction",
+      "response_fields": [],
+      "disposition": "implemented"
+    },
+    {
+      "operation_id": "locations.list",
+      "method": "GET",
+      "path": "/api/2.0/locations/",
+      "sdk_symbol": "cloudsigma.resource.Locations.list",
+      "direction": "response",
+      "status_codes": [200],
+      "authority": "canonical-documentation",
+      "source_ref": "https://docs.cloudsigma.com/en/latest/locations.html",
+      "field_contract": "pending-field-extraction",
+      "response_fields": [],
+      "disposition": "implemented"
+    },
+    {
+      "operation_id": "capabilities.list",
+      "method": "GET",
+      "path": "/api/2.0/capabilities/",
+      "sdk_symbol": "cloudsigma.resource.Capabilities.list",
+      "direction": "response",
+      "status_codes": [200],
+      "authority": "canonical-documentation",
+      "source_ref": "https://docs.cloudsigma.com/en/latest/capabilities.html",
+      "field_contract": "schema-unavailable",
+      "response_fields": [],
+      "disposition": "implemented"
+    },
+    {
+      "operation_id": "usage.list",
+      "method": "GET",
+      "path": "/api/2.0/usage/",
+      "sdk_symbol": "cloudsigma.resource.Usage.list",
+      "direction": "response",
+      "status_codes": [200],
+      "authority": "canonical-documentation",
+      "source_ref": "https://docs.cloudsigma.com/en/latest/usage.html",
+      "field_contract": "pending-field-extraction",
+      "response_fields": [],
+      "disposition": "implemented"
+    },
+    {
+      "operation_id": "virtualrouters.list",
+      "method": "GET",
+      "path": "/api/2.0/virtualrouters/",
+      "sdk_symbol": "cloudsigma.resource.VirtualRouters.list",
+      "direction": "response",
+      "status_codes": [200],
+      "authority": "canonical-documentation",
+      "source_ref": "https://docs.cloudsigma.com/en/latest/virtualrouters.html",
+      "field_contract": "pending-field-extraction",
+      "response_fields": [],
+      "disposition": "implemented"
+    },
+    {
+      "operation_id": "tunnels.list",
+      "method": "GET",
+      "path": "/api/2.0/tunnels/",
+      "sdk_symbol": "cloudsigma.resource.VpnTunnels.list",
+      "direction": "response",
+      "status_codes": [200, 404],
+      "authority": "canonical-documentation",
+      "source_ref": "https://docs.cloudsigma.com/en/latest/virtualrouters_vpn_tunnels.html",
+      "field_contract": "schema-unavailable",
+      "response_fields": [],
+      "capability_gate": "tunnels",
+      "disposition": "provider-unavailable",
+      "availability_note": "The documented route returned HTTP 404 in next.cloudsigma.com during the 2026-10-27 read-only QA probe. Keep this disposition until the API owner confirms enablement or replacement."
+    }
+  ]
+}
